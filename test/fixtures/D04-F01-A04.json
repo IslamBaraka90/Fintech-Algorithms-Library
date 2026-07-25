@@ -1,0 +1,17 @@
+{
+  "classification": "synthetic",
+  "initial_value": "0",
+  "scale": "100",
+  "denominator_policy": "movers",
+  "sessions": [
+    {"date":"2026-01-05","advances":60,"declines":30},
+    {"date":"2026-01-06","advances":35,"declines":55},
+    {"date":"2026-01-07","advances":40,"declines":40},
+    {"date":"2026-01-08","advances":70,"declines":20},
+    {"date":"2026-01-09","advances":25,"declines":65}
+  ],
+  "expected_display": {
+    "scaled_contribution": ["33.3333","-22.2222","0.0000","55.5556","-44.4444"],
+    "line": ["33.3333","11.1111","11.1111","66.6667","22.2222"]
+  }
+}

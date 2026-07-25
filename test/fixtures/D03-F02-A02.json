@@ -1,0 +1,39 @@
+{
+  "topicId": "D03-F02-A02",
+  "input": {
+    "constituents": [
+      {
+        "id": "A",
+        "price": 20,
+        "shares": 1000000,
+        "fx": 1
+      },
+      {
+        "id": "B",
+        "price": 40,
+        "shares": 500000,
+        "fx": 1
+      },
+      {
+        "id": "C",
+        "price": 30,
+        "shares": 800000,
+        "fx": 1.1
+      }
+    ],
+    "divisor": 50000
+  },
+  "expected": {
+    "marketValues": [
+      20000000,
+      20000000,
+      26400000
+    ],
+    "weights": [
+      0.301205,
+      0.301205,
+      0.39759
+    ],
+    "indexLevel": 1328
+  }
+}

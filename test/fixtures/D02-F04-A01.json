@@ -1,0 +1,10 @@
+{
+  "description": "Synthetic bitemporal roster query before a later correction is available",
+  "fixture": "../tests/shared_fixture.json",
+  "queryName": "revision one remains valid before correction is known",
+  "result": {
+    "status": "resolved",
+    "securityIds": ["SEC:E", "SEC:F", "SEC:G", "SEC:H", "SEC:I", "SEC:J"],
+    "appliedEventVersions": ["EV-001@1", "EV-002@1", "EV-003@1", "EV-004@1", "EV-005@1", "EV-006@1"]
+  }
+}

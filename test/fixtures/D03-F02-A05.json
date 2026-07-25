@@ -1,0 +1,39 @@
+{
+  "topicId": "D03-F02-A05",
+  "input": {
+    "ids": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "marketValues": [
+      64,
+      25,
+      9,
+      4
+    ],
+    "exponent": 0.5
+  },
+  "expected": {
+    "ids": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "transformedValues": [
+      8,
+      5,
+      3,
+      2
+    ],
+    "weights": [
+      0.444444,
+      0.277778,
+      0.166667,
+      0.111111
+    ],
+    "exponent": 0.5
+  }
+}

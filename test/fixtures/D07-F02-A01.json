@@ -1,0 +1,47 @@
+{
+  "title": "A 3/5/3 MACD through rise, reversal, and recovery",
+  "spans": {"fast": 3, "slow": 5, "signal": 3},
+  "alphas": {"fast": "1/2", "slow": "1/3", "signal": "1/2"},
+  "values": [10, 11, 12, 13, 14, 15, 16, 15, 14, 13, 12, 13, 15, 18],
+  "checkpoints": [
+    {
+      "observation": 5,
+      "fast_ema": "13",
+      "slow_ema": "12",
+      "macd": "1",
+      "signal": null,
+      "histogram": null,
+      "lesson": "The oscillator exists, but the signal still needs three MACD observations."
+    },
+    {
+      "observation": 7,
+      "macd": "1",
+      "signal": "(1 + 1 + 1) / 3 = 1",
+      "histogram": "1 - 1 = 0",
+      "lesson": "This is the first fully ready 3/5/3 row."
+    },
+    {
+      "observation": 8,
+      "fast_ema": "15",
+      "slow_ema": "43/3",
+      "macd": "2/3",
+      "signal": "5/6",
+      "histogram": "-1/6",
+      "lesson": "MACD remains positive while the histogram turns negative: fast EMA is still above slow EMA, but MACD has fallen below its signal."
+    },
+    {
+      "observation": 10,
+      "macd": "-7/108",
+      "signal": "53/216",
+      "histogram": "-67/216",
+      "lesson": "The MACD zero cross is exactly the fast/slow EMA cross."
+    },
+    {
+      "observation": 13,
+      "macd": "4871/23328",
+      "signal": "497/11664",
+      "histogram": "3877/23328",
+      "lesson": "Both spreads are positive again in this particular path."
+    }
+  ]
+}

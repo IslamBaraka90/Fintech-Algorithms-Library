@@ -1,0 +1,40 @@
+{
+  "topicId": "D03-F04-A06",
+  "input": {
+    "localReturns": [
+      0.01,
+      -0.004,
+      0.006,
+      0.002,
+      -0.003
+    ],
+    "fxReturns": [
+      0.002,
+      0.001,
+      -0.003,
+      0.004,
+      -0.001
+    ],
+    "baseLevel": 1000,
+    "quote": "base currency per local currency"
+  },
+  "expected": {
+    "baseCurrencyReturns": [
+      0.01202,
+      -0.003004,
+      0.002982,
+      0.006008,
+      -0.003997
+    ],
+    "levels": [
+      1000,
+      1012.02,
+      1008.979892,
+      1011.98867,
+      1018.068698,
+      1013.999477
+    ],
+    "endingLevel": 1013.999477,
+    "quote": "base currency per local currency"
+  }
+}

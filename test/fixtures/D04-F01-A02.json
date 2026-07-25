@@ -1,0 +1,23 @@
+{
+  "topic_id": "D04-F01-A02",
+  "synthetic": true,
+  "input": {
+    "advances": 60,
+    "declines": 30,
+    "unchanged": 10,
+    "excluded_buckets_total": 0,
+    "universe_size": 100,
+    "is_final": true
+  },
+  "derivation": {
+    "partition_sum": 100,
+    "mover_count": 90,
+    "classified_count": 100,
+    "coverage_ratio": 1,
+    "observed_partition_ratio": 2,
+    "advance_decline_ratio": 2,
+    "evidence_state": "resolved",
+    "ratio_state": "finite",
+    "direction": "advances_dominant"
+  }
+}

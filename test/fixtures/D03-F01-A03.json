@@ -1,0 +1,14 @@
+{
+  "topicId": "D03-F01-A03",
+  "input": {
+    "oldMarketValue": 100000000,
+    "newMarketValue": 112000000,
+    "oldDivisor": 100000
+  },
+  "expected": {
+    "oldLevel": 1000,
+    "newDivisor": 112000,
+    "bridgedLevel": 1000,
+    "continuityError": 0
+  }
+}

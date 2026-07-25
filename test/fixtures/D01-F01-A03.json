@@ -1,0 +1,22 @@
+{
+  "topicId": "D01-F01-A03",
+  "description": "Synthetic six-trade example covering whole-trade overshoot, exact equality, and a final partial bar.",
+  "canonicalRule": "V_j=\\sum_{i\\in B_j}v_i,\\qquad \\text{close }B_j\\text{ at the first }i\\text{ for which }V_j\\ge V^*",
+  "config": {
+    "targetVolume": 1000,
+    "closePartial": true
+  },
+  "trades": [
+    {"tradeId":"W001","timestamp":"2026-01-05T14:30:00.000Z","session":"2026-01-05","symbol":"SYNTH","price":100.00,"volume":400,"currency":"USD"},
+    {"tradeId":"W002","timestamp":"2026-01-05T14:30:01.000Z","session":"2026-01-05","symbol":"SYNTH","price":101.00,"volume":350,"currency":"USD"},
+    {"tradeId":"W003","timestamp":"2026-01-05T14:30:02.000Z","session":"2026-01-05","symbol":"SYNTH","price":99.00,"volume":500,"currency":"USD"},
+    {"tradeId":"W004","timestamp":"2026-01-05T14:30:03.000Z","session":"2026-01-05","symbol":"SYNTH","price":99.50,"volume":600,"currency":"USD"},
+    {"tradeId":"W005","timestamp":"2026-01-05T14:30:04.000Z","session":"2026-01-05","symbol":"SYNTH","price":100.50,"volume":400,"currency":"USD"},
+    {"tradeId":"W006","timestamp":"2026-01-05T14:30:05.000Z","session":"2026-01-05","symbol":"SYNTH","price":101.00,"volume":250,"currency":"USD"}
+  ],
+  "expectedBars": [
+    {"barIndex":0,"session":"2026-01-05","startTime":"2026-01-05T14:30:00.000Z","endTime":"2026-01-05T14:30:02.000Z","lastTradeTime":"2026-01-05T14:30:02.000Z","open":100.0,"high":101.0,"low":99.0,"close":99.0,"volume":1250.0,"dollarValue":124850.0,"tickCount":3,"firstTradeId":"W001","lastTradeId":"W003","closeReason":"threshold"},
+    {"barIndex":1,"session":"2026-01-05","startTime":"2026-01-05T14:30:03.000Z","endTime":"2026-01-05T14:30:04.000Z","lastTradeTime":"2026-01-05T14:30:04.000Z","open":99.5,"high":100.5,"low":99.5,"close":100.5,"volume":1000.0,"dollarValue":99900.0,"tickCount":2,"firstTradeId":"W004","lastTradeId":"W005","closeReason":"threshold"},
+    {"barIndex":2,"session":"2026-01-05","startTime":"2026-01-05T14:30:05.000Z","endTime":"2026-01-05T14:30:05.000Z","lastTradeTime":"2026-01-05T14:30:05.000Z","open":101.0,"high":101.0,"low":101.0,"close":101.0,"volume":250.0,"dollarValue":25250.0,"tickCount":1,"firstTradeId":"W006","lastTradeId":"W006","closeReason":"stream_end"}
+  ]
+}

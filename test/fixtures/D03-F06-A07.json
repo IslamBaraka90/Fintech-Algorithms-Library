@@ -1,0 +1,58 @@
+{
+  "topicId": "D03-F06-A07",
+  "input": {
+    "candidates": [
+      {
+        "id": "A",
+        "rank": 1,
+        "incumbent": true
+      },
+      {
+        "id": "B",
+        "rank": 2,
+        "incumbent": false
+      },
+      {
+        "id": "C",
+        "rank": 3,
+        "incumbent": true
+      },
+      {
+        "id": "D",
+        "rank": 4,
+        "incumbent": false
+      },
+      {
+        "id": "E",
+        "rank": 5,
+        "incumbent": true
+      },
+      {
+        "id": "F",
+        "rank": 6,
+        "incumbent": true
+      },
+      {
+        "id": "G",
+        "rank": 7,
+        "incumbent": false
+      }
+    ],
+    "targetCount": 5,
+    "buffer": 1
+  },
+  "expected": {
+    "selectedIds": [
+      "A",
+      "B",
+      "C",
+      "E",
+      "F"
+    ],
+    "additions": [
+      "B"
+    ],
+    "deletions": [],
+    "targetCount": 5
+  }
+}

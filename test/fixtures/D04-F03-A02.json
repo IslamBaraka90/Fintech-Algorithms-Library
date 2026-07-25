@@ -1,0 +1,14 @@
+{
+  "topic_id": "D04-F03-A02",
+  "source_class": "synthetic teaching input and author-derived arithmetic",
+  "canonical_display_state": {
+    "session_date": "2026-01-15",
+    "new_highs": 2,
+    "new_lows": 10,
+    "value": 0.2,
+    "status": "resolved",
+    "reason": null
+  },
+  "formula": "HLR_t=\\frac{NH_t}{NL_t}",
+  "rounding": "full precision calculation; display rounded to four decimals"
+}

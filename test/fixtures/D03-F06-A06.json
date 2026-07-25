@@ -1,0 +1,58 @@
+{
+  "topicId": "D03-F06-A06",
+  "input": {
+    "records": [
+      {
+        "id": "A",
+        "price": 50,
+        "oldWeight": 0.35,
+        "targetWeight": 0.3
+      },
+      {
+        "id": "B",
+        "price": 25,
+        "oldWeight": 0.25,
+        "targetWeight": 0.3
+      },
+      {
+        "id": "C",
+        "price": 80,
+        "oldWeight": 0.22,
+        "targetWeight": 0.2
+      },
+      {
+        "id": "D",
+        "price": 40,
+        "oldWeight": 0.18,
+        "targetWeight": 0.2
+      }
+    ],
+    "notional": 100000000
+  },
+  "expected": {
+    "trades": [
+      {
+        "id": "A",
+        "tradeValue": -5000000,
+        "targetIndexShares": 600000
+      },
+      {
+        "id": "B",
+        "tradeValue": 5000000,
+        "targetIndexShares": 1200000
+      },
+      {
+        "id": "C",
+        "tradeValue": -2000000,
+        "targetIndexShares": 250000
+      },
+      {
+        "id": "D",
+        "tradeValue": 2000000,
+        "targetIndexShares": 500000
+      }
+    ],
+    "oneWayTurnover": 0.07,
+    "grossTradeValue": 14000000
+  }
+}

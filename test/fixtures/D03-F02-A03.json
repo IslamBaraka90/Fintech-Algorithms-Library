@@ -1,0 +1,55 @@
+{
+  "topicId": "D03-F02-A03",
+  "input": {
+    "constituents": [
+      {
+        "id": "A",
+        "price": 20,
+        "shares": 1000000,
+        "floatFactor": 0.65,
+        "fx": 1
+      },
+      {
+        "id": "B",
+        "price": 40,
+        "shares": 500000,
+        "floatFactor": 0.9,
+        "fx": 1
+      },
+      {
+        "id": "C",
+        "price": 30,
+        "shares": 800000,
+        "floatFactor": 0.5,
+        "fx": 1.1
+      },
+      {
+        "id": "D",
+        "price": 18,
+        "shares": 900000,
+        "floatFactor": 0.8,
+        "fx": 1
+      }
+    ]
+  },
+  "expected": {
+    "ids": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "floatMarketValues": [
+      13000000,
+      18000000,
+      13200000,
+      12960000
+    ],
+    "weights": [
+      0.227432,
+      0.314906,
+      0.230931,
+      0.226732
+    ]
+  }
+}

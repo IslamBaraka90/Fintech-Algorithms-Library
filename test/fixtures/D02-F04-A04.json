@@ -1,0 +1,21 @@
+{
+  "topicId": "D02-F04-A04",
+  "source": "tests/shared_fixture.json",
+  "case": "Esterline Technologies fiscal 2017 Form 10-K and Form 10-K/A",
+  "historicalFacts": {
+    "originalAccession": "0001564590-17-024189",
+    "originalAcceptedAt": "2017-11-21T16:32:41Z",
+    "amendmentAccession": "0001564590-18-007244",
+    "amendmentAcceptedAt": "2018-03-30T14:43:54Z",
+    "basicEpsAsReported": 3.94,
+    "basicEpsRestated": 3.75
+  },
+  "syntheticAvailabilityAssumptions": {
+    "originalIngestedAt": "2017-11-21T16:40:00Z",
+    "amendmentIngestedAt": "2018-03-30T15:00:00Z"
+  },
+  "derivedDifference": {
+    "basicEpsChangeUsdPerShare": -0.19,
+    "interpretation": "A revision of the historical filing value, not evidence of a market return or a new fiscal-period result."
+  }
+}

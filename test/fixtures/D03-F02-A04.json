@@ -1,0 +1,40 @@
+{
+  "topicId": "D03-F02-A04",
+  "input": {
+    "ids": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ],
+    "marketValues": [
+      48,
+      24,
+      14,
+      9,
+      5
+    ],
+    "cap": 0.3
+  },
+  "expected": {
+    "ids": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ],
+    "weights": [
+      0.3,
+      0.3,
+      0.2,
+      0.128571,
+      0.071429
+    ],
+    "cap": 0.3,
+    "iterations": 3,
+    "maxWeight": 0.3,
+    "weightSum": 1
+  }
+}

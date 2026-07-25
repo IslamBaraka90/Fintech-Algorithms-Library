@@ -1,0 +1,13 @@
+{
+  "topic_id": "D04-F03-A04",
+  "source_class": "synthetic teaching input and author-derived arithmetic",
+  "canonical_display_state": {
+    "status": "resolved",
+    "above_count": 15,
+    "eligible_count": 24,
+    "equal_count": 1,
+    "percent_above": 62.5
+  },
+  "formula": "P20_t=100\\frac{\\sum_i \\mathbf{1}[P_{i,t}>SMA_{20,i,t}]}{N_t}",
+  "rounding": "full precision calculation; display rounded to four decimals"
+}

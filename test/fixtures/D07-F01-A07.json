@@ -1,0 +1,16 @@
+{
+  "topic_id": "D07-F01-A07",
+  "window": 5,
+  "rounding_policy": "floor",
+  "half_length": 2,
+  "root_length": 2,
+  "values": [10, 13, 12, 15, 14, 18, 17, 20, 19, 22],
+  "first_ready_observation": 6,
+  "first_ready_components": {
+    "short_wma": 16.666666666666668,
+    "long_wma": 15.2,
+    "raw_hull": 18.133333333333336,
+    "previous_raw_hull": 15.200000000000001,
+    "hull_ma": 17.15555555555556
+  }
+}

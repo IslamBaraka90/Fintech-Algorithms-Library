@@ -1,0 +1,16 @@
+{
+  "data_class": "synthetic",
+  "seed": 0,
+  "original": {
+    "net_advances": [30, -20, 0, 40, -30],
+    "cumulative_line": [30, 10, 10, 50, 20]
+  },
+  "correction": {
+    "session_date": "2026-01-06",
+    "original_net": -20,
+    "revised_net": -10,
+    "delta": 10,
+    "recomputed_line": [30, 20, 20, 60, 30]
+  },
+  "publication_rule": "Only the resolved sequence is publishable; incomplete prefixes are diagnostic."
+}

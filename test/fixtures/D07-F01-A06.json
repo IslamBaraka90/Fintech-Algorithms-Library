@@ -1,0 +1,19 @@
+{
+  "topic_id": "D07-F01-A06",
+  "series_id": "synthetic-tema-demo",
+  "unit": "index points",
+  "frequency": "one observation step",
+  "value_basis": "synthetic unadjusted values",
+  "span": 3,
+  "alpha": "1/2",
+  "seed_policy": "simple_average_each_layer",
+  "first_ready_observation": 7,
+  "first_ready_components": {
+    "value": 17,
+    "ema1": "197/12",
+    "ema2": "277/18",
+    "ema3": "1535/108",
+    "tema": "467/27"
+  },
+  "formula": "3 * ema1 - 3 * ema2 + ema3"
+}

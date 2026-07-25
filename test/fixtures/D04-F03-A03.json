@@ -1,0 +1,14 @@
+{
+  "topic_id": "D04-F03-A03",
+  "source_class": "synthetic teaching input and author-derived arithmetic",
+  "canonical_display_state": {
+    "session_date": "2026-01-15",
+    "new_highs": 2,
+    "new_lows": 10,
+    "value": 54.166666666666664,
+    "status": "resolved",
+    "reason": null
+  },
+  "formula": "HLI_t=SMA_{10}\\left(100\\frac{NH_t}{NH_t+NL_t}\\right)",
+  "rounding": "full precision calculation; display rounded to four decimals"
+}

@@ -1,0 +1,14 @@
+{
+  "note": "Synthetic arithmetic copied from tests/shared_fixture.json.",
+  "effectiveAt": "2023-12-31T23:59:59Z",
+  "knownAt": "2024-01-02T12:00:00Z",
+  "historicallyEligible": ["SEC:A", "SEC:B", "SEC:C"],
+  "historicallyIneligible": ["SEC:D"],
+  "laterRoster": ["SEC:A", "SEC:C", "SEC:D"],
+  "missingFromLaterRoster": ["SEC:B"],
+  "retentionRatio": 0.666667,
+  "historicalEqualWeightedReturn": -0.166667,
+  "laterRosterSubsetEqualWeightedReturn": 0.15,
+  "signedDifference": 0.316667,
+  "interpretation": "This sign and magnitude are synthetic and not universal."
+}

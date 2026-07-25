@@ -1,0 +1,61 @@
+{
+  "topicId": "D03-F03-A01",
+  "input": {
+    "records": [
+      {
+        "id": "A",
+        "sales": 120,
+        "cashFlow": 18,
+        "bookValue": 70,
+        "dividends": 4
+      },
+      {
+        "id": "B",
+        "sales": 90,
+        "cashFlow": 15,
+        "bookValue": 55,
+        "dividends": 3
+      },
+      {
+        "id": "C",
+        "sales": 60,
+        "cashFlow": 8,
+        "bookValue": 45,
+        "dividends": 2
+      },
+      {
+        "id": "D",
+        "sales": 40,
+        "cashFlow": 7,
+        "bookValue": 25,
+        "dividends": 1
+      }
+    ],
+    "multipliers": {
+      "sales": 1,
+      "cashFlow": 4,
+      "bookValue": 2,
+      "dividends": 10
+    }
+  },
+  "expected": {
+    "ids": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "scores": [
+      372,
+      290,
+      202,
+      128
+    ],
+    "weights": [
+      0.375,
+      0.292339,
+      0.203629,
+      0.129032
+    ]
+  }
+}

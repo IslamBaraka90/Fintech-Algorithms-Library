@@ -1,0 +1,21 @@
+{
+  "notice": "Synthetic educational output derived from tests/shared_fixture.json; not a real issuer or provider record.",
+  "query": {
+    "validAt": "2026-03-01T12:00:00Z",
+    "knownAt": "2026-03-05T12:00:00Z",
+    "leftShareClassId": "SYN-CLASS-FOUNDER",
+    "rightShareClassId": "SYN-CLASS-PUBLIC"
+  },
+  "result": {
+    "state": "RESOLVED",
+    "sameIssuerShareClassIds": ["SYN-CLASS-FOUNDER", "SYN-CLASS-PREFERRED", "SYN-CLASS-PUBLIC"],
+    "votingRightsRatioLeftToRight": {"status":"ESTABLISHED","numerator":10,"denominator":1,"unit":"votes_per_share"},
+    "economicRightsRatioLeftToRight": {"status":"ESTABLISHED","numerator":1,"denominator":1,"unit":"distribution_units_per_share"},
+    "equalEconomics": true,
+    "conversion": {"status":"ESTABLISHED","direction":"SYN-CLASS-FOUNDER->SYN-CLASS-PUBLIC","ratio":{"numerator":1,"denominator":1},"conditions":["qualifying_transfer"]},
+    "classFungibility": {"status":"NOT_ESTABLISHED"},
+    "priceConvertibility": "NOT_ESTABLISHED",
+    "excludedFutureRevisionCount": 1,
+    "cancelledAssertionIds": ["R-LIST-OLD"]
+  }
+}

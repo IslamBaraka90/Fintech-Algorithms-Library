@@ -1,0 +1,23 @@
+{
+  "topicId": "D01-F01-A01",
+  "dataStatus": "synthetic",
+  "canonicalRule": "k(t)=floor((t-a_s)/Delta), I_(s,k)=[a_s+k*Delta, a_s+(k+1)*Delta)",
+  "config": {
+    "intervalSeconds": 60,
+    "sessionStarts": {"S1": "2026-01-05T14:30:00.000Z"},
+    "emptyBarPolicy": "omit",
+    "closePartial": true
+  },
+  "trades": [
+    {"tradeId": "W1", "timestamp": "2026-01-05T14:30:00.000Z", "session": "S1", "symbol": "SYNTH", "price": 100.0, "volume": 10, "currency": "USD"},
+    {"tradeId": "W2", "timestamp": "2026-01-05T14:30:59.999Z", "session": "S1", "symbol": "SYNTH", "price": 101.0, "volume": 5, "currency": "USD"},
+    {"tradeId": "W3", "timestamp": "2026-01-05T14:31:00.000Z", "session": "S1", "symbol": "SYNTH", "price": 99.0, "volume": 8, "currency": "USD"},
+    {"tradeId": "W4", "timestamp": "2026-01-05T14:33:15.000Z", "session": "S1", "symbol": "SYNTH", "price": 102.0, "volume": 2, "currency": "USD"}
+  ],
+  "checks": [
+    "W1 and W2 form interval 0 with OHLC 100/101/100/101, volume 15, and dollarValue 1505.",
+    "W3 is exactly on the right boundary of interval 0, so it starts interval 1.",
+    "Interval 2 is empty and omitted. W4 enters interval 3, whose emptyIntervalsBefore value is 1.",
+    "The last bar is emitted with closeReason=stream_end only because closePartial=true."
+  ]
+}

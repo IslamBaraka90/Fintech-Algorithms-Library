@@ -1,0 +1,23 @@
+{
+  "topicId": "D03-F02-A01",
+  "input": {
+    "prices": [
+      50,
+      75,
+      25,
+      100
+    ],
+    "divisor": 0.25
+  },
+  "expected": {
+    "priceSum": 250,
+    "divisor": 0.25,
+    "indexLevel": 1000,
+    "weights": [
+      0.2,
+      0.3,
+      0.1,
+      0.4
+    ]
+  }
+}

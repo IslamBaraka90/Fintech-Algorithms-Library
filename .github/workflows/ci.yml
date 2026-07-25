@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install
+        run: npm install
+
+      # Runs off src/ via type-stripping — no build needed.
+      - name: Test
+        run: npm test
+
+      - name: Build
+        run: npm run build
+
+      - name: Demos
+        run: npm run demo
+
+  # The package is generated from the edufintech catalog, which lives in a
+  # different repository. This job only runs when that checkout is available.
+  sync-drift:
+    runs-on: ubuntu-latest
+    if: ${{ vars.EDUFINTECH_REPO != '' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: package
+
+      - uses: actions/checkout@v4
+        with:
+          repository: ${{ vars.EDUFINTECH_REPO }}
+          token: ${{ secrets.EDUFINTECH_TOKEN }}
+          path: catalog
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Fail if the package has drifted from the catalog
+        working-directory: package
+        run: node scripts/sync.mjs --check --content-root ../catalog

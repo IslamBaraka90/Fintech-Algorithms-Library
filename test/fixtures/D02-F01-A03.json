@@ -1,0 +1,13 @@
+{
+  "topicId": "D02-F01-A03",
+  "source": "../../tests/shared_fixture.json",
+  "headline": {
+    "priorClose": 102,
+    "exDateClose": 99,
+    "grossDividend": 3,
+    "priceReturn": -0.029411764706,
+    "grossTotalReturn": 0,
+    "backwardFactor": 0.970588235294
+  },
+  "note": "All values are synthetic. The factor uses the ex-date close and is applied only to earlier observations."
+}

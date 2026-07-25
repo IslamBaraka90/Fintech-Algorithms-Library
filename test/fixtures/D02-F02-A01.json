@@ -1,0 +1,21 @@
+{
+  "event": "National Grid plc 2024 rights issue",
+  "sourcedFacts": {
+    "terms": "7 new shares for 24 existing shares",
+    "subscriptionPrice": "645 GBp per new share",
+    "closingMiddleMarketPrice": "1127.5 GBp on 2024-05-22",
+    "cashDisadvantage": "39.12 GBp FY24 final dividend not payable on new shares",
+    "recordDate": "2024-05-20 18:00 Europe/London",
+    "exRightsAndNilPaidTradingStart": "2024-05-24 08:00 Europe/London",
+    "acceptanceAndPaymentDeadline": "2024-06-10 11:00 Europe/London",
+    "newSharesTradingStart": "2024-06-12 08:00 Europe/London"
+  },
+  "derivation": {
+    "referencePrice": "1127.5 - 39.12 = 1088.38 GBp",
+    "terp": "(24 x 1088.38 + 7 x 645) / 31 = 988.261935 GBp",
+    "valuePerOldShare": "1088.38 - 988.261935 = 100.118065 GBp",
+    "valuePerNewShareRight": "988.261935 - 645 = 343.261935 GBp",
+    "adjustmentFactor": "988.261935 / 1088.38 = 0.908012"
+  },
+  "interpretation": "The calculation reproduces the issuer's rounded 34.7% issue-price discount to TERP. It does not claim that 988.261935 GBp traded on the ex-rights date."
+}

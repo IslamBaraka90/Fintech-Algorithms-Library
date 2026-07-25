@@ -1,0 +1,19 @@
+{
+  "notice": "All values and identifiers are synthetic. The executable source is tests/shared_fixture.json.",
+  "selectedRevision": "R2",
+  "steps": [
+    {"label": "same-day split basis", "calculation": "100 * 0.5", "result": 50, "currency": "USD"},
+    {"label": "per-share dividend basis", "calculation": "16 * 0.5", "result": 8, "currency": "EUR"},
+    {"label": "gross FX conversion", "calculation": "8 * 1.10", "result": 8.8, "currency": "USD"},
+    {"label": "net cash", "calculation": "8.8 * (1 - 0.25)", "result": 6.6, "currency": "USD"},
+    {"label": "theoretical ex-price", "calculation": "50 - 6.6", "result": 43.4, "currency": "USD"},
+    {"label": "backward factor", "calculation": "43.4 / 50", "result": 0.868}
+  ],
+  "observedReturns": {
+    "syntheticExPrice": 43.75,
+    "priceReturn": -0.125,
+    "grossTotalReturn": 0.051,
+    "netTotalReturn": 0.007,
+    "adjustedPriceReturn": 0.00806452
+  }
+}

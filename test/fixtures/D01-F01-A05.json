@@ -1,0 +1,34 @@
+{
+  "topicId": "D01-F01-A05",
+  "evidenceClass": "deterministic package derivation",
+  "config": {
+    "closePartial": true,
+    "initialTickSign": 1,
+    "initialExpectedTicks": 8,
+    "initialExpectedTickImbalance": 0.5,
+    "alphaTicks": 0.25,
+    "alphaTickImbalance": 0.5,
+    "thresholdFloor": 3,
+    "thresholdMultiplier": 1
+  },
+  "openingThreshold": 4,
+  "trades": [
+    {"tradeId": "W1", "price": 100.0, "tickSign": 1, "imbalance": 1, "decision": "open"},
+    {"tradeId": "W2", "price": 100.0, "tickSign": 1, "imbalance": 2, "decision": "open"},
+    {"tradeId": "W3", "price": 100.1, "tickSign": 1, "imbalance": 3, "decision": "open"},
+    {"tradeId": "W4", "price": 100.05, "tickSign": -1, "imbalance": 2, "decision": "open"},
+    {"tradeId": "W5", "price": 100.1, "tickSign": 1, "imbalance": 3, "decision": "open"},
+    {"tradeId": "W6", "price": 100.15, "tickSign": 1, "imbalance": 4, "decision": "threshold"}
+  ],
+  "completedBar": {
+    "tickCount": 6,
+    "imbalance": 4,
+    "threshold": 4
+  },
+  "postCloseUpdate": {
+    "expectedTicks": 7.5,
+    "expectedTickImbalance": 0.5833333333333333,
+    "nextThreshold": 4.375
+  },
+  "interpretationBoundary": "The sequence proves the package arithmetic only; it is not a market episode or predictive result."
+}

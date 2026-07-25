@@ -1,0 +1,9 @@
+{
+  "note": "Synthetic arithmetic using the sourced four-for-one ratio; values are not Apple market observations.",
+  "ratioConvention": "new_shares_per_old_share",
+  "ratio": "4 / 1",
+  "targetBasis": "pre-split share basis",
+  "boundary": "effectiveAt is inclusive",
+  "beforeBoundary": {"rawPrice": 120, "rawVolume": 1000, "adjustedPrice": 120, "adjustedVolume": 1000},
+  "atBoundary": {"rawPrice": 30, "rawVolume": 4000, "priceFactor": 4, "quantityFactor": 0.25, "adjustedPrice": 120, "adjustedVolume": 1000}
+}

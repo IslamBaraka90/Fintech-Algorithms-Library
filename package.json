@@ -1,0 +1,512 @@
+{
+  "name": "fintech-algorithms",
+  "version": "0.1.0",
+  "description": "The Fintech Builder algorithm library — canonical, cross-language reference implementations of market-data, corporate-action, index, breadth, candlestick and technical-indicator algorithms, exposed as provider-agnostic subpath modules.",
+  "keywords": [
+    "fintech",
+    "algorithms",
+    "quant",
+    "trading",
+    "technical-analysis",
+    "technical-indicators",
+    "market-data",
+    "bar-construction",
+    "corporate-actions",
+    "index-construction",
+    "market-breadth",
+    "candlesticks",
+    "finance"
+  ],
+  "homepage": "https://thefintechbuilder.com/library/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IslamBaraka90/Fintech-Algorithms-Library.git"
+  },
+  "license": "MIT",
+  "author": "The Fintech Builder <islam.baraka.90@gmail.com>",
+  "type": "module",
+  "sideEffects": false,
+  "engines": {
+    "node": ">=22"
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "sync": "node scripts/sync.mjs",
+    "build": "tsc -p tsconfig.json",
+    "test": "node --experimental-strip-types --test test/*.test.ts",
+    "test:conformance": "node --experimental-strip-types --test test/conformance.test.ts",
+    "demo": "node --experimental-strip-types demos/run-all.ts",
+    "verify": "npm run build && npm test"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./market-data-engineering/bar-construction/time-bars": {
+      "types": "./dist/market-data-engineering/bar-construction/time-bars/index.d.ts",
+      "import": "./dist/market-data-engineering/bar-construction/time-bars/index.js"
+    },
+    "./market-data-engineering/bar-construction/tick-bars": {
+      "types": "./dist/market-data-engineering/bar-construction/tick-bars/index.d.ts",
+      "import": "./dist/market-data-engineering/bar-construction/tick-bars/index.js"
+    },
+    "./market-data-engineering/bar-construction/volume-bars": {
+      "types": "./dist/market-data-engineering/bar-construction/volume-bars/index.d.ts",
+      "import": "./dist/market-data-engineering/bar-construction/volume-bars/index.js"
+    },
+    "./market-data-engineering/bar-construction/dollar-bars": {
+      "types": "./dist/market-data-engineering/bar-construction/dollar-bars/index.d.ts",
+      "import": "./dist/market-data-engineering/bar-construction/dollar-bars/index.js"
+    },
+    "./market-data-engineering/bar-construction/tick-imbalance-bars": {
+      "types": "./dist/market-data-engineering/bar-construction/tick-imbalance-bars/index.d.ts",
+      "import": "./dist/market-data-engineering/bar-construction/tick-imbalance-bars/index.js"
+    },
+    "./market-data-engineering/bar-construction/volume-imbalance-bars": {
+      "types": "./dist/market-data-engineering/bar-construction/volume-imbalance-bars/index.d.ts",
+      "import": "./dist/market-data-engineering/bar-construction/volume-imbalance-bars/index.js"
+    },
+    "./market-data-engineering/bar-construction/tick-run-bars": {
+      "types": "./dist/market-data-engineering/bar-construction/tick-run-bars/index.d.ts",
+      "import": "./dist/market-data-engineering/bar-construction/tick-run-bars/index.js"
+    },
+    "./market-data-engineering/cleaning-and-validation/ohlc-consistency-validator": {
+      "types": "./dist/market-data-engineering/cleaning-and-validation/ohlc-consistency-validator/index.d.ts",
+      "import": "./dist/market-data-engineering/cleaning-and-validation/ohlc-consistency-validator/index.js"
+    },
+    "./market-data-engineering/cleaning-and-validation/hampel-bad-tick-filter": {
+      "types": "./dist/market-data-engineering/cleaning-and-validation/hampel-bad-tick-filter/index.d.ts",
+      "import": "./dist/market-data-engineering/cleaning-and-validation/hampel-bad-tick-filter/index.js"
+    },
+    "./market-data-engineering/cleaning-and-validation/median-absolute-deviation-outlier-filter": {
+      "types": "./dist/market-data-engineering/cleaning-and-validation/median-absolute-deviation-outlier-filter/index.d.ts",
+      "import": "./dist/market-data-engineering/cleaning-and-validation/median-absolute-deviation-outlier-filter/index.js"
+    },
+    "./market-data-engineering/cleaning-and-validation/stale-quote-detector": {
+      "types": "./dist/market-data-engineering/cleaning-and-validation/stale-quote-detector/index.d.ts",
+      "import": "./dist/market-data-engineering/cleaning-and-validation/stale-quote-detector/index.js"
+    },
+    "./market-data-engineering/cleaning-and-validation/duplicate-trade-resolver": {
+      "types": "./dist/market-data-engineering/cleaning-and-validation/duplicate-trade-resolver/index.d.ts",
+      "import": "./dist/market-data-engineering/cleaning-and-validation/duplicate-trade-resolver/index.js"
+    },
+    "./market-data-engineering/cleaning-and-validation/crossed-locked-market-detector": {
+      "types": "./dist/market-data-engineering/cleaning-and-validation/crossed-locked-market-detector/index.d.ts",
+      "import": "./dist/market-data-engineering/cleaning-and-validation/crossed-locked-market-detector/index.js"
+    },
+    "./market-data-engineering/time-synchronization/previous-tick-interpolation": {
+      "types": "./dist/market-data-engineering/time-synchronization/previous-tick-interpolation/index.d.ts",
+      "import": "./dist/market-data-engineering/time-synchronization/previous-tick-interpolation/index.js"
+    },
+    "./market-data-engineering/time-synchronization/linear-quote-interpolation": {
+      "types": "./dist/market-data-engineering/time-synchronization/linear-quote-interpolation/index.d.ts",
+      "import": "./dist/market-data-engineering/time-synchronization/linear-quote-interpolation/index.js"
+    },
+    "./market-data-engineering/time-synchronization/refresh-time-sampling": {
+      "types": "./dist/market-data-engineering/time-synchronization/refresh-time-sampling/index.d.ts",
+      "import": "./dist/market-data-engineering/time-synchronization/refresh-time-sampling/index.js"
+    },
+    "./market-data-engineering/time-synchronization/exchange-calendar-alignment": {
+      "types": "./dist/market-data-engineering/time-synchronization/exchange-calendar-alignment/index.d.ts",
+      "import": "./dist/market-data-engineering/time-synchronization/exchange-calendar-alignment/index.js"
+    },
+    "./market-data-engineering/time-synchronization/asynchronous-return-alignment": {
+      "types": "./dist/market-data-engineering/time-synchronization/asynchronous-return-alignment/index.d.ts",
+      "import": "./dist/market-data-engineering/time-synchronization/asynchronous-return-alignment/index.js"
+    },
+    "./market-data-engineering/data-quality/missing-bar-gap-classifier": {
+      "types": "./dist/market-data-engineering/data-quality/missing-bar-gap-classifier/index.d.ts",
+      "import": "./dist/market-data-engineering/data-quality/missing-bar-gap-classifier/index.js"
+    },
+    "./market-data-engineering/data-quality/feed-latency-monitor": {
+      "types": "./dist/market-data-engineering/data-quality/feed-latency-monitor/index.d.ts",
+      "import": "./dist/market-data-engineering/data-quality/feed-latency-monitor/index.js"
+    },
+    "./market-data-engineering/data-quality/price-source-consensus-check": {
+      "types": "./dist/market-data-engineering/data-quality/price-source-consensus-check/index.d.ts",
+      "import": "./dist/market-data-engineering/data-quality/price-source-consensus-check/index.js"
+    },
+    "./market-data-engineering/data-quality/schema-drift-detector": {
+      "types": "./dist/market-data-engineering/data-quality/schema-drift-detector/index.d.ts",
+      "import": "./dist/market-data-engineering/data-quality/schema-drift-detector/index.js"
+    },
+    "./market-data-engineering/data-quality/point-in-time-availability-guard": {
+      "types": "./dist/market-data-engineering/data-quality/point-in-time-availability-guard/index.d.ts",
+      "import": "./dist/market-data-engineering/data-quality/point-in-time-availability-guard/index.js"
+    },
+    "./corporate-actions-and-security-master-data/adjustment-factors/backward-split-adjustment": {
+      "types": "./dist/corporate-actions-and-security-master-data/adjustment-factors/backward-split-adjustment/index.d.ts",
+      "import": "./dist/corporate-actions-and-security-master-data/adjustment-factors/backward-split-adjustment/index.js"
+    },
+    "./corporate-actions-and-security-master-data/adjustment-factors/forward-split-adjustment": {
+      "types": "./dist/corporate-actions-and-security-master-data/adjustment-factors/forward-split-adjustment/index.d.ts",
+      "import": "./dist/corporate-actions-and-security-master-data/adjustment-factors/forward-split-adjustment/index.js"
+    },
+    "./corporate-actions-and-security-master-data/adjustment-factors/cash-dividend-total-return-adjustment": {
+      "types": "./dist/corporate-actions-and-security-master-data/adjustment-factors/cash-dividend-total-return-adjustment/index.d.ts",
+      "import": "./dist/corporate-actions-and-security-master-data/adjustment-factors/cash-dividend-total-return-adjustment/index.js"
+    },
+    "./corporate-actions-and-security-master-data/adjustment-factors/crsp-cumulative-price-adjustment": {
+      "types": "./dist/corporate-actions-and-security-master-data/adjustment-factors/crsp-cumulative-price-adjustment/index.d.ts",
+      "import": "./dist/corporate-actions-and-security-master-data/adjustment-factors/crsp-cumulative-price-adjustment/index.js"
+    },
+    "./corporate-actions-and-security-master-data/adjustment-factors/crsp-cumulative-share-volume-adjustment": {
+      "types": "./dist/corporate-actions-and-security-master-data/adjustment-factors/crsp-cumulative-share-volume-adjustment/index.d.ts",
+      "import": "./dist/corporate-actions-and-security-master-data/adjustment-factors/crsp-cumulative-share-volume-adjustment/index.js"
+    },
+    "./corporate-actions-and-security-master-data/complex-distributions/rights-issue-terp-adjustment": {
+      "types": "./dist/corporate-actions-and-security-master-data/complex-distributions/rights-issue-terp-adjustment/index.d.ts",
+      "import": "./dist/corporate-actions-and-security-master-data/complex-distributions/rights-issue-terp-adjustment/index.js"
+    },
+    "./corporate-actions-and-security-master-data/complex-distributions/spin-off-price-adjustment": {
+      "types": "./dist/corporate-actions-and-security-master-data/complex-distributions/spin-off-price-adjustment/index.d.ts",
+      "import": "./dist/corporate-actions-and-security-master-data/complex-distributions/spin-off-price-adjustment/index.js"
+    },
+    "./corporate-actions-and-security-master-data/complex-distributions/stock-dividend-adjustment": {
+      "types": "./dist/corporate-actions-and-security-master-data/complex-distributions/stock-dividend-adjustment/index.d.ts",
+      "import": "./dist/corporate-actions-and-security-master-data/complex-distributions/stock-dividend-adjustment/index.js"
+    },
+    "./corporate-actions-and-security-master-data/complex-distributions/special-dividend-adjustment": {
+      "types": "./dist/corporate-actions-and-security-master-data/complex-distributions/special-dividend-adjustment/index.d.ts",
+      "import": "./dist/corporate-actions-and-security-master-data/complex-distributions/special-dividend-adjustment/index.js"
+    },
+    "./corporate-actions-and-security-master-data/complex-distributions/return-of-capital-adjustment": {
+      "types": "./dist/corporate-actions-and-security-master-data/complex-distributions/return-of-capital-adjustment/index.d.ts",
+      "import": "./dist/corporate-actions-and-security-master-data/complex-distributions/return-of-capital-adjustment/index.js"
+    },
+    "./corporate-actions-and-security-master-data/identity-continuity/permanent-security-identifier-mapping": {
+      "types": "./dist/corporate-actions-and-security-master-data/identity-continuity/permanent-security-identifier-mapping/index.d.ts",
+      "import": "./dist/corporate-actions-and-security-master-data/identity-continuity/permanent-security-identifier-mapping/index.js"
+    },
+    "./corporate-actions-and-security-master-data/identity-continuity/ticker-change-chain-resolution": {
+      "types": "./dist/corporate-actions-and-security-master-data/identity-continuity/ticker-change-chain-resolution/index.d.ts",
+      "import": "./dist/corporate-actions-and-security-master-data/identity-continuity/ticker-change-chain-resolution/index.js"
+    },
+    "./corporate-actions-and-security-master-data/identity-continuity/share-class-relationship-mapping": {
+      "types": "./dist/corporate-actions-and-security-master-data/identity-continuity/share-class-relationship-mapping/index.d.ts",
+      "import": "./dist/corporate-actions-and-security-master-data/identity-continuity/share-class-relationship-mapping/index.js"
+    },
+    "./corporate-actions-and-security-master-data/identity-continuity/merger-predecessor-successor-mapping": {
+      "types": "./dist/corporate-actions-and-security-master-data/identity-continuity/merger-predecessor-successor-mapping/index.d.ts",
+      "import": "./dist/corporate-actions-and-security-master-data/identity-continuity/merger-predecessor-successor-mapping/index.js"
+    },
+    "./corporate-actions-and-security-master-data/identity-continuity/delisting-return-reconstruction": {
+      "types": "./dist/corporate-actions-and-security-master-data/identity-continuity/delisting-return-reconstruction/index.d.ts",
+      "import": "./dist/corporate-actions-and-security-master-data/identity-continuity/delisting-return-reconstruction/index.js"
+    },
+    "./corporate-actions-and-security-master-data/point-in-time-universe/historical-constituent-reconstruction": {
+      "types": "./dist/corporate-actions-and-security-master-data/point-in-time-universe/historical-constituent-reconstruction/index.d.ts",
+      "import": "./dist/corporate-actions-and-security-master-data/point-in-time-universe/historical-constituent-reconstruction/index.js"
+    },
+    "./corporate-actions-and-security-master-data/point-in-time-universe/survivorship-bias-guard": {
+      "types": "./dist/corporate-actions-and-security-master-data/point-in-time-universe/survivorship-bias-guard/index.d.ts",
+      "import": "./dist/corporate-actions-and-security-master-data/point-in-time-universe/survivorship-bias-guard/index.js"
+    },
+    "./corporate-actions-and-security-master-data/point-in-time-universe/ipo-availability-timestamping": {
+      "types": "./dist/corporate-actions-and-security-master-data/point-in-time-universe/ipo-availability-timestamping/index.d.ts",
+      "import": "./dist/corporate-actions-and-security-master-data/point-in-time-universe/ipo-availability-timestamping/index.js"
+    },
+    "./corporate-actions-and-security-master-data/point-in-time-universe/filing-revision-versioning": {
+      "types": "./dist/corporate-actions-and-security-master-data/point-in-time-universe/filing-revision-versioning/index.d.ts",
+      "import": "./dist/corporate-actions-and-security-master-data/point-in-time-universe/filing-revision-versioning/index.js"
+    },
+    "./index-and-benchmark-engineering/index-initialization-and-continuity/base-date-base-value-initialization": {
+      "types": "./dist/index-and-benchmark-engineering/index-initialization-and-continuity/base-date-base-value-initialization/index.d.ts",
+      "import": "./dist/index-and-benchmark-engineering/index-initialization-and-continuity/base-date-base-value-initialization/index.js"
+    },
+    "./index-and-benchmark-engineering/index-initialization-and-continuity/index-divisor-initialization": {
+      "types": "./dist/index-and-benchmark-engineering/index-initialization-and-continuity/index-divisor-initialization/index.d.ts",
+      "import": "./dist/index-and-benchmark-engineering/index-initialization-and-continuity/index-divisor-initialization/index.js"
+    },
+    "./index-and-benchmark-engineering/index-initialization-and-continuity/divisor-continuity-adjustment": {
+      "types": "./dist/index-and-benchmark-engineering/index-initialization-and-continuity/divisor-continuity-adjustment/index.d.ts",
+      "import": "./dist/index-and-benchmark-engineering/index-initialization-and-continuity/divisor-continuity-adjustment/index.js"
+    },
+    "./index-and-benchmark-engineering/index-initialization-and-continuity/corporate-action-divisor-bridge": {
+      "types": "./dist/index-and-benchmark-engineering/index-initialization-and-continuity/corporate-action-divisor-bridge/index.d.ts",
+      "import": "./dist/index-and-benchmark-engineering/index-initialization-and-continuity/corporate-action-divisor-bridge/index.js"
+    },
+    "./index-and-benchmark-engineering/index-initialization-and-continuity/intraday-index-level-calculation": {
+      "types": "./dist/index-and-benchmark-engineering/index-initialization-and-continuity/intraday-index-level-calculation/index.d.ts",
+      "import": "./dist/index-and-benchmark-engineering/index-initialization-and-continuity/intraday-index-level-calculation/index.js"
+    },
+    "./index-and-benchmark-engineering/weighting-and-capping/price-weighted-index": {
+      "types": "./dist/index-and-benchmark-engineering/weighting-and-capping/price-weighted-index/index.d.ts",
+      "import": "./dist/index-and-benchmark-engineering/weighting-and-capping/price-weighted-index/index.js"
+    },
+    "./index-and-benchmark-engineering/weighting-and-capping/total-market-cap-index": {
+      "types": "./dist/index-and-benchmark-engineering/weighting-and-capping/total-market-cap-index/index.d.ts",
+      "import": "./dist/index-and-benchmark-engineering/weighting-and-capping/total-market-cap-index/index.js"
+    },
+    "./index-and-benchmark-engineering/weighting-and-capping/free-float-market-cap-index": {
+      "types": "./dist/index-and-benchmark-engineering/weighting-and-capping/free-float-market-cap-index/index.d.ts",
+      "import": "./dist/index-and-benchmark-engineering/weighting-and-capping/free-float-market-cap-index/index.js"
+    },
+    "./index-and-benchmark-engineering/weighting-and-capping/capped-free-float-market-cap-index": {
+      "types": "./dist/index-and-benchmark-engineering/weighting-and-capping/capped-free-float-market-cap-index/index.d.ts",
+      "import": "./dist/index-and-benchmark-engineering/weighting-and-capping/capped-free-float-market-cap-index/index.js"
+    },
+    "./index-and-benchmark-engineering/weighting-and-capping/modified-market-cap-index": {
+      "types": "./dist/index-and-benchmark-engineering/weighting-and-capping/modified-market-cap-index/index.d.ts",
+      "import": "./dist/index-and-benchmark-engineering/weighting-and-capping/modified-market-cap-index/index.js"
+    },
+    "./index-and-benchmark-engineering/weighting-and-capping/equal-weight-index": {
+      "types": "./dist/index-and-benchmark-engineering/weighting-and-capping/equal-weight-index/index.d.ts",
+      "import": "./dist/index-and-benchmark-engineering/weighting-and-capping/equal-weight-index/index.js"
+    },
+    "./index-and-benchmark-engineering/weighting-and-capping/iterative-cap-redistribution": {
+      "types": "./dist/index-and-benchmark-engineering/weighting-and-capping/iterative-cap-redistribution/index.d.ts",
+      "import": "./dist/index-and-benchmark-engineering/weighting-and-capping/iterative-cap-redistribution/index.js"
+    },
+    "./index-and-benchmark-engineering/weighting-and-capping/group-level-capping": {
+      "types": "./dist/index-and-benchmark-engineering/weighting-and-capping/group-level-capping/index.d.ts",
+      "import": "./dist/index-and-benchmark-engineering/weighting-and-capping/group-level-capping/index.js"
+    },
+    "./index-and-benchmark-engineering/alternative-weighting/fundamental-weighted-index": {
+      "types": "./dist/index-and-benchmark-engineering/alternative-weighting/fundamental-weighted-index/index.d.ts",
+      "import": "./dist/index-and-benchmark-engineering/alternative-weighting/fundamental-weighted-index/index.js"
+    },
+    "./index-and-benchmark-engineering/alternative-weighting/dividend-yield-weighted-index": {
+      "types": "./dist/index-and-benchmark-engineering/alternative-weighting/dividend-yield-weighted-index/index.d.ts",
+      "import": "./dist/index-and-benchmark-engineering/alternative-weighting/dividend-yield-weighted-index/index.js"
+    },
+    "./index-and-benchmark-engineering/alternative-weighting/factor-score-weighted-index": {
+      "types": "./dist/index-and-benchmark-engineering/alternative-weighting/factor-score-weighted-index/index.d.ts",
+      "import": "./dist/index-and-benchmark-engineering/alternative-weighting/factor-score-weighted-index/index.js"
+    },
+    "./index-and-benchmark-engineering/alternative-weighting/minimum-volatility-index": {
+      "types": "./dist/index-and-benchmark-engineering/alternative-weighting/minimum-volatility-index/index.d.ts",
+      "import": "./dist/index-and-benchmark-engineering/alternative-weighting/minimum-volatility-index/index.js"
+    },
+    "./index-and-benchmark-engineering/alternative-weighting/equal-risk-contribution-index": {
+      "types": "./dist/index-and-benchmark-engineering/alternative-weighting/equal-risk-contribution-index/index.d.ts",
+      "import": "./dist/index-and-benchmark-engineering/alternative-weighting/equal-risk-contribution-index/index.js"
+    },
+    "./index-and-benchmark-engineering/alternative-weighting/thematic-tilt-index": {
+      "types": "./dist/index-and-benchmark-engineering/alternative-weighting/thematic-tilt-index/index.d.ts",
+      "import": "./dist/index-and-benchmark-engineering/alternative-weighting/thematic-tilt-index/index.js"
+    },
+    "./index-and-benchmark-engineering/return-variants/price-return-index": {
+      "types": "./dist/index-and-benchmark-engineering/return-variants/price-return-index/index.d.ts",
+      "import": "./dist/index-and-benchmark-engineering/return-variants/price-return-index/index.js"
+    },
+    "./index-and-benchmark-engineering/return-variants/gross-total-return-index": {
+      "types": "./dist/index-and-benchmark-engineering/return-variants/gross-total-return-index/index.d.ts",
+      "import": "./dist/index-and-benchmark-engineering/return-variants/gross-total-return-index/index.js"
+    },
+    "./index-and-benchmark-engineering/return-variants/net-total-return-index": {
+      "types": "./dist/index-and-benchmark-engineering/return-variants/net-total-return-index/index.d.ts",
+      "import": "./dist/index-and-benchmark-engineering/return-variants/net-total-return-index/index.js"
+    },
+    "./index-and-benchmark-engineering/return-variants/excess-return-index": {
+      "types": "./dist/index-and-benchmark-engineering/return-variants/excess-return-index/index.d.ts",
+      "import": "./dist/index-and-benchmark-engineering/return-variants/excess-return-index/index.js"
+    },
+    "./index-and-benchmark-engineering/return-variants/dividend-point-index": {
+      "types": "./dist/index-and-benchmark-engineering/return-variants/dividend-point-index/index.d.ts",
+      "import": "./dist/index-and-benchmark-engineering/return-variants/dividend-point-index/index.js"
+    },
+    "./index-and-benchmark-engineering/return-variants/currency-converted-index": {
+      "types": "./dist/index-and-benchmark-engineering/return-variants/currency-converted-index/index.d.ts",
+      "import": "./dist/index-and-benchmark-engineering/return-variants/currency-converted-index/index.js"
+    },
+    "./index-and-benchmark-engineering/return-variants/currency-hedged-index": {
+      "types": "./dist/index-and-benchmark-engineering/return-variants/currency-hedged-index/index.d.ts",
+      "import": "./dist/index-and-benchmark-engineering/return-variants/currency-hedged-index/index.js"
+    },
+    "./index-and-benchmark-engineering/strategy-indices/leveraged-daily-reset-index": {
+      "types": "./dist/index-and-benchmark-engineering/strategy-indices/leveraged-daily-reset-index/index.d.ts",
+      "import": "./dist/index-and-benchmark-engineering/strategy-indices/leveraged-daily-reset-index/index.js"
+    },
+    "./index-and-benchmark-engineering/strategy-indices/inverse-daily-reset-index": {
+      "types": "./dist/index-and-benchmark-engineering/strategy-indices/inverse-daily-reset-index/index.d.ts",
+      "import": "./dist/index-and-benchmark-engineering/strategy-indices/inverse-daily-reset-index/index.js"
+    },
+    "./index-and-benchmark-engineering/strategy-indices/volatility-control-index": {
+      "types": "./dist/index-and-benchmark-engineering/strategy-indices/volatility-control-index/index.d.ts",
+      "import": "./dist/index-and-benchmark-engineering/strategy-indices/volatility-control-index/index.js"
+    },
+    "./index-and-benchmark-engineering/strategy-indices/fixed-decrement-index": {
+      "types": "./dist/index-and-benchmark-engineering/strategy-indices/fixed-decrement-index/index.d.ts",
+      "import": "./dist/index-and-benchmark-engineering/strategy-indices/fixed-decrement-index/index.js"
+    },
+    "./index-and-benchmark-engineering/strategy-indices/percentage-decrement-index": {
+      "types": "./dist/index-and-benchmark-engineering/strategy-indices/percentage-decrement-index/index.d.ts",
+      "import": "./dist/index-and-benchmark-engineering/strategy-indices/percentage-decrement-index/index.js"
+    },
+    "./index-and-benchmark-engineering/strategy-indices/index-of-indices": {
+      "types": "./dist/index-and-benchmark-engineering/strategy-indices/index-of-indices/index.d.ts",
+      "import": "./dist/index-and-benchmark-engineering/strategy-indices/index-of-indices/index.js"
+    },
+    "./index-and-benchmark-engineering/governance-and-maintenance/eligibility-screen": {
+      "types": "./dist/index-and-benchmark-engineering/governance-and-maintenance/eligibility-screen/index.d.ts",
+      "import": "./dist/index-and-benchmark-engineering/governance-and-maintenance/eligibility-screen/index.js"
+    },
+    "./index-and-benchmark-engineering/governance-and-maintenance/liquidity-screen": {
+      "types": "./dist/index-and-benchmark-engineering/governance-and-maintenance/liquidity-screen/index.d.ts",
+      "import": "./dist/index-and-benchmark-engineering/governance-and-maintenance/liquidity-screen/index.js"
+    },
+    "./index-and-benchmark-engineering/governance-and-maintenance/free-float-factor-calculation": {
+      "types": "./dist/index-and-benchmark-engineering/governance-and-maintenance/free-float-factor-calculation/index.d.ts",
+      "import": "./dist/index-and-benchmark-engineering/governance-and-maintenance/free-float-factor-calculation/index.js"
+    },
+    "./index-and-benchmark-engineering/governance-and-maintenance/ipo-fast-entry-rule": {
+      "types": "./dist/index-and-benchmark-engineering/governance-and-maintenance/ipo-fast-entry-rule/index.d.ts",
+      "import": "./dist/index-and-benchmark-engineering/governance-and-maintenance/ipo-fast-entry-rule/index.js"
+    },
+    "./index-and-benchmark-engineering/governance-and-maintenance/reconstitution-algorithm": {
+      "types": "./dist/index-and-benchmark-engineering/governance-and-maintenance/reconstitution-algorithm/index.d.ts",
+      "import": "./dist/index-and-benchmark-engineering/governance-and-maintenance/reconstitution-algorithm/index.js"
+    },
+    "./index-and-benchmark-engineering/governance-and-maintenance/rebalancing-algorithm": {
+      "types": "./dist/index-and-benchmark-engineering/governance-and-maintenance/rebalancing-algorithm/index.d.ts",
+      "import": "./dist/index-and-benchmark-engineering/governance-and-maintenance/rebalancing-algorithm/index.js"
+    },
+    "./index-and-benchmark-engineering/governance-and-maintenance/turnover-buffer-rule": {
+      "types": "./dist/index-and-benchmark-engineering/governance-and-maintenance/turnover-buffer-rule/index.d.ts",
+      "import": "./dist/index-and-benchmark-engineering/governance-and-maintenance/turnover-buffer-rule/index.js"
+    },
+    "./index-and-benchmark-engineering/governance-and-maintenance/index-replication-cost-estimator": {
+      "types": "./dist/index-and-benchmark-engineering/governance-and-maintenance/index-replication-cost-estimator/index.d.ts",
+      "import": "./dist/index-and-benchmark-engineering/governance-and-maintenance/index-replication-cost-estimator/index.js"
+    },
+    "./market-breadth-and-internals/advance-decline-breadth/net-advances": {
+      "types": "./dist/market-breadth-and-internals/advance-decline-breadth/net-advances/index.d.ts",
+      "import": "./dist/market-breadth-and-internals/advance-decline-breadth/net-advances/index.js"
+    },
+    "./market-breadth-and-internals/advance-decline-breadth/advance-decline-ratio": {
+      "types": "./dist/market-breadth-and-internals/advance-decline-breadth/advance-decline-ratio/index.d.ts",
+      "import": "./dist/market-breadth-and-internals/advance-decline-breadth/advance-decline-ratio/index.js"
+    },
+    "./market-breadth-and-internals/advance-decline-breadth/cumulative-advance-decline-line": {
+      "types": "./dist/market-breadth-and-internals/advance-decline-breadth/cumulative-advance-decline-line/index.d.ts",
+      "import": "./dist/market-breadth-and-internals/advance-decline-breadth/cumulative-advance-decline-line/index.js"
+    },
+    "./market-breadth-and-internals/advance-decline-breadth/normalized-advance-decline-line": {
+      "types": "./dist/market-breadth-and-internals/advance-decline-breadth/normalized-advance-decline-line/index.d.ts",
+      "import": "./dist/market-breadth-and-internals/advance-decline-breadth/normalized-advance-decline-line/index.js"
+    },
+    "./market-breadth-and-internals/advance-decline-breadth/absolute-breadth-index": {
+      "types": "./dist/market-breadth-and-internals/advance-decline-breadth/absolute-breadth-index/index.d.ts",
+      "import": "./dist/market-breadth-and-internals/advance-decline-breadth/absolute-breadth-index/index.js"
+    },
+    "./market-breadth-and-internals/mcclellan-family/traditional-mcclellan-oscillator": {
+      "types": "./dist/market-breadth-and-internals/mcclellan-family/traditional-mcclellan-oscillator/index.d.ts",
+      "import": "./dist/market-breadth-and-internals/mcclellan-family/traditional-mcclellan-oscillator/index.js"
+    },
+    "./market-breadth-and-internals/mcclellan-family/ratio-adjusted-mcclellan-oscillator": {
+      "types": "./dist/market-breadth-and-internals/mcclellan-family/ratio-adjusted-mcclellan-oscillator/index.d.ts",
+      "import": "./dist/market-breadth-and-internals/mcclellan-family/ratio-adjusted-mcclellan-oscillator/index.js"
+    },
+    "./market-breadth-and-internals/mcclellan-family/traditional-mcclellan-summation-index": {
+      "types": "./dist/market-breadth-and-internals/mcclellan-family/traditional-mcclellan-summation-index/index.d.ts",
+      "import": "./dist/market-breadth-and-internals/mcclellan-family/traditional-mcclellan-summation-index/index.js"
+    },
+    "./market-breadth-and-internals/mcclellan-family/ratio-adjusted-summation-index-rasi": {
+      "types": "./dist/market-breadth-and-internals/mcclellan-family/ratio-adjusted-summation-index-rasi/index.d.ts",
+      "import": "./dist/market-breadth-and-internals/mcclellan-family/ratio-adjusted-summation-index-rasi/index.js"
+    },
+    "./market-breadth-and-internals/mcclellan-family/mcclellan-volume-oscillator": {
+      "types": "./dist/market-breadth-and-internals/mcclellan-family/mcclellan-volume-oscillator/index.d.ts",
+      "import": "./dist/market-breadth-and-internals/mcclellan-family/mcclellan-volume-oscillator/index.js"
+    },
+    "./market-breadth-and-internals/mcclellan-family/mcclellan-volume-summation-index": {
+      "types": "./dist/market-breadth-and-internals/mcclellan-family/mcclellan-volume-summation-index/index.d.ts",
+      "import": "./dist/market-breadth-and-internals/mcclellan-family/mcclellan-volume-summation-index/index.js"
+    },
+    "./market-breadth-and-internals/high-low-and-trend-breadth/new-highs-new-lows": {
+      "types": "./dist/market-breadth-and-internals/high-low-and-trend-breadth/new-highs-new-lows/index.d.ts",
+      "import": "./dist/market-breadth-and-internals/high-low-and-trend-breadth/new-highs-new-lows/index.js"
+    },
+    "./market-breadth-and-internals/high-low-and-trend-breadth/high-low-ratio": {
+      "types": "./dist/market-breadth-and-internals/high-low-and-trend-breadth/high-low-ratio/index.d.ts",
+      "import": "./dist/market-breadth-and-internals/high-low-and-trend-breadth/high-low-ratio/index.js"
+    },
+    "./market-breadth-and-internals/high-low-and-trend-breadth/high-low-index": {
+      "types": "./dist/market-breadth-and-internals/high-low-and-trend-breadth/high-low-index/index.d.ts",
+      "import": "./dist/market-breadth-and-internals/high-low-and-trend-breadth/high-low-index/index.js"
+    },
+    "./market-breadth-and-internals/high-low-and-trend-breadth/percent-above-20-day-ma": {
+      "types": "./dist/market-breadth-and-internals/high-low-and-trend-breadth/percent-above-20-day-ma/index.d.ts",
+      "import": "./dist/market-breadth-and-internals/high-low-and-trend-breadth/percent-above-20-day-ma/index.js"
+    },
+    "./market-breadth-and-internals/high-low-and-trend-breadth/percent-above-50-day-ma": {
+      "types": "./dist/market-breadth-and-internals/high-low-and-trend-breadth/percent-above-50-day-ma/index.d.ts",
+      "import": "./dist/market-breadth-and-internals/high-low-and-trend-breadth/percent-above-50-day-ma/index.js"
+    },
+    "./market-breadth-and-internals/high-low-and-trend-breadth/percent-above-200-day-ma": {
+      "types": "./dist/market-breadth-and-internals/high-low-and-trend-breadth/percent-above-200-day-ma/index.d.ts",
+      "import": "./dist/market-breadth-and-internals/high-low-and-trend-breadth/percent-above-200-day-ma/index.js"
+    },
+    "./price-action-and-candlesticks/candle-foundations/candle-anatomy": {
+      "types": "./dist/price-action-and-candlesticks/candle-foundations/candle-anatomy/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/candle-foundations/candle-anatomy/index.js"
+    },
+    "./price-action-and-candlesticks/candle-foundations/scale-aware-body-classification": {
+      "types": "./dist/price-action-and-candlesticks/candle-foundations/scale-aware-body-classification/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/candle-foundations/scale-aware-body-classification/index.js"
+    },
+    "./technical-indicators/trend-smoothing/sma": {
+      "types": "./dist/technical-indicators/trend-smoothing/sma/index.d.ts",
+      "import": "./dist/technical-indicators/trend-smoothing/sma/index.js"
+    },
+    "./technical-indicators/trend-smoothing/ema": {
+      "types": "./dist/technical-indicators/trend-smoothing/ema/index.d.ts",
+      "import": "./dist/technical-indicators/trend-smoothing/ema/index.js"
+    },
+    "./technical-indicators/trend-smoothing/wma": {
+      "types": "./dist/technical-indicators/trend-smoothing/wma/index.d.ts",
+      "import": "./dist/technical-indicators/trend-smoothing/wma/index.js"
+    },
+    "./technical-indicators/trend-smoothing/wilder-rma": {
+      "types": "./dist/technical-indicators/trend-smoothing/wilder-rma/index.d.ts",
+      "import": "./dist/technical-indicators/trend-smoothing/wilder-rma/index.js"
+    },
+    "./technical-indicators/trend-smoothing/dema": {
+      "types": "./dist/technical-indicators/trend-smoothing/dema/index.d.ts",
+      "import": "./dist/technical-indicators/trend-smoothing/dema/index.js"
+    },
+    "./technical-indicators/trend-smoothing/tema": {
+      "types": "./dist/technical-indicators/trend-smoothing/tema/index.d.ts",
+      "import": "./dist/technical-indicators/trend-smoothing/tema/index.js"
+    },
+    "./technical-indicators/trend-smoothing/hull-ma": {
+      "types": "./dist/technical-indicators/trend-smoothing/hull-ma/index.d.ts",
+      "import": "./dist/technical-indicators/trend-smoothing/hull-ma/index.js"
+    },
+    "./technical-indicators/trend-systems/macd": {
+      "types": "./dist/technical-indicators/trend-systems/macd/index.d.ts",
+      "import": "./dist/technical-indicators/trend-systems/macd/index.js"
+    },
+    "./earnings-and-per-share-analytics/earnings-and-share-foundations/stock-split-consolidation-eps-restatement": {
+      "types": "./dist/earnings-and-per-share-analytics/earnings-and-share-foundations/stock-split-consolidation-eps-restatement/index.d.ts",
+      "import": "./dist/earnings-and-per-share-analytics/earnings-and-share-foundations/stock-split-consolidation-eps-restatement/index.js"
+    },
+    "./earnings-and-per-share-analytics/earnings-and-share-foundations/basic-eps": {
+      "types": "./dist/earnings-and-per-share-analytics/earnings-and-share-foundations/basic-eps/index.d.ts",
+      "import": "./dist/earnings-and-per-share-analytics/earnings-and-share-foundations/basic-eps/index.js"
+    },
+    "./earnings-and-per-share-analytics/basic-and-diluted-eps/if-converted-convertible-preference-dilution": {
+      "types": "./dist/earnings-and-per-share-analytics/basic-and-diluted-eps/if-converted-convertible-preference-dilution/index.d.ts",
+      "import": "./dist/earnings-and-per-share-analytics/basic-and-diluted-eps/if-converted-convertible-preference-dilution/index.js"
+    },
+    "./earnings-and-per-share-analytics/basic-and-diluted-eps/treasury-share-method-for-options-warrants": {
+      "types": "./dist/earnings-and-per-share-analytics/basic-and-diluted-eps/treasury-share-method-for-options-warrants/index.d.ts",
+      "import": "./dist/earnings-and-per-share-analytics/basic-and-diluted-eps/treasury-share-method-for-options-warrants/index.js"
+    },
+    "./earnings-and-per-share-analytics/basic-and-diluted-eps/contingently-issuable-share-inclusion": {
+      "types": "./dist/earnings-and-per-share-analytics/basic-and-diluted-eps/contingently-issuable-share-inclusion/index.d.ts",
+      "import": "./dist/earnings-and-per-share-analytics/basic-and-diluted-eps/contingently-issuable-share-inclusion/index.js"
+    },
+    "./package.json": "./package.json"
+  }
+}

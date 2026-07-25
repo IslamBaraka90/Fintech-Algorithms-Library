@@ -1,0 +1,83 @@
+{
+  "topicId": "D03-F06-A02",
+  "input": {
+    "records": [
+      {
+        "id": "A",
+        "monthlyTurnover": [
+          0.18,
+          0.21,
+          0.2,
+          0.17,
+          0.23,
+          0.19
+        ]
+      },
+      {
+        "id": "B",
+        "monthlyTurnover": [
+          0.04,
+          0.06,
+          0.05,
+          0.03,
+          0.05,
+          0.04
+        ]
+      },
+      {
+        "id": "C",
+        "monthlyTurnover": [
+          0.12,
+          0.11,
+          0.14,
+          0.1,
+          0.13,
+          0.12
+        ]
+      },
+      {
+        "id": "D",
+        "monthlyTurnover": [
+          0.08,
+          0.09,
+          0.07,
+          0.1,
+          0.08,
+          0.09
+        ]
+      }
+    ],
+    "minimumMedianTurnover": 0.08,
+    "minimumMonths": 6
+  },
+  "expected": {
+    "results": [
+      {
+        "id": "A",
+        "medianTurnover": 0.195,
+        "passes": true
+      },
+      {
+        "id": "B",
+        "medianTurnover": 0.045,
+        "passes": false
+      },
+      {
+        "id": "C",
+        "medianTurnover": 0.12,
+        "passes": true
+      },
+      {
+        "id": "D",
+        "medianTurnover": 0.085,
+        "passes": true
+      }
+    ],
+    "passingIds": [
+      "A",
+      "C",
+      "D"
+    ],
+    "threshold": 0.08
+  }
+}

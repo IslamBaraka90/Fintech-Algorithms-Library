@@ -1,0 +1,10 @@
+{
+  "notice": "Synthetic CRSP CIZ 2.0-shaped values; not licensed CRSP observations.",
+  "crspField": "DlyCumFacShr",
+  "crspBasisDate": "2024-09-05",
+  "rows": [
+    {"date": "2024-08-28", "rawSharesOutstandingThousands": 250, "rawVolumeShares": 100, "DlyCumFacShr": 4, "crspAdjustedSharesOutstandingThousands": 1000, "crspAdjustedVolumeShares": 400},
+    {"date": "2024-08-29", "rawSharesOutstandingThousands": 250, "rawVolumeShares": 125, "DlyCumFacShr": 4, "crspAdjustedSharesOutstandingThousands": 1000, "crspAdjustedVolumeShares": 500},
+    {"date": "2024-08-30", "rawSharesOutstandingThousands": 1000, "rawVolumeShares": 460, "DlyCumFacShr": 1, "crspAdjustedSharesOutstandingThousands": 1000, "crspAdjustedVolumeShares": 460}
+  ]
+}

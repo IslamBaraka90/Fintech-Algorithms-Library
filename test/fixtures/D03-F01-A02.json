@@ -1,0 +1,12 @@
+{
+  "topicId": "D03-F01-A02",
+  "input": {
+    "marketValue": 125000000,
+    "baseLevel": 1000
+  },
+  "expected": {
+    "marketValue": 125000000,
+    "divisor": 125000,
+    "indexLevel": 1000
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "label": "Synthetic elected mixed-consideration merger",
+  "license": "Synthetic educational fixture",
+  "inputs": {
+    "predecessorQuantity": "101",
+    "electedFulfilledFraction": "0.75",
+    "fallbackFraction": "0.25",
+    "stockRatio": "0.6",
+    "stockOptionCashPerShare": "5",
+    "fallbackCashPerShare": "35",
+    "cashInLieuPrice": "40",
+    "withholdingPerElectedShare": "0.2",
+    "feePerShare": "0.05",
+    "currency": "USD"
+  },
+  "trace": [
+    {"expression": "101 * 0.75", "meaning": "elected allocation", "result": "75.75"},
+    {"expression": "101 * 0.25", "meaning": "fallback allocation", "result": "25.25"},
+    {"expression": "75.75 * 0.6", "meaning": "gross successor shares", "result": "45.45"},
+    {"expression": "floor(45.45)", "meaning": "whole successor shares", "result": "45"},
+    {"expression": "0.45 * 40", "meaning": "cash in lieu", "result": "18"},
+    {"expression": "75.75 * 5 + 25.25 * 35", "meaning": "cash consideration", "result": "1262.50"},
+    {"expression": "75.75 * 0.2", "meaning": "withholding", "result": "15.15"},
+    {"expression": "101 * 0.05", "meaning": "fees", "result": "5.05"},
+    {"expression": "1262.50 + 18 - 15.15 - 5.05", "meaning": "net cash", "result": "1260.30"}
+  ],
+  "output": {
+    "state": "mapped",
+    "successorShares": "45.000000",
+    "netCash": "1260.300000",
+    "currency": "USD",
+    "historicalPriceAdjustment": "not_computed",
+    "successorListingState": "not_established"
+  },
+  "canonicalFixture": "../tests/shared_fixture.json"
+}

@@ -1,0 +1,63 @@
+{
+  "topicId": "D03-F02-A08",
+  "input": {
+    "items": [
+      {
+        "id": "A",
+        "group": "Tech",
+        "weight": 0.35
+      },
+      {
+        "id": "B",
+        "group": "Tech",
+        "weight": 0.25
+      },
+      {
+        "id": "C",
+        "group": "Finance",
+        "weight": 0.18
+      },
+      {
+        "id": "D",
+        "group": "Finance",
+        "weight": 0.12
+      },
+      {
+        "id": "E",
+        "group": "Health",
+        "weight": 0.1
+      }
+    ],
+    "constituentCap": 0.3,
+    "groupCaps": {
+      "Tech": 0.5,
+      "Finance": 0.6,
+      "Health": 0.6
+    },
+    "tolerance": 1e-09,
+    "maxIterations": 200
+  },
+  "expected": {
+    "ids": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ],
+    "weights": [
+      0.263514,
+      0.236486,
+      0.209508,
+      0.154426,
+      0.136066
+    ],
+    "groupWeights": {
+      "Tech": 0.5,
+      "Finance": 0.363934,
+      "Health": 0.136066
+    },
+    "iterations": 4,
+    "weightSum": 1
+  }
+}

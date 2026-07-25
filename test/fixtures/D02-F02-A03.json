@@ -1,0 +1,11 @@
+{
+  "classification": "synthetic teaching arithmetic",
+  "ratesNewSharesPerOld": [0.1, 0.2],
+  "shareFactors": [1.1, 1.2],
+  "cumulativeShareFactor": 1.32,
+  "rawObservation": {"price": 50, "shares": 200, "volume": 80},
+  "volumePolicy": "adjust_to_anchor_basis",
+  "adjustedObservation": {"price": 37.878787878788, "shares": 264, "volume": 105.6},
+  "valueBeforeOutputRounding": {"raw": 10000, "adjusted": 10000},
+  "canonicalSource": "../tests/shared_fixture.json"
+}

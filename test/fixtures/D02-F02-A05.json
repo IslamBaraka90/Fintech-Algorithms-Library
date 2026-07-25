@@ -1,0 +1,6 @@
+{
+  "label": "Synthetic three-view worked result; full auditable input is tests/shared_fixture.json",
+  "marketData": {"referencePrice":"25.00000000","grossCash":"2.00000000","theoreticalExPrice":"23.00000000","backwardFactor":"0.92000000"},
+  "observedReturns": {"observedExPrice":"23.15000000","rawPriceReturn":"-0.07400000","grossTotalReturn":"0.00600000","netCashReturn":"0.00120000"},
+  "usTaxIllustration": {"scope":"US_FEDERAL_INDIVIDUAL_TAXABLE_2025","basisBefore":"1.50000000","confirmedNondividendAmount":"1.20000000","basisAfter":"0.30000000"}
+}

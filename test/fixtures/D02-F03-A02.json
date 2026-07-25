@@ -1,0 +1,17 @@
+{
+  "topicId": "D02-F03-A02",
+  "synthetic": true,
+  "question": "Which symbol did listing SYN-LST-001 use at 2024-07-01T15:00:00Z, using only assignment revisions available by 2024-08-01T12:00:00Z?",
+  "answer": {
+    "symbol": "NXT",
+    "listingId": "SYN-LST-001",
+    "instrumentId": "SYN-INS-001",
+    "issuerId": "SYN-ISS-001",
+    "venueMic": "XNAS",
+    "currency": "USD",
+    "shareClassId": "SYN-CLS-A",
+    "selectedAssignment": "SYN-ASG-200 revision 1",
+    "pathVisibleAsOf": ["ALP", "NXT"]
+  },
+  "counterfactualKnowledgeCutoff": "A correction available on 2024-12-20 must not appear in the 2024-08-01 answer."
+}

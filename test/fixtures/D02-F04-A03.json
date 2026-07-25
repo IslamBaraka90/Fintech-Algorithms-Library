@@ -1,0 +1,21 @@
+{
+  "topicId": "D02-F04-A03",
+  "description": "Synthetic traditional-IPO evidence under a declared research-availability policy.",
+  "beforeLocalIngestion": {
+    "effectiveAt": "2025-05-13T13:36:10Z",
+    "knownAt": "2025-05-13T13:35:30Z",
+    "status": "incomplete",
+    "missingEventTypes": ["local_ingestion"],
+    "effectiveGateAt": null,
+    "knowledgeGateAt": null
+  },
+  "afterLocalIngestion": {
+    "effectiveAt": "2025-05-13T13:36:10Z",
+    "knownAt": "2025-05-13T13:36:10Z",
+    "status": "resolved",
+    "missingEventTypes": [],
+    "effectiveGateAt": "2025-05-13T13:36:00Z",
+    "knowledgeGateAt": "2025-05-13T13:36:05Z"
+  },
+  "boundary": "The result describes this research policy only. It does not establish investability, tradability, liquidity, offering eligibility, or returns."
+}

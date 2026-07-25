@@ -1,0 +1,18 @@
+{
+  "topic_id": "D07-F01-A05",
+  "convention": {
+    "span": 3,
+    "alpha": "1/2",
+    "seed_policy": "simple_average_each_layer"
+  },
+  "observations": [
+    {"observation": 1, "value": 10, "ema1": null, "ema2": null, "dema": null, "status": "warming_ema1"},
+    {"observation": 2, "value": 13, "ema1": null, "ema2": null, "dema": null, "status": "warming_ema1"},
+    {"observation": 3, "value": 12, "ema1": "35/3", "ema2": null, "dema": null, "status": "warming_ema2"},
+    {"observation": 4, "value": 15, "ema1": "40/3", "ema2": null, "dema": null, "status": "warming_ema2"},
+    {"observation": 5, "value": 14, "ema1": "41/3", "ema2": "116/9", "dema": "130/9", "status": "ready"},
+    {"observation": 6, "value": 18, "ema1": "95/6", "ema2": "517/36", "dema": "623/36", "status": "ready"},
+    {"observation": 7, "value": 17, "ema1": "197/12", "ema2": "277/18", "dema": "157/9", "status": "ready"},
+    {"observation": 8, "value": 20, "ema1": "437/24", "ema2": "2419/144", "dema": "2825/144", "status": "ready"}
+  ]
+}

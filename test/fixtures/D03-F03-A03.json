@@ -1,0 +1,66 @@
+{
+  "topicId": "D03-F03-A03",
+  "input": {
+    "records": [
+      {
+        "id": "A",
+        "value": 12,
+        "quality": 18,
+        "momentum": 8
+      },
+      {
+        "id": "B",
+        "value": 8,
+        "quality": 15,
+        "momentum": 12
+      },
+      {
+        "id": "C",
+        "value": 15,
+        "quality": 9,
+        "momentum": 5
+      },
+      {
+        "id": "D",
+        "value": 5,
+        "quality": 12,
+        "momentum": 18
+      },
+      {
+        "id": "E",
+        "value": 10,
+        "quality": 11,
+        "momentum": 10
+      }
+    ],
+    "factorWeights": {
+      "value": 0.4,
+      "quality": 0.35,
+      "momentum": 0.25
+    },
+    "scoreFloor": 0.1
+  },
+  "expected": {
+    "ids": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ],
+    "compositeScores": [
+      0.639323,
+      0.066682,
+      -0.176343,
+      -0.273927,
+      -0.255736
+    ],
+    "weights": [
+      0.541951,
+      0.235666,
+      0.10568,
+      0.053486,
+      0.063216
+    ]
+  }
+}

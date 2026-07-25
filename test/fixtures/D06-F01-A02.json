@@ -1,0 +1,25 @@
+{
+  "topic_id": "D06-F01-A02",
+  "input": {
+    "prior_closed_bodies": [1, 2, 2, 3, 12],
+    "current_body": 4,
+    "current_range": 6,
+    "window": 5,
+    "min_periods": 5,
+    "tick_size": 0.01
+  },
+  "derivation": {
+    "sorted_reference": [1, 2, 2, 3, 12],
+    "raw_scale_median": 2,
+    "effective_scale": 2,
+    "body_score": 2,
+    "threshold_rule": "body_score >= 1.5",
+    "body_class": "long",
+    "body_to_current_range": 0.6666666666666666
+  },
+  "comparison_only": {
+    "mean_scale": 4,
+    "mean_based_score": 1,
+    "mean_based_class_using_same_thresholds": "normal"
+  }
+}

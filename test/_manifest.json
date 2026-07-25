@@ -1,0 +1,1551 @@
+{
+  "generatedFrom": "scripts/sync.mjs",
+  "topicCount": 114,
+  "topics": [
+    {
+      "id": "D01-F01-A01",
+      "path": "market-data-engineering/bar-construction/time-bars",
+      "entry": "constructBars",
+      "archetype": "tape-aggregate",
+      "fixture": "D01-F01-A01.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "topicId",
+        "dataStatus",
+        "canonicalRule",
+        "config",
+        "trades",
+        "checks"
+      ]
+    },
+    {
+      "id": "D01-F01-A02",
+      "path": "market-data-engineering/bar-construction/tick-bars",
+      "entry": "constructBars",
+      "archetype": "tape-aggregate",
+      "fixture": "D01-F01-A02.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "topicId",
+        "canonicalRule",
+        "explanation",
+        "config",
+        "trades",
+        "expectedBars"
+      ]
+    },
+    {
+      "id": "D01-F01-A03",
+      "path": "market-data-engineering/bar-construction/volume-bars",
+      "entry": "constructBars",
+      "archetype": "tape-aggregate",
+      "fixture": "D01-F01-A03.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "topicId",
+        "description",
+        "canonicalRule",
+        "config",
+        "trades",
+        "expectedBars"
+      ]
+    },
+    {
+      "id": "D01-F01-A04",
+      "path": "market-data-engineering/bar-construction/dollar-bars",
+      "entry": "constructBars",
+      "archetype": "tape-aggregate",
+      "fixture": "D01-F01-A04.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "topicId",
+        "sourceType",
+        "config",
+        "trades",
+        "contributions",
+        "expectedDollarValue",
+        "expectedExcessDollar",
+        "expectedCloseReason",
+        "policy"
+      ]
+    },
+    {
+      "id": "D01-F01-A05",
+      "path": "market-data-engineering/bar-construction/tick-imbalance-bars",
+      "entry": "constructBars",
+      "archetype": "tape-aggregate",
+      "fixture": "D01-F01-A05.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "topicId",
+        "evidenceClass",
+        "config",
+        "openingThreshold",
+        "trades",
+        "completedBar",
+        "postCloseUpdate",
+        "interpretationBoundary"
+      ]
+    },
+    {
+      "id": "D01-F01-A06",
+      "path": "market-data-engineering/bar-construction/volume-imbalance-bars",
+      "entry": "constructBars",
+      "archetype": "tape-aggregate",
+      "fixture": "D01-F01-A06.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "topicId",
+        "evidenceClass",
+        "config",
+        "trades",
+        "trace",
+        "postFirstClose"
+      ]
+    },
+    {
+      "id": "D01-F01-A07",
+      "path": "market-data-engineering/bar-construction/tick-run-bars",
+      "entry": "constructBars",
+      "archetype": "tape-aggregate",
+      "fixture": "D01-F01-A07.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "topicId",
+        "dataLicense",
+        "config",
+        "trades",
+        "signs",
+        "expectedBars"
+      ]
+    },
+    {
+      "id": "D01-F02-A01",
+      "path": "market-data-engineering/cleaning-and-validation/ohlc-consistency-validator",
+      "entry": "validateBars",
+      "archetype": "row-classify",
+      "fixture": null,
+      "hasInputExpected": false,
+      "fixtureKeys": []
+    },
+    {
+      "id": "D01-F02-A02",
+      "path": "market-data-engineering/cleaning-and-validation/hampel-bad-tick-filter",
+      "entry": "hampelFilter",
+      "archetype": "record-transform",
+      "fixture": null,
+      "hasInputExpected": false,
+      "fixtureKeys": []
+    },
+    {
+      "id": "D01-F02-A03",
+      "path": "market-data-engineering/cleaning-and-validation/median-absolute-deviation-outlier-filter",
+      "entry": "madOutliers",
+      "archetype": "record-transform",
+      "fixture": null,
+      "hasInputExpected": false,
+      "fixtureKeys": []
+    },
+    {
+      "id": "D01-F02-A04",
+      "path": "market-data-engineering/cleaning-and-validation/stale-quote-detector",
+      "entry": "detectStaleQuotes",
+      "archetype": "row-classify",
+      "fixture": null,
+      "hasInputExpected": false,
+      "fixtureKeys": []
+    },
+    {
+      "id": "D01-F02-A05",
+      "path": "market-data-engineering/cleaning-and-validation/duplicate-trade-resolver",
+      "entry": "resolveTrades",
+      "archetype": "row-classify",
+      "fixture": null,
+      "hasInputExpected": false,
+      "fixtureKeys": []
+    },
+    {
+      "id": "D01-F02-A06",
+      "path": "market-data-engineering/cleaning-and-validation/crossed-locked-market-detector",
+      "entry": "classifyMarkets",
+      "archetype": "row-classify",
+      "fixture": null,
+      "hasInputExpected": false,
+      "fixtureKeys": []
+    },
+    {
+      "id": "D01-F03-A01",
+      "path": "market-data-engineering/time-synchronization/previous-tick-interpolation",
+      "entry": "previousTick",
+      "archetype": "record-transform",
+      "fixture": null,
+      "hasInputExpected": false,
+      "fixtureKeys": []
+    },
+    {
+      "id": "D01-F03-A02",
+      "path": "market-data-engineering/time-synchronization/linear-quote-interpolation",
+      "entry": "linearQuoteInterpolation",
+      "archetype": "record-transform",
+      "fixture": null,
+      "hasInputExpected": false,
+      "fixtureKeys": []
+    },
+    {
+      "id": "D01-F03-A03",
+      "path": "market-data-engineering/time-synchronization/refresh-time-sampling",
+      "entry": "refreshTimeSample",
+      "archetype": "record-transform",
+      "fixture": null,
+      "hasInputExpected": false,
+      "fixtureKeys": []
+    },
+    {
+      "id": "D01-F03-A04",
+      "path": "market-data-engineering/time-synchronization/exchange-calendar-alignment",
+      "entry": "validateCalendar",
+      "archetype": "row-classify",
+      "fixture": null,
+      "hasInputExpected": false,
+      "fixtureKeys": []
+    },
+    {
+      "id": "D01-F03-A05",
+      "path": "market-data-engineering/time-synchronization/asynchronous-return-alignment",
+      "entry": "classifyIntervalPair",
+      "archetype": "row-classify",
+      "fixture": null,
+      "hasInputExpected": false,
+      "fixtureKeys": []
+    },
+    {
+      "id": "D01-F04-A01",
+      "path": "market-data-engineering/data-quality/missing-bar-gap-classifier",
+      "entry": "diagnoseGap",
+      "archetype": "row-classify",
+      "fixture": null,
+      "hasInputExpected": false,
+      "fixtureKeys": []
+    },
+    {
+      "id": "D01-F04-A02",
+      "path": "market-data-engineering/data-quality/feed-latency-monitor",
+      "entry": "validateClockProfile",
+      "archetype": "row-classify",
+      "fixture": null,
+      "hasInputExpected": false,
+      "fixtureKeys": []
+    },
+    {
+      "id": "D01-F04-A03",
+      "path": "market-data-engineering/data-quality/price-source-consensus-check",
+      "entry": "consensus",
+      "archetype": "snapshot-evaluate",
+      "fixture": null,
+      "hasInputExpected": false,
+      "fixtureKeys": []
+    },
+    {
+      "id": "D01-F04-A04",
+      "path": "market-data-engineering/data-quality/schema-drift-detector",
+      "entry": "detectSchemaDrift",
+      "archetype": "row-classify",
+      "fixture": null,
+      "hasInputExpected": false,
+      "fixtureKeys": []
+    },
+    {
+      "id": "D01-F04-A05",
+      "path": "market-data-engineering/data-quality/point-in-time-availability-guard",
+      "entry": "asOfSnapshot",
+      "archetype": "snapshot-evaluate",
+      "fixture": null,
+      "hasInputExpected": false,
+      "fixtureKeys": []
+    },
+    {
+      "id": "D02-F01-A01",
+      "path": "corporate-actions-and-security-master-data/adjustment-factors/backward-split-adjustment",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D02-F01-A01.json",
+      "hasInputExpected": true,
+      "fixtureKeys": [
+        "topicId",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D02-F01-A02",
+      "path": "corporate-actions-and-security-master-data/adjustment-factors/forward-split-adjustment",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D02-F01-A02.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "note",
+        "ratioConvention",
+        "ratio",
+        "targetBasis",
+        "boundary",
+        "beforeBoundary",
+        "atBoundary"
+      ]
+    },
+    {
+      "id": "D02-F01-A03",
+      "path": "corporate-actions-and-security-master-data/adjustment-factors/cash-dividend-total-return-adjustment",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D02-F01-A03.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "topicId",
+        "source",
+        "headline",
+        "note"
+      ]
+    },
+    {
+      "id": "D02-F01-A04",
+      "path": "corporate-actions-and-security-master-data/adjustment-factors/crsp-cumulative-price-adjustment",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D02-F01-A04.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "topicId",
+        "evidenceClass",
+        "warning",
+        "crspConvention",
+        "crspBaseDate",
+        "crspExdt",
+        "crspFacpr",
+        "rows"
+      ]
+    },
+    {
+      "id": "D02-F01-A05",
+      "path": "corporate-actions-and-security-master-data/adjustment-factors/crsp-cumulative-share-volume-adjustment",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D02-F01-A05.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "notice",
+        "crspField",
+        "crspBasisDate",
+        "rows"
+      ]
+    },
+    {
+      "id": "D02-F02-A01",
+      "path": "corporate-actions-and-security-master-data/complex-distributions/rights-issue-terp-adjustment",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D02-F02-A01.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "event",
+        "sourcedFacts",
+        "derivation",
+        "interpretation"
+      ]
+    },
+    {
+      "id": "D02-F02-A02",
+      "path": "corporate-actions-and-security-master-data/complex-distributions/spin-off-price-adjustment",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D02-F02-A02.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "description",
+        "parentCumPriceUSD",
+        "children",
+        "distributedValuePerParentUSD",
+        "theoreticalParentExReferenceUSD",
+        "backwardAdjustmentFactor",
+        "factorDirection",
+        "parentExObservedUSD",
+        "grossCombinedValueUSD",
+        "grossReturn"
+      ]
+    },
+    {
+      "id": "D02-F02-A03",
+      "path": "corporate-actions-and-security-master-data/complex-distributions/stock-dividend-adjustment",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D02-F02-A03.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "classification",
+        "ratesNewSharesPerOld",
+        "shareFactors",
+        "cumulativeShareFactor",
+        "rawObservation",
+        "volumePolicy",
+        "adjustedObservation",
+        "valueBeforeOutputRounding",
+        "canonicalSource"
+      ]
+    },
+    {
+      "id": "D02-F02-A04",
+      "path": "corporate-actions-and-security-master-data/complex-distributions/special-dividend-adjustment",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D02-F02-A04.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "notice",
+        "selectedRevision",
+        "steps",
+        "observedReturns"
+      ]
+    },
+    {
+      "id": "D02-F02-A05",
+      "path": "corporate-actions-and-security-master-data/complex-distributions/return-of-capital-adjustment",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D02-F02-A05.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "label",
+        "marketData",
+        "observedReturns",
+        "usTaxIllustration"
+      ]
+    },
+    {
+      "id": "D02-F03-A01",
+      "path": "corporate-actions-and-security-master-data/identity-continuity/permanent-security-identifier-mapping",
+      "entry": "resolveIdentifier",
+      "archetype": "row-classify",
+      "fixture": "D02-F03-A01.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "notice",
+        "query",
+        "validAt",
+        "knowledgeAt",
+        "selectedRevision",
+        "excluded",
+        "result"
+      ]
+    },
+    {
+      "id": "D02-F03-A02",
+      "path": "corporate-actions-and-security-master-data/identity-continuity/ticker-change-chain-resolution",
+      "entry": "resolveTickerChain",
+      "archetype": "row-classify",
+      "fixture": "D02-F03-A02.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "topicId",
+        "synthetic",
+        "question",
+        "answer",
+        "counterfactualKnowledgeCutoff"
+      ]
+    },
+    {
+      "id": "D02-F03-A03",
+      "path": "corporate-actions-and-security-master-data/identity-continuity/share-class-relationship-mapping",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D02-F03-A03.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "notice",
+        "query",
+        "result"
+      ]
+    },
+    {
+      "id": "D02-F03-A04",
+      "path": "corporate-actions-and-security-master-data/identity-continuity/merger-predecessor-successor-mapping",
+      "entry": "resolveMerger",
+      "archetype": "row-classify",
+      "fixture": "D02-F03-A04.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "label",
+        "license",
+        "inputs",
+        "trace",
+        "output",
+        "canonicalFixture"
+      ]
+    },
+    {
+      "id": "D02-F03-A05",
+      "path": "corporate-actions-and-security-master-data/identity-continuity/delisting-return-reconstruction",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D02-F03-A05.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "topicId",
+        "case",
+        "license",
+        "arithmetic",
+        "guard"
+      ]
+    },
+    {
+      "id": "D02-F04-A01",
+      "path": "corporate-actions-and-security-master-data/point-in-time-universe/historical-constituent-reconstruction",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D02-F04-A01.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "description",
+        "fixture",
+        "queryName",
+        "result"
+      ]
+    },
+    {
+      "id": "D02-F04-A02",
+      "path": "corporate-actions-and-security-master-data/point-in-time-universe/survivorship-bias-guard",
+      "entry": "guardSurvivorship",
+      "archetype": "row-classify",
+      "fixture": "D02-F04-A02.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "note",
+        "effectiveAt",
+        "knownAt",
+        "historicallyEligible",
+        "historicallyIneligible",
+        "laterRoster",
+        "missingFromLaterRoster",
+        "retentionRatio",
+        "historicalEqualWeightedReturn",
+        "laterRosterSubsetEqualWeightedReturn",
+        "signedDifference",
+        "interpretation"
+      ]
+    },
+    {
+      "id": "D02-F04-A03",
+      "path": "corporate-actions-and-security-master-data/point-in-time-universe/ipo-availability-timestamping",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D02-F04-A03.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "topicId",
+        "description",
+        "beforeLocalIngestion",
+        "afterLocalIngestion",
+        "boundary"
+      ]
+    },
+    {
+      "id": "D02-F04-A04",
+      "path": "corporate-actions-and-security-master-data/point-in-time-universe/filing-revision-versioning",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D02-F04-A04.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "topicId",
+        "source",
+        "case",
+        "historicalFacts",
+        "syntheticAvailabilityAssumptions",
+        "derivedDifference"
+      ]
+    },
+    {
+      "id": "D03-F01-A01",
+      "path": "index-and-benchmark-engineering/index-initialization-and-continuity/base-date-base-value-initialization",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D03-F01-A01.json",
+      "hasInputExpected": true,
+      "fixtureKeys": [
+        "topicId",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D03-F01-A02",
+      "path": "index-and-benchmark-engineering/index-initialization-and-continuity/index-divisor-initialization",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D03-F01-A02.json",
+      "hasInputExpected": true,
+      "fixtureKeys": [
+        "topicId",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D03-F01-A03",
+      "path": "index-and-benchmark-engineering/index-initialization-and-continuity/divisor-continuity-adjustment",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D03-F01-A03.json",
+      "hasInputExpected": true,
+      "fixtureKeys": [
+        "topicId",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D03-F01-A04",
+      "path": "index-and-benchmark-engineering/index-initialization-and-continuity/corporate-action-divisor-bridge",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D03-F01-A04.json",
+      "hasInputExpected": true,
+      "fixtureKeys": [
+        "topicId",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D03-F01-A05",
+      "path": "index-and-benchmark-engineering/index-initialization-and-continuity/intraday-index-level-calculation",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D03-F01-A05.json",
+      "hasInputExpected": true,
+      "fixtureKeys": [
+        "topicId",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D03-F02-A01",
+      "path": "index-and-benchmark-engineering/weighting-and-capping/price-weighted-index",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D03-F02-A01.json",
+      "hasInputExpected": true,
+      "fixtureKeys": [
+        "topicId",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D03-F02-A02",
+      "path": "index-and-benchmark-engineering/weighting-and-capping/total-market-cap-index",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D03-F02-A02.json",
+      "hasInputExpected": true,
+      "fixtureKeys": [
+        "topicId",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D03-F02-A03",
+      "path": "index-and-benchmark-engineering/weighting-and-capping/free-float-market-cap-index",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D03-F02-A03.json",
+      "hasInputExpected": true,
+      "fixtureKeys": [
+        "topicId",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D03-F02-A04",
+      "path": "index-and-benchmark-engineering/weighting-and-capping/capped-free-float-market-cap-index",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D03-F02-A04.json",
+      "hasInputExpected": true,
+      "fixtureKeys": [
+        "topicId",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D03-F02-A05",
+      "path": "index-and-benchmark-engineering/weighting-and-capping/modified-market-cap-index",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D03-F02-A05.json",
+      "hasInputExpected": true,
+      "fixtureKeys": [
+        "topicId",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D03-F02-A06",
+      "path": "index-and-benchmark-engineering/weighting-and-capping/equal-weight-index",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D03-F02-A06.json",
+      "hasInputExpected": true,
+      "fixtureKeys": [
+        "topicId",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D03-F02-A07",
+      "path": "index-and-benchmark-engineering/weighting-and-capping/iterative-cap-redistribution",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D03-F02-A07.json",
+      "hasInputExpected": true,
+      "fixtureKeys": [
+        "topicId",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D03-F02-A08",
+      "path": "index-and-benchmark-engineering/weighting-and-capping/group-level-capping",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D03-F02-A08.json",
+      "hasInputExpected": true,
+      "fixtureKeys": [
+        "topicId",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D03-F03-A01",
+      "path": "index-and-benchmark-engineering/alternative-weighting/fundamental-weighted-index",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D03-F03-A01.json",
+      "hasInputExpected": true,
+      "fixtureKeys": [
+        "topicId",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D03-F03-A02",
+      "path": "index-and-benchmark-engineering/alternative-weighting/dividend-yield-weighted-index",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D03-F03-A02.json",
+      "hasInputExpected": true,
+      "fixtureKeys": [
+        "topicId",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D03-F03-A03",
+      "path": "index-and-benchmark-engineering/alternative-weighting/factor-score-weighted-index",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D03-F03-A03.json",
+      "hasInputExpected": true,
+      "fixtureKeys": [
+        "topicId",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D03-F03-A04",
+      "path": "index-and-benchmark-engineering/alternative-weighting/minimum-volatility-index",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D03-F03-A04.json",
+      "hasInputExpected": true,
+      "fixtureKeys": [
+        "topicId",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D03-F03-A05",
+      "path": "index-and-benchmark-engineering/alternative-weighting/equal-risk-contribution-index",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D03-F03-A05.json",
+      "hasInputExpected": true,
+      "fixtureKeys": [
+        "topicId",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D03-F03-A06",
+      "path": "index-and-benchmark-engineering/alternative-weighting/thematic-tilt-index",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D03-F03-A06.json",
+      "hasInputExpected": true,
+      "fixtureKeys": [
+        "topicId",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D03-F04-A01",
+      "path": "index-and-benchmark-engineering/return-variants/price-return-index",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D03-F04-A01.json",
+      "hasInputExpected": true,
+      "fixtureKeys": [
+        "topicId",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D03-F04-A02",
+      "path": "index-and-benchmark-engineering/return-variants/gross-total-return-index",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D03-F04-A02.json",
+      "hasInputExpected": true,
+      "fixtureKeys": [
+        "topicId",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D03-F04-A03",
+      "path": "index-and-benchmark-engineering/return-variants/net-total-return-index",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D03-F04-A03.json",
+      "hasInputExpected": true,
+      "fixtureKeys": [
+        "topicId",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D03-F04-A04",
+      "path": "index-and-benchmark-engineering/return-variants/excess-return-index",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D03-F04-A04.json",
+      "hasInputExpected": true,
+      "fixtureKeys": [
+        "topicId",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D03-F04-A05",
+      "path": "index-and-benchmark-engineering/return-variants/dividend-point-index",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D03-F04-A05.json",
+      "hasInputExpected": true,
+      "fixtureKeys": [
+        "topicId",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D03-F04-A06",
+      "path": "index-and-benchmark-engineering/return-variants/currency-converted-index",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D03-F04-A06.json",
+      "hasInputExpected": true,
+      "fixtureKeys": [
+        "topicId",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D03-F04-A07",
+      "path": "index-and-benchmark-engineering/return-variants/currency-hedged-index",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D03-F04-A07.json",
+      "hasInputExpected": true,
+      "fixtureKeys": [
+        "topicId",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D03-F05-A01",
+      "path": "index-and-benchmark-engineering/strategy-indices/leveraged-daily-reset-index",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D03-F05-A01.json",
+      "hasInputExpected": true,
+      "fixtureKeys": [
+        "topicId",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D03-F05-A02",
+      "path": "index-and-benchmark-engineering/strategy-indices/inverse-daily-reset-index",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D03-F05-A02.json",
+      "hasInputExpected": true,
+      "fixtureKeys": [
+        "topicId",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D03-F05-A03",
+      "path": "index-and-benchmark-engineering/strategy-indices/volatility-control-index",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D03-F05-A03.json",
+      "hasInputExpected": true,
+      "fixtureKeys": [
+        "topicId",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D03-F05-A04",
+      "path": "index-and-benchmark-engineering/strategy-indices/fixed-decrement-index",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D03-F05-A04.json",
+      "hasInputExpected": true,
+      "fixtureKeys": [
+        "topicId",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D03-F05-A05",
+      "path": "index-and-benchmark-engineering/strategy-indices/percentage-decrement-index",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D03-F05-A05.json",
+      "hasInputExpected": true,
+      "fixtureKeys": [
+        "topicId",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D03-F05-A06",
+      "path": "index-and-benchmark-engineering/strategy-indices/index-of-indices",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D03-F05-A06.json",
+      "hasInputExpected": true,
+      "fixtureKeys": [
+        "topicId",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D03-F06-A01",
+      "path": "index-and-benchmark-engineering/governance-and-maintenance/eligibility-screen",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D03-F06-A01.json",
+      "hasInputExpected": true,
+      "fixtureKeys": [
+        "topicId",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D03-F06-A02",
+      "path": "index-and-benchmark-engineering/governance-and-maintenance/liquidity-screen",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D03-F06-A02.json",
+      "hasInputExpected": true,
+      "fixtureKeys": [
+        "topicId",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D03-F06-A03",
+      "path": "index-and-benchmark-engineering/governance-and-maintenance/free-float-factor-calculation",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D03-F06-A03.json",
+      "hasInputExpected": true,
+      "fixtureKeys": [
+        "topicId",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D03-F06-A04",
+      "path": "index-and-benchmark-engineering/governance-and-maintenance/ipo-fast-entry-rule",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D03-F06-A04.json",
+      "hasInputExpected": true,
+      "fixtureKeys": [
+        "topicId",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D03-F06-A05",
+      "path": "index-and-benchmark-engineering/governance-and-maintenance/reconstitution-algorithm",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D03-F06-A05.json",
+      "hasInputExpected": true,
+      "fixtureKeys": [
+        "topicId",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D03-F06-A06",
+      "path": "index-and-benchmark-engineering/governance-and-maintenance/rebalancing-algorithm",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D03-F06-A06.json",
+      "hasInputExpected": true,
+      "fixtureKeys": [
+        "topicId",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D03-F06-A07",
+      "path": "index-and-benchmark-engineering/governance-and-maintenance/turnover-buffer-rule",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D03-F06-A07.json",
+      "hasInputExpected": true,
+      "fixtureKeys": [
+        "topicId",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D03-F06-A08",
+      "path": "index-and-benchmark-engineering/governance-and-maintenance/index-replication-cost-estimator",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D03-F06-A08.json",
+      "hasInputExpected": true,
+      "fixtureKeys": [
+        "topicId",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D04-F01-A01",
+      "path": "market-breadth-and-internals/advance-decline-breadth/net-advances",
+      "entry": "calculateNetAdvances",
+      "archetype": "record-transform",
+      "fixture": "D04-F01-A01.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "topic_id",
+        "fixture",
+        "query_before_correction",
+        "query_after_correction",
+        "lesson"
+      ]
+    },
+    {
+      "id": "D04-F01-A02",
+      "path": "market-breadth-and-internals/advance-decline-breadth/advance-decline-ratio",
+      "entry": "calculateAdvanceDeclineRatio",
+      "archetype": "record-transform",
+      "fixture": "D04-F01-A02.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "topic_id",
+        "synthetic",
+        "input",
+        "derivation"
+      ]
+    },
+    {
+      "id": "D04-F01-A03",
+      "path": "market-breadth-and-internals/advance-decline-breadth/cumulative-advance-decline-line",
+      "entry": "calculateCumulativeAdvanceDeclineLine",
+      "archetype": "record-transform",
+      "fixture": "D04-F01-A03.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "data_class",
+        "seed",
+        "original",
+        "correction",
+        "publication_rule"
+      ]
+    },
+    {
+      "id": "D04-F01-A04",
+      "path": "market-breadth-and-internals/advance-decline-breadth/normalized-advance-decline-line",
+      "entry": "calculateNormalizedAdLine",
+      "archetype": "record-transform",
+      "fixture": "D04-F01-A04.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "classification",
+        "initial_value",
+        "scale",
+        "denominator_policy",
+        "sessions",
+        "expected_display"
+      ]
+    },
+    {
+      "id": "D04-F01-A05",
+      "path": "market-breadth-and-internals/advance-decline-breadth/absolute-breadth-index",
+      "entry": "evaluateAbsoluteBreadthIndex",
+      "archetype": "snapshot-evaluate",
+      "fixture": "D04-F01-A05.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "topic_id",
+        "label",
+        "note",
+        "rows"
+      ]
+    },
+    {
+      "id": "D04-F02-A01",
+      "path": "market-breadth-and-internals/mcclellan-family/traditional-mcclellan-oscillator",
+      "entry": "calculateMcClellanValues",
+      "archetype": "record-transform",
+      "fixture": "D04-F02-A01.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "topic_id",
+        "metric",
+        "convention",
+        "series_identity",
+        "compressed_warmup",
+        "continuation"
+      ]
+    },
+    {
+      "id": "D04-F02-A02",
+      "path": "market-breadth-and-internals/mcclellan-family/ratio-adjusted-mcclellan-oscillator",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D04-F02-A02.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "topic_id",
+        "classification",
+        "first_ready",
+        "stress_path",
+        "last"
+      ]
+    },
+    {
+      "id": "D04-F02-A03",
+      "path": "market-breadth-and-internals/mcclellan-family/traditional-mcclellan-summation-index",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D04-F02-A03.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "topic_id",
+        "classification",
+        "first_ready",
+        "stress_path",
+        "last"
+      ]
+    },
+    {
+      "id": "D04-F02-A04",
+      "path": "market-breadth-and-internals/mcclellan-family/ratio-adjusted-summation-index-rasi",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D04-F02-A04.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "topic_id",
+        "classification",
+        "first_ready",
+        "stress_path",
+        "last"
+      ]
+    },
+    {
+      "id": "D04-F02-A05",
+      "path": "market-breadth-and-internals/mcclellan-family/mcclellan-volume-oscillator",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D04-F02-A05.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "topic_id",
+        "classification",
+        "first_ready",
+        "stress_path",
+        "last"
+      ]
+    },
+    {
+      "id": "D04-F02-A06",
+      "path": "market-breadth-and-internals/mcclellan-family/mcclellan-volume-summation-index",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D04-F02-A06.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "topic_id",
+        "classification",
+        "first_ready",
+        "stress_path",
+        "last"
+      ]
+    },
+    {
+      "id": "D04-F03-A01",
+      "path": "market-breadth-and-internals/high-low-and-trend-breadth/new-highs-new-lows",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D04-F03-A01.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "topic_id",
+        "source_class",
+        "canonical_display_state",
+        "formula",
+        "rounding"
+      ]
+    },
+    {
+      "id": "D04-F03-A02",
+      "path": "market-breadth-and-internals/high-low-and-trend-breadth/high-low-ratio",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D04-F03-A02.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "topic_id",
+        "source_class",
+        "canonical_display_state",
+        "formula",
+        "rounding"
+      ]
+    },
+    {
+      "id": "D04-F03-A03",
+      "path": "market-breadth-and-internals/high-low-and-trend-breadth/high-low-index",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": "D04-F03-A03.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "topic_id",
+        "source_class",
+        "canonical_display_state",
+        "formula",
+        "rounding"
+      ]
+    },
+    {
+      "id": "D04-F03-A04",
+      "path": "market-breadth-and-internals/high-low-and-trend-breadth/percent-above-20-day-ma",
+      "entry": "evaluateSnapshot",
+      "archetype": "snapshot-evaluate",
+      "fixture": "D04-F03-A04.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "topic_id",
+        "source_class",
+        "canonical_display_state",
+        "formula",
+        "rounding"
+      ]
+    },
+    {
+      "id": "D04-F03-A05",
+      "path": "market-breadth-and-internals/high-low-and-trend-breadth/percent-above-50-day-ma",
+      "entry": "evaluateSnapshot",
+      "archetype": "snapshot-evaluate",
+      "fixture": "D04-F03-A05.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "topic_id",
+        "source_class",
+        "canonical_display_state",
+        "formula",
+        "rounding"
+      ]
+    },
+    {
+      "id": "D04-F03-A06",
+      "path": "market-breadth-and-internals/high-low-and-trend-breadth/percent-above-200-day-ma",
+      "entry": "evaluateSnapshot",
+      "archetype": "snapshot-evaluate",
+      "fixture": "D04-F03-A06.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "topic_id",
+        "source_class",
+        "canonical_display_state",
+        "formula",
+        "rounding"
+      ]
+    },
+    {
+      "id": "D06-F01-A01",
+      "path": "price-action-and-candlesticks/candle-foundations/candle-anatomy",
+      "entry": "analyzeCandle",
+      "archetype": "record-transform",
+      "fixture": "D06-F01-A01.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "topic_id",
+        "input",
+        "direction_epsilon",
+        "output",
+        "checks"
+      ]
+    },
+    {
+      "id": "D06-F01-A02",
+      "path": "price-action-and-candlesticks/candle-foundations/scale-aware-body-classification",
+      "entry": "classifyBody",
+      "archetype": "row-classify",
+      "fixture": "D06-F01-A02.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "topic_id",
+        "input",
+        "derivation",
+        "comparison_only"
+      ]
+    },
+    {
+      "id": "D07-F01-A01",
+      "path": "technical-indicators/trend-smoothing/sma",
+      "entry": "calculateSma",
+      "archetype": "series-transform",
+      "fixture": "D07-F01-A01.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "topic_id",
+        "title",
+        "window",
+        "values",
+        "expected",
+        "steps"
+      ]
+    },
+    {
+      "id": "D07-F01-A02",
+      "path": "technical-indicators/trend-smoothing/ema",
+      "entry": "calculateEma",
+      "archetype": "series-transform",
+      "fixture": "D07-F01-A02.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "topic_id",
+        "metric",
+        "convention",
+        "series_identity",
+        "observations"
+      ]
+    },
+    {
+      "id": "D07-F01-A03",
+      "path": "technical-indicators/trend-smoothing/wma",
+      "entry": "calculateWma",
+      "archetype": "series-transform",
+      "fixture": "D07-F01-A03.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "topic_id",
+        "title",
+        "window",
+        "weights_oldest_to_newest",
+        "denominator",
+        "values",
+        "expected",
+        "steps"
+      ]
+    },
+    {
+      "id": "D07-F01-A04",
+      "path": "technical-indicators/trend-smoothing/wilder-rma",
+      "entry": "calculateRma",
+      "archetype": "series-transform",
+      "fixture": "D07-F01-A04.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "topic_id",
+        "series_id",
+        "unit",
+        "frequency",
+        "value_basis",
+        "period",
+        "alpha",
+        "seed_policy",
+        "rows"
+      ]
+    },
+    {
+      "id": "D07-F01-A05",
+      "path": "technical-indicators/trend-smoothing/dema",
+      "entry": "calculateDemaComponents",
+      "archetype": "series-transform",
+      "fixture": "D07-F01-A05.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "topic_id",
+        "convention",
+        "observations"
+      ]
+    },
+    {
+      "id": "D07-F01-A06",
+      "path": "technical-indicators/trend-smoothing/tema",
+      "entry": "calculateTemaComponents",
+      "archetype": "series-transform",
+      "fixture": "D07-F01-A06.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "topic_id",
+        "series_id",
+        "unit",
+        "frequency",
+        "value_basis",
+        "span",
+        "alpha",
+        "seed_policy",
+        "first_ready_observation",
+        "first_ready_components",
+        "formula"
+      ]
+    },
+    {
+      "id": "D07-F01-A07",
+      "path": "technical-indicators/trend-smoothing/hull-ma",
+      "entry": "calculateHullMa",
+      "archetype": "series-transform",
+      "fixture": "D07-F01-A07.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "topic_id",
+        "window",
+        "rounding_policy",
+        "half_length",
+        "root_length",
+        "values",
+        "first_ready_observation",
+        "first_ready_components"
+      ]
+    },
+    {
+      "id": "D07-F02-A01",
+      "path": "technical-indicators/trend-systems/macd",
+      "entry": "macd",
+      "archetype": "series-transform",
+      "fixture": "D07-F02-A01.json",
+      "hasInputExpected": false,
+      "fixtureKeys": [
+        "title",
+        "spans",
+        "alphas",
+        "values",
+        "checkpoints"
+      ]
+    },
+    {
+      "id": "D46-F01-A05",
+      "path": "earnings-and-per-share-analytics/earnings-and-share-foundations/stock-split-consolidation-eps-restatement",
+      "entry": "restateEpsForCapitalEvents",
+      "archetype": "record-transform",
+      "fixture": null,
+      "hasInputExpected": false,
+      "fixtureKeys": []
+    },
+    {
+      "id": "D46-F01-A08",
+      "path": "earnings-and-per-share-analytics/earnings-and-share-foundations/basic-eps",
+      "entry": "calculateBasicEps",
+      "archetype": "record-transform",
+      "fixture": null,
+      "hasInputExpected": false,
+      "fixtureKeys": []
+    },
+    {
+      "id": "D46-F02-A02",
+      "path": "earnings-and-per-share-analytics/basic-and-diluted-eps/if-converted-convertible-preference-dilution",
+      "entry": "calculateConvertiblePreferenceDilution",
+      "archetype": "record-transform",
+      "fixture": null,
+      "hasInputExpected": false,
+      "fixtureKeys": []
+    },
+    {
+      "id": "D46-F02-A03",
+      "path": "earnings-and-per-share-analytics/basic-and-diluted-eps/treasury-share-method-for-options-warrants",
+      "entry": "calculateTreasuryShareMethod",
+      "archetype": "record-transform",
+      "fixture": null,
+      "hasInputExpected": false,
+      "fixtureKeys": []
+    },
+    {
+      "id": "D46-F02-A04",
+      "path": "earnings-and-per-share-analytics/basic-and-diluted-eps/contingently-issuable-share-inclusion",
+      "entry": "calculateContingentShareInclusion",
+      "archetype": "record-transform",
+      "fixture": null,
+      "hasInputExpected": false,
+      "fixtureKeys": []
+    }
+  ]
+}

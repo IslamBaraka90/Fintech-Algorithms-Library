@@ -1,0 +1,77 @@
+{
+  "topicId": "D03-F01-A05",
+  "input": {
+    "indexShares": [
+      800,
+      450,
+      1080
+    ],
+    "floatFactors": [
+      1,
+      1,
+      1
+    ],
+    "divisor": 120,
+    "snapshots": [
+      {
+        "timestamp": "09:30",
+        "prices": [
+          50,
+          80,
+          40
+        ],
+        "fxRates": [
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "timestamp": "10:00",
+        "prices": [
+          50.5,
+          79,
+          40.2
+        ],
+        "fxRates": [
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "timestamp": "10:30",
+        "prices": [
+          51,
+          79.5,
+          40.6
+        ],
+        "fxRates": [
+          1,
+          1,
+          1
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "levels": [
+      {
+        "timestamp": "09:30",
+        "numerator": 119200,
+        "level": 993.333333
+      },
+      {
+        "timestamp": "10:00",
+        "numerator": 119366,
+        "level": 994.716667
+      },
+      {
+        "timestamp": "10:30",
+        "numerator": 120423,
+        "level": 1003.525
+      }
+    ],
+    "divisor": 120
+  }
+}

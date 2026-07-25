@@ -1,0 +1,13 @@
+{
+  "notice": "Every value is synthetic and is not a real identifier assignment.",
+  "query": "TICKER ALP / XNAS / trading_line",
+  "validAt": "2024-06-15T14:30:00Z",
+  "knowledgeAt": "2024-06-20T12:00:00Z",
+  "selectedRevision": "SYN-MAP-001 revision 1",
+  "excluded": [
+    "revision 2: unavailable until 2024-06-25T09:05:00Z",
+    "July mapping: validity has not started",
+    "ALP / XLON: different venue-qualified source key"
+  ],
+  "result": {"status": "resolved", "canonicalId": "SYN-LINE-ALPHA-XNAS-USD"}
+}

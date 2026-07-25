@@ -1,0 +1,14 @@
+{
+  "topicId": "D02-F01-A04",
+  "evidenceClass": "synthetic CRSPAccess-compatible illustration",
+  "warning": "No licensed CRSP observation is redistributed or claimed as a historical issuer event.",
+  "crspConvention": "CRSPAccess-ts_print-cumfacpr-archived",
+  "crspBaseDate": "2024-06-10",
+  "crspExdt": "2024-06-10",
+  "crspFacpr": 1,
+  "rows": [
+    {"date": "2024-06-06", "crspPrc": 120, "crspCumfacpr": 0.5, "crspAdjustedPrice": 60},
+    {"date": "2024-06-07", "crspPrc": -123, "crspCumfacpr": 0.5, "crspAdjustedPrice": -61.5, "note": "negative sign marks a CRSP bid/ask average"},
+    {"date": "2024-06-10", "crspPrc": 60, "crspCumfacpr": 1, "crspAdjustedPrice": 60}
+  ]
+}

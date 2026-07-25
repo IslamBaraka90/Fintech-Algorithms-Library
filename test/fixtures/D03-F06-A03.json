@@ -1,0 +1,43 @@
+{
+  "topicId": "D03-F06-A03",
+  "input": {
+    "records": [
+      {
+        "id": "A",
+        "issuedShares": 1000000,
+        "strategicShares": 280000
+      },
+      {
+        "id": "B",
+        "issuedShares": 2000000,
+        "strategicShares": 900000
+      },
+      {
+        "id": "C",
+        "issuedShares": 500000,
+        "strategicShares": 25000
+      }
+    ],
+    "roundingStep": 0.05
+  },
+  "expected": {
+    "results": [
+      {
+        "id": "A",
+        "rawFreeFloat": 0.72,
+        "freeFloatFactor": 0.75
+      },
+      {
+        "id": "B",
+        "rawFreeFloat": 0.55,
+        "freeFloatFactor": 0.55
+      },
+      {
+        "id": "C",
+        "rawFreeFloat": 0.95,
+        "freeFloatFactor": 0.95
+      }
+    ],
+    "roundingStep": 0.05
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "topic_id": "D04-F02-A01",
+  "metric": "traditional_mcclellan_oscillator",
+  "convention": {
+    "input": "advances_minus_declines",
+    "fast_alpha": "1/10",
+    "slow_alpha": "1/20",
+    "fast_period_label": 19,
+    "slow_period_label": 39,
+    "seed_policy": "simple_average",
+    "first_output_observation": 39,
+    "missing_session_policy": "no_imputation"
+  },
+  "series_identity": {
+    "venue_id": "SYNTH:XNAS",
+    "universe_id": "SYNTH:ACTIVE-ISSUES-220",
+    "calendar_id": "SYNTH:WEEKDAY",
+    "session": "regular",
+    "comparison_basis": "official-close-to-comparable-prior-close",
+    "corporate_action_policy": "synthetic-provider-adjusted",
+    "stable_id_scheme": "synthetic-security-id-v1",
+    "methodology_id": "synthetic-breadth-v1"
+  },
+  "compressed_warmup": {
+    "observations": 39,
+    "first_session_date": "2026-01-05",
+    "last_session_date": "2026-02-26",
+    "advances_each": 100,
+    "declines_each": 100,
+    "unchanged_each": 18,
+    "excluded_each": 2,
+    "unclassified_each": 0,
+    "universe_size_each": 220,
+    "net_advances_each": 0,
+    "expected_at_observation_39": {
+      "fast_ema": "0",
+      "slow_ema": "0",
+      "oscillator": "0"
+    }
+  },
+  "continuation": [
+    {
+      "observation": 40,
+      "session_date": "2026-02-27",
+      "advances": 150,
+      "declines": 50,
+      "unchanged": 18,
+      "excluded": 2,
+      "unclassified": 0,
+      "universe_size": 220,
+      "expected": {
+        "net_advances": 100,
+        "fast_ema": "10",
+        "slow_ema": "5",
+        "oscillator": "5"
+      }
+    },
+    {
+      "observation": 41,
+      "session_date": "2026-03-02",
+      "advances": 150,
+      "declines": 50,
+      "unchanged": 18,
+      "excluded": 2,
+      "unclassified": 0,
+      "universe_size": 220,
+      "expected": {
+        "net_advances": 100,
+        "fast_ema": "19",
+        "slow_ema": "39/4",
+        "oscillator": "37/4"
+      }
+    },
+    {
+      "observation": 42,
+      "session_date": "2026-03-03",
+      "advances": 50,
+      "declines": 150,
+      "unchanged": 18,
+      "excluded": 2,
+      "unclassified": 0,
+      "universe_size": 220,
+      "expected": {
+        "net_advances": -100,
+        "fast_ema": "71/10",
+        "slow_ema": "341/80",
+        "oscillator": "227/80"
+      }
+    },
+    {
+      "observation": 43,
+      "session_date": "2026-03-04",
+      "advances": 100,
+      "declines": 100,
+      "unchanged": 18,
+      "excluded": 2,
+      "unclassified": 0,
+      "universe_size": 220,
+      "expected": {
+        "net_advances": 0,
+        "fast_ema": "639/100",
+        "slow_ema": "6479/1600",
+        "oscillator": "749/320"
+      }
+    },
+    {
+      "observation": 44,
+      "session_date": "2026-03-05",
+      "advances": 50,
+      "declines": 150,
+      "unchanged": 18,
+      "excluded": 2,
+      "unclassified": 0,
+      "universe_size": 220,
+      "expected": {
+        "net_advances": -100,
+        "fast_ema": "-4249/1000",
+        "slow_ema": "-36899/32000",
+        "oscillator": "-99069/32000"
+      }
+    }
+  ]
+}

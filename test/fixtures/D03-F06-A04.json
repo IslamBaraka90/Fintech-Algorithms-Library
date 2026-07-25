@@ -1,0 +1,56 @@
+{
+  "topicId": "D03-F06-A04",
+  "input": {
+    "candidates": [
+      {
+        "id": "IPO-A",
+        "floatMarketCap": 1800,
+        "liquidityDays": 10,
+        "tradingDays": 10
+      },
+      {
+        "id": "IPO-B",
+        "floatMarketCap": 900,
+        "liquidityDays": 9,
+        "tradingDays": 10
+      },
+      {
+        "id": "IPO-C",
+        "floatMarketCap": 2200,
+        "liquidityDays": 4,
+        "tradingDays": 5
+      }
+    ],
+    "minimumFloatMarketCap": 1500,
+    "minimumLiquidityDays": 5,
+    "minimumTradingDays": 5
+  },
+  "expected": {
+    "results": [
+      {
+        "id": "IPO-A",
+        "sizePass": true,
+        "liquidityPass": true,
+        "seasoningPass": true,
+        "fastEntry": true
+      },
+      {
+        "id": "IPO-B",
+        "sizePass": false,
+        "liquidityPass": true,
+        "seasoningPass": true,
+        "fastEntry": false
+      },
+      {
+        "id": "IPO-C",
+        "sizePass": true,
+        "liquidityPass": false,
+        "seasoningPass": true,
+        "fastEntry": false
+      }
+    ],
+    "fastEntryIds": [
+      "IPO-A"
+    ]
+  }
+}

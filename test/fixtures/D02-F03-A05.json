@@ -1,0 +1,22 @@
+{
+  "topicId": "D02-F03-A05",
+  "case": "Synthetic mixed cash-and-stock terminal proceeds",
+  "license": "CC0-1.0 synthetic educational example",
+  "arithmetic": {
+    "previousRegularPriceUsd": "48.000000000000",
+    "lastRegularPriceUsd": "50.000000000000",
+    "cashEurPerOldShare": "10.000000000000",
+    "usdPerEur": "1.100000000000",
+    "cashValueUsd": "11.000000000000",
+    "successorSharesPerOldShare": "0.800000000000",
+    "successorPriceUsd": "52.500000000000",
+    "stockValueUsd": "42.000000000000",
+    "grossTerminalValueUsd": "53.000000000000",
+    "feesAndWithholdingUsd": "0.500000000000",
+    "netTerminalValueUsd": "52.500000000000",
+    "lastRegularReturn": "0.041666666667",
+    "terminalReturn": "0.050000000000",
+    "linkedReturn": "0.093750000000"
+  },
+  "guard": "If the same known legs are flagged partial, their USD 52.50 subtotal remains visible but terminalReturn and linkedReturn are null."
+}

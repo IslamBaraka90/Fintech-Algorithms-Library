@@ -1,0 +1,78 @@
+{
+  "topic_id": "D04-F02-A06",
+  "classification": "synthetic teaching input and author-derived arithmetic",
+  "first_ready": {
+    "observation": 39,
+    "input_value": 0.0,
+    "fast_ema": 0.0,
+    "slow_ema": 0.0,
+    "oscillator": 0.0,
+    "index_value": 0.0,
+    "status": "ready"
+  },
+  "stress_path": [
+    {
+      "observation": 40,
+      "input_value": 1000000.0,
+      "fast_ema": 100000.0,
+      "slow_ema": 50000.0,
+      "oscillator": 50000.0,
+      "index_value": 50000.0,
+      "status": "ready"
+    },
+    {
+      "observation": 41,
+      "input_value": 800000.0,
+      "fast_ema": 170000.0,
+      "slow_ema": 87500.0,
+      "oscillator": 82500.0,
+      "index_value": 132500.0,
+      "status": "ready"
+    },
+    {
+      "observation": 42,
+      "input_value": -400000.0,
+      "fast_ema": 113000.0,
+      "slow_ema": 63125.0,
+      "oscillator": 49875.0,
+      "index_value": 182375.0,
+      "status": "ready"
+    },
+    {
+      "observation": 43,
+      "input_value": -800000.0,
+      "fast_ema": 21700.0,
+      "slow_ema": 19968.75,
+      "oscillator": 1731.25,
+      "index_value": 184106.25,
+      "status": "ready"
+    },
+    {
+      "observation": 44,
+      "input_value": 0.0,
+      "fast_ema": 19530.0,
+      "slow_ema": 18970.3125,
+      "oscillator": 559.6875,
+      "index_value": 184665.9375,
+      "status": "ready"
+    },
+    {
+      "observation": 45,
+      "input_value": 1400000.0,
+      "fast_ema": 157577.0,
+      "slow_ema": 88021.796875,
+      "oscillator": 69555.203125,
+      "index_value": 254221.140625,
+      "status": "ready"
+    }
+  ],
+  "last": {
+    "observation": 60,
+    "input_value": -900000.0,
+    "fast_ema": 102760.96551561354,
+    "slow_ema": 94102.47141445243,
+    "oscillator": 8658.494101161108,
+    "index_value": 863098.267234075,
+    "status": "ready"
+  }
+}

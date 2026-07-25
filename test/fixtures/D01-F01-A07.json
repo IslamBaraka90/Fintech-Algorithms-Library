@@ -1,0 +1,29 @@
+{
+  "topicId": "D01-F01-A07",
+  "dataLicense": "CC0-style synthetic teaching data; no real market event",
+  "config": {
+    "closePartial": true,
+    "initialTickSign": 1,
+    "initialExpectedTicks": 4,
+    "initialBuyProbability": 0.625,
+    "alphaTicks": 0.5,
+    "alphaBuyProbability": 0.5,
+    "thresholdFloorTicks": 2,
+    "thresholdMultiplier": 1
+  },
+  "trades": [
+    {"tradeId":"W01","timestamp":"2026-01-05T14:30:00.000Z","session":"S1","symbol":"SYNTH","price":100.00,"volume":10,"currency":"USD"},
+    {"tradeId":"W02","timestamp":"2026-01-05T14:30:01.000Z","session":"S1","symbol":"SYNTH","price":100.00,"volume":20,"currency":"USD"},
+    {"tradeId":"W03","timestamp":"2026-01-05T14:30:02.000Z","session":"S1","symbol":"SYNTH","price":99.90,"volume":15,"currency":"USD"},
+    {"tradeId":"W04","timestamp":"2026-01-05T14:30:03.000Z","session":"S1","symbol":"SYNTH","price":100.00,"volume":25,"currency":"USD"},
+    {"tradeId":"W05","timestamp":"2026-01-05T14:30:04.000Z","session":"S1","symbol":"SYNTH","price":100.00,"volume":10,"currency":"USD"},
+    {"tradeId":"W06","timestamp":"2026-01-05T14:30:05.000Z","session":"S1","symbol":"SYNTH","price":99.90,"volume":12,"currency":"USD"},
+    {"tradeId":"W07","timestamp":"2026-01-05T14:30:06.000Z","session":"S1","symbol":"SYNTH","price":99.90,"volume":18,"currency":"USD"},
+    {"tradeId":"W08","timestamp":"2026-01-05T14:30:07.000Z","session":"S1","symbol":"SYNTH","price":99.80,"volume":14,"currency":"USD"}
+  ],
+  "signs": [1, 1, -1, 1, 1, -1, -1, -1],
+  "expectedBars": [
+    {"firstTradeId":"W01","lastTradeId":"W04","tickCount":4,"buyTicks":3,"sellTicks":1,"dominantSide":"buy","thresholdTicks":2.5,"overshootTicks":0.5,"closeReason":"threshold"},
+    {"firstTradeId":"W05","lastTradeId":"W08","tickCount":4,"buyTicks":1,"sellTicks":3,"dominantSide":"sell","thresholdTicks":2.75,"overshootTicks":0.25,"closeReason":"threshold"}
+  ]
+}

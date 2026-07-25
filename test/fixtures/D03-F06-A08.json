@@ -1,0 +1,65 @@
+{
+  "topicId": "D03-F06-A08",
+  "input": {
+    "trades": [
+      {
+        "id": "A",
+        "tradeValue": 12000000,
+        "spreadBps": 6,
+        "impactCoefficientBps": 18,
+        "participation": 0.08
+      },
+      {
+        "id": "B",
+        "tradeValue": -7000000,
+        "spreadBps": 10,
+        "impactCoefficientBps": 25,
+        "participation": 0.12
+      },
+      {
+        "id": "C",
+        "tradeValue": 3500000,
+        "spreadBps": 14,
+        "impactCoefficientBps": 30,
+        "participation": 0.18
+      },
+      {
+        "id": "D",
+        "tradeValue": -2500000,
+        "spreadBps": 8,
+        "impactCoefficientBps": 20,
+        "participation": 0.06
+      }
+    ]
+  },
+  "expected": {
+    "results": [
+      {
+        "id": "A",
+        "spreadCost": 3600,
+        "impactCost": 6109.402589,
+        "totalCost": 9709.402589
+      },
+      {
+        "id": "B",
+        "spreadCost": 3500,
+        "impactCost": 6062.177826,
+        "totalCost": 9562.177826
+      },
+      {
+        "id": "C",
+        "spreadCost": 2450,
+        "impactCost": 4454.772721,
+        "totalCost": 6904.772721
+      },
+      {
+        "id": "D",
+        "spreadCost": 1000,
+        "impactCost": 1224.744871,
+        "totalCost": 2224.744871
+      }
+    ],
+    "estimatedCost": 28401.098007,
+    "costBpsOnGrossTrade": 11.360439
+  }
+}

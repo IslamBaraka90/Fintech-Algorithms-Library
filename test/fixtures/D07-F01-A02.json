@@ -1,0 +1,79 @@
+{
+  "topic_id": "D07-F01-A02",
+  "metric": "exponential_moving_average",
+  "convention": {
+    "span": 3,
+    "alpha": "1/2",
+    "seed_policy": "simple_average",
+    "first_output_observation": 3,
+    "missing_value_policy": "reject",
+    "missing_timestamp_policy": "no_imputation",
+    "rounding_policy": "display_only"
+  },
+  "series_identity": {
+    "series_id": "SYNTH:CLOSE",
+    "unit": "USD",
+    "calendar": "synthetic-weekday-only",
+    "frequency": "one observation per accepted session",
+    "value_basis": "synthetic adjusted close"
+  },
+  "observations": [
+    {
+      "observation": 1,
+      "timestamp": "2026-01-05T16:00:00Z",
+      "value": 10,
+      "expected": {
+        "ema": null,
+        "status": "warming"
+      }
+    },
+    {
+      "observation": 2,
+      "timestamp": "2026-01-06T16:00:00Z",
+      "value": 13,
+      "expected": {
+        "ema": null,
+        "status": "warming"
+      }
+    },
+    {
+      "observation": 3,
+      "timestamp": "2026-01-07T16:00:00Z",
+      "value": 12,
+      "expected": {
+        "ema": "35/3",
+        "status": "ready"
+      }
+    },
+    {
+      "observation": 4,
+      "timestamp": "2026-01-08T16:00:00Z",
+      "value": 15,
+      "expected": {
+        "prior_ema": "35/3",
+        "forecast_error": "10/3",
+        "applied_adjustment": "5/3",
+        "ema": "40/3",
+        "status": "ready"
+      }
+    },
+    {
+      "observation": 5,
+      "timestamp": "2026-01-09T16:00:00Z",
+      "value": 14,
+      "expected": {
+        "ema": "41/3",
+        "status": "ready"
+      }
+    },
+    {
+      "observation": 6,
+      "timestamp": "2026-01-12T16:00:00Z",
+      "value": 18,
+      "expected": {
+        "ema": "95/6",
+        "status": "ready"
+      }
+    }
+  ]
+}

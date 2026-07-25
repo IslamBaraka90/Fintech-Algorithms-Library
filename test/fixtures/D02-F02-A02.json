@@ -1,0 +1,15 @@
+{
+  "description": "Synthetic multi-child example; not an issuer or provider observation",
+  "parentCumPriceUSD": 120,
+  "children": [
+    {"securityId": "SYNTH-CHILD-A", "ratio": "1:4", "priceEUR": 40, "USDPerEUR": 1.1, "valuePerParentUSD": 11},
+    {"securityId": "SYNTH-CHILD-B", "ratio": "1:10", "priceUSD": 25, "valuePerParentUSD": 2.5}
+  ],
+  "distributedValuePerParentUSD": 13.5,
+  "theoreticalParentExReferenceUSD": 106.5,
+  "backwardAdjustmentFactor": 0.8875,
+  "factorDirection": "multiply pre-event parent-only prices",
+  "parentExObservedUSD": 108,
+  "grossCombinedValueUSD": 121.5,
+  "grossReturn": 0.0125
+}

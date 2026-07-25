@@ -1,0 +1,42 @@
+{
+  "topicId": "D03-F04-A05",
+  "input": {
+    "events": [
+      {
+        "id": "A",
+        "dividend": 1.2,
+        "indexShares": 2000000,
+        "floatFactor": 0.8,
+        "fx": 1
+      },
+      {
+        "id": "B",
+        "dividend": 0.5,
+        "indexShares": 3500000,
+        "floatFactor": 0.7,
+        "fx": 1
+      },
+      {
+        "id": "C",
+        "dividend": 2,
+        "indexShares": 500000,
+        "floatFactor": 1,
+        "fx": 1.1
+      }
+    ],
+    "divisor": 1000000
+  },
+  "expected": {
+    "ids": [
+      "A",
+      "B",
+      "C"
+    ],
+    "pointContributions": [
+      1.92,
+      1.225,
+      1.1
+    ],
+    "dividendPoints": 4.245
+  }
+}

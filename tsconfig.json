@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022"],
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+
+    /* Source files import each other with explicit `.ts` extensions (so Node can
+       run them directly via type-stripping). `rewriteRelativeImportExtensions`
+       turns those into `.js` in the emitted output. Requires TypeScript >= 5.7. */
+    "allowImportingTsExtensions": true,
+    "rewriteRelativeImportExtensions": true,
+
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "outDir": "dist",
+    "rootDir": "src",
+
+    /* The 114 topic implementations are ported verbatim from the edufintech
+       catalog, where many entry points are deliberately `(data: unknown)`.
+       Strict mode is a hardening step tracked in HANDOFF.md, not a launch gate. */
+    "strict": false,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
+}

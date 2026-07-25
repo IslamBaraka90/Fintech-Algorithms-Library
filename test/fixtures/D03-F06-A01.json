@@ -1,0 +1,82 @@
+{
+  "topicId": "D03-F06-A01",
+  "input": {
+    "candidates": [
+      {
+        "id": "A",
+        "primaryListing": true,
+        "eligibleType": true,
+        "minPricePass": true,
+        "historyPass": true
+      },
+      {
+        "id": "B",
+        "primaryListing": false,
+        "eligibleType": true,
+        "minPricePass": true,
+        "historyPass": true
+      },
+      {
+        "id": "C",
+        "primaryListing": true,
+        "eligibleType": true,
+        "minPricePass": false,
+        "historyPass": true
+      },
+      {
+        "id": "D",
+        "primaryListing": true,
+        "eligibleType": true,
+        "minPricePass": true,
+        "historyPass": true
+      },
+      {
+        "id": "E",
+        "primaryListing": true,
+        "eligibleType": false,
+        "minPricePass": true,
+        "historyPass": true
+      }
+    ]
+  },
+  "expected": {
+    "results": [
+      {
+        "id": "A",
+        "eligible": true,
+        "reasons": []
+      },
+      {
+        "id": "B",
+        "eligible": false,
+        "reasons": [
+          "primaryListing"
+        ]
+      },
+      {
+        "id": "C",
+        "eligible": false,
+        "reasons": [
+          "minPricePass"
+        ]
+      },
+      {
+        "id": "D",
+        "eligible": true,
+        "reasons": []
+      },
+      {
+        "id": "E",
+        "eligible": false,
+        "reasons": [
+          "eligibleType"
+        ]
+      }
+    ],
+    "eligibleIds": [
+      "A",
+      "D"
+    ],
+    "rejectedCount": 3
+  }
+}
