@@ -40,8 +40,8 @@
     "build": "tsc -p tsconfig.json",
     "test": "node --experimental-strip-types --test test/*.test.ts",
     "test:conformance": "node --experimental-strip-types --test test/conformance.test.ts",
-    "demo": "node --experimental-strip-types demos/run-all.ts",
-    "verify": "npm run build && npm test"
+    "verify": "npm run build && npm test",
+    "prepack": "npm run build"
   },
   "devDependencies": {
     "typescript": "^5.9.3"

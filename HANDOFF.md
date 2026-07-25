@@ -1,7 +1,7 @@
 # Handoff — `fintech-algorithms`
 
-Everything you need to test the library, build demos with it, and keep it in sync as you
-publish new tutorials.
+Everything you need to test the library, consume it from another repo, and keep it in sync
+as you publish new tutorials.
 
 ---
 
@@ -17,7 +17,6 @@ A standalone git repo at `library-repos/Fintech-Algorithms-Library/`, containing
 | `src/_registry.ts`, `src/_modules.ts`, `src/index.ts` | Registry, lazy loader map, root entry. | generated |
 | `test/*.test.ts` | The three test layers. | ✅ yes |
 | `test/fixtures/` | 93 worked-example fixtures copied from the catalog. | generated |
-| `demos/` | Six runnable demos. | ✅ yes |
 | `package.json` `exports` | 114 subpaths + root. | generated |
 
 **Rule:** everything under `src/` except `src/_shared/` is generated. Never hand-edit it.
@@ -34,7 +33,7 @@ Fix the catalog implementation in `algorithms/domains/…` and re-run `npm run s
 
 ## 1. Prerequisites
 
-- **Node ≥ 22** — required. The tests and demos run TypeScript directly via
+- **Node ≥ 22** — required. The tests run TypeScript directly via
   `--experimental-strip-types`, so there is no build step in the inner loop.
 - **TypeScript ≥ 5.7** — only for `npm run build`. The repo declares `typescript@^5.9.3` as a
   devDependency. `rewriteRelativeImportExtensions` (5.7+) is what turns the `.ts` import
@@ -73,10 +72,10 @@ Expected tail:
 # fail 0
 ```
 
-**Build and run every demo:**
+**Build** (only needed to produce `dist/` for publishing or packing):
 
 ```bash
-npm run build && npm run demo
+npm run build
 ```
 
 If `npm install` is awkward offline, you can build with the TypeScript already in the
@@ -133,12 +132,16 @@ repo simply cannot consume them yet. Closing that gap is item 1 in the backlog b
 ## 4. Explore the library
 
 ```bash
-node --experimental-strip-types demos/06-registry-explorer.ts
+node --experimental-strip-types -e '
+  import { topics, byDomain, byArchetype } from "./src/index.ts";
+  console.log(`${topics.length} topics`);
+  for (const d of [...new Set(topics.map(t => t.domainId))].sort())
+    console.log(` ${d} ${String(byDomain(d).length).padStart(3)}  ${byDomain(d)[0].domain}`);
+'
 ```
 
-Prints the full inventory: topics per domain, counts per shape, every topic in a family, and
-the exact import path + exports for any single topic. This is the fastest way to find what
-you want to demo next.
+Prints the inventory by domain. Swap in `byArchetype` or `byFamily` to slice it differently;
+see section 6 for locating a specific topic and its call signature.
 
 To inspect one topic's real signature:
 
@@ -148,79 +151,79 @@ grep -nE "^export (function|const|type|interface)" src/technical-indicators/tren
 
 ---
 
-## 5. The six demos
+## 5. No demos live here — by design
 
-Each is standalone and heavily commented. Run individually while exploring:
+This repo ships the library and nothing else: no demos, no examples, no sample data, no
+provider credentials. Applications built *with* the library live in their own repository so
+they can carry their own dependencies, secrets and release cycle without any of it leaking
+into a package that other people install.
 
-```bash
-node --experimental-strip-types demos/01-technical-indicators.ts
-```
-
-| Demo | Shows | Archetype |
-|---|---|---|
-| `01-technical-indicators.ts` | SMA vs EMA warm-up, MACD rows | series-transform |
-| `02-bar-construction.ts` | One tape → time bars and volume bars | tape-aggregate |
-| `03-corporate-actions.ts` | 2-for-1 split restatement + input validation | record-transform |
-| `04-data-quality.ts` | OHLC validator flagging a bad bar | row-classify |
-| `05-bring-your-own-data.ts` | **Two unrelated providers → one pipeline** | adapter pattern |
-| `06-registry-explorer.ts` | Enumerate and dispatch dynamically | registry |
-
-Demo 5 is the one to read first — it is the concrete answer to "why is there no Yahoo in
-this package".
-
-Demos import via the package's own name (`fintech-algorithms/...`) using Node's
-self-reference, so **what you read is exactly what a consumer writes**. That is also why they
-need `npm run build` first: self-reference resolves through the `exports` map into `dist/`.
+If you want to see the six synthetic demos that were originally scaffolded here, they are
+preserved in git history at commit `fa0b6fc` (`git show fa0b6fc:demos/05-bring-your-own-data.ts`).
 
 ---
 
-## 6. Build your own demo
+## 6. Finding what you need
 
-1. Find the topic and its entry:
+The library has 114 topics; these three commands answer "what exists and how do I call it".
+
+1. **Search the registry** for a topic by name, domain or shape:
    ```bash
-   node --experimental-strip-types demos/06-registry-explorer.ts | grep -i "hampel"
+   node --experimental-strip-types -e '
+     import { topics } from "./src/index.ts";
+     for (const t of topics.filter(t => /breadth|advance/i.test(t.title + t.family)))
+       console.log(t.id, t.path, t.entry + "()");
+   '
    ```
-2. Read its real input shape — the types are the documentation:
+2. **Read the real signature** — the types are the documentation:
    ```bash
-   sed -n '1,60p' src/market-data-engineering/cleaning-and-validation/hampel-bad-tick-filter/impl.ts
+   grep -nE "^export (function|const|type|interface)" \
+     src/market-data-engineering/cleaning-and-validation/hampel-bad-tick-filter/impl.ts
    ```
-3. Cross-check against the fixture, which holds known-good values:
+3. **Start from a fixture** — a call with verified output beats guessing at a shape:
    ```bash
    cat test/fixtures/D01-F02-A02.json
    ```
-4. Write `demos/07-my-demo.ts`, importing by subpath, and run it:
-   ```bash
-   npm run build && node --experimental-strip-types demos/07-my-demo.ts
-   ```
-5. Add it to the list in `demos/run-all.ts`.
 
-**Tip:** step 3 is the shortcut. The fixture is a working call with verified output, so you can
-always start from something that runs.
+Step 3 is the shortcut. Any topic with a fixture gives you a working invocation you can paste
+straight into a consuming project.
 
 ---
 
-## 7. Use it in a real project
+## 7. Consuming the library from another repo
 
-Before publishing, test it as a real dependency using a tarball — this catches packaging
-mistakes (missing files, wrong `exports`) that `npm link` hides.
+Until the package is on npm, consume it as a tarball. This is strictly better than `npm link`
+for validating a release: it exercises the real `exports` map and the real `files` list, so it
+catches packaging mistakes that a symlink hides.
+
+**In this repo:**
 
 ```bash
-npm run build
 npm pack
 ```
 
-That produces `fintech-algorithms-0.1.0.tgz`. In your other project:
+`prepack` runs the build automatically, producing `fintech-algorithms-0.1.0.tgz`.
+
+**In the consuming repo:**
 
 ```bash
 npm install /path/to/fintech-algorithms-0.1.0.tgz
 ```
 
-Then:
+That writes a `file:` dependency into its `package.json`. Re-run both commands after any
+library change — npm caches tarballs by path, so bump `version` or use
+`npm install --force` if a change does not appear.
+
+Then import exactly as a public consumer would:
 
 ```ts
-import { calculateEma } from "fintech-algorithms/technical-indicators/trend-smoothing/ema";
 import { topics } from "fintech-algorithms";
+import { calculateEma } from "fintech-algorithms/technical-indicators/trend-smoothing/ema";
 ```
+
+Once published to npm this becomes `npm install fintech-algorithms` with no other change.
+
+Verify the packaged file list before shipping:
 
 Verify the packaged file list before shipping:
 
@@ -243,7 +246,7 @@ exists. After you publish a new topic in the catalog:
 npm run sync
 
 # 2. Confirm it landed
-node --experimental-strip-types demos/06-registry-explorer.ts | grep "<your-topic-id>"
+node --experimental-strip-types -e 'import {topic} from "./src/index.ts"; console.log(topic("<your-topic-id>"))'
 
 # 3. Verify
 npm run build && npm test
@@ -273,7 +276,7 @@ catalog. Wire this into CI so the package can never silently fall behind.
 Not done yet — deliberately, because it is outward-facing and irreversible.
 
 1. **Claim the name.** `npm view fintech-algorithms` — if it is taken, switch to a scope
-   (`@fintechbuilder/algorithms`) in `package.json` and in every demo import.
+   (`@fintechbuilder/algorithms`) in `package.json`, then re-pack for any consuming repo.
 2. `npm run verify` — must be fully green.
 3. `npm pack --dry-run` — confirm the file list.
 4. `npm publish --access public`.
@@ -284,7 +287,7 @@ Not done yet — deliberately, because it is outward-facing and irreversible.
 
 ## 10. Backlog — known gaps, in priority order
 
-Honest list. None of these block testing or demos today.
+Honest list. None of these block testing or consuming the library today.
 
 1. **73 topics lack numeric verification here.** Normalize their catalog
    `worked-example.json` to `{ topicId, input, expected }` — 54 already use `topicId`, 24 use
@@ -332,7 +335,7 @@ Worth a look at whether its Python sibling has the same drift.
 | Symptom | Cause | Fix |
 |---|---|---|
 | `ERR_UNKNOWN_FILE_EXTENSION` on `.ts` | Node < 22 | upgrade Node |
-| `Cannot find module 'fintech-algorithms/...'` in a demo | `dist/` missing — self-reference resolves through `exports` | `npm run build` |
+| `Cannot find module 'fintech-algorithms/...'` in a consuming repo | stale or missing tarball | `npm pack` here, then re-install it there |
 | `sync.mjs` says "Catalog not found" | Repo moved out of `library-repos/` | `node scripts/sync.mjs --content-root /path/to/edufintech` or set `FINTECH_CONTENT_ROOT` |
 | `rewriteRelativeImportExtensions` unknown option | TypeScript < 5.7 | `npm install -D typescript@^5.9.3` |
 | Tests pass but `npm run build` fails | A catalog implementation has a type error | fix it in the catalog, then `npm run sync` |

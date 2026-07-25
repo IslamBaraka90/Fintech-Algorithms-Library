@@ -26,8 +26,22 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Demos
-        run: npm run demo
+      # Proves the published tarball is self-contained: the exports map resolves,
+      # dist/ is complete, and no file the package needs was left out of `files`.
+      - name: Pack and smoke-test the tarball
+        run: |
+          npm pack
+          mkdir -p /tmp/consumer && cd /tmp/consumer
+          npm init -y >/dev/null
+          npm install "$GITHUB_WORKSPACE"/fintech-algorithms-*.tgz
+          node --input-type=module -e '
+            import { topics } from "fintech-algorithms";
+            const { calculateEma } = await import("fintech-algorithms/technical-indicators/trend-smoothing/ema");
+            if (topics.length === 0) throw new Error("registry is empty");
+            const out = calculateEma([10, 13, 16, 19], 3);
+            if (out[2] !== 13 || out[3] !== 16) throw new Error("EMA regression: " + JSON.stringify(out));
+            console.log(`tarball OK — ${topics.length} topics resolvable from a clean consumer`);
+          '
 
   # The package is generated from the edufintech catalog, which lives in a
   # different repository. This job only runs when that checkout is available.
