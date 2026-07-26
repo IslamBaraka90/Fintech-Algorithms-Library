@@ -1,10 +1,10 @@
 # fintech-algorithms
 
-The [Fintech Builder](https://thefintechbuilder.com) algorithm library — **114 reference
-implementations** of market-data, corporate-action, index, breadth, candlestick and
+The [Fintech Builder](https://thefintechbuilder.com) algorithm library — reference
+implementations of market-data, corporate-action, index, breadth, candlestick and
 technical-indicator algorithms, exposed as provider-agnostic subpath modules.
 
-Every algorithm is generated from the canonical article it accompanies, and 41 of them are
+Every algorithm is generated from the canonical article it accompanies, and most are
 verified against the exact worked example published in that article.
 
 ```ts
@@ -62,30 +62,44 @@ namespaces.
 
 Every topic is an instance of one of five archetypes:
 
+<!-- shapes:start -->
 | Archetype | Signature | Count | Example |
 |---|---|--:|---|
-| `record-transform` | `(input) → output` | 79 | backward-split-adjustment |
+| `record-transform` | `(input) → output` | 90 | backward-split-adjustment |
+| `series-transform` | `(values, ...params) → (number\|null)[]` | 37 | ema, rsi, macd |
 | `row-classify` | `(rows, config?) → verdict[]` | 14 | ohlc-consistency-validator |
-| `series-transform` | `(values, ...params) → (number\|null)[]` | 8 | ema, sma, macd |
 | `tape-aggregate` | `(trades, config) → bar[]` | 7 | time-bars, volume-bars |
 | `snapshot-evaluate` | `(snapshot, policy) → result` | 6 | price-source-consensus-check |
+<!-- shapes:end -->
 
 `null` in a series marks a warm-up observation where the indicator is not yet defined.
 Classifiers return a verdict per row instead of throwing, so one bad tick cannot abort a batch.
 
 ## Coverage
 
-114 topics · 7 domains · 22 families
+<!-- stats:start -->
+**154 topics** · 7 domains · 27 families
 
 | Domain | Topics | Families | Name |
 |---|--:|--:|---|
 | D01 | 23 | 4 | Market Data Engineering |
 | D02 | 19 | 4 | Corporate Actions and Security Master Data |
 | D03 | 40 | 6 | Index and Benchmark Engineering |
-| D04 | 17 | 3 | Market Breadth and Internals |
+| D04 | 28 | 5 | Market Breadth and Internals |
 | D06 | 2 | 1 | Price Action and Candlesticks |
-| D07 | 8 | 2 | Technical Indicators |
+| D07 | 37 | 5 | Technical Indicators |
 | D46 | 5 | 2 | Earnings and Per-Share Analytics |
+<!-- stats:end -->
+
+### Verified coverage
+
+<!-- coverage:start -->
+**79 of 154 topics** are verified against the catalog's own published numbers
+(41 via `{ input, expected }`, 11 via row fixtures, 27 via bar/checkpoint fixtures).
+The remaining 75 are proven to load and expose a callable entry point, but their
+arithmetic is not asserted here — those topics ship no machine-readable expected
+values in the catalog.
+<!-- coverage:end -->
 
 ## The registry
 
@@ -95,7 +109,7 @@ light. Use it to enumerate the library, build docs, or dispatch dynamically.
 ```ts
 import { topics, topic, byDomain, byFamily, byArchetype, load, runner } from "fintech-algorithms";
 
-topics.length;                    // 114
+topics.length;                    // every topic in the catalog
 topic("D07-F01-A02")?.path;       // "technical-indicators/trend-smoothing/ema"
 byFamily("D01-F01").map(t => t.slug);
                                   // ["time-bars", "tick-bars", "volume-bars", ...]
@@ -110,9 +124,9 @@ object carrying its catalog id, domain, family, shape, article URL and repo URL.
 ## Scripts
 
 ```bash
-npm run sync     # regenerate src/ from the edufintech catalog
+npm run sync     # regenerate src/ + README stats from the edufintech catalog
 npm run build    # tsc → dist/
-npm test         # 161 tests: 41 conformance + 114 module + 6 structural
+npm test         # conformance + per-module contract + structural invariants
 npm run verify   # build + test
 npm pack         # build + produce a consumable tarball
 ```

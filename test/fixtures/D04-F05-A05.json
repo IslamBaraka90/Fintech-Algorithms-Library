@@ -1,0 +1,57 @@
+{
+  "label": "Labelled synthetic cross-sectional snapshot",
+  "as_of": "2026-06-30",
+  "parameters": {
+    "tolerance": 0.002
+  },
+  "rows": [
+    {
+      "component_id": "Value",
+      "signal_change": 0.014,
+      "ready": true
+    },
+    {
+      "component_id": "Momentum",
+      "signal_change": 0.011,
+      "ready": true
+    },
+    {
+      "component_id": "Quality",
+      "signal_change": 0.007,
+      "ready": true
+    },
+    {
+      "component_id": "Low Size",
+      "signal_change": 0.003,
+      "ready": true
+    },
+    {
+      "component_id": "Low Volatility",
+      "signal_change": 0,
+      "ready": true
+    },
+    {
+      "component_id": "High Yield",
+      "signal_change": -0.002,
+      "ready": true
+    },
+    {
+      "component_id": "Growth",
+      "signal_change": -0.006,
+      "ready": true
+    },
+    {
+      "component_id": "Profitability",
+      "signal_change": -0.009,
+      "ready": true
+    }
+  ],
+  "expected": {
+    "status": "resolved",
+    "value": 62.5,
+    "improving": 4,
+    "unchanged": 2,
+    "deteriorating": 2,
+    "total": 8
+  }
+}

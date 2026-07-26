@@ -1,0 +1,160 @@
+{
+  "label": "Synthetic 24-session thrust sequence",
+  "parameters": {
+    "ema_length": 10,
+    "low_threshold": 0.4,
+    "high_threshold": 0.615,
+    "max_sessions": 10
+  },
+  "rows": [
+    {
+      "session_date": "2026-01-05",
+      "advances": 520,
+      "declines": 480,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-06",
+      "advances": 500,
+      "declines": 500,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-07",
+      "advances": 480,
+      "declines": 520,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-08",
+      "advances": 460,
+      "declines": 540,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-09",
+      "advances": 440,
+      "declines": 560,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-12",
+      "advances": 420,
+      "declines": 580,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-13",
+      "advances": 380,
+      "declines": 620,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-14",
+      "advances": 360,
+      "declines": 640,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-15",
+      "advances": 340,
+      "declines": 660,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-16",
+      "advances": 320,
+      "declines": 680,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-19",
+      "advances": 300,
+      "declines": 700,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-20",
+      "advances": 400,
+      "declines": 600,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-21",
+      "advances": 500,
+      "declines": 500,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-22",
+      "advances": 650,
+      "declines": 350,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-23",
+      "advances": 750,
+      "declines": 250,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-26",
+      "advances": 800,
+      "declines": 200,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-27",
+      "advances": 850,
+      "declines": 150,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-28",
+      "advances": 900,
+      "declines": 100,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-29",
+      "advances": 700,
+      "declines": 300,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-30",
+      "advances": 600,
+      "declines": 400,
+      "ready": true
+    },
+    {
+      "session_date": "2026-02-02",
+      "advances": 550,
+      "declines": 450,
+      "ready": true
+    },
+    {
+      "session_date": "2026-02-03",
+      "advances": 520,
+      "declines": 480,
+      "ready": true
+    },
+    {
+      "session_date": "2026-02-04",
+      "advances": 500,
+      "declines": 500,
+      "ready": true
+    },
+    {
+      "session_date": "2026-02-05",
+      "advances": 480,
+      "declines": 520,
+      "ready": true
+    }
+  ],
+  "expected": {
+    "status": "thrust",
+    "trigger_date": "2026-01-28",
+    "ema": 0.664802116986
+  }
+}

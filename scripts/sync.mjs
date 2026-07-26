@@ -168,6 +168,43 @@ const EXPORTED_FN_RE = /^export\s+(?:async\s+)?function\s+([A-Za-z0-9_]+)/gm;
 const EXPORTED_ARROW_RE = /^export\s+const\s+([A-Za-z0-9_]+)\s*(?::[^=]+)?=\s*(?:async\s*)?(?:<[^>]*>\s*)?\(/gm;
 const EXPORTED_ANY_RE = /^export\s+(?:declare\s+)?(?:async\s+)?(?:function|const|let|var|class|interface|type|enum)\s+([A-Za-z0-9_]+)/gm;
 
+/**
+ * Parameter names of an exported function, in order.
+ *
+ * Used to bind a Convention C fixture's `bars` columns to the right positional
+ * arguments: a function declared `(high, low, close, p = 14)` gets the three
+ * price series plus its own default for `p`.
+ */
+function signatureParams(source, fnName) {
+  const match = source.match(new RegExp(`export\\s+(?:async\\s+)?function\\s+${fnName}\\s*\\(([\\s\\S]*?)\\)\\s*[:{]`));
+  if (!match) return [];
+  const raw = match[1];
+  if (!raw.trim()) return [];
+  // Split on top-level commas only (types may contain commas, e.g. Record<a, b>).
+  const parts = [];
+  let depth = 0;
+  let current = "";
+  for (const char of raw) {
+    if ("([{<".includes(char)) depth++;
+    else if (")]}>".includes(char)) depth--;
+    if (char === "," && depth === 0) {
+      parts.push(current);
+      current = "";
+    } else current += char;
+  }
+  if (current.trim()) parts.push(current);
+  return parts
+    .map((part) => part.trim().split(/[:=]/)[0].trim())
+    .filter((name) => /^[A-Za-z_$][\w$]*$/.test(name));
+}
+
+/** Cheap stable hash of an implementation body, for shared-file detection. */
+function hashBody(source) {
+  let hash = 5381;
+  for (let i = 0; i < source.length; i++) hash = ((hash * 33) ^ source.charCodeAt(i)) >>> 0;
+  return hash.toString(36);
+}
+
 function matchAll(source, re) {
   const names = [];
   re.lastIndex = 0;
@@ -182,19 +219,118 @@ function analyse(source) {
   return { functions, allNames };
 }
 
-/** Pick the function that best represents "run this topic". */
-function chooseEntry(functions, topicSlug) {
+/** Trailing nouns that appear in a topic slug but not in its function name. */
+const GENERIC_SUFFIXES = ["oscillator", "index", "line", "bands", "channels", "cloud", "ratio", "indicator"];
+
+/**
+ * Reviewed entry points for topics whose module exports two peer functions and
+ * whose own test exercises both, so neither the test signal nor the slug rules
+ * can choose. Each line is a deliberate judgement about which function IS the
+ * topic; the other is a companion diagnostic.
+ *
+ * Keep this list short. If it starts growing, the naming convention in the
+ * catalog is the thing to fix.
+ */
+/**
+ * Topic groups that legitimately share one implementation AND one entry point,
+ * because they are the same algorithm applied to different inputs. Listed
+ * explicitly so the collision gate stays strict for everything else.
+ */
+const SHARED_ENTRY_EXEMPT = [
+  // Sector and factor diffusion are one diffusion index over different
+  // component sets; the function is identical, only the rows differ.
+  ["D04-F05-A04", "D04-F05-A05"],
+];
+
+const ENTRY_OVERRIDES = {
+  // asOfSnapshot builds the point-in-time view; leakageAudit reports on it.
+  "D01-F04-A05": "asOfSnapshot",
+  // guardSurvivorship is the guard; compareEqualWeightedReturns illustrates the bias.
+  "D02-F04-A02": "guardSurvivorship",
+};
+
+/**
+ * The function a topic's OWN catalog test invokes.
+ *
+ * This is the highest-confidence signal available: the newest families ship one
+ * shared implementation per family (momentum.ts, volatility_channels.ts,
+ * volume.ts) copied into every topic folder, so the file alone cannot say which
+ * of its 6-8 exports belongs to this topic — but the topic's test calls exactly
+ * one of them, and those suites pass.
+ */
+function entryFromTest(topicDir, exportedFunctions) {
+  const testsDir = join(topicDir, "tests");
+  if (!existsSync(testsDir)) return null;
+  const source = readdirSync(testsDir)
+    .filter((name) => name.endsWith(".test.ts"))
+    .map((name) => readFileSync(join(testsDir, name), "utf8"))
+    .join("\n");
+  if (!source) return null;
+
+  // Called as `<moduleAlias>.<fn>(` — covers `indicator.williams_r(`, `vc.atr(`.
+  const invoked = exportedFunctions.filter((fn) => new RegExp(`\\.\\s*${fn}\\s*\\(`).test(source));
+  if (invoked.length === 1) return invoked[0];
+
+  // Fall back to a named import of exactly one exported function.
+  const imported = [...source.matchAll(/import\s*\{([^}]*)\}\s*from\s*"\.\.\/implementations\/typescript\//g)]
+    .flatMap((match) => match[1].split(","))
+    .map((name) => name.trim().replace(/^type\s+/, "").split(/\s+as\s+/)[0].trim())
+    .filter((name) => exportedFunctions.includes(name));
+  const uniqueImported = [...new Set(imported)];
+  if (uniqueImported.length === 1) return uniqueImported[0];
+
+  // Ambiguous: several of the module's exports are exercised. Let the slug rules
+  // decide rather than guessing between them.
+  return null;
+}
+
+/**
+ * Pick the function that represents "run this topic".
+ *
+ * Returns null when nothing resolves — the caller treats that as a hard error.
+ * An earlier version fell back to `functions[0]`, which silently gave every
+ * momentum topic `rsi()` and every volume topic `obv()`.
+ */
+function chooseEntry(functions, topicSlug, topicDir, topicId) {
   if (functions.length === 0) return null;
   if (functions.length === 1) return functions[0];
 
-  const preferred = camel(topicSlug);
-  if (functions.includes(preferred)) return preferred;
+  const override = ENTRY_OVERRIDES[topicId];
+  if (override) {
+    if (!functions.includes(override)) {
+      throw new Error(`ENTRY_OVERRIDES["${topicId}"] = "${override}" but the module does not export it`);
+    }
+    return override;
+  }
+
+  const fromTest = entryFromTest(topicDir, functions);
+  if (fromTest) return fromTest;
+
+  const snake = topicSlug.replace(/-/g, "_");
+  if (functions.includes(snake)) return snake;
+
+  const camelCased = camel(topicSlug);
+  if (functions.includes(camelCased)) return camelCased;
+
+  // Abbreviation from the slug's initials: relative-strength-index -> rsi.
+  const initials = topicSlug.split("-").map((word) => word[0]).join("");
+  if (functions.includes(initials)) return initials;
+
+  // Drop a trailing generic noun: stochastic-oscillator -> stochastic.
+  const parts = topicSlug.split("-");
+  if (parts.length > 1 && GENERIC_SUFFIXES.includes(parts.at(-1))) {
+    const trimmed = parts.slice(0, -1);
+    for (const candidate of [trimmed.join("_"), camel(trimmed.join("-"))]) {
+      if (functions.includes(candidate)) return candidate;
+    }
+  }
+
   if (functions.includes("calculate")) return "calculate";
 
   const byPrefix = functions.find((name) =>
     /^(calculate|construct|classify|validate|detect|resolve|diagnose|evaluate|compute|analyze|analyse|build|align|apply)/.test(name),
   );
-  return byPrefix ?? functions[0];
+  return byPrefix ?? null;
 }
 
 /** Coarse shape label — informational metadata, not load-bearing. */
@@ -228,6 +364,10 @@ const BANNER = (source) =>
 const topics = [];
 const skipped = [];
 const warnings = [];
+/** Topics whose entry point could not be determined — a hard failure. */
+const unresolved = [];
+/** Implementation bodies awaiting the shared-vs-private decision. */
+const pendingImpls = [];
 
 for (const found of discoverTopics()) {
   const metaFile = join(found.dir, "metadata.yaml");
@@ -257,8 +397,15 @@ for (const found of discoverTopics()) {
   );
 
   const { functions, allNames } = analyse(source);
-  const entry = chooseEntry(functions, topicSlug);
-  if (!entry) warnings.push(`${meta.id}: no exported function found in ${basename(implFile)}`);
+  const entry = chooseEntry(functions, topicSlug, found.dir, meta.id);
+  if (!entry) {
+    unresolved.push({
+      id: meta.id,
+      slug: topicSlug,
+      file: basename(implFile),
+      candidates: functions,
+    });
+  }
 
   // `export * from "./impl.ts"` would collide with our own `meta` / `run`.
   for (const reserved of ["meta", "run"]) {
@@ -274,7 +421,16 @@ for (const found of discoverTopics()) {
     meta.article_url ?? `https://thefintechbuilder.com/${domainSlug}/${familySlug}/${topicSlug}/`;
   const repoUrl = meta.repo && typeof meta.repo === "object" ? (meta.repo.url ?? null) : null;
 
-  emit(`src/${modulePath}/impl.ts`, BANNER(`algorithms/domains/${found.domainDir}/${found.familyDir}/${found.topicDir}/implementations/typescript/${basename(implFile)}`) + "\n" + source);
+  // Deferred: several topics in a family can share one implementation body, and
+  // it is emitted once under src/_shared/ rather than copied per topic. Decided
+  // after the loop, when every topic's body is known.
+  pendingImpls.push({
+    modulePath,
+    source,
+    sourceKey: hashBody(source),
+    fileBase: basename(implFile, ".ts"),
+    catalogPath: `algorithms/domains/${found.domainDir}/${found.familyDir}/${found.topicDir}/implementations/typescript/${basename(implFile)}`,
+  });
 
   const indexLines = [
     `/**`,
@@ -310,23 +466,77 @@ for (const found of discoverTopics()) {
 
   emit(`src/${modulePath}/index.ts`, indexLines.join("\n"));
 
-  // Conformance fixture
-  const examplePath = join(found.dir, "examples", "worked-example.json");
-  let fixture = null;
-  if (existsSync(examplePath)) {
-    const raw = readFileSync(examplePath, "utf8");
+  // --- Conformance fixture -------------------------------------------------
+  //
+  // The catalog carries verified numbers in three shapes. Each is copied
+  // verbatim and labelled so test/conformance.test.ts can pick a runner:
+  //
+  //   A  examples/worked-example.json   { input, expected }
+  //   B  datasets/canonical-fixture.json { rows, expected: { status, value } }
+  //   C  datasets/<slug>-fixtures.json   { bars, checkpoints: [{ index, ...}] }
+  const readJson = (path) => {
+    if (!existsSync(path)) return null;
+    const raw = readFileSync(path, "utf8");
     try {
-      const parsed = JSON.parse(raw);
-      fixture = {
-        file: `${meta.id}.json`,
-        hasInputExpected: Object.hasOwn(parsed, "input") && Object.hasOwn(parsed, "expected"),
-        keys: Object.keys(parsed),
-      };
-      emit(`test/fixtures/${meta.id}.json`, raw);
+      return { raw, parsed: JSON.parse(raw) };
     } catch {
-      warnings.push(`${meta.id}: worked-example.json is not valid JSON — fixture skipped`);
+      warnings.push(`${meta.id}: ${basename(path)} is not valid JSON — fixture skipped`);
+      return null;
+    }
+  };
+
+  let fixture = null;
+  const worked = readJson(join(found.dir, "examples", "worked-example.json"));
+
+  if (worked && Object.hasOwn(worked.parsed, "input") && Object.hasOwn(worked.parsed, "expected")) {
+    fixture = { file: `${meta.id}.json`, convention: "A", keys: Object.keys(worked.parsed) };
+    emit(`test/fixtures/${meta.id}.json`, worked.raw);
+  } else {
+    const datasetDir = join(found.dir, "datasets");
+    const candidates = existsSync(datasetDir)
+      ? readdirSync(datasetDir).filter((name) => name.endsWith(".json"))
+      : [];
+    // Prefer the topic-specific <slug>-fixtures.json over anything else.
+    const ordered = [
+      ...candidates.filter((name) => name === `${topicSlug}-fixtures.json`),
+      ...candidates.filter((name) => name === "canonical-fixture.json"),
+      ...candidates.filter((name) => name.endsWith("-fixtures.json")),
+    ];
+    for (const name of ordered) {
+      const data = readJson(join(datasetDir, name));
+      if (!data) continue;
+      const { parsed } = data;
+      // C comes in two layouts: a flat { bars, checkpoints }, or scenarios[]
+      // each carrying { parameters, observations, checkpoints }. Both are copied
+      // verbatim; test/conformance.test.ts normalises them into one case list.
+      const flatC = Array.isArray(parsed.bars) && Array.isArray(parsed.checkpoints);
+      const scenarioC =
+        Array.isArray(parsed.scenarios) &&
+        parsed.scenarios.some(
+          (scenario) =>
+            Array.isArray(scenario?.observations ?? scenario?.bars) && Array.isArray(scenario?.checkpoints),
+        );
+      if (flatC || scenarioC) {
+        fixture = { file: `${meta.id}.json`, convention: "C", keys: Object.keys(parsed) };
+        emit(`test/fixtures/${meta.id}.json`, data.raw);
+        break;
+      }
+      if (Array.isArray(parsed.rows) && parsed.expected && typeof parsed.expected === "object") {
+        fixture = { file: `${meta.id}.json`, convention: "B", keys: Object.keys(parsed) };
+        emit(`test/fixtures/${meta.id}.json`, data.raw);
+        break;
+      }
+    }
+    // Nothing runnable, but keep the worked example around for reference.
+    if (!fixture && worked) {
+      fixture = { file: `${meta.id}.json`, convention: "none", keys: Object.keys(worked.parsed) };
+      emit(`test/fixtures/${meta.id}.json`, worked.raw);
     }
   }
+
+  // Parameter names of the entry function, so a Convention C run can bind
+  // bars.close / bars.high / … to the right positional arguments.
+  const entryParams = entry ? signatureParams(source, entry) : [];
 
   topics.push({
     id: meta.id,
@@ -345,10 +555,119 @@ for (const found of discoverTopics()) {
     articleUrl,
     repoUrl,
     fixture,
+    entryParams,
+    // Internal only (stripped before the registry is emitted): hash of the
+    // implementation BODY, so the collision gate can tell a genuinely shared
+    // implementation apart from a shared naming convention. Keyed on the body
+    // rather than the filename, because identical bodies also appear under
+    // different names (sector- and factor-diffusion-index).
+    sourceKey: hashBody(source),
   });
 }
 
 topics.sort((a, b) => a.id.localeCompare(b.id));
+
+// ---------------------------------------------------------------------------
+// Entry-point integrity gates
+//
+// These exist because the generator once silently defaulted to functions[0],
+// which gave 13 topics the wrong `run()` alias — every momentum topic pointed at
+// rsi(), every volume topic at obv(). Guessing is now a build failure.
+// ---------------------------------------------------------------------------
+
+if (unresolved.length > 0) {
+  console.error(`\n  FAILED: could not determine the entry point for ${unresolved.length} topic(s).\n`);
+  for (const item of unresolved) {
+    console.error(`    ${item.id}  ${item.slug}  (${item.file})`);
+    console.error(`      candidates: ${item.candidates.join(", ")}`);
+  }
+  console.error(
+    `\n  Fix by making the topic's own test invoke its function, renaming the\n` +
+      `  export to match the slug, or extending chooseEntry() in this script.\n`,
+  );
+  process.exit(1);
+}
+
+// Two topics resolving to the same entry is only a bug when they also come from
+// the SAME implementation file. Different files that each export `calculate` are
+// the catalog's normal convention and collide only in name, never in behaviour.
+const collisions = new Map();
+for (const topic of topics) {
+  const key = `${topic.sourceKey}::${topic.entry}`;
+  collisions.set(key, [...(collisions.get(key) ?? []), topic.id]);
+}
+const isExempt = (ids) =>
+  SHARED_ENTRY_EXEMPT.some(
+    (group) => group.length === ids.length && group.every((id) => ids.includes(id)),
+  );
+const collided = [...collisions.entries()].filter(([, ids]) => ids.length > 1 && !isExempt(ids));
+if (collided.length > 0) {
+  console.error(
+    `\n  FAILED: ${collided.length} shared-implementation collision(s) — topics that share one\n` +
+      `  source file AND resolved to the same entry point, so at least one is wrong:\n`,
+  );
+  for (const [key, ids] of collided) {
+    const [source, entry] = key.split("::");
+    console.error(`    ${source.split(":")[0]}  ${entry}()  claimed by ${ids.join(", ")}`);
+  }
+  console.error(`\n  Each topic must expose its own function. See chooseEntry() in this script.\n`);
+  process.exit(1);
+}
+
+// `sourceKey` is a build-time diagnostic, not public metadata.
+for (const topic of topics) delete topic.sourceKey;
+
+// ---------------------------------------------------------------------------
+// Emit implementations, hoisting shared bodies
+//
+// Some catalog families ship ONE implementation file covering the whole family
+// (momentum.ts exports all eight momentum indicators) and copy it into every
+// topic folder. Copying that into the package once per topic would ship the same
+// body 8 times. Instead it lands once in src/_shared/ and each topic's impl.ts
+// re-exports it, so `export * from "./impl.ts"` in the topic index is unchanged
+// and the public API is byte-identical.
+// ---------------------------------------------------------------------------
+
+const byBody = new Map();
+for (const item of pendingImpls) {
+  byBody.set(item.sourceKey, [...(byBody.get(item.sourceKey) ?? []), item]);
+}
+
+const sharedNames = new Map(); // sourceKey -> file name under src/_shared/
+const takenNames = new Set(["indexEngine"]);
+let hoisted = 0;
+let copiesSaved = 0;
+
+for (const [sourceKey, group] of byBody) {
+  if (group.length < 2) continue;
+  let name = group[0].fileBase;
+  while (takenNames.has(name)) name = `${name}_${sourceKey.slice(0, 4)}`;
+  takenNames.add(name);
+  sharedNames.set(sourceKey, name);
+  hoisted++;
+  copiesSaved += group.length - 1;
+
+  emit(
+    `src/_shared/${name}.ts`,
+    BANNER(`${group[0].catalogPath} (shared by ${group.length} topics)`) + "\n" + group[0].source,
+  );
+}
+
+for (const item of pendingImpls) {
+  const shared = sharedNames.get(item.sourceKey);
+  if (shared) {
+    emit(
+      `src/${item.modulePath}/impl.ts`,
+      BANNER(item.catalogPath) +
+        `//\n// This family shares one implementation across its topics; the body lives at\n` +
+        `// src/_shared/${shared}.ts and is re-exported here so the public surface of\n` +
+        `// this subpath is unchanged.\n\n` +
+        `export * from "../../../_shared/${shared}.ts";\n`,
+    );
+  } else {
+    emit(`src/${item.modulePath}/impl.ts`, BANNER(item.catalogPath) + "\n" + item.source);
+  }
+}
 
 // --- vendored shared engine -------------------------------------------------
 
@@ -409,7 +728,7 @@ const registry = [
     ` entry: ${JSON.stringify(t.entry)}, exports: ${JSON.stringify(t.exports)},` +
     ` path: ${JSON.stringify(t.path)}, articleUrl: ${JSON.stringify(t.articleUrl)},` +
     ` repoUrl: ${t.repoUrl ? JSON.stringify(t.repoUrl) : "null"},` +
-    ` hasFixture: ${Boolean(t.fixture?.hasInputExpected)} },`,
+    ` hasFixture: ${Boolean(t.fixture && t.fixture.convention !== "none")} },`,
   ),
   `];`,
   ``,
@@ -530,7 +849,8 @@ emit(
         entry: t.entry,
         archetype: t.archetype,
         fixture: t.fixture?.file ?? null,
-        hasInputExpected: Boolean(t.fixture?.hasInputExpected),
+        convention: t.fixture?.convention ?? "none",
+        entryParams: t.entryParams ?? [],
         fixtureKeys: t.fixture?.keys ?? [],
       })),
     },
@@ -566,7 +886,9 @@ for (const dir of ["src", "test/fixtures"]) {
   const abs = join(REPO, dir);
   if (!existsSync(abs)) continue;
   for (const name of readdirSync(abs)) {
-    if (dir === "src" && name === "_shared") continue; // re-emitted below anyway
+    // src/_shared is fully regenerated too (the vendored engine plus any hoisted
+    // family bodies), so it is cleared like everything else — otherwise a family
+    // that stops being shared would leave a stale file behind.
     rmSync(join(abs, name), { recursive: true, force: true });
   }
 }
@@ -583,13 +905,18 @@ for (const [rel, contents] of outputs) {
 
 const byArchetype = topics.reduce((acc, t) => ((acc[t.archetype] = (acc[t.archetype] ?? 0) + 1), acc), {});
 const domains = [...new Set(topics.map((t) => t.domain))];
-const withFixture = topics.filter((t) => t.fixture?.hasInputExpected).length;
+const byConvention = topics.reduce((acc, t) => {
+  const key = t.fixture?.convention ?? "none";
+  acc[key] = (acc[key] ?? 0) + 1;
+  return acc;
+}, {});
+const withFixture = topics.filter((t) => t.fixture && t.fixture.convention !== "none").length;
 
 console.log(`\n  fintech-algorithms — sync complete\n`);
 console.log(`  content root : ${CONTENT_ROOT}`);
 console.log(`  topics       : ${topics.length} across ${domains.length} domains`);
 console.log(`  files written: ${outputs.size}`);
-console.log(`  fixtures     : ${withFixture} with {input, expected}, ${topics.length - withFixture} other/none`);
+console.log(`  fixtures     : ${withFixture}/${topics.length} runnable  (A ${byConvention.A ?? 0} · B ${byConvention.B ?? 0} · C ${byConvention.C ?? 0} · none ${byConvention.none ?? 0})`);
 console.log(`\n  by shape:`);
 for (const [shape, count] of Object.entries(byArchetype).sort((a, b) => b[1] - a[1])) {
   console.log(`    ${shape.padEnd(20)} ${count}`);

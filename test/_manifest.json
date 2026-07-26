@@ -8,7 +8,11 @@
       "entry": "constructBars",
       "archetype": "tape-aggregate",
       "fixture": "D01-F01-A01.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "trades",
+        "config"
+      ],
       "fixtureKeys": [
         "topicId",
         "dataStatus",
@@ -24,7 +28,11 @@
       "entry": "constructBars",
       "archetype": "tape-aggregate",
       "fixture": "D01-F01-A02.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "trades",
+        "config"
+      ],
       "fixtureKeys": [
         "topicId",
         "canonicalRule",
@@ -40,7 +48,11 @@
       "entry": "constructBars",
       "archetype": "tape-aggregate",
       "fixture": "D01-F01-A03.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "trades",
+        "config"
+      ],
       "fixtureKeys": [
         "topicId",
         "description",
@@ -56,7 +68,11 @@
       "entry": "constructBars",
       "archetype": "tape-aggregate",
       "fixture": "D01-F01-A04.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "trades",
+        "config"
+      ],
       "fixtureKeys": [
         "topicId",
         "sourceType",
@@ -75,7 +91,11 @@
       "entry": "constructBars",
       "archetype": "tape-aggregate",
       "fixture": "D01-F01-A05.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "trades",
+        "config"
+      ],
       "fixtureKeys": [
         "topicId",
         "evidenceClass",
@@ -93,7 +113,11 @@
       "entry": "constructBars",
       "archetype": "tape-aggregate",
       "fixture": "D01-F01-A06.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "trades",
+        "config"
+      ],
       "fixtureKeys": [
         "topicId",
         "evidenceClass",
@@ -109,7 +133,11 @@
       "entry": "constructBars",
       "archetype": "tape-aggregate",
       "fixture": "D01-F01-A07.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "trades",
+        "config"
+      ],
       "fixtureKeys": [
         "topicId",
         "dataLicense",
@@ -125,7 +153,11 @@
       "entry": "validateBars",
       "archetype": "row-classify",
       "fixture": null,
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "bars",
+        "config"
+      ],
       "fixtureKeys": []
     },
     {
@@ -134,7 +166,11 @@
       "entry": "hampelFilter",
       "archetype": "record-transform",
       "fixture": null,
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "values",
+        "options"
+      ],
       "fixtureKeys": []
     },
     {
@@ -143,7 +179,13 @@
       "entry": "madOutliers",
       "archetype": "record-transform",
       "fixture": null,
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "values",
+        "threshold",
+        "scale",
+        "minimumSamples"
+      ],
       "fixtureKeys": []
     },
     {
@@ -152,7 +194,11 @@
       "entry": "detectStaleQuotes",
       "archetype": "row-classify",
       "fixture": null,
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "events",
+        "config"
+      ],
       "fixtureKeys": []
     },
     {
@@ -161,7 +207,10 @@
       "entry": "resolveTrades",
       "archetype": "row-classify",
       "fixture": null,
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "input"
+      ],
       "fixtureKeys": []
     },
     {
@@ -170,7 +219,11 @@
       "entry": "classifyMarkets",
       "archetype": "row-classify",
       "fixture": null,
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "quotes",
+        "options"
+      ],
       "fixtureKeys": []
     },
     {
@@ -179,7 +232,12 @@
       "entry": "previousTick",
       "archetype": "record-transform",
       "fixture": null,
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "observations",
+        "requests",
+        "maxStalenessMs"
+      ],
       "fixtureKeys": []
     },
     {
@@ -188,7 +246,12 @@
       "entry": "linearQuoteInterpolation",
       "archetype": "record-transform",
       "fixture": null,
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "quotes",
+        "targets",
+        "maxGapMs"
+      ],
       "fixtureKeys": []
     },
     {
@@ -197,7 +260,12 @@
       "entry": "refreshTimeSample",
       "archetype": "record-transform",
       "fixture": null,
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "observations",
+        "requiredInstruments",
+        "maxStalenessMs"
+      ],
       "fixtureKeys": []
     },
     {
@@ -206,7 +274,10 @@
       "entry": "validateCalendar",
       "archetype": "row-classify",
       "fixture": null,
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "bundle"
+      ],
       "fixtureKeys": []
     },
     {
@@ -215,7 +286,11 @@
       "entry": "classifyIntervalPair",
       "archetype": "row-classify",
       "fixture": null,
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "left",
+        "right"
+      ],
       "fixtureKeys": []
     },
     {
@@ -224,7 +299,10 @@
       "entry": "diagnoseGap",
       "archetype": "row-classify",
       "fixture": null,
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "row"
+      ],
       "fixtureKeys": []
     },
     {
@@ -233,7 +311,10 @@
       "entry": "validateClockProfile",
       "archetype": "row-classify",
       "fixture": null,
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "profile"
+      ],
       "fixtureKeys": []
     },
     {
@@ -242,7 +323,11 @@
       "entry": "consensus",
       "archetype": "snapshot-evaluate",
       "fixture": null,
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "snapshot",
+        "policy"
+      ],
       "fixtureKeys": []
     },
     {
@@ -251,7 +336,12 @@
       "entry": "detectSchemaDrift",
       "archetype": "row-classify",
       "fixture": null,
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "baseline",
+        "candidate",
+        "policy"
+      ],
       "fixtureKeys": []
     },
     {
@@ -260,7 +350,11 @@
       "entry": "asOfSnapshot",
       "archetype": "snapshot-evaluate",
       "fixture": null,
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "records",
+        "knowledgeTime"
+      ],
       "fixtureKeys": []
     },
     {
@@ -269,7 +363,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D02-F01-A01.json",
-      "hasInputExpected": true,
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
       "fixtureKeys": [
         "topicId",
         "input",
@@ -282,7 +379,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D02-F01-A02.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "note",
         "ratioConvention",
@@ -299,7 +399,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D02-F01-A03.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "topicId",
         "source",
@@ -313,7 +416,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D02-F01-A04.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "input"
+      ],
       "fixtureKeys": [
         "topicId",
         "evidenceClass",
@@ -331,7 +437,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D02-F01-A05.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "notice",
         "crspField",
@@ -345,7 +454,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D02-F02-A01.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "input"
+      ],
       "fixtureKeys": [
         "event",
         "sourcedFacts",
@@ -359,7 +471,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D02-F02-A02.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "input"
+      ],
       "fixtureKeys": [
         "description",
         "parentCumPriceUSD",
@@ -379,7 +494,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D02-F02-A03.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "classification",
         "ratesNewSharesPerOld",
@@ -398,7 +516,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D02-F02-A04.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "rawData"
+      ],
       "fixtureKeys": [
         "notice",
         "selectedRevision",
@@ -412,7 +533,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D02-F02-A05.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "payload"
+      ],
       "fixtureKeys": [
         "label",
         "marketData",
@@ -426,7 +550,10 @@
       "entry": "resolveIdentifier",
       "archetype": "row-classify",
       "fixture": "D02-F03-A01.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "notice",
         "query",
@@ -443,7 +570,10 @@
       "entry": "resolveTickerChain",
       "archetype": "row-classify",
       "fixture": "D02-F03-A02.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "input"
+      ],
       "fixtureKeys": [
         "topicId",
         "synthetic",
@@ -458,7 +588,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D02-F03-A03.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "notice",
         "query",
@@ -471,7 +604,10 @@
       "entry": "resolveMerger",
       "archetype": "row-classify",
       "fixture": "D02-F03-A04.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "payload"
+      ],
       "fixtureKeys": [
         "label",
         "license",
@@ -487,7 +623,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D02-F03-A05.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "input"
+      ],
       "fixtureKeys": [
         "topicId",
         "case",
@@ -502,7 +641,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D02-F04-A01.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "description",
         "fixture",
@@ -516,7 +658,10 @@
       "entry": "guardSurvivorship",
       "archetype": "row-classify",
       "fixture": "D02-F04-A02.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "input"
+      ],
       "fixtureKeys": [
         "note",
         "effectiveAt",
@@ -538,7 +683,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D02-F04-A03.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "topicId",
         "description",
@@ -553,7 +701,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D02-F04-A04.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "topicId",
         "source",
@@ -569,7 +720,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D03-F01-A01.json",
-      "hasInputExpected": true,
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "topicId",
         "input",
@@ -582,7 +736,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D03-F01-A02.json",
-      "hasInputExpected": true,
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "topicId",
         "input",
@@ -595,7 +752,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D03-F01-A03.json",
-      "hasInputExpected": true,
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "topicId",
         "input",
@@ -608,7 +768,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D03-F01-A04.json",
-      "hasInputExpected": true,
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "topicId",
         "input",
@@ -621,7 +784,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D03-F01-A05.json",
-      "hasInputExpected": true,
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "topicId",
         "input",
@@ -634,7 +800,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D03-F02-A01.json",
-      "hasInputExpected": true,
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "topicId",
         "input",
@@ -647,7 +816,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D03-F02-A02.json",
-      "hasInputExpected": true,
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "topicId",
         "input",
@@ -660,7 +832,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D03-F02-A03.json",
-      "hasInputExpected": true,
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "topicId",
         "input",
@@ -673,7 +848,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D03-F02-A04.json",
-      "hasInputExpected": true,
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "topicId",
         "input",
@@ -686,7 +864,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D03-F02-A05.json",
-      "hasInputExpected": true,
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "topicId",
         "input",
@@ -699,7 +880,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D03-F02-A06.json",
-      "hasInputExpected": true,
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "topicId",
         "input",
@@ -712,7 +896,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D03-F02-A07.json",
-      "hasInputExpected": true,
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "topicId",
         "input",
@@ -725,7 +912,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D03-F02-A08.json",
-      "hasInputExpected": true,
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "topicId",
         "input",
@@ -738,7 +928,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D03-F03-A01.json",
-      "hasInputExpected": true,
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "topicId",
         "input",
@@ -751,7 +944,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D03-F03-A02.json",
-      "hasInputExpected": true,
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "topicId",
         "input",
@@ -764,7 +960,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D03-F03-A03.json",
-      "hasInputExpected": true,
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "topicId",
         "input",
@@ -777,7 +976,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D03-F03-A04.json",
-      "hasInputExpected": true,
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "topicId",
         "input",
@@ -790,7 +992,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D03-F03-A05.json",
-      "hasInputExpected": true,
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "topicId",
         "input",
@@ -803,7 +1008,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D03-F03-A06.json",
-      "hasInputExpected": true,
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "topicId",
         "input",
@@ -816,7 +1024,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D03-F04-A01.json",
-      "hasInputExpected": true,
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "topicId",
         "input",
@@ -829,7 +1040,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D03-F04-A02.json",
-      "hasInputExpected": true,
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "topicId",
         "input",
@@ -842,7 +1056,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D03-F04-A03.json",
-      "hasInputExpected": true,
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "topicId",
         "input",
@@ -855,7 +1072,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D03-F04-A04.json",
-      "hasInputExpected": true,
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "topicId",
         "input",
@@ -868,7 +1088,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D03-F04-A05.json",
-      "hasInputExpected": true,
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "topicId",
         "input",
@@ -881,7 +1104,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D03-F04-A06.json",
-      "hasInputExpected": true,
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "topicId",
         "input",
@@ -894,7 +1120,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D03-F04-A07.json",
-      "hasInputExpected": true,
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "topicId",
         "input",
@@ -907,7 +1136,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D03-F05-A01.json",
-      "hasInputExpected": true,
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "topicId",
         "input",
@@ -920,7 +1152,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D03-F05-A02.json",
-      "hasInputExpected": true,
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "topicId",
         "input",
@@ -933,7 +1168,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D03-F05-A03.json",
-      "hasInputExpected": true,
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "topicId",
         "input",
@@ -946,7 +1184,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D03-F05-A04.json",
-      "hasInputExpected": true,
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "topicId",
         "input",
@@ -959,7 +1200,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D03-F05-A05.json",
-      "hasInputExpected": true,
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "topicId",
         "input",
@@ -972,7 +1216,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D03-F05-A06.json",
-      "hasInputExpected": true,
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "topicId",
         "input",
@@ -985,7 +1232,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D03-F06-A01.json",
-      "hasInputExpected": true,
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "topicId",
         "input",
@@ -998,7 +1248,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D03-F06-A02.json",
-      "hasInputExpected": true,
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "topicId",
         "input",
@@ -1011,7 +1264,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D03-F06-A03.json",
-      "hasInputExpected": true,
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "topicId",
         "input",
@@ -1024,7 +1280,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D03-F06-A04.json",
-      "hasInputExpected": true,
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "topicId",
         "input",
@@ -1037,7 +1296,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D03-F06-A05.json",
-      "hasInputExpected": true,
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "topicId",
         "input",
@@ -1050,7 +1312,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D03-F06-A06.json",
-      "hasInputExpected": true,
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "topicId",
         "input",
@@ -1063,7 +1328,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D03-F06-A07.json",
-      "hasInputExpected": true,
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "topicId",
         "input",
@@ -1076,7 +1344,10 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D03-F06-A08.json",
-      "hasInputExpected": true,
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
       "fixtureKeys": [
         "topicId",
         "input",
@@ -1089,7 +1360,10 @@
       "entry": "calculateNetAdvances",
       "archetype": "record-transform",
       "fixture": "D04-F01-A01.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "request"
+      ],
       "fixtureKeys": [
         "topic_id",
         "fixture",
@@ -1104,7 +1378,10 @@
       "entry": "calculateAdvanceDeclineRatio",
       "archetype": "record-transform",
       "fixture": "D04-F01-A02.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "snapshot"
+      ],
       "fixtureKeys": [
         "topic_id",
         "synthetic",
@@ -1118,7 +1395,12 @@
       "entry": "calculateCumulativeAdvanceDeclineLine",
       "archetype": "record-transform",
       "fixture": "D04-F01-A03.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "contract",
+        "events",
+        "knowledgeCutoff"
+      ],
       "fixtureKeys": [
         "data_class",
         "seed",
@@ -1133,7 +1415,11 @@
       "entry": "calculateNormalizedAdLine",
       "archetype": "record-transform",
       "fixture": "D04-F01-A04.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "records",
+        "options"
+      ],
       "fixtureKeys": [
         "classification",
         "initial_value",
@@ -1149,7 +1435,10 @@
       "entry": "evaluateAbsoluteBreadthIndex",
       "archetype": "snapshot-evaluate",
       "fixture": "D04-F01-A05.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "request"
+      ],
       "fixtureKeys": [
         "topic_id",
         "label",
@@ -1163,7 +1452,10 @@
       "entry": "calculateMcClellanValues",
       "archetype": "record-transform",
       "fixture": "D04-F02-A01.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "netAdvances"
+      ],
       "fixtureKeys": [
         "topic_id",
         "metric",
@@ -1179,7 +1471,11 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D04-F02-A02.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "records",
+        "cutoff"
+      ],
       "fixtureKeys": [
         "topic_id",
         "classification",
@@ -1194,7 +1490,11 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D04-F02-A03.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "records",
+        "cutoff"
+      ],
       "fixtureKeys": [
         "topic_id",
         "classification",
@@ -1209,7 +1509,11 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D04-F02-A04.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "records",
+        "cutoff"
+      ],
       "fixtureKeys": [
         "topic_id",
         "classification",
@@ -1224,7 +1528,11 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D04-F02-A05.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "records",
+        "cutoff"
+      ],
       "fixtureKeys": [
         "topic_id",
         "classification",
@@ -1239,7 +1547,11 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D04-F02-A06.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "records",
+        "cutoff"
+      ],
       "fixtureKeys": [
         "topic_id",
         "classification",
@@ -1254,7 +1566,11 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D04-F03-A01.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "records",
+        "decisionTime"
+      ],
       "fixtureKeys": [
         "topic_id",
         "source_class",
@@ -1269,7 +1585,11 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D04-F03-A02.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "records",
+        "decisionTime"
+      ],
       "fixtureKeys": [
         "topic_id",
         "source_class",
@@ -1284,7 +1604,11 @@
       "entry": "calculate",
       "archetype": "record-transform",
       "fixture": "D04-F03-A03.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "records",
+        "decisionTime"
+      ],
       "fixtureKeys": [
         "topic_id",
         "source_class",
@@ -1299,7 +1623,11 @@
       "entry": "evaluateSnapshot",
       "archetype": "snapshot-evaluate",
       "fixture": "D04-F03-A04.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "snapshot",
+        "decisionTime"
+      ],
       "fixtureKeys": [
         "topic_id",
         "source_class",
@@ -1314,7 +1642,11 @@
       "entry": "evaluateSnapshot",
       "archetype": "snapshot-evaluate",
       "fixture": "D04-F03-A05.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "snapshot",
+        "decisionTime"
+      ],
       "fixtureKeys": [
         "topic_id",
         "source_class",
@@ -1329,7 +1661,11 @@
       "entry": "evaluateSnapshot",
       "archetype": "snapshot-evaluate",
       "fixture": "D04-F03-A06.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "snapshot",
+        "decisionTime"
+      ],
       "fixtureKeys": [
         "topic_id",
         "source_class",
@@ -1343,99 +1679,205 @@
       "path": "market-breadth-and-internals/thrust-and-pressure/zweig-breadth-thrust",
       "entry": "calculate",
       "archetype": "record-transform",
-      "fixture": null,
-      "hasInputExpected": false,
-      "fixtureKeys": []
+      "fixture": "D04-F04-A01.json",
+      "convention": "B",
+      "entryParams": [
+        "rows",
+        "emaLength",
+        "lowThreshold",
+        "highThreshold",
+        "maxSessions"
+      ],
+      "fixtureKeys": [
+        "label",
+        "parameters",
+        "rows",
+        "expected"
+      ]
     },
     {
       "id": "D04-F04-A02",
       "path": "market-breadth-and-internals/thrust-and-pressure/arms-index-trin",
       "entry": "calculate",
       "archetype": "record-transform",
-      "fixture": null,
-      "hasInputExpected": false,
-      "fixtureKeys": []
+      "fixture": "D04-F04-A02.json",
+      "convention": "B",
+      "entryParams": [
+        "row"
+      ],
+      "fixtureKeys": [
+        "label",
+        "rows",
+        "expected"
+      ]
     },
     {
       "id": "D04-F04-A03",
       "path": "market-breadth-and-internals/thrust-and-pressure/advance-decline-volume-line",
       "entry": "calculate",
       "archetype": "record-transform",
-      "fixture": null,
-      "hasInputExpected": false,
-      "fixtureKeys": []
+      "fixture": "D04-F04-A03.json",
+      "convention": "B",
+      "entryParams": [
+        "rows",
+        "seed"
+      ],
+      "fixtureKeys": [
+        "label",
+        "parameters",
+        "rows",
+        "expected"
+      ]
     },
     {
       "id": "D04-F04-A04",
       "path": "market-breadth-and-internals/thrust-and-pressure/upside-downside-volume-ratio",
       "entry": "calculate",
       "archetype": "record-transform",
-      "fixture": null,
-      "hasInputExpected": false,
-      "fixtureKeys": []
+      "fixture": "D04-F04-A04.json",
+      "convention": "B",
+      "entryParams": [
+        "row"
+      ],
+      "fixtureKeys": [
+        "label",
+        "rows",
+        "expected"
+      ]
     },
     {
       "id": "D04-F04-A05",
       "path": "market-breadth-and-internals/thrust-and-pressure/cumulative-tick",
       "entry": "calculate",
       "archetype": "record-transform",
-      "fixture": null,
-      "hasInputExpected": false,
-      "fixtureKeys": []
+      "fixture": "D04-F04-A05.json",
+      "convention": "B",
+      "entryParams": [
+        "rows",
+        "seed",
+        "intervalSeconds"
+      ],
+      "fixtureKeys": [
+        "label",
+        "parameters",
+        "rows",
+        "expected"
+      ]
     },
     {
       "id": "D04-F04-A06",
       "path": "market-breadth-and-internals/thrust-and-pressure/breadth-divergence-detector",
       "entry": "calculate",
       "archetype": "record-transform",
-      "fixture": null,
-      "hasInputExpected": false,
-      "fixtureKeys": []
+      "fixture": "D04-F04-A06.json",
+      "convention": "B",
+      "entryParams": [
+        "rows",
+        "left",
+        "right",
+        "minPriceChange",
+        "minBreadthSeparation",
+        "breadthScale"
+      ],
+      "fixtureKeys": [
+        "label",
+        "parameters",
+        "rows",
+        "expected"
+      ]
     },
     {
       "id": "D04-F05-A01",
       "path": "market-breadth-and-internals/concentration-and-diffusion/top-n-index-contribution",
       "entry": "calculate",
       "archetype": "record-transform",
-      "fixture": null,
-      "hasInputExpected": false,
-      "fixtureKeys": []
+      "fixture": "D04-F05-A01.json",
+      "convention": "B",
+      "entryParams": [
+        "rows",
+        "topN"
+      ],
+      "fixtureKeys": [
+        "label",
+        "as_of",
+        "parameters",
+        "rows",
+        "expected"
+      ]
     },
     {
       "id": "D04-F05-A02",
       "path": "market-breadth-and-internals/concentration-and-diffusion/herfindahl-constituent-concentration",
       "entry": "calculate",
       "archetype": "record-transform",
-      "fixture": null,
-      "hasInputExpected": false,
-      "fixtureKeys": []
+      "fixture": "D04-F05-A02.json",
+      "convention": "B",
+      "entryParams": [
+        "rows"
+      ],
+      "fixtureKeys": [
+        "label",
+        "as_of",
+        "parameters",
+        "rows",
+        "expected"
+      ]
     },
     {
       "id": "D04-F05-A03",
       "path": "market-breadth-and-internals/concentration-and-diffusion/effective-number-of-constituents",
       "entry": "calculate",
       "archetype": "record-transform",
-      "fixture": null,
-      "hasInputExpected": false,
-      "fixtureKeys": []
+      "fixture": "D04-F05-A03.json",
+      "convention": "B",
+      "entryParams": [
+        "rows"
+      ],
+      "fixtureKeys": [
+        "label",
+        "as_of",
+        "parameters",
+        "rows",
+        "expected"
+      ]
     },
     {
       "id": "D04-F05-A04",
       "path": "market-breadth-and-internals/concentration-and-diffusion/sector-diffusion-index",
       "entry": "calculate",
       "archetype": "record-transform",
-      "fixture": null,
-      "hasInputExpected": false,
-      "fixtureKeys": []
+      "fixture": "D04-F05-A04.json",
+      "convention": "B",
+      "entryParams": [
+        "rows",
+        "tolerance"
+      ],
+      "fixtureKeys": [
+        "label",
+        "as_of",
+        "parameters",
+        "rows",
+        "expected"
+      ]
     },
     {
       "id": "D04-F05-A05",
       "path": "market-breadth-and-internals/concentration-and-diffusion/factor-diffusion-index",
       "entry": "calculate",
       "archetype": "record-transform",
-      "fixture": null,
-      "hasInputExpected": false,
-      "fixtureKeys": []
+      "fixture": "D04-F05-A05.json",
+      "convention": "B",
+      "entryParams": [
+        "rows",
+        "tolerance"
+      ],
+      "fixtureKeys": [
+        "label",
+        "as_of",
+        "parameters",
+        "rows",
+        "expected"
+      ]
     },
     {
       "id": "D06-F01-A01",
@@ -1443,7 +1885,11 @@
       "entry": "analyzeCandle",
       "archetype": "record-transform",
       "fixture": "D06-F01-A01.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "candle",
+        "directionEpsilon"
+      ],
       "fixtureKeys": [
         "topic_id",
         "input",
@@ -1458,7 +1904,12 @@
       "entry": "classifyBody",
       "archetype": "row-classify",
       "fixture": "D06-F01-A02.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "observation",
+        "priorClosedBodies",
+        "configInput"
+      ],
       "fixtureKeys": [
         "topic_id",
         "input",
@@ -1472,7 +1923,11 @@
       "entry": "calculateSma",
       "archetype": "series-transform",
       "fixture": "D07-F01-A01.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "values",
+        "window"
+      ],
       "fixtureKeys": [
         "topic_id",
         "title",
@@ -1488,7 +1943,11 @@
       "entry": "calculateEma",
       "archetype": "series-transform",
       "fixture": "D07-F01-A02.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "values",
+        "span"
+      ],
       "fixtureKeys": [
         "topic_id",
         "metric",
@@ -1503,7 +1962,11 @@
       "entry": "calculateWma",
       "archetype": "series-transform",
       "fixture": "D07-F01-A03.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "values",
+        "window"
+      ],
       "fixtureKeys": [
         "topic_id",
         "title",
@@ -1521,7 +1984,11 @@
       "entry": "calculateRma",
       "archetype": "series-transform",
       "fixture": "D07-F01-A04.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "values",
+        "period"
+      ],
       "fixtureKeys": [
         "topic_id",
         "series_id",
@@ -1540,7 +2007,11 @@
       "entry": "calculateDemaComponents",
       "archetype": "series-transform",
       "fixture": "D07-F01-A05.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "values",
+        "span"
+      ],
       "fixtureKeys": [
         "topic_id",
         "convention",
@@ -1553,7 +2024,11 @@
       "entry": "calculateTemaComponents",
       "archetype": "series-transform",
       "fixture": "D07-F01-A06.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "values",
+        "span"
+      ],
       "fixtureKeys": [
         "topic_id",
         "series_id",
@@ -1574,7 +2049,11 @@
       "entry": "calculateHullMa",
       "archetype": "series-transform",
       "fixture": "D07-F01-A07.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "values",
+        "window"
+      ],
       "fixtureKeys": [
         "topic_id",
         "window",
@@ -1592,7 +2071,13 @@
       "entry": "calculateKama",
       "archetype": "series-transform",
       "fixture": "D07-F01-A08.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "values",
+        "efficiencyPeriod",
+        "fastPeriod",
+        "slowPeriod"
+      ],
       "fixtureKeys": [
         "classification",
         "values",
@@ -1608,7 +2093,12 @@
       "entry": "mama",
       "archetype": "series-transform",
       "fixture": "D07-F01-A09.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "values",
+        "fastLimit",
+        "slowLimit"
+      ],
       "fixtureKeys": [
         "classification",
         "fixture",
@@ -1623,7 +2113,13 @@
       "entry": "macd",
       "archetype": "series-transform",
       "fixture": "D07-F02-A01.json",
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "values",
+        "fastSpan",
+        "slowSpan",
+        "signalSpan"
+      ],
       "fixtureKeys": [
         "title",
         "spans",
@@ -1638,15 +2134,21 @@
       "entry": "ppo",
       "archetype": "series-transform",
       "fixture": "D07-F02-A02.json",
-      "hasInputExpected": false,
+      "convention": "C",
+      "entryParams": [
+        "values",
+        "fastSpan",
+        "slowSpan",
+        "signalSpan"
+      ],
       "fixtureKeys": [
-        "classification",
-        "scenario_id",
-        "parameters",
-        "observation_index",
-        "observation",
-        "active_checkpoint",
-        "outputs"
+        "schema_version",
+        "algorithm",
+        "data_classification",
+        "generated_by",
+        "scenario_count",
+        "observation_count_per_scenario",
+        "scenarios"
       ]
     },
     {
@@ -1655,15 +2157,20 @@
       "entry": "aroon",
       "archetype": "series-transform",
       "fixture": "D07-F02-A03.json",
-      "hasInputExpected": false,
+      "convention": "C",
+      "entryParams": [
+        "high",
+        "low",
+        "period"
+      ],
       "fixtureKeys": [
-        "classification",
-        "scenario_id",
-        "parameters",
-        "observation_index",
-        "observation",
-        "active_checkpoint",
-        "outputs"
+        "schema_version",
+        "algorithm",
+        "data_classification",
+        "generated_by",
+        "scenario_count",
+        "observation_count_per_scenario",
+        "scenarios"
       ]
     },
     {
@@ -1672,15 +2179,21 @@
       "entry": "directional_movement",
       "archetype": "series-transform",
       "fixture": "D07-F02-A04.json",
-      "hasInputExpected": false,
+      "convention": "C",
+      "entryParams": [
+        "high",
+        "low",
+        "close",
+        "period"
+      ],
       "fixtureKeys": [
-        "classification",
-        "scenario_id",
-        "parameters",
-        "observation_index",
-        "observation",
-        "active_checkpoint",
-        "outputs"
+        "schema_version",
+        "algorithm",
+        "data_classification",
+        "generated_by",
+        "scenario_count",
+        "observation_count_per_scenario",
+        "scenarios"
       ]
     },
     {
@@ -1689,15 +2202,21 @@
       "entry": "adx",
       "archetype": "series-transform",
       "fixture": "D07-F02-A05.json",
-      "hasInputExpected": false,
+      "convention": "C",
+      "entryParams": [
+        "high",
+        "low",
+        "close",
+        "period"
+      ],
       "fixtureKeys": [
-        "classification",
-        "scenario_id",
-        "parameters",
-        "observation_index",
-        "observation",
-        "active_checkpoint",
-        "outputs"
+        "schema_version",
+        "algorithm",
+        "data_classification",
+        "generated_by",
+        "scenario_count",
+        "observation_count_per_scenario",
+        "scenarios"
       ]
     },
     {
@@ -1706,15 +2225,24 @@
       "entry": "ichimoku",
       "archetype": "series-transform",
       "fixture": "D07-F02-A06.json",
-      "hasInputExpected": false,
+      "convention": "C",
+      "entryParams": [
+        "high",
+        "low",
+        "close",
+        "conversionPeriod",
+        "basePeriod",
+        "spanBPeriod",
+        "displacement"
+      ],
       "fixtureKeys": [
-        "classification",
-        "scenario_id",
-        "parameters",
-        "observation_index",
-        "observation",
-        "active_checkpoint",
-        "outputs"
+        "schema_version",
+        "algorithm",
+        "data_classification",
+        "generated_by",
+        "scenario_count",
+        "observation_count_per_scenario",
+        "scenarios"
       ]
     },
     {
@@ -1723,15 +2251,22 @@
       "entry": "parabolic_sar",
       "archetype": "series-transform",
       "fixture": "D07-F02-A07.json",
-      "hasInputExpected": false,
+      "convention": "C",
+      "entryParams": [
+        "high",
+        "low",
+        "initialDirection",
+        "accelerationStep",
+        "accelerationMax"
+      ],
       "fixtureKeys": [
-        "classification",
-        "scenario_id",
-        "parameters",
-        "observation_index",
-        "observation",
-        "active_checkpoint",
-        "outputs"
+        "schema_version",
+        "algorithm",
+        "data_classification",
+        "generated_by",
+        "scenario_count",
+        "observation_count_per_scenario",
+        "scenarios"
       ]
     },
     {
@@ -1740,15 +2275,22 @@
       "entry": "supertrend",
       "archetype": "series-transform",
       "fixture": "D07-F02-A08.json",
-      "hasInputExpected": false,
+      "convention": "C",
+      "entryParams": [
+        "high",
+        "low",
+        "close",
+        "period",
+        "multiplier"
+      ],
       "fixtureKeys": [
-        "classification",
-        "scenario_id",
-        "parameters",
-        "observation_index",
-        "observation",
-        "active_checkpoint",
-        "outputs"
+        "schema_version",
+        "algorithm",
+        "data_classification",
+        "generated_by",
+        "scenario_count",
+        "observation_count_per_scenario",
+        "scenarios"
       ]
     },
     {
@@ -1757,66 +2299,95 @@
       "entry": "rsi",
       "archetype": "series-transform",
       "fixture": "D07-F03-A01.json",
-      "hasInputExpected": false,
+      "convention": "C",
+      "entryParams": [
+        "close",
+        "p"
+      ],
       "fixtureKeys": [
         "topic_id",
-        "parameters",
-        "first_ready_index",
-        "first_ready_component_row",
+        "provenance",
+        "clock",
+        "canonical_parameters",
+        "teaching_contract",
+        "bars",
         "checkpoints",
-        "derivation_markdown",
-        "note"
+        "scenarios"
       ]
     },
     {
       "id": "D07-F03-A02",
       "path": "technical-indicators/momentum/stochastic-oscillator",
-      "entry": "rsi",
+      "entry": "stochastic",
       "archetype": "series-transform",
       "fixture": "D07-F03-A02.json",
-      "hasInputExpected": false,
+      "convention": "C",
+      "entryParams": [
+        "high",
+        "low",
+        "close",
+        "kp",
+        "sk",
+        "sd"
+      ],
       "fixtureKeys": [
         "topic_id",
-        "parameters",
-        "first_ready_index",
-        "first_ready_component_row",
+        "provenance",
+        "clock",
+        "canonical_parameters",
+        "teaching_contract",
+        "bars",
         "checkpoints",
-        "derivation_markdown",
-        "note"
+        "scenarios"
       ]
     },
     {
       "id": "D07-F03-A03",
       "path": "technical-indicators/momentum/stochastic-rsi",
-      "entry": "rsi",
+      "entry": "stochastic_rsi",
       "archetype": "series-transform",
       "fixture": "D07-F03-A03.json",
-      "hasInputExpected": false,
+      "convention": "C",
+      "entryParams": [
+        "close",
+        "rp",
+        "sp",
+        "sk",
+        "sd"
+      ],
       "fixtureKeys": [
         "topic_id",
-        "parameters",
-        "first_ready_index",
-        "first_ready_component_row",
+        "provenance",
+        "clock",
+        "canonical_parameters",
+        "teaching_contract",
+        "bars",
         "checkpoints",
-        "derivation_markdown",
-        "note"
+        "scenarios"
       ]
     },
     {
       "id": "D07-F03-A04",
       "path": "technical-indicators/momentum/williams-r",
-      "entry": "rsi",
+      "entry": "williams_r",
       "archetype": "series-transform",
       "fixture": "D07-F03-A04.json",
-      "hasInputExpected": false,
+      "convention": "C",
+      "entryParams": [
+        "high",
+        "low",
+        "close",
+        "p"
+      ],
       "fixtureKeys": [
         "topic_id",
-        "parameters",
-        "first_ready_index",
-        "first_ready_component_row",
+        "provenance",
+        "clock",
+        "canonical_parameters",
+        "teaching_contract",
+        "bars",
         "checkpoints",
-        "derivation_markdown",
-        "note"
+        "scenarios"
       ]
     },
     {
@@ -1825,32 +2396,49 @@
       "entry": "cci",
       "archetype": "series-transform",
       "fixture": "D07-F03-A05.json",
-      "hasInputExpected": false,
+      "convention": "C",
+      "entryParams": [
+        "high",
+        "low",
+        "close",
+        "p",
+        "k"
+      ],
       "fixtureKeys": [
         "topic_id",
-        "parameters",
-        "first_ready_index",
-        "first_ready_component_row",
+        "provenance",
+        "clock",
+        "canonical_parameters",
+        "teaching_contract",
+        "bars",
         "checkpoints",
-        "derivation_markdown",
-        "note"
+        "scenarios"
       ]
     },
     {
       "id": "D07-F03-A06",
       "path": "technical-indicators/momentum/ultimate-oscillator",
-      "entry": "rsi",
+      "entry": "ultimate_oscillator",
       "archetype": "series-transform",
       "fixture": "D07-F03-A06.json",
-      "hasInputExpected": false,
+      "convention": "C",
+      "entryParams": [
+        "high",
+        "low",
+        "close",
+        "s",
+        "m",
+        "g"
+      ],
       "fixtureKeys": [
         "topic_id",
-        "parameters",
-        "first_ready_index",
-        "first_ready_component_row",
+        "provenance",
+        "clock",
+        "canonical_parameters",
+        "teaching_contract",
+        "bars",
         "checkpoints",
-        "derivation_markdown",
-        "note"
+        "scenarios"
       ]
     },
     {
@@ -1859,32 +2447,45 @@
       "entry": "tsi",
       "archetype": "series-transform",
       "fixture": "D07-F03-A07.json",
-      "hasInputExpected": false,
+      "convention": "C",
+      "entryParams": [
+        "close",
+        "g",
+        "s"
+      ],
       "fixtureKeys": [
         "topic_id",
-        "parameters",
-        "first_ready_index",
-        "first_ready_component_row",
+        "provenance",
+        "clock",
+        "canonical_parameters",
+        "teaching_contract",
+        "bars",
         "checkpoints",
-        "derivation_markdown",
-        "note"
+        "scenarios"
       ]
     },
     {
       "id": "D07-F03-A08",
       "path": "technical-indicators/momentum/connors-rsi",
-      "entry": "rsi",
+      "entry": "connors_rsi",
       "archetype": "series-transform",
       "fixture": "D07-F03-A08.json",
-      "hasInputExpected": false,
+      "convention": "C",
+      "entryParams": [
+        "close",
+        "pp",
+        "sp",
+        "rp"
+      ],
       "fixtureKeys": [
         "topic_id",
-        "parameters",
-        "first_ready_index",
-        "first_ready_component_row",
+        "provenance",
+        "clock",
+        "canonical_parameters",
+        "teaching_contract",
+        "bars",
         "checkpoints",
-        "derivation_markdown",
-        "note"
+        "scenarios"
       ]
     },
     {
@@ -1893,24 +2494,43 @@
       "entry": "true_range",
       "archetype": "series-transform",
       "fixture": "D07-F04-A01.json",
-      "hasInputExpected": false,
+      "convention": "C",
+      "entryParams": [
+        "high",
+        "low",
+        "close"
+      ],
       "fixtureKeys": [
+        "schema_version",
         "topic_id",
-        "scenario_id",
-        "checkpoint"
+        "title",
+        "synthetic",
+        "scenario_count",
+        "observation_count",
+        "scenarios"
       ]
     },
     {
       "id": "D07-F04-A02",
       "path": "technical-indicators/volatility-and-channels/atr",
-      "entry": "true_range",
+      "entry": "average_true_range",
       "archetype": "series-transform",
       "fixture": "D07-F04-A02.json",
-      "hasInputExpected": false,
+      "convention": "C",
+      "entryParams": [
+        "high",
+        "low",
+        "close",
+        "p"
+      ],
       "fixtureKeys": [
+        "schema_version",
         "topic_id",
-        "scenario_id",
-        "checkpoint"
+        "title",
+        "synthetic",
+        "scenario_count",
+        "observation_count",
+        "scenarios"
       ]
     },
     {
@@ -1919,24 +2539,45 @@
       "entry": "bollinger_bands",
       "archetype": "series-transform",
       "fixture": "D07-F04-A03.json",
-      "hasInputExpected": false,
+      "convention": "C",
+      "entryParams": [
+        "close",
+        "p",
+        "multiplier"
+      ],
       "fixtureKeys": [
+        "schema_version",
         "topic_id",
-        "scenario_id",
-        "checkpoint"
+        "title",
+        "synthetic",
+        "scenario_count",
+        "observation_count",
+        "scenarios"
       ]
     },
     {
       "id": "D07-F04-A04",
       "path": "technical-indicators/volatility-and-channels/keltner-channels",
-      "entry": "true_range",
+      "entry": "keltner_channels",
       "archetype": "series-transform",
       "fixture": "D07-F04-A04.json",
-      "hasInputExpected": false,
+      "convention": "C",
+      "entryParams": [
+        "high",
+        "low",
+        "close",
+        "emaPeriod",
+        "atrPeriod",
+        "multiplier"
+      ],
       "fixtureKeys": [
+        "schema_version",
         "topic_id",
-        "scenario_id",
-        "checkpoint"
+        "title",
+        "synthetic",
+        "scenario_count",
+        "observation_count",
+        "scenarios"
       ]
     },
     {
@@ -1945,24 +2586,42 @@
       "entry": "donchian_channels",
       "archetype": "series-transform",
       "fixture": "D07-F04-A05.json",
-      "hasInputExpected": false,
+      "convention": "C",
+      "entryParams": [
+        "high",
+        "low",
+        "p"
+      ],
       "fixtureKeys": [
+        "schema_version",
         "topic_id",
-        "scenario_id",
-        "checkpoint"
+        "title",
+        "synthetic",
+        "scenario_count",
+        "observation_count",
+        "scenarios"
       ]
     },
     {
       "id": "D07-F04-A06",
       "path": "technical-indicators/volatility-and-channels/bollinger-bandwidth",
-      "entry": "bollinger_bands",
+      "entry": "bollinger_bandwidth",
       "archetype": "series-transform",
       "fixture": "D07-F04-A06.json",
-      "hasInputExpected": false,
+      "convention": "C",
+      "entryParams": [
+        "close",
+        "p",
+        "multiplier"
+      ],
       "fixtureKeys": [
+        "schema_version",
         "topic_id",
-        "scenario_id",
-        "checkpoint"
+        "title",
+        "synthetic",
+        "scenario_count",
+        "observation_count",
+        "scenarios"
       ]
     },
     {
@@ -1971,112 +2630,148 @@
       "entry": "obv",
       "archetype": "series-transform",
       "fixture": "D07-F05-A01.json",
-      "hasInputExpected": false,
+      "convention": "C",
+      "entryParams": [
+        "close",
+        "volume",
+        "initial"
+      ],
       "fixtureKeys": [
         "topic_id",
-        "parameters",
-        "first_ready_index",
-        "first_ready_component_row",
-        "worked_index",
-        "worked_component_row",
+        "provenance",
+        "clock",
+        "volume_basis",
+        "canonical_parameters",
+        "teaching_contract",
+        "bars",
         "checkpoints",
-        "derivation_markdown",
-        "note"
+        "scenarios"
       ]
     },
     {
       "id": "D07-F05-A02",
       "path": "technical-indicators/volume-indicators/accumulation-distribution-line",
-      "entry": "obv",
+      "entry": "accumulation_distribution_line",
       "archetype": "series-transform",
       "fixture": "D07-F05-A02.json",
-      "hasInputExpected": false,
+      "convention": "C",
+      "entryParams": [
+        "high",
+        "low",
+        "close",
+        "volume",
+        "initial"
+      ],
       "fixtureKeys": [
         "topic_id",
-        "parameters",
-        "first_ready_index",
-        "first_ready_component_row",
-        "worked_index",
-        "worked_component_row",
+        "provenance",
+        "clock",
+        "volume_basis",
+        "canonical_parameters",
+        "teaching_contract",
+        "bars",
         "checkpoints",
-        "derivation_markdown",
-        "note"
+        "scenarios"
       ]
     },
     {
       "id": "D07-F05-A03",
       "path": "technical-indicators/volume-indicators/chaikin-money-flow",
-      "entry": "obv",
+      "entry": "chaikin_money_flow",
       "archetype": "series-transform",
       "fixture": "D07-F05-A03.json",
-      "hasInputExpected": false,
+      "convention": "C",
+      "entryParams": [
+        "high",
+        "low",
+        "close",
+        "volume",
+        "p"
+      ],
       "fixtureKeys": [
         "topic_id",
-        "parameters",
-        "first_ready_index",
-        "first_ready_component_row",
-        "worked_index",
-        "worked_component_row",
+        "provenance",
+        "clock",
+        "volume_basis",
+        "canonical_parameters",
+        "teaching_contract",
+        "bars",
         "checkpoints",
-        "derivation_markdown",
-        "note"
+        "scenarios"
       ]
     },
     {
       "id": "D07-F05-A04",
       "path": "technical-indicators/volume-indicators/money-flow-index",
-      "entry": "obv",
+      "entry": "money_flow_index",
       "archetype": "series-transform",
       "fixture": "D07-F05-A04.json",
-      "hasInputExpected": false,
+      "convention": "C",
+      "entryParams": [
+        "high",
+        "low",
+        "close",
+        "volume",
+        "p"
+      ],
       "fixtureKeys": [
         "topic_id",
-        "parameters",
-        "first_ready_index",
-        "first_ready_component_row",
-        "worked_index",
-        "worked_component_row",
+        "provenance",
+        "clock",
+        "volume_basis",
+        "canonical_parameters",
+        "teaching_contract",
+        "bars",
         "checkpoints",
-        "derivation_markdown",
-        "note"
+        "scenarios"
       ]
     },
     {
       "id": "D07-F05-A05",
       "path": "technical-indicators/volume-indicators/volume-price-trend",
-      "entry": "obv",
+      "entry": "volume_price_trend",
       "archetype": "series-transform",
       "fixture": "D07-F05-A05.json",
-      "hasInputExpected": false,
+      "convention": "C",
+      "entryParams": [
+        "close",
+        "volume",
+        "initial"
+      ],
       "fixtureKeys": [
         "topic_id",
-        "parameters",
-        "first_ready_index",
-        "first_ready_component_row",
-        "worked_index",
-        "worked_component_row",
+        "provenance",
+        "clock",
+        "volume_basis",
+        "canonical_parameters",
+        "teaching_contract",
+        "bars",
         "checkpoints",
-        "derivation_markdown",
-        "note"
+        "scenarios"
       ]
     },
     {
       "id": "D07-F05-A06",
       "path": "technical-indicators/volume-indicators/force-index",
-      "entry": "obv",
+      "entry": "force_index",
       "archetype": "series-transform",
       "fixture": "D07-F05-A06.json",
-      "hasInputExpected": false,
+      "convention": "C",
+      "entryParams": [
+        "close",
+        "volume",
+        "p"
+      ],
       "fixtureKeys": [
         "topic_id",
-        "parameters",
-        "first_ready_index",
-        "first_ready_component_row",
-        "worked_index",
-        "worked_component_row",
+        "provenance",
+        "clock",
+        "volume_basis",
+        "canonical_parameters",
+        "teaching_contract",
+        "bars",
         "checkpoints",
-        "derivation_markdown",
-        "note"
+        "scenarios"
       ]
     },
     {
@@ -2085,7 +2780,10 @@
       "entry": "restateEpsForCapitalEvents",
       "archetype": "record-transform",
       "fixture": null,
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "input"
+      ],
       "fixtureKeys": []
     },
     {
@@ -2094,7 +2792,10 @@
       "entry": "calculateBasicEps",
       "archetype": "record-transform",
       "fixture": null,
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "input"
+      ],
       "fixtureKeys": []
     },
     {
@@ -2103,7 +2804,10 @@
       "entry": "calculateConvertiblePreferenceDilution",
       "archetype": "record-transform",
       "fixture": null,
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "input"
+      ],
       "fixtureKeys": []
     },
     {
@@ -2112,7 +2816,10 @@
       "entry": "calculateTreasuryShareMethod",
       "archetype": "record-transform",
       "fixture": null,
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "input"
+      ],
       "fixtureKeys": []
     },
     {
@@ -2121,7 +2828,10 @@
       "entry": "calculateContingentShareInclusion",
       "archetype": "record-transform",
       "fixture": null,
-      "hasInputExpected": false,
+      "convention": "none",
+      "entryParams": [
+        "input"
+      ],
       "fixtureKeys": []
     }
   ]

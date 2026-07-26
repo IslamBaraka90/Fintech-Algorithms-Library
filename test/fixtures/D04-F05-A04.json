@@ -1,0 +1,72 @@
+{
+  "label": "Labelled synthetic cross-sectional snapshot",
+  "as_of": "2026-06-30",
+  "parameters": {
+    "tolerance": 0.002
+  },
+  "rows": [
+    {
+      "component_id": "Communication",
+      "signal_change": 0.012,
+      "ready": true
+    },
+    {
+      "component_id": "Consumer Discretionary",
+      "signal_change": 0.008,
+      "ready": true
+    },
+    {
+      "component_id": "Consumer Staples",
+      "signal_change": 0.006,
+      "ready": true
+    },
+    {
+      "component_id": "Energy",
+      "signal_change": 0.004,
+      "ready": true
+    },
+    {
+      "component_id": "Financials",
+      "signal_change": 0.003,
+      "ready": true
+    },
+    {
+      "component_id": "Health Care",
+      "signal_change": 0.002,
+      "ready": true
+    },
+    {
+      "component_id": "Industrials",
+      "signal_change": 0,
+      "ready": true
+    },
+    {
+      "component_id": "Materials",
+      "signal_change": -0.002,
+      "ready": true
+    },
+    {
+      "component_id": "Real Estate",
+      "signal_change": -0.004,
+      "ready": true
+    },
+    {
+      "component_id": "Technology",
+      "signal_change": -0.007,
+      "ready": true
+    },
+    {
+      "component_id": "Utilities",
+      "signal_change": -0.01,
+      "ready": true
+    }
+  ],
+  "expected": {
+    "status": "resolved",
+    "value": 59.09090909090909,
+    "improving": 5,
+    "unchanged": 3,
+    "deteriorating": 3,
+    "total": 11
+  }
+}

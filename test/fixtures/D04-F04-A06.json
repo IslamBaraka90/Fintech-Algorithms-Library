@@ -1,0 +1,236 @@
+{
+  "label": "Synthetic aligned price and breadth series",
+  "parameters": {
+    "left": 2,
+    "right": 2,
+    "min_price_change": 0.01,
+    "min_breadth_separation": 0.05,
+    "breadth_scale": 1000
+  },
+  "rows": [
+    {
+      "session_date": "2026-01-05",
+      "index_level": 100,
+      "breadth_value": 500,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-06",
+      "index_level": 101,
+      "breadth_value": 520,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-07",
+      "index_level": 102,
+      "breadth_value": 540,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-08",
+      "index_level": 103,
+      "breadth_value": 560,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-09",
+      "index_level": 104,
+      "breadth_value": 580,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-12",
+      "index_level": 105,
+      "breadth_value": 600,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-13",
+      "index_level": 106,
+      "breadth_value": 620,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-14",
+      "index_level": 107,
+      "breadth_value": 630,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-15",
+      "index_level": 108,
+      "breadth_value": 640,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-16",
+      "index_level": 109,
+      "breadth_value": 645,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-19",
+      "index_level": 110,
+      "breadth_value": 650,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-20",
+      "index_level": 108,
+      "breadth_value": 620,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-21",
+      "index_level": 106,
+      "breadth_value": 600,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-22",
+      "index_level": 104,
+      "breadth_value": 580,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-23",
+      "index_level": 102,
+      "breadth_value": 560,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-26",
+      "index_level": 100,
+      "breadth_value": 540,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-27",
+      "index_level": 102,
+      "breadth_value": 550,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-28",
+      "index_level": 104,
+      "breadth_value": 560,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-29",
+      "index_level": 106,
+      "breadth_value": 570,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-30",
+      "index_level": 108,
+      "breadth_value": 580,
+      "ready": true
+    },
+    {
+      "session_date": "2026-02-02",
+      "index_level": 110,
+      "breadth_value": 590,
+      "ready": true
+    },
+    {
+      "session_date": "2026-02-03",
+      "index_level": 112,
+      "breadth_value": 580,
+      "ready": true
+    },
+    {
+      "session_date": "2026-02-04",
+      "index_level": 114,
+      "breadth_value": 550,
+      "ready": true
+    },
+    {
+      "session_date": "2026-02-05",
+      "index_level": 116,
+      "breadth_value": 520,
+      "ready": true
+    },
+    {
+      "session_date": "2026-02-06",
+      "index_level": 114,
+      "breadth_value": 510,
+      "ready": true
+    },
+    {
+      "session_date": "2026-02-09",
+      "index_level": 112,
+      "breadth_value": 500,
+      "ready": true
+    },
+    {
+      "session_date": "2026-02-10",
+      "index_level": 110,
+      "breadth_value": 490,
+      "ready": true
+    },
+    {
+      "session_date": "2026-02-11",
+      "index_level": 108,
+      "breadth_value": 480,
+      "ready": true
+    },
+    {
+      "session_date": "2026-02-12",
+      "index_level": 106,
+      "breadth_value": 470,
+      "ready": true
+    },
+    {
+      "session_date": "2026-02-13",
+      "index_level": 104,
+      "breadth_value": 460,
+      "ready": true
+    },
+    {
+      "session_date": "2026-02-16",
+      "index_level": 103,
+      "breadth_value": 450,
+      "ready": true
+    },
+    {
+      "session_date": "2026-02-17",
+      "index_level": 102,
+      "breadth_value": 440,
+      "ready": true
+    },
+    {
+      "session_date": "2026-02-18",
+      "index_level": 101,
+      "breadth_value": 430,
+      "ready": true
+    },
+    {
+      "session_date": "2026-02-19",
+      "index_level": 100,
+      "breadth_value": 420,
+      "ready": true
+    },
+    {
+      "session_date": "2026-02-20",
+      "index_level": 99,
+      "breadth_value": 410,
+      "ready": true
+    },
+    {
+      "session_date": "2026-02-23",
+      "index_level": 98,
+      "breadth_value": 400,
+      "ready": true
+    }
+  ],
+  "expected": {
+    "status": "bearish",
+    "first_pivot_date": "2026-01-19",
+    "second_pivot_date": "2026-02-05",
+    "confirmation_date": "2026-02-09",
+    "price_change": 0.05454545454545454,
+    "breadth_separation": -0.13
+  }
+}

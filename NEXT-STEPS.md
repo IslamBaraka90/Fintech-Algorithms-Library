@@ -1,192 +1,73 @@
-# Follow-up prompt — get `fintech-algorithms` to a publishable 1.0
+# State and what's left
 
-Paste everything from **"START OF PROMPT"** onward into a fresh session opened at
-`C:\Users\islam\Node\edufintech`.
+## Where the package stands
 
----
+| | |
+|---|---|
+| Topics | **154** · 7 domains · 27 families |
+| Build | `tsc` clean, 0 errors |
+| Tests | **241 pass, 0 fail** |
+| Verified arithmetic | **79/154** against the catalog's own published numbers |
+| Version | `0.2.0` — never published; the npm name `fintech-algorithms` is available |
+| Git | local only, no remote configured |
 
-## START OF PROMPT
+Nothing here blocks use. The package installs from a tarball and works — the
+market-breadth dashboard consumes it that way.
 
-You are continuing work on `fintech-algorithms`, a generated npm package at
-`library-repos/Fintech-Algorithms-Library` inside the `edufintech` monorepo. Read
-`README.md`, `HANDOFF.md` and `scripts/sync.mjs` before changing anything.
+## Recently fixed
 
-### What the package is
+- **13 topics exposed the wrong `run()` alias.** The newest catalog families ship
+  one shared implementation per family, and entry detection fell through to the
+  first exported function, so every momentum topic pointed at `rsi()` and every
+  volume topic at `obv()`. Detection now derives the entry from the topic's own
+  catalog test, then from slug rules, and **fails the build** rather than guessing.
+- **Two new tests** tie each entry to its topic's identity and flag topics that
+  share an implementation and collapse onto one function. Both were confirmed to
+  fail when the original defect is re-injected.
+- **Shared family bodies are hoisted** into `src/_shared/` and re-exported, so
+  `momentum.ts` (×8) and `volume.ts` (×6) ship once each. The public `exports` map
+  is byte-identical before and after.
+- **Conformance rose 41 → 79** with runners for the catalog's other two fixture
+  conventions.
+- **README statistics are generated** by `scripts/update-readme.mjs`, so the counts
+  cannot drift again.
 
-A TypeScript library of **154 fintech algorithm topics**, generated from the
-teaching catalog at `algorithms/domains/**` by `scripts/sync.mjs`. Everything under
-`src/` except `src/_shared/` is generated — **never hand-edit it**. Fix the catalog
-implementation and re-run `npm run sync`.
+## What's actually left
 
-Locked design decisions (do not revisit without asking):
+1. **75 topics have no machine-checkable numbers in this package.** They load and
+   expose a callable entry, and they have passing tests in the catalog, but they
+   ship no expected values this harness can consume. Closing the gap means adding
+   `{ input, expected }` or bar/checkpoint fixtures to those catalog topics — a
+   catalog authoring task, not a package task.
+2. **3 catalog topics have no TypeScript implementation** and are therefore absent:
+   `D46-F01-A06`, `D46-F01-A07`, `D46-F02-A01`.
+3. **Publishing.** When ready: `npm run verify`, `npm pack --dry-run` to check the
+   file list, decide `0.2.0` vs `1.0.0`, then `npm publish --access public`.
+   Creating the GitHub repo and publishing are both public and irreversible.
+4. **`strict: false`** in `tsconfig.json`. Many catalog entry points are
+   deliberately `(data: unknown)`. Turning strict on is worth doing per-domain,
+   starting with D07 and D01-F01, which are already well-typed.
 
-- Each topic is a **subpath module whose path equals its article URL path**, e.g.
-  `fintech-algorithms/technical-indicators/momentum/williams-r`. This is why the
-  63 topics that all export `calculate` never collide.
-- The **root export carries metadata only** (registry + lookup helpers + lazy
-  `load`/`runner`), never algorithm code.
-- **No data provider, no `node:fs`, no runtime dependencies, ever.** Algorithms
-  take plain arrays and plain objects. A user's provider adapter is their own code.
-- Every topic module re-exports its implementation, plus a uniform `run` alias for
-  its primary function and a `meta` object.
-- No demos or examples in the package; worked applications live in their own repos
-  (see `library-repos/Fintech-Market-Breadth-Dashboard`).
+## One catalog discrepancy worth a decision
 
-### Current state — verified, do not re-derive
+`D04-F04-A06` (breadth-divergence-detector): the fixture states
+`breadth_separation: -0.13` while the implementation returns `-130` — the
+`breadth_scale: 1000` factor. The catalog's own test asserts only `status` and
+`confirmation_date`, so it never noticed. The conformance suite skips that single
+field with a comment rather than picking a side. Decide which unit is canonical
+and fix whichever is wrong.
 
-- **154 topics**, 7 domains, 27 families. 3 catalog topics are skipped for having
-  no TypeScript implementation: `D46-F01-A06`, `D46-F01-A07`, `D46-F02-A01`.
-- `npm run build` (tsc) is **clean, 0 errors**.
-- `npm test` reports **201 passing, 0 failing** — but see Task 1: that green is
-  partly false.
-- Conformance coverage is **41/154**.
-- Version `0.1.0`. **Never published.** The npm name `fintech-algorithms` was
-  checked and is **available** (so is `@fintechbuilder/algorithms`).
-- No git remote configured. Latest commit `4a2275e`.
-- ⚠️ The `edufintech` monorepo's `.git/` directory is **empty** — the catalog is
-  not under version control. Catalog edits have no undo. Consider fixing that
-  first; ask before running `git init` there.
+## Working on this repo
 
-### Tasks, in priority order
-
----
-
-#### Task 1 — Fix 13 wrong `run()` aliases (BLOCKS PUBLISHING)
-
-The newest catalog families ship **one shared implementation file per family**,
-copied into every topic folder in that family:
-
-| Family | Shared file | Topic folders holding a copy |
-|---|---|--:|
-| `D07-F03` momentum | `momentum.ts` | 8 |
-| `D07-F04` volatility and channels | `volatility_channels.ts` | 6 |
-| `D07-F05` volume indicators | `volume.ts` | 6 |
-
-`chooseEntry()` in `scripts/sync.mjs` therefore falls through to `functions[0]`, so
-every momentum topic reports `rsi()` and every volume topic reports `obv()`. These
-13 topics currently expose the **wrong function** as `run()` and as `meta.entry`:
-
-| Topic | Slug | `run()` calls | Should call |
-|---|---|---|---|
-| D07-F03-A02 | stochastic-oscillator | `rsi` | `stochastic` |
-| D07-F03-A03 | stochastic-rsi | `rsi` | `stochastic_rsi` |
-| D07-F03-A04 | williams-r | `rsi` | `williams_r` |
-| D07-F03-A06 | ultimate-oscillator | `rsi` | `ultimate_oscillator` |
-| D07-F03-A08 | connors-rsi | `rsi` | `connors_rsi` |
-| D07-F04-A02 | atr | `true_range` | `average_true_range` |
-| D07-F04-A04 | keltner-channels | `true_range` | `keltner_channels` |
-| D07-F04-A06 | bollinger-bandwidth | `bollinger_bands` | `bollinger_bandwidth` |
-| D07-F05-A02 | accumulation-distribution-line | `obv` | `accumulation_distribution_line` |
-| D07-F05-A03 | chaikin-money-flow | `obv` | `chaikin_money_flow` |
-| D07-F05-A04 | money-flow-index | `obv` | `money_flow_index` |
-| D07-F05-A05 | volume-price-trend | `obv` | `volume_price_trend` |
-| D07-F05-A06 | force-index | `obv` | `force_index` |
-
-**The authoritative entry name is recoverable from the catalog itself.** Each
-topic's own test at `<topic>/tests/*.test.ts` imports the module under an alias and
-invokes exactly one of its exported functions. Intersecting the implementation's
-exported function names with the names invoked in that test resolves all 28 D07
-topics correctly. All 28 catalog suites pass, so those calls are trustworthy.
-
-Rewrite `chooseEntry()` to try, in order:
-
-1. **The function invoked by the topic's own test file** (highest confidence).
-2. `snake_case(slug)` — covers `williams_r`, `money_flow_index`, `force_index`.
-3. The slug's **initials** — covers `rsi`, `cci`, `tsi`, `obv`, `adx`, `ppo`.
-4. Slug with a trailing generic noun dropped (`oscillator`, `index`, `line`,
-   `bands`, `channels`) — covers `stochastic-oscillator` → `stochastic`.
-5. The existing camelCase / verb-prefix heuristics.
-6. **Fail loudly.** If nothing resolves, `sync.mjs` must exit non-zero listing the
-   unresolved topics. Silently guessing `functions[0]` is what produced this bug.
-
-Also emit a warning when several topics in one family resolve to the same entry —
-that is the fingerprint of this failure.
-
-#### Task 2 — Make the test suite able to catch Task 1
-
-`test/registry.test.ts` asserts `mod.run === mod[t.entry]`. Both sides come from
-the same detection, so it only ever proves self-consistency and passed happily with
-all 13 defects in place. Add an assertion that ties the entry to the topic's
-**identity**, not to itself: for every topic, `meta.entry` must match the slug under
-one of the rules in Task 1, or appear on an explicit reviewed allow-list in the
-repo. A new mis-detection must turn the suite red.
-
-#### Task 3 — De-duplicate the shared family implementations
-
-`momentum.ts`, `volatility_channels.ts` and `volume.ts` are each vendored 8/6/6
-times, so ~20 copies of three file bodies ship in the package. Extend the
-`src/_shared/` mechanism already used for `indexEngine.ts`: when N topics in a
-family share one implementation body, emit it once under
-`src/_shared/<family>.ts` and have each topic's `index.ts` re-export only its own
-entry (plus the types it needs) from there. Keep the public subpath API byte-identical —
-this is an internal layout change and must not alter any import path or export name.
-Verify with a diff of the emitted `package.json` `exports` map before and after.
-
-#### Task 4 — Raise conformance coverage from 41/154
-
-Only 41 topics have a `{ input, expected }` worked example that the harness can
-run. The rest are unverified arithmetic in this package (they do have passing tests
-in the catalog, which this repo cannot consume). Three fixture conventions exist:
-
-| Convention | Shape | Where |
-|---|---|---|
-| A | `{ topicId, input, expected }` | the 41 already covered |
-| B | `{ label, parameters, rows, expected }` in `datasets/canonical-fixture.json` | D04-F04, D04-F05 |
-| C | `{ topic_id, parameters, checkpoints }` + `datasets/<slug>-fixtures.json` with `bars` | all 27 new D07 topics |
-
-Add adapters for B and C to `test/conformance.test.ts` and have `sync.mjs` record
-which convention each topic uses in `test/_manifest.json`. Convention C is the
-biggest single win — 27 topics, each with a `bars` array and `checkpoints` carrying
-per-index expected values. Target: **120+/154 verified**. Report the honest number.
-
-#### Task 5 — Refresh the docs, then publish
-
-`README.md` still says 114 topics, 7 domains, 22 families, 161 tests — all stale.
-Regenerate those numbers from the registry rather than hand-editing, so they cannot
-drift again. Then:
-
-1. `npm run verify` must be fully green.
-2. `npm pack --dry-run` — check the file list.
-3. Install the tarball into a scratch project and confirm a subpath import plus
-   `runner("D07-F03-A04")` returns `williams_r`, not `rsi`.
-4. Bump to `1.0.0` only once Tasks 1–4 are done. **Ask before `npm publish`** and
-   before creating the GitHub repo — both are public and irreversible.
-
-### How to work
-
-- Verify claims by running things; do not assert a fix works without evidence.
-- After any change to `scripts/sync.mjs`: `npm run sync && npm run build && npm test`,
-  and confirm `node scripts/sync.mjs --check` reports in-sync.
-- When the catalog itself is wrong, fix it in `algorithms/domains/**` so the
-  articles and the standalone repos benefit — then re-sync. Past examples: duplicate
-  interface members in `treasuryShare.ts`, `\Z` in a regex, extensionless imports in
-  D04-F04/F05 tests. Note in your summary whenever you change the catalog, since it
-  has no version control.
-- Do not add a data provider, a demo, or a runtime dependency to this package.
-
-## END OF PROMPT
-
----
-
-## Appendix — quick commands
+Everything under `src/` except `src/_shared/` is generated. Never hand-edit it —
+fix the catalog implementation in `algorithms/domains/**` and re-run:
 
 ```bash
-cd library-repos/Fintech-Algorithms-Library
-node scripts/sync.mjs --check     # is the package in step with the catalog?
-npm run sync                       # regenerate src/ from the catalog
-npm run build                      # tsc -> dist/
-npm test                           # conformance + module + structural
+npm run sync      # regenerate src/ + README stats
+npm run build     # tsc -> dist/
+npm test          # conformance + module contract + structural
+node scripts/sync.mjs --check   # CI gate: is the package in step with the catalog?
 ```
 
-Inspect a topic's real surface:
-
-```bash
-grep -nE "^export (function|const|type|interface)" \
-  src/technical-indicators/momentum/williams-r/impl.ts
-```
-
-Reproduce the Task 1 defect list:
-
-```bash
-node --experimental-strip-types -e 'import { topic } from "./src/index.ts"; console.log(topic("D07-F03-A04"))'
-```
+⚠️ The `edufintech` monorepo's `.git/` directory is empty — the catalog is not
+under version control, so catalog edits have no undo.

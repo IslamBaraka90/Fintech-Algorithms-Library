@@ -1,0 +1,225 @@
+{
+  "label": "Synthetic daily upside/downside volume",
+  "rows": [
+    {
+      "session_date": "2026-01-05",
+      "advances": 520,
+      "declines": 480,
+      "unchanged": 20,
+      "advancing_volume": 92000000,
+      "declining_volume": 78000000,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-06",
+      "advances": 480,
+      "declines": 520,
+      "unchanged": 20,
+      "advancing_volume": 86000000,
+      "declining_volume": 94000000,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-07",
+      "advances": 540,
+      "declines": 460,
+      "unchanged": 20,
+      "advancing_volume": 108000000,
+      "declining_volume": 72000000,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-08",
+      "advances": 460,
+      "declines": 540,
+      "unchanged": 20,
+      "advancing_volume": 72000000,
+      "declining_volume": 108000000,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-09",
+      "advances": 580,
+      "declines": 420,
+      "unchanged": 20,
+      "advancing_volume": 118000000,
+      "declining_volume": 66000000,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-12",
+      "advances": 420,
+      "declines": 580,
+      "unchanged": 20,
+      "advancing_volume": 68000000,
+      "declining_volume": 116000000,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-13",
+      "advances": 610,
+      "declines": 390,
+      "unchanged": 20,
+      "advancing_volume": 126000000,
+      "declining_volume": 64000000,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-14",
+      "advances": 390,
+      "declines": 610,
+      "unchanged": 20,
+      "advancing_volume": 62000000,
+      "declining_volume": 124000000,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-15",
+      "advances": 650,
+      "declines": 350,
+      "unchanged": 20,
+      "advancing_volume": 132000000,
+      "declining_volume": 60000000,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-16",
+      "advances": 350,
+      "declines": 650,
+      "unchanged": 20,
+      "advancing_volume": 58000000,
+      "declining_volume": 130000000,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-19",
+      "advances": 560,
+      "declines": 440,
+      "unchanged": 20,
+      "advancing_volume": 104000000,
+      "declining_volume": 76000000,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-20",
+      "advances": 440,
+      "declines": 560,
+      "unchanged": 20,
+      "advancing_volume": 76000000,
+      "declining_volume": 104000000,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-21",
+      "advances": 590,
+      "declines": 410,
+      "unchanged": 20,
+      "advancing_volume": 116000000,
+      "declining_volume": 68000000,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-22",
+      "advances": 410,
+      "declines": 590,
+      "unchanged": 20,
+      "advancing_volume": 70000000,
+      "declining_volume": 120000000,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-23",
+      "advances": 620,
+      "declines": 380,
+      "unchanged": 20,
+      "advancing_volume": 128000000,
+      "declining_volume": 62000000,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-26",
+      "advances": 380,
+      "declines": 620,
+      "unchanged": 20,
+      "advancing_volume": 64000000,
+      "declining_volume": 126000000,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-27",
+      "advances": 530,
+      "declines": 470,
+      "unchanged": 20,
+      "advancing_volume": 98000000,
+      "declining_volume": 82000000,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-28",
+      "advances": 470,
+      "declines": 530,
+      "unchanged": 20,
+      "advancing_volume": 82000000,
+      "declining_volume": 98000000,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-29",
+      "advances": 570,
+      "declines": 430,
+      "unchanged": 20,
+      "advancing_volume": 110000000,
+      "declining_volume": 70000000,
+      "ready": true
+    },
+    {
+      "session_date": "2026-01-30",
+      "advances": 430,
+      "declines": 570,
+      "unchanged": 20,
+      "advancing_volume": 74000000,
+      "declining_volume": 112000000,
+      "ready": true
+    },
+    {
+      "session_date": "2026-02-02",
+      "advances": 640,
+      "declines": 360,
+      "unchanged": 20,
+      "advancing_volume": 130000000,
+      "declining_volume": 58000000,
+      "ready": true
+    },
+    {
+      "session_date": "2026-02-03",
+      "advances": 360,
+      "declines": 640,
+      "unchanged": 20,
+      "advancing_volume": 60000000,
+      "declining_volume": 132000000,
+      "ready": true
+    },
+    {
+      "session_date": "2026-02-04",
+      "advances": 550,
+      "declines": 450,
+      "unchanged": 20,
+      "advancing_volume": 106000000,
+      "declining_volume": 84000000,
+      "ready": true
+    },
+    {
+      "session_date": "2026-02-05",
+      "advances": 600,
+      "declines": 400,
+      "unchanged": 20,
+      "advancing_volume": 120000000,
+      "declining_volume": 60000000,
+      "ready": true
+    }
+  ],
+  "expected": {
+    "status": "resolved",
+    "value": 2.0
+  }
+}

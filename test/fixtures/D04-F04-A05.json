@@ -1,0 +1,301 @@
+{
+  "label": "Synthetic one-minute XNYS-like TICK snapshots",
+  "parameters": {
+    "interval_seconds": 60,
+    "seed": 0
+  },
+  "rows": [
+    {
+      "timestamp": "2026-01-05T09:30:00-05:00",
+      "session_id": "XNYS-2026-01-05",
+      "uptick_issues": 560,
+      "downtick_issues": 440,
+      "neutral_issues": 20,
+      "ready": true
+    },
+    {
+      "timestamp": "2026-01-05T09:31:00-05:00",
+      "session_id": "XNYS-2026-01-05",
+      "uptick_issues": 470,
+      "downtick_issues": 530,
+      "neutral_issues": 20,
+      "ready": true
+    },
+    {
+      "timestamp": "2026-01-05T09:32:00-05:00",
+      "session_id": "XNYS-2026-01-05",
+      "uptick_issues": 540,
+      "downtick_issues": 460,
+      "neutral_issues": 20,
+      "ready": true
+    },
+    {
+      "timestamp": "2026-01-05T09:33:00-05:00",
+      "session_id": "XNYS-2026-01-05",
+      "uptick_issues": 570,
+      "downtick_issues": 430,
+      "neutral_issues": 20,
+      "ready": true
+    },
+    {
+      "timestamp": "2026-01-05T09:34:00-05:00",
+      "session_id": "XNYS-2026-01-05",
+      "uptick_issues": 480,
+      "downtick_issues": 520,
+      "neutral_issues": 20,
+      "ready": true
+    },
+    {
+      "timestamp": "2026-01-05T09:35:00-05:00",
+      "session_id": "XNYS-2026-01-05",
+      "uptick_issues": 530,
+      "downtick_issues": 470,
+      "neutral_issues": 20,
+      "ready": true
+    },
+    {
+      "timestamp": "2026-01-05T09:36:00-05:00",
+      "session_id": "XNYS-2026-01-05",
+      "uptick_issues": 550,
+      "downtick_issues": 450,
+      "neutral_issues": 20,
+      "ready": true
+    },
+    {
+      "timestamp": "2026-01-05T09:37:00-05:00",
+      "session_id": "XNYS-2026-01-05",
+      "uptick_issues": 440,
+      "downtick_issues": 560,
+      "neutral_issues": 20,
+      "ready": true
+    },
+    {
+      "timestamp": "2026-01-05T09:38:00-05:00",
+      "session_id": "XNYS-2026-01-05",
+      "uptick_issues": 520,
+      "downtick_issues": 480,
+      "neutral_issues": 20,
+      "ready": true
+    },
+    {
+      "timestamp": "2026-01-05T09:39:00-05:00",
+      "session_id": "XNYS-2026-01-05",
+      "uptick_issues": 590,
+      "downtick_issues": 410,
+      "neutral_issues": 20,
+      "ready": true
+    },
+    {
+      "timestamp": "2026-01-05T09:40:00-05:00",
+      "session_id": "XNYS-2026-01-05",
+      "uptick_issues": 460,
+      "downtick_issues": 540,
+      "neutral_issues": 20,
+      "ready": true
+    },
+    {
+      "timestamp": "2026-01-05T09:41:00-05:00",
+      "session_id": "XNYS-2026-01-05",
+      "uptick_issues": 510,
+      "downtick_issues": 490,
+      "neutral_issues": 20,
+      "ready": true
+    },
+    {
+      "timestamp": "2026-01-05T09:42:00-05:00",
+      "session_id": "XNYS-2026-01-05",
+      "uptick_issues": 580,
+      "downtick_issues": 420,
+      "neutral_issues": 20,
+      "ready": true
+    },
+    {
+      "timestamp": "2026-01-05T09:43:00-05:00",
+      "session_id": "XNYS-2026-01-05",
+      "uptick_issues": 530,
+      "downtick_issues": 470,
+      "neutral_issues": 20,
+      "ready": true
+    },
+    {
+      "timestamp": "2026-01-05T09:44:00-05:00",
+      "session_id": "XNYS-2026-01-05",
+      "uptick_issues": 450,
+      "downtick_issues": 550,
+      "neutral_issues": 20,
+      "ready": true
+    },
+    {
+      "timestamp": "2026-01-05T09:45:00-05:00",
+      "session_id": "XNYS-2026-01-05",
+      "uptick_issues": 520,
+      "downtick_issues": 480,
+      "neutral_issues": 20,
+      "ready": true
+    },
+    {
+      "timestamp": "2026-01-05T09:46:00-05:00",
+      "session_id": "XNYS-2026-01-05",
+      "uptick_issues": 545,
+      "downtick_issues": 455,
+      "neutral_issues": 20,
+      "ready": true
+    },
+    {
+      "timestamp": "2026-01-05T09:47:00-05:00",
+      "session_id": "XNYS-2026-01-05",
+      "uptick_issues": 485,
+      "downtick_issues": 515,
+      "neutral_issues": 20,
+      "ready": true
+    },
+    {
+      "timestamp": "2026-01-05T09:48:00-05:00",
+      "session_id": "XNYS-2026-01-05",
+      "uptick_issues": 565,
+      "downtick_issues": 435,
+      "neutral_issues": 20,
+      "ready": true
+    },
+    {
+      "timestamp": "2026-01-05T09:49:00-05:00",
+      "session_id": "XNYS-2026-01-05",
+      "uptick_issues": 465,
+      "downtick_issues": 535,
+      "neutral_issues": 20,
+      "ready": true
+    },
+    {
+      "timestamp": "2026-01-05T09:50:00-05:00",
+      "session_id": "XNYS-2026-01-05",
+      "uptick_issues": 525,
+      "downtick_issues": 475,
+      "neutral_issues": 20,
+      "ready": true
+    },
+    {
+      "timestamp": "2026-01-05T09:51:00-05:00",
+      "session_id": "XNYS-2026-01-05",
+      "uptick_issues": 555,
+      "downtick_issues": 445,
+      "neutral_issues": 20,
+      "ready": true
+    },
+    {
+      "timestamp": "2026-01-05T09:52:00-05:00",
+      "session_id": "XNYS-2026-01-05",
+      "uptick_issues": 455,
+      "downtick_issues": 545,
+      "neutral_issues": 20,
+      "ready": true
+    },
+    {
+      "timestamp": "2026-01-05T09:53:00-05:00",
+      "session_id": "XNYS-2026-01-05",
+      "uptick_issues": 515,
+      "downtick_issues": 485,
+      "neutral_issues": 20,
+      "ready": true
+    },
+    {
+      "timestamp": "2026-01-05T09:54:00-05:00",
+      "session_id": "XNYS-2026-01-05",
+      "uptick_issues": 575,
+      "downtick_issues": 425,
+      "neutral_issues": 20,
+      "ready": true
+    },
+    {
+      "timestamp": "2026-01-05T09:55:00-05:00",
+      "session_id": "XNYS-2026-01-05",
+      "uptick_issues": 475,
+      "downtick_issues": 525,
+      "neutral_issues": 20,
+      "ready": true
+    },
+    {
+      "timestamp": "2026-01-05T09:56:00-05:00",
+      "session_id": "XNYS-2026-01-05",
+      "uptick_issues": 535,
+      "downtick_issues": 465,
+      "neutral_issues": 20,
+      "ready": true
+    },
+    {
+      "timestamp": "2026-01-05T09:57:00-05:00",
+      "session_id": "XNYS-2026-01-05",
+      "uptick_issues": 550,
+      "downtick_issues": 450,
+      "neutral_issues": 20,
+      "ready": true
+    },
+    {
+      "timestamp": "2026-01-05T09:58:00-05:00",
+      "session_id": "XNYS-2026-01-05",
+      "uptick_issues": 445,
+      "downtick_issues": 555,
+      "neutral_issues": 20,
+      "ready": true
+    },
+    {
+      "timestamp": "2026-01-05T09:59:00-05:00",
+      "session_id": "XNYS-2026-01-05",
+      "uptick_issues": 530,
+      "downtick_issues": 470,
+      "neutral_issues": 20,
+      "ready": true
+    },
+    {
+      "timestamp": "2026-01-05T10:00:00-05:00",
+      "session_id": "XNYS-2026-01-05",
+      "uptick_issues": 560,
+      "downtick_issues": 440,
+      "neutral_issues": 20,
+      "ready": true
+    },
+    {
+      "timestamp": "2026-01-05T10:01:00-05:00",
+      "session_id": "XNYS-2026-01-05",
+      "uptick_issues": 480,
+      "downtick_issues": 520,
+      "neutral_issues": 20,
+      "ready": true
+    },
+    {
+      "timestamp": "2026-01-05T10:02:00-05:00",
+      "session_id": "XNYS-2026-01-05",
+      "uptick_issues": 540,
+      "downtick_issues": 460,
+      "neutral_issues": 20,
+      "ready": true
+    },
+    {
+      "timestamp": "2026-01-05T10:03:00-05:00",
+      "session_id": "XNYS-2026-01-05",
+      "uptick_issues": 570,
+      "downtick_issues": 430,
+      "neutral_issues": 20,
+      "ready": true
+    },
+    {
+      "timestamp": "2026-01-05T10:04:00-05:00",
+      "session_id": "XNYS-2026-01-05",
+      "uptick_issues": 470,
+      "downtick_issues": 530,
+      "neutral_issues": 20,
+      "ready": true
+    },
+    {
+      "timestamp": "2026-01-05T10:05:00-05:00",
+      "session_id": "XNYS-2026-01-05",
+      "uptick_issues": 550,
+      "downtick_issues": 450,
+      "neutral_issues": 20,
+      "ready": true
+    }
+  ],
+  "expected": {
+    "status": "resolved",
+    "value": 1380
+  }
+}
