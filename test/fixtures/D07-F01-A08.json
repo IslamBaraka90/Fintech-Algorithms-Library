@@ -1,0 +1,24 @@
+{
+  "classification": "synthetic teaching input with author-derived calculations",
+  "values": [100, 101, 102, 103, 104, 103, 104, 103, 104, 108, 109],
+  "parameters": {
+    "efficiency_period": 4,
+    "fast_period": 2,
+    "slow_period": 30
+  },
+  "internal_seed": {
+    "index": 3,
+    "value": 103,
+    "published": false
+  },
+  "rows": [
+    {"index": 4, "value": 104, "change": 4, "path_length": 4, "efficiency_ratio": 1, "smoothing_constant": 0.4444444444444444, "kama": 103.44444444444444},
+    {"index": 5, "value": 103, "change": 2, "path_length": 4, "efficiency_ratio": 0.5, "smoothing_constant": 0.13365707018152384, "kama": 103.38504130214154},
+    {"index": 6, "value": 104, "change": 2, "path_length": 4, "efficiency_ratio": 0.5, "smoothing_constant": 0.13365707018152384, "kama": 103.46723487997996},
+    {"index": 7, "value": 103, "change": 0, "path_length": 4, "efficiency_ratio": 0, "smoothing_constant": 0.004162330905306971, "kama": 103.46529009379898},
+    {"index": 8, "value": 104, "change": 0, "path_length": 4, "efficiency_ratio": 0, "smoothing_constant": 0.004162330905306971, "kama": 103.46751573336694},
+    {"index": 9, "value": 108, "change": 5, "path_length": 7, "efficiency_ratio": 0.7142857142857143, "smoothing_constant": 0.24465256098970975, "kama": 104.57639961684428},
+    {"index": 10, "value": 109, "change": 5, "path_length": 7, "efficiency_ratio": 0.7142857142857143, "smoothing_constant": 0.24465256098970975, "kama": 105.65864477937839}
+  ],
+  "rounding": "No intermediate rounding; displayed values may be rounded."
+}

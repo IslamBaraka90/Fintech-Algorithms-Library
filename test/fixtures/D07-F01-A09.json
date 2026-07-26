@@ -1,0 +1,132 @@
+{
+  "classification": "author-derived calculation from synthetic teaching input",
+  "fixture": "../datasets/mama-fixtures.json#canonical-regime-shift",
+  "parameters": {
+    "fast_limit": 0.5,
+    "slow_limit": 0.05
+  },
+  "checkpoints": [
+    {
+      "index": 32,
+      "value": 101.732051,
+      "phase": -2.640381561915,
+      "delta_phase": 11.179106123472,
+      "alpha": 0.05,
+      "mama": 100.283132803372,
+      "fama": 91.078423889195
+    },
+    {
+      "index": 33,
+      "value": 101.414214,
+      "phase": -17.016354301187,
+      "delta_phase": 14.375972739272,
+      "alpha": 0.05,
+      "mama": 100.339686863203,
+      "fama": 91.309955463545
+    },
+    {
+      "index": 47,
+      "value": 103.088464,
+      "phase": -41.479381585387,
+      "delta_phase": 15.02764426943,
+      "alpha": 0.05,
+      "mama": 102.422090962023,
+      "fama": 97.377856135634
+    },
+    {
+      "index": 63,
+      "value": 104.997638,
+      "phase": 56.490730105903,
+      "delta_phase": 12.926727974263,
+      "alpha": 0.05,
+      "mama": 103.406687914093,
+      "fama": 100.677503934215
+    },
+    {
+      "index": 71,
+      "value": 107.74003,
+      "phase": -0.29948176035,
+      "delta_phase": 4.719062124572,
+      "alpha": 0.105953256558,
+      "mama": 105.22576360742,
+      "fama": 101.724492008942
+    },
+    {
+      "index": 72,
+      "value": 109.012822,
+      "phase": -5.042077669848,
+      "delta_phase": 4.742595909498,
+      "alpha": 0.105427493622,
+      "mama": 105.625023681949,
+      "fama": 101.930103647981
+    },
+    {
+      "index": 79,
+      "value": 107.74003,
+      "phase": -80.146549032588,
+      "delta_phase": 39.164916875397,
+      "alpha": 0.05,
+      "mama": 106.550063234142,
+      "fama": 105.512403493614
+    },
+    {
+      "index": 95,
+      "value": 107.74003,
+      "phase": -70.253914512864,
+      "delta_phase": 62.506243546588,
+      "alpha": 0.05,
+      "mama": 107.235009349112,
+      "fama": 107.0832571867
+    },
+    {
+      "index": 96,
+      "value": 107.78003,
+      "phase": 88.689744454216,
+      "delta_phase": 1.0,
+      "alpha": 0.5,
+      "mama": 107.507519674556,
+      "fama": 107.189322808664
+    },
+    {
+      "index": 119,
+      "value": 107.74003,
+      "phase": 37.225902763516,
+      "delta_phase": 29.262512225095,
+      "alpha": 0.05,
+      "mama": 107.708336006236,
+      "fama": 107.603888156388
+    },
+    {
+      "index": 120,
+      "value": 107.86205,
+      "phase": -2.106311140505,
+      "delta_phase": 39.33221390402,
+      "alpha": 0.05,
+      "mama": 107.716021705925,
+      "fama": 107.606691495126
+    },
+    {
+      "index": 127,
+      "value": 106.32205,
+      "phase": -60.243344534554,
+      "delta_phase": 54.976868765635,
+      "alpha": 0.05,
+      "mama": 107.643066958931,
+      "fama": 107.663868636861
+    },
+    {
+      "index": 143,
+      "value": 103.326055,
+      "phase": 66.23371246664,
+      "delta_phase": 20.80705766932,
+      "alpha": 0.05,
+      "mama": 104.378584497396,
+      "fama": 106.227821220431
+    }
+  ],
+  "independent_reference": {
+    "library": "TA-Lib Python 0.7.1 / core MAMA",
+    "result": "MAMA maximum absolute difference 0; FAMA maximum absolute difference 2.842170943040401e-14 before fixture rounding.",
+    "note": "The reference library was used only as an oracle; expected arrays are stored for repeatable cross-language checks."
+  }
+}

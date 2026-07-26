@@ -447,6 +447,50 @@
       "types": "./dist/market-breadth-and-internals/high-low-and-trend-breadth/percent-above-200-day-ma/index.d.ts",
       "import": "./dist/market-breadth-and-internals/high-low-and-trend-breadth/percent-above-200-day-ma/index.js"
     },
+    "./market-breadth-and-internals/thrust-and-pressure/zweig-breadth-thrust": {
+      "types": "./dist/market-breadth-and-internals/thrust-and-pressure/zweig-breadth-thrust/index.d.ts",
+      "import": "./dist/market-breadth-and-internals/thrust-and-pressure/zweig-breadth-thrust/index.js"
+    },
+    "./market-breadth-and-internals/thrust-and-pressure/arms-index-trin": {
+      "types": "./dist/market-breadth-and-internals/thrust-and-pressure/arms-index-trin/index.d.ts",
+      "import": "./dist/market-breadth-and-internals/thrust-and-pressure/arms-index-trin/index.js"
+    },
+    "./market-breadth-and-internals/thrust-and-pressure/advance-decline-volume-line": {
+      "types": "./dist/market-breadth-and-internals/thrust-and-pressure/advance-decline-volume-line/index.d.ts",
+      "import": "./dist/market-breadth-and-internals/thrust-and-pressure/advance-decline-volume-line/index.js"
+    },
+    "./market-breadth-and-internals/thrust-and-pressure/upside-downside-volume-ratio": {
+      "types": "./dist/market-breadth-and-internals/thrust-and-pressure/upside-downside-volume-ratio/index.d.ts",
+      "import": "./dist/market-breadth-and-internals/thrust-and-pressure/upside-downside-volume-ratio/index.js"
+    },
+    "./market-breadth-and-internals/thrust-and-pressure/cumulative-tick": {
+      "types": "./dist/market-breadth-and-internals/thrust-and-pressure/cumulative-tick/index.d.ts",
+      "import": "./dist/market-breadth-and-internals/thrust-and-pressure/cumulative-tick/index.js"
+    },
+    "./market-breadth-and-internals/thrust-and-pressure/breadth-divergence-detector": {
+      "types": "./dist/market-breadth-and-internals/thrust-and-pressure/breadth-divergence-detector/index.d.ts",
+      "import": "./dist/market-breadth-and-internals/thrust-and-pressure/breadth-divergence-detector/index.js"
+    },
+    "./market-breadth-and-internals/concentration-and-diffusion/top-n-index-contribution": {
+      "types": "./dist/market-breadth-and-internals/concentration-and-diffusion/top-n-index-contribution/index.d.ts",
+      "import": "./dist/market-breadth-and-internals/concentration-and-diffusion/top-n-index-contribution/index.js"
+    },
+    "./market-breadth-and-internals/concentration-and-diffusion/herfindahl-constituent-concentration": {
+      "types": "./dist/market-breadth-and-internals/concentration-and-diffusion/herfindahl-constituent-concentration/index.d.ts",
+      "import": "./dist/market-breadth-and-internals/concentration-and-diffusion/herfindahl-constituent-concentration/index.js"
+    },
+    "./market-breadth-and-internals/concentration-and-diffusion/effective-number-of-constituents": {
+      "types": "./dist/market-breadth-and-internals/concentration-and-diffusion/effective-number-of-constituents/index.d.ts",
+      "import": "./dist/market-breadth-and-internals/concentration-and-diffusion/effective-number-of-constituents/index.js"
+    },
+    "./market-breadth-and-internals/concentration-and-diffusion/sector-diffusion-index": {
+      "types": "./dist/market-breadth-and-internals/concentration-and-diffusion/sector-diffusion-index/index.d.ts",
+      "import": "./dist/market-breadth-and-internals/concentration-and-diffusion/sector-diffusion-index/index.js"
+    },
+    "./market-breadth-and-internals/concentration-and-diffusion/factor-diffusion-index": {
+      "types": "./dist/market-breadth-and-internals/concentration-and-diffusion/factor-diffusion-index/index.d.ts",
+      "import": "./dist/market-breadth-and-internals/concentration-and-diffusion/factor-diffusion-index/index.js"
+    },
     "./price-action-and-candlesticks/candle-foundations/candle-anatomy": {
       "types": "./dist/price-action-and-candlesticks/candle-foundations/candle-anatomy/index.d.ts",
       "import": "./dist/price-action-and-candlesticks/candle-foundations/candle-anatomy/index.js"
@@ -482,6 +526,14 @@
     "./technical-indicators/trend-smoothing/hull-ma": {
       "types": "./dist/technical-indicators/trend-smoothing/hull-ma/index.d.ts",
       "import": "./dist/technical-indicators/trend-smoothing/hull-ma/index.js"
+    },
+    "./technical-indicators/trend-smoothing/kama": {
+      "types": "./dist/technical-indicators/trend-smoothing/kama/index.d.ts",
+      "import": "./dist/technical-indicators/trend-smoothing/kama/index.js"
+    },
+    "./technical-indicators/trend-smoothing/mama": {
+      "types": "./dist/technical-indicators/trend-smoothing/mama/index.d.ts",
+      "import": "./dist/technical-indicators/trend-smoothing/mama/index.js"
     },
     "./technical-indicators/trend-systems/macd": {
       "types": "./dist/technical-indicators/trend-systems/macd/index.d.ts",
