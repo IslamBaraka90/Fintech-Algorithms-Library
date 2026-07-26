@@ -1,0 +1,74 @@
+{
+  "topic_id": "D07-F05-A06",
+  "parameters": "`period=13`",
+  "first_ready_index": 13,
+  "first_ready_component_row": {
+    "index": 13,
+    "timestamp": "2025-01-14T00:00:00Z",
+    "open": 104.37596,
+    "high": 105.01977,
+    "low": 103.803484,
+    "close": 104.438866,
+    "volume": 954171.597,
+    "status": "ready",
+    "reason": "All declared dependencies are available.",
+    "classification": "Positive smoothed force",
+    "values": {
+      "change": -0.051231,
+      "volume": 954171.597,
+      "raw_force": -48883.1650859083,
+      "ema_seed": 356012.7276436289,
+      "force_index": 356012.7276436289
+    },
+    "diagnostic": "Raw force -48883.165 enters the declared EMA state; the displayed smoothed value is 356012.728."
+  },
+  "worked_index": 13,
+  "worked_component_row": {
+    "index": 13,
+    "timestamp": "2025-01-14T00:00:00Z",
+    "open": 104.37596,
+    "high": 105.01977,
+    "low": 103.803484,
+    "close": 104.438866,
+    "volume": 954171.597,
+    "status": "ready",
+    "reason": "All declared dependencies are available.",
+    "classification": "Positive smoothed force",
+    "values": {
+      "change": -0.051231,
+      "volume": 954171.597,
+      "raw_force": -48883.1650859083,
+      "ema_seed": 356012.7276436289,
+      "force_index": 356012.7276436289
+    },
+    "diagnostic": "Raw force -48883.165 enters the declared EMA state; the displayed smoothed value is 356012.728."
+  },
+  "checkpoints": [
+    {
+      "index": 13,
+      "change": -0.051231,
+      "volume": 954171.597,
+      "raw_force": -48883.1650859083,
+      "ema_seed": 356012.7276436289,
+      "force_index": 356012.7276436289
+    },
+    {
+      "index": 66,
+      "change": 0.018838,
+      "volume": 1341670.169,
+      "raw_force": 25274.3826436252,
+      "ema_seed": null,
+      "force_index": -193465.710972726
+    },
+    {
+      "index": 119,
+      "change": 0.481262,
+      "volume": 1790041.6,
+      "raw_force": 861479.0004992018,
+      "ema_seed": null,
+      "force_index": 233889.2671290579
+    }
+  ],
+  "derivation_markdown": "The independently audited canonical row is zero-based index **13** (2025-01-14T00:00:00Z, synthetic). No value below is a provider observation.\n\n| Component | Author-derived value |\n|---|---:|\n| Close change | `-0.05123100` |\n| Volume | `954171.59700000` |\n| Raw force | `-48883.16508591` |\n| EMA seed | `356012.72764363` |\n| Force Index | `356012.72764363` |\n\nIndependent substitution: `mean(first 13 raw-force values) = 356012.72764363 = 356012.72764363`.\n\nPublished checkpoints round to 10 decimal places; teaching prose shows 8 decimals.",
+  "note": "Author-derived from the canonical synthetic OHLCV scenario; values round to 10 decimals."
+}

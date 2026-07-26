@@ -1,0 +1,40 @@
+{
+  "topic_id": "D07-F03-A07",
+  "parameters": "`long=25`, `short=13`",
+  "first_ready_index": 37,
+  "first_ready_component_row": {
+    "index": 37,
+    "timestamp": "2025-02-07T00:00:00Z",
+    "open": 104.684975,
+    "high": 106.356022,
+    "low": 104.079907,
+    "close": 105.692012,
+    "status": "ready",
+    "reason": "All declared dependencies are available.",
+    "classification": "Positive smoothed direction",
+    "values": {
+      "change": 0.839147,
+      "ema_long_change": 0.2524928556,
+      "double_change": 0.2001080455,
+      "ema_long_abs": 0.7271862977,
+      "double_abs": 0.7957009627,
+      "tsi": 25.148649409
+    }
+  },
+  "checkpoints": [
+    {
+      "index": 37,
+      "tsi": 25.148649409
+    },
+    {
+      "index": 78,
+      "tsi": -2.7323629102
+    },
+    {
+      "index": 119,
+      "tsi": 20.4375276531
+    }
+  ],
+  "derivation_markdown": "The first complete canonical row is zero-based index **37** (2025-02-07T00:00:00Z, synthetic). No value below is a provider observation.\n\n| Component | Author-derived value |\n|---|---:|\n| Change | `0.83914700` |\n| EMA long \u0394C | `0.25249286` |\n| Double EMA \u0394C | `0.20010805` |\n| EMA long |\u0394C| | `0.72718630` |\n| Double EMA |\u0394C| | `0.79570096` |\n| TSI | `25.14864941` |\n\nIndependent substitution: `100 \u00d7 0.20010805 / 0.79570096 = 25.14864941`.\n\nPublished checkpoints round to 10 decimal places; teaching prose shows 8 decimals so the displayed arithmetic remains readable.",
+  "note": "Author-derived from the canonical synthetic scenario; component values and checkpoints round to 10 decimals."
+}

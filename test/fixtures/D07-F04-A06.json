@@ -1,0 +1,13 @@
+{
+  "topic_id": "D07-F04-A06",
+  "scenario_id": "quote-scale-reference",
+  "checkpoint": {
+    "label": "First published state",
+    "index": 19,
+    "middle": 102.4050392765,
+    "stddev": 1.0434521833,
+    "upper": 104.491943643,
+    "lower": 100.31813491,
+    "bandwidth": 4.0757845147
+  }
+}

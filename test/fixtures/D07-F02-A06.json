@@ -1,0 +1,28 @@
+{
+  "classification": "author-derived calculation from synthetic input",
+  "scenario_id": "origin-plot-clock",
+  "parameters": {
+    "conversion_period": 9,
+    "base_period": 26,
+    "span_b_period": 52,
+    "displacement": 26
+  },
+  "observation_index": 64,
+  "observation": {
+    "index": 64,
+    "open": 127.487682,
+    "high": 128.724579,
+    "low": 125.964087,
+    "close": 126.978465
+  },
+  "active_checkpoint": {
+    "index": 64,
+    "label": "First guided state",
+    "explanation": "Separate every line's origin index from its plot index; a display offset never changes the information set."
+  },
+  "outputs": {
+    "conversion": 127.87028600000001,
+    "base": 126.4408745,
+    "span_a_origin": 127.15558025000001
+  }
+}

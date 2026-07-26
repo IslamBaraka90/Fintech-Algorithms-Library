@@ -1,0 +1,52 @@
+{
+  "topic_id": "D07-F03-A08",
+  "parameters": "`price_period=3`, `streak_period=2`, `rank_period=100`",
+  "first_ready_index": 101,
+  "first_ready_component_row": {
+    "index": 101,
+    "timestamp": "2025-04-12T00:00:00Z",
+    "open": 99.362111,
+    "high": 100.094894,
+    "low": 98.784797,
+    "close": 99.466718,
+    "status": "ready",
+    "reason": "All declared dependencies are available.",
+    "classification": "High scale zone",
+    "values": {
+      "price_rsi": 80.6813528372,
+      "streak": 6.0,
+      "streak_rsi": 98.2571347794,
+      "roc": 0.0008622773,
+      "percent_rank": 52.0,
+      "connors_rsi": 76.9794958722
+    }
+  },
+  "checkpoints": [
+    {
+      "index": 101,
+      "price_rsi": 80.6813528372,
+      "streak": 6.0,
+      "streak_rsi": 98.2571347794,
+      "percent_rank": 52.0,
+      "connors_rsi": 76.9794958722
+    },
+    {
+      "index": 110,
+      "price_rsi": 96.4092720007,
+      "streak": 5.0,
+      "streak_rsi": 96.3888982767,
+      "percent_rank": 97.0,
+      "connors_rsi": 96.5993900925
+    },
+    {
+      "index": 119,
+      "price_rsi": 57.0964321947,
+      "streak": 2.0,
+      "streak_rsi": 83.086588887,
+      "percent_rank": 72.0,
+      "connors_rsi": 70.7276736939
+    }
+  ],
+  "derivation_markdown": "The first complete canonical row is zero-based index **101** (2025-04-12T00:00:00Z, synthetic). No value below is a provider observation.\n\n| Component | Author-derived value |\n|---|---:|\n| Price RSI | `80.68135284` |\n| Streak | `6.00000000` |\n| Streak RSI | `98.25713478` |\n| One-bar return | `0.00086228` |\n| Percent rank | `52.00000000` |\n| Connors RSI | `76.97949587` |\n\nIndependent substitution: `(80.68135284 + 98.25713478 + 52.00000000) / 3 = 76.97949587`.\n\nPublished checkpoints round to 10 decimal places; teaching prose shows 8 decimals so the displayed arithmetic remains readable.",
+  "note": "Author-derived from the canonical synthetic scenario; component values and checkpoints round to 10 decimals."
+}

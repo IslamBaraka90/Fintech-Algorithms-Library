@@ -1,0 +1,69 @@
+{
+  "topic_id": "D07-F05-A05",
+  "parameters": "`initial=0`",
+  "first_ready_index": 0,
+  "first_ready_component_row": {
+    "index": 0,
+    "timestamp": "2025-01-01T00:00:00Z",
+    "open": 100.28,
+    "high": 101.05,
+    "low": 99.4,
+    "close": 100.28,
+    "volume": 990000.0,
+    "status": "ready",
+    "reason": "All declared dependencies are available.",
+    "classification": "Zero return-weighted volume",
+    "values": {
+      "price_return": 0.0,
+      "volume": 990000.0,
+      "volume_contribution": 0.0,
+      "vpt": 0.0
+    },
+    "diagnostic": "Decimal return 0.000000 \u00d7 current volume 990000.000 contributes 0.000."
+  },
+  "worked_index": 1,
+  "worked_component_row": {
+    "index": 1,
+    "timestamp": "2025-01-02T00:00:00Z",
+    "open": 100.335805,
+    "high": 101.52482,
+    "low": 99.462904,
+    "close": 100.686113,
+    "volume": 1066468.036,
+    "status": "ready",
+    "reason": "All declared dependencies are available.",
+    "classification": "Positive return-weighted volume",
+    "values": {
+      "price_return": 0.0040497906,
+      "volume": 1066468.036,
+      "volume_contribution": 4318.9722128448,
+      "vpt": 4318.9722128448
+    },
+    "diagnostic": "Decimal return 0.004050 \u00d7 current volume 1066468.036 contributes 4318.972."
+  },
+  "checkpoints": [
+    {
+      "index": 0,
+      "price_return": 0.0,
+      "volume": 990000.0,
+      "volume_contribution": 0.0,
+      "vpt": 0.0
+    },
+    {
+      "index": 60,
+      "price_return": 0.0004785132,
+      "volume": 1431201.954,
+      "volume_contribution": 684.8490354905,
+      "vpt": -10321.3562376507
+    },
+    {
+      "index": 119,
+      "price_return": 0.0045947213,
+      "volume": 1790041.6,
+      "volume_contribution": 8224.7422153467,
+      "vpt": 67298.1721917511
+    }
+  ],
+  "derivation_markdown": "The independently audited canonical row is zero-based index **1** (2025-01-02T00:00:00Z, synthetic). No value below is a provider observation.\n\n| Component | Author-derived value |\n|---|---:|\n| One-bar return | `0.00404979` |\n| Volume | `1066468.03600000` |\n| Return \u00d7 volume | `4318.97221284` |\n| VPT | `4318.97221284` |\n\nIndependent substitution: `0.004049790600 \u00d7 1066468.036 = 4318.9722128448`; then `0.0000000000 + 4318.9722128448 = 4318.9722128448`.\n\nPublished checkpoints round to 10 decimal places; teaching prose shows 8 decimals.",
+  "note": "Author-derived from the canonical synthetic OHLCV scenario; values round to 10 decimals."
+}

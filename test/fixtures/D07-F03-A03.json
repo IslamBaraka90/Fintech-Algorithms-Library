@@ -1,0 +1,49 @@
+{
+  "topic_id": "D07-F03-A03",
+  "parameters": "`rsi_period=14`, `stoch_period=14`, `smooth_k=3`, `smooth_d=3`",
+  "first_ready_index": 31,
+  "first_ready_component_row": {
+    "index": 31,
+    "timestamp": "2025-02-01T00:00:00Z",
+    "open": 102.663382,
+    "high": 106.695839,
+    "low": 101.720824,
+    "close": 105.641598,
+    "status": "ready",
+    "reason": "All declared dependencies are available.",
+    "classification": "Middle scale zone",
+    "values": {
+      "rsi": 67.512556069,
+      "rsi_low": 38.5275521425,
+      "rsi_high": 74.2705695963,
+      "raw_k": 81.0927727741,
+      "k": 59.2188214107,
+      "d": 48.6388828206
+    }
+  },
+  "checkpoints": [
+    {
+      "index": 31,
+      "rsi": 67.512556069,
+      "raw_k": 81.0927727741,
+      "k": 59.2188214107,
+      "d": 48.6388828206
+    },
+    {
+      "index": 75,
+      "rsi": 60.2653668206,
+      "raw_k": 100.0,
+      "k": 100.0,
+      "d": 96.4959612635
+    },
+    {
+      "index": 119,
+      "rsi": 58.5776177309,
+      "raw_k": 36.16498462,
+      "k": 32.0187118824,
+      "d": 32.2480245049
+    }
+  ],
+  "derivation_markdown": "The first complete canonical row is zero-based index **31** (2025-02-01T00:00:00Z, synthetic). No value below is a provider observation.\n\n| Component | Author-derived value |\n|---|---:|\n| RSI | `67.51255607` |\n| RSI low | `38.52755214` |\n| RSI high | `74.27056960` |\n| Raw StochRSI | `81.09277277` |\n| Smoothed %K | `59.21882141` |\n| Smoothed %D | `48.63888282` |\n\nIndependent substitution: `%D = (40.55890883 + 46.13891822 + 59.21882141) / 3 = 48.63888282`.\n\nPublished checkpoints round to 10 decimal places; teaching prose shows 8 decimals so the displayed arithmetic remains readable.",
+  "note": "Author-derived from the canonical synthetic scenario; component values and checkpoints round to 10 decimals."
+}

@@ -1,0 +1,27 @@
+{
+  "classification": "author-derived calculation from synthetic input",
+  "scenario_id": "long-acceleration",
+  "parameters": {
+    "initial_direction": "long",
+    "acceleration_step": 0.02,
+    "acceleration_max": 0.2
+  },
+  "observation_index": 18,
+  "observation": {
+    "index": 18,
+    "open": 121.193411,
+    "high": 122.719117,
+    "low": 120.271351,
+    "close": 121.610559
+  },
+  "active_checkpoint": {
+    "index": 18,
+    "label": "First guided state",
+    "explanation": "Inspect direction, unconstrained candidate, prior-two-bar clamp, EP, AF, and reversal in that order."
+  },
+  "outputs": {
+    "sar": 119.81401,
+    "extreme_point": 122.719117,
+    "acceleration_factor": 0.06
+  }
+}

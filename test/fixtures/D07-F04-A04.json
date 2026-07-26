@@ -1,0 +1,13 @@
+{
+  "topic_id": "D07-F04-A04",
+  "scenario_id": "atr-expansion",
+  "checkpoint": {
+    "label": "First published state",
+    "index": 19,
+    "true_range": 2.54846362,
+    "atr": 2.5795621305,
+    "middle": 101.676710571,
+    "upper": 106.8358348321,
+    "lower": 96.5175863099
+  }
+}

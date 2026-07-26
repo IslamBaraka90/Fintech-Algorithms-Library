@@ -1,0 +1,13 @@
+{
+  "topic_id": "D07-F04-A03",
+  "scenario_id": "contraction-expansion",
+  "checkpoint": {
+    "label": "First published state",
+    "index": 19,
+    "middle": 101.809407524,
+    "stddev": 1.0766260178,
+    "upper": 103.9626595595,
+    "lower": 99.6561554885,
+    "percent_b": 0.034090371
+  }
+}

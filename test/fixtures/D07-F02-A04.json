@@ -1,0 +1,25 @@
+{
+  "classification": "author-derived calculation from synthetic input",
+  "scenario_id": "directional-expansion",
+  "parameters": {
+    "period": 14
+  },
+  "observation_index": 24,
+  "observation": {
+    "index": 24,
+    "open": 111.621533,
+    "high": 113.037213,
+    "low": 110.664502,
+    "close": 111.972017
+  },
+  "active_checkpoint": {
+    "index": 24,
+    "label": "First guided state",
+    "explanation": "Audit one-bar TR/+DM/−DM first, then the Wilder sums, DI shares, and zero-denominator DX rule."
+  },
+  "outputs": {
+    "plus_di": 15.918797463509025,
+    "minus_di": 1.4023838296856996,
+    "dx": 83.80729575024218
+  }
+}

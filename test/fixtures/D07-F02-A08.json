@@ -1,0 +1,26 @@
+{
+  "classification": "author-derived calculation from synthetic input",
+  "scenario_id": "down-to-up-cross",
+  "parameters": {
+    "period": 10,
+    "multiplier": 3.0
+  },
+  "observation_index": 22,
+  "observation": {
+    "index": 22,
+    "open": 127.206762,
+    "high": 128.537567,
+    "low": 126.321341,
+    "close": 127.548639
+  },
+  "active_checkpoint": {
+    "index": 22,
+    "label": "First guided state",
+    "explanation": "Trace TR, ATR, basic bands, final-band ratchets, previous active band, and strict crossing."
+  },
+  "outputs": {
+    "supertrend": 132.34797892339702,
+    "final_upper": 132.34797892339702,
+    "final_lower": 120.15964660351801
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "topic_id": "D07-F04-A02",
+  "scenario_id": "regime-tour",
+  "checkpoint": {
+    "label": "First published state",
+    "index": 13,
+    "true_range": 2.71917755,
+    "atr": 2.5168679543
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "topic_id": "D07-F03-A01",
+  "parameters": "`period=14`",
+  "first_ready_index": 14,
+  "first_ready_component_row": {
+    "index": 14,
+    "timestamp": "2025-01-15T00:00:00Z",
+    "open": 103.931843,
+    "high": 105.829209,
+    "low": 103.003195,
+    "close": 104.811268,
+    "status": "ready",
+    "reason": "All declared dependencies are available.",
+    "classification": "High scale zone",
+    "values": {
+      "change": 0.704877,
+      "gain": 0.704877,
+      "loss": 0.0,
+      "avg_gain": 0.5314615,
+      "avg_loss": 0.1877995,
+      "rsi": 73.8899370326
+    }
+  },
+  "checkpoints": [
+    {
+      "index": 14,
+      "rsi": 73.8899370326
+    },
+    {
+      "index": 67,
+      "rsi": 42.2061146692
+    },
+    {
+      "index": 119,
+      "rsi": 58.5776177309
+    }
+  ],
+  "derivation_markdown": "The first complete canonical row is zero-based index **14** (2025-01-15T00:00:00Z, synthetic). No value below is a provider observation.\n\n| Component | Author-derived value |\n|---|---:|\n| Change | `0.70487700` |\n| Gain | `0.70487700` |\n| Loss | `0.00000000` |\n| Smoothed gain | `0.53146150` |\n| Smoothed loss | `0.18779950` |\n| RSI | `73.88993703` |\n\nIndependent substitution: `100 \u2212 100 / (1 + 0.53146150 / 0.18779950) = 73.88993703`.\n\nPublished checkpoints round to 10 decimal places; teaching prose shows 8 decimals so the displayed arithmetic remains readable.",
+  "note": "Author-derived from the canonical synthetic scenario; component values and checkpoints round to 10 decimals."
+}

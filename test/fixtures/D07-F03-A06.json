@@ -1,0 +1,46 @@
+{
+  "topic_id": "D07-F03-A06",
+  "parameters": "`short=7`, `medium=14`, `long=28`, weights `4/2/1`",
+  "first_ready_index": 28,
+  "first_ready_component_row": {
+    "index": 28,
+    "timestamp": "2025-01-29T00:00:00Z",
+    "open": 101.276915,
+    "high": 102.930296,
+    "low": 100.444734,
+    "close": 102.019122,
+    "status": "ready",
+    "reason": "All declared dependencies are available.",
+    "classification": "Middle scale zone",
+    "values": {
+      "buying_pressure": 1.574388,
+      "true_range": 2.485562,
+      "avg_short": 0.518512859,
+      "avg_medium": 0.4394993502,
+      "avg_long": 0.4923088632,
+      "ultimate_oscillator": 49.2194142823
+    }
+  },
+  "checkpoints": [
+    {
+      "index": 28,
+      "buying_pressure": 1.574388,
+      "true_range": 2.485562,
+      "ultimate_oscillator": 49.2194142823
+    },
+    {
+      "index": 74,
+      "buying_pressure": 2.244739,
+      "true_range": 3.134647,
+      "ultimate_oscillator": 55.0508534109
+    },
+    {
+      "index": 119,
+      "buying_pressure": 1.441799,
+      "true_range": 2.283258,
+      "ultimate_oscillator": 48.2022482098
+    }
+  ],
+  "derivation_markdown": "The first complete canonical row is zero-based index **28** (2025-01-29T00:00:00Z, synthetic). No value below is a provider observation.\n\n| Component | Author-derived value |\n|---|---:|\n| Buying pressure | `1.57438800` |\n| True range | `2.48556200` |\n| Short ratio | `0.51851286` |\n| Medium ratio | `0.43949935` |\n| Long ratio | `0.49230886` |\n| Ultimate oscillator | `49.21941428` |\n\nIndependent substitution: `100 \u00d7 (4\u00d70.51851286 + 2\u00d70.43949935 + 0.49230886) / 7 = 49.21941428`.\n\nPublished checkpoints round to 10 decimal places; teaching prose shows 8 decimals so the displayed arithmetic remains readable.",
+  "note": "Author-derived from the canonical synthetic scenario; component values and checkpoints round to 10 decimals."
+}

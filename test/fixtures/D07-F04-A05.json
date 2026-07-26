@@ -1,0 +1,12 @@
+{
+  "topic_id": "D07-F04-A05",
+  "scenario_id": "breakout-ladder",
+  "checkpoint": {
+    "label": "First published state",
+    "index": 19,
+    "upper": 103.88336397,
+    "lower": 98.92,
+    "middle": 101.401681985,
+    "width": 4.96336397
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "classification": "author-derived calculation from synthetic input",
+  "scenario_id": "normalized-regime-tour",
+  "parameters": {
+    "fast_span": 12,
+    "slow_span": 26,
+    "signal_span": 9
+  },
+  "observation_index": 40,
+  "observation": {
+    "index": 40,
+    "open": 107.687765,
+    "high": 109.439194,
+    "low": 106.783908,
+    "close": 108.315627
+  },
+  "active_checkpoint": {
+    "index": 40,
+    "label": "First guided state",
+    "explanation": "Reconcile fast EMA, slow EMA, normalized spread, signal seed, and denominator availability."
+  },
+  "outputs": {
+    "ppo": 1.6183287479316537,
+    "signal": 1.5805402416077257,
+    "histogram": 0.03778850632392805
+  }
+}

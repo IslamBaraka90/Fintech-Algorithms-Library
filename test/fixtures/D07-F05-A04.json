@@ -1,0 +1,79 @@
+{
+  "topic_id": "D07-F05-A04",
+  "parameters": "`period=14`",
+  "first_ready_index": 14,
+  "first_ready_component_row": {
+    "index": 14,
+    "timestamp": "2025-01-15T00:00:00Z",
+    "open": 104.366505,
+    "high": 105.040118,
+    "low": 103.75971,
+    "close": 104.439721,
+    "volume": 1024173.226,
+    "status": "ready",
+    "reason": "All declared dependencies are available.",
+    "classification": "Middle scale zone",
+    "values": {
+      "typical_price": 104.413183,
+      "raw_money_flow": 106937186.47003837,
+      "positive_flow": 1097811157.395852,
+      "negative_flow": 393169896.487601,
+      "money_flow_ratio": 2.7922055254,
+      "mfi": 73.6301212236
+    },
+    "diagnostic": "Positive flow 1097811157.396 and negative flow 393169896.488 map to the bounded 0\u2013100 scale."
+  },
+  "worked_index": 14,
+  "worked_component_row": {
+    "index": 14,
+    "timestamp": "2025-01-15T00:00:00Z",
+    "open": 104.366505,
+    "high": 105.040118,
+    "low": 103.75971,
+    "close": 104.439721,
+    "volume": 1024173.226,
+    "status": "ready",
+    "reason": "All declared dependencies are available.",
+    "classification": "Middle scale zone",
+    "values": {
+      "typical_price": 104.413183,
+      "raw_money_flow": 106937186.47003837,
+      "positive_flow": 1097811157.395852,
+      "negative_flow": 393169896.487601,
+      "money_flow_ratio": 2.7922055254,
+      "mfi": 73.6301212236
+    },
+    "diagnostic": "Positive flow 1097811157.396 and negative flow 393169896.488 map to the bounded 0\u2013100 scale."
+  },
+  "checkpoints": [
+    {
+      "index": 14,
+      "typical_price": 104.413183,
+      "raw_money_flow": 106937186.47003837,
+      "positive_flow": 1097811157.395852,
+      "negative_flow": 393169896.487601,
+      "money_flow_ratio": 2.7922055254,
+      "mfi": 73.6301212236
+    },
+    {
+      "index": 67,
+      "typical_price": 99.7910673333,
+      "raw_money_flow": 127575856.88909414,
+      "positive_flow": 261375034.7872103,
+      "negative_flow": 1651723670.6638012,
+      "money_flow_ratio": 0.1582438028,
+      "mfi": 13.6623914931
+    },
+    {
+      "index": 119,
+      "typical_price": 105.0963803333,
+      "raw_money_flow": 188126892.80608854,
+      "positive_flow": 890294277.16254,
+      "negative_flow": 1473793713.5029006,
+      "money_flow_ratio": 0.6040833727,
+      "mfi": 37.6591007051
+    }
+  ],
+  "derivation_markdown": "The independently audited canonical row is zero-based index **14** (2025-01-15T00:00:00Z, synthetic). No value below is a provider observation.\n\n| Component | Author-derived value |\n|---|---:|\n| Typical price | `104.41318300` |\n| Raw money flow | `106937186.47003837` |\n| Positive-flow sum | `1097811157.39585209` |\n| Negative-flow sum | `393169896.48760098` |\n| Money-flow ratio | `2.79220553` |\n| MFI | `73.63012122` |\n\nIndependent substitution: `100 \u00d7 1097811157.39585209 / (1097811157.39585209 + 393169896.48760098) = 73.63012122`.\n\nPublished checkpoints round to 10 decimal places; teaching prose shows 8 decimals.",
+  "note": "Author-derived from the canonical synthetic OHLCV scenario; values round to 10 decimals."
+}

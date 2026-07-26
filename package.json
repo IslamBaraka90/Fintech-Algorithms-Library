@@ -539,6 +539,114 @@
       "types": "./dist/technical-indicators/trend-systems/macd/index.d.ts",
       "import": "./dist/technical-indicators/trend-systems/macd/index.js"
     },
+    "./technical-indicators/trend-systems/percentage-price-oscillator": {
+      "types": "./dist/technical-indicators/trend-systems/percentage-price-oscillator/index.d.ts",
+      "import": "./dist/technical-indicators/trend-systems/percentage-price-oscillator/index.js"
+    },
+    "./technical-indicators/trend-systems/aroon": {
+      "types": "./dist/technical-indicators/trend-systems/aroon/index.d.ts",
+      "import": "./dist/technical-indicators/trend-systems/aroon/index.js"
+    },
+    "./technical-indicators/trend-systems/directional-movement": {
+      "types": "./dist/technical-indicators/trend-systems/directional-movement/index.d.ts",
+      "import": "./dist/technical-indicators/trend-systems/directional-movement/index.js"
+    },
+    "./technical-indicators/trend-systems/adx": {
+      "types": "./dist/technical-indicators/trend-systems/adx/index.d.ts",
+      "import": "./dist/technical-indicators/trend-systems/adx/index.js"
+    },
+    "./technical-indicators/trend-systems/ichimoku-cloud": {
+      "types": "./dist/technical-indicators/trend-systems/ichimoku-cloud/index.d.ts",
+      "import": "./dist/technical-indicators/trend-systems/ichimoku-cloud/index.js"
+    },
+    "./technical-indicators/trend-systems/parabolic-sar": {
+      "types": "./dist/technical-indicators/trend-systems/parabolic-sar/index.d.ts",
+      "import": "./dist/technical-indicators/trend-systems/parabolic-sar/index.js"
+    },
+    "./technical-indicators/trend-systems/supertrend": {
+      "types": "./dist/technical-indicators/trend-systems/supertrend/index.d.ts",
+      "import": "./dist/technical-indicators/trend-systems/supertrend/index.js"
+    },
+    "./technical-indicators/momentum/rsi": {
+      "types": "./dist/technical-indicators/momentum/rsi/index.d.ts",
+      "import": "./dist/technical-indicators/momentum/rsi/index.js"
+    },
+    "./technical-indicators/momentum/stochastic-oscillator": {
+      "types": "./dist/technical-indicators/momentum/stochastic-oscillator/index.d.ts",
+      "import": "./dist/technical-indicators/momentum/stochastic-oscillator/index.js"
+    },
+    "./technical-indicators/momentum/stochastic-rsi": {
+      "types": "./dist/technical-indicators/momentum/stochastic-rsi/index.d.ts",
+      "import": "./dist/technical-indicators/momentum/stochastic-rsi/index.js"
+    },
+    "./technical-indicators/momentum/williams-r": {
+      "types": "./dist/technical-indicators/momentum/williams-r/index.d.ts",
+      "import": "./dist/technical-indicators/momentum/williams-r/index.js"
+    },
+    "./technical-indicators/momentum/cci": {
+      "types": "./dist/technical-indicators/momentum/cci/index.d.ts",
+      "import": "./dist/technical-indicators/momentum/cci/index.js"
+    },
+    "./technical-indicators/momentum/ultimate-oscillator": {
+      "types": "./dist/technical-indicators/momentum/ultimate-oscillator/index.d.ts",
+      "import": "./dist/technical-indicators/momentum/ultimate-oscillator/index.js"
+    },
+    "./technical-indicators/momentum/tsi": {
+      "types": "./dist/technical-indicators/momentum/tsi/index.d.ts",
+      "import": "./dist/technical-indicators/momentum/tsi/index.js"
+    },
+    "./technical-indicators/momentum/connors-rsi": {
+      "types": "./dist/technical-indicators/momentum/connors-rsi/index.d.ts",
+      "import": "./dist/technical-indicators/momentum/connors-rsi/index.js"
+    },
+    "./technical-indicators/volatility-and-channels/true-range": {
+      "types": "./dist/technical-indicators/volatility-and-channels/true-range/index.d.ts",
+      "import": "./dist/technical-indicators/volatility-and-channels/true-range/index.js"
+    },
+    "./technical-indicators/volatility-and-channels/atr": {
+      "types": "./dist/technical-indicators/volatility-and-channels/atr/index.d.ts",
+      "import": "./dist/technical-indicators/volatility-and-channels/atr/index.js"
+    },
+    "./technical-indicators/volatility-and-channels/bollinger-bands": {
+      "types": "./dist/technical-indicators/volatility-and-channels/bollinger-bands/index.d.ts",
+      "import": "./dist/technical-indicators/volatility-and-channels/bollinger-bands/index.js"
+    },
+    "./technical-indicators/volatility-and-channels/keltner-channels": {
+      "types": "./dist/technical-indicators/volatility-and-channels/keltner-channels/index.d.ts",
+      "import": "./dist/technical-indicators/volatility-and-channels/keltner-channels/index.js"
+    },
+    "./technical-indicators/volatility-and-channels/donchian-channels": {
+      "types": "./dist/technical-indicators/volatility-and-channels/donchian-channels/index.d.ts",
+      "import": "./dist/technical-indicators/volatility-and-channels/donchian-channels/index.js"
+    },
+    "./technical-indicators/volatility-and-channels/bollinger-bandwidth": {
+      "types": "./dist/technical-indicators/volatility-and-channels/bollinger-bandwidth/index.d.ts",
+      "import": "./dist/technical-indicators/volatility-and-channels/bollinger-bandwidth/index.js"
+    },
+    "./technical-indicators/volume-indicators/obv": {
+      "types": "./dist/technical-indicators/volume-indicators/obv/index.d.ts",
+      "import": "./dist/technical-indicators/volume-indicators/obv/index.js"
+    },
+    "./technical-indicators/volume-indicators/accumulation-distribution-line": {
+      "types": "./dist/technical-indicators/volume-indicators/accumulation-distribution-line/index.d.ts",
+      "import": "./dist/technical-indicators/volume-indicators/accumulation-distribution-line/index.js"
+    },
+    "./technical-indicators/volume-indicators/chaikin-money-flow": {
+      "types": "./dist/technical-indicators/volume-indicators/chaikin-money-flow/index.d.ts",
+      "import": "./dist/technical-indicators/volume-indicators/chaikin-money-flow/index.js"
+    },
+    "./technical-indicators/volume-indicators/money-flow-index": {
+      "types": "./dist/technical-indicators/volume-indicators/money-flow-index/index.d.ts",
+      "import": "./dist/technical-indicators/volume-indicators/money-flow-index/index.js"
+    },
+    "./technical-indicators/volume-indicators/volume-price-trend": {
+      "types": "./dist/technical-indicators/volume-indicators/volume-price-trend/index.d.ts",
+      "import": "./dist/technical-indicators/volume-indicators/volume-price-trend/index.js"
+    },
+    "./technical-indicators/volume-indicators/force-index": {
+      "types": "./dist/technical-indicators/volume-indicators/force-index/index.d.ts",
+      "import": "./dist/technical-indicators/volume-indicators/force-index/index.js"
+    },
     "./earnings-and-per-share-analytics/earnings-and-share-foundations/stock-split-consolidation-eps-restatement": {
       "types": "./dist/earnings-and-per-share-analytics/earnings-and-share-foundations/stock-split-consolidation-eps-restatement/index.d.ts",
       "import": "./dist/earnings-and-per-share-analytics/earnings-and-share-foundations/stock-split-consolidation-eps-restatement/index.js"

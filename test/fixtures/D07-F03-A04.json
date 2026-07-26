@@ -1,0 +1,39 @@
+{
+  "topic_id": "D07-F03-A04",
+  "parameters": "`period=14`",
+  "first_ready_index": 13,
+  "first_ready_component_row": {
+    "index": 13,
+    "timestamp": "2025-01-14T00:00:00Z",
+    "open": 103.521405,
+    "high": 105.059816,
+    "low": 102.649183,
+    "close": 104.106391,
+    "status": "ready",
+    "reason": "All declared dependencies are available.",
+    "classification": "Middle of range",
+    "values": {
+      "lowest_low": 99.08,
+      "highest_high": 107.060056,
+      "range": 7.980056,
+      "distance_from_high": 2.953665,
+      "williams_r": -37.0130861237
+    }
+  },
+  "checkpoints": [
+    {
+      "index": 13,
+      "williams_r": -37.0130861237
+    },
+    {
+      "index": 66,
+      "williams_r": -49.7523086433
+    },
+    {
+      "index": 119,
+      "williams_r": -40.4947637115
+    }
+  ],
+  "derivation_markdown": "The first complete canonical row is zero-based index **13** (2025-01-14T00:00:00Z, synthetic). No value below is a provider observation.\n\n| Component | Author-derived value |\n|---|---:|\n| Lowest low | `99.08000000` |\n| Highest high | `107.06005600` |\n| Range | `7.98005600` |\n| High \u2212 close | `2.95366500` |\n| Williams %R | `-37.01308612` |\n\nIndependent substitution: `\u2212100 \u00d7 2.95366500 / 7.98005600 = -37.01308612`.\n\nPublished checkpoints round to 10 decimal places; teaching prose shows 8 decimals so the displayed arithmetic remains readable.",
+  "note": "Author-derived from the canonical synthetic scenario; component values and checkpoints round to 10 decimals."
+}

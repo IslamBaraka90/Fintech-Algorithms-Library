@@ -1,0 +1,13 @@
+{
+  "topic_id": "D07-F04-A01",
+  "scenario_id": "intrabar-control",
+  "checkpoint": {
+    "label": "First published state",
+    "index": 0,
+    "true_range": 2.16,
+    "high_low": 2.16,
+    "high_gap": null,
+    "low_gap": null,
+    "driver": "high-low"
+  }
+}

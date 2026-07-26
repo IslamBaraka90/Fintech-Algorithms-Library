@@ -1,0 +1,42 @@
+{
+  "topic_id": "D07-F03-A05",
+  "parameters": "`period=20`, `constant=0.015`",
+  "first_ready_index": 19,
+  "first_ready_component_row": {
+    "index": 19,
+    "timestamp": "2025-01-20T00:00:00Z",
+    "open": 105.788219,
+    "high": 106.648053,
+    "low": 101.508112,
+    "close": 102.272873,
+    "status": "ready",
+    "reason": "All declared dependencies are available.",
+    "classification": "Central band",
+    "values": {
+      "typical_price": 103.476346,
+      "typical_sma": 104.3233822167,
+      "mean_deviation": 1.3799357283,
+      "scaled_deviation": 0.0206990359,
+      "cci": -40.9215298594
+    }
+  },
+  "checkpoints": [
+    {
+      "index": 19,
+      "typical_price": 103.476346,
+      "cci": -40.9215298594
+    },
+    {
+      "index": 69,
+      "typical_price": 96.3244336667,
+      "cci": -41.0269814725
+    },
+    {
+      "index": 119,
+      "typical_price": 102.5378936667,
+      "cci": 42.789674028
+    }
+  ],
+  "derivation_markdown": "The first complete canonical row is zero-based index **19** (2025-01-20T00:00:00Z, synthetic). No value below is a provider observation.\n\n| Component | Author-derived value |\n|---|---:|\n| Typical price | `103.47634600` |\n| TP mean | `104.32338222` |\n| Mean deviation | `1.37993573` |\n| 0.015 \u00d7 MD | `0.02069904` |\n| CCI | `-40.92152986` |\n\nIndependent substitution: `(103.47634600 \u2212 104.32338222) / 0.02069904 = -40.92152986` (numerator `-0.84703622`).\n\nPublished checkpoints round to 10 decimal places; teaching prose shows 8 decimals so the displayed arithmetic remains readable.",
+  "note": "Author-derived from the canonical synthetic scenario; component values and checkpoints round to 10 decimals."
+}

@@ -1,0 +1,25 @@
+{
+  "classification": "author-derived calculation from synthetic input",
+  "scenario_id": "strengthening-uptrend",
+  "parameters": {
+    "period": 14
+  },
+  "observation_index": 36,
+  "observation": {
+    "index": 36,
+    "open": 117.805727,
+    "high": 119.619783,
+    "low": 116.974884,
+    "close": 118.502249
+  },
+  "active_checkpoint": {
+    "index": 36,
+    "label": "First guided state",
+    "explanation": "Keep +DI and −DI beside DX and ADX so strength is never mistaken for direction."
+  },
+  "outputs": {
+    "adx": 82.86518429054547,
+    "dx": 91.71220423035189,
+    "plus_di": 13.372820249552484
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "topic_id": "D07-F05-A02",
+  "parameters": "`initial=0`",
+  "first_ready_index": 0,
+  "first_ready_component_row": {
+    "index": 0,
+    "timestamp": "2025-01-01T00:00:00Z",
+    "open": 100.28,
+    "high": 101.05,
+    "low": 99.4,
+    "close": 100.28,
+    "volume": 990000.0,
+    "status": "ready",
+    "reason": "All declared dependencies are available.",
+    "classification": "Close near upper range",
+    "values": {
+      "range": 1.65,
+      "money_flow_multiplier": 0.0666666667,
+      "volume": 990000.0,
+      "money_flow_volume": 66000.0,
+      "adl": 66000.0
+    },
+    "diagnostic": "The within-bar multiplier is 0.0667; previous-close direction is not an input."
+  },
+  "worked_index": 0,
+  "worked_component_row": {
+    "index": 0,
+    "timestamp": "2025-01-01T00:00:00Z",
+    "open": 100.28,
+    "high": 101.05,
+    "low": 99.4,
+    "close": 100.28,
+    "volume": 990000.0,
+    "status": "ready",
+    "reason": "All declared dependencies are available.",
+    "classification": "Close near upper range",
+    "values": {
+      "range": 1.65,
+      "money_flow_multiplier": 0.0666666667,
+      "volume": 990000.0,
+      "money_flow_volume": 66000.0,
+      "adl": 66000.0
+    },
+    "diagnostic": "The within-bar multiplier is 0.0667; previous-close direction is not an input."
+  },
+  "checkpoints": [
+    {
+      "index": 0,
+      "range": 1.65,
+      "money_flow_multiplier": 0.0666666667,
+      "volume": 990000.0,
+      "money_flow_volume": 66000.0,
+      "adl": 66000.0
+    },
+    {
+      "index": 60,
+      "range": 1.580093,
+      "money_flow_multiplier": 0.075235445,
+      "volume": 1431201.954,
+      "money_flow_volume": 107677.1158973269,
+      "adl": -3482549.6319263456
+    },
+    {
+      "index": 119,
+      "range": 1.939878,
+      "money_flow_multiplier": 0.19679485,
+      "volume": 1790041.6,
+      "money_flow_volume": 352270.9681396648,
+      "adl": -1149191.0213746005
+    }
+  ],
+  "derivation_markdown": "The independently audited canonical row is zero-based index **0** (2025-01-01T00:00:00Z, synthetic). No value below is a provider observation.\n\n| Component | Author-derived value |\n|---|---:|\n| High \u2212 low | `1.65000000` |\n| Money-flow multiplier | `0.06666667` |\n| Volume | `990000.00000000` |\n| Money-flow volume | `66000.00000000` |\n| A/D Line | `66000.00000000` |\n\nIndependent substitution: `0.00000000 + 66000.00000000 = 66000.00000000`.\n\nPublished checkpoints round to 10 decimal places; teaching prose shows 8 decimals.",
+  "note": "Author-derived from the canonical synthetic OHLCV scenario; values round to 10 decimals."
+}

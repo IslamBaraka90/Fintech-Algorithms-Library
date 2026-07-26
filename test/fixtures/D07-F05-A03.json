@@ -1,0 +1,74 @@
+{
+  "topic_id": "D07-F05-A03",
+  "parameters": "`period=20`",
+  "first_ready_index": 19,
+  "first_ready_component_row": {
+    "index": 19,
+    "timestamp": "2025-01-20T00:00:00Z",
+    "open": 105.683082,
+    "high": 106.996366,
+    "low": 104.851415,
+    "close": 106.097298,
+    "volume": 1257981.664,
+    "status": "ready",
+    "reason": "All declared dependencies are available.",
+    "classification": "Positive window flow",
+    "values": {
+      "money_flow_multiplier": 0.1616890083,
+      "money_flow_volume": 203401.807687053,
+      "rolling_mfv": 2231935.1465188293,
+      "rolling_volume": 21454998.407999996,
+      "cmf": 0.1040286792
+    },
+    "diagnostic": "The trailing numerator is 2231935.147 and total volume is 21454998.408; their raw ratio is 0.1040."
+  },
+  "worked_index": 19,
+  "worked_component_row": {
+    "index": 19,
+    "timestamp": "2025-01-20T00:00:00Z",
+    "open": 105.683082,
+    "high": 106.996366,
+    "low": 104.851415,
+    "close": 106.097298,
+    "volume": 1257981.664,
+    "status": "ready",
+    "reason": "All declared dependencies are available.",
+    "classification": "Positive window flow",
+    "values": {
+      "money_flow_multiplier": 0.1616890083,
+      "money_flow_volume": 203401.807687053,
+      "rolling_mfv": 2231935.1465188293,
+      "rolling_volume": 21454998.407999996,
+      "cmf": 0.1040286792
+    },
+    "diagnostic": "The trailing numerator is 2231935.147 and total volume is 21454998.408; their raw ratio is 0.1040."
+  },
+  "checkpoints": [
+    {
+      "index": 19,
+      "money_flow_multiplier": 0.1616890083,
+      "money_flow_volume": 203401.807687053,
+      "rolling_mfv": 2231935.1465188293,
+      "rolling_volume": 21454998.407999996,
+      "cmf": 0.1040286792
+    },
+    {
+      "index": 69,
+      "money_flow_multiplier": -0.000674424,
+      "money_flow_volume": -815.3788792847,
+      "rolling_mfv": -3629041.2351281764,
+      "rolling_volume": 26504981.82599999,
+      "cmf": -0.1369192124
+    },
+    {
+      "index": 119,
+      "money_flow_multiplier": 0.19679485,
+      "money_flow_volume": 352270.9681396648,
+      "rolling_mfv": 1672405.2931963112,
+      "rolling_volume": 32035616.763,
+      "cmf": 0.0522045605
+    }
+  ],
+  "derivation_markdown": "The independently audited canonical row is zero-based index **19** (2025-01-20T00:00:00Z, synthetic). No value below is a provider observation.\n\n| Component | Author-derived value |\n|---|---:|\n| Money-flow multiplier | `0.16168901` |\n| Money-flow volume | `203401.80768705` |\n| Window MFV sum | `2231935.14651883` |\n| Window volume sum | `21454998.40800000` |\n| CMF | `0.10402868` |\n\nIndependent substitution: `2231935.14651883 / 21454998.40800000 = 0.10402868`.\n\nPublished checkpoints round to 10 decimal places; teaching prose shows 8 decimals.",
+  "note": "Author-derived from the canonical synthetic OHLCV scenario; values round to 10 decimals."
+}

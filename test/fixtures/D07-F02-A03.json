@@ -1,0 +1,25 @@
+{
+  "classification": "author-derived calculation from synthetic input",
+  "scenario_id": "fresh-extreme-ladder",
+  "parameters": {
+    "period": 25
+  },
+  "observation_index": 32,
+  "observation": {
+    "index": 32,
+    "open": 109.572076,
+    "high": 110.455327,
+    "low": 108.979233,
+    "close": 109.678741
+  },
+  "active_checkpoint": {
+    "index": 32,
+    "label": "First guided state",
+    "explanation": "Track the winning high/low indexes, their ages, the inclusive window start, and the most-recent tie rule."
+  },
+  "outputs": {
+    "aroon_up": 88.0,
+    "aroon_down": 0.0,
+    "oscillator": 88.0
+  }
+}

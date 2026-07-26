@@ -1,0 +1,69 @@
+{
+  "topic_id": "D07-F05-A01",
+  "parameters": "`initial=0`",
+  "first_ready_index": 0,
+  "first_ready_component_row": {
+    "index": 0,
+    "timestamp": "2025-01-01T00:00:00Z",
+    "open": 100.28,
+    "high": 101.05,
+    "low": 99.4,
+    "close": 100.28,
+    "volume": 990000.0,
+    "status": "ready",
+    "reason": "All declared dependencies are available.",
+    "classification": "Equal close or zero volume",
+    "values": {
+      "direction": 0.0,
+      "volume": 990000.0,
+      "signed_volume": 0.0,
+      "obv": 0.0
+    },
+    "diagnostic": "Direction 0 assigns 990000.000 volume units, producing signed volume 0.000."
+  },
+  "worked_index": 1,
+  "worked_component_row": {
+    "index": 1,
+    "timestamp": "2025-01-02T00:00:00Z",
+    "open": 100.335805,
+    "high": 101.52482,
+    "low": 99.462904,
+    "close": 100.686113,
+    "volume": 1066468.036,
+    "status": "ready",
+    "reason": "All declared dependencies are available.",
+    "classification": "Up-close volume",
+    "values": {
+      "direction": 1.0,
+      "volume": 1066468.036,
+      "signed_volume": 1066468.036,
+      "obv": 1066468.036
+    },
+    "diagnostic": "Direction 1 assigns 1066468.036 volume units, producing signed volume 1066468.036."
+  },
+  "checkpoints": [
+    {
+      "index": 0,
+      "direction": 0.0,
+      "volume": 990000.0,
+      "signed_volume": 0.0,
+      "obv": 0.0
+    },
+    {
+      "index": 60,
+      "direction": 1.0,
+      "volume": 1431201.954,
+      "signed_volume": 1431201.954,
+      "obv": 1065227.5689999915
+    },
+    {
+      "index": 119,
+      "direction": 1.0,
+      "volume": 1790041.6,
+      "signed_volume": 1790041.6,
+      "obv": 15276116.357999992
+    }
+  ],
+  "derivation_markdown": "The independently audited canonical row is zero-based index **1** (2025-01-02T00:00:00Z, synthetic). No value below is a provider observation.\n\n| Component | Author-derived value |\n|---|---:|\n| Close direction | `1.00000000` |\n| Volume | `1066468.03600000` |\n| Signed volume | `1066468.03600000` |\n| OBV | `1066468.03600000` |\n\nIndependent substitution: `0.00000000 + 1066468.03600000 = 1066468.03600000`.\n\nPublished checkpoints round to 10 decimal places; teaching prose shows 8 decimals.",
+  "note": "Author-derived from the canonical synthetic OHLCV scenario; values round to 10 decimals."
+}

@@ -1,0 +1,45 @@
+{
+  "topic_id": "D07-F03-A02",
+  "parameters": "`k_period=14`, `smooth_k=3`, `smooth_d=3`",
+  "first_ready_index": 17,
+  "first_ready_component_row": {
+    "index": 17,
+    "timestamp": "2025-01-18T00:00:00Z",
+    "open": 105.940342,
+    "high": 107.249502,
+    "low": 105.009887,
+    "close": 106.235322,
+    "status": "ready",
+    "reason": "All declared dependencies are available.",
+    "classification": "Middle scale zone",
+    "values": {
+      "lowest_low": 102.649183,
+      "highest_high": 107.249502,
+      "fast_k": 77.9541375283,
+      "slow_k": 78.9426795559,
+      "slow_d": 75.5388217443
+    }
+  },
+  "checkpoints": [
+    {
+      "index": 17,
+      "fast_k": 77.9541375283,
+      "slow_k": 78.9426795559,
+      "slow_d": 75.5388217443
+    },
+    {
+      "index": 68,
+      "fast_k": 45.428656542,
+      "slow_k": 47.7055398345,
+      "slow_d": 49.4459326311
+    },
+    {
+      "index": 119,
+      "fast_k": 59.5052362885,
+      "slow_k": 55.5699042996,
+      "slow_d": 55.2180946904
+    }
+  ],
+  "derivation_markdown": "The first complete canonical row is zero-based index **17** (2025-01-18T00:00:00Z, synthetic). No value below is a provider observation.\n\n| Component | Author-derived value |\n|---|---:|\n| Lowest low | `102.64918300` |\n| Highest high | `107.24950200` |\n| Fast %K | `77.95413753` |\n| Slow %K | `78.94267956` |\n| Slow %D | `75.53882174` |\n\nIndependent substitution: `Slow %D = (70.85857700 + 76.81520868 + 78.94267956) / 3 = 75.53882174`.\n\nPublished checkpoints round to 10 decimal places; teaching prose shows 8 decimals so the displayed arithmetic remains readable.",
+  "note": "Author-derived from the canonical synthetic scenario; component values and checkpoints round to 10 decimals."
+}
