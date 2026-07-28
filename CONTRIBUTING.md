@@ -9,7 +9,7 @@ the first section before opening a pull request — it will save you wasted work
 
 Every module under `src/` except `src/_shared/` is emitted by
 [`scripts/sync.mjs`](scripts/sync.mjs) from a catalog that is the single source
-of truth for all 154 algorithms, their articles, their fixtures and their Python
+of truth for all 187 algorithms, their articles, their fixtures and their Python
 siblings. A pull request that edits `src/` will be erased by the next sync, even
 if it is correct.
 
@@ -66,12 +66,12 @@ green run.
 example is replayed and its output asserted against the numbers published in the
 article. A green run means the package, the article and the standalone
 per-algorithm repository agree on the arithmetic. This is the strongest
-guarantee here, and it covers 79 of 154 topics — the `✓` column in the README.
+guarantee here, and it covers 79 of 187 topics — the `✓` column in the README.
 
 `expected` is asserted as a *subset* of the result; some fixtures document only
 the fields the article discusses, not the whole payload.
 
-**Layer 2 — module contract.** For all 154 topics: the module loads, `run()` is
+**Layer 2 — module contract.** For all 187 topics: the module loads, `run()` is
 callable and is genuinely an alias of the declared entry function, every function
 the registry advertises exists, and the module's own `meta` agrees with the
 registry. This is the safety net on the *generator* — if `sync.mjs` mis-detects
@@ -104,11 +104,21 @@ never a hand edit to `src/`.
 
 ## Releasing
 
+**Releases are published by CI, never from a laptop.** Pushing a `v*` tag is the
+only trigger. [`.github/workflows/release.yml`](.github/workflows/release.yml)
+re-runs the full verification, installs the packed tarball into a clean consumer,
+and publishes with a provenance attestation — a signed, verifiable link between
+the tarball on npm and the commit that produced it.
+
 ```bash
-npm run verify          # must be fully green
-npm pack --dry-run      # confirm the file list
-npm publish --access public
+npm run sync            # only if the catalog has moved
+npm run verify          # must be fully green locally first
+npm version minor       # or patch/major — commits and tags in one step
+git push origin main --follow-tags
 ```
+
+The workflow refuses to publish if the tag and `package.json` disagree, so the
+version on npm always resolves to a commit in this repository.
 
 Publishing is permanent: `npm unpublish` is only allowed within 72 hours, and a
 version number can never be reused even after unpublishing.

@@ -1,0 +1,69 @@
+name: Release
+
+# Publishing happens here, never from a laptop. Pushing a `v*` tag is the only
+# trigger, so the tarball on npm is always built from a commit that exists in
+# this repository's history — and the provenance attestation proves it.
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: read
+  id-token: write # required for provenance; also how trusted publishing authenticates
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          registry-url: "https://registry.npmjs.org"
+
+      # Node 22 ships npm 10.x; trusted publishing (OIDC, no stored token)
+      # requires npm >= 11.5.1.
+      - name: Upgrade npm
+        run: npm install -g npm@latest
+
+      - name: Install
+        run: npm ci
+
+      # A tag that disagrees with package.json would publish a version nobody
+      # can trace back. Fail before anything is built.
+      - name: Refuse to publish if the tag and package.json disagree
+        run: |
+          TAG="${GITHUB_REF_NAME#v}"
+          PKG="$(node -p "require('./package.json').version")"
+          if [ "$TAG" != "$PKG" ]; then
+            echo "::error::tag is v$TAG but package.json says $PKG"
+            exit 1
+          fi
+          echo "publishing $PKG"
+
+      - name: Verify
+        run: npm run verify
+
+      # The same clean-consumer smoke test CI runs, repeated here because
+      # publishing is irreversible: a version number can never be reused.
+      - name: Pack and smoke-test the tarball
+        run: |
+          npm pack
+          mkdir -p /tmp/consumer && cd /tmp/consumer
+          npm init -y >/dev/null
+          npm install "$GITHUB_WORKSPACE"/fintech-algorithms-*.tgz
+          node --input-type=module -e '
+            import { topics } from "fintech-algorithms";
+            const { calculateEma } = await import("fintech-algorithms/technical-indicators/trend-smoothing/ema");
+            if (topics.length === 0) throw new Error("registry is empty");
+            const out = calculateEma([10, 13, 16, 19], 3);
+            if (out[2] !== 13 || out[3] !== 16) throw new Error("EMA regression: " + JSON.stringify(out));
+            console.log(`tarball OK — ${topics.length} topics resolvable from a clean consumer`);
+          '
+
+      # No NODE_AUTH_TOKEN: npm authenticates over OIDC via the trusted
+      # publisher configured on npmjs.com for this repository and workflow file.
+      # Provenance is generated automatically as a result.
+      - name: Publish to npm
+        run: npm publish --provenance --access public
