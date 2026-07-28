@@ -29,9 +29,19 @@ if (!existsSync(registryPath)) {
 // The registry is generated TypeScript; the fields needed here are simple enough
 // to read with a regex rather than importing (which would need type-stripping).
 const registry = readFileSync(registryPath, "utf8");
-const rows = [...registry.matchAll(/\{ id: "([^"]+)".*?domainId: "([^"]+)", domain: "([^"]+)", familyId: "([^"]+)".*?archetype: "([^"]+)"/g)].map(
-  (m) => ({ id: m[1], domainId: m[2], domain: m[3], familyId: m[4], archetype: m[5] }),
-);
+const rows = [...registry.matchAll(
+  /\{ id: "([^"]+)", title: "([^"]+)", slug: "([^"]+)", domainId: "([^"]+)", domain: "([^"]+)", familyId: "([^"]+)", family: "([^"]+)".*?archetype: "([^"]+)".*?path: "([^"]+)"/g,
+)].map((m) => ({
+  id: m[1],
+  title: m[2],
+  slug: m[3],
+  domainId: m[4],
+  domain: m[5],
+  familyId: m[6],
+  family: m[7],
+  archetype: m[8],
+  path: m[9],
+}));
 
 if (rows.length === 0) {
   console.error("could not parse any topics out of src/_registry.ts");
@@ -87,6 +97,42 @@ const coverageBlock = [
   `values in the catalog.`,
 ].join("\n");
 
+/**
+ * Every algorithm by name, grouped by domain.
+ *
+ * This is the block that makes the library findable. Before it existed the
+ * README named zero algorithms — it listed domain counts — so a search for
+ * "VWAP typescript" or "McClellan oscillator npm" could never match this page.
+ * It is generated rather than written so it cannot fall behind the catalog.
+ *
+ * `✓` marks a topic whose arithmetic is asserted against the worked example
+ * published in its article; the rest are proven to load and expose a callable
+ * entry point. See the coverage block for what that distinction means.
+ */
+const conventionById = manifest.topics.reduce((acc, t) => ((acc[t.id] = t.convention ?? "none"), acc), {});
+const topicsBlock = domains
+  .flatMap((domainId) => {
+    const inDomain = rows.filter((r) => r.domainId === domainId);
+    const families = [...new Set(inDomain.map((r) => r.familyId))].sort();
+    return [
+      ``,
+      `### ${domainId} — ${inDomain[0].domain}`,
+      ``,
+      `| Algorithm | Family | Import from \`fintech-algorithms/…\` | Verified |`,
+      `|---|---|---|:--:|`,
+      ...families.flatMap((familyId) =>
+        inDomain
+          .filter((r) => r.familyId === familyId)
+          .map(
+            (r) =>
+              `| ${r.title} | ${r.family} | \`${r.path}\` | ${conventionById[r.id] && conventionById[r.id] !== "none" ? "✓" : "–"} |`,
+          ),
+      ),
+    ];
+  })
+  .join("\n")
+  .trim();
+
 let readme = readFileSync(readmePath, "utf8");
 let replaced = 0;
 
@@ -94,6 +140,7 @@ for (const [name, body] of [
   ["stats", statsBlock],
   ["shapes", shapesBlock],
   ["coverage", coverageBlock],
+  ["topics", topicsBlock],
 ]) {
   const re = new RegExp(`(<!-- ${name}:start -->)[\\s\\S]*?(<!-- ${name}:end -->)`);
   if (!re.test(readme)) {
