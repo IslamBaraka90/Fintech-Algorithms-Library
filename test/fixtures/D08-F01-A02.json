@@ -1,0 +1,72 @@
+{
+  "topic_id": "D08-F01-A02",
+  "classification": "author-derived calculation over synthetic teaching input",
+  "selected_variant": "Close-only percentage reversal, minimum bar separation, strict extreme updates, and a separate provisional endpoint.",
+  "formulae": [
+    "\\text{confirm high }h\\text{ at }t:\\quad 1-\\frac{P_t}{P_h}\\ge\\tau,\\quad t-h\\ge m",
+    "\\text{confirm low }\\ell\\text{ at }t:\\quad \\frac{P_t}{P_\\ell}-1\\ge\\tau,\\quad t-\\ell\\ge m",
+    "\\text{up leg update: }P_t>P_h;\\qquad \\text{down leg update: }P_t<P_\\ell"
+  ],
+  "symbols": [
+    {
+      "symbol": "P_t",
+      "meaning": "current finalized close",
+      "unit": "price units"
+    },
+    {
+      "symbol": "P_h, P_l",
+      "meaning": "provisional high or low price",
+      "unit": "price units"
+    },
+    {
+      "symbol": "tau",
+      "meaning": "reversal fraction",
+      "unit": "fraction"
+    },
+    {
+      "symbol": "m",
+      "meaning": "minimum bar separation",
+      "unit": "bars"
+    },
+    {
+      "symbol": "t",
+      "meaning": "current confirmation candidate",
+      "unit": "bar index"
+    }
+  ],
+  "trace": [
+    {
+      "index_or_object": "0",
+      "value": "100",
+      "calculation_state": "searching",
+      "published_interpretation": "running high and low both 100"
+    },
+    {
+      "index_or_object": "1",
+      "value": "103",
+      "calculation_state": "searching",
+      "published_interpretation": "running high becomes 103"
+    },
+    {
+      "index_or_object": "2",
+      "value": "106",
+      "calculation_state": "searching",
+      "published_interpretation": "running high becomes 106"
+    },
+    {
+      "index_or_object": "3",
+      "value": "101",
+      "calculation_state": "searching",
+      "published_interpretation": "decline 4.71698%; below 5%"
+    },
+    {
+      "index_or_object": "4",
+      "value": "100",
+      "calculation_state": "down",
+      "published_interpretation": "decline 5.66038%; confirm high event 2 at index 4"
+    }
+  ],
+  "explanation": "Start at 100 with a 5% threshold. Prices rise through 103 to\n106, so the running high is 106. A fall to 101 is only 4.72% and does not\nconfirm the high. A fall to 100 is 5.66%; the high at 106 becomes confirmed on\nthe 100 observation. Its event time and confirmation time are different, while\nthe new low endpoint remains provisional.",
+  "historical_example_decision": "not useful",
+  "evidence_boundary": "Definition and detection behavior only; no prediction or profitability claim."
+}

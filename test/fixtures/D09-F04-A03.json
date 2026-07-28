@@ -1,0 +1,84 @@
+{
+  "topic_id": "D09-F04-A03",
+  "classification": "author-derived from deterministic synthetic input",
+  "configuration": {
+    "a": 0.9,
+    "b": 0.22,
+    "c": 0.04,
+    "q": 0.06,
+    "r": 0.49,
+    "alpha": 1.0,
+    "beta": 2.0,
+    "kappa": 0.0,
+    "initial_mean": 0.0,
+    "initial_variance": 1.5
+  },
+  "observations": [
+    {
+      "index": 0,
+      "timestamp": "2024-01-01T00:00:00Z",
+      "observation": 0.1740564489,
+      "latent_truth": -0.0219628458,
+      "true_regime": 0
+    },
+    {
+      "index": 1,
+      "timestamp": "2024-01-02T00:00:00Z",
+      "observation": 0.7180957323,
+      "latent_truth": 0.0406476266,
+      "true_regime": 0
+    },
+    {
+      "index": 2,
+      "timestamp": "2024-01-03T00:00:00Z",
+      "observation": 0.0365723689,
+      "latent_truth": 0.0604900474,
+      "true_regime": 0
+    }
+  ],
+  "expected_trace": [
+    {
+      "index": 0,
+      "sigma_left": -1.224744871391589,
+      "sigma_center": 0.0,
+      "sigma_right": 1.224744871391589,
+      "predicted_mean": 0.0,
+      "predicted_variance": 1.7740796257097713,
+      "predicted_measurement": 0.07096318502839094,
+      "innovation": 0.10309326387160905,
+      "innovation_variance": 2.2741511729685184,
+      "kalman_gain": 0.7801062861595132,
+      "filtered_mean": 0.08042370320694366,
+      "filtered_variance": 0.3901089575460621
+    },
+    {
+      "index": 1,
+      "sigma_left": -0.5441633263942658,
+      "sigma_center": 0.08042370320694366,
+      "sigma_right": 0.7050107328081532,
+      "predicted_mean": 0.08671868415920991,
+      "predicted_variance": 0.536619496516218,
+      "predicted_measurement": 0.10848426922715082,
+      "innovation": 0.6096114630728492,
+      "innovation_variance": 1.0350123867965022,
+      "kalman_gain": 0.5220635987934528,
+      "filtered_mean": 0.4049746384367636,
+      "filtered_variance": 0.2545264552632097
+    },
+    {
+      "index": 2,
+      "sigma_left": -0.0995315114397366,
+      "sigma_center": 0.4049746384367636,
+      "sigma_right": 0.9094807883132638,
+      "predicted_mean": 0.4403571228780741,
+      "predicted_variance": 0.36471237345744356,
+      "predicted_measurement": 0.46270219364315,
+      "innovation": -0.42612982474315003,
+      "innovation_variance": 0.8812872395279235,
+      "kalman_gain": 0.4284195343347881,
+      "filtered_mean": 0.2577947817954489,
+      "filtered_variance": 0.20295800755826507
+    }
+  ],
+  "independent_check": "validate_family.py recalculates the first update without calling this implementation"
+}

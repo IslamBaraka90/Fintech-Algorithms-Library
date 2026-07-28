@@ -1,6 +1,6 @@
 {
   "generatedFrom": "scripts/sync.mjs",
-  "topicCount": 154,
+  "topicCount": 187,
   "topics": [
     {
       "id": "D01-F01-A01",
@@ -2772,6 +2772,604 @@
         "bars",
         "checkpoints",
         "scenarios"
+      ]
+    },
+    {
+      "id": "D08-F01-A01",
+      "path": "geometric-chart-patterns/pivots-and-levels/causal-pivot-detection",
+      "entry": "detectCausalPivots",
+      "archetype": "row-classify",
+      "fixture": "D08-F01-A01.json",
+      "convention": "none",
+      "entryParams": [
+        "bars",
+        "leftSpan",
+        "rightSpan",
+        "minSeparation"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "classification",
+        "selected_variant",
+        "formulae",
+        "symbols",
+        "trace",
+        "explanation",
+        "historical_example_decision",
+        "evidence_boundary"
+      ]
+    },
+    {
+      "id": "D08-F01-A02",
+      "path": "geometric-chart-patterns/pivots-and-levels/zigzag-segmentation",
+      "entry": "zigzagSegment",
+      "archetype": "record-transform",
+      "fixture": "D08-F01-A02.json",
+      "convention": "none",
+      "entryParams": [
+        "closes",
+        "threshold",
+        "minBars"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "classification",
+        "selected_variant",
+        "formulae",
+        "symbols",
+        "trace",
+        "explanation",
+        "historical_example_decision",
+        "evidence_boundary"
+      ]
+    },
+    {
+      "id": "D08-F01-A03",
+      "path": "geometric-chart-patterns/pivots-and-levels/support-resistance-clustering",
+      "entry": "clusterPivotLevels",
+      "archetype": "record-transform",
+      "fixture": "D08-F01-A03.json",
+      "convention": "none",
+      "entryParams": [
+        "pivots",
+        "epsBps",
+        "minTouches"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "classification",
+        "selected_variant",
+        "formulae",
+        "symbols",
+        "trace",
+        "explanation",
+        "historical_example_decision",
+        "evidence_boundary"
+      ]
+    },
+    {
+      "id": "D08-F01-A04",
+      "path": "geometric-chart-patterns/pivots-and-levels/robust-trendline-fitting",
+      "entry": "fitRobustTrendline",
+      "archetype": "record-transform",
+      "fixture": "D08-F01-A04.json",
+      "convention": "none",
+      "entryParams": [
+        "pivots",
+        "kind",
+        "toleranceBps",
+        "minInliers",
+        "maxPoints"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "classification",
+        "selected_variant",
+        "formulae",
+        "symbols",
+        "trace",
+        "explanation",
+        "historical_example_decision",
+        "evidence_boundary"
+      ]
+    },
+    {
+      "id": "D08-F02-A01",
+      "path": "geometric-chart-patterns/reversal-structures/double-top",
+      "entry": "double_top",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D08-F02-A02",
+      "path": "geometric-chart-patterns/reversal-structures/double-bottom",
+      "entry": "double_bottom",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D08-F02-A03",
+      "path": "geometric-chart-patterns/reversal-structures/triple-top",
+      "entry": "triple_top",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D08-F02-A04",
+      "path": "geometric-chart-patterns/reversal-structures/triple-bottom",
+      "entry": "triple_bottom",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D08-F02-A05",
+      "path": "geometric-chart-patterns/reversal-structures/head-and-shoulders",
+      "entry": "head_and_shoulders",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D08-F02-A06",
+      "path": "geometric-chart-patterns/reversal-structures/inverse-head-and-shoulders",
+      "entry": "inverse_head_and_shoulders",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D09-F01-A01",
+      "path": "statistical-time-series/diagnostics/acf",
+      "entry": "acf",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "values",
+        "maxLag"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D09-F01-A02",
+      "path": "statistical-time-series/diagnostics/pacf",
+      "entry": "pacf",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "values",
+        "maxLag"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D09-F01-A03",
+      "path": "statistical-time-series/diagnostics/augmented-dickey-fuller",
+      "entry": "adf",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "values",
+        "lags",
+        "criticalValue"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D09-F01-A04",
+      "path": "statistical-time-series/diagnostics/kpss",
+      "entry": "kpss",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "values",
+        "lags",
+        "criticalValue"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D09-F01-A05",
+      "path": "statistical-time-series/diagnostics/ljung-box",
+      "entry": "ljungBox",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "values",
+        "lags",
+        "modelDf",
+        "alpha"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D09-F01-A06",
+      "path": "statistical-time-series/diagnostics/zivot-andrews-break-test",
+      "entry": "zivotAndrews",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "values",
+        "lags",
+        "trim",
+        "criticalValue"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D09-F02-A01",
+      "path": "statistical-time-series/forecast-models/autoreg",
+      "entry": "forecastAutoReg",
+      "archetype": "record-transform",
+      "fixture": "D09-F02-A01.json",
+      "convention": "none",
+      "entryParams": [
+        "values",
+        "ar",
+        "intercept",
+        "horizon"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "classification",
+        "selected_variant",
+        "values",
+        "config",
+        "forecast",
+        "trace",
+        "historical_example_decision",
+        "evidence_boundary"
+      ]
+    },
+    {
+      "id": "D09-F02-A02",
+      "path": "statistical-time-series/forecast-models/arma",
+      "entry": "forecastARMA",
+      "archetype": "record-transform",
+      "fixture": "D09-F02-A02.json",
+      "convention": "none",
+      "entryParams": [
+        "values",
+        "ar",
+        "ma",
+        "intercept",
+        "horizon"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "classification",
+        "selected_variant",
+        "values",
+        "config",
+        "forecast",
+        "trace",
+        "historical_example_decision",
+        "evidence_boundary"
+      ]
+    },
+    {
+      "id": "D09-F02-A03",
+      "path": "statistical-time-series/forecast-models/arima",
+      "entry": "forecastARIMA",
+      "archetype": "record-transform",
+      "fixture": "D09-F02-A03.json",
+      "convention": "none",
+      "entryParams": [
+        "values",
+        "ar",
+        "ma",
+        "intercept",
+        "differenceOrder",
+        "horizon"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "classification",
+        "selected_variant",
+        "values",
+        "config",
+        "forecast",
+        "trace",
+        "historical_example_decision",
+        "evidence_boundary"
+      ]
+    },
+    {
+      "id": "D09-F02-A04",
+      "path": "statistical-time-series/forecast-models/sarima-sarimax",
+      "entry": "forecastSARIMAX",
+      "archetype": "record-transform",
+      "fixture": "D09-F02-A04.json",
+      "convention": "none",
+      "entryParams": [
+        "values",
+        "exog",
+        "futureExog",
+        "beta",
+        "ar",
+        "ma",
+        "seasonalAr",
+        "seasonalMa",
+        "intercept",
+        "differenceOrder",
+        "seasonalDifferenceOrder",
+        "period",
+        "horizon"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "classification",
+        "selected_variant",
+        "values",
+        "config",
+        "forecast",
+        "trace",
+        "historical_example_decision",
+        "evidence_boundary"
+      ]
+    },
+    {
+      "id": "D09-F02-A05",
+      "path": "statistical-time-series/forecast-models/holt-winters",
+      "entry": "forecastHoltWintersAdditive",
+      "archetype": "record-transform",
+      "fixture": "D09-F02-A05.json",
+      "convention": "none",
+      "entryParams": [
+        "values",
+        "alpha",
+        "beta",
+        "gamma",
+        "period",
+        "horizon",
+        "initialLevel",
+        "initialTrend",
+        "initialSeasonals"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "classification",
+        "selected_variant",
+        "values",
+        "config",
+        "forecast",
+        "trace",
+        "historical_example_decision",
+        "evidence_boundary"
+      ]
+    },
+    {
+      "id": "D09-F02-A06",
+      "path": "statistical-time-series/forecast-models/theta-forecast",
+      "entry": "forecastTheta",
+      "archetype": "record-transform",
+      "fixture": "D09-F02-A06.json",
+      "convention": "none",
+      "entryParams": [
+        "values",
+        "alpha",
+        "horizon"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "classification",
+        "selected_variant",
+        "values",
+        "config",
+        "forecast",
+        "trace",
+        "historical_example_decision",
+        "evidence_boundary"
+      ]
+    },
+    {
+      "id": "D09-F03-A01",
+      "path": "statistical-time-series/multivariate-systems/var",
+      "entry": "fitVAR",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "values",
+        "lags",
+        "includeIntercept"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D09-F03-A02",
+      "path": "statistical-time-series/multivariate-systems/structural-var",
+      "entry": "fitRecursiveSVAR",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "values",
+        "lags"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D09-F03-A03",
+      "path": "statistical-time-series/multivariate-systems/vecm",
+      "entry": "fitVECMFixedBeta",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "values",
+        "beta",
+        "differenceLags",
+        "includeIntercept"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D09-F03-A04",
+      "path": "statistical-time-series/multivariate-systems/impulse-response-analysis",
+      "entry": "impulseResponses",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "coefficients",
+        "horizon"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D09-F03-A05",
+      "path": "statistical-time-series/multivariate-systems/forecast-error-variance-decomposition",
+      "entry": "forecastErrorVarianceDecomposition",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "coefficients",
+        "sigmaU",
+        "horizon"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D09-F04-A01",
+      "path": "statistical-time-series/state-and-regime-models/kalman-filter",
+      "entry": "runFilter",
+      "archetype": "record-transform",
+      "fixture": "D09-F04-A01.json",
+      "convention": "none",
+      "entryParams": [
+        "observations",
+        "config"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "classification",
+        "configuration",
+        "observations",
+        "expected_trace",
+        "independent_check"
+      ]
+    },
+    {
+      "id": "D09-F04-A02",
+      "path": "statistical-time-series/state-and-regime-models/extended-kalman-filter",
+      "entry": "runFilter",
+      "archetype": "record-transform",
+      "fixture": "D09-F04-A02.json",
+      "convention": "none",
+      "entryParams": [
+        "observations",
+        "config"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "classification",
+        "configuration",
+        "observations",
+        "expected_trace",
+        "independent_check"
+      ]
+    },
+    {
+      "id": "D09-F04-A03",
+      "path": "statistical-time-series/state-and-regime-models/unscented-kalman-filter",
+      "entry": "runFilter",
+      "archetype": "record-transform",
+      "fixture": "D09-F04-A03.json",
+      "convention": "none",
+      "entryParams": [
+        "observations",
+        "config"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "classification",
+        "configuration",
+        "observations",
+        "expected_trace",
+        "independent_check"
+      ]
+    },
+    {
+      "id": "D09-F04-A04",
+      "path": "statistical-time-series/state-and-regime-models/hidden-markov-model",
+      "entry": "runFilter",
+      "archetype": "record-transform",
+      "fixture": "D09-F04-A04.json",
+      "convention": "none",
+      "entryParams": [
+        "observations",
+        "config"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "classification",
+        "configuration",
+        "observations",
+        "expected_trace",
+        "independent_check"
+      ]
+    },
+    {
+      "id": "D09-F04-A05",
+      "path": "statistical-time-series/state-and-regime-models/markov-switching-autoregression",
+      "entry": "runFilter",
+      "archetype": "record-transform",
+      "fixture": "D09-F04-A05.json",
+      "convention": "none",
+      "entryParams": [
+        "observations",
+        "config"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "classification",
+        "configuration",
+        "observations",
+        "expected_trace",
+        "independent_check"
+      ]
+    },
+    {
+      "id": "D09-F04-A06",
+      "path": "statistical-time-series/state-and-regime-models/bayesian-change-point-detection",
+      "entry": "runFilter",
+      "archetype": "record-transform",
+      "fixture": "D09-F04-A06.json",
+      "convention": "none",
+      "entryParams": [
+        "observations",
+        "config"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "classification",
+        "configuration",
+        "observations",
+        "expected_trace",
+        "independent_check"
       ]
     },
     {

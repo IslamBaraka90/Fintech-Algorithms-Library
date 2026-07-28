@@ -1,0 +1,35 @@
+{
+  "topic_id": "D09-F02-A05",
+  "classification": "author-derived arithmetic over synthetic teaching input",
+  "selected_variant": "Additive trend and additive seasonality, fixed alpha/beta/gamma-star in [0,1], a supplied known initial state with published provenance, no damping, and deterministic recursive updates.",
+  "values": [
+    10,
+    12,
+    11,
+    13
+  ],
+  "config": {
+    "alpha": 0.5,
+    "beta": 0.5,
+    "gamma": 0.5,
+    "period": 2,
+    "horizon": 2,
+    "initial_level": 9,
+    "initial_trend": 1,
+    "initial_seasonals": [
+      -1,
+      1
+    ]
+  },
+  "forecast": [
+    12.35546875,
+    14.58203125
+  ],
+  "trace": [
+    "After four updates: level=12.5859375, trend=.69140625, seasonal states=[-.921875,.61328125].",
+    "h=1: 12.5859375+.69140625-.921875=12.35546875.",
+    "h=2: 12.5859375+2(.69140625)+.61328125=14.58203125."
+  ],
+  "historical_example_decision": "not useful",
+  "evidence_boundary": "Mechanism arithmetic only; no prediction or performance claim."
+}

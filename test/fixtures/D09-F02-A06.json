@@ -1,0 +1,26 @@
+{
+  "topic_id": "D09-F02-A06",
+  "classification": "author-derived arithmetic over synthetic teaching input",
+  "selected_variant": "Classical theta-zero/theta-two point forecast in its exact non-seasonal SES-with-drift form, fixed alpha in (0,1], OLS slope over t=0...n-1, and finite-sample correction.",
+  "values": [
+    10,
+    12,
+    14,
+    16
+  ],
+  "config": {
+    "alpha": 0.5,
+    "horizon": 2
+  },
+  "forecast": [
+    16.125,
+    17.125
+  ],
+  "trace": [
+    "OLS slope b0=2; final SES level at alpha=.5 is 14.25.",
+    "Finite-sample base is 1/.5-(.5^4)/.5=1.875.",
+    "h=1: 14.25+1(1.875)=16.125; h=2 adds 2.875, giving 17.125."
+  ],
+  "historical_example_decision": "not useful",
+  "evidence_boundary": "Mechanism arithmetic only; no prediction or performance claim."
+}

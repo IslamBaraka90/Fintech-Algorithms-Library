@@ -1,0 +1,79 @@
+{
+  "topic_id": "D09-F02-A04",
+  "classification": "author-derived arithmetic over synthetic teaching input",
+  "selected_variant": "Regression plus multiplicative SARIMA errors with fixed coefficients, d and D in {0,1}, known future exogenous rows, zero future innovations, and explicit polynomial cross-terms.",
+  "values": [
+    12,
+    15,
+    18,
+    21,
+    24,
+    27,
+    30,
+    33
+  ],
+  "config": {
+    "exog": [
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ],
+      [
+        6
+      ],
+      [
+        7
+      ],
+      [
+        8
+      ]
+    ],
+    "future_exog": [
+      [
+        9
+      ],
+      [
+        10
+      ]
+    ],
+    "beta": [
+      2
+    ],
+    "ar": [
+      0.5
+    ],
+    "ma": [],
+    "seasonal_ar": [
+      0.25
+    ],
+    "seasonal_ma": [],
+    "intercept": 0,
+    "difference_order": 1,
+    "seasonal_difference_order": 0,
+    "period": 2,
+    "horizon": 2
+  },
+  "forecast": [
+    35.625,
+    38.0625
+  ],
+  "trace": [
+    "Residualized levels y-2x are [10,11,12,13,14,15,16,17]; first differences are all 1.",
+    "Combined AR recursion is 0.5w[t-1]+0.25w[t-2]-0.125w[t-3].",
+    "h=1 transformed forecast=.625; residualized level=17.625; add 2(9) => 35.625.",
+    "h=2 transformed forecast=.4375; residualized level=18.0625; add 2(10) => 38.0625."
+  ],
+  "historical_example_decision": "not useful",
+  "evidence_boundary": "Mechanism arithmetic only; no prediction or performance claim."
+}

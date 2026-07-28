@@ -1,0 +1,78 @@
+{
+  "topic_id": "D09-F04-A02",
+  "classification": "author-derived from deterministic synthetic input",
+  "configuration": {
+    "a": 0.9,
+    "b": 0.22,
+    "c": 0.04,
+    "q": 0.06,
+    "r": 0.49,
+    "initial_mean": 0.0,
+    "initial_variance": 1.5
+  },
+  "observations": [
+    {
+      "index": 0,
+      "timestamp": "2024-01-01T00:00:00Z",
+      "observation": 0.1740564489,
+      "latent_truth": -0.0219628458,
+      "true_regime": 0
+    },
+    {
+      "index": 1,
+      "timestamp": "2024-01-02T00:00:00Z",
+      "observation": 0.7180957323,
+      "latent_truth": 0.0406476266,
+      "true_regime": 0
+    },
+    {
+      "index": 2,
+      "timestamp": "2024-01-03T00:00:00Z",
+      "observation": 0.0365723689,
+      "latent_truth": 0.0604900474,
+      "true_regime": 0
+    }
+  ],
+  "expected_trace": [
+    {
+      "index": 0,
+      "transition_jacobian": 1.12,
+      "measurement_jacobian": 1.0,
+      "predicted_mean": 0.0,
+      "predicted_variance": 1.9416000000000002,
+      "predicted_observation": 0.0,
+      "innovation": 0.1740564489,
+      "innovation_variance": 2.4316000000000004,
+      "kalman_gain": 0.7984865931896693,
+      "filtered_mean": 0.13898174090485277,
+      "filtered_variance": 0.391258430662938
+    },
+    {
+      "index": 1,
+      "transition_jacobian": 1.1178786662536586,
+      "measurement_jacobian": 1.0124448968753026,
+      "predicted_mean": 0.15556121094128242,
+      "predicted_variance": 0.5489371591527625,
+      "predicted_observation": 0.15652918255526316,
+      "innovation": 0.5615665497447369,
+      "innovation_variance": 1.0526851087201852,
+      "kalman_gain": 0.5279533460534298,
+      "filtered_mean": 0.452042149910696,
+      "filtered_variance": 0.25551725369409706
+    },
+    {
+      "index": 2,
+      "transition_jacobian": 1.0979025313193456,
+      "measurement_jacobian": 1.040234775932769,
+      "predicted_mean": 0.5029346991596126,
+      "predicted_variance": 0.36799793432466277,
+      "predicted_observation": 0.5130524316243634,
+      "innovation": -0.47648006272436344,
+      "innovation_variance": 0.8882062919307445,
+      "kalman_gain": 0.4309857431023305,
+      "filtered_mean": 0.2975785852529078,
+      "filtered_variance": 0.20301476071185573
+    }
+  ],
+  "independent_check": "validate_family.py recalculates the first update without calling this implementation"
+}

@@ -1,0 +1,73 @@
+{
+  "topic_id": "D08-F01-A01",
+  "classification": "author-derived calculation over synthetic teaching input",
+  "selected_variant": "Asymmetric left/right OHLC extrema with earliest-plateau equality and a price-unit separation floor.",
+  "formulae": [
+    "\\text{high pivot at }i:\\quad H_i>\\max_{j=i-L}^{i-1}H_j,\\quad H_i\\ge\\max_{j=i+1}^{i+R}H_j",
+    "\\text{low pivot at }i:\\quad L_i<\\min_{j=i-L}^{i-1}L_j,\\quad L_i\\le\\min_{j=i+1}^{i+R}L_j",
+    "s_i^{high}=H_i-\\max(H_{left},H_{right}),\\quad s_i^{low}=\\min(L_{left},L_{right})-L_i",
+    "k_i=i+R,\\quad \\text{publish only when }s_i\\ge s_{min}"
+  ],
+  "symbols": [
+    {
+      "symbol": "i",
+      "meaning": "candidate event index",
+      "unit": "bar index"
+    },
+    {
+      "symbol": "L, R",
+      "meaning": "left and right spans",
+      "unit": "bars"
+    },
+    {
+      "symbol": "H_i, L_i",
+      "meaning": "candidate high and low",
+      "unit": "price units"
+    },
+    {
+      "symbol": "s_min",
+      "meaning": "minimum separation",
+      "unit": "price units"
+    },
+    {
+      "symbol": "k_i",
+      "meaning": "confirmation or knowledge index",
+      "unit": "bar index"
+    }
+  ],
+  "trace": [
+    {
+      "index_or_object": "0",
+      "value": "10",
+      "calculation_state": "left warm-up",
+      "published_interpretation": "not eligible"
+    },
+    {
+      "index_or_object": "1",
+      "value": "12",
+      "calculation_state": "left warm-up",
+      "published_interpretation": "not eligible"
+    },
+    {
+      "index_or_object": "2",
+      "value": "15",
+      "calculation_state": "candidate; right bars missing",
+      "published_interpretation": "not publishable"
+    },
+    {
+      "index_or_object": "3",
+      "value": "13",
+      "calculation_state": "one right bar observed",
+      "published_interpretation": "not publishable"
+    },
+    {
+      "index_or_object": "4",
+      "value": "11",
+      "calculation_state": "15 beats left 10,12 and right 13,11",
+      "published_interpretation": "publish high event 2, confirmation 4"
+    }
+  ],
+  "explanation": "For highs `[10, 12, 15, 13, 11]` with `L=2`, `R=2`, and zero\nseparation, index 2 is above both left highs (10, 12) and both right highs\n(13, 11). The event belongs to index 2, but it becomes knowable only at index\n4. Publishing it at index 2 without carrying confirmation time leaks two future\nobservations.",
+  "historical_example_decision": "not useful",
+  "evidence_boundary": "Definition and detection behavior only; no prediction or profitability claim."
+}

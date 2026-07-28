@@ -106,6 +106,20 @@ describe("registry", () => {
       "D04-F03-A04": "evaluateSnapshot", "D04-F03-A05": "evaluateSnapshot", "D04-F03-A06": "evaluateSnapshot",
       "D07-F01-A04": "calculateRma",
       "D07-F04-A02": "average_true_range", // slug is the initialism ATR
+
+      // Structural VAR. The module exports nine functions, and the topic's own
+      // catalog test invokes fitRecursiveSVAR() and nothing else — the highest
+      // confidence signal available. SVAR is the abbreviation the slug spells
+      // out, which the camelCase splitter cannot recover.
+      "D09-F03-A02": "fitRecursiveSVAR",
+
+      // Three state-and-regime models whose authors each named their single
+      // export runFilter. These are NOT the shared-implementation bug: the three
+      // files are distinct, and each exports exactly one function, so detection
+      // cannot pick the wrong one. Only the name is generic.
+      "D09-F04-A04": "runFilter",
+      "D09-F04-A05": "runFilter",
+      "D09-F04-A06": "runFilter",
     };
 
     const offenders: string[] = [];

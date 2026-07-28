@@ -1,6 +1,6 @@
 {
   "name": "fintech-algorithms",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "The Fintech Builder algorithm library — canonical, cross-language reference implementations of market-data, corporate-action, index, breadth, candlestick and technical-indicator algorithms, exposed as provider-agnostic subpath modules.",
   "keywords": [
     "fintech",
@@ -647,6 +647,138 @@
     "./technical-indicators/volume-indicators/force-index": {
       "types": "./dist/technical-indicators/volume-indicators/force-index/index.d.ts",
       "import": "./dist/technical-indicators/volume-indicators/force-index/index.js"
+    },
+    "./geometric-chart-patterns/pivots-and-levels/causal-pivot-detection": {
+      "types": "./dist/geometric-chart-patterns/pivots-and-levels/causal-pivot-detection/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/pivots-and-levels/causal-pivot-detection/index.js"
+    },
+    "./geometric-chart-patterns/pivots-and-levels/zigzag-segmentation": {
+      "types": "./dist/geometric-chart-patterns/pivots-and-levels/zigzag-segmentation/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/pivots-and-levels/zigzag-segmentation/index.js"
+    },
+    "./geometric-chart-patterns/pivots-and-levels/support-resistance-clustering": {
+      "types": "./dist/geometric-chart-patterns/pivots-and-levels/support-resistance-clustering/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/pivots-and-levels/support-resistance-clustering/index.js"
+    },
+    "./geometric-chart-patterns/pivots-and-levels/robust-trendline-fitting": {
+      "types": "./dist/geometric-chart-patterns/pivots-and-levels/robust-trendline-fitting/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/pivots-and-levels/robust-trendline-fitting/index.js"
+    },
+    "./geometric-chart-patterns/reversal-structures/double-top": {
+      "types": "./dist/geometric-chart-patterns/reversal-structures/double-top/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/reversal-structures/double-top/index.js"
+    },
+    "./geometric-chart-patterns/reversal-structures/double-bottom": {
+      "types": "./dist/geometric-chart-patterns/reversal-structures/double-bottom/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/reversal-structures/double-bottom/index.js"
+    },
+    "./geometric-chart-patterns/reversal-structures/triple-top": {
+      "types": "./dist/geometric-chart-patterns/reversal-structures/triple-top/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/reversal-structures/triple-top/index.js"
+    },
+    "./geometric-chart-patterns/reversal-structures/triple-bottom": {
+      "types": "./dist/geometric-chart-patterns/reversal-structures/triple-bottom/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/reversal-structures/triple-bottom/index.js"
+    },
+    "./geometric-chart-patterns/reversal-structures/head-and-shoulders": {
+      "types": "./dist/geometric-chart-patterns/reversal-structures/head-and-shoulders/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/reversal-structures/head-and-shoulders/index.js"
+    },
+    "./geometric-chart-patterns/reversal-structures/inverse-head-and-shoulders": {
+      "types": "./dist/geometric-chart-patterns/reversal-structures/inverse-head-and-shoulders/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/reversal-structures/inverse-head-and-shoulders/index.js"
+    },
+    "./statistical-time-series/diagnostics/acf": {
+      "types": "./dist/statistical-time-series/diagnostics/acf/index.d.ts",
+      "import": "./dist/statistical-time-series/diagnostics/acf/index.js"
+    },
+    "./statistical-time-series/diagnostics/pacf": {
+      "types": "./dist/statistical-time-series/diagnostics/pacf/index.d.ts",
+      "import": "./dist/statistical-time-series/diagnostics/pacf/index.js"
+    },
+    "./statistical-time-series/diagnostics/augmented-dickey-fuller": {
+      "types": "./dist/statistical-time-series/diagnostics/augmented-dickey-fuller/index.d.ts",
+      "import": "./dist/statistical-time-series/diagnostics/augmented-dickey-fuller/index.js"
+    },
+    "./statistical-time-series/diagnostics/kpss": {
+      "types": "./dist/statistical-time-series/diagnostics/kpss/index.d.ts",
+      "import": "./dist/statistical-time-series/diagnostics/kpss/index.js"
+    },
+    "./statistical-time-series/diagnostics/ljung-box": {
+      "types": "./dist/statistical-time-series/diagnostics/ljung-box/index.d.ts",
+      "import": "./dist/statistical-time-series/diagnostics/ljung-box/index.js"
+    },
+    "./statistical-time-series/diagnostics/zivot-andrews-break-test": {
+      "types": "./dist/statistical-time-series/diagnostics/zivot-andrews-break-test/index.d.ts",
+      "import": "./dist/statistical-time-series/diagnostics/zivot-andrews-break-test/index.js"
+    },
+    "./statistical-time-series/forecast-models/autoreg": {
+      "types": "./dist/statistical-time-series/forecast-models/autoreg/index.d.ts",
+      "import": "./dist/statistical-time-series/forecast-models/autoreg/index.js"
+    },
+    "./statistical-time-series/forecast-models/arma": {
+      "types": "./dist/statistical-time-series/forecast-models/arma/index.d.ts",
+      "import": "./dist/statistical-time-series/forecast-models/arma/index.js"
+    },
+    "./statistical-time-series/forecast-models/arima": {
+      "types": "./dist/statistical-time-series/forecast-models/arima/index.d.ts",
+      "import": "./dist/statistical-time-series/forecast-models/arima/index.js"
+    },
+    "./statistical-time-series/forecast-models/sarima-sarimax": {
+      "types": "./dist/statistical-time-series/forecast-models/sarima-sarimax/index.d.ts",
+      "import": "./dist/statistical-time-series/forecast-models/sarima-sarimax/index.js"
+    },
+    "./statistical-time-series/forecast-models/holt-winters": {
+      "types": "./dist/statistical-time-series/forecast-models/holt-winters/index.d.ts",
+      "import": "./dist/statistical-time-series/forecast-models/holt-winters/index.js"
+    },
+    "./statistical-time-series/forecast-models/theta-forecast": {
+      "types": "./dist/statistical-time-series/forecast-models/theta-forecast/index.d.ts",
+      "import": "./dist/statistical-time-series/forecast-models/theta-forecast/index.js"
+    },
+    "./statistical-time-series/multivariate-systems/var": {
+      "types": "./dist/statistical-time-series/multivariate-systems/var/index.d.ts",
+      "import": "./dist/statistical-time-series/multivariate-systems/var/index.js"
+    },
+    "./statistical-time-series/multivariate-systems/structural-var": {
+      "types": "./dist/statistical-time-series/multivariate-systems/structural-var/index.d.ts",
+      "import": "./dist/statistical-time-series/multivariate-systems/structural-var/index.js"
+    },
+    "./statistical-time-series/multivariate-systems/vecm": {
+      "types": "./dist/statistical-time-series/multivariate-systems/vecm/index.d.ts",
+      "import": "./dist/statistical-time-series/multivariate-systems/vecm/index.js"
+    },
+    "./statistical-time-series/multivariate-systems/impulse-response-analysis": {
+      "types": "./dist/statistical-time-series/multivariate-systems/impulse-response-analysis/index.d.ts",
+      "import": "./dist/statistical-time-series/multivariate-systems/impulse-response-analysis/index.js"
+    },
+    "./statistical-time-series/multivariate-systems/forecast-error-variance-decomposition": {
+      "types": "./dist/statistical-time-series/multivariate-systems/forecast-error-variance-decomposition/index.d.ts",
+      "import": "./dist/statistical-time-series/multivariate-systems/forecast-error-variance-decomposition/index.js"
+    },
+    "./statistical-time-series/state-and-regime-models/kalman-filter": {
+      "types": "./dist/statistical-time-series/state-and-regime-models/kalman-filter/index.d.ts",
+      "import": "./dist/statistical-time-series/state-and-regime-models/kalman-filter/index.js"
+    },
+    "./statistical-time-series/state-and-regime-models/extended-kalman-filter": {
+      "types": "./dist/statistical-time-series/state-and-regime-models/extended-kalman-filter/index.d.ts",
+      "import": "./dist/statistical-time-series/state-and-regime-models/extended-kalman-filter/index.js"
+    },
+    "./statistical-time-series/state-and-regime-models/unscented-kalman-filter": {
+      "types": "./dist/statistical-time-series/state-and-regime-models/unscented-kalman-filter/index.d.ts",
+      "import": "./dist/statistical-time-series/state-and-regime-models/unscented-kalman-filter/index.js"
+    },
+    "./statistical-time-series/state-and-regime-models/hidden-markov-model": {
+      "types": "./dist/statistical-time-series/state-and-regime-models/hidden-markov-model/index.d.ts",
+      "import": "./dist/statistical-time-series/state-and-regime-models/hidden-markov-model/index.js"
+    },
+    "./statistical-time-series/state-and-regime-models/markov-switching-autoregression": {
+      "types": "./dist/statistical-time-series/state-and-regime-models/markov-switching-autoregression/index.d.ts",
+      "import": "./dist/statistical-time-series/state-and-regime-models/markov-switching-autoregression/index.js"
+    },
+    "./statistical-time-series/state-and-regime-models/bayesian-change-point-detection": {
+      "types": "./dist/statistical-time-series/state-and-regime-models/bayesian-change-point-detection/index.d.ts",
+      "import": "./dist/statistical-time-series/state-and-regime-models/bayesian-change-point-detection/index.js"
     },
     "./earnings-and-per-share-analytics/earnings-and-share-foundations/stock-split-consolidation-eps-restatement": {
       "types": "./dist/earnings-and-per-share-analytics/earnings-and-share-foundations/stock-split-consolidation-eps-restatement/index.d.ts",

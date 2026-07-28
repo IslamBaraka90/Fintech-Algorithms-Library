@@ -1,0 +1,81 @@
+{
+  "topic_id": "D09-F04-A04",
+  "classification": "author-derived from deterministic synthetic input",
+  "configuration": {
+    "transition": [
+      [
+        0.94,
+        0.06
+      ],
+      [
+        0.12,
+        0.88
+      ]
+    ],
+    "means": [
+      -0.15,
+      0.25
+    ],
+    "stds": [
+      0.55,
+      1.45
+    ],
+    "initial": [
+      0.8,
+      0.2
+    ]
+  },
+  "observations": [
+    {
+      "index": 0,
+      "timestamp": "2024-01-01T00:00:00Z",
+      "observation": -0.9183368993,
+      "true_regime": 0,
+      "latent_truth": -0.7
+    },
+    {
+      "index": 1,
+      "timestamp": "2024-01-02T00:00:00Z",
+      "observation": -0.5364890278,
+      "true_regime": 0,
+      "latent_truth": -0.7
+    },
+    {
+      "index": 2,
+      "timestamp": "2024-01-03T00:00:00Z",
+      "observation": -0.550167602,
+      "true_regime": 0,
+      "latent_truth": -0.7
+    }
+  ],
+  "expected_trace": [
+    {
+      "index": 0,
+      "predicted_state_0": 0.776,
+      "predicted_state_1": 0.22400000000000003,
+      "posterior_state_0": 0.8264612333826497,
+      "posterior_state_1": 0.17353876661735046,
+      "most_likely_state": 0,
+      "log_predictive_density": -1.3598732483743445
+    },
+    {
+      "index": 1,
+      "predicted_state_0": 0.7976982113737726,
+      "predicted_state_1": 0.20230178862622739,
+      "posterior_state_0": 0.9039212244809284,
+      "posterior_state_1": 0.09607877551907154,
+      "most_likely_state": 0,
+      "log_predictive_density": -0.6930121943884896
+    },
+    {
+      "index": 2,
+      "predicted_state_0": 0.8612154040743613,
+      "predicted_state_1": 0.13878459592563866,
+      "posterior_state_0": 0.9359801579550974,
+      "posterior_state_1": 0.0640198420449025,
+      "most_likely_state": 0,
+      "log_predictive_density": -0.6690356366768324
+    }
+  ],
+  "independent_check": "validate_family.py recalculates the first update without calling this implementation"
+}

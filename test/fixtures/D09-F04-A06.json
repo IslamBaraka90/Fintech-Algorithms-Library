@@ -1,0 +1,63 @@
+{
+  "topic_id": "D09-F04-A06",
+  "classification": "author-derived from deterministic synthetic input",
+  "configuration": {
+    "hazard": 0.025,
+    "observation_variance": 0.36,
+    "prior_mean": 0.0,
+    "prior_variance": 4.0
+  },
+  "observations": [
+    {
+      "index": 0,
+      "timestamp": "2024-01-01T00:00:00Z",
+      "observation": -0.3275053489,
+      "true_regime": 0,
+      "latent_truth": 0.0
+    },
+    {
+      "index": 1,
+      "timestamp": "2024-01-02T00:00:00Z",
+      "observation": 0.2452664583,
+      "true_regime": 0,
+      "latent_truth": 0.0
+    },
+    {
+      "index": 2,
+      "timestamp": "2024-01-03T00:00:00Z",
+      "observation": 0.224748597,
+      "true_regime": 0,
+      "latent_truth": 0.0
+    }
+  ],
+  "expected_trace": [
+    {
+      "index": 0,
+      "change_probability": 0.025,
+      "map_run_length": 1,
+      "expected_run_length": 0.9750000000000001,
+      "active_hypotheses": 2,
+      "map_mean": -0.3004636228440367,
+      "log_predictive_density": -1.6674749923390562
+    },
+    {
+      "index": 1,
+      "change_probability": 0.012415673831408902,
+      "map_run_length": 2,
+      "expected_run_length": 1.9504790441829676,
+      "active_hypotheses": 3,
+      "map_mean": -0.0393487514832536,
+      "log_predictive_density": -0.9621570121513477
+    },
+    {
+      "index": 2,
+      "change_probability": 0.00942784148480789,
+      "map_run_length": 3,
+      "expected_run_length": 2.9241612404581354,
+      "active_hypotheses": 4,
+      "map_mean": 0.04611964608414239,
+      "log_predictive_density": -0.6857585614486436
+    }
+  ],
+  "independent_check": "validate_family.py recalculates the first update without calling this implementation"
+}

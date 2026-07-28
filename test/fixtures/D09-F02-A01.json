@@ -1,0 +1,27 @@
+{
+  "topic_id": "D09-F02-A01",
+  "classification": "author-derived arithmetic over synthetic teaching input",
+  "selected_variant": "Fixed-coefficient AR(p) with an intercept, contiguous lags 1 through p, recursive point forecasts, and no exogenous or seasonal terms.",
+  "values": [
+    10,
+    12,
+    11
+  ],
+  "config": {
+    "ar": [
+      0.5
+    ],
+    "intercept": 5,
+    "horizon": 2
+  },
+  "forecast": [
+    10.5,
+    10.25
+  ],
+  "trace": [
+    "h=1: 5 + 0.5(11) = 10.5",
+    "h=2: 5 + 0.5(10.5) = 10.25"
+  ],
+  "historical_example_decision": "not useful",
+  "evidence_boundary": "Mechanism arithmetic only; no prediction or performance claim."
+}

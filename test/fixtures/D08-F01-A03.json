@@ -1,0 +1,72 @@
+{
+  "topic_id": "D08-F01-A03",
+  "classification": "author-derived calculation over synthetic teaching input",
+  "selected_variant": "Same-kind one-dimensional DBSCAN in log-price space, median cluster level, and confirmation-time availability.",
+  "formulae": [
+    "\\delta=\\log\\left(1+\\frac{\\epsilon_{bps}}{10000}\\right),\\qquad d(i,j)=|\\log p_i-\\log p_j|",
+    "N_\\delta(i)=\\{j:\\operatorname{kind}_j=\\operatorname{kind}_i,\\ d(i,j)\\le\\delta\\}",
+    "i\\text{ is core}\\iff |N_\\delta(i)|\\ge m;\\qquad \\widehat{p}_{level}=\\operatorname{median}\\{p_j:j\\in C\\}"
+  ],
+  "symbols": [
+    {
+      "symbol": "p_i",
+      "meaning": "confirmed pivot price",
+      "unit": "positive price units"
+    },
+    {
+      "symbol": "epsilon_bps",
+      "meaning": "ratio-distance setting",
+      "unit": "basis points"
+    },
+    {
+      "symbol": "delta",
+      "meaning": "exact log-distance radius",
+      "unit": "log-price"
+    },
+    {
+      "symbol": "m",
+      "meaning": "minimum touches including self",
+      "unit": "count"
+    },
+    {
+      "symbol": "C",
+      "meaning": "density-connected same-kind cluster",
+      "unit": "set of pivots"
+    }
+  ],
+  "trace": [
+    {
+      "index_or_object": "100.00",
+      "value": "100.00, 100.30, 99.90",
+      "calculation_state": "core",
+      "published_interpretation": "three neighbors including self"
+    },
+    {
+      "index_or_object": "100.30",
+      "value": "100.00, 100.30, 99.90",
+      "calculation_state": "core",
+      "published_interpretation": "within exact 50 bps log radius"
+    },
+    {
+      "index_or_object": "99.90",
+      "value": "100.00, 100.30, 99.90",
+      "calculation_state": "core",
+      "published_interpretation": "joins the same density component"
+    },
+    {
+      "index_or_object": "105.00",
+      "value": "105.00 only",
+      "calculation_state": "noise",
+      "published_interpretation": "fewer than three neighbors"
+    },
+    {
+      "index_or_object": "cluster",
+      "value": "99.90 to 100.30",
+      "calculation_state": "level 100.00",
+      "published_interpretation": "median member price; bounds are observed, not predictive"
+    }
+  ],
+  "explanation": "Suppose confirmed resistance pivots are 100.00, 100.30,\n99.90, and 105.00. With 50 bps and three touches, the first three lie within a\nconnected log-price neighborhood and form a cluster with median level 100.00.\nThe 105.00 pivot is noise. Epsilon is a neighborhood rule: chained members can\nmake a cluster's total lower-to-upper span wider than epsilon.",
+  "historical_example_decision": "not useful",
+  "evidence_boundary": "Definition and detection behavior only; no prediction or profitability claim."
+}

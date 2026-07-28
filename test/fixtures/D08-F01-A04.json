@@ -1,0 +1,78 @@
+{
+  "topic_id": "D08-F01-A04",
+  "classification": "author-derived calculation over synthetic teaching input",
+  "selected_variant": "Exhaustive two-point consensus in log-price space, inclusive residual tolerance, deterministic tie-breaking, then least-squares refit on inliers.",
+  "formulae": [
+    "z_i=\\log p_i,\\qquad \\widehat{z}_i=a+b\\,t_i",
+    "i\\in I(h)\\iff |z_i-\\widehat{z}_i(h)|\\le\\log\\left(1+\\frac{\\epsilon_{bps}}{10000}\\right)",
+    "h^*=\\arg\\min_h\\left(-|I(h)|,\\operatorname{median}|e_i|,|b_h|,\\text{pair order}\\right)",
+    "(a^*,b^*)=\\operatorname{OLS}\\{(t_i,z_i):i\\in I(h^*)\\},\\quad r_i^{bps}=10000\\,\\operatorname{expm1}(|e_i|)"
+  ],
+  "symbols": [
+    {
+      "symbol": "t_i",
+      "meaning": "pivot event index",
+      "unit": "bars"
+    },
+    {
+      "symbol": "z_i",
+      "meaning": "log pivot price",
+      "unit": "log-price"
+    },
+    {
+      "symbol": "h",
+      "meaning": "two-point line hypothesis",
+      "unit": "model"
+    },
+    {
+      "symbol": "I(h)",
+      "meaning": "inclusive residual consensus",
+      "unit": "set of pivot indexes"
+    },
+    {
+      "symbol": "epsilon_bps",
+      "meaning": "exact ratio residual tolerance",
+      "unit": "basis points"
+    },
+    {
+      "symbol": "a, b",
+      "meaning": "refit intercept and log slope",
+      "unit": "log-price; log-price per bar"
+    }
+  ],
+  "trace": [
+    {
+      "index_or_object": "0",
+      "value": "4.60",
+      "calculation_state": "on z = 4.60 + 0.01t",
+      "published_interpretation": "inlier"
+    },
+    {
+      "index_or_object": "10",
+      "value": "4.70",
+      "calculation_state": "on z = 4.60 + 0.01t",
+      "published_interpretation": "inlier"
+    },
+    {
+      "index_or_object": "20",
+      "value": "4.80",
+      "calculation_state": "on z = 4.60 + 0.01t",
+      "published_interpretation": "inlier"
+    },
+    {
+      "index_or_object": "30",
+      "value": "5.50",
+      "calculation_state": "0.60 log units above line",
+      "published_interpretation": "gross outlier"
+    },
+    {
+      "index_or_object": "locked consensus",
+      "value": "indexes 0,10,20",
+      "calculation_state": "OLS slope 0.01",
+      "published_interpretation": "one refit; membership does not drift"
+    }
+  ],
+  "explanation": "Use three log-price pivots `(0, 4.60)`, `(10, 4.70)`, and\n`(20, 4.80)`, plus a gross outlier `(30, 5.50)`. The first three support\n`z = 4.60 + 0.01t` with zero residual. A sufficiently tight tolerance excludes\nthe fourth point. Ordinary least squares on all four would rotate the line;\nconsensus fitting preserves the three-point structure and labels the outlier.",
+  "historical_example_decision": "not useful",
+  "evidence_boundary": "Definition and detection behavior only; no prediction or profitability claim."
+}

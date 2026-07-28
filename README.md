@@ -76,9 +76,9 @@ Requires Node ≥ 22.
 ## Verified against published worked examples
 
 <!-- coverage:start -->
-**79 of 154 topics** are verified against the catalog's own published numbers
+**79 of 187 topics** are verified against the catalog's own published numbers
 (41 via `{ input, expected }`, 11 via row fixtures, 27 via bar/checkpoint fixtures).
-The remaining 75 are proven to load and expose a callable entry point, but their
+The remaining 108 are proven to load and expose a callable entry point, but their
 arithmetic is not asserted here — those topics ship no machine-readable expected
 values in the catalog.
 <!-- coverage:end -->
@@ -112,9 +112,9 @@ Every topic is an instance of one of five archetypes:
 <!-- shapes:start -->
 | Archetype | Signature | Count | Example |
 |---|---|--:|---|
-| `record-transform` | `(input) → output` | 90 | backward-split-adjustment |
+| `record-transform` | `(input) → output` | 122 | backward-split-adjustment |
 | `series-transform` | `(values, ...params) → (number\|null)[]` | 37 | ema, rsi, macd |
-| `row-classify` | `(rows, config?) → verdict[]` | 14 | ohlc-consistency-validator |
+| `row-classify` | `(rows, config?) → verdict[]` | 15 | ohlc-consistency-validator |
 | `tape-aggregate` | `(trades, config) → bar[]` | 7 | time-bars, volume-bars |
 | `snapshot-evaluate` | `(snapshot, policy) → result` | 6 | price-source-consensus-check |
 <!-- shapes:end -->
@@ -147,7 +147,7 @@ repo URL.
 ## Coverage
 
 <!-- stats:start -->
-**154 topics** · 7 domains · 27 families
+**187 topics** · 9 domains · 33 families
 
 | Domain | Topics | Families | Name |
 |---|--:|--:|---|
@@ -157,6 +157,8 @@ repo URL.
 | D04 | 28 | 5 | Market Breadth and Internals |
 | D06 | 2 | 1 | Price Action and Candlesticks |
 | D07 | 37 | 5 | Technical Indicators |
+| D08 | 10 | 2 | Geometric Chart Patterns |
+| D09 | 23 | 4 | Statistical Time Series |
 | D46 | 5 | 2 | Earnings and Per-Share Analytics |
 <!-- stats:end -->
 
@@ -344,6 +346,49 @@ against the article's published worked example.
 | Money Flow Index | Volume Indicators | `technical-indicators/volume-indicators/money-flow-index` | ✓ |
 | Volume Price Trend | Volume Indicators | `technical-indicators/volume-indicators/volume-price-trend` | ✓ |
 | Force Index | Volume Indicators | `technical-indicators/volume-indicators/force-index` | ✓ |
+
+### D08 — Geometric Chart Patterns
+
+| Algorithm | Family | Import from `fintech-algorithms/…` | Verified |
+|---|---|---|:--:|
+| Causal Pivot Detection | Pivots and Levels | `geometric-chart-patterns/pivots-and-levels/causal-pivot-detection` | – |
+| ZigZag Segmentation | Pivots and Levels | `geometric-chart-patterns/pivots-and-levels/zigzag-segmentation` | – |
+| Support/Resistance Clustering | Pivots and Levels | `geometric-chart-patterns/pivots-and-levels/support-resistance-clustering` | – |
+| Robust Trendline Fitting | Pivots and Levels | `geometric-chart-patterns/pivots-and-levels/robust-trendline-fitting` | – |
+| Double Top | Reversal Structures | `geometric-chart-patterns/reversal-structures/double-top` | – |
+| Double Bottom | Reversal Structures | `geometric-chart-patterns/reversal-structures/double-bottom` | – |
+| Triple Top | Reversal Structures | `geometric-chart-patterns/reversal-structures/triple-top` | – |
+| Triple Bottom | Reversal Structures | `geometric-chart-patterns/reversal-structures/triple-bottom` | – |
+| Head and Shoulders | Reversal Structures | `geometric-chart-patterns/reversal-structures/head-and-shoulders` | – |
+| Inverse Head and Shoulders | Reversal Structures | `geometric-chart-patterns/reversal-structures/inverse-head-and-shoulders` | – |
+
+### D09 — Statistical Time Series
+
+| Algorithm | Family | Import from `fintech-algorithms/…` | Verified |
+|---|---|---|:--:|
+| ACF | Diagnostics | `statistical-time-series/diagnostics/acf` | – |
+| PACF | Diagnostics | `statistical-time-series/diagnostics/pacf` | – |
+| Augmented Dickey-Fuller | Diagnostics | `statistical-time-series/diagnostics/augmented-dickey-fuller` | – |
+| KPSS | Diagnostics | `statistical-time-series/diagnostics/kpss` | – |
+| Ljung-Box | Diagnostics | `statistical-time-series/diagnostics/ljung-box` | – |
+| Zivot-Andrews Break Test | Diagnostics | `statistical-time-series/diagnostics/zivot-andrews-break-test` | – |
+| AutoReg | Forecast Models | `statistical-time-series/forecast-models/autoreg` | – |
+| ARMA | Forecast Models | `statistical-time-series/forecast-models/arma` | – |
+| ARIMA | Forecast Models | `statistical-time-series/forecast-models/arima` | – |
+| SARIMA/SARIMAX | Forecast Models | `statistical-time-series/forecast-models/sarima-sarimax` | – |
+| Holt-Winters | Forecast Models | `statistical-time-series/forecast-models/holt-winters` | – |
+| Theta Forecast | Forecast Models | `statistical-time-series/forecast-models/theta-forecast` | – |
+| VAR | Multivariate Systems | `statistical-time-series/multivariate-systems/var` | – |
+| Structural VAR | Multivariate Systems | `statistical-time-series/multivariate-systems/structural-var` | – |
+| VECM | Multivariate Systems | `statistical-time-series/multivariate-systems/vecm` | – |
+| Impulse-Response Analysis | Multivariate Systems | `statistical-time-series/multivariate-systems/impulse-response-analysis` | – |
+| Forecast-Error Variance Decomposition | Multivariate Systems | `statistical-time-series/multivariate-systems/forecast-error-variance-decomposition` | – |
+| Kalman Filter | State and Regime Models | `statistical-time-series/state-and-regime-models/kalman-filter` | – |
+| Extended Kalman Filter | State and Regime Models | `statistical-time-series/state-and-regime-models/extended-kalman-filter` | – |
+| Unscented Kalman Filter | State and Regime Models | `statistical-time-series/state-and-regime-models/unscented-kalman-filter` | – |
+| Hidden Markov Model | State and Regime Models | `statistical-time-series/state-and-regime-models/hidden-markov-model` | – |
+| Markov-Switching Autoregression | State and Regime Models | `statistical-time-series/state-and-regime-models/markov-switching-autoregression` | – |
+| Bayesian Change-Point Detection | State and Regime Models | `statistical-time-series/state-and-regime-models/bayesian-change-point-detection` | – |
 
 ### D46 — Earnings and Per-Share Analytics
 

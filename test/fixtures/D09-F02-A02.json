@@ -1,0 +1,32 @@
+{
+  "topic_id": "D09-F02-A02",
+  "classification": "author-derived arithmetic over synthetic teaching input",
+  "selected_variant": "Fixed-coefficient ARMA(p,q) with an intercept, contiguous lags, zero pre-sample innovations, recursively reconstructed in-sample residuals, and zero future innovations.",
+  "values": [
+    10,
+    12,
+    11
+  ],
+  "config": {
+    "ar": [
+      0.5
+    ],
+    "ma": [
+      0.25
+    ],
+    "intercept": 5,
+    "horizon": 2
+  },
+  "forecast": [
+    10.375,
+    10.1875
+  ],
+  "trace": [
+    "At t=1: fitted=5+0.5(10)=10, so epsilon_1=2.",
+    "At t=2: fitted=5+0.5(12)+0.25(2)=11.5, so epsilon_2=-0.5.",
+    "h=1: 5+0.5(11)+0.25(-0.5)=10.375.",
+    "h=2: 5+0.5(10.375)+0.25(0)=10.1875."
+  ],
+  "historical_example_decision": "not useful",
+  "evidence_boundary": "Mechanism arithmetic only; no prediction or performance claim."
+}

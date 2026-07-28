@@ -1,0 +1,71 @@
+{
+  "topic_id": "D09-F04-A01",
+  "classification": "author-derived from deterministic synthetic input",
+  "configuration": {
+    "a": 0.96,
+    "h": 1.0,
+    "q": 0.08,
+    "r": 0.64,
+    "initial_mean": 0.0,
+    "initial_variance": 2.0
+  },
+  "observations": [
+    {
+      "index": 0,
+      "timestamp": "2024-01-01T00:00:00Z",
+      "observation": 0.1740371542,
+      "latent_truth": -0.0219628458,
+      "true_regime": 0
+    },
+    {
+      "index": 1,
+      "timestamp": "2024-01-02T00:00:00Z",
+      "observation": 0.7180296431,
+      "latent_truth": 0.0406476266,
+      "true_regime": 0
+    },
+    {
+      "index": 2,
+      "timestamp": "2024-01-03T00:00:00Z",
+      "observation": 0.0364260071,
+      "latent_truth": 0.0604900474,
+      "true_regime": 0
+    }
+  ],
+  "expected_trace": [
+    {
+      "index": 0,
+      "predicted_mean": 0.0,
+      "predicted_variance": 1.9232,
+      "predicted_observation": 0.0,
+      "innovation": 0.1740371542,
+      "innovation_variance": 2.5632,
+      "kalman_gain": 0.7503121098626716,
+      "filtered_mean": 0.1305821843622971,
+      "filtered_variance": 0.4801997503121099
+    },
+    {
+      "index": 1,
+      "predicted_mean": 0.12535889698780522,
+      "predicted_variance": 0.5225520898876405,
+      "predicted_observation": 0.12535889698780522,
+      "innovation": 0.5926707461121947,
+      "innovation_variance": 1.1625520898876405,
+      "kalman_gain": 0.4494870332546945,
+      "filtered_mean": 0.3917567123546219,
+      "filtered_variance": 0.28767170128300446
+    },
+    {
+      "index": 2,
+      "predicted_mean": 0.376086443860437,
+      "predicted_variance": 0.3451182399024169,
+      "predicted_observation": 0.376086443860437,
+      "innovation": -0.339660436760437,
+      "innovation_variance": 0.985118239902417,
+      "kalman_gain": 0.350331793609469,
+      "filtered_mean": 0.25709259383197747,
+      "filtered_variance": 0.22421234791006017
+    }
+  ],
+  "independent_check": "validate_family.py recalculates the first update without calling this implementation"
+}
