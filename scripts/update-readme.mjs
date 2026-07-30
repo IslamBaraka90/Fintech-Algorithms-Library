@@ -97,13 +97,8 @@ const coverageBlock = [
   `values in the catalog.`,
 ].join("\n");
 
-/**
- * Base URL of the reference site. The GitHub Pages project URL is used rather
- * than docs.thefintechbuilder.com because it resolves today; once the custom
- * domain is configured GitHub 301s this to it, so published READMEs keep
- * working. Switch this one constant afterwards.
- */
-const DOCS = "https://islambaraka90.github.io/fintech-algorithms-docs";
+/** Base URL of the reference site. */
+const DOCS = "https://docs.thefintechbuilder.com";
 
 /**
  * Every algorithm by name, grouped by domain and family, each linked to its
