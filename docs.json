@@ -12,7 +12,7 @@
     "verified": 79,
     "withExample": 186,
     "withDiagram": 187,
-    "withApiContract": 119
+    "withApiContract": 187
   },
   "domains": [
     {
@@ -20303,7 +20303,35 @@
         "archetype": "record-transform",
         "signature": "calculateNetAdvances(request)"
       },
-      "api": null,
+      "api": {
+        "summary": "Advances minus declines for a session. The simplest breadth measure and the input to most of the others — its value is that it counts companies rather than weighting them, so it says what *most* of the market did.",
+        "params": [
+          {
+            "name": "request",
+            "type": "BreadthRequest",
+            "required": true,
+            "description": "Carries the session identity (`session_date`, `session_id`, `venue_id`, `universe_id`) plus the rules that decide what counts as an advance: `comparison_basis` (which price is compared against which), `corporate_action_policy`, and `price_tolerance` for unchanged. `calculation_as_of` bounds which revisions are usable.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ status, direction, metric, session_date, universe_id, … }",
+          "description": "The count with a `status` and the full identity of what was counted — two systems disagreeing on breadth almost always disagree about the universe, not the arithmetic."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "the comparison basis or corporate-action policy is unrecognised",
+            "behaviour": "reported as a status rather than thrown"
+          }
+        ],
+        "complexity": {
+          "time": "O(members)",
+          "space": "O(1)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -20527,7 +20555,35 @@
         "archetype": "record-transform",
         "signature": "calculateAdvanceDeclineRatio(snapshot)"
       },
-      "api": null,
+      "api": {
+        "summary": "Advances divided by declines. Scale-free where net advances is not, so readings stay comparable as the universe grows — the reason a raw A/D count from the 1960s cannot be compared with one from today.",
+        "params": [
+          {
+            "name": "snapshot",
+            "type": "BreadthSnapshot",
+            "required": true,
+            "description": "One session's counts with their evidence state and full identity — venue, calendar, session and universe.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ evidence_state, ratio_state, advance_decline_ratio, direction, observed_partition_ratio, observed }",
+          "description": "The ratio plus a separate `evidence_state` and `ratio_state`, which distinguish a genuine reading from one the data could not support."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "declines is zero, making the ratio undefined",
+            "behaviour": "reported as a ratio_state rather than thrown"
+          }
+        ],
+        "complexity": {
+          "time": "O(1)",
+          "space": "O(1)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -20697,7 +20753,53 @@
         "archetype": "record-transform",
         "signature": "calculateCumulativeAdvanceDeclineLine(contract, events, knowledgeCutoff)"
       },
-      "api": null,
+      "api": {
+        "summary": "Runs net advances into a cumulative line. Its level is arbitrary; the information is in the shape, and specifically in divergence — when the index makes a high the line does not, participation is narrowing.",
+        "params": [
+          {
+            "name": "contract",
+            "type": "LineContract",
+            "required": true,
+            "description": "Series identity and the `seed` the accumulation starts from. The seed only shifts the level, never the shape.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "events",
+            "type": "BreadthEvent[]",
+            "required": true,
+            "description": "Session events including revisions and supersessions, each with an ingest sequence.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "knowledgeCutoff",
+            "type": "string",
+            "required": true,
+            "description": "Point-in-time bound. Revisions arriving after the cutoff are ignored rather than applied, so the series is exactly what was computable at that moment. Breadth data is revised routinely, and a cumulative line silently rebuilt from revised inputs is not the line anyone traded.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ status, reasons, knowledge_cutoff, points, final_value, causal_prefix_diagnostic, missing_sessions, … }",
+          "description": "The line plus a causal-prefix diagnostic and the sessions that were missing — a gap in a cumulative series propagates forward forever, so it must be visible."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "events are missing an ingest sequence needed to order them",
+            "behaviour": "reported in reasons rather than thrown"
+          }
+        ],
+        "complexity": {
+          "time": "O(events)",
+          "space": "O(sessions)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -20962,7 +21064,44 @@
         "archetype": "record-transform",
         "signature": "calculateNormalizedAdLine(records, options)"
       },
-      "api": null,
+      "api": {
+        "summary": "Divides net advances by the number of issues traded before accumulating, which keeps the line comparable across decades as listing counts change.",
+        "params": [
+          {
+            "name": "records",
+            "type": "BreadthRecord[]",
+            "required": true,
+            "description": "Session records with revision and supersession fields.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "options",
+            "type": "{ cutoff: string; expectedStartSequence: number; expectedEndSequence: number; initialValue: number; scale: number; minimumCoverage: number }",
+            "required": true,
+            "description": "`minimumCoverage` refuses to emit a line when too many sessions are missing, rather than producing one with invisible holes. `scale` sets the units; `cutoff` applies the point-in-time bound.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ state, reason_codes, points, ignored_future_revisions, denominator_policy, … }",
+          "description": "The normalised line with the denominator policy applied and a count of revisions ignored for arriving after the cutoff."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "coverage falls below minimumCoverage",
+            "behaviour": "reported as a state rather than thrown"
+          }
+        ],
+        "complexity": {
+          "time": "O(records)",
+          "space": "O(sessions)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -21198,7 +21337,35 @@
         "archetype": "snapshot-evaluate",
         "signature": "evaluateAbsoluteBreadthIndex(request)"
       },
-      "api": null,
+      "api": {
+        "summary": "The absolute difference between advances and declines — direction discarded on purpose. It measures how *decisive* a session was, not which way, so it reads as an activity or conviction gauge rather than a directional signal.",
+        "params": [
+          {
+            "name": "request",
+            "type": "{ decision_time: string; metric_variant: string; records: Record[] }",
+            "required": true,
+            "description": "`metric_variant` selects the raw or normalised form; `decision_time` bounds which revisions are usable.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ session_date, venue_id, universe_id, universe_revision, comparison_basis, … }",
+          "description": "The index with the full provenance of the universe it was computed over, including the universe revision."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "the metric variant is unrecognised",
+            "behaviour": "reported as a status rather than thrown"
+          }
+        ],
+        "complexity": {
+          "time": "O(records)",
+          "space": "O(1)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -21352,7 +21519,35 @@
         "archetype": "record-transform",
         "signature": "calculateMcClellanValues(netAdvances)"
       },
-      "api": null,
+      "api": {
+        "summary": "The difference between a 19-day and a 39-day EMA of net advances. Because both averages are taken over raw counts, values are not comparable across eras in which the number of listed issues changed — which is exactly what the ratio-adjusted variant fixes.",
+        "params": [
+          {
+            "name": "netAdvances",
+            "type": "number[]",
+            "required": true,
+            "description": "Net advances per session, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ ema19, ema39, oscillator }",
+          "description": "Both EMAs alongside the oscillator, so a reading can be traced to its components."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "fewer sessions are supplied than the longer EMA needs",
+            "behaviour": "returns nulls during warm-up rather than throwing"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": null,
       "verification": {
         "tier": "contract",
@@ -21472,7 +21667,44 @@
         "archetype": "record-transform",
         "signature": "calculate(records, cutoff)"
       },
-      "api": null,
+      "api": {
+        "summary": "The McClellan oscillator computed on net advances divided by advances plus declines. Ratio adjustment is what makes a 1970 reading comparable with a 2026 one — without it the oscillator's range grows with the exchange.",
+        "params": [
+          {
+            "name": "records",
+            "type": "BreadthRecord[]",
+            "required": true,
+            "description": "Session records with revision and event-type fields.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "cutoff",
+            "type": "string",
+            "required": true,
+            "description": "Point-in-time bound. Revisions arriving after the cutoff are ignored rather than applied, so the series is exactly what was computable at that moment. Breadth data is revised routinely, and a cumulative line silently rebuilt from revised inputs is not the line anyone traded.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ status, reason_codes, points, latest_oscillator, latest_index_value, ignored_future_records, seed_state }",
+          "description": "The oscillator series with its seeding state — an EMA's seed matters here because the summation index accumulates it forever."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "records cannot be ordered",
+            "behaviour": "reported in reason_codes rather than thrown"
+          }
+        ],
+        "complexity": {
+          "time": "O(records)",
+          "space": "O(sessions)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -21673,7 +21905,44 @@
         "archetype": "record-transform",
         "signature": "calculate(records, cutoff)"
       },
-      "api": null,
+      "api": {
+        "summary": "The running total of the McClellan oscillator. Turns a fast, noisy signal into a slow regime gauge — the oscillator says what is happening this week, the summation index what has been happening for months.",
+        "params": [
+          {
+            "name": "records",
+            "type": "BreadthRecord[]",
+            "required": true,
+            "description": "Session records with revision and event-type fields.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "cutoff",
+            "type": "string",
+            "required": true,
+            "description": "Point-in-time bound. Revisions arriving after the cutoff are ignored rather than applied, so the series is exactly what was computable at that moment. Breadth data is revised routinely, and a cumulative line silently rebuilt from revised inputs is not the line anyone traded.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ status, points, latest_oscillator, latest_index_value, seed_state, … }",
+          "description": "The summation series and its seed. Because the index accumulates without bound, the seed choice shifts every subsequent value — it is reported rather than assumed."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "records cannot be ordered",
+            "behaviour": "reported in reason_codes rather than thrown"
+          }
+        ],
+        "complexity": {
+          "time": "O(records)",
+          "space": "O(sessions)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -21874,7 +22143,44 @@
         "archetype": "record-transform",
         "signature": "calculate(records, cutoff)"
       },
-      "api": null,
+      "api": {
+        "summary": "RASI: the summation index built on the ratio-adjusted oscillator. The variant most practitioners mean when they quote 'the summation index', and the only one whose historical thresholds hold up across eras.",
+        "params": [
+          {
+            "name": "records",
+            "type": "BreadthRecord[]",
+            "required": true,
+            "description": "Session records with revision and event-type fields.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "cutoff",
+            "type": "string",
+            "required": true,
+            "description": "Point-in-time bound. Revisions arriving after the cutoff are ignored rather than applied, so the series is exactly what was computable at that moment. Breadth data is revised routinely, and a cumulative line silently rebuilt from revised inputs is not the line anyone traded.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ status, points, latest_oscillator, latest_index_value, seed_state, … }",
+          "description": "The RASI series with its seeding state."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "records cannot be ordered",
+            "behaviour": "reported in reason_codes rather than thrown"
+          }
+        ],
+        "complexity": {
+          "time": "O(records)",
+          "space": "O(sessions)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -22081,7 +22387,44 @@
         "archetype": "record-transform",
         "signature": "calculate(records, cutoff)"
       },
-      "api": null,
+      "api": {
+        "summary": "The McClellan construction applied to advancing minus declining *volume* rather than issue counts. It weights participation by size, so it can disagree with the issue-based oscillator — and that disagreement is itself the signal.",
+        "params": [
+          {
+            "name": "records",
+            "type": "BreadthRecord[]",
+            "required": true,
+            "description": "Session records carrying advancing and declining volume.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "cutoff",
+            "type": "string",
+            "required": true,
+            "description": "Point-in-time bound. Revisions arriving after the cutoff are ignored rather than applied, so the series is exactly what was computable at that moment. Breadth data is revised routinely, and a cumulative line silently rebuilt from revised inputs is not the line anyone traded.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ status, points, latest_oscillator, latest_index_value, … }",
+          "description": "The volume oscillator series."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "volume fields are absent",
+            "behaviour": "reported in reason_codes rather than thrown"
+          }
+        ],
+        "complexity": {
+          "time": "O(records)",
+          "space": "O(sessions)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -22288,7 +22631,44 @@
         "archetype": "record-transform",
         "signature": "calculate(records, cutoff)"
       },
-      "api": null,
+      "api": {
+        "summary": "The running total of the volume oscillator — the volume-weighted counterpart of the summation index.",
+        "params": [
+          {
+            "name": "records",
+            "type": "BreadthRecord[]",
+            "required": true,
+            "description": "Session records carrying advancing and declining volume.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "cutoff",
+            "type": "string",
+            "required": true,
+            "description": "Point-in-time bound. Revisions arriving after the cutoff are ignored rather than applied, so the series is exactly what was computable at that moment. Breadth data is revised routinely, and a cumulative line silently rebuilt from revised inputs is not the line anyone traded.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ status, points, latest_index_value, seed_state, … }",
+          "description": "The volume summation series with its seed."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "volume fields are absent",
+            "behaviour": "reported in reason_codes rather than thrown"
+          }
+        ],
+        "complexity": {
+          "time": "O(records)",
+          "space": "O(sessions)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -22499,7 +22879,45 @@
         "archetype": "record-transform",
         "signature": "calculate(records, decisionTime)"
       },
-      "api": null,
+      "api": {
+        "summary": "Counts issues making new 52-week highs and lows. Unlike advance/decline it measures position against a long lookback rather than one session, so it detects a rally where fewer and fewer names reach new ground.",
+        "params": [
+          {
+            "name": "records",
+            "type": "Record[]",
+            "required": true,
+            "description": "Session records with evidence state and universe identity.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "decisionTime",
+            "type": "string",
+            "required": true,
+            "description": "Point-in-time bound on which revisions may be used.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "Row[]",
+          "length": "same-as-input",
+          "description": "Per-session highs and lows with the eligible count — the denominator matters, because a count of 30 new highs means different things in a universe of 500 and one of 3,000."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "a record lacks the lookback history the count requires",
+            "behaviour": "excluded and reported rather than thrown"
+          }
+        ],
+        "complexity": {
+          "time": "O(records)",
+          "space": "O(sessions)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -22682,7 +23100,45 @@
         "archetype": "record-transform",
         "signature": "calculate(records, decisionTime)"
       },
-      "api": null,
+      "api": {
+        "summary": "New highs as a share of new highs plus new lows — the scale-free form, comparable across universes and eras.",
+        "params": [
+          {
+            "name": "records",
+            "type": "Record[]",
+            "required": true,
+            "description": "Session records with evidence state.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "decisionTime",
+            "type": "string",
+            "required": true,
+            "description": "Point-in-time bound.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "Row[]",
+          "length": "same-as-input",
+          "description": "The ratio per session with the counts behind it."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "highs and lows are both zero, making the ratio undefined",
+            "behaviour": "reported per row rather than thrown"
+          }
+        ],
+        "complexity": {
+          "time": "O(records)",
+          "space": "O(sessions)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -22865,7 +23321,45 @@
         "archetype": "record-transform",
         "signature": "calculate(records, decisionTime)"
       },
-      "api": null,
+      "api": {
+        "summary": "A moving average of the high–low ratio, which turns a noisy daily reading into something with a usable trend.",
+        "params": [
+          {
+            "name": "records",
+            "type": "Record[]",
+            "required": true,
+            "description": "Session records with evidence state.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "decisionTime",
+            "type": "string",
+            "required": true,
+            "description": "Point-in-time bound.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "Row[]",
+          "length": "same-as-input",
+          "description": "The smoothed index per session."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "insufficient history for the smoothing window",
+            "behaviour": "reported per row rather than thrown"
+          }
+        ],
+        "complexity": {
+          "time": "O(records)",
+          "space": "O(sessions)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -23054,7 +23548,44 @@
         "archetype": "snapshot-evaluate",
         "signature": "evaluateSnapshot(snapshot, decisionTime)"
       },
-      "api": null,
+      "api": {
+        "summary": "The share of the universe trading above its own 20-day moving average — a short-horizon participation gauge that turns over quickly.",
+        "params": [
+          {
+            "name": "snapshot",
+            "type": "Snapshot",
+            "required": true,
+            "description": "Universe snapshot with `price_field`, `window_sessions` and per-security history. `universe_revision` is carried so a changing roster does not silently change the denominator.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "decisionTime",
+            "type": "string",
+            "required": true,
+            "description": "Point-in-time bound on which prices may be used.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ status, window_sessions, eligible_count, above_count, equal_count, percent_above, rows }",
+          "description": "The percentage with its numerator and denominator, and `equal_count` broken out separately — securities sitting exactly on their average are neither above nor below, and folding them either way biases the reading."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "a security has fewer sessions than the window requires",
+            "behaviour": "excluded from the denominator and reported"
+          }
+        ],
+        "complexity": {
+          "time": "O(securities × window)",
+          "space": "O(securities)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -23245,7 +23776,44 @@
         "archetype": "snapshot-evaluate",
         "signature": "evaluateSnapshot(snapshot, decisionTime)"
       },
-      "api": null,
+      "api": {
+        "summary": "The same participation measure over 50 sessions — the intermediate-horizon reading, and the one most often quoted for trend health.",
+        "params": [
+          {
+            "name": "snapshot",
+            "type": "Snapshot",
+            "required": true,
+            "description": "Universe snapshot with `price_field`, `window_sessions` and per-security history.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "decisionTime",
+            "type": "string",
+            "required": true,
+            "description": "Point-in-time bound.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ status, eligible_count, above_count, equal_count, percent_above, rows }",
+          "description": "The percentage with its counts."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "a security has fewer sessions than the window requires",
+            "behaviour": "excluded from the denominator and reported"
+          }
+        ],
+        "complexity": {
+          "time": "O(securities × window)",
+          "space": "O(securities)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -23436,7 +24004,44 @@
         "archetype": "snapshot-evaluate",
         "signature": "evaluateSnapshot(snapshot, decisionTime)"
       },
-      "api": null,
+      "api": {
+        "summary": "Participation over 200 sessions — the long-horizon gauge. A rally with 80% of names above their 200-day average is a different market from one with 35%, even at the same index level.",
+        "params": [
+          {
+            "name": "snapshot",
+            "type": "Snapshot",
+            "required": true,
+            "description": "Universe snapshot with `price_field`, `window_sessions` and per-security history.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "decisionTime",
+            "type": "string",
+            "required": true,
+            "description": "Point-in-time bound.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ status, eligible_count, above_count, equal_count, percent_above, rows }",
+          "description": "The percentage with its counts."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "a security has fewer sessions than the window requires",
+            "behaviour": "excluded from the denominator and reported"
+          }
+        ],
+        "complexity": {
+          "time": "O(securities × window)",
+          "space": "O(securities)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -23630,7 +24235,81 @@
         "archetype": "record-transform",
         "signature": "calculate(rows, emaLength, lowThreshold, highThreshold, maxSessions)"
       },
-      "api": null,
+      "api": {
+        "summary": "Detects the rare initiation signal: the advance ratio moving from below a low threshold to above a high one inside a bounded number of sessions. It fires a handful of times in a generation, which is the point — and also why it cannot be validated on a short sample.",
+        "params": [
+          {
+            "name": "rows",
+            "type": "Row[]",
+            "required": true,
+            "description": "Sessions carrying advances and declines. Rows carry a `ready` flag; a row that is not ready is excluded rather than treated as zero, because a missing count and a count of zero mean opposite things about market breadth.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "emaLength",
+            "type": "number",
+            "required": true,
+            "description": "EMA length applied to the advance ratio. Zweig's original is 10.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "lowThreshold",
+            "type": "number",
+            "required": true,
+            "description": "The ratio the EMA must fall below to arm the signal. Conventionally 0.40.",
+            "constraints": {
+              "min": 0
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "highThreshold",
+            "type": "number",
+            "required": true,
+            "description": "The ratio it must then exceed. Conventionally 0.615.",
+            "constraints": {
+              "min": 0
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "maxSessions",
+            "type": "number",
+            "required": true,
+            "description": "Maximum sessions permitted between the two crossings; beyond it the move is not a thrust.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ status, trigger_date, ema, sessions, series }",
+          "description": "The trigger date if one occurred, with the EMA path and session count so a near-miss can be seen rather than merely absent."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "lowThreshold ≥ highThreshold",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -23789,7 +24468,35 @@
         "archetype": "record-transform",
         "signature": "calculate(row)"
       },
-      "api": null,
+      "api": {
+        "summary": "TRIN: the advance/decline issue ratio divided by the advance/decline volume ratio. Above 1 means declining issues are absorbing proportionally more volume than their numbers suggest — the arithmetic is a comparison of two ratios, and inverting either flips the reading.",
+        "params": [
+          {
+            "name": "row",
+            "type": "Row",
+            "required": true,
+            "description": "One session's advances, declines, unchanged and directional volume. Rows carry a `ready` flag; a row that is not ready is excluded rather than treated as zero, because a missing count and a count of zero mean opposite things about market breadth.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ status, value, issue_ratio, volume_ratio }",
+          "description": "TRIN with both component ratios exposed, which is what makes an unexpected value diagnosable."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "either denominator is zero",
+            "behaviour": "reported as a status rather than thrown"
+          }
+        ],
+        "complexity": {
+          "time": "O(1)",
+          "space": "O(1)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -23904,7 +24611,44 @@
         "archetype": "record-transform",
         "signature": "calculate(rows, seed)"
       },
-      "api": null,
+      "api": {
+        "summary": "The cumulative line built from advancing minus declining volume rather than issue counts. Where the issue-based line counts participants, this one weights them by how much they traded.",
+        "params": [
+          {
+            "name": "rows",
+            "type": "Row[]",
+            "required": true,
+            "description": "Sessions carrying directional volume. Rows carry a `ready` flag; a row that is not ready is excluded rather than treated as zero, because a missing count and a count of zero mean opposite things about market breadth.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "seed",
+            "type": "number",
+            "required": true,
+            "description": "Starting value of the accumulation; affects the level only.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ status, value, series }",
+          "description": "The cumulative series and its latest value."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "volume fields are absent on a ready row",
+            "behaviour": "reported as a status rather than thrown"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -24061,7 +24805,35 @@
         "archetype": "record-transform",
         "signature": "calculate(row)"
       },
-      "api": null,
+      "api": {
+        "summary": "Advancing volume over declining volume for one session. Extreme readings mark the days that matter — a 9-to-1 up day is a recognised initiation signal precisely because it is rare.",
+        "params": [
+          {
+            "name": "row",
+            "type": "Row",
+            "required": true,
+            "description": "One session's directional volume. Rows carry a `ready` flag; a row that is not ready is excluded rather than treated as zero, because a missing count and a count of zero mean opposite things about market breadth.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ status, value }",
+          "description": "The ratio, or a status explaining why it could not be formed."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "declining volume is zero",
+            "behaviour": "reported as a status rather than thrown"
+          }
+        ],
+        "complexity": {
+          "time": "O(1)",
+          "space": "O(1)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -24175,7 +24947,55 @@
         "archetype": "record-transform",
         "signature": "calculate(rows, seed, intervalSeconds)"
       },
-      "api": null,
+      "api": {
+        "summary": "Accumulates the net count of issues trading on an uptick versus a downtick. An intraday pressure gauge — it measures the balance of buying and selling *urgency* within the session rather than the outcome at the close.",
+        "params": [
+          {
+            "name": "rows",
+            "type": "TickRow[]",
+            "required": true,
+            "description": "Intraday observations of uptick, downtick and neutral issue counts. Rows carry a `ready` flag; a row that is not ready is excluded rather than treated as zero, because a missing count and a count of zero mean opposite things about market breadth.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "seed",
+            "type": "number",
+            "required": true,
+            "description": "Starting value of the accumulation.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "intervalSeconds",
+            "type": "number",
+            "required": true,
+            "description": "Sampling interval of the observations, recorded so a series sampled at one rate is not compared with one sampled at another.",
+            "constraints": {
+              "min": 1
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ status, value, interval_seconds, series }",
+          "description": "The cumulative series with the interval it was sampled at."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "intervalSeconds is not positive",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -24339,7 +25159,92 @@
         "archetype": "record-transform",
         "signature": "calculate(rows, left, right, minPriceChange, minBreadthSeparation, breadthScale)"
       },
-      "api": null,
+      "api": {
+        "summary": "Flags sessions where the index and a breadth measure move meaningfully in opposite directions — the classic warning that an advance is being carried by fewer and fewer names.",
+        "params": [
+          {
+            "name": "rows",
+            "type": "Row[]",
+            "required": true,
+            "description": "Sessions carrying an index level and a breadth value. Rows carry a `ready` flag; a row that is not ready is excluded rather than treated as zero, because a missing count and a count of zero mean opposite things about market breadth.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "left",
+            "type": "number",
+            "required": true,
+            "description": "Left comparison offset in sessions.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "right",
+            "type": "number",
+            "required": true,
+            "description": "Right comparison offset in sessions.",
+            "constraints": {
+              "min": 0,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "minPriceChange",
+            "type": "number",
+            "required": true,
+            "description": "Minimum index move required before a divergence is considered; filters noise.",
+            "constraints": {
+              "min": 0
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "minBreadthSeparation",
+            "type": "number",
+            "required": true,
+            "description": "Minimum breadth move required, expressed in the units `breadthScale` implies.",
+            "constraints": {
+              "min": 0
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "breadthScale",
+            "type": "number",
+            "required": true,
+            "description": "Scaling applied to the breadth series before comparison. **Note:** the published fixture and this implementation currently disagree on the unit of the resulting `breadth_separation` — the fixture states a ratio, the implementation returns a scaled value. See the article before relying on an absolute threshold.",
+            "constraints": {
+              "min": 0
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ status, events }",
+          "description": "The divergence events detected, each naming the sessions compared and the separation measured."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "left ≤ right, making the comparison window invalid",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(events)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -24497,7 +25402,47 @@
         "archetype": "record-transform",
         "signature": "calculate(rows, topN)"
       },
-      "api": null,
+      "api": {
+        "summary": "How much of an index's move came from its largest N members. This is the arithmetic behind 'seven stocks are holding up the market' — a claim that is usually asserted and rarely measured.",
+        "params": [
+          {
+            "name": "rows",
+            "type": "Row[]",
+            "required": true,
+            "description": "Constituents with weight, return and sector. Rows carry a `ready` flag; a row that is not ready is excluded rather than treated as zero, because a missing count and a count of zero mean opposite things about market breadth.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "topN",
+            "type": "number",
+            "required": true,
+            "description": "How many leading contributors to attribute separately.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ status, top_n, top_contribution, total_contribution, share, leaders }",
+          "description": "The leaders' contribution, the total, and the share — plus the leaders themselves, so the claim can be named rather than gestured at."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "topN exceeds the number of ready constituents",
+            "behaviour": "reported as a status rather than thrown"
+          }
+        ],
+        "complexity": {
+          "time": "O(n log n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -24630,7 +25575,35 @@
         "archetype": "record-transform",
         "signature": "calculate(rows)"
       },
-      "api": null,
+      "api": {
+        "summary": "The Herfindahl–Hirschman index of constituent weights: the sum of squared weights. Squaring is what makes it a concentration measure — it is dominated by the largest holdings in a way a simple count never is.",
+        "params": [
+          {
+            "name": "rows",
+            "type": "Row[]",
+            "required": true,
+            "description": "Constituents with weights. Rows carry a `ready` flag; a row that is not ready is excluded rather than treated as zero, because a missing count and a count of zero mean opposite things about market breadth.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ status, hhi, hhi_points }",
+          "description": "HHI as a fraction and in the conventional points form, which differ by a factor of 10,000 and are frequently confused."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "weights do not sum to approximately 1",
+            "behaviour": "reported as a status rather than thrown"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(1)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -24749,7 +25722,35 @@
         "archetype": "record-transform",
         "signature": "calculate(rows)"
       },
-      "api": null,
+      "api": {
+        "summary": "The reciprocal of HHI: how many equally weighted holdings would give the same concentration. An index of 500 names with an effective number of 60 is, for risk purposes, a 60-stock portfolio.",
+        "params": [
+          {
+            "name": "rows",
+            "type": "Row[]",
+            "required": true,
+            "description": "Constituents with weights. Rows carry a `ready` flag; a row that is not ready is excluded rather than treated as zero, because a missing count and a count of zero mean opposite things about market breadth.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ status, effective_n, actual_n, hhi }",
+          "description": "The effective count beside the actual count — the gap between them is the entire message."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "weights do not sum to approximately 1",
+            "behaviour": "reported as a status rather than thrown"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(1)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -24876,7 +25877,46 @@
         "archetype": "record-transform",
         "signature": "calculate(rows, tolerance)"
       },
-      "api": null,
+      "api": {
+        "summary": "The share of sectors improving rather than deteriorating. Diffusion asks how *broad* a move is across groups, which a capitalisation-weighted index cannot show — one sector can carry the whole level.",
+        "params": [
+          {
+            "name": "rows",
+            "type": "Row[]",
+            "required": true,
+            "description": "One row per sector carrying its signal change. Rows carry a `ready` flag; a row that is not ready is excluded rather than treated as zero, because a missing count and a count of zero mean opposite things about market breadth.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "tolerance",
+            "type": "number",
+            "required": true,
+            "description": "Band within which a change counts as unchanged rather than improving or deteriorating. Without it, floating-point noise makes everything move.",
+            "constraints": {
+              "min": 0
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ status, value, improving, unchanged, deteriorating, total }",
+          "description": "The diffusion value with the three counts behind it."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "tolerance is negative",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(1)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -24991,7 +26031,46 @@
         "archetype": "record-transform",
         "signature": "calculate(rows, tolerance)"
       },
-      "api": null,
+      "api": {
+        "summary": "The same diffusion measure across factors rather than sectors — momentum, size, volatility — showing whether a move is broad across styles or concentrated in one.",
+        "params": [
+          {
+            "name": "rows",
+            "type": "Row[]",
+            "required": true,
+            "description": "One row per factor carrying its signal change. Rows carry a `ready` flag; a row that is not ready is excluded rather than treated as zero, because a missing count and a count of zero mean opposite things about market breadth.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "tolerance",
+            "type": "number",
+            "required": true,
+            "description": "Band within which a change counts as unchanged.",
+            "constraints": {
+              "min": 0
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ status, value, improving, unchanged, deteriorating, total }",
+          "description": "The diffusion value with its component counts."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "tolerance is negative",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(1)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -25113,7 +26192,46 @@
         "archetype": "record-transform",
         "signature": "analyzeCandle(candle, directionEpsilon)"
       },
-      "api": null,
+      "api": {
+        "summary": "Decomposes one candle into body, upper and lower shadow, and direction. Every candlestick pattern is built on these measurements, so an inconsistent decomposition propagates into every pattern above it.",
+        "params": [
+          {
+            "name": "candle",
+            "type": "Candle",
+            "required": true,
+            "description": "One OHLC candle with `is_closed`. An unclosed candle can still be analysed, but its body may yet change — the flag is carried through so downstream code can decide.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "directionEpsilon",
+            "type": "number",
+            "required": true,
+            "description": "How close open and close must be to count as unchanged rather than up or down. Without it, floating-point noise makes a doji impossible.",
+            "constraints": {
+              "min": 0
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ open, high, low, close, body, upper_shadow, lower_shadow, direction, … }",
+          "description": "Every measurement a pattern rule needs, in price units."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "high is below low, or open or close falls outside the range",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(1)",
+          "space": "O(1)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -25269,7 +26387,53 @@
         "archetype": "row-classify",
         "signature": "classifyBody(observation, priorClosedBodies, configInput)"
       },
-      "api": null,
+      "api": {
+        "summary": "Classifies a candle body as long, short or doji **relative to recent bodies** rather than against a fixed threshold. A 50-point body is enormous on one instrument and unremarkable on another, so an absolute rule cannot transfer.",
+        "params": [
+          {
+            "name": "observation",
+            "type": "Observation",
+            "required": true,
+            "description": "The candle's body and range, with its price basis and session.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "priorClosedBodies",
+            "type": "number[]",
+            "required": true,
+            "description": "Recent closed bodies forming the comparison distribution. Closed only — including the forming candle would let the present redefine its own context.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "configInput",
+            "type": "{ window: number; min_periods: number; tick_size: number; thresholds: object }",
+            "required": true,
+            "description": "`min_periods` refuses to classify until enough history exists, rather than judging against two candles. `tick_size` floors the comparison so sub-tick noise is not treated as structure.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ classification, percentile, window, min_periods, … }",
+          "description": "The classification with the distribution statistics behind it, so the same body can be seen to be long in one regime and short in another."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "fewer prior bodies are supplied than min_periods",
+            "behaviour": "reported as an unclassified state rather than thrown"
+          }
+        ],
+        "complexity": {
+          "time": "O(window)",
+          "space": "O(window)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -34644,7 +35808,71 @@
         "archetype": "row-classify",
         "signature": "detectCausalPivots(bars, leftSpan, rightSpan, minSeparation)"
       },
-      "api": null,
+      "api": {
+        "summary": "Finds swing highs and lows using only bars that had already arrived. Most pivot code confirms a pivot with bars that come *after* it and then plots it at the earlier index — which is lookahead bias, and it is invisible on a chart.",
+        "params": [
+          {
+            "name": "bars",
+            "type": "Bar[]",
+            "required": true,
+            "description": "OHLC bars in chronological order.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "leftSpan",
+            "type": "number",
+            "required": true,
+            "description": "Bars before the candidate that must be lower (or higher).",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "rightSpan",
+            "type": "number",
+            "required": true,
+            "description": "Bars after the candidate required to confirm it. **This is the confirmation lag**: a pivot at index `i` is not knowable until `i + rightSpan`.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "minSeparation",
+            "type": "number",
+            "required": true,
+            "description": "Minimum bars between accepted pivots, which stops a noisy region producing a cluster of them.",
+            "constraints": {
+              "min": 0,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ kind, event_index, confirmation_index, price }[]",
+          "description": "Both indices are returned deliberately: `event_index` is where the pivot occurred and `confirmation_index` is when you could have known. Any backtest must use the second."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "leftSpan or rightSpan is less than 1",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n × span)",
+          "space": "O(pivots)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -34787,7 +36015,58 @@
         "archetype": "record-transform",
         "signature": "zigzagSegment(closes, threshold, minBars)"
       },
-      "api": null,
+      "api": {
+        "summary": "Segments a series into alternating swings that exceed a percentage threshold. Useful for structure, and routinely misused: the final swing is provisional and can be revised by the next bar.",
+        "params": [
+          {
+            "name": "closes",
+            "type": "number[]",
+            "required": true,
+            "description": "Observation series in chronological order, oldest first.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "threshold",
+            "type": "number",
+            "required": true,
+            "description": "Minimum retracement, as a fraction, before a reversal is accepted.",
+            "constraints": {
+              "min": 0
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "minBars",
+            "type": "number",
+            "required": true,
+            "description": "Minimum bars a swing must span.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ pivots, states }",
+          "description": "The pivots with a per-bar state, which is what shows the last swing is still open rather than settled."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "threshold is not positive",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -34947,7 +36226,58 @@
         "archetype": "record-transform",
         "signature": "clusterPivotLevels(pivots, epsBps, minTouches)"
       },
-      "api": null,
+      "api": {
+        "summary": "Groups nearby pivots into levels. Clustering in basis points rather than absolute price is what makes the result meaningful across instruments — a $1 band is noise on one stock and a whole level on another.",
+        "params": [
+          {
+            "name": "pivots",
+            "type": "Pivot[]",
+            "required": true,
+            "description": "Pivots from causal detection, carrying kind, indices and price.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "epsBps",
+            "type": "number",
+            "required": true,
+            "description": "Clustering radius in basis points.",
+            "constraints": {
+              "min": 0
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "minTouches",
+            "type": "number",
+            "required": true,
+            "description": "Minimum pivots required before a cluster counts as a level; below it the group is returned as noise rather than dropped.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ clusters, noise }",
+          "description": "Accepted levels and the rejected groups — visible, because 'no level here' is itself informative."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "epsBps is not positive",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n log n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -35106,7 +36436,79 @@
         "archetype": "record-transform",
         "signature": "fitRobustTrendline(pivots, kind, toleranceBps, minInliers, maxPoints)"
       },
-      "api": null,
+      "api": {
+        "summary": "Fits a trendline through pivots in log space with outlier resistance. Log space matters: a straight line in price implies a constant *dollar* change per bar, which is not what a trend on a long chart means.",
+        "params": [
+          {
+            "name": "pivots",
+            "type": "Pivot[]",
+            "required": true,
+            "description": "Pivots to fit through.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "kind",
+            "type": "\"support\" | \"resistance\"",
+            "required": true,
+            "description": "Which side to fit, which decides how violations are treated.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "toleranceBps",
+            "type": "number",
+            "required": true,
+            "description": "How far a pivot may sit from the line and still count as an inlier.",
+            "constraints": {
+              "min": 0
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "minInliers",
+            "type": "number",
+            "required": true,
+            "description": "Minimum inliers for the fit to be accepted.",
+            "constraints": {
+              "min": 2,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "maxPoints",
+            "type": "number",
+            "required": true,
+            "description": "Cap on pivots considered, bounding the search.",
+            "constraints": {
+              "min": 2,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ kind, slope_log_per_bar, intercept_log, projected_index, projected_price, inlier_count, … }",
+          "description": "The fit in log space plus its projection in price, with the inlier count — a two-point 'trendline' is arithmetic, not evidence."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "fewer pivots are supplied than minInliers",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(points²)",
+          "space": "O(points)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -35273,7 +36675,25 @@
         "archetype": "record-transform",
         "signature": "double_top()"
       },
-      "api": null,
+      "api": {
+        "summary": "Double top detection: two comparable highs separated by a trough, confirmed on a close below the neckline. Chart patterns are usually described in prose vague enough to fit almost anything; encoding one forces a decision about how close \"comparable\" is and how much confirmation is required, and this returns those tolerances alongside the verdict. Takes the close series and detection parameters, both supplied by the shared family implementation.",
+        "params": [],
+        "returns": {
+          "type": "{ pattern, state, reason, event, events, pivots, parameters }",
+          "description": "A `state` rather than a boolean — forming, confirmed or rejected — with the `reason`, the pivots that formed it, and the `parameters` in force. The parameters are the point: the same series yields a different answer under different tolerances, and a pattern reported without them cannot be reproduced."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "fewer bars are supplied than the pattern needs",
+            "behaviour": "returned as a rejected state rather than thrown"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(pivots)"
+        }
+      },
       "example": {
         "origin": "derived",
         "verified": false,
@@ -35469,7 +36889,25 @@
         "archetype": "record-transform",
         "signature": "double_bottom()"
       },
-      "api": null,
+      "api": {
+        "summary": "Double bottom detection: two comparable lows separated by a peak, confirmed on a close above the neckline. Chart patterns are usually described in prose vague enough to fit almost anything; encoding one forces a decision about how close \"comparable\" is and how much confirmation is required, and this returns those tolerances alongside the verdict. Takes the close series and detection parameters, both supplied by the shared family implementation.",
+        "params": [],
+        "returns": {
+          "type": "{ pattern, state, reason, event, events, pivots, parameters }",
+          "description": "A `state` rather than a boolean — forming, confirmed or rejected — with the `reason`, the pivots that formed it, and the `parameters` in force. The parameters are the point: the same series yields a different answer under different tolerances, and a pattern reported without them cannot be reproduced."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "fewer bars are supplied than the pattern needs",
+            "behaviour": "returned as a rejected state rather than thrown"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(pivots)"
+        }
+      },
       "example": {
         "origin": "derived",
         "verified": false,
@@ -35665,7 +37103,25 @@
         "archetype": "record-transform",
         "signature": "triple_top()"
       },
-      "api": null,
+      "api": {
+        "summary": "Triple top detection: three comparable highs, confirmed on a close below the neckline. Chart patterns are usually described in prose vague enough to fit almost anything; encoding one forces a decision about how close \"comparable\" is and how much confirmation is required, and this returns those tolerances alongside the verdict. Takes the close series and detection parameters, both supplied by the shared family implementation.",
+        "params": [],
+        "returns": {
+          "type": "{ pattern, state, reason, event, events, pivots, parameters }",
+          "description": "A `state` rather than a boolean — forming, confirmed or rejected — with the `reason`, the pivots that formed it, and the `parameters` in force. The parameters are the point: the same series yields a different answer under different tolerances, and a pattern reported without them cannot be reproduced."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "fewer bars are supplied than the pattern needs",
+            "behaviour": "returned as a rejected state rather than thrown"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(pivots)"
+        }
+      },
       "example": {
         "origin": "derived",
         "verified": false,
@@ -35873,7 +37329,25 @@
         "archetype": "record-transform",
         "signature": "triple_bottom()"
       },
-      "api": null,
+      "api": {
+        "summary": "Triple bottom detection: three comparable lows, confirmed on a close above the neckline. Chart patterns are usually described in prose vague enough to fit almost anything; encoding one forces a decision about how close \"comparable\" is and how much confirmation is required, and this returns those tolerances alongside the verdict. Takes the close series and detection parameters, both supplied by the shared family implementation.",
+        "params": [],
+        "returns": {
+          "type": "{ pattern, state, reason, event, events, pivots, parameters }",
+          "description": "A `state` rather than a boolean — forming, confirmed or rejected — with the `reason`, the pivots that formed it, and the `parameters` in force. The parameters are the point: the same series yields a different answer under different tolerances, and a pattern reported without them cannot be reproduced."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "fewer bars are supplied than the pattern needs",
+            "behaviour": "returned as a rejected state rather than thrown"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(pivots)"
+        }
+      },
       "example": {
         "origin": "derived",
         "verified": false,
@@ -36081,7 +37555,25 @@
         "archetype": "record-transform",
         "signature": "head_and_shoulders()"
       },
-      "api": null,
+      "api": {
+        "summary": "Head and shoulders detection: a central high flanked by two lower highs, confirmed on a close below the neckline. Chart patterns are usually described in prose vague enough to fit almost anything; encoding one forces a decision about how close \"comparable\" is and how much confirmation is required, and this returns those tolerances alongside the verdict. Takes the close series and detection parameters, both supplied by the shared family implementation.",
+        "params": [],
+        "returns": {
+          "type": "{ pattern, state, reason, event, events, pivots, parameters }",
+          "description": "A `state` rather than a boolean — forming, confirmed or rejected — with the `reason`, the pivots that formed it, and the `parameters` in force. The parameters are the point: the same series yields a different answer under different tolerances, and a pattern reported without them cannot be reproduced."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "fewer bars are supplied than the pattern needs",
+            "behaviour": "returned as a rejected state rather than thrown"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(pivots)"
+        }
+      },
       "example": {
         "origin": "derived",
         "verified": false,
@@ -36289,7 +37781,25 @@
         "archetype": "record-transform",
         "signature": "inverse_head_and_shoulders()"
       },
-      "api": null,
+      "api": {
+        "summary": "Inverse head and shoulders detection: a central low flanked by two higher lows, confirmed on a close above the neckline. Chart patterns are usually described in prose vague enough to fit almost anything; encoding one forces a decision about how close \"comparable\" is and how much confirmation is required, and this returns those tolerances alongside the verdict. Takes the close series and detection parameters, both supplied by the shared family implementation.",
+        "params": [],
+        "returns": {
+          "type": "{ pattern, state, reason, event, events, pivots, parameters }",
+          "description": "A `state` rather than a boolean — forming, confirmed or rejected — with the `reason`, the pivots that formed it, and the `parameters` in force. The parameters are the point: the same series yields a different answer under different tolerances, and a pattern reported without them cannot be reproduced."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "fewer bars are supplied than the pattern needs",
+            "behaviour": "returned as a rejected state rather than thrown"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(pivots)"
+        }
+      },
       "example": {
         "origin": "derived",
         "verified": false,
@@ -36498,7 +38008,47 @@
         "archetype": "record-transform",
         "signature": "acf(values, maxLag)"
       },
-      "api": null,
+      "api": {
+        "summary": "Autocorrelation at each lag. The first diagnostic to run on any series you intend to model: it shows whether there is structure to model at all, and slow decay is the classic signature of non-stationarity.",
+        "params": [
+          {
+            "name": "values",
+            "type": "number[]",
+            "required": true,
+            "description": "Observation series in chronological order, oldest first.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "maxLag",
+            "type": "number",
+            "required": true,
+            "description": "Highest lag to compute. Beyond roughly n/4 the estimates are too noisy to read.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ method, variant, nobs, max_lag, mean, denominator, numerators, coefficients, confidence_bands }",
+          "description": "Coefficients with the numerator and denominator used — estimators differ in whether the denominator varies with lag, and the two conventions give visibly different plots."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "maxLag is not less than the sample size",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n × maxLag)",
+          "space": "O(maxLag)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -36625,7 +38175,47 @@
         "archetype": "record-transform",
         "signature": "pacf(values, maxLag)"
       },
-      "api": null,
+      "api": {
+        "summary": "Partial autocorrelation: correlation at each lag with the intervening lags removed. Read together with the ACF it identifies model order — a PACF cutting off after lag p suggests AR(p).",
+        "params": [
+          {
+            "name": "values",
+            "type": "number[]",
+            "required": true,
+            "description": "Observation series in chronological order, oldest first.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "maxLag",
+            "type": "number",
+            "required": true,
+            "description": "Highest lag to compute.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ method, variant, coefficients, acf_coefficients, recursion, confidence_95 }",
+          "description": "Partial coefficients with the Durbin–Levinson recursion steps that produced them."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "maxLag is not less than the sample size",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(maxLag²)",
+          "space": "O(maxLag)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -36774,7 +38364,56 @@
         "archetype": "record-transform",
         "signature": "adf(values, lags, criticalValue)"
       },
-      "api": null,
+      "api": {
+        "summary": "Tests for a unit root. The null is that the series *has* one — so failing to reject is not evidence of stationarity, merely absence of evidence against a unit root. That asymmetry is the most misread thing in applied time series.",
+        "params": [
+          {
+            "name": "values",
+            "type": "number[]",
+            "required": true,
+            "description": "Observation series in chronological order, oldest first.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "lags",
+            "type": "number",
+            "required": true,
+            "description": "Number of lagged differences included to absorb serial correlation.",
+            "constraints": {
+              "min": 0,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "criticalValue",
+            "type": "number",
+            "required": true,
+            "description": "Critical value to compare the statistic against, at the chosen significance level.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ method, variant, nobs, lags, gamma, gamma_standard_error, statistic, decision, … }",
+          "description": "The statistic, the coefficient and its standard error, and an explicit decision — so the conclusion is separable from the arithmetic."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "the sample is too short for the requested lag order",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n × lags²)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -36909,7 +38548,56 @@
         "archetype": "record-transform",
         "signature": "kpss(values, lags, criticalValue)"
       },
-      "api": null,
+      "api": {
+        "summary": "Tests stationarity with the null *reversed* relative to ADF: here the null is that the series is stationary. Running both is standard practice, because agreement is informative and disagreement tells you the sample cannot settle the question.",
+        "params": [
+          {
+            "name": "values",
+            "type": "number[]",
+            "required": true,
+            "description": "Observation series in chronological order, oldest first.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "lags",
+            "type": "number",
+            "required": true,
+            "description": "Bandwidth for the long-run variance estimator.",
+            "constraints": {
+              "min": 0,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "criticalValue",
+            "type": "number",
+            "required": true,
+            "description": "Critical value at the chosen significance level.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ method, variant, residual_mean, partial_sum_numerator, long_run_variance, statistic, decision, … }",
+          "description": "The statistic with the long-run variance behind it, which is where the bandwidth choice shows up."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "the sample is shorter than the bandwidth requires",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n × lags)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -37052,7 +38740,70 @@
         "archetype": "record-transform",
         "signature": "ljungBox(values, lags, modelDf, alpha)"
       },
-      "api": null,
+      "api": {
+        "summary": "Tests whether a group of autocorrelations is jointly zero. Applied to model residuals it answers the question that matters after fitting: is there structure left that the model failed to capture?",
+        "params": [
+          {
+            "name": "values",
+            "type": "number[]",
+            "required": true,
+            "description": "Observation series in chronological order, oldest first.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "lags",
+            "type": "number",
+            "required": true,
+            "description": "Number of lags tested jointly.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "modelDf",
+            "type": "number",
+            "required": true,
+            "description": "Parameters estimated by the model whose residuals these are. Omitting it inflates the degrees of freedom and makes a bad model look adequate.",
+            "constraints": {
+              "min": 0,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "alpha",
+            "type": "number",
+            "required": true,
+            "description": "Significance level.",
+            "constraints": {
+              "min": 0
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ method, lags, model_df, degrees_of_freedom, terms, statistic, p_value, decision, … }",
+          "description": "The statistic and p-value with the degrees-of-freedom adjustment shown."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "modelDf is not less than lags",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n × lags)",
+          "space": "O(lags)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -37205,7 +38956,67 @@
         "archetype": "record-transform",
         "signature": "zivotAndrews(values, lags, trim, criticalValue)"
       },
-      "api": null,
+      "api": {
+        "summary": "A unit-root test that allows one structural break at an unknown date, found by searching. Standard ADF frequently reports a unit root when the truth is a stationary series with a single level shift.",
+        "params": [
+          {
+            "name": "values",
+            "type": "number[]",
+            "required": true,
+            "description": "Observation series in chronological order, oldest first.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "lags",
+            "type": "number",
+            "required": true,
+            "description": "Lagged differences included.",
+            "constraints": {
+              "min": 0,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "trim",
+            "type": "number",
+            "required": true,
+            "description": "Fraction of the sample trimmed at each end of the break search; the test is unreliable near the boundaries.",
+            "constraints": {
+              "min": 0
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "criticalValue",
+            "type": "number",
+            "required": true,
+            "description": "Critical value for the minimum statistic across candidate break dates.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ method, trim, candidate_start, candidate_end, scan, break_index, statistic, decision, … }",
+          "description": "The chosen break date with the full scan across candidates, so a marginal choice between two dates is visible."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "trim leaves too few candidate break points",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n² × lags)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -37360,7 +39171,65 @@
         "archetype": "record-transform",
         "signature": "forecastAutoReg(values, ar, intercept, horizon)"
       },
-      "api": null,
+      "api": {
+        "summary": "Forecasts from an autoregression with supplied coefficients. Estimation is deliberately separate: this evaluates a model you already have, which keeps the arithmetic checkable.",
+        "params": [
+          {
+            "name": "values",
+            "type": "number[]",
+            "required": true,
+            "description": "Observation series in chronological order, oldest first.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "ar",
+            "type": "number[]",
+            "required": true,
+            "description": "Autoregressive coefficients, lag 1 first.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "intercept",
+            "type": "number",
+            "required": true,
+            "description": "Constant term.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "horizon",
+            "type": "number",
+            "required": true,
+            "description": "Steps ahead to forecast. Beyond a few steps an AR forecast converges to the unconditional mean.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ forecast, fitted, residuals, state }",
+          "description": "Forecasts with in-sample fitted values and residuals — the residuals are what Ljung-Box then tests."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "fewer observations are supplied than the AR order requires",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n × p)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -37516,7 +39385,74 @@
         "archetype": "record-transform",
         "signature": "forecastARMA(values, ar, ma, intercept, horizon)"
       },
-      "api": null,
+      "api": {
+        "summary": "ARMA forecasting with supplied coefficients: autoregressive terms on past values, moving-average terms on past errors.",
+        "params": [
+          {
+            "name": "values",
+            "type": "number[]",
+            "required": true,
+            "description": "Observation series in chronological order, oldest first.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "ar",
+            "type": "number[]",
+            "required": true,
+            "description": "Autoregressive coefficients.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "ma",
+            "type": "number[]",
+            "required": true,
+            "description": "Moving-average coefficients applied to past forecast errors.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "intercept",
+            "type": "number",
+            "required": true,
+            "description": "Constant term.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "horizon",
+            "type": "number",
+            "required": true,
+            "description": "Steps ahead.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ forecast, fitted, residuals, state }",
+          "description": "Forecasts, fitted values and residuals."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "the sample is shorter than the model order",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n × (p + q))",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -37687,7 +39623,86 @@
         "archetype": "record-transform",
         "signature": "forecastARIMA(values, ar, ma, intercept, differenceOrder, horizon)"
       },
-      "api": null,
+      "api": {
+        "summary": "ARMA on a differenced series, with forecasts integrated back to the original level. The integration step is where sign and level errors hide, so both the differenced and the level forecast are returned.",
+        "params": [
+          {
+            "name": "values",
+            "type": "number[]",
+            "required": true,
+            "description": "Observation series in chronological order, oldest first.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "ar",
+            "type": "number[]",
+            "required": true,
+            "description": "Autoregressive coefficients.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "ma",
+            "type": "number[]",
+            "required": true,
+            "description": "Moving-average coefficients.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "intercept",
+            "type": "number",
+            "required": true,
+            "description": "Constant term.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "differenceOrder",
+            "type": "number",
+            "required": true,
+            "description": "Number of differences applied. One is usual for prices; two is rarely justified.",
+            "constraints": {
+              "min": 0,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "horizon",
+            "type": "number",
+            "required": true,
+            "description": "Steps ahead.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ forecast, fitted, residuals, state, differenced_forecast }",
+          "description": "Both the differenced forecast and the integrated one, so the reconstruction can be checked."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "the sample is shorter than the differencing and model order require",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n × (p + q))",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -37882,7 +39897,155 @@
         "archetype": "record-transform",
         "signature": "forecastSARIMAX(values, exog, futureExog, beta, ar, ma, seasonalAr, seasonalMa, intercept, differenceOrder, seasonalDifferenceOrder, period, horizon)"
       },
-      "api": null,
+      "api": {
+        "summary": "Seasonal ARIMA with optional exogenous regressors. Future exogenous values must be supplied for the whole horizon — if you do not know them, the forecast is conditional on a guess, and that dependency is worth being explicit about.",
+        "params": [
+          {
+            "name": "values",
+            "type": "number[]",
+            "required": true,
+            "description": "Observation series in chronological order, oldest first.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "exog",
+            "type": "number[][]",
+            "required": true,
+            "description": "In-sample exogenous regressors, one row per observation.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "futureExog",
+            "type": "number[][]",
+            "required": true,
+            "description": "Exogenous values over the forecast horizon. These are assumptions, not data.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "beta",
+            "type": "number[]",
+            "required": true,
+            "description": "Coefficients on the exogenous regressors.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "ar",
+            "type": "number[]",
+            "required": true,
+            "description": "Non-seasonal AR coefficients.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "ma",
+            "type": "number[]",
+            "required": true,
+            "description": "Non-seasonal MA coefficients.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "seasonalAr",
+            "type": "number[]",
+            "required": true,
+            "description": "Seasonal AR coefficients.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "seasonalMa",
+            "type": "number[]",
+            "required": true,
+            "description": "Seasonal MA coefficients.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "intercept",
+            "type": "number",
+            "required": true,
+            "description": "Constant term.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "differenceOrder",
+            "type": "number",
+            "required": true,
+            "description": "Non-seasonal differencing order.",
+            "constraints": {
+              "min": 0,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "seasonalDifferenceOrder",
+            "type": "number",
+            "required": true,
+            "description": "Seasonal differencing order.",
+            "constraints": {
+              "min": 0,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "period",
+            "type": "number",
+            "required": true,
+            "description": "Seasonal period — 12 for monthly, 4 for quarterly, 5 for trading days in a week.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "horizon",
+            "type": "number",
+            "required": true,
+            "description": "Steps ahead.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ forecast, fitted, residuals, state, transformed_forecast, residualized_forecast }",
+          "description": "The final forecast plus the transformed and residualised intermediates."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "futureExog is shorter than the horizon",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n × (p + q + P + Q))",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -38162,7 +40325,119 @@
         "archetype": "record-transform",
         "signature": "forecastHoltWintersAdditive(values, alpha, beta, gamma, period, horizon, initialLevel, initialTrend, initialSeasonals)"
       },
-      "api": null,
+      "api": {
+        "summary": "Additive Holt-Winters: exponential smoothing of level, trend and seasonality. Unfashionable and frequently competitive with far more complex methods on short seasonal series.",
+        "params": [
+          {
+            "name": "values",
+            "type": "number[]",
+            "required": true,
+            "description": "Observation series in chronological order, oldest first.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "alpha",
+            "type": "number",
+            "required": true,
+            "description": "Level smoothing factor, 0…1.",
+            "constraints": {
+              "min": 0
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "beta",
+            "type": "number",
+            "required": true,
+            "description": "Trend smoothing factor, 0…1.",
+            "constraints": {
+              "min": 0
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "gamma",
+            "type": "number",
+            "required": true,
+            "description": "Seasonal smoothing factor, 0…1.",
+            "constraints": {
+              "min": 0
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "period",
+            "type": "number",
+            "required": true,
+            "description": "Seasonal period.",
+            "constraints": {
+              "min": 2,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "horizon",
+            "type": "number",
+            "required": true,
+            "description": "Steps ahead.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "initialLevel",
+            "type": "number",
+            "required": true,
+            "description": "Starting level.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "initialTrend",
+            "type": "number",
+            "required": true,
+            "description": "Starting trend.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "initialSeasonals",
+            "type": "number[]",
+            "required": true,
+            "description": "Starting seasonal factors, one per period step. Additive factors should sum to approximately zero.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ forecast, fitted, residuals, trace, state }",
+          "description": "Forecasts with a `trace` of level, trend and seasonal components at each step."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "any smoothing factor falls outside 0…1, or initialSeasonals is not of length period",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -38362,7 +40637,58 @@
         "archetype": "record-transform",
         "signature": "forecastTheta(values, alpha, horizon)"
       },
-      "api": null,
+      "api": {
+        "summary": "The Theta method: decompose, extrapolate, recombine. It won the M3 forecasting competition and is roughly equivalent to simple exponential smoothing with drift — a useful benchmark precisely because it is so simple.",
+        "params": [
+          {
+            "name": "values",
+            "type": "number[]",
+            "required": true,
+            "description": "Observation series in chronological order, oldest first.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "alpha",
+            "type": "number",
+            "required": true,
+            "description": "Smoothing factor for the exponential component, 0…1.",
+            "constraints": {
+              "min": 0
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "horizon",
+            "type": "number",
+            "required": true,
+            "description": "Steps ahead.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ forecast, fitted, state }",
+          "description": "Forecasts and fitted values."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "alpha falls outside 0…1",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -38521,7 +40847,56 @@
         "archetype": "record-transform",
         "signature": "fitVAR(values, lags, includeIntercept)"
       },
-      "api": null,
+      "api": {
+        "summary": "Vector autoregression: every series regressed on lags of all of them. The natural model when variables move together, and the base every impulse-response and variance-decomposition result is computed from.",
+        "params": [
+          {
+            "name": "values",
+            "type": "number[][]",
+            "required": true,
+            "description": "Multivariate series, one row per observation and one column per variable. Column order is meaningful — everything downstream refers to variables by position.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "lags",
+            "type": "number",
+            "required": true,
+            "description": "Lag order. Parameters grow with the square of the number of variables, so this is where a VAR runs out of data.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "includeIntercept",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to fit a constant term.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ intercept, coefficients, sigma_u_mle, residuals, fitted, one_step_forecast, effective_observations, … }",
+          "description": "Coefficients and the residual covariance, which is the input to structural identification."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "observations are fewer than the parameters to estimate",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n × (k × lags)²)",
+          "space": "O((k × lags)²)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -38731,7 +41106,47 @@
         "archetype": "record-transform",
         "signature": "fitRecursiveSVAR(values, lags)"
       },
-      "api": null,
+      "api": {
+        "summary": "Identifies structural shocks by Cholesky decomposition of the residual covariance. The identification is recursive, which means **variable ordering is an economic assumption**: the first variable is assumed unaffected contemporaneously by the others, and reordering changes the results.",
+        "params": [
+          {
+            "name": "values",
+            "type": "number[][]",
+            "required": true,
+            "description": "Multivariate series. Column order encodes the identifying assumption, not merely a layout choice.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "lags",
+            "type": "number",
+            "required": true,
+            "description": "Lag order.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ coefficients, sigma_u_mle, impact_matrix, structural_shocks, reconstructed_shocks, … }",
+          "description": "The impact matrix and structural shocks, with reconstructed shocks so the decomposition can be verified rather than trusted."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "the residual covariance is not positive definite",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n × (k × lags)² + k³)",
+          "space": "O((k × lags)²)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -38953,7 +41368,65 @@
         "archetype": "record-transform",
         "signature": "fitVECMFixedBeta(values, beta, differenceLags, includeIntercept)"
       },
-      "api": null,
+      "api": {
+        "summary": "Vector error correction with a fixed cointegrating vector. For series that wander individually but not apart: differencing them separately would throw away the long-run relationship, which is usually the thing of interest.",
+        "params": [
+          {
+            "name": "values",
+            "type": "number[][]",
+            "required": true,
+            "description": "Multivariate series believed to be cointegrated.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "beta",
+            "type": "number[]",
+            "required": true,
+            "description": "The cointegrating vector, supplied rather than estimated so the arithmetic stays checkable.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "differenceLags",
+            "type": "number",
+            "required": true,
+            "description": "Lags of the differenced series included.",
+            "constraints": {
+              "min": 0,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "includeIntercept",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to fit a constant.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ beta, alpha, gamma, intercept, sigma_u_mle, error_correction, pi, adjustment_root, … }",
+          "description": "The adjustment coefficients `alpha` and the error-correction term. `adjustment_root` indicates whether the system actually returns to equilibrium."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "beta length does not match the number of variables",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n × (k × lags)²)",
+          "space": "O((k × lags)²)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -39163,7 +41636,47 @@
         "archetype": "record-transform",
         "signature": "impulseResponses(coefficients, horizon)"
       },
-      "api": null,
+      "api": {
+        "summary": "Traces how a one-off shock to one variable propagates through the system over time. The headline output of any VAR — and only interpretable given the identifying assumption that produced the impact matrix.",
+        "params": [
+          {
+            "name": "coefficients",
+            "type": "number[][]",
+            "required": true,
+            "description": "VAR coefficient matrices.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "horizon",
+            "type": "number",
+            "required": true,
+            "description": "Periods to trace.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ responses, cumulative_responses, horizon, impact_matrix, companion_spectral_radius, stability_state, … }",
+          "description": "Responses and their cumulative sums, plus the companion spectral radius — above 1 the system is explosive and the responses diverge rather than decay, which is stated instead of silently plotted."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "the coefficient matrices are not square or are inconsistent in dimension",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(horizon × k³)",
+          "space": "O(horizon × k²)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -39392,7 +41905,56 @@
         "archetype": "record-transform",
         "signature": "forecastErrorVarianceDecomposition(coefficients, sigmaU, horizon)"
       },
-      "api": null,
+      "api": {
+        "summary": "Attributes each variable's forecast error variance to the structural shocks, by horizon. Answers 'how much of the movement in this variable is explained by that one' — subject, again, to the identification.",
+        "params": [
+          {
+            "name": "coefficients",
+            "type": "number[][]",
+            "required": true,
+            "description": "VAR coefficient matrices.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "sigmaU",
+            "type": "number[][]",
+            "required": true,
+            "description": "Residual covariance matrix.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "horizon",
+            "type": "number",
+            "required": true,
+            "description": "Periods to decompose.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ shares, impact_matrix, horizon, row_sums, companion_spectral_radius, stability_state, … }",
+          "description": "Variance shares with `row_sums` — each row should sum to 1, and reporting it makes a broken decomposition obvious rather than plausible."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "sigmaU is not symmetric positive definite",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(horizon × k³)",
+          "space": "O(horizon × k²)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -39607,7 +42169,44 @@
         "archetype": "record-transform",
         "signature": "runFilter(observations, config)"
       },
-      "api": null,
+      "api": {
+        "summary": "Optimal recursive estimation of a hidden state from noisy observations in a linear Gaussian system. In markets the hidden state is often the thing you actually want — a fair value, a slowly moving beta — and the observation is a noisy proxy for it.",
+        "params": [
+          {
+            "name": "observations",
+            "type": "number[]",
+            "required": true,
+            "description": "Noisy observations in chronological order.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "config",
+            "type": "{ a: number; h: number; q: number; r: number; initial_mean: number; initial_variance: number }",
+            "required": true,
+            "description": "`a` is the state transition and `h` the observation mapping. `q` and `r` are the process and observation noise variances — their **ratio** is what determines how quickly the filter trusts new data, so scaling both changes nothing.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ index, predicted_mean, predicted_variance, innovation, kalman_gain, filtered_mean, filtered_variance }[]",
+          "description": "Every intermediate per step, including the Kalman gain and the innovation. A filter that behaves oddly is diagnosed from the gain path, not from the output."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "r is not positive, or q or the initial variance is negative",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -39785,7 +42384,44 @@
         "archetype": "record-transform",
         "signature": "runFilter(observations, config)"
       },
-      "api": null,
+      "api": {
+        "summary": "The Kalman filter for non-linear systems, linearised at each step. The approximation is local, so strong non-linearity can make it diverge — quietly, while still producing plausible-looking numbers.",
+        "params": [
+          {
+            "name": "observations",
+            "type": "number[]",
+            "required": true,
+            "description": "Noisy observations.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "config",
+            "type": "{ a, b, c, q, r, initial_mean, initial_variance }",
+            "required": true,
+            "description": "`a`, `b` and `c` parameterise the non-linear transition and observation functions; `q` and `r` are the noise variances.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ …per-step estimates }[]",
+          "description": "Per-step predicted and filtered estimates with the gain, as for the linear filter."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "r is not positive",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -39970,7 +42606,44 @@
         "archetype": "record-transform",
         "signature": "runFilter(observations, config)"
       },
-      "api": null,
+      "api": {
+        "summary": "Propagates a set of deterministically chosen sigma points through the non-linearity instead of linearising it. More robust than the extended filter for the same cost order, and the usual answer when the EKF diverges.",
+        "params": [
+          {
+            "name": "observations",
+            "type": "number[]",
+            "required": true,
+            "description": "Noisy observations.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "config",
+            "type": "{ a, b, c, q, r, alpha, beta, kappa, initial_mean, initial_variance }",
+            "required": true,
+            "description": "`alpha`, `beta` and `kappa` control the sigma-point spread. `beta = 2` is optimal for Gaussian state distributions; `alpha` is normally small.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ …per-step estimates }[]",
+          "description": "Per-step estimates with the sigma-point statistics behind them."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "the sigma-point parameters produce a non-positive-definite covariance",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -40161,7 +42834,44 @@
         "archetype": "record-transform",
         "signature": "runFilter(observations, config)"
       },
-      "api": null,
+      "api": {
+        "summary": "Infers a discrete hidden regime from observations. Where the Kalman filter tracks a continuous state, this asks which of a small number of *regimes* the market is in — and returns a probability rather than a label.",
+        "params": [
+          {
+            "name": "observations",
+            "type": "number[]",
+            "required": true,
+            "description": "Observations in chronological order.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "config",
+            "type": "{ transition: number[][]; means: number[]; stds: number[]; initial: number[] }",
+            "required": true,
+            "description": "`transition` holds the regime switching probabilities, each row summing to 1. `means` and `stds` are the emission parameters per regime. Regime **order is arbitrary** — label switching means 'regime 0' has no intrinsic meaning across fits.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ …per-step filtered probabilities }[]",
+          "description": "Filtered regime probabilities per observation. Probabilities, not a hard classification: a 55/45 split is a genuinely uncertain moment and rounding it to a label discards that."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "a transition row does not sum to 1, or a standard deviation is not positive",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n × states²)",
+          "space": "O(n × states)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -40337,7 +43047,44 @@
         "archetype": "record-transform",
         "signature": "runFilter(observations, config)"
       },
-      "api": null,
+      "api": {
+        "summary": "An autoregression whose coefficients switch with a hidden regime. Captures the common situation where a series is persistent in calm conditions and mean-reverting in stressed ones — one AR fit across both describes neither.",
+        "params": [
+          {
+            "name": "observations",
+            "type": "number[]",
+            "required": true,
+            "description": "Observations in chronological order.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "config",
+            "type": "{ transition: number[][]; intercepts: number[]; phis: number[]; stds: number[]; initial: number[] }",
+            "required": true,
+            "description": "One intercept, AR coefficient and standard deviation per regime, plus the transition matrix.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ …per-step filtered probabilities and predictions }[]",
+          "description": "Regime probabilities alongside the regime-weighted prediction at each step."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "the parameter arrays differ in length from the number of regimes",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n × states²)",
+          "space": "O(n × states)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -40532,7 +43279,44 @@
         "archetype": "record-transform",
         "signature": "runFilter(observations, config)"
       },
-      "api": null,
+      "api": {
+        "summary": "Online detection of structural breaks by tracking the posterior over run length — how long since the last change. Unlike a regime model it does not need the number of regimes specified in advance.",
+        "params": [
+          {
+            "name": "observations",
+            "type": "number[]",
+            "required": true,
+            "description": "Observations in chronological order.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "config",
+            "type": "{ hazard: number; observation_variance: number; prior_mean: number; prior_variance: number }",
+            "required": true,
+            "description": "`hazard` is the prior probability of a change at any step — its reciprocal is the expected run length, which is the more intuitive way to set it. The priors describe beliefs about a segment's mean before seeing data.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ …per-step run-length posterior }[]",
+          "description": "The run-length distribution per observation. Being online, an apparent change point can be revised by later data — the posterior shows that, a hard list of breaks would not."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "hazard falls outside 0…1, or a variance is not positive",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n²)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -40689,7 +43473,35 @@
         "archetype": "record-transform",
         "signature": "restateEpsForCapitalEvents(input)"
       },
-      "api": null,
+      "api": {
+        "summary": "Restates EPS for splits and consolidations across every period presented. Accounting standards require retrospective restatement — comparatives must be restated too, and a table where only the current period was adjusted is wrong in a way that looks like growth.",
+        "params": [
+          {
+            "name": "input",
+            "type": "RestatementInput",
+            "required": true,
+            "description": "`accounting_framework` selects IFRS or US GAAP treatment. The scale and rounding fields (`earnings_scale`, `share_scale`, `share_decimal_places`, `eps_decimal_places`, `rounding_mode`) are part of the contract because published EPS is a rounded figure and reproducing it requires the same rounding.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ metric, accounting_framework, currency, status, rows }",
+          "description": "Restated figures per period with the framework and rounding that produced them."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "the accounting framework or rounding mode is unrecognised",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(periods × events)",
+          "space": "O(periods)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -40855,7 +43667,35 @@
         "archetype": "record-transform",
         "signature": "calculateBasicEps(input)"
       },
-      "api": null,
+      "api": {
+        "summary": "Basic earnings per share: profit attributable to ordinary shareholders over the weighted average shares outstanding. Both halves are subtler than they look — the numerator is after preference dividends, and the denominator is time-weighted, not a period-end count.",
+        "params": [
+          {
+            "name": "input",
+            "type": "BasicEpsInput",
+            "required": true,
+            "description": "`profit_loss_attributable_to_owners` and `preference_dividend_adjustments` form the numerator; the share records form the time-weighted denominator. `as_of` bounds which filings are usable, and `statement_scope` distinguishes consolidated from separate statements.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ metric, entity_id, period_start, period_end, accounting_framework, statement_scope, … }",
+          "description": "The EPS figure with both components and the weighting applied, so a disagreement with a published number can be localised to numerator or denominator."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "the weighted average share count is zero or negative",
+            "behaviour": "reported as a status rather than thrown"
+          }
+        ],
+        "complexity": {
+          "time": "O(share events)",
+          "space": "O(1)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -41023,7 +43863,35 @@
         "archetype": "record-transform",
         "signature": "calculateConvertiblePreferenceDilution(input)"
       },
-      "api": null,
+      "api": {
+        "summary": "The if-converted method for convertible preference shares: assume conversion, add the shares, add back the preference dividend. Conversion is only included when it is **dilutive** — an anti-dilutive instrument is excluded, and including it overstates EPS.",
+        "params": [
+          {
+            "name": "input",
+            "type": "DilutionInput",
+            "required": true,
+            "description": "The instrument's conversion terms plus `basic_control_numerator` and `basic_weighted_average_shares`, which are the control figures the dilution test is measured against.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ metric, loss_making_period_flag, dilutive, diluted_eps, … }",
+          "description": "The diluted figure with an explicit dilutive/anti-dilutive determination, and a loss-making flag — in a loss period potential shares are anti-dilutive by definition, which reverses the usual test."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "the conversion ratio is missing or not positive",
+            "behaviour": "reported as a status rather than thrown"
+          }
+        ],
+        "complexity": {
+          "time": "O(1)",
+          "space": "O(1)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -41164,7 +44032,35 @@
         "archetype": "record-transform",
         "signature": "calculateTreasuryShareMethod(input)"
       },
-      "api": null,
+      "api": {
+        "summary": "The treasury share method for options and warrants: assume exercise, assume the proceeds buy back shares at the average market price, count only the net new shares. Using the period-end price instead of the average is the standard error, and it changes the answer.",
+        "params": [
+          {
+            "name": "input",
+            "type": "TreasuryShareInput",
+            "required": true,
+            "description": "Instrument terms with `period_application` — instruments outstanding for part of the period are weighted for that part only, not counted in full.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ metric, instrument_type, incremental_shares, dilutive, diluted_eps, … }",
+          "description": "The incremental share count and the dilution determination, with every intermediate the calculation passed through."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "the average market price is missing or not positive",
+            "behaviour": "reported as a status rather than thrown"
+          }
+        ],
+        "complexity": {
+          "time": "O(1)",
+          "space": "O(1)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -41305,7 +44201,35 @@
         "archetype": "record-transform",
         "signature": "calculateContingentShareInclusion(input)"
       },
-      "api": null,
+      "api": {
+        "summary": "Decides whether shares issuable on a condition count today. The rule is that they are included from the date the condition is *satisfied*, judged as at the reporting date — not when issue is merely likely, which is where judgement creeps in.",
+        "params": [
+          {
+            "name": "input",
+            "type": "ContingentShareInput",
+            "required": true,
+            "description": "Agreement terms with `period_application` and the `as_of` reporting date the condition is judged against.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ metric, agreement_id, condition_satisfied, included_shares, diluted_eps, … }",
+          "description": "The inclusion decision with the condition state that drove it — a judgement that is auditable rather than embedded."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "the contingency condition is unrecognised",
+            "behaviour": "reported as a status rather than thrown"
+          }
+        ],
+        "complexity": {
+          "time": "O(1)",
+          "space": "O(1)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
