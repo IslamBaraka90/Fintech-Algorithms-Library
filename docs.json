@@ -11,7 +11,8 @@
     "families": 33,
     "verified": 79,
     "withExample": 41,
-    "withDiagram": 187
+    "withDiagram": 187,
+    "withApiContract": 5
   },
   "domains": [
     {
@@ -270,6 +271,7 @@
         "archetype": "tape-aggregate",
         "signature": "constructBars(trades, config)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -367,6 +369,7 @@
         "archetype": "tape-aggregate",
         "signature": "constructBars(trades, config)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -464,6 +467,7 @@
         "archetype": "tape-aggregate",
         "signature": "constructBars(trades, config)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -561,6 +565,7 @@
         "archetype": "tape-aggregate",
         "signature": "constructBars(trades, config)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -658,6 +663,7 @@
         "archetype": "tape-aggregate",
         "signature": "constructBars(trades, config)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -755,6 +761,7 @@
         "archetype": "tape-aggregate",
         "signature": "constructBars(trades, config)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -852,6 +859,7 @@
         "archetype": "tape-aggregate",
         "signature": "constructBars(trades, config)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -955,6 +963,7 @@
         "archetype": "row-classify",
         "signature": "validateBars(bars, config)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -1042,6 +1051,7 @@
         "archetype": "record-transform",
         "signature": "hampelFilter(values, options)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -1143,6 +1153,7 @@
         "archetype": "record-transform",
         "signature": "madOutliers(values, threshold, scale, minimumSamples)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -1230,6 +1241,7 @@
         "archetype": "row-classify",
         "signature": "detectStaleQuotes(events, config)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -1328,6 +1340,7 @@
         "archetype": "row-classify",
         "signature": "resolveTrades(input)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -1425,6 +1438,7 @@
         "archetype": "row-classify",
         "signature": "classifyMarkets(quotes, options)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -1531,6 +1545,7 @@
         "archetype": "record-transform",
         "signature": "previousTick(observations, requests, maxStalenessMs)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -1625,6 +1640,7 @@
         "archetype": "record-transform",
         "signature": "linearQuoteInterpolation(quotes, targets, maxGapMs)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -1725,6 +1741,7 @@
         "archetype": "record-transform",
         "signature": "refreshTimeSample(observations, requiredInstruments, maxStalenessMs)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -1814,6 +1831,7 @@
         "archetype": "row-classify",
         "signature": "validateCalendar(bundle)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -1926,6 +1944,7 @@
         "archetype": "row-classify",
         "signature": "classifyIntervalPair(left, right)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -2008,6 +2027,7 @@
         "archetype": "row-classify",
         "signature": "diagnoseGap(row)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -2103,6 +2123,7 @@
         "archetype": "row-classify",
         "signature": "validateClockProfile(profile)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -2196,6 +2217,7 @@
         "archetype": "snapshot-evaluate",
         "signature": "consensus(snapshot, policy)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -2290,6 +2312,7 @@
         "archetype": "row-classify",
         "signature": "detectSchemaDrift(baseline, candidate, policy)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -2390,6 +2413,7 @@
         "archetype": "snapshot-evaluate",
         "signature": "asOfSnapshot(records, knowledgeTime)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -2482,6 +2506,7 @@
         "archetype": "record-transform",
         "signature": "calculate(input)"
       },
+      "api": null,
       "example": {
         "source": "fixture:D02-F01-A01.json",
         "verified": true,
@@ -2613,6 +2638,7 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -2720,6 +2746,7 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -2827,6 +2854,7 @@
         "archetype": "record-transform",
         "signature": "calculate(input)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -2928,6 +2956,7 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -3029,6 +3058,7 @@
         "archetype": "record-transform",
         "signature": "calculate(input)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -3143,6 +3173,7 @@
         "archetype": "record-transform",
         "signature": "calculate(input)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -3252,6 +3283,7 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -3365,6 +3397,7 @@
         "archetype": "record-transform",
         "signature": "calculate(rawData)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -3460,6 +3493,7 @@
         "archetype": "record-transform",
         "signature": "calculate(payload)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -3561,6 +3595,7 @@
         "archetype": "row-classify",
         "signature": "resolveIdentifier(data)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -3692,6 +3727,7 @@
         "archetype": "row-classify",
         "signature": "resolveTickerChain(input)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -3811,6 +3847,7 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -3912,6 +3949,7 @@
         "archetype": "row-classify",
         "signature": "resolveMerger(payload)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -4031,6 +4069,7 @@
         "archetype": "record-transform",
         "signature": "calculate(input)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -4138,6 +4177,7 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -4246,6 +4286,7 @@
         "archetype": "row-classify",
         "signature": "guardSurvivorship(input)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -4365,6 +4406,7 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -4478,6 +4520,7 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -4585,6 +4628,7 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
+      "api": null,
       "example": {
         "source": "fixture:D03-F01-A01.json",
         "verified": true,
@@ -4770,6 +4814,7 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
+      "api": null,
       "example": {
         "source": "fixture:D03-F01-A02.json",
         "verified": true,
@@ -4932,6 +4977,7 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
+      "api": null,
       "example": {
         "source": "fixture:D03-F01-A03.json",
         "verified": true,
@@ -5096,6 +5142,7 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
+      "api": null,
       "example": {
         "source": "fixture:D03-F01-A04.json",
         "verified": true,
@@ -5262,6 +5309,7 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
+      "api": null,
       "example": {
         "source": "fixture:D03-F01-A05.json",
         "verified": true,
@@ -5489,6 +5537,7 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
+      "api": null,
       "example": {
         "source": "fixture:D03-F02-A01.json",
         "verified": true,
@@ -5662,6 +5711,7 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
+      "api": null,
       "example": {
         "source": "fixture:D03-F02-A02.json",
         "verified": true,
@@ -5851,6 +5901,7 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
+      "api": null,
       "example": {
         "source": "fixture:D03-F02-A03.json",
         "verified": true,
@@ -6056,6 +6107,7 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
+      "api": null,
       "example": {
         "source": "fixture:D03-F02-A04.json",
         "verified": true,
@@ -6246,6 +6298,7 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
+      "api": null,
       "example": {
         "source": "fixture:D03-F02-A05.json",
         "verified": true,
@@ -6435,6 +6488,7 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
+      "api": null,
       "example": {
         "source": "fixture:D03-F02-A06.json",
         "verified": true,
@@ -6621,6 +6675,7 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
+      "api": null,
       "example": {
         "source": "fixture:D03-F02-A07.json",
         "verified": true,
@@ -6817,6 +6872,7 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
+      "api": null,
       "example": {
         "source": "fixture:D03-F02-A08.json",
         "verified": true,
@@ -7030,6 +7086,7 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
+      "api": null,
       "example": {
         "source": "fixture:D03-F03-A01.json",
         "verified": true,
@@ -7241,6 +7298,7 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
+      "api": null,
       "example": {
         "source": "fixture:D03-F03-A02.json",
         "verified": true,
@@ -7427,6 +7485,7 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
+      "api": null,
       "example": {
         "source": "fixture:D03-F03-A03.json",
         "verified": true,
@@ -7643,6 +7702,7 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
+      "api": null,
       "example": {
         "source": "fixture:D03-F03-A04.json",
         "verified": true,
@@ -7834,6 +7894,7 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
+      "api": null,
       "example": {
         "source": "fixture:D03-F03-A05.json",
         "verified": true,
@@ -8032,6 +8093,7 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
+      "api": null,
       "example": {
         "source": "fixture:D03-F03-A06.json",
         "verified": true,
@@ -8240,6 +8302,7 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
+      "api": null,
       "example": {
         "source": "fixture:D03-F04-A01.json",
         "verified": true,
@@ -8422,6 +8485,7 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
+      "api": null,
       "example": {
         "source": "fixture:D03-F04-A02.json",
         "verified": true,
@@ -8612,6 +8676,7 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
+      "api": null,
       "example": {
         "source": "fixture:D03-F04-A03.json",
         "verified": true,
@@ -8810,6 +8875,7 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
+      "api": null,
       "example": {
         "source": "fixture:D03-F04-A04.json",
         "verified": true,
@@ -9002,6 +9068,7 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
+      "api": null,
       "example": {
         "source": "fixture:D03-F04-A05.json",
         "verified": true,
@@ -9194,6 +9261,7 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
+      "api": null,
       "example": {
         "source": "fixture:D03-F04-A06.json",
         "verified": true,
@@ -9384,6 +9452,7 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
+      "api": null,
       "example": {
         "source": "fixture:D03-F04-A07.json",
         "verified": true,
@@ -9574,6 +9643,7 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
+      "api": null,
       "example": {
         "source": "fixture:D03-F05-A01.json",
         "verified": true,
@@ -9761,6 +9831,7 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
+      "api": null,
       "example": {
         "source": "fixture:D03-F05-A02.json",
         "verified": true,
@@ -9948,6 +10019,7 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
+      "api": null,
       "example": {
         "source": "fixture:D03-F05-A03.json",
         "verified": true,
@@ -10169,6 +10241,7 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
+      "api": null,
       "example": {
         "source": "fixture:D03-F05-A04.json",
         "verified": true,
@@ -10356,6 +10429,7 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
+      "api": null,
       "example": {
         "source": "fixture:D03-F05-A05.json",
         "verified": true,
@@ -10543,6 +10617,7 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
+      "api": null,
       "example": {
         "source": "fixture:D03-F05-A06.json",
         "verified": true,
@@ -10759,6 +10834,7 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
+      "api": null,
       "example": {
         "source": "fixture:D03-F06-A01.json",
         "verified": true,
@@ -10991,6 +11067,7 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
+      "api": null,
       "example": {
         "source": "fixture:D03-F06-A02.json",
         "verified": true,
@@ -11224,6 +11301,7 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
+      "api": null,
       "example": {
         "source": "fixture:D03-F06-A03.json",
         "verified": true,
@@ -11417,6 +11495,7 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
+      "api": null,
       "example": {
         "source": "fixture:D03-F06-A04.json",
         "verified": true,
@@ -11623,6 +11702,7 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
+      "api": null,
       "example": {
         "source": "fixture:D03-F06-A05.json",
         "verified": true,
@@ -11831,6 +11911,7 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
+      "api": null,
       "example": {
         "source": "fixture:D03-F06-A06.json",
         "verified": true,
@@ -12039,6 +12120,7 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
+      "api": null,
       "example": {
         "source": "fixture:D03-F06-A07.json",
         "verified": true,
@@ -12247,6 +12329,7 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
+      "api": null,
       "example": {
         "source": "fixture:D03-F06-A08.json",
         "verified": true,
@@ -12462,6 +12545,7 @@
         "archetype": "record-transform",
         "signature": "calculateNetAdvances(request)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -12572,6 +12656,7 @@
         "archetype": "record-transform",
         "signature": "calculateAdvanceDeclineRatio(snapshot)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -12689,6 +12774,7 @@
         "archetype": "record-transform",
         "signature": "calculateCumulativeAdvanceDeclineLine(contract, events, knowledgeCutoff)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -12787,6 +12873,7 @@
         "archetype": "record-transform",
         "signature": "calculateNormalizedAdLine(records, options)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -12885,6 +12972,7 @@
         "archetype": "snapshot-evaluate",
         "signature": "evaluateAbsoluteBreadthIndex(request)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -12984,6 +13072,7 @@
         "archetype": "record-transform",
         "signature": "calculateMcClellanValues(netAdvances)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -13103,6 +13192,7 @@
         "archetype": "record-transform",
         "signature": "calculate(records, cutoff)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -13192,6 +13282,7 @@
         "archetype": "record-transform",
         "signature": "calculate(records, cutoff)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -13281,6 +13372,7 @@
         "archetype": "record-transform",
         "signature": "calculate(records, cutoff)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -13376,6 +13468,7 @@
         "archetype": "record-transform",
         "signature": "calculate(records, cutoff)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -13471,6 +13564,7 @@
         "archetype": "record-transform",
         "signature": "calculate(records, cutoff)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -13570,6 +13664,7 @@
         "archetype": "record-transform",
         "signature": "calculate(records, decisionTime)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -13655,6 +13750,7 @@
         "archetype": "record-transform",
         "signature": "calculate(records, decisionTime)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -13740,6 +13836,7 @@
         "archetype": "record-transform",
         "signature": "calculate(records, decisionTime)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -13831,6 +13928,7 @@
         "archetype": "snapshot-evaluate",
         "signature": "evaluateSnapshot(snapshot, decisionTime)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -13916,6 +14014,7 @@
         "archetype": "snapshot-evaluate",
         "signature": "evaluateSnapshot(snapshot, decisionTime)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -14001,6 +14100,7 @@
         "archetype": "snapshot-evaluate",
         "signature": "evaluateSnapshot(snapshot, decisionTime)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -14089,6 +14189,7 @@
         "archetype": "record-transform",
         "signature": "calculate(rows, emaLength, lowThreshold, highThreshold, maxSessions)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "verified",
@@ -14169,6 +14270,7 @@
         "archetype": "record-transform",
         "signature": "calculate(row)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "verified",
@@ -14256,6 +14358,7 @@
         "archetype": "record-transform",
         "signature": "calculate(rows, seed)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "verified",
@@ -14342,6 +14445,7 @@
         "archetype": "record-transform",
         "signature": "calculate(row)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "verified",
@@ -14430,6 +14534,7 @@
         "archetype": "record-transform",
         "signature": "calculate(rows, seed, intervalSeconds)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "verified",
@@ -14521,6 +14626,7 @@
         "archetype": "record-transform",
         "signature": "calculate(rows, left, right, minPriceChange, minBreadthSeparation, breadthScale)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "verified",
@@ -14608,6 +14714,7 @@
         "archetype": "record-transform",
         "signature": "calculate(rows, topN)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "verified",
@@ -14676,6 +14783,7 @@
         "archetype": "record-transform",
         "signature": "calculate(rows)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "verified",
@@ -14750,6 +14858,7 @@
         "archetype": "record-transform",
         "signature": "calculate(rows)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "verified",
@@ -14831,6 +14940,7 @@
         "archetype": "record-transform",
         "signature": "calculate(rows, tolerance)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "verified",
@@ -14900,6 +15010,7 @@
         "archetype": "record-transform",
         "signature": "calculate(rows, tolerance)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "verified",
@@ -14976,6 +15087,7 @@
         "archetype": "record-transform",
         "signature": "analyzeCandle(candle, directionEpsilon)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -15082,6 +15194,7 @@
         "archetype": "row-classify",
         "signature": "classifyBody(observation, priorClosedBodies, configInput)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -15192,6 +15305,52 @@
         ],
         "archetype": "series-transform",
         "signature": "calculateSma(values, window)"
+      },
+      "api": {
+        "summary": "Arithmetic mean of the last `window` observations, emitted at every position where a complete window is available.",
+        "params": [
+          {
+            "name": "values",
+            "type": "(number | null)[]",
+            "required": true,
+            "description": "Observation series in chronological order, oldest first.",
+            "constraints": null,
+            "nulls": "propagate",
+            "default": null
+          },
+          {
+            "name": "window",
+            "type": "number",
+            "required": true,
+            "description": "Number of observations in the mean.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "(number | null)[]",
+          "length": "same-as-input",
+          "description": "Index `i` holds the mean of observations `i - window + 1` through `i`."
+        },
+        "warmup": {
+          "count": "window - 1",
+          "value": "null",
+          "note": "Warm-up positions are null rather than a partial result, so a consumer never mistakes an incomplete window for a real value."
+        },
+        "errors": [
+          {
+            "when": "window < 1 or is not an integer",
+            "behaviour": "throws RangeError"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(1)"
+        }
       },
       "example": null,
       "verification": {
@@ -15325,6 +15484,52 @@
         "archetype": "series-transform",
         "signature": "calculateEma(values, span)"
       },
+      "api": {
+        "summary": "Exponentially weighted mean seeded with the simple mean of the first `span` observations, so the series is reproducible rather than dependent on where the data starts.",
+        "params": [
+          {
+            "name": "values",
+            "type": "(number | null)[]",
+            "required": true,
+            "description": "Observation series in chronological order, oldest first.",
+            "constraints": null,
+            "nulls": "propagate",
+            "default": null
+          },
+          {
+            "name": "span",
+            "type": "number",
+            "required": true,
+            "description": "Smoothing span; the decay factor is 2 / (span + 1).",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "(number | null)[]",
+          "length": "same-as-input",
+          "description": "Smoothed series, `null` until the seed window closes."
+        },
+        "warmup": {
+          "count": "span - 1",
+          "value": "null",
+          "note": "Warm-up positions are null rather than a partial result, so a consumer never mistakes an incomplete window for a real value."
+        },
+        "errors": [
+          {
+            "when": "span < 1 or is not an integer",
+            "behaviour": "throws RangeError"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(1)"
+        }
+      },
       "example": null,
       "verification": {
         "tier": "contract",
@@ -15423,6 +15628,52 @@
         ],
         "archetype": "series-transform",
         "signature": "calculateWma(values, window)"
+      },
+      "api": {
+        "summary": "Linearly weighted mean over `window` observations: the most recent observation carries weight `window`, the oldest weight 1.",
+        "params": [
+          {
+            "name": "values",
+            "type": "(number | null)[]",
+            "required": true,
+            "description": "Observation series in chronological order, oldest first.",
+            "constraints": null,
+            "nulls": "propagate",
+            "default": null
+          },
+          {
+            "name": "window",
+            "type": "number",
+            "required": true,
+            "description": "Number of observations in the weighted mean.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "(number | null)[]",
+          "length": "same-as-input",
+          "description": "Weighted mean per position, `null` during warm-up."
+        },
+        "warmup": {
+          "count": "window - 1",
+          "value": "null",
+          "note": "Warm-up positions are null rather than a partial result, so a consumer never mistakes an incomplete window for a real value."
+        },
+        "errors": [
+          {
+            "when": "window < 1 or is not an integer",
+            "behaviour": "throws RangeError"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(1)"
+        }
       },
       "example": null,
       "verification": {
@@ -15547,6 +15798,52 @@
         "archetype": "series-transform",
         "signature": "calculateRma(values, period)"
       },
+      "api": {
+        "summary": "Wilder's smoothing — an exponential mean with decay 1 / period rather than 2 / (period + 1). This is the smoother RSI, ATR and ADX are defined against, and substituting a standard EMA changes their published values.",
+        "params": [
+          {
+            "name": "values",
+            "type": "(number | null)[]",
+            "required": true,
+            "description": "Observation series in chronological order, oldest first.",
+            "constraints": null,
+            "nulls": "propagate",
+            "default": null
+          },
+          {
+            "name": "period",
+            "type": "number",
+            "required": true,
+            "description": "Wilder period; the decay factor is 1 / period.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "(number | null)[]",
+          "length": "same-as-input",
+          "description": "Smoothed series, `null` until the seed window closes."
+        },
+        "warmup": {
+          "count": "period - 1",
+          "value": "null",
+          "note": "Warm-up positions are null rather than a partial result, so a consumer never mistakes an incomplete window for a real value."
+        },
+        "errors": [
+          {
+            "when": "period < 1 or is not an integer",
+            "behaviour": "throws RangeError"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(1)"
+        }
+      },
       "example": null,
       "verification": {
         "tier": "contract",
@@ -15658,6 +15955,7 @@
         "archetype": "series-transform",
         "signature": "calculateDemaComponents(values, span)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -15763,6 +16061,7 @@
         "archetype": "series-transform",
         "signature": "calculateTemaComponents(values, span)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -15865,6 +16164,52 @@
         ],
         "archetype": "series-transform",
         "signature": "calculateHullMa(values, window)"
+      },
+      "api": {
+        "summary": "Hull moving average: a weighted combination of two WMAs de-lagged against each other, then re-smoothed over sqrt(window). Far more responsive than an SMA of the same length, at the cost of overshoot.",
+        "params": [
+          {
+            "name": "values",
+            "type": "(number | null)[]",
+            "required": true,
+            "description": "Observation series in chronological order, oldest first.",
+            "constraints": null,
+            "nulls": "propagate",
+            "default": null
+          },
+          {
+            "name": "window",
+            "type": "number",
+            "required": true,
+            "description": "Base window; the internal halved window and the sqrt(window) smoothing window derive from it.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "(number | null)[]",
+          "length": "same-as-input",
+          "description": "Smoothed series, `null` during the combined warm-up of all three stages."
+        },
+        "warmup": {
+          "count": "window + ceil(sqrt(window)) - 2",
+          "value": "null",
+          "note": "Warm-up positions are null rather than a partial result, so a consumer never mistakes an incomplete window for a real value."
+        },
+        "errors": [
+          {
+            "when": "window < 1 or is not an integer",
+            "behaviour": "throws RangeError"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
       },
       "example": null,
       "verification": {
@@ -15971,6 +16316,7 @@
         "archetype": "series-transform",
         "signature": "calculateKama(values, efficiencyPeriod, fastPeriod, slowPeriod)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -16121,6 +16467,7 @@
         "archetype": "series-transform",
         "signature": "mama(values, fastLimit, slowLimit)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -16262,6 +16609,7 @@
         "archetype": "series-transform",
         "signature": "macd(values, fastSpan, slowSpan, signalSpan)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -16386,6 +16734,7 @@
         "archetype": "series-transform",
         "signature": "ppo(values, fastSpan, slowSpan, signalSpan)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "verified",
@@ -16484,6 +16833,7 @@
         "archetype": "series-transform",
         "signature": "aroon(high, low, period)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "verified",
@@ -16583,6 +16933,7 @@
         "archetype": "series-transform",
         "signature": "directional_movement(high, low, close, period)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "verified",
@@ -16682,6 +17033,7 @@
         "archetype": "series-transform",
         "signature": "adx(high, low, close, period)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "verified",
@@ -16784,6 +17136,7 @@
         "archetype": "series-transform",
         "signature": "ichimoku(high, low, close, conversionPeriod, basePeriod, spanBPeriod, displacement)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "verified",
@@ -16884,6 +17237,7 @@
         "archetype": "series-transform",
         "signature": "parabolic_sar(high, low, initialDirection, accelerationStep, accelerationMax)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "verified",
@@ -16984,6 +17338,7 @@
         "archetype": "series-transform",
         "signature": "supertrend(high, low, close, period, multiplier)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "verified",
@@ -17088,6 +17443,7 @@
         "archetype": "series-transform",
         "signature": "rsi(close, p)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "verified",
@@ -17176,6 +17532,7 @@
         "archetype": "series-transform",
         "signature": "stochastic(high, low, close, kp, sk, sd)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "verified",
@@ -17263,6 +17620,7 @@
         "archetype": "series-transform",
         "signature": "stochastic_rsi(close, rp, sp, sk, sd)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "verified",
@@ -17355,6 +17713,7 @@
         "archetype": "series-transform",
         "signature": "williams_r(high, low, close, p)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "verified",
@@ -17448,6 +17807,7 @@
         "archetype": "series-transform",
         "signature": "cci(high, low, close, p, k)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "verified",
@@ -17536,6 +17896,7 @@
         "archetype": "series-transform",
         "signature": "ultimate_oscillator(high, low, close, s, m, g)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "verified",
@@ -17621,6 +17982,7 @@
         "archetype": "series-transform",
         "signature": "tsi(close, g, s)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "verified",
@@ -17713,6 +18075,7 @@
         "archetype": "series-transform",
         "signature": "connors_rsi(close, pp, sp, rp)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "verified",
@@ -17791,6 +18154,7 @@
         "archetype": "series-transform",
         "signature": "true_range(high, low, close)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "verified",
@@ -17883,6 +18247,7 @@
         "archetype": "series-transform",
         "signature": "average_true_range(high, low, close, p)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "verified",
@@ -17979,6 +18344,7 @@
         "archetype": "series-transform",
         "signature": "bollinger_bands(close, p, multiplier)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "verified",
@@ -18086,6 +18452,7 @@
         "archetype": "series-transform",
         "signature": "keltner_channels(high, low, close, emaPeriod, atrPeriod, multiplier)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "verified",
@@ -18182,6 +18549,7 @@
         "archetype": "series-transform",
         "signature": "donchian_channels(high, low, p)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "verified",
@@ -18267,6 +18635,7 @@
         "archetype": "series-transform",
         "signature": "bollinger_bandwidth(close, p, multiplier)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "verified",
@@ -18374,6 +18743,7 @@
         "archetype": "series-transform",
         "signature": "obv(close, volume, initial)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "verified",
@@ -18499,6 +18869,7 @@
         "archetype": "series-transform",
         "signature": "accumulation_distribution_line(high, low, close, volume, initial)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "verified",
@@ -18630,6 +19001,7 @@
         "archetype": "series-transform",
         "signature": "chaikin_money_flow(high, low, close, volume, p)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "verified",
@@ -18755,6 +19127,7 @@
         "archetype": "series-transform",
         "signature": "money_flow_index(high, low, close, volume, p)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "verified",
@@ -18884,6 +19257,7 @@
         "archetype": "series-transform",
         "signature": "volume_price_trend(close, volume, initial)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "verified",
@@ -19007,6 +19381,7 @@
         "archetype": "series-transform",
         "signature": "force_index(close, volume, p)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "verified",
@@ -19120,6 +19495,7 @@
         "archetype": "row-classify",
         "signature": "detectCausalPivots(bars, leftSpan, rightSpan, minSeparation)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -19204,6 +19580,7 @@
         "archetype": "record-transform",
         "signature": "zigzagSegment(closes, threshold, minBars)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -19289,6 +19666,7 @@
         "archetype": "record-transform",
         "signature": "clusterPivotLevels(pivots, epsBps, minTouches)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -19376,6 +19754,7 @@
         "archetype": "record-transform",
         "signature": "fitRobustTrendline(pivots, kind, toleranceBps, minInliers, maxPoints)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -19470,6 +19849,7 @@
         "archetype": "record-transform",
         "signature": "double_top()"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -19534,6 +19914,7 @@
         "archetype": "record-transform",
         "signature": "double_bottom()"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -19598,6 +19979,7 @@
         "archetype": "record-transform",
         "signature": "triple_top()"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -19662,6 +20044,7 @@
         "archetype": "record-transform",
         "signature": "triple_bottom()"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -19726,6 +20109,7 @@
         "archetype": "record-transform",
         "signature": "head_and_shoulders()"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -19790,6 +20174,7 @@
         "archetype": "record-transform",
         "signature": "inverse_head_and_shoulders()"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -19855,6 +20240,7 @@
         "archetype": "record-transform",
         "signature": "acf(values, maxLag)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -19926,6 +20312,7 @@
         "archetype": "record-transform",
         "signature": "pacf(values, maxLag)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -20004,6 +20391,7 @@
         "archetype": "record-transform",
         "signature": "adf(values, lags, criticalValue)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -20082,6 +20470,7 @@
         "archetype": "record-transform",
         "signature": "kpss(values, lags, criticalValue)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -20161,6 +20550,7 @@
         "archetype": "record-transform",
         "signature": "ljungBox(values, lags, modelDf, alpha)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -20246,6 +20636,7 @@
         "archetype": "record-transform",
         "signature": "zivotAndrews(values, lags, trim, criticalValue)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -20319,6 +20710,7 @@
         "archetype": "record-transform",
         "signature": "forecastAutoReg(values, ar, intercept, horizon)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -20421,6 +20813,7 @@
         "archetype": "record-transform",
         "signature": "forecastARMA(values, ar, ma, intercept, horizon)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -20524,6 +20917,7 @@
         "archetype": "record-transform",
         "signature": "forecastARIMA(values, ar, ma, intercept, differenceOrder, horizon)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -20634,6 +21028,7 @@
         "archetype": "record-transform",
         "signature": "forecastSARIMAX(values, exog, futureExog, beta, ar, ma, seasonalAr, seasonalMa, intercept, differenceOrder, seasonalDifferenceOrder, period, horizon)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -20746,6 +21141,7 @@
         "archetype": "record-transform",
         "signature": "forecastHoltWintersAdditive(values, alpha, beta, gamma, period, horizon, initialLevel, initialTrend, initialSeasonals)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -20846,6 +21242,7 @@
         "archetype": "record-transform",
         "signature": "forecastTheta(values, alpha, horizon)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -20960,6 +21357,7 @@
         "archetype": "record-transform",
         "signature": "fitVAR(values, lags, includeIntercept)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -21063,6 +21461,7 @@
         "archetype": "record-transform",
         "signature": "fitRecursiveSVAR(values, lags)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -21168,6 +21567,7 @@
         "archetype": "record-transform",
         "signature": "fitVECMFixedBeta(values, beta, differenceLags, includeIntercept)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -21271,6 +21671,7 @@
         "archetype": "record-transform",
         "signature": "impulseResponses(coefficients, horizon)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -21375,6 +21776,7 @@
         "archetype": "record-transform",
         "signature": "forecastErrorVarianceDecomposition(coefficients, sigmaU, horizon)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -21470,6 +21872,7 @@
         "archetype": "record-transform",
         "signature": "runFilter(observations, config)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -21573,6 +21976,7 @@
         "archetype": "record-transform",
         "signature": "runFilter(observations, config)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -21676,6 +22080,7 @@
         "archetype": "record-transform",
         "signature": "runFilter(observations, config)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -21779,6 +22184,7 @@
         "archetype": "record-transform",
         "signature": "runFilter(observations, config)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -21870,6 +22276,7 @@
         "archetype": "record-transform",
         "signature": "runFilter(observations, config)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -21967,6 +22374,7 @@
         "archetype": "record-transform",
         "signature": "runFilter(observations, config)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -22057,6 +22465,7 @@
         "archetype": "record-transform",
         "signature": "restateEpsForCapitalEvents(input)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -22148,6 +22557,7 @@
         "archetype": "record-transform",
         "signature": "calculateBasicEps(input)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -22263,6 +22673,7 @@
         "archetype": "record-transform",
         "signature": "calculateConvertiblePreferenceDilution(input)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -22351,6 +22762,7 @@
         "archetype": "record-transform",
         "signature": "calculateTreasuryShareMethod(input)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",
@@ -22439,6 +22851,7 @@
         "archetype": "record-transform",
         "signature": "calculateContingentShareInclusion(input)"
       },
+      "api": null,
       "example": null,
       "verification": {
         "tier": "contract",

@@ -34,6 +34,7 @@
 import { readFileSync, writeFileSync, existsSync, readdirSync, statSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { parseYaml } from "./lib/yaml-subset.mjs";
 
 const REPO = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -238,6 +239,68 @@ function workedExample(topic, entryParams) {
 
 const TIER = { A: "input-expected", B: "row-fixture", C: "scenario-fixture" };
 
+// ------------------------------------------------------------ api contract
+
+const apiErrors = [];
+
+/**
+ * The declared `api:` block from `metadata.yaml`, validated against the code.
+ *
+ * This validation is the whole point of declaring the contract as data. The
+ * entry function's real parameter names are already extracted into the manifest,
+ * so a declaration that disagrees with the implementation fails the build rather
+ * than shipping documentation that contradicts the function it documents.
+ *
+ * Topics without an `api:` block are not an error — the block is being populated
+ * per family, and a topic without one simply shows its signature.
+ */
+function apiContract(topic, dir, entryParams) {
+  if (!dir) return null;
+  const metaFile = join(dir, "metadata.yaml");
+  if (!existsSync(metaFile)) return null;
+
+  let meta;
+  try {
+    meta = parseYaml(readFileSync(metaFile, "utf8"));
+  } catch (e) {
+    apiErrors.push(`${topic.id}: metadata.yaml did not parse — ${e.message}`);
+    return null;
+  }
+  const api = meta.api;
+  if (!api) return null;
+
+  if (api.entry && api.entry !== topic.entry) {
+    apiErrors.push(
+      `${topic.id}: api.entry is "${api.entry}" but the module's entry is "${topic.entry}"`,
+    );
+  }
+
+  const declared = (api.params ?? []).map((p) => p.name);
+  if (declared.join(",") !== entryParams.join(",")) {
+    apiErrors.push(
+      `${topic.id}: api.params [${declared.join(", ")}] does not match the ` +
+        `implementation's parameters [${entryParams.join(", ")}]`,
+    );
+  }
+
+  return {
+    summary: api.summary ?? null,
+    params: (api.params ?? []).map((p) => ({
+      name: p.name,
+      type: p.type ?? null,
+      required: p.required ?? true,
+      description: p.description ?? null,
+      constraints: p.constraints ?? null,
+      nulls: p.nulls ?? null,
+      default: p.default ?? null,
+    })),
+    returns: api.returns ?? null,
+    warmup: api.warmup ?? null,
+    errors: api.errors ?? [],
+    complexity: api.complexity ?? null,
+  };
+}
+
 // -------------------------------------------------------------- payload
 
 const topics = topicsFromRegistry.map((t) => {
@@ -267,6 +330,7 @@ const topics = topicsFromRegistry.map((t) => {
       archetype: t.archetype,
       signature: `${t.entry}(${entryParams.join(", ")})`,
     },
+    api: apiContract(t, dir, entryParams),
     example: workedExample(t, entryParams),
     verification:
       m && m.convention !== "none"
@@ -311,10 +375,19 @@ const payload = {
     verified: topics.filter((t) => t.verification.tier === "verified").length,
     withExample: topics.filter((t) => t.example).length,
     withDiagram: topics.filter((t) => t.assets.diagrams.length).length,
+    withApiContract: topics.filter((t) => t.api).length,
   },
   domains,
   topics,
 };
+
+// A contract that contradicts the code is worse than no contract: refuse to
+// emit rather than publish documentation the implementation disagrees with.
+if (apiErrors.length) {
+  console.error(`gen-docs: ${apiErrors.length} api: contract error(s)`);
+  for (const e of apiErrors) console.error(`    ${e}`);
+  process.exit(1);
+}
 
 const json = JSON.stringify(payload, null, 2) + "\n";
 
