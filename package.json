@@ -39,11 +39,12 @@
   "scripts": {
     "sync": "node scripts/sync.mjs && node scripts/update-readme.mjs && node scripts/gen-docs.mjs",
     "docs": "node scripts/gen-docs.mjs",
+    "examples": "node scripts/capture-examples.mjs",
     "build": "tsc -p tsconfig.json",
     "test": "node --experimental-strip-types --test test/*.test.ts",
     "test:conformance": "node --experimental-strip-types --test test/conformance.test.ts",
     "verify": "npm run build && npm test",
-    "version": "node scripts/gen-docs.mjs && git add docs.json",
+    "version": "npm run examples && node scripts/gen-docs.mjs && git add docs.json test/_examples.json",
     "prepack": "npm run build"
   },
   "devDependencies": {

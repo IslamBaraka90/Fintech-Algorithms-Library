@@ -203,37 +203,125 @@ function references(dir) {
 
 // ------------------------------------------------------------- examples
 
+
+const executed = existsSync(join(REPO, "test", "_examples.json"))
+  ? JSON.parse(readFileSync(join(REPO, "test", "_examples.json"), "utf8"))
+  : {};
+
+const MAX_ITEMS = 6; // array elements kept before eliding
+const MAX_KEYS = 14; // object keys kept
+const MAX_STRING = 120;
+
 /**
- * A worked example is emitted only for the clean `{ input, expected }` tier.
+ * Shrink a value to something readable on a page while recording exactly what
+ * was removed. Fixtures run to 160 observations; printing all of them is the
+ * reason the row and scenario tiers were originally dropped altogether, and
+ * eliding without saying so would be a quiet lie about what the function
+ * returned.
+ */
+function abbreviate(value) {
+  if (Array.isArray(value)) {
+    // Six numbers read at a glance; six nine-field objects are a wall. Rows of
+    // records get fewer, because the reader is after the *shape* there.
+    const rowShaped = value.length > 0 && value[0] !== null && typeof value[0] === "object";
+    const limit = rowShaped ? 3 : MAX_ITEMS;
+    const kept = value.slice(0, limit).map((v) => abbreviate(v).value);
+    return {
+      value: kept,
+      elided: value.length > limit ? { kind: "array", shown: kept.length, total: value.length } : null,
+    };
+  }
+  if (value && typeof value === "object") {
+    const keys = Object.keys(value);
+    const out = {};
+    for (const k of keys.slice(0, MAX_KEYS)) out[k] = abbreviate(value[k]).value;
+    return {
+      value: out,
+      elided: keys.length > MAX_KEYS ? { kind: "object", shown: MAX_KEYS, total: keys.length } : null,
+    };
+  }
+  if (typeof value === "string" && value.length > MAX_STRING) {
+    return { value: `${value.slice(0, MAX_STRING)}…`, elided: null };
+  }
+  return { value, elided: null };
+}
+
+/** A one-line description of the real shape, before any abbreviation. */
+function describeShape(value) {
+  if (Array.isArray(value)) {
+    if (!value.length) return "empty array";
+    const first = value[0];
+    const of =
+      first === null ? "null" : Array.isArray(first) ? "array" : typeof first === "object" ? "object" : typeof first;
+    return `array of ${value.length} ${of}${value.length === 1 ? "" : "s"}`;
+  }
+  if (value && typeof value === "object") {
+    const keys = Object.keys(value);
+    return `object with ${keys.length} field${keys.length === 1 ? "" : "s"}: ${keys.slice(0, 8).join(", ")}${keys.length > 8 ? ", …" : ""}`;
+  }
+  return typeof value;
+}
+
+const literal = (v) => {
+  const s = JSON.stringify(v);
+  return s === undefined ? "undefined" : s;
+};
+
+/**
+ * Every topic gets a worked example, from the strongest source available:
  *
- * The row and scenario tiers are genuinely verified, but their fixtures carry
- * hundreds of observations — correct to assert, useless to print on a reference
- * page. Those topics keep their verification badge and link to the article for
- * the numbers, rather than showing a truncated example that would be wrong.
+ *   fixture   the published `{ input, expected }` — asserted by the test suite
+ *   executed  the arguments the catalog's own test passes, and what the
+ *             function actually returned when it was run
+ *   derived   the same, for the thin generated wrappers a test never calls
+ *             directly; the entry is invoked with its sibling's arguments
+ *
+ * Only the first is labelled *verified*. The others are real output of real
+ * code — nothing here is transcribed by hand — but they are not asserted
+ * against the numbers published in the article, and the page says so.
  */
 function workedExample(topic, entryParams) {
   const m = manifestById.get(topic.id);
-  if (!m?.fixture || m.convention !== "A") return null;
-  const file = join(REPO, "test", "fixtures", m.fixture);
-  if (!existsSync(file)) return null;
+  const fixtureFile = m?.fixture ? join(REPO, "test", "fixtures", m.fixture) : null;
 
-  const fixture = JSON.parse(readFileSync(file, "utf8"));
-  if (fixture.input === undefined || fixture.expected === undefined) return null;
+  if (m?.convention === "A" && fixtureFile && existsSync(fixtureFile)) {
+    const fixture = JSON.parse(readFileSync(fixtureFile, "utf8"));
+    if (fixture.input !== undefined && fixture.expected !== undefined) {
+      // Mirrors how conformance.test.ts invokes it: one argument when the entry
+      // takes one, named keys spread positionally otherwise.
+      const args =
+        entryParams.length > 1 && !Array.isArray(fixture.input)
+          ? entryParams.map((p) => fixture.input[p])
+          : [fixture.input];
+      const out = abbreviate(fixture.expected);
+      const shown = args.map((a) => abbreviate(a));
+      return {
+        origin: "fixture",
+        verified: true,
+        source: `fixture:${m.fixture}`,
+        call: `${topic.entry}(${shown.map((s) => literal(s.value)).join(", ")})`,
+        args: shown.map((s) => ({ value: s.value, elided: s.elided })),
+        output: out.value,
+        outputElided: out.elided,
+        outputShape: describeShape(fixture.expected),
+      };
+    }
+  }
 
-  // Convention A passes the fixture's `input` as the single argument when the
-  // entry takes one parameter, and spreads named keys positionally otherwise —
-  // mirroring how conformance.test.ts invokes it.
-  const args =
-    entryParams.length > 1 && !Array.isArray(fixture.input)
-      ? entryParams.map((p) => fixture.input[p])
-      : [fixture.input];
+  const run = executed[topic.id];
+  if (!run) return null;
 
+  const shown = run.args.map((a) => abbreviate(a));
+  const out = abbreviate(run.value);
   return {
-    source: `fixture:${m.fixture}`,
-    verified: true,
-    call: `${topic.entry}(${args.map((a) => JSON.stringify(a)).join(", ")})`,
-    input: fixture.input,
-    expected: fixture.expected,
+    origin: run.derived ? "derived" : "executed",
+    verified: false,
+    source: "executed against the catalog's own test input",
+    call: `${topic.entry}(${shown.map((s) => literal(s.value)).join(", ")})`,
+    args: shown.map((s) => ({ value: s.value, elided: s.elided })),
+    output: out.value,
+    outputElided: out.elided,
+    outputShape: describeShape(run.value),
   };
 }
 
