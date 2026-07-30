@@ -12,7 +12,7 @@
     "verified": 79,
     "withExample": 186,
     "withDiagram": 187,
-    "withApiContract": 60
+    "withApiContract": 119
   },
   "domains": [
     {
@@ -5983,7 +5983,39 @@
         "archetype": "record-transform",
         "signature": "calculate(input)"
       },
-      "api": null,
+      "api": {
+        "summary": "Restates prices before a split onto the post-split basis so the series is continuous across the event. Without it a 2-for-1 split reads as a 50% crash, and every indicator and return computed over it is wrong.",
+        "params": [
+          {
+            "name": "input",
+            "type": "{ prices: number[]; volumes: number[]; eventIndex: number; postSplitSharesPerPreSplitShare: number }",
+            "required": true,
+            "description": "`prices` and `volumes` are the raw series; `eventIndex` is the first observation trading on the new basis. `postSplitSharesPerPreSplitShare` states the ratio in the only direction that is unambiguous — 2 means each old share became two, so pre-event prices are divided by 2 and volumes multiplied by it.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ adjustedPrices, adjustedVolumes, eventIndex, ratioConvention }",
+          "description": "The adjusted series plus the ratio convention that was applied, echoed back — because the single most common error in this calculation is inverting the ratio, and a result that states its own convention can be checked."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "the ratio is not positive",
+            "behaviour": "throws"
+          },
+          {
+            "when": "eventIndex falls outside the series",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "fixture",
         "verified": true,
@@ -6123,7 +6155,35 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "Restates a series onto a chosen basis date rather than onto the latest one, so a figure quoted in a historical report can still be reproduced after subsequent splits.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ targetBasisAt: string; knowledgeAt: string; roundDecimalPlaces?: number; observations: Observation[]; eventRevisions: EventRevision[] }",
+            "required": true,
+            "description": "`targetBasisAt` is the basis to express results on, and `knowledgeAt` bounds which event revisions may be used. `eventRevisions` carries the revision history rather than a single event, so a corrected ratio does not retroactively rewrite what was knowable earlier.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ basis, selectedRevisions, observations, warnings }",
+          "description": "Adjusted observations, which revision of each event was selected, and warnings for anything that could not be applied — surfaced rather than dropped."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "targetBasisAt or knowledgeAt is not a valid timestamp",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n + e)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -6350,7 +6410,35 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "Builds a total-return series by reinvesting cash dividends at the ex-date. Price charts ignore dividends, so every long-horizon number taken from one understates reality — by roughly 2% a year on a broad equity index.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ asOf: string; returnVariant: \"gross\" | \"net\"; priceCurrency: string; anchorBasis: string; specialDistributionPolicy: string; observations: Observation[]; eventRevisions: EventRevision[] }",
+            "required": true,
+            "description": "`returnVariant` selects gross or net of withholding tax — the same index quotes both, and they diverge materially over a decade. `specialDistributionPolicy` decides how non-recurring distributions are treated. Point-in-time by construction: `asOf` is the knowledge time, and only revisions available at or before it are eligible. Passing the event date instead of the knowledge date is what lets a backtest use information it could not have had.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ methodology, returnVariant, anchor, adjustedPrices, cumulativeFactors, eventAdjustments, … }",
+          "description": "The adjusted series plus the cumulative factor chain and per-event adjustments, so any single figure can be traced back to the events that produced it."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "returnVariant is not recognised, or asOf is invalid",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n + e)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -6623,7 +6711,35 @@
         "archetype": "record-transform",
         "signature": "calculate(input)"
       },
-      "api": null,
+      "api": {
+        "summary": "The CRSP cumulative adjustment-factor convention, which is what academic finance means by an adjusted price. Reproducing published research requires this convention specifically, not a plausible equivalent.",
+        "params": [
+          {
+            "name": "input",
+            "type": "{ crspConvention: string; crspSourceVersion: string; packageSecurityKey: string; crspBaseDate: string; crspGapPolicy: string; roundingDecimals: number; crspFactorEvents: FactorEvent[]; records: Record[] }",
+            "required": true,
+            "description": "`crspConvention` and `crspSourceVersion` pin which vintage of the convention is being applied — CRSP has revised it, and results differ. `crspGapPolicy` decides what happens across missing observations, and `roundingDecimals` fixes the rounding so the same input reproduces bit-for-bit.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ crspConvention, crspBaseDate, crspPriceFormula, crspFactorEvents, crspFactorChangeDates, records, … }",
+          "description": "Adjusted records together with the exact formula and factor-change dates applied — the provenance a replication needs in order to be checkable."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "the convention or source version is unrecognised",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n + e)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -6829,7 +6945,35 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "The volume counterpart of the CRSP price adjustment. Volume moves the opposite way to price across a split, and adjusting one without the other silently corrupts every turnover and liquidity measure downstream.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ schemaVersion: string; sourceRelease: string; crspBasisDate: string; extractCoverage: object; records: Record[] }",
+            "required": true,
+            "description": "`crspBasisDate` sets the basis the adjusted volumes are expressed on. `extractCoverage` states the window the extract actually spans, so a partial extract cannot be mistaken for a complete history.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ schemaVersion, sourceRelease, crspBasisDate, extractCoverage, roundingDigits, rows }",
+          "description": "Adjusted volume rows with the provenance and rounding that produced them."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "the extract coverage does not span the requested records",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -7039,7 +7183,39 @@
         "archetype": "record-transform",
         "signature": "calculate(input)"
       },
-      "api": null,
+      "api": {
+        "summary": "Computes the theoretical ex-rights price. A rights issue is not a dividend and not a split: shareholders receive the right to buy new shares below market, so value transfers rather than disappears, and TERP is the price that makes the series continuous.",
+        "params": [
+          {
+            "name": "input",
+            "type": "{ asOf: string; revisions: EventRevision[] }",
+            "required": true,
+            "description": "Each revision carries the cum price, the subscription price, and the ratio of new to existing shares. Point-in-time by construction: `asOf` is the knowledge time, and only revisions available at or before it are eligible. Passing the event date instead of the knowledge date is what lets a backtest use information it could not have had.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ terp, referencePrice, subscriptionCashQuote, valuePerOldShare, adjustmentFactor, … }",
+          "description": "TERP with every input that produced it, plus the value per old share — the quantity that shows the transfer is a transfer and not a loss."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "no revision is available at asOf",
+            "behaviour": "returned as a state on the result rather than thrown"
+          },
+          {
+            "when": "the subscription ratio is not positive",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(revisions)",
+          "space": "O(1)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -7223,7 +7399,35 @@
         "archetype": "record-transform",
         "signature": "calculate(input)"
       },
-      "api": null,
+      "api": {
+        "summary": "Splits a parent's price history at a spin-off. One company becomes two, so the parent's own history must be restated by the value that left with the child — otherwise the parent shows a fall it never suffered.",
+        "params": [
+          {
+            "name": "input",
+            "type": "{ asOf: string; revisions: EventRevision[] }",
+            "required": true,
+            "description": "Revisions carry the parent cum price and the value distributed per parent share, usually derived from the child's when-issued price. Point-in-time by construction: `asOf` is the knowledge time, and only revisions available at or before it are eligible. Passing the event date instead of the knowledge date is what lets a backtest use information it could not have had.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ status, parentCumPrice, distributedValuePerParent, theoreticalParentExReference, adjustmentFactor, … }",
+          "description": "The theoretical ex-distribution reference for the parent and the factor to apply to its history, with a `status` that distinguishes a completed calculation from one awaiting a reliable child valuation."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "the distributed value cannot be established at asOf",
+            "behaviour": "reported as a status rather than thrown"
+          }
+        ],
+        "complexity": {
+          "time": "O(revisions)",
+          "space": "O(1)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -7441,7 +7645,35 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "Applies a stock dividend, where shareholders receive additional shares instead of cash. Economically close to a split, but reported differently and often with a different volume convention — which is the part that gets missed.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ method: string; securityId: string; asOf: string; anchorAt: string; volumePolicy: string; events: Event[]; observations: Observation[] }",
+            "required": true,
+            "description": "`volumePolicy` decides whether traded volume is restated alongside price; the two conventions are both in use and disagree. `anchorAt` fixes the basis date. Point-in-time by construction: `asOf` is the knowledge time, and only revisions available at or before it are eligible. Passing the event date instead of the knowledge date is what lets a backtest use information it could not have had.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ method, appliedEvents, unavailableEventIds, cancelledEventIds, observations, … }",
+          "description": "Adjusted observations plus which events were applied, which were not yet knowable, and which were cancelled — a cancelled event that silently still applies is a class of bug this makes visible."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "the volume policy or method is unrecognised",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n + e)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -7717,7 +7949,35 @@
         "archetype": "record-transform",
         "signature": "calculate(rawData)"
       },
-      "api": null,
+      "api": {
+        "summary": "Handles a distribution large or irregular enough that treating it as an ordinary dividend misstates the series. The hard part is not the arithmetic but the classification, and this makes that decision explicit and auditable.",
+        "params": [
+          {
+            "name": "rawData",
+            "type": "{ securityId: string; eventId: string; asOf: string; methodology: string; eventRevisions: EventRevision[]; referencePrice: object; precedingActions: object[]; fxRate?: object; taxProfile?: object; exPriceObservation?: object }",
+            "required": true,
+            "description": "`precedingActions` matters because adjustments compose in order — a split applied before or after this distribution gives different answers. `fxRate` and `taxProfile` cover cross-currency distributions and withholding. Point-in-time by construction: `asOf` is the knowledge time, and only revisions available at or before it are eligible. Passing the event date instead of the knowledge date is what lets a backtest use information it could not have had.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ eventState, classificationDecision, classificationReason, adjustmentApplied, grossDividendOnEventBasis, netDividendOnEventBasis, … }",
+          "description": "The classification *and the reason for it*, alongside gross and net amounts on the event's own basis. The reason is the point: this is a judgement, and a judgement without its rationale cannot be reviewed."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "the methodology is unrecognised",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(revisions + actions)",
+          "space": "O(1)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -7937,7 +8197,35 @@
         "archetype": "record-transform",
         "signature": "calculate(payload)"
       },
-      "api": null,
+      "api": {
+        "summary": "Applies a return of capital, which reduces the investor's cost basis rather than paying income. It affects price continuity and tax reporting differently from a dividend, and conflating the two misstates both.",
+        "params": [
+          {
+            "name": "payload",
+            "type": "{ asOf: string; revisions: EventRevision[]; referenceObservation: object; fxObservation?: object; exObservation?: object; taxIllustration?: object }",
+            "required": true,
+            "description": "`taxIllustration` is optional and, when supplied, drives an illustrative US federal treatment kept strictly separate from the market-data adjustment. Point-in-time by construction: `asOf` is the knowledge time, and only revisions available at or before it are eligible. Passing the event date instead of the knowledge date is what lets a backtest use information it could not have had.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ state, applied, marketDataAdjustment, investorReturnDiagnostics, usFederalTaxIllustration }",
+          "description": "The market-data adjustment and the tax illustration as separate blocks, deliberately — one is a price-series fact and the other is jurisdiction-specific and illustrative only."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "no revision is available at asOf",
+            "behaviour": "reported as a state rather than thrown"
+          }
+        ],
+        "complexity": {
+          "time": "O(revisions)",
+          "space": "O(1)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -8133,7 +8421,35 @@
         "archetype": "row-classify",
         "signature": "resolveIdentifier(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "Resolves a vendor or exchange identifier to a permanent internal key. Tickers are recycled and vendor ids are reassigned; anything keyed on them corrupts its own history without ever raising an error.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ query: { identifier: string; validAt: string; knowledgeAt: string }; assertions: Assertion[] }",
+            "required": true,
+            "description": "`validAt` is when the identifier was in use and `knowledgeAt` when you are asking — the two differ whenever a mapping is corrected after the fact. `assertions` is the evidence set the resolution draws on.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ status, canonicalId, candidateCanonicalIds, confidence, evidence, … }",
+          "description": "The resolved key with its confidence and the evidence behind it — and, when the identifier is genuinely ambiguous, every candidate rather than an arbitrary pick."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "the query is missing an identifier or a time",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(assertions)",
+          "space": "O(candidates)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -8388,7 +8704,35 @@
         "archetype": "row-classify",
         "signature": "resolveTickerChain(input)"
       },
-      "api": null,
+      "api": {
+        "summary": "Follows a symbol through renames in either direction. FB became META, and any store keyed on the symbol now holds two disconnected halves of one company's history.",
+        "params": [
+          {
+            "name": "input",
+            "type": "{ issuers: Issuer[]; instruments: Instrument[]; listings: Listing[]; assignments: Assignment[]; query: { symbol: string; asOf: string; queryAt: string } }",
+            "required": true,
+            "description": "The four reference tables separate the layers a symbol actually sits on — issuer, instrument, listing, and the symbol assignment itself. Collapsing them is what makes rename handling ad hoc.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ status, direction, symbol, listingId, instrumentId, issuerId, chain, … }",
+          "description": "The resolved identifiers at every layer plus the chain traversed, so a surprising answer can be walked back."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "the query symbol or time is missing",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(assignments)",
+          "space": "O(chain)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -8630,7 +8974,35 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "Relates share classes of one issuer — GOOG and GOOGL, voting and non-voting lines. Index membership, float and liquidity screens all need to know these are one company, and naive de-duplication by name gets it wrong.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ query: object; entities: Entity[]; relationships: Relationship[] }",
+            "required": true,
+            "description": "`relationships` carries the declared links between classes rather than inferring them from name similarity, which fails on exactly the cases that matter.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ query, root, state, sameIssuerShareClassIds, comparison, resolvedRelationships, diagnostics }",
+          "description": "Every class of the same issuer, with the comparison basis used and diagnostics for links that could not be resolved."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "the query entity is unknown",
+            "behaviour": "reported as a state rather than thrown"
+          }
+        ],
+        "complexity": {
+          "time": "O(relationships)",
+          "space": "O(classes)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -8980,7 +9352,35 @@
         "archetype": "row-classify",
         "signature": "resolveMerger(payload)"
       },
-      "api": null,
+      "api": {
+        "summary": "Maps a position in a predecessor company onto what it became: successor shares, cash, or a mix. Getting the entitlement wrong is not a rounding error — it changes the return of the position outright.",
+        "params": [
+          {
+            "name": "payload",
+            "type": "{ asOf: string; position: Position; eventVersions: EventVersion[] }",
+            "required": true,
+            "description": "`eventVersions` is a revision history because merger terms are frequently amended before completion. Point-in-time by construction: `asOf` is the knowledge time, and only revisions available at or before it are eligible. Passing the event date instead of the knowledge date is what lets a backtest use information it could not have had.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ state, eventId, selectedRevision, effectiveAt, predecessor, allocations, successorPositions, cashByCurrency, … }",
+          "description": "The resulting positions and cash by currency, with the allocation that produced them and which revision was in force — so a disputed entitlement can be reconstructed."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "no event version is effective at asOf",
+            "behaviour": "reported as a state rather than thrown"
+          }
+        ],
+        "complexity": {
+          "time": "O(versions)",
+          "space": "O(successors)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -9327,7 +9727,35 @@
         "archetype": "record-transform",
         "signature": "calculate(input)"
       },
-      "api": null,
+      "api": {
+        "summary": "Reconstructs the final return of a security that stopped trading. Omitting it is one of the largest sources of survivorship bias in equity research: the companies that failed are exactly the ones with no last price.",
+        "params": [
+          {
+            "name": "input",
+            "type": "{ asOf: string; baseCurrency: string; previousRegularObservation: object; lastRegularObservation: object; event: object; proceedsStatus: string; proceeds?: object; deductions?: object; researchImputation?: object }",
+            "required": true,
+            "description": "`proceedsStatus` distinguishes proceeds that are known, pending or never paid. `researchImputation` supplies the convention to use when nothing was recovered — CRSP-style imputed delisting returns exist precisely because the honest answer is not zero.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ observed, researchEstimate, diagnostics }",
+          "description": "The observed return and the imputed research estimate as **separate** fields. Merging them would hide the difference between what happened and what a convention assumes happened."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "proceedsStatus is unrecognised",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(1)",
+          "space": "O(1)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -9603,7 +10031,35 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "Rebuilds an index's membership as it stood on a past date, from a base snapshot plus the change events since. Testing a strategy on today's members instead guarantees flattering results, because today's members are the survivors.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ indexId: string; effectiveAt: string; knownAt: string; snapshots: Snapshot[]; events: Event[] }",
+            "required": true,
+            "description": "`effectiveAt` is the date whose roster you want; `knownAt` is when you are asking. They differ whenever a membership change is announced before it takes effect, or corrected afterwards — and conflating them is the bias this exists to prevent.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ status, indexId, effectiveAt, knownAt, baseSnapshotId, securityIds, membershipIntervals, … }",
+          "description": "The roster with the interval each member was in the index, and which snapshot it was rolled forward from."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "no snapshot precedes effectiveAt",
+            "behaviour": "reported as a status rather than thrown"
+          }
+        ],
+        "complexity": {
+          "time": "O(events)",
+          "space": "O(members)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -9848,7 +10304,35 @@
         "archetype": "row-classify",
         "signature": "guardSurvivorship(input)"
       },
-      "api": null,
+      "api": {
+        "summary": "Compares a universe you intend to test against the point-in-time roster and reports what is missing. It is a gate rather than a transform: the failure is the product.",
+        "params": [
+          {
+            "name": "input",
+            "type": "{ universeId: string; definitionId: string; effectiveAt: string; knownAt: string; candidateUniverse: object; universeDefinitions: object[]; membershipRecords: object[]; comparisonRoster: object }",
+            "required": true,
+            "description": "`candidateUniverse` is the roster under test — typically whatever a data pull returned — and `comparisonRoster` is the point-in-time truth to check it against.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ status, definitionVersion, candidateUniverseAsOf, missingSecurities, extraSecurities, … }",
+          "description": "Which securities are missing from the candidate and which should not be there, with the definition version the comparison used."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "the universe definition is unknown at knownAt",
+            "behaviour": "reported as a status rather than thrown"
+          }
+        ],
+        "complexity": {
+          "time": "O(members)",
+          "space": "O(members)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -10138,7 +10622,35 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "Decides when a newly listed security first became usable — not when it was listed, but when enough history existed to satisfy the policy a strategy actually applies.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ query: object; policies: Policy[]; records: Record[] }",
+            "required": true,
+            "description": "`policies` states the seasoning rules — minimum trading days, minimum float, minimum liquidity — so the availability date follows from a declared rule rather than a hard-coded constant.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ effectiveAt, knownAt, identity, policyId, status, policySatisfied, effectiveGateAt, … }",
+          "description": "The date the security became eligible under the named policy, plus which gate was the binding one."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "the referenced policy does not exist",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(records)",
+          "space": "O(1)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -10398,7 +10910,35 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "Selects the version of a financial filing that was current at a knowledge time. Companies restate; using the final restated figure in a backtest means trading on numbers nobody had.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ entityId: string; reportPeriod: string; formFamily: string; asOf: string; records: FilingRecord[] }",
+            "required": true,
+            "description": "`records` is the full filing and amendment history for the period. `asOf` is the knowledge time — the amendment that superseded a figure last week was not available a month ago.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ entityId, reportPeriod, asOf, selectionBasis, accessionNo, form, amendmentNumber, acceptedAt, … }",
+          "description": "The selected filing with its accession number and acceptance time, and the basis on which it was chosen."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "no filing exists for the period at asOf",
+            "behaviour": "reported on the result rather than thrown"
+          }
+        ],
+        "complexity": {
+          "time": "O(records)",
+          "space": "O(1)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -10586,7 +11126,35 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "Sets an index running: pick a base date and a base level, and the divisor follows from the market value on that date. Everything else in index construction is maintenance of this one relationship.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ constituents: Constituent[]; baseLevel: number; baseDate: string }",
+            "required": true,
+            "description": "`constituents` supply the market value at the base date. `baseLevel` is an arbitrary convention — 100 and 1000 are both common — and only fixes the scale.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ marketValue, divisor, indexLevel }",
+          "description": "The base market value, the divisor derived from it, and the level — which by construction equals `baseLevel` on day one."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "baseLevel is not positive or the market value is zero",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(1)"
+        }
+      },
       "example": {
         "origin": "fixture",
         "verified": true,
@@ -10780,7 +11348,35 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "The divisor itself: market value divided by the target level. Small, and the number every other calculation in this domain is defined against.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ marketValue: number; baseLevel: number }",
+            "required": true,
+            "description": "Total market value and the level it should represent.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ marketValue, divisor, indexLevel }",
+          "description": "The divisor and the level it produces, echoed back for checking."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "baseLevel is not positive",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(1)",
+          "space": "O(1)"
+        }
+      },
       "example": {
         "origin": "fixture",
         "verified": true,
@@ -10951,7 +11547,35 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "Rescales the divisor when market value changes for a non-market reason — a share issue, a member swap — so the level does not jump. This is the mechanism that makes an index a continuous series rather than a sum of unrelated numbers.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ oldMarketValue: number; newMarketValue: number; oldDivisor: number }",
+            "required": true,
+            "description": "The market value immediately before and after the change, and the divisor in force before it. Both values must be measured at the same prices — a divisor adjustment that also absorbs a price move is the classic error.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ oldLevel, newDivisor, bridgedLevel, continuityError }",
+          "description": "The new divisor plus `continuityError` — the residual difference between the level before and after. It should be zero or floating-point dust; anything larger means the inputs were not measured at the same instant."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "any market value or divisor is not positive",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(1)",
+          "space": "O(1)"
+        }
+      },
       "example": {
         "origin": "fixture",
         "verified": true,
@@ -11124,7 +11748,35 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "Applies a corporate action to an index by routing its non-market value change through the divisor. Connects D02's event handling to the index level: the constituent's price changes for real, the index level must not.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ preEventMarketValue: number; nonMarketValueChange: number; preEventDivisor: number; action: string }",
+            "required": true,
+            "description": "`nonMarketValueChange` is the part of the value change that is *not* economic — the part the divisor must absorb. Splitting a change into its market and non-market components correctly is the whole difficulty.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ action, preEventLevel, postEventMarketValue, newDivisor, bridgedLevel }",
+          "description": "The rebased divisor and the level either side, which should match."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "the pre-event divisor is not positive",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(1)",
+          "space": "O(1)"
+        }
+      },
       "example": {
         "origin": "fixture",
         "verified": true,
@@ -11299,7 +11951,35 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "Recomputes the level from a live price snapshot using fixed index shares and float factors. Shares and float are held constant through the session — only prices move — which is why an intraday level is cheap to compute.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ indexShares: Record<string, number>; floatFactors: Record<string, number>; divisor: number; snapshots: Snapshot[] }",
+            "required": true,
+            "description": "`indexShares` and `floatFactors` are set at the last rebalance, not recalculated per tick. `snapshots` are the price updates to evaluate.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ levels, divisor }",
+          "description": "A level per snapshot, and the divisor used."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "a snapshot references a constituent with no index shares",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(snapshots × constituents)",
+          "space": "O(snapshots)"
+        }
+      },
       "example": {
         "origin": "fixture",
         "verified": true,
@@ -11535,7 +12215,35 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "The Dow construction: sum the prices, divide by a divisor. Weight follows share *price*, not company size — a $500 stock moves it more than a $50 one ten times the size, which is why it tells a different story from the S&P.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ prices: number[]; divisor: number }",
+            "required": true,
+            "description": "Constituent prices and the current divisor.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ priceSum, divisor, indexLevel, weights }",
+          "description": "The level plus the implied weights, which make the price-not-size effect visible."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "the divisor is not positive",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "fixture",
         "verified": true,
@@ -11717,7 +12425,35 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "Weight by full market capitalisation. The textbook construction, and the starting point every float and capping rule modifies.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ constituents: Constituent[]; divisor: number }",
+            "required": true,
+            "description": "Constituents carrying price and total shares outstanding, and the current divisor.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ marketValues, weights, indexLevel }",
+          "description": "Per-constituent market values and weights alongside the level."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "the divisor is not positive",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "fixture",
         "verified": true,
@@ -11915,7 +12651,35 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "Weight by the shares that can actually be bought. Excluding strategic, government and insider holdings is what makes an index replicable — a fund cannot buy shares that are not for sale.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ constituents: Constituent[] }",
+            "required": true,
+            "description": "Constituents carrying price, shares outstanding and a free-float factor.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ ids, floatMarketValues, weights }",
+          "description": "Float-adjusted market values and the weights they imply."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "a float factor falls outside 0…1",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "fixture",
         "verified": true,
@@ -12122,7 +12886,39 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "Float weighting with a ceiling on any single constituent. Regulation and mandate limits require it, and the redistribution is subtler than it looks: capping one name lifts the others, which can push a second name over the cap.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ ids: string[]; marketValues: number[]; cap: number }",
+            "required": true,
+            "description": "`cap` is the maximum weight any one constituent may hold, as a fraction. The routine iterates until every weight is compliant.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ ids, weights, cap, iterations, maxWeight, weightSum }",
+          "description": "Compliant weights plus `iterations` and `maxWeight`, so the redistribution can be checked rather than assumed to have converged."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "cap is not between 0 and 1",
+            "behaviour": "throws"
+          },
+          {
+            "when": "the cap is mathematically unsatisfiable — cap × count < 1",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n × iterations)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "fixture",
         "verified": true,
@@ -12321,7 +13117,35 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "Applies an exponent to market value before weighting, compressing the gap between the largest and smallest members. An exponent of 1 is plain cap weighting and 0 is equal weighting; between them is a continuous dial.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ ids: string[]; marketValues: number[]; exponent: number }",
+            "required": true,
+            "description": "`exponent` below 1 compresses the distribution; above 1 concentrates it further.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ ids, transformedValues, weights, exponent }",
+          "description": "The transformed values and resulting weights."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "a market value is negative",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "fixture",
         "verified": true,
@@ -12519,7 +13343,35 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "Every constituent counts the same. Simple to state and expensive to run: weights drift with prices immediately, so the construction implies continuous rebalancing and materially higher turnover.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ ids: string[]; returns: number[] }",
+            "required": true,
+            "description": "Constituent ids and their period returns.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ ids, weights, portfolioReturn }",
+          "description": "Equal weights and the resulting portfolio return."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "ids and returns differ in length",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "fixture",
         "verified": true,
@@ -12714,7 +13566,35 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "The redistribution engine behind every capped index. Cap the offenders, spread the excess across the rest in proportion, repeat until nothing breaches — the loop is necessary because each pass can create new breaches.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ ids: string[]; rawWeights: number[]; cap: number; tolerance: number; maxIterations: number }",
+            "required": true,
+            "description": "`tolerance` is the convergence threshold and `maxIterations` the bound that keeps a pathological input from looping forever.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ ids, weights, cap, iterations, maxWeight, weightSum }",
+          "description": "Converged weights with the iteration count. `weightSum` should be 1 to within tolerance — if it is not, the loop hit its bound."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "cap × count < 1, which makes compliance impossible",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n × iterations)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "fixture",
         "verified": true,
@@ -12919,7 +13799,35 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "Caps at two levels at once: each constituent, and each group it belongs to. This is the UCITS 5/10/40 shape, and the two constraints interact — satisfying one can break the other, so both are enforced together.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ items: Item[]; constituentCap: number; groupCaps: Record<string, number>; tolerance: number; maxIterations: number }",
+            "required": true,
+            "description": "`items` carry each constituent's group membership. `groupCaps` may differ per group — sector limits are rarely uniform.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ ids, weights, groupWeights, iterations, weightSum }",
+          "description": "Weights satisfying both constraint levels, with the realised group weights so compliance is visible rather than implied."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "the combination of caps is unsatisfiable",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n × iterations)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "fixture",
         "verified": true,
@@ -13131,7 +14039,35 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "Weight by accounting size — sales, book value, cash flow, dividends — instead of market price. The argument is that price-based weighting mechanically overweights whatever is currently expensive.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ records: Record[]; multipliers: Record<string, number> }",
+            "required": true,
+            "description": "`records` carry the fundamental metrics per constituent; `multipliers` set how each metric contributes to the composite score.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ ids, scores, weights }",
+          "description": "The composite score per constituent and the weights derived from it."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "a multiplier references a metric absent from the records",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n × metrics)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "fixture",
         "verified": true,
@@ -13344,7 +14280,35 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "Weight by dividend yield. Straightforward arithmetic with a well-known failure mode: yield rises as price falls, so the construction naturally overweights companies in distress.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ ids: string[]; dividendYields: number[] }",
+            "required": true,
+            "description": "Constituent ids and their yields, expressed consistently as fractions or percentages.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ ids, weights, weightedYield }",
+          "description": "Weights and the resulting portfolio yield."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "a yield is negative",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "fixture",
         "verified": true,
@@ -13539,7 +14503,35 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "Weight by a composite of factor scores — value, quality, momentum — with a floor so negative scores cannot produce negative weights.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ records: Record[]; factorWeights: Record<string, number>; scoreFloor: number }",
+            "required": true,
+            "description": "`factorWeights` blends the factors; `scoreFloor` clips the composite from below, which is what keeps a short position from appearing in a long-only index.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ ids, compositeScores, weights }",
+          "description": "The blended score per constituent and the weights it produces."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "the factor weights do not reference any available score",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n × factors)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "fixture",
         "verified": true,
@@ -13752,7 +14744,35 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "Solves for the weights that minimise portfolio variance for a given covariance matrix. The result is only as good as the covariance estimate, which is the part that is hard — not the optimisation.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ ids: string[]; covariance: number[][] }",
+            "required": true,
+            "description": "`covariance` must be square, symmetric and positive semi-definite. A matrix estimated from fewer observations than assets will not be, and no optimiser can rescue it.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ ids, weights, variance, volatility }",
+          "description": "The minimising weights and the portfolio variance and volatility they achieve."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "the covariance matrix is not square or not symmetric",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n³)",
+          "space": "O(n²)"
+        }
+      },
       "example": {
         "origin": "fixture",
         "verified": true,
@@ -13952,7 +14972,35 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "Risk parity: weights chosen so every constituent contributes the same share of total portfolio risk. Equal *risk*, not equal money — a volatile asset gets a smaller position.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ ids: string[]; covariance: number[][]; tolerance: number; maxIterations: number }",
+            "required": true,
+            "description": "Solved iteratively; `tolerance` is the convergence threshold on risk-contribution dispersion and `maxIterations` the bound.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ ids, weights, riskContributionShares, volatility, iterations }",
+          "description": "The weights plus each constituent's realised risk share — which should be equal, and is reported so that can be verified rather than assumed."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "the covariance matrix is not square or not symmetric",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n² × iterations)",
+          "space": "O(n²)"
+        }
+      },
       "example": {
         "origin": "fixture",
         "verified": true,
@@ -14159,7 +15207,35 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "Tilts a parent index toward a theme by scaling weights with a theme score, bounded so no single name runs away. Keeps the parent's diversification while expressing a view.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ ids: string[]; parentWeights: number[]; themeScores: number[]; tilt: number; maxMultiplier: number }",
+            "required": true,
+            "description": "`tilt` sets the strength of the tilt and `maxMultiplier` caps how far any weight may be multiplied — without it a high score plus a small parent weight produces an untradeable position.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ ids, multipliers, weights, activeWeights }",
+          "description": "Tilted weights and the active weights against the parent, which is what a tracking-error budget is measured on."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "maxMultiplier is less than 1",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "fixture",
         "verified": true,
@@ -14376,7 +15452,35 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "Level series from price returns alone, ignoring dividends. The number most often quoted, and the one that understates long-horizon performance.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ prices: number[]; baseLevel: number }",
+            "required": true,
+            "description": "Constituent or index prices in chronological order. `baseLevel` is the index value at the start of the series; it scales the level but never the returns.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ returns, levels, endingLevel }",
+          "description": "Period returns, the level series, and the final level."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "fewer than two prices are supplied",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "fixture",
         "verified": true,
@@ -14567,7 +15671,35 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "Reinvests dividends in full, with no tax deducted. The variant that assumes a holder who suffers no withholding — a domestic pension fund, typically.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ prices: number[]; dividends: number[]; baseLevel: number }",
+            "required": true,
+            "description": "`dividends` aligns index-for-index with `prices` and is expressed on the ex-date. `baseLevel` is the index value at the start of the series; it scales the level but never the returns.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ returns, levels, endingLevel }",
+          "description": "Total returns with dividends reinvested gross."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "prices and dividends differ in length",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "fixture",
         "verified": true,
@@ -14766,7 +15898,35 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "Reinvests dividends after withholding tax. Over a decade the gap from the gross variant is large enough that quoting the wrong one materially misstates performance — and both are published under nearly the same name.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ prices: number[]; dividends: number[]; withholdingRates: number[]; baseLevel: number }",
+            "required": true,
+            "description": "`withholdingRates` is per observation because the rate depends on the domicile pairing and changes with treaty. `baseLevel` is the index value at the start of the series; it scales the level but never the returns.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ returns, levels, endingLevel }",
+          "description": "Total returns with dividends reinvested net of withholding."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "a withholding rate falls outside 0…1",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "fixture",
         "verified": true,
@@ -14973,7 +16133,35 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "Total return less a cash return, giving the return over funding. This is what a futures or swap position on the index actually earns, which is why structured products quote it.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ totalReturns: number[]; cashReturns: number[]; baseLevel: number }",
+            "required": true,
+            "description": "Both series must cover identical periods; mismatched compounding frequencies are a silent error. `baseLevel` is the index value at the start of the series; it scales the level but never the returns.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ excessReturns, levels, endingLevel }",
+          "description": "Excess returns and the level series they generate."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "the two return series differ in length",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "fixture",
         "verified": true,
@@ -15173,7 +16361,35 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "Expresses dividends in index points rather than currency, which is how dividend futures and swaps are quoted. Converting through the divisor is what makes a per-share payment comparable to an index level.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ events: DividendEvent[]; divisor: number }",
+            "required": true,
+            "description": "`events` carry per-share dividends and index shares; `divisor` converts the aggregate into points.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ ids, pointContributions, dividendPoints }",
+          "description": "Each constituent's contribution in points and the total."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "the divisor is not positive",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "fixture",
         "verified": true,
@@ -15374,7 +16590,35 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "Restates an index in another currency by compounding local returns with FX returns. Unhedged: the holder takes the currency exposure, and this is the variant that shows it.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ localReturns: number[]; fxReturns: number[]; baseLevel: number; quote: string }",
+            "required": true,
+            "description": "`quote` names the direction of the FX quotation. Getting that direction backwards inverts the currency effect, and the result still looks plausible. `baseLevel` is the index value at the start of the series; it scales the level but never the returns.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ baseCurrencyReturns, levels, endingLevel, quote }",
+          "description": "Converted returns and levels, with the quote convention echoed back for checking."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "the return series differ in length",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "fixture",
         "verified": true,
@@ -15573,7 +16817,35 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "Neutralises currency exposure with rolling forwards. Hedged and converted variants of the same index can diverge by double digits over a year — they are different products, not a formatting choice.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ baseCurrencyReturns: number[]; forwardOffsets: number[]; hedgeRatio: number; baseLevel: number }",
+            "required": true,
+            "description": "`forwardOffsets` carry the forward points, which is where the interest-rate differential enters — a hedge is not free. `hedgeRatio` allows partial hedging. `baseLevel` is the index value at the start of the series; it scales the level but never the returns.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ hedgedReturns, levels, endingLevel, hedgeRatio }",
+          "description": "Hedged returns and levels, with the ratio applied."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "hedgeRatio falls outside 0…1",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "fixture",
         "verified": true,
@@ -15772,7 +17044,35 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "Applies a leverage multiple that resets every day. Daily reset is why a 2× product does not deliver 2× over a month: in a choppy market, compounding the reset erodes the level even when the underlying ends flat.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ returns: number[]; leverage: number; dailyCost: number; baseLevel: number }",
+            "required": true,
+            "description": "`dailyCost` is the financing drag applied each day, which is what makes the long-run gap wider than volatility decay alone. `baseLevel` is the index value at the start of the series; it scales the level but never the returns.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ strategyReturns, levels, endingLevel, multiple }",
+          "description": "The leveraged return series and levels."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "leverage is not positive",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "fixture",
         "verified": true,
@@ -15967,7 +17267,35 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "An inverse multiple reset daily. The same path dependence as the leveraged case and in the same direction: over any period longer than a day, the result is not the negative of the underlying's return.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ returns: number[]; inverseMultiple: number; dailyCost: number; baseLevel: number }",
+            "required": true,
+            "description": "`inverseMultiple` is given as a positive magnitude. `baseLevel` is the index value at the start of the series; it scales the level but never the returns.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ strategyReturns, levels, endingLevel, multiple }",
+          "description": "The inverse return series and levels."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "inverseMultiple is not positive",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "fixture",
         "verified": true,
@@ -16162,7 +17490,35 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "Scales exposure to hold realised volatility near a target, cutting it when markets get rough. Exposure is set from *trailing* volatility, so the mechanism always acts after the fact — it dampens rather than avoids.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ returns: number[]; lookback: number; annualization: number; targetVolatility: number; maxExposure: number; cashReturn: number; baseLevel: number }",
+            "required": true,
+            "description": "`lookback` is the realised-volatility window and `annualization` the scaling factor (252 for daily data). `maxExposure` caps leverage when volatility is low. `baseLevel` is the index value at the start of the series; it scales the level but never the returns.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ exposures, strategyReturns, levels, endingLevel }",
+          "description": "The exposure actually taken each day alongside the returns — the exposure path is what explains the strategy's behaviour."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "lookback < 1, or targetVolatility is not positive",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n × lookback)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "fixture",
         "verified": true,
@@ -16367,7 +17723,35 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "Deducts a fixed number of index points per year. Decrement indices exist to make option pricing on them cheaper, and the deduction is a real drag borne by the holder — not a fee schedule.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ underlyingLevels: number[]; annualDecrementPoints: number; dayCount: number; baseLevel: number }",
+            "required": true,
+            "description": "`dayCount` sets the convention used to pro-rate the annual figure; 360 and 365 give different answers. `baseLevel` is the index value at the start of the series; it scales the level but never the returns.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ dailyDeductions, levels, endingLevel }",
+          "description": "The deduction applied each day and the resulting level series."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "dayCount is not positive",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "fixture",
         "verified": true,
@@ -16561,7 +17945,35 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "The same idea as a fixed decrement, but proportional to the level. The two diverge as the index moves: a points decrement bites harder when the level is low, a percentage one scales with it.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ underlyingLevels: number[]; annualDecrementRate: number; dayCount: number; baseLevel: number }",
+            "required": true,
+            "description": "`annualDecrementRate` is a fraction per year, pro-rated by `dayCount`. `baseLevel` is the index value at the start of the series; it scales the level but never the returns.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ dailyDeductions, levels, endingLevel }",
+          "description": "The proportional deduction per day and the level series."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "dayCount is not positive, or the rate is negative",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "fixture",
         "verified": true,
@@ -16755,7 +18167,35 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "Combines several index return streams into one under fixed weights. Straightforward, with one thing to get right: the component returns must be the same variant — mixing a price-return component with a total-return one biases the blend.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ componentIds: string[]; weights: number[]; componentReturns: number[][]; baseLevel: number }",
+            "required": true,
+            "description": "`componentReturns` is one series per component, all covering the same periods. `baseLevel` is the index value at the start of the series; it scales the level but never the returns.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ componentIds, portfolioReturns, levels, endingLevel }",
+          "description": "The blended return series and level."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "the weights and components differ in length, or the return series are ragged",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n × components)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "fixture",
         "verified": true,
@@ -16970,7 +18410,35 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "Applies the qualification rules that decide what may be considered for membership at all — domicile, listing status, share class, and the rest. The first gate, and the one that defines what the index claims to represent.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ candidates: Candidate[] }",
+            "required": true,
+            "description": "Each candidate carries the attributes the rules test. The rules travel with the data rather than being hard-coded, so a rule change is a data change.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ results, eligibleIds, rejectedCount }",
+          "description": "A per-candidate result naming which rule rejected it — a rejection without a reason cannot be appealed or audited."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "a candidate is missing an attribute a rule requires",
+            "behaviour": "recorded as a rejection reason rather than thrown"
+          }
+        ],
+        "complexity": {
+          "time": "O(n × rules)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "fixture",
         "verified": true,
@@ -17185,7 +18653,35 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "Requires sustained tradability, not a single good month. Median turnover over a minimum number of months is the standard test, and the median is deliberate: a mean is dominated by one spike of activity.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ records: Record[]; minimumMedianTurnover: number; minimumMonths: number }",
+            "required": true,
+            "description": "`minimumMonths` is the sustained-history requirement, which is what stops a newly listed name qualifying on a burst of IPO volume.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ results, passingIds, threshold }",
+          "description": "Per-candidate results with the realised median and the threshold applied."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "minimumMonths is less than 1",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n × months)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "fixture",
         "verified": true,
@@ -17411,7 +18907,35 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "Derives the free-float factor by removing strategic, government, insider and cross-holdings, then rounds it to a band. Rounding is deliberate: unrounded factors would force a weight change every time a holding moved a fraction of a percent.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ records: Record[]; roundingStep: number }",
+            "required": true,
+            "description": "`roundingStep` is the band width — 5% is common. It trades a little precision for a great deal less turnover.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ results, roundingStep }",
+          "description": "The raw and rounded factor per constituent, with the excluded holdings that produced it."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "roundingStep is not between 0 and 1",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n × holdings)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "fixture",
         "verified": true,
@@ -17613,7 +19137,35 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "Admits a large new listing between scheduled reviews. Without a fast-entry rule an index can spend months not holding one of the biggest companies in its own market.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ candidates: Candidate[]; minimumFloatMarketCap: number; minimumLiquidityDays: number; minimumTradingDays: number }",
+            "required": true,
+            "description": "The three thresholds are simultaneous: size alone does not qualify a listing that has not yet traded enough to be buyable.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ results, fastEntryIds }",
+          "description": "Which candidates qualify and which threshold blocked the rest."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "any threshold is negative",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "fixture",
         "verified": true,
@@ -17828,7 +19380,35 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "Chooses the membership at a scheduled review, using an incumbent buffer so a name hovering at the boundary is not swapped in and out every period. The buffer is what separates an index from a churn machine.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ candidates: Candidate[]; targetCount: number; incumbentBuffer: number }",
+            "required": true,
+            "description": "`incumbentBuffer` lets an existing member stay while it ranks within the buffer beyond the cutoff — asymmetric on purpose, because turnover costs the tracking funds real money.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ selectedIds, additions, deletions, targetCount }",
+          "description": "The new membership with the explicit adds and drops it implies."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "targetCount exceeds the candidate count",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n log n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "fixture",
         "verified": true,
@@ -18025,7 +19605,35 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "Turns a weight change into the trades that implement it, and reports the turnover. Turnover is the number that predicts what tracking the index will cost.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ records: Record[]; notional: number }",
+            "required": true,
+            "description": "`records` carry current and target weights per constituent; `notional` is the portfolio size the trades are sized against.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ trades, oneWayTurnover, grossTradeValue }",
+          "description": "The trade list plus one-way turnover — stated as one-way explicitly, because quoting two-way turnover doubles the apparent cost."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "notional is not positive",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "fixture",
         "verified": true,
@@ -18231,7 +19839,35 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "The buffer in isolation: a band around the cutoff inside which incumbents keep their place. Widening it cuts turnover and lets the membership drift further from the pure ranking — that trade-off is the whole design decision.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ candidates: Candidate[]; targetCount: number; buffer: number }",
+            "required": true,
+            "description": "`buffer` is expressed in ranks or in weight, depending on the index's own rulebook.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ selectedIds, additions, deletions, targetCount }",
+          "description": "The membership after the buffer is applied, with the changes it permitted."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "buffer is negative",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n log n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "fixture",
         "verified": true,
@@ -18428,7 +20064,35 @@
         "archetype": "record-transform",
         "signature": "calculate(data)"
       },
-      "api": null,
+      "api": {
+        "summary": "Estimates what a rebalance costs to implement — spread, market impact and commission. This is where the rulebook meets reality: a screen that looks clean on paper can be expensive to track.",
+        "params": [
+          {
+            "name": "data",
+            "type": "{ trades: Trade[] }",
+            "required": true,
+            "description": "Each trade carries size, spread and the liquidity measures the impact model consumes.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ results, estimatedCost, costBpsOnGrossTrade }",
+          "description": "Per-trade costs plus the total in basis points of gross traded value, which is the unit these are compared in."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "a trade is missing a liquidity input the model requires",
+            "behaviour": "recorded on the result rather than thrown"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "fixture",
         "verified": true,
