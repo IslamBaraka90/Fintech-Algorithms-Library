@@ -2,7 +2,7 @@
   "schemaVersion": "1.0.0",
   "package": {
     "name": "fintech-algorithms",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "homepage": "https://thefintechbuilder.com/library/"
   },
   "counts": {
