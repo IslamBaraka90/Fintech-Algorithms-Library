@@ -98,36 +98,49 @@ const coverageBlock = [
 ].join("\n");
 
 /**
- * Every algorithm by name, grouped by domain.
- *
- * This is the block that makes the library findable. Before it existed the
- * README named zero algorithms — it listed domain counts — so a search for
- * "VWAP typescript" or "McClellan oscillator npm" could never match this page.
- * It is generated rather than written so it cannot fall behind the catalog.
- *
- * `✓` marks a topic whose arithmetic is asserted against the worked example
- * published in its article; the rest are proven to load and expose a callable
- * entry point. See the coverage block for what that distinction means.
+ * Base URL of the reference site. The GitHub Pages project URL is used rather
+ * than docs.thefintechbuilder.com because it resolves today; once the custom
+ * domain is configured GitHub 301s this to it, so published READMEs keep
+ * working. Switch this one constant afterwards.
  */
-const conventionById = manifest.topics.reduce((acc, t) => ((acc[t.id] = t.convention ?? "none"), acc), {});
+const DOCS = "https://islambaraka90.github.io/fintech-algorithms-docs";
+
+/**
+ * Every algorithm by name, grouped by domain and family, each linked to its
+ * reference page.
+ *
+ * This block is what makes the library findable: before it existed the README
+ * named zero algorithms — it listed domain counts — so a search for "VWAP
+ * typescript" or "McClellan oscillator npm" could never match this page.
+ *
+ * It was a 187-row table of name, family, import path and verification tick.
+ * That is reference material, and reference material now has somewhere to live:
+ * every one of those columns is on the topic's own docs page, where a reader who
+ * has already chosen the algorithm will look for it. What has to stay here is
+ * the *names*, because this page is the search surface. So the table collapsed
+ * to a linked index — 232 lines to roughly 35, with every searchable term kept.
+ *
+ * Titles are trimmed at the first colon: 34 of them are article headlines rather
+ * than names, and `Merger Predecessor/Successor Mapping: Preserve Identity and
+ * Entitlements Without Inventing Continuity` is not a label anyone scans.
+ */
+const shortName = (title) => title.split(/\s*[:—]\s*/)[0].trim();
+
 const topicsBlock = domains
   .flatMap((domainId) => {
     const inDomain = rows.filter((r) => r.domainId === domainId);
-    const families = [...new Set(inDomain.map((r) => r.familyId))].sort();
+    const familyIds = [...new Set(inDomain.map((r) => r.familyId))].sort();
     return [
       ``,
-      `### ${domainId} — ${inDomain[0].domain}`,
+      `### ${domainId} — ${inDomain[0].domain} · ${inDomain.length} topics`,
       ``,
-      `| Algorithm | Family | Import from \`fintech-algorithms/…\` | Verified |`,
-      `|---|---|---|:--:|`,
-      ...families.flatMap((familyId) =>
-        inDomain
-          .filter((r) => r.familyId === familyId)
-          .map(
-            (r) =>
-              `| ${r.title} | ${r.family} | \`${r.path}\` | ${conventionById[r.id] && conventionById[r.id] !== "none" ? "✓" : "–"} |`,
-          ),
-      ),
+      ...familyIds.map((familyId) => {
+        const inFamily = inDomain.filter((r) => r.familyId === familyId);
+        const names = inFamily
+          .map((r) => `[${shortName(r.title)}](${DOCS}/${r.path}/)`)
+          .join(" · ");
+        return `**${inFamily[0].family}** — ${names}\n`;
+      }),
     ];
   })
   .join("\n")
