@@ -12,7 +12,7 @@
     "verified": 79,
     "withExample": 186,
     "withDiagram": 187,
-    "withApiContract": 5
+    "withApiContract": 60
   },
   "domains": [
     {
@@ -271,7 +271,49 @@
         "archetype": "tape-aggregate",
         "signature": "constructBars(trades, config)"
       },
-      "api": null,
+      "api": {
+        "summary": "Groups a trade tape into fixed-duration bars. This is the sampling scheme every chart you have seen uses, and it is a *choice*: it samples the market at a constant rate regardless of how much is happening in it.",
+        "params": [
+          {
+            "name": "trades",
+            "type": "Trade[]",
+            "required": true,
+            "description": "The raw tape in chronological order. Each trade carries `tradeId`, `timestamp`, `session`, `symbol`, `price`, `volume` and `currency`.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "config",
+            "type": "{ intervalSeconds: number; sessionStarts: Record<string, string>; closePartial?: boolean; emptyBarPolicy?: \"omit\" }",
+            "required": true,
+            "description": "`intervalSeconds` sets the bar length. `sessionStarts` maps each session id to its opening timestamp, so bucket boundaries are anchored to the session rather than to the first trade. `closePartial` decides whether a final incomplete bar is emitted. `emptyBarPolicy: \"omit\"` drops intervals with no trades instead of emitting a flat bar.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "Bar[]",
+          "length": "fewer",
+          "description": "One bar per interval that produced trades, carrying open, high, low, close, volume and the interval boundaries."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "intervalSeconds is not a positive number",
+            "behaviour": "throws"
+          },
+          {
+            "when": "sessionStarts is missing or empty",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(bars)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -480,7 +522,45 @@
         "archetype": "tape-aggregate",
         "signature": "constructBars(trades, config)"
       },
-      "api": null,
+      "api": {
+        "summary": "Closes a bar every N trades rather than every N seconds. Bars then arrive at the rate the market is transacting, so quiet periods produce fewer of them.",
+        "params": [
+          {
+            "name": "trades",
+            "type": "Trade[]",
+            "required": true,
+            "description": "The raw tape in chronological order. Each trade carries `tradeId`, `timestamp`, `session`, `symbol`, `price`, `volume` and `currency`.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "config",
+            "type": "{ targetTicks: number; closePartial?: boolean }",
+            "required": true,
+            "description": "`targetTicks` is the trade count that closes a bar. `closePartial` decides whether a final short bar is emitted.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "Bar[]",
+          "length": "fewer",
+          "description": "One bar per completed group of `targetTicks` trades."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "targetTicks is not a positive integer",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(bars)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -684,7 +764,45 @@
         "archetype": "tape-aggregate",
         "signature": "constructBars(trades, config)"
       },
-      "api": null,
+      "api": {
+        "summary": "Closes a bar once a target share volume has traded. Sampling by volume rather than by clock gives series with far more stable statistical properties than time bars.",
+        "params": [
+          {
+            "name": "trades",
+            "type": "Trade[]",
+            "required": true,
+            "description": "The raw tape in chronological order. Each trade carries `tradeId`, `timestamp`, `session`, `symbol`, `price`, `volume` and `currency`.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "config",
+            "type": "{ targetVolume: number; closePartial?: boolean }",
+            "required": true,
+            "description": "`targetVolume` is the cumulative share volume that closes a bar. A single trade larger than the target closes a bar on its own. `closePartial` decides whether a final short bar is emitted.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "Bar[]",
+          "length": "fewer",
+          "description": "One bar per completed volume bucket."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "targetVolume is not positive",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(bars)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -888,7 +1006,49 @@
         "archetype": "tape-aggregate",
         "signature": "constructBars(trades, config)"
       },
-      "api": null,
+      "api": {
+        "summary": "Closes a bar once a target traded *value* is reached. Unlike volume bars this stays comparable as the price level changes — 1,000 shares of a $10 stock and of a $500 stock are not the same event.",
+        "params": [
+          {
+            "name": "trades",
+            "type": "Trade[]",
+            "required": true,
+            "description": "The raw tape in chronological order. Each trade carries `tradeId`, `timestamp`, `session`, `symbol`, `price`, `volume` and `currency`.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "config",
+            "type": "{ targetDollar: number; currency: string; priceDecimals?: number; quantityDecimals?: number; closePartial?: boolean }",
+            "required": true,
+            "description": "`targetDollar` is the notional that closes a bar and `currency` the unit it is denominated in. The two decimal settings fix the rounding used when accumulating price × quantity, so the same tape gives the same bars on any machine.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "Bar[]",
+          "length": "fewer",
+          "description": "One bar per completed notional bucket."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "targetDollar is not positive",
+            "behaviour": "throws"
+          },
+          {
+            "when": "a trade's currency does not match the configured currency",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(bars)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -1095,7 +1255,45 @@
         "archetype": "tape-aggregate",
         "signature": "constructBars(trades, config)"
       },
-      "api": null,
+      "api": {
+        "summary": "Closes a bar when signed tick flow becomes unusually one-sided relative to what recent history led you to expect. Bars are emitted on *information* rather than on elapsed time or traded quantity.",
+        "params": [
+          {
+            "name": "trades",
+            "type": "Trade[]",
+            "required": true,
+            "description": "The raw tape in chronological order. Each trade carries `tradeId`, `timestamp`, `session`, `symbol`, `price`, `volume` and `currency`.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "config",
+            "type": "{ initialTickSign: number; initialExpectedTicks: number; initialExpectedTickImbalance: number; alphaTicks: number; alphaTickImbalance: number; thresholdFloor: number; thresholdMultiplier: number; closePartial?: boolean }",
+            "required": true,
+            "description": "The `initial*` values seed the expectations before any bar has closed; the `alpha*` values are the EWMA decay rates that update them afterwards. `thresholdFloor` and `thresholdMultiplier` bound the resulting threshold so it cannot collapse toward zero in quiet periods.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "Bar[]",
+          "length": "fewer",
+          "description": "One bar per imbalance event, with the threshold that triggered it recorded on the bar."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "any alpha falls outside 0…1, or a seed expectation is not positive",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(bars)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -1305,7 +1503,45 @@
         "archetype": "tape-aggregate",
         "signature": "constructBars(trades, config)"
       },
-      "api": null,
+      "api": {
+        "summary": "The imbalance rule applied to signed *volume* rather than signed tick count, so one large order weighs more than many small ones pointing the same way.",
+        "params": [
+          {
+            "name": "trades",
+            "type": "Trade[]",
+            "required": true,
+            "description": "The raw tape in chronological order. Each trade carries `tradeId`, `timestamp`, `session`, `symbol`, `price`, `volume` and `currency`.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "config",
+            "type": "{ initialTickSign: number; initialExpectedTicks: number; initialExpectedSignedVolume: number; alphaTicks: number; alphaSignedVolume: number; thresholdFloorShares: number; thresholdScale: number; closePartial?: boolean }",
+            "required": true,
+            "description": "As for tick-imbalance bars, but the tracked quantity is signed volume. `thresholdFloorShares` is the floor in shares, and `thresholdScale` multiplies the expectation to form the trigger.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "Bar[]",
+          "length": "fewer",
+          "description": "One bar per signed-volume imbalance event."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "any alpha falls outside 0…1, or a seed expectation is not positive",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(bars)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -1515,7 +1751,45 @@
         "archetype": "tape-aggregate",
         "signature": "constructBars(trades, config)"
       },
-      "api": null,
+      "api": {
+        "summary": "Closes a bar when a run of same-signed trades exceeds what the recent buy probability makes plausible. Where imbalance bars react to net one-sidedness, run bars react to *persistence*.",
+        "params": [
+          {
+            "name": "trades",
+            "type": "Trade[]",
+            "required": true,
+            "description": "The raw tape in chronological order. Each trade carries `tradeId`, `timestamp`, `session`, `symbol`, `price`, `volume` and `currency`.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "config",
+            "type": "{ initialTickSign: number; initialExpectedTicks: number; initialBuyProbability: number; alphaTicks: number; alphaBuyProbability: number; thresholdFloorTicks: number; thresholdMultiplier: number; closePartial?: boolean }",
+            "required": true,
+            "description": "`initialBuyProbability` seeds the estimate of how often trades arrive buyer-initiated, updated by `alphaBuyProbability`. The threshold is bounded below by `thresholdFloorTicks`.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "Bar[]",
+          "length": "fewer",
+          "description": "One bar per run event."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "any alpha or probability falls outside 0…1",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(bars)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -1731,7 +2005,45 @@
         "archetype": "row-classify",
         "signature": "validateBars(bars, config)"
       },
-      "api": null,
+      "api": {
+        "summary": "Checks each bar against the invariants an OHLC bar must satisfy — high is the maximum, low is the minimum, open and close lie between them — with a tick-size tolerance so representable rounding is not reported as corruption.",
+        "params": [
+          {
+            "name": "bars",
+            "type": "OhlcRow[]",
+            "required": true,
+            "description": "Bars to check, each carrying `bar_id`, `source`, `symbol`, `timestamp` and the four prices.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "config",
+            "type": "{ tickSize: number; toleranceTicks: number; priceScale: number }",
+            "required": true,
+            "description": "`tickSize` is the instrument's minimum increment and `toleranceTicks` how many of them a value may be out before it is a violation. `priceScale` fixes the decimal scale used for comparison so floating-point representation does not create phantom failures.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "Verdict[]",
+          "length": "same-as-input",
+          "description": "One verdict per bar, naming which invariant failed and by how much. Returns one verdict per input row rather than throwing, so a single bad record cannot abort the batch — and cannot pass unnoticed either."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "tickSize is not positive",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -1973,7 +2285,45 @@
         "archetype": "record-transform",
         "signature": "hampelFilter(values, options)"
       },
-      "api": null,
+      "api": {
+        "summary": "Flags points that sit too far from a rolling median, measured in robust deviations rather than standard deviations — so one fat-finger print cannot inflate the very statistic used to detect it.",
+        "params": [
+          {
+            "name": "values",
+            "type": "number[]",
+            "required": true,
+            "description": "Observation series in chronological order.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "options",
+            "type": "{ windowRadius?: number; threshold?: number; scale?: number; minHistory?: number; mode?: \"causal\" | \"centred\" }",
+            "required": false,
+            "description": "`windowRadius` is the half-width of the rolling window (default 3). `threshold` is how many scaled MADs count as an outlier. `scale` converts MAD to a standard-deviation equivalent (1.4826 for normal data). `minHistory` is the minimum sample before any judgement is made. `mode` chooses causal — history only, safe for live use — or centred, which sees future points and must never be used on a live feed.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "Verdict[]",
+          "length": "same-as-input",
+          "description": "One verdict per point with its median, deviation and the threshold applied. Returns one verdict per input row rather than throwing, so a single bad record cannot abort the batch — and cannot pass unnoticed either."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "windowRadius or threshold is not positive",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n × windowRadius)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -2163,7 +2513,69 @@
         "archetype": "record-transform",
         "signature": "madOutliers(values, threshold, scale, minimumSamples)"
       },
-      "api": null,
+      "api": {
+        "summary": "Whole-sample outlier detection against the median absolute deviation. Where the Hampel filter is local and rolling, this judges every point against one global robust spread.",
+        "params": [
+          {
+            "name": "values",
+            "type": "number[]",
+            "required": true,
+            "description": "The complete sample to evaluate.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "threshold",
+            "type": "number",
+            "required": true,
+            "description": "How many scaled MADs from the median a point may sit before it is flagged.",
+            "constraints": {
+              "min": 0
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "scale",
+            "type": "number",
+            "required": true,
+            "description": "MAD-to-sigma conversion factor; 1.4826 makes the result comparable to a standard deviation under normality.",
+            "constraints": {
+              "min": 0
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "minimumSamples",
+            "type": "number",
+            "required": true,
+            "description": "Below this count the function reports insufficient data rather than guessing from a handful of points.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ status, valid_count, median, raw_mad, scaled_mad, threshold, outliers }",
+          "description": "The decision plus every statistic behind it, so a surprising result can be checked rather than re-derived."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "threshold or scale is negative",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n log n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -2317,7 +2729,45 @@
         "archetype": "row-classify",
         "signature": "detectStaleQuotes(events, config)"
       },
-      "api": null,
+      "api": {
+        "summary": "Separates the several distinct ways a quote can be stale: old at the source, delayed in transport, unchanged for too long, or arriving after a missed heartbeat. They have different causes and different remedies, so they are reported separately.",
+        "params": [
+          {
+            "name": "events",
+            "type": "QuoteEvent[]",
+            "required": true,
+            "description": "Quote and heartbeat events with both `source_event_ts` and `observed_ts`, which is what makes source age and transport age separable.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "config",
+            "type": "{ max_source_event_age_ms: number; max_transport_age_ms: number; unchanged_threshold_ms: number; heartbeat_timeout_ms: number }",
+            "required": true,
+            "description": "One budget per failure mode: how old the venue's own timestamp may be, how long transport may take, how long a quote may sit unchanged, and how long a heartbeat may be missing.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "Verdict[]",
+          "length": "same-as-input",
+          "description": "One verdict per event naming which budget was breached. Returns one verdict per input row rather than throwing, so a single bad record cannot abort the batch — and cannot pass unnoticed either."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "any threshold is negative",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -2525,7 +2975,35 @@
         "archetype": "row-classify",
         "signature": "resolveTrades(input)"
       },
-      "api": null,
+      "api": {
+        "summary": "Reconciles a stream of new, corrected and cancelled trade messages into one authoritative set. Replays of the same message must be idempotent, and a cancellation must survive a later redelivery of the trade it cancelled.",
+        "params": [
+          {
+            "name": "input",
+            "type": "TradeMessage[]",
+            "required": true,
+            "description": "Messages carrying `source_id`, `session_id`, `instrument_id`, `event_id`, `trade_id` and an `action` of new, correct or cancel.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ policy_version, active, states, tombstones, pending, versions, raw_history, audit }",
+          "description": "The resolved set (`active`), cancelled trades kept as `tombstones` so a redelivery cannot resurrect them, messages awaiting a predecessor (`pending`), and a full `audit` of how each decision was reached."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "a message is missing an identifier required to place it",
+            "behaviour": "recorded in the audit rather than thrown"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -2988,7 +3466,45 @@
         "archetype": "row-classify",
         "signature": "classifyMarkets(quotes, options)"
       },
-      "api": null,
+      "api": {
+        "summary": "Classifies a quote as normal, locked (bid equals ask) or crossed (bid above ask). Crossed markets are usually a stale or misordered feed rather than a real arbitrage, which is exactly why they must be caught before anything downstream trusts the spread.",
+        "params": [
+          {
+            "name": "quotes",
+            "type": "Quote[]",
+            "required": true,
+            "description": "Quotes carrying `instrument`, `market_scope`, `feed`, `event_time`, `receive_time`, `sequence`, bid and ask.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "options",
+            "type": "{ tolerance_ticks?: number; relative_tolerance_ppm?: number }",
+            "required": false,
+            "description": "Absolute tolerance in ticks and relative tolerance in parts per million, so a one-tick rounding artefact is not reported as a crossed book.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "Verdict[]",
+          "length": "same-as-input",
+          "description": "One classification per quote with the margin by which it locked or crossed. Returns one verdict per input row rather than throwing, so a single bad record cannot abort the batch — and cannot pass unnoticed either."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "a tolerance is negative",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -3213,7 +3729,56 @@
         "archetype": "record-transform",
         "signature": "previousTick(observations, requests, maxStalenessMs)"
       },
-      "api": null,
+      "api": {
+        "summary": "Samples a series onto a grid by carrying the last value known *at that moment* forward. The only interpolation that is safe on live data: it never uses a value that had not yet arrived.",
+        "params": [
+          {
+            "name": "observations",
+            "type": "Observation[]",
+            "required": true,
+            "description": "Observations carrying both `event_time` and `available_time`, which is what allows the as-of rule to be applied honestly.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "requests",
+            "type": "{ grid_time: string; query_time: string }[]",
+            "required": true,
+            "description": "The grid points to sample, each with the knowledge time the answer must respect.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "maxStalenessMs",
+            "type": "number",
+            "required": true,
+            "description": "How old a carried-forward value may be before the sample is reported unusable rather than silently stale.",
+            "constraints": {
+              "min": 0
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "Sample[]",
+          "length": "same-as-input",
+          "description": "One sample per request with the value used, its age, and whether the staleness budget was met."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "maxStalenessMs is negative",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n + m)",
+          "space": "O(m)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -3411,7 +3976,56 @@
         "archetype": "record-transform",
         "signature": "linearQuoteInterpolation(quotes, targets, maxGapMs)"
       },
-      "api": null,
+      "api": {
+        "summary": "Interpolates between the quotes either side of a target time. More accurate than carrying forward, and **not causal** — it uses a quote from after the target, so it belongs in research and never in a live path.",
+        "params": [
+          {
+            "name": "quotes",
+            "type": "Quote[]",
+            "required": true,
+            "description": "Quotes with `event_time`, `available_time`, bid and ask.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "targets",
+            "type": "Target[]",
+            "required": true,
+            "description": "Times to interpolate at, each with the evaluation time that bounds what may be used.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "maxGapMs",
+            "type": "number",
+            "required": true,
+            "description": "Widest gap between bracketing quotes that may still be interpolated across.",
+            "constraints": {
+              "min": 0
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "Sample[]",
+          "length": "same-as-input",
+          "description": "One sample per target with both bracketing quotes, the interpolated value, and whether the gap budget was met."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "maxGapMs is negative",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n + m)",
+          "space": "O(m)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -3632,7 +4246,55 @@
         "archetype": "record-transform",
         "signature": "refreshTimeSample(observations, requiredInstruments, maxStalenessMs)"
       },
-      "api": null,
+      "api": {
+        "summary": "Builds a common clock for several instruments by advancing only when every one of them has refreshed. The standard remedy for the bias that non-synchronous trading introduces into correlations.",
+        "params": [
+          {
+            "name": "observations",
+            "type": "Observation[]",
+            "required": true,
+            "description": "Observations across all instruments, each with `partition`, `instrument`, `event_time` and `available_at`.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "requiredInstruments",
+            "type": "string[]",
+            "required": true,
+            "description": "The instruments that must all have refreshed before a refresh time is emitted.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "maxStalenessMs",
+            "type": "number",
+            "required": true,
+            "description": "How old any instrument's value may be at a refresh time.",
+            "constraints": {
+              "min": 0
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ rows, partitions }",
+          "description": "The synchronised rows, plus per-partition diagnostics showing which instrument was the binding constraint at each step."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "requiredInstruments is empty",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n log n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -3871,7 +4533,43 @@
         "archetype": "row-classify",
         "signature": "validateCalendar(bundle)"
       },
-      "api": null,
+      "api": {
+        "summary": "Validates a trading-calendar bundle before anything is aligned to it: that sessions do not overlap, that closures are consistent with sessions, and that the licence terms permitting redistribution are present.",
+        "params": [
+          {
+            "name": "bundle",
+            "type": "{ license, calendar, sessions, closed_dates }",
+            "required": true,
+            "description": "The calendar under test together with its licence metadata. Calendars are usually licensed data, which is why the licence block is part of the contract rather than an afterthought.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "void",
+          "description": "Returns nothing on success. Validation is a gate, not a transform — the value of calling it is the failure."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "sessions overlap or are out of order",
+            "behaviour": "throws"
+          },
+          {
+            "when": "a closed date contradicts a defined session",
+            "behaviour": "throws"
+          },
+          {
+            "when": "required licence metadata is missing",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n log n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -4091,7 +4789,44 @@
         "archetype": "row-classify",
         "signature": "classifyIntervalPair(left, right)"
       },
-      "api": null,
+      "api": {
+        "summary": "Compares two return intervals and reports exactly how they overlap. Correlating returns measured over intervals that only partly coincide is a quiet and common source of wrong numbers.",
+        "params": [
+          {
+            "name": "left",
+            "type": "ReturnInterval",
+            "required": true,
+            "description": "First return, carrying `event_start`, `event_end`, `available_at` and `return_value`.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "right",
+            "type": "ReturnInterval",
+            "required": true,
+            "description": "Second return, in the same shape.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ geometry, event_overlap_start, event_overlap_end, event_overlap_ms, left_overlap_fraction, right_overlap_fraction, … }",
+          "description": "The overlap geometry — disjoint, partial, nested or identical — with the overlapping window and what fraction of each interval it represents."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "an interval ends before it starts",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(1)",
+          "space": "O(1)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -4220,7 +4955,35 @@
         "archetype": "row-classify",
         "signature": "diagnoseGap(row)"
       },
-      "api": null,
+      "api": {
+        "summary": "Decides why a bar is missing: the session was closed, the instrument was halted, the feed dropped, or a sequence number was skipped. A gap is only a data-quality incident in some of those cases, and treating them alike produces alert fatigue.",
+        "params": [
+          {
+            "name": "row",
+            "type": "{ case_id, scenario, timestamp, bar_state, session_status, halt_status, heartbeat_status, sequence_status }",
+            "required": true,
+            "description": "One gap observation with every status the decision depends on, gathered from the layers that can each independently explain it.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ classification, decisive_layer, reason, evidence_ids, warnings }",
+          "description": "The classification plus which layer settled it, so the diagnosis can be audited rather than trusted."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "a required status field is absent",
+            "behaviour": "reported as a warning on the result rather than thrown"
+          }
+        ],
+        "complexity": {
+          "time": "O(1)",
+          "space": "O(1)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -4355,7 +5118,35 @@
         "archetype": "row-classify",
         "signature": "validateClockProfile(profile)"
       },
-      "api": null,
+      "api": {
+        "summary": "Validates that a latency measurement is meaningful before any latency is computed from it. Subtracting timestamps written by two unsynchronised clocks produces a number, and that number means nothing.",
+        "params": [
+          {
+            "name": "profile",
+            "type": "ClockProfile",
+            "required": true,
+            "description": "Which clock domain owns each timestamp, who wrote it, the cross-domain synchronisation status, and the maximum absolute offset between domains.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ …profile, status, usable_measurements, warnings }",
+          "description": "The profile echoed back with a verdict on which latency measurements it can support and which would be meaningless."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "a clock domain or timestamp owner is missing",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(1)",
+          "space": "O(1)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -4485,7 +5276,44 @@
         "archetype": "snapshot-evaluate",
         "signature": "consensus(snapshot, policy)"
       },
-      "api": null,
+      "api": {
+        "summary": "Reconciles quotes from several providers into one defensible price, or refuses to. Serious platforms never trust a single vendor, and two feeds never agree exactly — this is the layer that decides who is right.",
+        "params": [
+          {
+            "name": "snapshot",
+            "type": "{ as_of: string; quotes: SourceQuote[] }",
+            "required": true,
+            "description": "One quote per source at a moment in time, each with its own timestamp so staleness is per-source.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "policy",
+            "type": "{ minimum_independent_sources: number; z_threshold: number; absolute_tolerance: number; maximum_tolerance: number; max_age_ms: number; expected_contract?: string }",
+            "required": true,
+            "description": "`minimum_independent_sources` is the quorum below which no consensus is declared. `z_threshold` sets how far from the robust centre a quote may sit before it is an outlier, bounded by `absolute_tolerance` and `maximum_tolerance` so the test behaves at both very tight and very wide spreads. `max_age_ms` excludes stale sources.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ status, reason, consensus_price, inliers, outliers, diagnostics }",
+          "description": "A status rather than a bare number: a refusal to price is a legitimate and important outcome, and `reason` says why."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "the policy is internally inconsistent, such as a negative tolerance",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n log n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -4675,7 +5503,53 @@
         "archetype": "row-classify",
         "signature": "detectSchemaDrift(baseline, candidate, policy)"
       },
-      "api": null,
+      "api": {
+        "summary": "Compares two versions of a feed schema and classifies every change as compatible or breaking. Vendors rename and retype fields without announcement, and a silently renamed field is worse than an outage because nothing fails.",
+        "params": [
+          {
+            "name": "baseline",
+            "type": "Schema",
+            "required": true,
+            "description": "The schema currently relied upon.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "candidate",
+            "type": "Schema",
+            "required": true,
+            "description": "The schema just observed on the feed.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "policy",
+            "type": "DriftPolicy",
+            "required": true,
+            "description": "Which categories of change are tolerated, and which must fail.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ baseline_version, candidate_version, policy, status, coverage_complete, changes }",
+          "description": "Every change with its classification, plus whether the comparison covered the whole schema — an incomplete comparison must not read as a clean bill of health."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "either schema is missing an identifier or version",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(fields)",
+          "space": "O(fields)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -4900,7 +5774,45 @@
         "archetype": "snapshot-evaluate",
         "signature": "asOfSnapshot(records, knowledgeTime)"
       },
-      "api": null,
+      "api": {
+        "summary": "Reconstructs what was actually knowable at a given moment, using each record's `available_at` rather than its `observation_time`. This is the guard that stops a backtest reading a figure hours before it was published.",
+        "params": [
+          {
+            "name": "records",
+            "type": "Record[]",
+            "required": true,
+            "description": "Observations carrying `observation_time`, `available_at` and a `revision`, so restatements are distinguishable from originals.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "knowledgeTime",
+            "type": "string",
+            "required": true,
+            "description": "ISO 8601 moment to reconstruct. Only records available at or before this instant are eligible.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "Record[]",
+          "length": "fewer",
+          "description": "The latest revision of each entity/feature that had actually been published by the knowledge time."
+        },
+        "warmup": null,
+        "errors": [
+          {
+            "when": "knowledgeTime is not a valid ISO 8601 timestamp",
+            "behaviour": "throws"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -23647,7 +24559,52 @@
         "archetype": "series-transform",
         "signature": "calculateDemaComponents(values, span)"
       },
-      "api": null,
+      "api": {
+        "summary": "Double exponential moving average: `2 × EMA − EMA(EMA)`. Subtracting the second smoothing pass cancels most of the lag a single EMA introduces, at the cost of overshooting sharp reversals.",
+        "params": [
+          {
+            "name": "values",
+            "type": "(number | null)[]",
+            "required": true,
+            "description": "Observation series in chronological order, oldest first.",
+            "constraints": null,
+            "nulls": "propagate",
+            "default": null
+          },
+          {
+            "name": "span",
+            "type": "number",
+            "required": true,
+            "description": "Smoothing span used for both EMA passes; the decay factor is 2 / (span + 1).",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ ema1, ema2, dema }[]",
+          "length": "same-as-input",
+          "description": "One record per position carrying both intermediate EMAs alongside the result, so the cancellation can be checked rather than taken on trust."
+        },
+        "warmup": {
+          "count": "2 × (span − 1)",
+          "value": "null",
+          "note": "Both passes must fill before the difference is defined."
+        },
+        "errors": [
+          {
+            "when": "span < 1 or is not an integer",
+            "behaviour": "throws RangeError"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -23808,7 +24765,52 @@
         "archetype": "series-transform",
         "signature": "calculateTemaComponents(values, span)"
       },
-      "api": null,
+      "api": {
+        "summary": "Triple exponential moving average: `3 × EMA − 3 × EMA(EMA) + EMA(EMA(EMA))`. More lag cancellation than DEMA, and correspondingly more overshoot.",
+        "params": [
+          {
+            "name": "values",
+            "type": "(number | null)[]",
+            "required": true,
+            "description": "Observation series in chronological order, oldest first.",
+            "constraints": null,
+            "nulls": "propagate",
+            "default": null
+          },
+          {
+            "name": "span",
+            "type": "number",
+            "required": true,
+            "description": "Smoothing span used for all three EMA passes; the decay factor is 2 / (span + 1).",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ ema1, ema2, ema3, tema }[]",
+          "length": "same-as-input",
+          "description": "One record per position carrying all three intermediate EMAs alongside the result."
+        },
+        "warmup": {
+          "count": "3 × (span − 1)",
+          "value": "null",
+          "note": "All three passes must fill before the combination is defined."
+        },
+        "errors": [
+          {
+            "when": "span < 1 or is not an integer",
+            "behaviour": "throws RangeError"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -24185,7 +25187,76 @@
         "archetype": "series-transform",
         "signature": "calculateKama(values, efficiencyPeriod, fastPeriod, slowPeriod)"
       },
-      "api": null,
+      "api": {
+        "summary": "Kaufman adaptive moving average. The smoothing constant moves between a fast and a slow bound according to an efficiency ratio — directional travel divided by total travel — so the average tightens in a trend and loosens in noise.",
+        "params": [
+          {
+            "name": "values",
+            "type": "(number | null)[]",
+            "required": true,
+            "description": "Observation series in chronological order, oldest first.",
+            "constraints": null,
+            "nulls": "propagate",
+            "default": null
+          },
+          {
+            "name": "efficiencyPeriod",
+            "type": "number",
+            "required": true,
+            "description": "Lookback over which the efficiency ratio is measured.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "fastPeriod",
+            "type": "number",
+            "required": true,
+            "description": "Period defining the fast bound of the smoothing constant; reached when the series is perfectly directional.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "slowPeriod",
+            "type": "number",
+            "required": true,
+            "description": "Period defining the slow bound; reached when the series is pure noise.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "Record<string, (number | null)[]>",
+          "length": "same-as-input",
+          "description": "Parallel series: `efficiencyRatio`, `blendedAlpha`, `smoothingConstant` and `kama`, so the adaptation itself is inspectable rather than hidden inside the result."
+        },
+        "warmup": {
+          "count": "efficiencyPeriod",
+          "value": "null",
+          "note": "The efficiency ratio needs a full lookback before the constant is defined."
+        },
+        "errors": [
+          {
+            "when": "any period is < 1, is not an integer, or fastPeriod ≥ slowPeriod",
+            "behaviour": "throws RangeError"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -24406,7 +25477,64 @@
         "archetype": "series-transform",
         "signature": "mama(values, fastLimit, slowLimit)"
       },
-      "api": null,
+      "api": {
+        "summary": "MESA adaptive moving average. A Hilbert transform estimates the dominant cycle period of the series, and the smoothing rate follows the rate of phase change — so the average adapts to cycle length rather than to a fixed window.",
+        "params": [
+          {
+            "name": "values",
+            "type": "(number | null)[]",
+            "required": true,
+            "description": "Observation series in chronological order, oldest first.",
+            "constraints": null,
+            "nulls": "propagate",
+            "default": null
+          },
+          {
+            "name": "fastLimit",
+            "type": "number",
+            "required": false,
+            "description": "Upper bound on the adaptive smoothing factor.",
+            "constraints": {
+              "min": 0,
+              "max": 1
+            },
+            "nulls": null,
+            "default": 0.5
+          },
+          {
+            "name": "slowLimit",
+            "type": "number",
+            "required": false,
+            "description": "Lower bound on the adaptive smoothing factor.",
+            "constraints": {
+              "min": 0,
+              "max": 1
+            },
+            "nulls": null,
+            "default": 0.05
+          }
+        ],
+        "returns": {
+          "type": "Record<string, (number | null)[]>",
+          "length": "same-as-input",
+          "description": "Every stage of the transform as a parallel series — `smooth`, `detrender`, the in-phase and quadrature components, `period`, `phase`, `mama` and `fama` — because the intermediate values are the only way to diagnose a suspicious result."
+        },
+        "warmup": {
+          "count": "6",
+          "value": "null",
+          "note": "The Hilbert transform needs six bars of history before its output is meaningful."
+        },
+        "errors": [
+          {
+            "when": "fastLimit or slowLimit falls outside 0…1, or slowLimit > fastLimit",
+            "behaviour": "throws RangeError"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -24686,7 +25814,76 @@
         "archetype": "series-transform",
         "signature": "macd(values, fastSpan, slowSpan, signalSpan)"
       },
-      "api": null,
+      "api": {
+        "summary": "Moving average convergence/divergence: the gap between a fast and a slow EMA, its own EMA as a signal line, and the difference between them as a histogram.",
+        "params": [
+          {
+            "name": "values",
+            "type": "(number | null)[]",
+            "required": true,
+            "description": "Observation series in chronological order, oldest first.",
+            "constraints": null,
+            "nulls": "propagate",
+            "default": null
+          },
+          {
+            "name": "fastSpan",
+            "type": "number",
+            "required": true,
+            "description": "Span of the fast EMA.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "slowSpan",
+            "type": "number",
+            "required": true,
+            "description": "Span of the slow EMA; must exceed the fast span.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "signalSpan",
+            "type": "number",
+            "required": true,
+            "description": "Span of the EMA taken over the MACD line itself.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "{ fast_ema, slow_ema, macd, signal, histogram }[]",
+          "length": "same-as-input",
+          "description": "One record per position carrying both EMAs alongside the three published series."
+        },
+        "warmup": {
+          "count": "slowSpan − 1 for the MACD line, and slowSpan + signalSpan − 2 for the signal and histogram",
+          "value": "null",
+          "note": "The signal line is an average *of* the MACD line, so it is defined strictly later — plotting the two without allowing for that misaligns them."
+        },
+        "errors": [
+          {
+            "when": "any span is < 1, is not an integer, or fastSpan ≥ slowSpan",
+            "behaviour": "throws RangeError"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -24883,7 +26080,76 @@
         "archetype": "series-transform",
         "signature": "ppo(values, fastSpan, slowSpan, signalSpan)"
       },
-      "api": null,
+      "api": {
+        "summary": "MACD expressed as a percentage of the slow EMA rather than in price units, which makes readings comparable across instruments and across time in a way MACD is not.",
+        "params": [
+          {
+            "name": "values",
+            "type": "(number | null)[]",
+            "required": true,
+            "description": "Observation series in chronological order, oldest first.",
+            "constraints": null,
+            "nulls": "propagate",
+            "default": null
+          },
+          {
+            "name": "fastSpan",
+            "type": "number",
+            "required": true,
+            "description": "Span of the fast EMA.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "slowSpan",
+            "type": "number",
+            "required": true,
+            "description": "Span of the slow EMA; must exceed the fast span.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "signalSpan",
+            "type": "number",
+            "required": true,
+            "description": "Span of the EMA taken over the PPO line itself.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "Record<string, (number | null)[]>",
+          "length": "same-as-input",
+          "description": "Parallel series: `fast_ema`, `slow_ema`, `ppo`, `signal` and `histogram`."
+        },
+        "warmup": {
+          "count": "slowSpan − 1 for the PPO line, and slowSpan + signalSpan − 2 for the signal and histogram",
+          "value": "null",
+          "note": "As with MACD, the signal line is defined later than the line it smooths."
+        },
+        "errors": [
+          {
+            "when": "any span is < 1, is not an integer, or fastSpan ≥ slowSpan",
+            "behaviour": "throws RangeError"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -25060,7 +26326,65 @@
         "archetype": "series-transform",
         "signature": "aroon(high, low, period)"
       },
-      "api": null,
+      "api": {
+        "summary": "Measures how recently the highest high and lowest low occurred within the lookback, expressed as 0–100. Unlike most trend indicators it reads *elapsed time* rather than price distance.",
+        "params": [
+          {
+            "name": "high",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar high prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "low",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar low prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "period",
+            "type": "number",
+            "required": true,
+            "description": "Lookback in bars for the extreme search.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "Record<string, (number | null)[]>",
+          "length": "same-as-input",
+          "description": "Parallel series: `aroon_up`, `aroon_down`, and the `oscillator` difference between them."
+        },
+        "warmup": {
+          "count": "period",
+          "value": "null",
+          "note": "A full lookback is required before an extreme can be located."
+        },
+        "errors": [
+          {
+            "when": "period < 1 or is not an integer",
+            "behaviour": "throws RangeError"
+          },
+          {
+            "when": "the input series are not all the same length",
+            "behaviour": "throws RangeError"
+          }
+        ],
+        "complexity": {
+          "time": "O(n × period)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -25229,7 +26553,74 @@
         "archetype": "series-transform",
         "signature": "directional_movement(high, low, close, period)"
       },
-      "api": null,
+      "api": {
+        "summary": "The components beneath ADX: directional movement in each direction, Wilder-smoothed, divided by the average true range to give +DI and −DI.",
+        "params": [
+          {
+            "name": "high",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar high prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "low",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar low prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "close",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar closing prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "period",
+            "type": "number",
+            "required": true,
+            "description": "Wilder smoothing period.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "Record<string, (number | null)[]>",
+          "length": "same-as-input",
+          "description": "Every intermediate as a parallel series — `true_range`, `plus_dm`, `minus_dm`, their smoothed forms, `atr`, `plus_di`, `minus_di` and `dx`."
+        },
+        "warmup": {
+          "count": "period",
+          "value": "null",
+          "note": "Wilder smoothing seeds on the first full window."
+        },
+        "errors": [
+          {
+            "when": "period < 1 or is not an integer",
+            "behaviour": "throws RangeError"
+          },
+          {
+            "when": "the input series are not all the same length",
+            "behaviour": "throws RangeError"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -25469,7 +26860,74 @@
         "archetype": "series-transform",
         "signature": "adx(high, low, close, period)"
       },
-      "api": null,
+      "api": {
+        "summary": "Average directional index: the smoothed magnitude of the gap between +DI and −DI. It measures whether a trend exists at all, and says nothing about its direction — which is why it is used as a filter rather than a signal.",
+        "params": [
+          {
+            "name": "high",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar high prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "low",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar low prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "close",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar closing prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "period",
+            "type": "number",
+            "required": true,
+            "description": "Wilder smoothing period, applied twice: once to the DI components and once to DX.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "Record<string, (number | null)[]>",
+          "length": "same-as-input",
+          "description": "Parallel series: `plus_di`, `minus_di`, `dx` and `adx`."
+        },
+        "warmup": {
+          "count": "2 × period − 1",
+          "value": "null",
+          "note": "ADX is a smoothing of DX, which is itself computed from smoothed components."
+        },
+        "errors": [
+          {
+            "when": "period < 1 or is not an integer",
+            "behaviour": "throws RangeError"
+          },
+          {
+            "when": "the input series are not all the same length",
+            "behaviour": "throws RangeError"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -25664,7 +27122,109 @@
         "archetype": "series-transform",
         "signature": "ichimoku(high, low, close, conversionPeriod, basePeriod, spanBPeriod, displacement)"
       },
-      "api": null,
+      "api": {
+        "summary": "The five Ichimoku lines. Two of them are plotted shifted forward and one shifted backward, so the series a chart draws is not the series computed at that index.",
+        "params": [
+          {
+            "name": "high",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar high prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "low",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar low prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "close",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar closing prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "conversionPeriod",
+            "type": "number",
+            "required": true,
+            "description": "Lookback for the conversion line (Tenkan-sen).",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "basePeriod",
+            "type": "number",
+            "required": true,
+            "description": "Lookback for the base line (Kijun-sen).",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "spanBPeriod",
+            "type": "number",
+            "required": true,
+            "description": "Lookback for leading span B.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "displacement",
+            "type": "number",
+            "required": true,
+            "description": "Bars by which the leading spans are pushed forward and the lagging span pulled back.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "Record<string, (number | null)[]>",
+          "length": "same-as-input",
+          "description": "Both the values at their origin index (`span_a_origin`, `span_b_origin`) and the displaced series a chart plots (`span_a_plot`, `span_b_plot`, `lagging_plot`). Using the origin series for plotting is the classic Ichimoku error."
+        },
+        "warmup": {
+          "count": "max(conversionPeriod, basePeriod, spanBPeriod) − 1, plus the displacement on the plotted spans",
+          "value": "null"
+        },
+        "errors": [
+          {
+            "when": "any period is < 1 or is not an integer",
+            "behaviour": "throws RangeError"
+          },
+          {
+            "when": "the input series are not all the same length",
+            "behaviour": "throws RangeError"
+          }
+        ],
+        "complexity": {
+          "time": "O(n × period)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -25893,7 +27453,80 @@
         "archetype": "series-transform",
         "signature": "parabolic_sar(high, low, initialDirection, accelerationStep, accelerationMax)"
       },
-      "api": null,
+      "api": {
+        "summary": "Stop-and-reverse: a trailing stop that accelerates toward price while a trend persists and flips side when price crosses it. Path-dependent — the whole series follows from the initial direction.",
+        "params": [
+          {
+            "name": "high",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar high prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "low",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar low prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "initialDirection",
+            "type": "\"long\" | \"short\"",
+            "required": true,
+            "description": "Trend direction assumed at the first bar. Because the calculation is recursive, this choice propagates through the entire series.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "accelerationStep",
+            "type": "number",
+            "required": true,
+            "description": "Increment added to the acceleration factor each time a new extreme is made.",
+            "constraints": {
+              "min": 0
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "accelerationMax",
+            "type": "number",
+            "required": true,
+            "description": "Ceiling on the acceleration factor.",
+            "constraints": {
+              "min": 0
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "Record<string, (number | null)[]>",
+          "length": "same-as-input",
+          "description": "Parallel series: `sar`, `trend`, `extreme_point`, `acceleration_factor` and a `reversal` flag marking the bars where the stop flipped."
+        },
+        "warmup": {
+          "count": "1",
+          "value": "null",
+          "note": "The first bar establishes the state; the first SAR value applies from the second."
+        },
+        "errors": [
+          {
+            "when": "accelerationStep or accelerationMax is negative, or accelerationStep > accelerationMax",
+            "behaviour": "throws RangeError"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -26087,7 +27720,85 @@
         "archetype": "series-transform",
         "signature": "supertrend(high, low, close, period, multiplier)"
       },
-      "api": null,
+      "api": {
+        "summary": "An ATR-scaled band around the median price that ratchets in the direction of the trend and only flips when close crosses it. The band never loosens while the trend holds.",
+        "params": [
+          {
+            "name": "high",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar high prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "low",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar low prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "close",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar closing prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "period",
+            "type": "number",
+            "required": true,
+            "description": "ATR lookback.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "multiplier",
+            "type": "number",
+            "required": true,
+            "description": "Number of ATRs the band sits away from the median price.",
+            "constraints": {
+              "min": 0
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "Record<string, (number | null)[]>",
+          "length": "same-as-input",
+          "description": "Parallel series: `atr`, `upper_band`, `lower_band`, `supertrend` and `trend`."
+        },
+        "warmup": {
+          "count": "period",
+          "value": "null",
+          "note": "The band cannot be placed until ATR is defined."
+        },
+        "errors": [
+          {
+            "when": "period < 1, is not an integer, or multiplier is negative",
+            "behaviour": "throws RangeError"
+          },
+          {
+            "when": "the input series are not all the same length",
+            "behaviour": "throws RangeError"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -26328,7 +28039,52 @@
         "archetype": "series-transform",
         "signature": "rsi(close, p)"
       },
-      "api": null,
+      "api": {
+        "summary": "Relative strength index: Wilder-smoothed average gain over average loss, mapped to 0–100. In a strong trend a high reading means strength persisting, not exhaustion — which is the most common misreading of this indicator.",
+        "params": [
+          {
+            "name": "close",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar closing prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "p",
+            "type": "number",
+            "required": true,
+            "description": "Wilder smoothing period. 14 is the conventional default.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "Record<string, (number | null)[]>",
+          "length": "same-as-input",
+          "description": "A single parallel series, `rsi`."
+        },
+        "warmup": {
+          "count": "p",
+          "value": "null",
+          "note": "Wilder smoothing seeds on the first full window of gains and losses."
+        },
+        "errors": [
+          {
+            "when": "p < 1 or is not an integer",
+            "behaviour": "throws RangeError"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -26451,7 +28207,97 @@
         "archetype": "series-transform",
         "signature": "stochastic(high, low, close, kp, sk, sd)"
       },
-      "api": null,
+      "api": {
+        "summary": "Where the close sits within the high–low range of the lookback, expressed as 0–100, then smoothed twice.",
+        "params": [
+          {
+            "name": "high",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar high prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "low",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar low prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "close",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar closing prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "kp",
+            "type": "number",
+            "required": true,
+            "description": "%K lookback: the window over which the high–low range is measured.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "sk",
+            "type": "number",
+            "required": true,
+            "description": "Smoothing applied to raw %K to produce slow %K.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "sd",
+            "type": "number",
+            "required": true,
+            "description": "Smoothing applied to slow %K to produce %D.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "Record<string, (number | null)[]>",
+          "length": "same-as-input",
+          "description": "Parallel series: `fast_k`, `slow_k` and `slow_d`."
+        },
+        "warmup": {
+          "count": "kp − 1 for fast %K, then sk − 1 and sd − 1 more for each smoothing stage",
+          "value": "null"
+        },
+        "errors": [
+          {
+            "when": "any period is < 1 or is not an integer",
+            "behaviour": "throws RangeError"
+          },
+          {
+            "when": "the input series are not all the same length",
+            "behaviour": "throws RangeError"
+          }
+        ],
+        "complexity": {
+          "time": "O(n × kp)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -26619,7 +28465,88 @@
         "archetype": "series-transform",
         "signature": "stochastic_rsi(close, rp, sp, sk, sd)"
       },
-      "api": null,
+      "api": {
+        "summary": "The stochastic formula applied to RSI rather than to price — a second-order indicator that measures where RSI sits within its own recent range, and therefore moves far faster than either input.",
+        "params": [
+          {
+            "name": "close",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar closing prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "rp",
+            "type": "number",
+            "required": true,
+            "description": "RSI period computed first.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "sp",
+            "type": "number",
+            "required": true,
+            "description": "Stochastic lookback applied over the RSI series.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "sk",
+            "type": "number",
+            "required": true,
+            "description": "Smoothing applied to raw %K.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "sd",
+            "type": "number",
+            "required": true,
+            "description": "Smoothing applied to %K to produce %D.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "Record<string, (number | null)[]>",
+          "length": "same-as-input",
+          "description": "Parallel series: `rsi`, `raw_k`, `k` and `d`."
+        },
+        "warmup": {
+          "count": "rp + sp − 1, plus each smoothing stage",
+          "value": "null",
+          "note": "Warm-ups accumulate across both stages, so this is defined much later than plain RSI."
+        },
+        "errors": [
+          {
+            "when": "any period is < 1 or is not an integer",
+            "behaviour": "throws RangeError"
+          }
+        ],
+        "complexity": {
+          "time": "O(n × sp)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -26770,7 +28697,73 @@
         "archetype": "series-transform",
         "signature": "williams_r(high, low, close, p)"
       },
-      "api": null,
+      "api": {
+        "summary": "Where the close sits within the lookback's high–low range, on a −100…0 scale. Arithmetically the inverse of fast %K.",
+        "params": [
+          {
+            "name": "high",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar high prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "low",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar low prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "close",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar closing prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "p",
+            "type": "number",
+            "required": true,
+            "description": "Lookback in bars.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "Record<string, (number | null)[]>",
+          "length": "same-as-input",
+          "description": "A single parallel series, `williams_r`, ranging from −100 to 0."
+        },
+        "warmup": {
+          "count": "p − 1",
+          "value": "null"
+        },
+        "errors": [
+          {
+            "when": "p < 1 or is not an integer",
+            "behaviour": "throws RangeError"
+          },
+          {
+            "when": "the input series are not all the same length",
+            "behaviour": "throws RangeError"
+          }
+        ],
+        "complexity": {
+          "time": "O(n × p)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -26928,7 +28921,84 @@
         "archetype": "series-transform",
         "signature": "cci(high, low, close, p, k)"
       },
-      "api": null,
+      "api": {
+        "summary": "Commodity channel index: the typical price's distance from its moving average, scaled by mean absolute deviation. Unbounded, unlike RSI or the stochastics.",
+        "params": [
+          {
+            "name": "high",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar high prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "low",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar low prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "close",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar closing prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "p",
+            "type": "number",
+            "required": true,
+            "description": "Lookback for the average and the mean absolute deviation.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "k",
+            "type": "number",
+            "required": false,
+            "description": "Scaling constant. The conventional 0.015 places roughly 70–80% of readings within ±100; changing it changes what any threshold means.",
+            "constraints": {
+              "min": 0
+            },
+            "nulls": null,
+            "default": 0.015
+          }
+        ],
+        "returns": {
+          "type": "Record<string, (number | null)[]>",
+          "length": "same-as-input",
+          "description": "Parallel series: `typical_price` and `cci`."
+        },
+        "warmup": {
+          "count": "p − 1",
+          "value": "null"
+        },
+        "errors": [
+          {
+            "when": "p < 1, is not an integer, or k is negative",
+            "behaviour": "throws RangeError"
+          },
+          {
+            "when": "the input series are not all the same length",
+            "behaviour": "throws RangeError"
+          }
+        ],
+        "complexity": {
+          "time": "O(n × p)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -27089,7 +29159,97 @@
         "archetype": "series-transform",
         "signature": "ultimate_oscillator(high, low, close, s, m, g)"
       },
-      "api": null,
+      "api": {
+        "summary": "Weighted buying pressure across three lookbacks at once, which is what makes it less sensitive to the choice of any single period than a plain oscillator.",
+        "params": [
+          {
+            "name": "high",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar high prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "low",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar low prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "close",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar closing prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "s",
+            "type": "number",
+            "required": true,
+            "description": "Short lookback, conventionally weighted 4.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "m",
+            "type": "number",
+            "required": true,
+            "description": "Medium lookback, conventionally weighted 2.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "g",
+            "type": "number",
+            "required": true,
+            "description": "Long lookback, conventionally weighted 1.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "Record<string, (number | null)[]>",
+          "length": "same-as-input",
+          "description": "Parallel series: `buying_pressure`, `true_range` and `ultimate_oscillator`."
+        },
+        "warmup": {
+          "count": "the longest of the three lookbacks",
+          "value": "null"
+        },
+        "errors": [
+          {
+            "when": "any lookback is < 1 or is not an integer",
+            "behaviour": "throws RangeError"
+          },
+          {
+            "when": "the input series are not all the same length",
+            "behaviour": "throws RangeError"
+          }
+        ],
+        "complexity": {
+          "time": "O(n × g)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -27255,7 +29415,64 @@
         "archetype": "series-transform",
         "signature": "tsi(close, g, s)"
       },
-      "api": null,
+      "api": {
+        "summary": "True strength index: price change smoothed twice, divided by absolute price change smoothed the same way. The double smoothing is what separates it from a plain momentum reading.",
+        "params": [
+          {
+            "name": "close",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar closing prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "g",
+            "type": "number",
+            "required": true,
+            "description": "Long smoothing span, applied first.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "s",
+            "type": "number",
+            "required": true,
+            "description": "Short smoothing span, applied to the result of the first pass.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "Record<string, (number | null)[]>",
+          "length": "same-as-input",
+          "description": "A single parallel series, `tsi`."
+        },
+        "warmup": {
+          "count": "g + s − 2",
+          "value": "null",
+          "note": "Both smoothing passes must fill."
+        },
+        "errors": [
+          {
+            "when": "either span is < 1 or is not an integer",
+            "behaviour": "throws RangeError"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -27382,7 +29599,75 @@
         "archetype": "series-transform",
         "signature": "connors_rsi(close, pp, sp, rp)"
       },
-      "api": null,
+      "api": {
+        "summary": "The average of three components: RSI of price, RSI of the up/down streak length, and the percentile rank of the latest return. Designed for short-horizon mean reversion rather than trend.",
+        "params": [
+          {
+            "name": "close",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar closing prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "pp",
+            "type": "number",
+            "required": true,
+            "description": "RSI period applied to price.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "sp",
+            "type": "number",
+            "required": true,
+            "description": "RSI period applied to the streak-length series.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "rp",
+            "type": "number",
+            "required": true,
+            "description": "Lookback for the percentile rank of the most recent return.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "Record<string, (number | null)[]>",
+          "length": "same-as-input",
+          "description": "Parallel series: `price_rsi`, `streak`, `streak_rsi`, `percent_rank` and `connors_rsi`."
+        },
+        "warmup": {
+          "count": "the longest of the three components",
+          "value": "null"
+        },
+        "errors": [
+          {
+            "when": "any period is < 1 or is not an integer",
+            "behaviour": "throws RangeError"
+          }
+        ],
+        "complexity": {
+          "time": "O(n × rp)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -27527,7 +29812,58 @@
         "archetype": "series-transform",
         "signature": "true_range(high, low, close)"
       },
-      "api": null,
+      "api": {
+        "summary": "The greater of today's range, the gap up from yesterday's close, and the gap down from it. Using the plain high−low range instead understates volatility on every gap.",
+        "params": [
+          {
+            "name": "high",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar high prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "low",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar low prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "close",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar closing prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "Record<string, (number | null)[]>",
+          "length": "same-as-input",
+          "description": "Parallel series including `true_range` and, for each bar, which of the three candidates won (`driver`) — which is what makes a surprising ATR diagnosable."
+        },
+        "warmup": {
+          "count": "1",
+          "value": "null",
+          "note": "The first bar has no prior close, so no gap can be measured."
+        },
+        "errors": [
+          {
+            "when": "the input series are not all the same length",
+            "behaviour": "throws RangeError"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -27716,7 +30052,74 @@
         "archetype": "series-transform",
         "signature": "average_true_range(high, low, close, p)"
       },
-      "api": null,
+      "api": {
+        "summary": "Wilder-smoothed true range. Most often used for position sizing and stop placement rather than as a signal — it says how far price typically moves, not which way.",
+        "params": [
+          {
+            "name": "high",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar high prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "low",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar low prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "close",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar closing prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "p",
+            "type": "number",
+            "required": true,
+            "description": "Wilder smoothing period. Note this is 1/p decay, not the 2/(p+1) of a standard EMA; substituting one changes every published ATR value.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "Record<string, (number | null)[]>",
+          "length": "same-as-input",
+          "description": "Parallel series: `true_range` and `atr`."
+        },
+        "warmup": {
+          "count": "p",
+          "value": "null",
+          "note": "The first ATR is the mean of the first p true ranges; Wilder smoothing continues from there."
+        },
+        "errors": [
+          {
+            "when": "p < 1 or is not an integer",
+            "behaviour": "throws RangeError"
+          },
+          {
+            "when": "the input series are not all the same length",
+            "behaviour": "throws RangeError"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -27889,7 +30292,62 @@
         "archetype": "series-transform",
         "signature": "bollinger_bands(close, p, multiplier)"
       },
-      "api": null,
+      "api": {
+        "summary": "A moving average with bands a number of standard deviations away, so the channel widens and narrows with realised volatility.",
+        "params": [
+          {
+            "name": "close",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar closing prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "p",
+            "type": "number",
+            "required": true,
+            "description": "Lookback for both the average and the standard deviation.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "multiplier",
+            "type": "number",
+            "required": true,
+            "description": "Number of standard deviations from the middle band to each outer band.",
+            "constraints": {
+              "min": 0
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "Record<string, (number | null)[]>",
+          "length": "same-as-input",
+          "description": "Parallel series: `middle`, `stddev`, `upper`, `lower`, and `percent_b` — where price sits within the channel, 0 at the lower band and 1 at the upper."
+        },
+        "warmup": {
+          "count": "p − 1",
+          "value": "null"
+        },
+        "errors": [
+          {
+            "when": "p < 1, is not an integer, or multiplier is negative",
+            "behaviour": "throws RangeError"
+          }
+        ],
+        "complexity": {
+          "time": "O(n × p)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -28071,7 +30529,96 @@
         "archetype": "series-transform",
         "signature": "keltner_channels(high, low, close, emaPeriod, atrPeriod, multiplier)"
       },
-      "api": null,
+      "api": {
+        "summary": "An EMA with bands placed a number of ATRs away. Because it scales with true range rather than standard deviation, it reacts differently to gaps than Bollinger Bands — which is the basis of the squeeze comparison between the two.",
+        "params": [
+          {
+            "name": "high",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar high prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "low",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar low prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "close",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar closing prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "emaPeriod",
+            "type": "number",
+            "required": true,
+            "description": "Span of the EMA that forms the middle line.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "atrPeriod",
+            "type": "number",
+            "required": true,
+            "description": "Wilder period for the ATR that sets the band width.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "multiplier",
+            "type": "number",
+            "required": true,
+            "description": "Number of ATRs from the middle line to each band.",
+            "constraints": {
+              "min": 0
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "Record<string, (number | null)[]>",
+          "length": "same-as-input",
+          "description": "Parallel series: `true_range`, `atr`, `middle`, `upper` and `lower`."
+        },
+        "warmup": {
+          "count": "max(emaPeriod, atrPeriod)",
+          "value": "null"
+        },
+        "errors": [
+          {
+            "when": "either period is < 1, is not an integer, or multiplier is negative",
+            "behaviour": "throws RangeError"
+          },
+          {
+            "when": "the input series are not all the same length",
+            "behaviour": "throws RangeError"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -28276,7 +30823,64 @@
         "archetype": "series-transform",
         "signature": "donchian_channels(high, low, p)"
       },
-      "api": null,
+      "api": {
+        "summary": "The highest high and lowest low of the lookback. The oldest channel in use, and the only one here with no smoothing at all — the bands step rather than glide.",
+        "params": [
+          {
+            "name": "high",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar high prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "low",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar low prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "p",
+            "type": "number",
+            "required": true,
+            "description": "Lookback in bars for both extremes.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "Record<string, (number | null)[]>",
+          "length": "same-as-input",
+          "description": "Parallel series: `upper`, `lower`, `middle` and `width`."
+        },
+        "warmup": {
+          "count": "p − 1",
+          "value": "null"
+        },
+        "errors": [
+          {
+            "when": "p < 1 or is not an integer",
+            "behaviour": "throws RangeError"
+          },
+          {
+            "when": "the input series are not all the same length",
+            "behaviour": "throws RangeError"
+          }
+        ],
+        "complexity": {
+          "time": "O(n × p)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -28439,7 +31043,62 @@
         "archetype": "series-transform",
         "signature": "bollinger_bandwidth(close, p, multiplier)"
       },
-      "api": null,
+      "api": {
+        "summary": "The width of a Bollinger channel relative to its middle band. Low readings mark contraction, which historically precedes expansion — the quantity behind every 'squeeze' screen.",
+        "params": [
+          {
+            "name": "close",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar closing prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "p",
+            "type": "number",
+            "required": true,
+            "description": "Lookback for the average and the standard deviation.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "multiplier",
+            "type": "number",
+            "required": true,
+            "description": "Number of standard deviations to each band.",
+            "constraints": {
+              "min": 0
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "Record<string, (number | null)[]>",
+          "length": "same-as-input",
+          "description": "Parallel series: `middle`, `stddev`, `upper`, `lower` and `bandwidth`."
+        },
+        "warmup": {
+          "count": "p − 1",
+          "value": "null"
+        },
+        "errors": [
+          {
+            "when": "p < 1, is not an integer, or multiplier is negative",
+            "behaviour": "throws RangeError"
+          }
+        ],
+        "complexity": {
+          "time": "O(n × p)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -28621,7 +31280,58 @@
         "archetype": "series-transform",
         "signature": "obv(close, volume, initial)"
       },
-      "api": null,
+      "api": {
+        "summary": "On-balance volume: a running total that adds the bar's volume when price closed up and subtracts it when price closed down. The level is arbitrary; only its direction carries information.",
+        "params": [
+          {
+            "name": "close",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar closing prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "volume",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar traded volume, aligned index-for-index with the price series.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "initial",
+            "type": "number",
+            "required": false,
+            "description": "Starting value of the running total. Only affects the level, never the shape.",
+            "constraints": null,
+            "nulls": null,
+            "default": 0
+          }
+        ],
+        "returns": {
+          "type": "Record<string, (number | null)[]>",
+          "length": "same-as-input",
+          "description": "Parallel series: `direction`, `volume`, `signed_volume` and the running `obv`."
+        },
+        "warmup": {
+          "count": "1",
+          "value": "null",
+          "note": "The first bar has no prior close, so it has no direction."
+        },
+        "errors": [
+          {
+            "when": "the input series are not all the same length",
+            "behaviour": "throws RangeError"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -28820,7 +31530,76 @@
         "archetype": "series-transform",
         "signature": "accumulation_distribution_line(high, low, close, volume, initial)"
       },
-      "api": null,
+      "api": {
+        "summary": "Weights each bar's volume by where the close sat within that bar's range, then accumulates. Unlike OBV it distinguishes a close at the high from a close barely above the open.",
+        "params": [
+          {
+            "name": "high",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar high prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "low",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar low prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "close",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar closing prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "volume",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar traded volume, aligned index-for-index with the price series.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "initial",
+            "type": "number",
+            "required": false,
+            "description": "Starting value of the accumulation.",
+            "constraints": null,
+            "nulls": null,
+            "default": 0
+          }
+        ],
+        "returns": {
+          "type": "Record<string, (number | null)[]>",
+          "length": "same-as-input",
+          "description": "Parallel series: `range`, `money_flow_multiplier`, `volume`, `money_flow_volume` and `adl`."
+        },
+        "warmup": {
+          "count": "0",
+          "value": "null",
+          "note": "Defined from the first bar; a zero-range bar contributes nothing rather than dividing by zero."
+        },
+        "errors": [
+          {
+            "when": "the input series are not all the same length",
+            "behaviour": "throws RangeError"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -29063,7 +31842,82 @@
         "archetype": "series-transform",
         "signature": "chaikin_money_flow(high, low, close, volume, p)"
       },
-      "api": null,
+      "api": {
+        "summary": "Money-flow volume summed over a lookback and divided by total volume over the same window — the accumulation/distribution idea as a bounded oscillator rather than a running total.",
+        "params": [
+          {
+            "name": "high",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar high prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "low",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar low prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "close",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar closing prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "volume",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar traded volume, aligned index-for-index with the price series.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "p",
+            "type": "number",
+            "required": true,
+            "description": "Lookback in bars.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "Record<string, (number | null)[]>",
+          "length": "same-as-input",
+          "description": "Parallel series: `money_flow_multiplier`, `money_flow_volume`, `rolling_mfv`, `rolling_volume` and `cmf`."
+        },
+        "warmup": {
+          "count": "p − 1",
+          "value": "null"
+        },
+        "errors": [
+          {
+            "when": "p < 1 or is not an integer",
+            "behaviour": "throws RangeError"
+          },
+          {
+            "when": "the input series are not all the same length",
+            "behaviour": "throws RangeError"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -29300,7 +32154,83 @@
         "archetype": "series-transform",
         "signature": "money_flow_index(high, low, close, volume, p)"
       },
-      "api": null,
+      "api": {
+        "summary": "RSI computed on typical price weighted by volume — commonly described as volume-weighted RSI, and read on the same 0–100 scale.",
+        "params": [
+          {
+            "name": "high",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar high prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "low",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar low prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "close",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar closing prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "volume",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar traded volume, aligned index-for-index with the price series.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "p",
+            "type": "number",
+            "required": true,
+            "description": "Lookback in bars.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "Record<string, (number | null)[]>",
+          "length": "same-as-input",
+          "description": "Parallel series: `typical_price`, `raw_money_flow`, `positive_flow`, `negative_flow`, `money_flow_ratio` and `mfi`."
+        },
+        "warmup": {
+          "count": "p",
+          "value": "null",
+          "note": "One extra bar is needed beyond the window, because the first bar has no prior typical price to compare against."
+        },
+        "errors": [
+          {
+            "when": "p < 1 or is not an integer",
+            "behaviour": "throws RangeError"
+          },
+          {
+            "when": "the input series are not all the same length",
+            "behaviour": "throws RangeError"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -29549,7 +32479,58 @@
         "archetype": "series-transform",
         "signature": "volume_price_trend(close, volume, initial)"
       },
-      "api": null,
+      "api": {
+        "summary": "Like OBV, but each bar contributes volume scaled by the size of the return rather than only its sign — so a 3% move counts for more than a 0.1% one.",
+        "params": [
+          {
+            "name": "close",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar closing prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "volume",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar traded volume, aligned index-for-index with the price series.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "initial",
+            "type": "number",
+            "required": false,
+            "description": "Starting value of the running total.",
+            "constraints": null,
+            "nulls": null,
+            "default": 0
+          }
+        ],
+        "returns": {
+          "type": "Record<string, (number | null)[]>",
+          "length": "same-as-input",
+          "description": "Parallel series: `price_return`, `volume`, `volume_contribution` and `vpt`."
+        },
+        "warmup": {
+          "count": "1",
+          "value": "null",
+          "note": "The first bar has no prior close, so no return."
+        },
+        "errors": [
+          {
+            "when": "the input series are not all the same length",
+            "behaviour": "throws RangeError"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
@@ -29746,7 +32727,65 @@
         "archetype": "series-transform",
         "signature": "force_index(close, volume, p)"
       },
-      "api": null,
+      "api": {
+        "summary": "Price change multiplied by volume, then smoothed. Combines direction, size and participation in one number — a large move on no volume scores low.",
+        "params": [
+          {
+            "name": "close",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar closing prices, chronological.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "volume",
+            "type": "number[]",
+            "required": true,
+            "description": "Per-bar traded volume, aligned index-for-index with the price series.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "p",
+            "type": "number",
+            "required": true,
+            "description": "EMA span applied to the raw force series.",
+            "constraints": {
+              "min": 1,
+              "integer": true
+            },
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": {
+          "type": "Record<string, (number | null)[]>",
+          "length": "same-as-input",
+          "description": "Parallel series: `change`, `volume`, `raw_force`, `ema_seed` and the smoothed `force_index`."
+        },
+        "warmup": {
+          "count": "p",
+          "value": "null",
+          "note": "One bar for the price change, then the EMA seed window."
+        },
+        "errors": [
+          {
+            "when": "p < 1 or is not an integer",
+            "behaviour": "throws RangeError"
+          },
+          {
+            "when": "the input series are not all the same length",
+            "behaviour": "throws RangeError"
+          }
+        ],
+        "complexity": {
+          "time": "O(n)",
+          "space": "O(n)"
+        }
+      },
       "example": {
         "origin": "executed",
         "verified": false,
