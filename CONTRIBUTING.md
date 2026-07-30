@@ -110,10 +110,27 @@ re-runs the full verification, installs the packed tarball into a clean consumer
 and publishes with a provenance attestation — a signed, verifiable link between
 the tarball on npm and the commit that produced it.
 
+### What deserves a release
+
+A version number is permanent: npm never allows one to be reused. Six releases
+that change nothing a consumer executes make the number meaningless, so the
+first question is whether to release at all.
+
+| Change | Action |
+|---|---|
+| `docs.json`, `README.md`, comments, catalog metadata | **No release.** Commit and push — the docs site builds from `main`, not from npm. |
+| Fixture correction, packaging or typing fix, generator fix | `patch` |
+| New topics, new export subpaths, a new shipped file | `minor` |
+| Signature or behaviour change | `minor` while pre-1.0 |
+
+Nothing under `src/` changed? Then almost certainly no release. Batch related
+work and cut one version when it is finished, rather than one per commit.
+
 ```bash
 npm run sync            # only if the catalog has moved
+npm run examples        # only if implementations changed — takes a few minutes
 npm run verify          # must be fully green locally first
-npm version minor       # or patch/major — commits and tags in one step
+npm version patch       # or minor — see the table above; commits and tags
 git push origin main --follow-tags
 ```
 
