@@ -148,6 +148,38 @@
       "types": "./dist/market-data-engineering/data-quality/point-in-time-availability-guard/index.d.ts",
       "import": "./dist/market-data-engineering/data-quality/point-in-time-availability-guard/index.js"
     },
+    "./market-data-engineering/data-quality/provider-adjustment-basis-drift-detector": {
+      "types": "./dist/market-data-engineering/data-quality/provider-adjustment-basis-drift-detector/index.d.ts",
+      "import": "./dist/market-data-engineering/data-quality/provider-adjustment-basis-drift-detector/index.js"
+    },
+    "./market-data-engineering/order-book-feed-engineering/trade-and-quote-event-normalization": {
+      "types": "./dist/market-data-engineering/order-book-feed-engineering/trade-and-quote-event-normalization/index.d.ts",
+      "import": "./dist/market-data-engineering/order-book-feed-engineering/trade-and-quote-event-normalization/index.js"
+    },
+    "./market-data-engineering/order-book-feed-engineering/level-2-snapshot-and-delta-reconstruction": {
+      "types": "./dist/market-data-engineering/order-book-feed-engineering/level-2-snapshot-and-delta-reconstruction/index.d.ts",
+      "import": "./dist/market-data-engineering/order-book-feed-engineering/level-2-snapshot-and-delta-reconstruction/index.js"
+    },
+    "./market-data-engineering/order-book-feed-engineering/level-3-order-by-order-reconstruction": {
+      "types": "./dist/market-data-engineering/order-book-feed-engineering/level-3-order-by-order-reconstruction/index.d.ts",
+      "import": "./dist/market-data-engineering/order-book-feed-engineering/level-3-order-by-order-reconstruction/index.js"
+    },
+    "./market-data-engineering/order-book-feed-engineering/sequence-gap-detection-and-recovery": {
+      "types": "./dist/market-data-engineering/order-book-feed-engineering/sequence-gap-detection-and-recovery/index.d.ts",
+      "import": "./dist/market-data-engineering/order-book-feed-engineering/sequence-gap-detection-and-recovery/index.js"
+    },
+    "./market-data-engineering/order-book-feed-engineering/price-level-quantity-aggregation": {
+      "types": "./dist/market-data-engineering/order-book-feed-engineering/price-level-quantity-aggregation/index.d.ts",
+      "import": "./dist/market-data-engineering/order-book-feed-engineering/price-level-quantity-aggregation/index.js"
+    },
+    "./market-data-engineering/order-book-feed-engineering/snapshot-incremental-feed-reconciliation": {
+      "types": "./dist/market-data-engineering/order-book-feed-engineering/snapshot-incremental-feed-reconciliation/index.d.ts",
+      "import": "./dist/market-data-engineering/order-book-feed-engineering/snapshot-incremental-feed-reconciliation/index.js"
+    },
+    "./market-data-engineering/order-book-feed-engineering/multi-venue-best-quote-and-book-consolidation": {
+      "types": "./dist/market-data-engineering/order-book-feed-engineering/multi-venue-best-quote-and-book-consolidation/index.d.ts",
+      "import": "./dist/market-data-engineering/order-book-feed-engineering/multi-venue-best-quote-and-book-consolidation/index.js"
+    },
     "./corporate-actions-and-security-master-data/adjustment-factors/backward-split-adjustment": {
       "types": "./dist/corporate-actions-and-security-master-data/adjustment-factors/backward-split-adjustment/index.d.ts",
       "import": "./dist/corporate-actions-and-security-master-data/adjustment-factors/backward-split-adjustment/index.js"
@@ -223,6 +255,10 @@
     "./corporate-actions-and-security-master-data/point-in-time-universe/filing-revision-versioning": {
       "types": "./dist/corporate-actions-and-security-master-data/point-in-time-universe/filing-revision-versioning/index.d.ts",
       "import": "./dist/corporate-actions-and-security-master-data/point-in-time-universe/filing-revision-versioning/index.js"
+    },
+    "./corporate-actions-and-security-master-data/point-in-time-universe/corporate-action-status-and-effective-date-reconciliation": {
+      "types": "./dist/corporate-actions-and-security-master-data/point-in-time-universe/corporate-action-status-and-effective-date-reconciliation/index.d.ts",
+      "import": "./dist/corporate-actions-and-security-master-data/point-in-time-universe/corporate-action-status-and-effective-date-reconciliation/index.js"
     },
     "./index-and-benchmark-engineering/index-initialization-and-continuity/base-date-base-value-initialization": {
       "types": "./dist/index-and-benchmark-engineering/index-initialization-and-continuity/base-date-base-value-initialization/index.d.ts",
@@ -783,6 +819,306 @@
     "./statistical-time-series/state-and-regime-models/bayesian-change-point-detection": {
       "types": "./dist/statistical-time-series/state-and-regime-models/bayesian-change-point-detection/index.d.ts",
       "import": "./dist/statistical-time-series/state-and-regime-models/bayesian-change-point-detection/index.js"
+    },
+    "./statistical-time-series/decomposition-and-cycles/stl-decomposition": {
+      "types": "./dist/statistical-time-series/decomposition-and-cycles/stl-decomposition/index.d.ts",
+      "import": "./dist/statistical-time-series/decomposition-and-cycles/stl-decomposition/index.js"
+    },
+    "./statistical-time-series/decomposition-and-cycles/hodrick-prescott-filter": {
+      "types": "./dist/statistical-time-series/decomposition-and-cycles/hodrick-prescott-filter/index.d.ts",
+      "import": "./dist/statistical-time-series/decomposition-and-cycles/hodrick-prescott-filter/index.js"
+    },
+    "./statistical-time-series/decomposition-and-cycles/baxter-king-filter": {
+      "types": "./dist/statistical-time-series/decomposition-and-cycles/baxter-king-filter/index.d.ts",
+      "import": "./dist/statistical-time-series/decomposition-and-cycles/baxter-king-filter/index.js"
+    },
+    "./statistical-time-series/decomposition-and-cycles/christiano-fitzgerald-filter": {
+      "types": "./dist/statistical-time-series/decomposition-and-cycles/christiano-fitzgerald-filter/index.d.ts",
+      "import": "./dist/statistical-time-series/decomposition-and-cycles/christiano-fitzgerald-filter/index.js"
+    },
+    "./statistical-time-series/decomposition-and-cycles/fast-fourier-transform-periodogram": {
+      "types": "./dist/statistical-time-series/decomposition-and-cycles/fast-fourier-transform-periodogram/index.d.ts",
+      "import": "./dist/statistical-time-series/decomposition-and-cycles/fast-fourier-transform-periodogram/index.js"
+    },
+    "./statistical-time-series/decomposition-and-cycles/wavelet-decomposition": {
+      "types": "./dist/statistical-time-series/decomposition-and-cycles/wavelet-decomposition/index.d.ts",
+      "import": "./dist/statistical-time-series/decomposition-and-cycles/wavelet-decomposition/index.js"
+    },
+    "./market-microstructure/trade-classification/tick-test": {
+      "types": "./dist/market-microstructure/trade-classification/tick-test/index.d.ts",
+      "import": "./dist/market-microstructure/trade-classification/tick-test/index.js"
+    },
+    "./market-microstructure/trade-classification/quote-test": {
+      "types": "./dist/market-microstructure/trade-classification/quote-test/index.d.ts",
+      "import": "./dist/market-microstructure/trade-classification/quote-test/index.js"
+    },
+    "./market-microstructure/trade-classification/lee-ready-trade-signing": {
+      "types": "./dist/market-microstructure/trade-classification/lee-ready-trade-signing/index.d.ts",
+      "import": "./dist/market-microstructure/trade-classification/lee-ready-trade-signing/index.js"
+    },
+    "./market-microstructure/trade-classification/bulk-volume-classification": {
+      "types": "./dist/market-microstructure/trade-classification/bulk-volume-classification/index.d.ts",
+      "import": "./dist/market-microstructure/trade-classification/bulk-volume-classification/index.js"
+    },
+    "./market-microstructure/liquidity-and-spreads/quoted-spread": {
+      "types": "./dist/market-microstructure/liquidity-and-spreads/quoted-spread/index.d.ts",
+      "import": "./dist/market-microstructure/liquidity-and-spreads/quoted-spread/index.js"
+    },
+    "./market-microstructure/liquidity-and-spreads/effective-spread": {
+      "types": "./dist/market-microstructure/liquidity-and-spreads/effective-spread/index.d.ts",
+      "import": "./dist/market-microstructure/liquidity-and-spreads/effective-spread/index.js"
+    },
+    "./market-microstructure/liquidity-and-spreads/realized-spread": {
+      "types": "./dist/market-microstructure/liquidity-and-spreads/realized-spread/index.d.ts",
+      "import": "./dist/market-microstructure/liquidity-and-spreads/realized-spread/index.js"
+    },
+    "./market-microstructure/liquidity-and-spreads/roll-spread-estimator": {
+      "types": "./dist/market-microstructure/liquidity-and-spreads/roll-spread-estimator/index.d.ts",
+      "import": "./dist/market-microstructure/liquidity-and-spreads/roll-spread-estimator/index.js"
+    },
+    "./market-microstructure/liquidity-and-spreads/amihud-illiquidity-ratio": {
+      "types": "./dist/market-microstructure/liquidity-and-spreads/amihud-illiquidity-ratio/index.d.ts",
+      "import": "./dist/market-microstructure/liquidity-and-spreads/amihud-illiquidity-ratio/index.js"
+    },
+    "./market-microstructure/liquidity-and-spreads/corwin-schultz-spread-estimator": {
+      "types": "./dist/market-microstructure/liquidity-and-spreads/corwin-schultz-spread-estimator/index.d.ts",
+      "import": "./dist/market-microstructure/liquidity-and-spreads/corwin-schultz-spread-estimator/index.js"
+    },
+    "./market-microstructure/order-flow-and-impact/order-flow-imbalance": {
+      "types": "./dist/market-microstructure/order-flow-and-impact/order-flow-imbalance/index.d.ts",
+      "import": "./dist/market-microstructure/order-flow-and-impact/order-flow-imbalance/index.js"
+    },
+    "./market-microstructure/order-flow-and-impact/queue-imbalance": {
+      "types": "./dist/market-microstructure/order-flow-and-impact/queue-imbalance/index.d.ts",
+      "import": "./dist/market-microstructure/order-flow-and-impact/queue-imbalance/index.js"
+    },
+    "./market-microstructure/order-flow-and-impact/kyle-lambda": {
+      "types": "./dist/market-microstructure/order-flow-and-impact/kyle-lambda/index.d.ts",
+      "import": "./dist/market-microstructure/order-flow-and-impact/kyle-lambda/index.js"
+    },
+    "./market-microstructure/order-flow-and-impact/hasbrouck-price-impact": {
+      "types": "./dist/market-microstructure/order-flow-and-impact/hasbrouck-price-impact/index.d.ts",
+      "import": "./dist/market-microstructure/order-flow-and-impact/hasbrouck-price-impact/index.js"
+    },
+    "./market-microstructure/order-flow-and-impact/pin": {
+      "types": "./dist/market-microstructure/order-flow-and-impact/pin/index.d.ts",
+      "import": "./dist/market-microstructure/order-flow-and-impact/pin/index.js"
+    },
+    "./market-microstructure/order-flow-and-impact/vpin": {
+      "types": "./dist/market-microstructure/order-flow-and-impact/vpin/index.d.ts",
+      "import": "./dist/market-microstructure/order-flow-and-impact/vpin/index.js"
+    },
+    "./market-microstructure/order-book-dynamics/order-book-slope": {
+      "types": "./dist/market-microstructure/order-book-dynamics/order-book-slope/index.d.ts",
+      "import": "./dist/market-microstructure/order-book-dynamics/order-book-slope/index.js"
+    },
+    "./market-microstructure/order-book-dynamics/depth-weighted-midprice": {
+      "types": "./dist/market-microstructure/order-book-dynamics/depth-weighted-midprice/index.d.ts",
+      "import": "./dist/market-microstructure/order-book-dynamics/depth-weighted-midprice/index.js"
+    },
+    "./market-microstructure/order-book-dynamics/microprice": {
+      "types": "./dist/market-microstructure/order-book-dynamics/microprice/index.d.ts",
+      "import": "./dist/market-microstructure/order-book-dynamics/microprice/index.js"
+    },
+    "./market-microstructure/order-book-dynamics/order-book-resiliency": {
+      "types": "./dist/market-microstructure/order-book-dynamics/order-book-resiliency/index.d.ts",
+      "import": "./dist/market-microstructure/order-book-dynamics/order-book-resiliency/index.js"
+    },
+    "./market-microstructure/order-book-dynamics/hawkes-order-arrival-model": {
+      "types": "./dist/market-microstructure/order-book-dynamics/hawkes-order-arrival-model/index.d.ts",
+      "import": "./dist/market-microstructure/order-book-dynamics/hawkes-order-arrival-model/index.js"
+    },
+    "./market-microstructure/market-depth-analytics/cumulative-bid-ask-depth": {
+      "types": "./dist/market-microstructure/market-depth-analytics/cumulative-bid-ask-depth/index.d.ts",
+      "import": "./dist/market-microstructure/market-depth-analytics/cumulative-bid-ask-depth/index.js"
+    },
+    "./market-microstructure/market-depth-analytics/top-n-depth-imbalance": {
+      "types": "./dist/market-microstructure/market-depth-analytics/top-n-depth-imbalance/index.d.ts",
+      "import": "./dist/market-microstructure/market-depth-analytics/top-n-depth-imbalance/index.js"
+    },
+    "./market-microstructure/market-depth-analytics/depth-at-distance-profile": {
+      "types": "./dist/market-microstructure/market-depth-analytics/depth-at-distance-profile/index.d.ts",
+      "import": "./dist/market-microstructure/market-depth-analytics/depth-at-distance-profile/index.js"
+    },
+    "./market-microstructure/market-depth-analytics/expected-market-order-fill-price": {
+      "types": "./dist/market-microstructure/market-depth-analytics/expected-market-order-fill-price/index.d.ts",
+      "import": "./dist/market-microstructure/market-depth-analytics/expected-market-order-fill-price/index.js"
+    },
+    "./market-microstructure/market-depth-analytics/multi-level-sweep-cost-and-slippage": {
+      "types": "./dist/market-microstructure/market-depth-analytics/multi-level-sweep-cost-and-slippage/index.d.ts",
+      "import": "./dist/market-microstructure/market-depth-analytics/multi-level-sweep-cost-and-slippage/index.js"
+    },
+    "./market-microstructure/market-depth-analytics/liquidity-wall-and-concentration-detection": {
+      "types": "./dist/market-microstructure/market-depth-analytics/liquidity-wall-and-concentration-detection/index.d.ts",
+      "import": "./dist/market-microstructure/market-depth-analytics/liquidity-wall-and-concentration-detection/index.js"
+    },
+    "./market-microstructure/market-depth-analytics/depth-depletion-and-replenishment": {
+      "types": "./dist/market-microstructure/market-depth-analytics/depth-depletion-and-replenishment/index.d.ts",
+      "import": "./dist/market-microstructure/market-depth-analytics/depth-depletion-and-replenishment/index.js"
+    },
+    "./market-microstructure/market-depth-analytics/market-depth-heatmap-aggregation": {
+      "types": "./dist/market-microstructure/market-depth-analytics/market-depth-heatmap-aggregation/index.d.ts",
+      "import": "./dist/market-microstructure/market-depth-analytics/market-depth-heatmap-aggregation/index.js"
+    },
+    "./matching-engines-and-venue-logic/continuous-matching/price-time-priority": {
+      "types": "./dist/matching-engines-and-venue-logic/continuous-matching/price-time-priority/index.d.ts",
+      "import": "./dist/matching-engines-and-venue-logic/continuous-matching/price-time-priority/index.js"
+    },
+    "./matching-engines-and-venue-logic/continuous-matching/pro-rata-matching": {
+      "types": "./dist/matching-engines-and-venue-logic/continuous-matching/pro-rata-matching/index.d.ts",
+      "import": "./dist/matching-engines-and-venue-logic/continuous-matching/pro-rata-matching/index.js"
+    },
+    "./matching-engines-and-venue-logic/continuous-matching/size-time-priority": {
+      "types": "./dist/matching-engines-and-venue-logic/continuous-matching/size-time-priority/index.d.ts",
+      "import": "./dist/matching-engines-and-venue-logic/continuous-matching/size-time-priority/index.js"
+    },
+    "./matching-engines-and-venue-logic/continuous-matching/hybrid-pro-rata-time-matching": {
+      "types": "./dist/matching-engines-and-venue-logic/continuous-matching/hybrid-pro-rata-time-matching/index.d.ts",
+      "import": "./dist/matching-engines-and-venue-logic/continuous-matching/hybrid-pro-rata-time-matching/index.js"
+    },
+    "./matching-engines-and-venue-logic/auctions/maximum-executable-volume-auction": {
+      "types": "./dist/matching-engines-and-venue-logic/auctions/maximum-executable-volume-auction/index.d.ts",
+      "import": "./dist/matching-engines-and-venue-logic/auctions/maximum-executable-volume-auction/index.js"
+    },
+    "./matching-engines-and-venue-logic/auctions/minimum-imbalance-tie-break": {
+      "types": "./dist/matching-engines-and-venue-logic/auctions/minimum-imbalance-tie-break/index.d.ts",
+      "import": "./dist/matching-engines-and-venue-logic/auctions/minimum-imbalance-tie-break/index.js"
+    },
+    "./matching-engines-and-venue-logic/auctions/opening-cross-price": {
+      "types": "./dist/matching-engines-and-venue-logic/auctions/opening-cross-price/index.d.ts",
+      "import": "./dist/matching-engines-and-venue-logic/auctions/opening-cross-price/index.js"
+    },
+    "./matching-engines-and-venue-logic/auctions/closing-cross-price": {
+      "types": "./dist/matching-engines-and-venue-logic/auctions/closing-cross-price/index.d.ts",
+      "import": "./dist/matching-engines-and-venue-logic/auctions/closing-cross-price/index.js"
+    },
+    "./matching-engines-and-venue-logic/auctions/volatility-auction-reopening": {
+      "types": "./dist/matching-engines-and-venue-logic/auctions/volatility-auction-reopening/index.d.ts",
+      "import": "./dist/matching-engines-and-venue-logic/auctions/volatility-auction-reopening/index.js"
+    },
+    "./matching-engines-and-venue-logic/order-controls/tick-size-validation": {
+      "types": "./dist/matching-engines-and-venue-logic/order-controls/tick-size-validation/index.d.ts",
+      "import": "./dist/matching-engines-and-venue-logic/order-controls/tick-size-validation/index.js"
+    },
+    "./matching-engines-and-venue-logic/order-controls/price-band-validation": {
+      "types": "./dist/matching-engines-and-venue-logic/order-controls/price-band-validation/index.d.ts",
+      "import": "./dist/matching-engines-and-venue-logic/order-controls/price-band-validation/index.js"
+    },
+    "./matching-engines-and-venue-logic/order-controls/self-trade-prevention": {
+      "types": "./dist/matching-engines-and-venue-logic/order-controls/self-trade-prevention/index.d.ts",
+      "import": "./dist/matching-engines-and-venue-logic/order-controls/self-trade-prevention/index.js"
+    },
+    "./matching-engines-and-venue-logic/order-controls/cancel-on-disconnect": {
+      "types": "./dist/matching-engines-and-venue-logic/order-controls/cancel-on-disconnect/index.d.ts",
+      "import": "./dist/matching-engines-and-venue-logic/order-controls/cancel-on-disconnect/index.js"
+    },
+    "./matching-engines-and-venue-logic/order-controls/fat-finger-limit": {
+      "types": "./dist/matching-engines-and-venue-logic/order-controls/fat-finger-limit/index.d.ts",
+      "import": "./dist/matching-engines-and-venue-logic/order-controls/fat-finger-limit/index.js"
+    },
+    "./matching-engines-and-venue-logic/order-controls/circuit-breaker-trigger": {
+      "types": "./dist/matching-engines-and-venue-logic/order-controls/circuit-breaker-trigger/index.d.ts",
+      "import": "./dist/matching-engines-and-venue-logic/order-controls/circuit-breaker-trigger/index.js"
+    },
+    "./matching-engines-and-venue-logic/order-lifecycle-and-queue-state/limit-order-lifecycle-state-machine": {
+      "types": "./dist/matching-engines-and-venue-logic/order-lifecycle-and-queue-state/limit-order-lifecycle-state-machine/index.d.ts",
+      "import": "./dist/matching-engines-and-venue-logic/order-lifecycle-and-queue-state/limit-order-lifecycle-state-machine/index.js"
+    },
+    "./matching-engines-and-venue-logic/order-lifecycle-and-queue-state/cancel-replace-priority-rule": {
+      "types": "./dist/matching-engines-and-venue-logic/order-lifecycle-and-queue-state/cancel-replace-priority-rule/index.d.ts",
+      "import": "./dist/matching-engines-and-venue-logic/order-lifecycle-and-queue-state/cancel-replace-priority-rule/index.js"
+    },
+    "./matching-engines-and-venue-logic/order-lifecycle-and-queue-state/partial-fill-and-residual-quantity-processing": {
+      "types": "./dist/matching-engines-and-venue-logic/order-lifecycle-and-queue-state/partial-fill-and-residual-quantity-processing/index.d.ts",
+      "import": "./dist/matching-engines-and-venue-logic/order-lifecycle-and-queue-state/partial-fill-and-residual-quantity-processing/index.js"
+    },
+    "./matching-engines-and-venue-logic/order-lifecycle-and-queue-state/queue-position-and-ahead-volume-calculation": {
+      "types": "./dist/matching-engines-and-venue-logic/order-lifecycle-and-queue-state/queue-position-and-ahead-volume-calculation/index.d.ts",
+      "import": "./dist/matching-engines-and-venue-logic/order-lifecycle-and-queue-state/queue-position-and-ahead-volume-calculation/index.js"
+    },
+    "./matching-engines-and-venue-logic/order-lifecycle-and-queue-state/iceberg-reserve-order-replenishment": {
+      "types": "./dist/matching-engines-and-venue-logic/order-lifecycle-and-queue-state/iceberg-reserve-order-replenishment/index.d.ts",
+      "import": "./dist/matching-engines-and-venue-logic/order-lifecycle-and-queue-state/iceberg-reserve-order-replenishment/index.js"
+    },
+    "./matching-engines-and-venue-logic/order-lifecycle-and-queue-state/marketable-order-multi-level-sweep": {
+      "types": "./dist/matching-engines-and-venue-logic/order-lifecycle-and-queue-state/marketable-order-multi-level-sweep/index.d.ts",
+      "import": "./dist/matching-engines-and-venue-logic/order-lifecycle-and-queue-state/marketable-order-multi-level-sweep/index.js"
+    },
+    "./execution-and-transaction-cost-analysis/schedule-based-execution/twap-execution": {
+      "types": "./dist/execution-and-transaction-cost-analysis/schedule-based-execution/twap-execution/index.d.ts",
+      "import": "./dist/execution-and-transaction-cost-analysis/schedule-based-execution/twap-execution/index.js"
+    },
+    "./execution-and-transaction-cost-analysis/schedule-based-execution/historical-vwap-execution": {
+      "types": "./dist/execution-and-transaction-cost-analysis/schedule-based-execution/historical-vwap-execution/index.d.ts",
+      "import": "./dist/execution-and-transaction-cost-analysis/schedule-based-execution/historical-vwap-execution/index.js"
+    },
+    "./execution-and-transaction-cost-analysis/schedule-based-execution/adaptive-vwap-execution": {
+      "types": "./dist/execution-and-transaction-cost-analysis/schedule-based-execution/adaptive-vwap-execution/index.d.ts",
+      "import": "./dist/execution-and-transaction-cost-analysis/schedule-based-execution/adaptive-vwap-execution/index.js"
+    },
+    "./execution-and-transaction-cost-analysis/schedule-based-execution/percentage-of-volume-execution": {
+      "types": "./dist/execution-and-transaction-cost-analysis/schedule-based-execution/percentage-of-volume-execution/index.d.ts",
+      "import": "./dist/execution-and-transaction-cost-analysis/schedule-based-execution/percentage-of-volume-execution/index.js"
+    },
+    "./execution-and-transaction-cost-analysis/cost-risk-optimization/almgren-chriss-optimal-execution": {
+      "types": "./dist/execution-and-transaction-cost-analysis/cost-risk-optimization/almgren-chriss-optimal-execution/index.d.ts",
+      "import": "./dist/execution-and-transaction-cost-analysis/cost-risk-optimization/almgren-chriss-optimal-execution/index.js"
+    },
+    "./execution-and-transaction-cost-analysis/cost-risk-optimization/implementation-shortfall-execution": {
+      "types": "./dist/execution-and-transaction-cost-analysis/cost-risk-optimization/implementation-shortfall-execution/index.d.ts",
+      "import": "./dist/execution-and-transaction-cost-analysis/cost-risk-optimization/implementation-shortfall-execution/index.js"
+    },
+    "./execution-and-transaction-cost-analysis/cost-risk-optimization/arrival-price-execution": {
+      "types": "./dist/execution-and-transaction-cost-analysis/cost-risk-optimization/arrival-price-execution/index.d.ts",
+      "import": "./dist/execution-and-transaction-cost-analysis/cost-risk-optimization/arrival-price-execution/index.js"
+    },
+    "./execution-and-transaction-cost-analysis/cost-risk-optimization/liquidity-seeking-execution": {
+      "types": "./dist/execution-and-transaction-cost-analysis/cost-risk-optimization/liquidity-seeking-execution/index.d.ts",
+      "import": "./dist/execution-and-transaction-cost-analysis/cost-risk-optimization/liquidity-seeking-execution/index.js"
+    },
+    "./execution-and-transaction-cost-analysis/cost-risk-optimization/opportunistic-dark-pool-execution": {
+      "types": "./dist/execution-and-transaction-cost-analysis/cost-risk-optimization/opportunistic-dark-pool-execution/index.d.ts",
+      "import": "./dist/execution-and-transaction-cost-analysis/cost-risk-optimization/opportunistic-dark-pool-execution/index.js"
+    },
+    "./digital-assets-and-on-chain-finance/amm-pricing/constant-product-amm": {
+      "types": "./dist/digital-assets-and-on-chain-finance/amm-pricing/constant-product-amm/index.d.ts",
+      "import": "./dist/digital-assets-and-on-chain-finance/amm-pricing/constant-product-amm/index.js"
+    },
+    "./digital-assets-and-on-chain-finance/amm-pricing/constant-sum-amm": {
+      "types": "./dist/digital-assets-and-on-chain-finance/amm-pricing/constant-sum-amm/index.d.ts",
+      "import": "./dist/digital-assets-and-on-chain-finance/amm-pricing/constant-sum-amm/index.js"
+    },
+    "./digital-assets-and-on-chain-finance/amm-pricing/stableswap-invariant": {
+      "types": "./dist/digital-assets-and-on-chain-finance/amm-pricing/stableswap-invariant/index.d.ts",
+      "import": "./dist/digital-assets-and-on-chain-finance/amm-pricing/stableswap-invariant/index.js"
+    },
+    "./digital-assets-and-on-chain-finance/amm-pricing/weighted-product-amm": {
+      "types": "./dist/digital-assets-and-on-chain-finance/amm-pricing/weighted-product-amm/index.d.ts",
+      "import": "./dist/digital-assets-and-on-chain-finance/amm-pricing/weighted-product-amm/index.js"
+    },
+    "./digital-assets-and-on-chain-finance/amm-pricing/concentrated-liquidity-position": {
+      "types": "./dist/digital-assets-and-on-chain-finance/amm-pricing/concentrated-liquidity-position/index.d.ts",
+      "import": "./dist/digital-assets-and-on-chain-finance/amm-pricing/concentrated-liquidity-position/index.js"
+    },
+    "./digital-assets-and-on-chain-finance/liquidity-and-liquidation/impermanent-loss-calculation": {
+      "types": "./dist/digital-assets-and-on-chain-finance/liquidity-and-liquidation/impermanent-loss-calculation/index.d.ts",
+      "import": "./dist/digital-assets-and-on-chain-finance/liquidity-and-liquidation/impermanent-loss-calculation/index.js"
+    },
+    "./digital-assets-and-on-chain-finance/liquidity-and-liquidation/liquidity-provider-fee-apr": {
+      "types": "./dist/digital-assets-and-on-chain-finance/liquidity-and-liquidation/liquidity-provider-fee-apr/index.d.ts",
+      "import": "./dist/digital-assets-and-on-chain-finance/liquidity-and-liquidation/liquidity-provider-fee-apr/index.js"
+    },
+    "./digital-assets-and-on-chain-finance/liquidity-and-liquidation/collateral-health-factor": {
+      "types": "./dist/digital-assets-and-on-chain-finance/liquidity-and-liquidation/collateral-health-factor/index.d.ts",
+      "import": "./dist/digital-assets-and-on-chain-finance/liquidity-and-liquidation/collateral-health-factor/index.js"
+    },
+    "./digital-assets-and-on-chain-finance/liquidity-and-liquidation/liquidation-price-calculation": {
+      "types": "./dist/digital-assets-and-on-chain-finance/liquidity-and-liquidation/liquidation-price-calculation/index.d.ts",
+      "import": "./dist/digital-assets-and-on-chain-finance/liquidity-and-liquidation/liquidation-price-calculation/index.js"
+    },
+    "./digital-assets-and-on-chain-finance/liquidity-and-liquidation/liquidation-waterfall": {
+      "types": "./dist/digital-assets-and-on-chain-finance/liquidity-and-liquidation/liquidation-waterfall/index.d.ts",
+      "import": "./dist/digital-assets-and-on-chain-finance/liquidity-and-liquidation/liquidation-waterfall/index.js"
     },
     "./earnings-and-per-share-analytics/earnings-and-share-foundations/stock-split-consolidation-eps-restatement": {
       "types": "./dist/earnings-and-per-share-analytics/earnings-and-share-foundations/stock-split-consolidation-eps-restatement/index.d.ts",

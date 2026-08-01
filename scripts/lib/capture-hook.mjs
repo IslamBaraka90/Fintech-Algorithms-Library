@@ -30,6 +30,40 @@ const ENTRY = process.env.CAPTURE_ENTRY;
 const OUT = process.env.CAPTURE_OUT;
 const SCOPE = process.env.CAPTURE_SCOPE; // catalog root, as a file: URL prefix
 
+/**
+ * Newer catalog families follow the NodeNext convention and import their
+ * implementation as `./thing.js` while the file on disk is `./thing.ts`.
+ * TypeScript rewrites that at compile time; Node's type stripping does not, so
+ * the tests fail to resolve and 53 topics captured no example.
+ *
+ * Only rewrite when the `.js` genuinely does not exist — a real compiled file
+ * must always win.
+ */
+export async function resolve(specifier, context, next) {
+  try {
+    return await next(specifier, context);
+  } catch (error) {
+    // Two conventions in the catalog: `./thing.js` (NodeNext) and bare
+    // `./thing` (extensionless). Neither resolves to a `.ts` file under type
+    // stripping, and both are used by families whose examples we need.
+    if (context.parentURL && /^[./]/.test(specifier)) {
+      const candidates = specifier.endsWith(".js")
+        ? [`${specifier.slice(0, -3)}.ts`]
+        : /\.[a-z]+$/i.test(specifier)
+          ? []
+          : [`${specifier}.ts`, `${specifier}/index.ts`];
+      for (const candidate of candidates) {
+        try {
+          return await next(candidate, context);
+        } catch {
+          /* try the next candidate */
+        }
+      }
+    }
+    throw error;
+  }
+}
+
 export async function load(url, context, next) {
   const result = await next(url, context);
   if (!result.source) return result;

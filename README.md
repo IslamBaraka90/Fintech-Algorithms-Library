@@ -7,8 +7,9 @@
 [![types included](https://img.shields.io/badge/types-included-blue.svg)](https://www.typescriptlang.org/)
 [![license](https://img.shields.io/npm/l/fintech-algorithms.svg)](LICENSE)
 
-**Corporate actions, index construction, market breadth, bar construction and
-technical indicators — as plain TypeScript functions with zero dependencies.**
+**Corporate actions, index construction, market breadth, market microstructure,
+matching engines, execution algorithms and technical indicators — as plain
+TypeScript functions with zero dependencies.**
 
 📖 **[Documentation → docs.thefintechbuilder.com](https://docs.thefintechbuilder.com)**
 — a reference page for every algorithm, with a worked example whose output was
@@ -82,9 +83,9 @@ Requires Node ≥ 22.
 ## Verified against published worked examples
 
 <!-- coverage:start -->
-**79 of 187 topics** are verified against the catalog's own published numbers
+**79 of 271 topics** are verified against the catalog's own published numbers
 (41 via `{ input, expected }`, 11 via row fixtures, 27 via bar/checkpoint fixtures).
-The remaining 108 are proven to load and expose a callable entry point, but their
+The remaining 192 are proven to load and expose a callable entry point, but their
 arithmetic is not asserted here — those topics ship no machine-readable expected
 values in the catalog.
 <!-- coverage:end -->
@@ -119,9 +120,9 @@ Every topic is an instance of one of five archetypes:
 <!-- shapes:start -->
 | Archetype | Signature | Count | Example |
 |---|---|--:|---|
-| `record-transform` | `(input) → output` | 122 | backward-split-adjustment |
+| `record-transform` | `(input) → output` | 205 | backward-split-adjustment |
 | `series-transform` | `(values, ...params) → (number\|null)[]` | 37 | ema, rsi, macd |
-| `row-classify` | `(rows, config?) → verdict[]` | 15 | ohlc-consistency-validator |
+| `row-classify` | `(rows, config?) → verdict[]` | 16 | ohlc-consistency-validator |
 | `tape-aggregate` | `(trades, config) → bar[]` | 7 | time-bars, volume-bars |
 | `snapshot-evaluate` | `(snapshot, policy) → result` | 6 | price-source-consensus-check |
 <!-- shapes:end -->
@@ -154,18 +155,22 @@ repo URL.
 ## Coverage
 
 <!-- stats:start -->
-**187 topics** · 9 domains · 33 families
+**271 topics** · 13 domains · 48 families
 
 | Domain | Topics | Families | Name |
 |---|--:|--:|---|
-| D01 | 23 | 4 | Market Data Engineering |
-| D02 | 19 | 4 | Corporate Actions and Security Master Data |
+| D01 | 31 | 5 | Market Data Engineering |
+| D02 | 20 | 4 | Corporate Actions and Security Master Data |
 | D03 | 40 | 6 | Index and Benchmark Engineering |
 | D04 | 28 | 5 | Market Breadth and Internals |
 | D06 | 2 | 1 | Price Action and Candlesticks |
 | D07 | 37 | 5 | Technical Indicators |
 | D08 | 10 | 2 | Geometric Chart Patterns |
-| D09 | 23 | 4 | Statistical Time Series |
+| D09 | 29 | 5 | Statistical Time Series |
+| D11 | 29 | 5 | Market Microstructure |
+| D12 | 21 | 4 | Matching Engines and Venue Logic |
+| D13 | 9 | 2 | Execution and Transaction Cost Analysis |
+| D25 | 10 | 2 | Digital Assets and On-Chain Finance |
 | D46 | 5 | 2 | Earnings and Per-Share Analytics |
 <!-- stats:end -->
 
@@ -174,10 +179,10 @@ repo URL.
 Each name links to its reference page — signature, worked example, verification
 tier, diagrams and source.
 
-**[Full reference for all 187 algorithms →](https://docs.thefintechbuilder.com)**
+**[Full reference for all 271 algorithms →](https://docs.thefintechbuilder.com)**
 
 <!-- topics:start -->
-### D01 — Market Data Engineering · 23 topics
+### D01 — Market Data Engineering · 31 topics
 
 **Bar Construction** — [Time Bars](https://docs.thefintechbuilder.com/market-data-engineering/bar-construction/time-bars/) · [Tick Bars](https://docs.thefintechbuilder.com/market-data-engineering/bar-construction/tick-bars/) · [Volume Bars](https://docs.thefintechbuilder.com/market-data-engineering/bar-construction/volume-bars/) · [Dollar Bars](https://docs.thefintechbuilder.com/market-data-engineering/bar-construction/dollar-bars/) · [Tick-Imbalance Bars](https://docs.thefintechbuilder.com/market-data-engineering/bar-construction/tick-imbalance-bars/) · [Volume-Imbalance Bars](https://docs.thefintechbuilder.com/market-data-engineering/bar-construction/volume-imbalance-bars/) · [Tick-Run Bars](https://docs.thefintechbuilder.com/market-data-engineering/bar-construction/tick-run-bars/)
 
@@ -185,10 +190,12 @@ tier, diagrams and source.
 
 **Time Synchronization** — [Previous-Tick Interpolation](https://docs.thefintechbuilder.com/market-data-engineering/time-synchronization/previous-tick-interpolation/) · [Linear Quote Interpolation](https://docs.thefintechbuilder.com/market-data-engineering/time-synchronization/linear-quote-interpolation/) · [Refresh-Time Sampling](https://docs.thefintechbuilder.com/market-data-engineering/time-synchronization/refresh-time-sampling/) · [Exchange-Calendar Alignment](https://docs.thefintechbuilder.com/market-data-engineering/time-synchronization/exchange-calendar-alignment/) · [Asynchronous Return Alignment](https://docs.thefintechbuilder.com/market-data-engineering/time-synchronization/asynchronous-return-alignment/)
 
-**Data Quality** — [Missing-Bar Gap Classifier](https://docs.thefintechbuilder.com/market-data-engineering/data-quality/missing-bar-gap-classifier/) · [Feed-Latency Monitor](https://docs.thefintechbuilder.com/market-data-engineering/data-quality/feed-latency-monitor/) · [Price-Source Consensus Check](https://docs.thefintechbuilder.com/market-data-engineering/data-quality/price-source-consensus-check/) · [Schema-Drift Detector](https://docs.thefintechbuilder.com/market-data-engineering/data-quality/schema-drift-detector/) · [Point-in-Time Availability Guard](https://docs.thefintechbuilder.com/market-data-engineering/data-quality/point-in-time-availability-guard/)
+**Data Quality** — [Missing-Bar Gap Classifier](https://docs.thefintechbuilder.com/market-data-engineering/data-quality/missing-bar-gap-classifier/) · [Feed-Latency Monitor](https://docs.thefintechbuilder.com/market-data-engineering/data-quality/feed-latency-monitor/) · [Price-Source Consensus Check](https://docs.thefintechbuilder.com/market-data-engineering/data-quality/price-source-consensus-check/) · [Schema-Drift Detector](https://docs.thefintechbuilder.com/market-data-engineering/data-quality/schema-drift-detector/) · [Point-in-Time Availability Guard](https://docs.thefintechbuilder.com/market-data-engineering/data-quality/point-in-time-availability-guard/) · [Provider Adjustment-Basis Drift Detector](https://docs.thefintechbuilder.com/market-data-engineering/data-quality/provider-adjustment-basis-drift-detector/)
+
+**Order-Book Feed Engineering** — [Trade-and-Quote Event Normalization](https://docs.thefintechbuilder.com/market-data-engineering/order-book-feed-engineering/trade-and-quote-event-normalization/) · [Level-2 Snapshot-and-Delta Reconstruction](https://docs.thefintechbuilder.com/market-data-engineering/order-book-feed-engineering/level-2-snapshot-and-delta-reconstruction/) · [Level-3 Order-by-Order Reconstruction](https://docs.thefintechbuilder.com/market-data-engineering/order-book-feed-engineering/level-3-order-by-order-reconstruction/) · [Sequence-Gap Detection and Recovery](https://docs.thefintechbuilder.com/market-data-engineering/order-book-feed-engineering/sequence-gap-detection-and-recovery/) · [Price-Level Quantity Aggregation](https://docs.thefintechbuilder.com/market-data-engineering/order-book-feed-engineering/price-level-quantity-aggregation/) · [Snapshot/Incremental-Feed Reconciliation](https://docs.thefintechbuilder.com/market-data-engineering/order-book-feed-engineering/snapshot-incremental-feed-reconciliation/) · [Multi-Venue Best-Quote and Book Consolidation](https://docs.thefintechbuilder.com/market-data-engineering/order-book-feed-engineering/multi-venue-best-quote-and-book-consolidation/)
 
 
-### D02 — Corporate Actions and Security Master Data · 19 topics
+### D02 — Corporate Actions and Security Master Data · 20 topics
 
 **Adjustment Factors** — [Backward Split Adjustment](https://docs.thefintechbuilder.com/corporate-actions-and-security-master-data/adjustment-factors/backward-split-adjustment/) · [Forward Split Adjustment](https://docs.thefintechbuilder.com/corporate-actions-and-security-master-data/adjustment-factors/forward-split-adjustment/) · [Cash-Dividend Total-Return Adjustment](https://docs.thefintechbuilder.com/corporate-actions-and-security-master-data/adjustment-factors/cash-dividend-total-return-adjustment/) · [CRSP Cumulative Price Adjustment](https://docs.thefintechbuilder.com/corporate-actions-and-security-master-data/adjustment-factors/crsp-cumulative-price-adjustment/) · [CRSP Cumulative Share/Volume Adjustment](https://docs.thefintechbuilder.com/corporate-actions-and-security-master-data/adjustment-factors/crsp-cumulative-share-volume-adjustment/)
 
@@ -196,7 +203,7 @@ tier, diagrams and source.
 
 **Identity Continuity** — [Permanent Security Identifier Mapping](https://docs.thefintechbuilder.com/corporate-actions-and-security-master-data/identity-continuity/permanent-security-identifier-mapping/) · [Ticker-Change Chain Resolution](https://docs.thefintechbuilder.com/corporate-actions-and-security-master-data/identity-continuity/ticker-change-chain-resolution/) · [Share-Class Relationship Mapping](https://docs.thefintechbuilder.com/corporate-actions-and-security-master-data/identity-continuity/share-class-relationship-mapping/) · [Merger Predecessor/Successor Mapping](https://docs.thefintechbuilder.com/corporate-actions-and-security-master-data/identity-continuity/merger-predecessor-successor-mapping/) · [Delisting Return Reconstruction](https://docs.thefintechbuilder.com/corporate-actions-and-security-master-data/identity-continuity/delisting-return-reconstruction/)
 
-**Point-in-Time Universe** — [Historical Constituent Reconstruction](https://docs.thefintechbuilder.com/corporate-actions-and-security-master-data/point-in-time-universe/historical-constituent-reconstruction/) · [Survivorship-Bias Guard](https://docs.thefintechbuilder.com/corporate-actions-and-security-master-data/point-in-time-universe/survivorship-bias-guard/) · [IPO Availability Timestamping](https://docs.thefintechbuilder.com/corporate-actions-and-security-master-data/point-in-time-universe/ipo-availability-timestamping/) · [Filing-Revision Versioning](https://docs.thefintechbuilder.com/corporate-actions-and-security-master-data/point-in-time-universe/filing-revision-versioning/)
+**Point-in-Time Universe** — [Historical Constituent Reconstruction](https://docs.thefintechbuilder.com/corporate-actions-and-security-master-data/point-in-time-universe/historical-constituent-reconstruction/) · [Survivorship-Bias Guard](https://docs.thefintechbuilder.com/corporate-actions-and-security-master-data/point-in-time-universe/survivorship-bias-guard/) · [IPO Availability Timestamping](https://docs.thefintechbuilder.com/corporate-actions-and-security-master-data/point-in-time-universe/ipo-availability-timestamping/) · [Filing-Revision Versioning](https://docs.thefintechbuilder.com/corporate-actions-and-security-master-data/point-in-time-universe/filing-revision-versioning/) · [Corporate-Action Status and Effective-Date Reconciliation](https://docs.thefintechbuilder.com/corporate-actions-and-security-master-data/point-in-time-universe/corporate-action-status-and-effective-date-reconciliation/)
 
 
 ### D03 — Index and Benchmark Engineering · 40 topics
@@ -252,7 +259,7 @@ tier, diagrams and source.
 **Reversal Structures** — [Double Top](https://docs.thefintechbuilder.com/geometric-chart-patterns/reversal-structures/double-top/) · [Double Bottom](https://docs.thefintechbuilder.com/geometric-chart-patterns/reversal-structures/double-bottom/) · [Triple Top](https://docs.thefintechbuilder.com/geometric-chart-patterns/reversal-structures/triple-top/) · [Triple Bottom](https://docs.thefintechbuilder.com/geometric-chart-patterns/reversal-structures/triple-bottom/) · [Head and Shoulders](https://docs.thefintechbuilder.com/geometric-chart-patterns/reversal-structures/head-and-shoulders/) · [Inverse Head and Shoulders](https://docs.thefintechbuilder.com/geometric-chart-patterns/reversal-structures/inverse-head-and-shoulders/)
 
 
-### D09 — Statistical Time Series · 23 topics
+### D09 — Statistical Time Series · 29 topics
 
 **Diagnostics** — [ACF](https://docs.thefintechbuilder.com/statistical-time-series/diagnostics/acf/) · [PACF](https://docs.thefintechbuilder.com/statistical-time-series/diagnostics/pacf/) · [Augmented Dickey-Fuller](https://docs.thefintechbuilder.com/statistical-time-series/diagnostics/augmented-dickey-fuller/) · [KPSS](https://docs.thefintechbuilder.com/statistical-time-series/diagnostics/kpss/) · [Ljung-Box](https://docs.thefintechbuilder.com/statistical-time-series/diagnostics/ljung-box/) · [Zivot-Andrews Break Test](https://docs.thefintechbuilder.com/statistical-time-series/diagnostics/zivot-andrews-break-test/)
 
@@ -261,6 +268,46 @@ tier, diagrams and source.
 **Multivariate Systems** — [VAR](https://docs.thefintechbuilder.com/statistical-time-series/multivariate-systems/var/) · [Structural VAR](https://docs.thefintechbuilder.com/statistical-time-series/multivariate-systems/structural-var/) · [VECM](https://docs.thefintechbuilder.com/statistical-time-series/multivariate-systems/vecm/) · [Impulse-Response Analysis](https://docs.thefintechbuilder.com/statistical-time-series/multivariate-systems/impulse-response-analysis/) · [Forecast-Error Variance Decomposition](https://docs.thefintechbuilder.com/statistical-time-series/multivariate-systems/forecast-error-variance-decomposition/)
 
 **State and Regime Models** — [Kalman Filter](https://docs.thefintechbuilder.com/statistical-time-series/state-and-regime-models/kalman-filter/) · [Extended Kalman Filter](https://docs.thefintechbuilder.com/statistical-time-series/state-and-regime-models/extended-kalman-filter/) · [Unscented Kalman Filter](https://docs.thefintechbuilder.com/statistical-time-series/state-and-regime-models/unscented-kalman-filter/) · [Hidden Markov Model](https://docs.thefintechbuilder.com/statistical-time-series/state-and-regime-models/hidden-markov-model/) · [Markov-Switching Autoregression](https://docs.thefintechbuilder.com/statistical-time-series/state-and-regime-models/markov-switching-autoregression/) · [Bayesian Change-Point Detection](https://docs.thefintechbuilder.com/statistical-time-series/state-and-regime-models/bayesian-change-point-detection/)
+
+**Decomposition and Cycles** — [STL Decomposition](https://docs.thefintechbuilder.com/statistical-time-series/decomposition-and-cycles/stl-decomposition/) · [Hodrick-Prescott Filter](https://docs.thefintechbuilder.com/statistical-time-series/decomposition-and-cycles/hodrick-prescott-filter/) · [Baxter-King Filter](https://docs.thefintechbuilder.com/statistical-time-series/decomposition-and-cycles/baxter-king-filter/) · [Christiano-Fitzgerald Filter](https://docs.thefintechbuilder.com/statistical-time-series/decomposition-and-cycles/christiano-fitzgerald-filter/) · [Fast Fourier Transform Periodogram](https://docs.thefintechbuilder.com/statistical-time-series/decomposition-and-cycles/fast-fourier-transform-periodogram/) · [Wavelet Decomposition](https://docs.thefintechbuilder.com/statistical-time-series/decomposition-and-cycles/wavelet-decomposition/)
+
+
+### D11 — Market Microstructure · 29 topics
+
+**Trade Classification** — [Tick Test](https://docs.thefintechbuilder.com/market-microstructure/trade-classification/tick-test/) · [Quote Test](https://docs.thefintechbuilder.com/market-microstructure/trade-classification/quote-test/) · [Lee-Ready Trade Signing](https://docs.thefintechbuilder.com/market-microstructure/trade-classification/lee-ready-trade-signing/) · [Bulk Volume Classification](https://docs.thefintechbuilder.com/market-microstructure/trade-classification/bulk-volume-classification/)
+
+**Liquidity and Spreads** — [Quoted Spread](https://docs.thefintechbuilder.com/market-microstructure/liquidity-and-spreads/quoted-spread/) · [Effective Spread](https://docs.thefintechbuilder.com/market-microstructure/liquidity-and-spreads/effective-spread/) · [Realized Spread](https://docs.thefintechbuilder.com/market-microstructure/liquidity-and-spreads/realized-spread/) · [Roll Spread Estimator](https://docs.thefintechbuilder.com/market-microstructure/liquidity-and-spreads/roll-spread-estimator/) · [Amihud Illiquidity Ratio](https://docs.thefintechbuilder.com/market-microstructure/liquidity-and-spreads/amihud-illiquidity-ratio/) · [Corwin-Schultz Spread Estimator](https://docs.thefintechbuilder.com/market-microstructure/liquidity-and-spreads/corwin-schultz-spread-estimator/)
+
+**Order-Flow and Impact** — [Order Flow Imbalance](https://docs.thefintechbuilder.com/market-microstructure/order-flow-and-impact/order-flow-imbalance/) · [Queue Imbalance](https://docs.thefintechbuilder.com/market-microstructure/order-flow-and-impact/queue-imbalance/) · [Kyle Lambda](https://docs.thefintechbuilder.com/market-microstructure/order-flow-and-impact/kyle-lambda/) · [Hasbrouck Price Impact](https://docs.thefintechbuilder.com/market-microstructure/order-flow-and-impact/hasbrouck-price-impact/) · [PIN](https://docs.thefintechbuilder.com/market-microstructure/order-flow-and-impact/pin/) · [VPIN](https://docs.thefintechbuilder.com/market-microstructure/order-flow-and-impact/vpin/)
+
+**Order-Book Dynamics** — [Order-Book Slope](https://docs.thefintechbuilder.com/market-microstructure/order-book-dynamics/order-book-slope/) · [Depth-Weighted Midprice](https://docs.thefintechbuilder.com/market-microstructure/order-book-dynamics/depth-weighted-midprice/) · [Microprice](https://docs.thefintechbuilder.com/market-microstructure/order-book-dynamics/microprice/) · [Order-Book Resiliency](https://docs.thefintechbuilder.com/market-microstructure/order-book-dynamics/order-book-resiliency/) · [Hawkes Order-Arrival Model](https://docs.thefintechbuilder.com/market-microstructure/order-book-dynamics/hawkes-order-arrival-model/)
+
+**Market-Depth Analytics** — [Cumulative Bid/Ask Depth](https://docs.thefintechbuilder.com/market-microstructure/market-depth-analytics/cumulative-bid-ask-depth/) · [Top-N Depth Imbalance](https://docs.thefintechbuilder.com/market-microstructure/market-depth-analytics/top-n-depth-imbalance/) · [Depth-at-Distance Profile](https://docs.thefintechbuilder.com/market-microstructure/market-depth-analytics/depth-at-distance-profile/) · [Expected Market-Order Fill Price](https://docs.thefintechbuilder.com/market-microstructure/market-depth-analytics/expected-market-order-fill-price/) · [Multi-Level Sweep Cost and Slippage](https://docs.thefintechbuilder.com/market-microstructure/market-depth-analytics/multi-level-sweep-cost-and-slippage/) · [Liquidity-Wall and Concentration Detection](https://docs.thefintechbuilder.com/market-microstructure/market-depth-analytics/liquidity-wall-and-concentration-detection/) · [Depth Depletion and Replenishment](https://docs.thefintechbuilder.com/market-microstructure/market-depth-analytics/depth-depletion-and-replenishment/) · [Market-Depth Heatmap Aggregation](https://docs.thefintechbuilder.com/market-microstructure/market-depth-analytics/market-depth-heatmap-aggregation/)
+
+
+### D12 — Matching Engines and Venue Logic · 21 topics
+
+**Continuous Matching** — [Price-Time Priority](https://docs.thefintechbuilder.com/matching-engines-and-venue-logic/continuous-matching/price-time-priority/) · [Pro-Rata Matching](https://docs.thefintechbuilder.com/matching-engines-and-venue-logic/continuous-matching/pro-rata-matching/) · [Size-Time Priority](https://docs.thefintechbuilder.com/matching-engines-and-venue-logic/continuous-matching/size-time-priority/) · [Hybrid Pro-Rata/Time Matching](https://docs.thefintechbuilder.com/matching-engines-and-venue-logic/continuous-matching/hybrid-pro-rata-time-matching/)
+
+**Auctions** — [Maximum-Executable-Volume Auction](https://docs.thefintechbuilder.com/matching-engines-and-venue-logic/auctions/maximum-executable-volume-auction/) · [Minimum-Imbalance Tie-Break](https://docs.thefintechbuilder.com/matching-engines-and-venue-logic/auctions/minimum-imbalance-tie-break/) · [Opening-Cross Price](https://docs.thefintechbuilder.com/matching-engines-and-venue-logic/auctions/opening-cross-price/) · [Closing-Cross Price](https://docs.thefintechbuilder.com/matching-engines-and-venue-logic/auctions/closing-cross-price/) · [Volatility-Auction Reopening](https://docs.thefintechbuilder.com/matching-engines-and-venue-logic/auctions/volatility-auction-reopening/)
+
+**Order Controls** — [Tick-Size Validation](https://docs.thefintechbuilder.com/matching-engines-and-venue-logic/order-controls/tick-size-validation/) · [Price-Band Validation](https://docs.thefintechbuilder.com/matching-engines-and-venue-logic/order-controls/price-band-validation/) · [Self-Trade Prevention](https://docs.thefintechbuilder.com/matching-engines-and-venue-logic/order-controls/self-trade-prevention/) · [Cancel-on-Disconnect](https://docs.thefintechbuilder.com/matching-engines-and-venue-logic/order-controls/cancel-on-disconnect/) · [Fat-Finger Limit](https://docs.thefintechbuilder.com/matching-engines-and-venue-logic/order-controls/fat-finger-limit/) · [Circuit-Breaker Trigger](https://docs.thefintechbuilder.com/matching-engines-and-venue-logic/order-controls/circuit-breaker-trigger/)
+
+**Order Lifecycle and Queue State** — [Limit-Order Lifecycle State Machine](https://docs.thefintechbuilder.com/matching-engines-and-venue-logic/order-lifecycle-and-queue-state/limit-order-lifecycle-state-machine/) · [Cancel/Replace Priority Rule](https://docs.thefintechbuilder.com/matching-engines-and-venue-logic/order-lifecycle-and-queue-state/cancel-replace-priority-rule/) · [Partial-Fill and Residual-Quantity Processing](https://docs.thefintechbuilder.com/matching-engines-and-venue-logic/order-lifecycle-and-queue-state/partial-fill-and-residual-quantity-processing/) · [Queue Position and Ahead-Volume Calculation](https://docs.thefintechbuilder.com/matching-engines-and-venue-logic/order-lifecycle-and-queue-state/queue-position-and-ahead-volume-calculation/) · [Iceberg/Reserve-Order Replenishment](https://docs.thefintechbuilder.com/matching-engines-and-venue-logic/order-lifecycle-and-queue-state/iceberg-reserve-order-replenishment/) · [Marketable-Order Multi-Level Sweep](https://docs.thefintechbuilder.com/matching-engines-and-venue-logic/order-lifecycle-and-queue-state/marketable-order-multi-level-sweep/)
+
+
+### D13 — Execution and Transaction Cost Analysis · 9 topics
+
+**Schedule-Based Execution** — [TWAP Execution](https://docs.thefintechbuilder.com/execution-and-transaction-cost-analysis/schedule-based-execution/twap-execution/) · [Historical VWAP Execution](https://docs.thefintechbuilder.com/execution-and-transaction-cost-analysis/schedule-based-execution/historical-vwap-execution/) · [Adaptive VWAP Execution](https://docs.thefintechbuilder.com/execution-and-transaction-cost-analysis/schedule-based-execution/adaptive-vwap-execution/) · [Percentage-of-Volume Execution](https://docs.thefintechbuilder.com/execution-and-transaction-cost-analysis/schedule-based-execution/percentage-of-volume-execution/)
+
+**Cost/Risk Optimization** — [Almgren-Chriss Optimal Execution](https://docs.thefintechbuilder.com/execution-and-transaction-cost-analysis/cost-risk-optimization/almgren-chriss-optimal-execution/) · [Implementation-Shortfall Execution](https://docs.thefintechbuilder.com/execution-and-transaction-cost-analysis/cost-risk-optimization/implementation-shortfall-execution/) · [Arrival-Price Execution](https://docs.thefintechbuilder.com/execution-and-transaction-cost-analysis/cost-risk-optimization/arrival-price-execution/) · [Liquidity-Seeking Execution](https://docs.thefintechbuilder.com/execution-and-transaction-cost-analysis/cost-risk-optimization/liquidity-seeking-execution/) · [Opportunistic Dark-Pool Execution](https://docs.thefintechbuilder.com/execution-and-transaction-cost-analysis/cost-risk-optimization/opportunistic-dark-pool-execution/)
+
+
+### D25 — Digital Assets and On-Chain Finance · 10 topics
+
+**AMM Pricing** — [Constant-Product AMM](https://docs.thefintechbuilder.com/digital-assets-and-on-chain-finance/amm-pricing/constant-product-amm/) · [Constant-Sum AMM](https://docs.thefintechbuilder.com/digital-assets-and-on-chain-finance/amm-pricing/constant-sum-amm/) · [StableSwap Invariant](https://docs.thefintechbuilder.com/digital-assets-and-on-chain-finance/amm-pricing/stableswap-invariant/) · [Weighted-Product AMM](https://docs.thefintechbuilder.com/digital-assets-and-on-chain-finance/amm-pricing/weighted-product-amm/) · [Concentrated-Liquidity Position](https://docs.thefintechbuilder.com/digital-assets-and-on-chain-finance/amm-pricing/concentrated-liquidity-position/)
+
+**Liquidity and Liquidation** — [Impermanent-Loss Calculation](https://docs.thefintechbuilder.com/digital-assets-and-on-chain-finance/liquidity-and-liquidation/impermanent-loss-calculation/) · [Liquidity-Provider Fee APR](https://docs.thefintechbuilder.com/digital-assets-and-on-chain-finance/liquidity-and-liquidation/liquidity-provider-fee-apr/) · [Collateral-Health Factor](https://docs.thefintechbuilder.com/digital-assets-and-on-chain-finance/liquidity-and-liquidation/collateral-health-factor/) · [Liquidation-Price Calculation](https://docs.thefintechbuilder.com/digital-assets-and-on-chain-finance/liquidity-and-liquidation/liquidation-price-calculation/) · [Liquidation Waterfall](https://docs.thefintechbuilder.com/digital-assets-and-on-chain-finance/liquidity-and-liquidation/liquidation-waterfall/)
 
 
 ### D46 — Earnings and Per-Share Analytics · 5 topics

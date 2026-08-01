@@ -1,6 +1,6 @@
 {
   "generatedFrom": "scripts/sync.mjs",
-  "topicCount": 187,
+  "topicCount": 271,
   "topics": [
     {
       "id": "D01-F01-A01",
@@ -354,6 +354,102 @@
       "entryParams": [
         "records",
         "knowledgeTime"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D01-F04-A06",
+      "path": "market-data-engineering/data-quality/provider-adjustment-basis-drift-detector",
+      "entry": "detectAdjustmentBasisDrift",
+      "archetype": "row-classify",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D01-F05-A01",
+      "path": "market-data-engineering/order-book-feed-engineering/trade-and-quote-event-normalization",
+      "entry": "normalizeEvents",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "events"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D01-F05-A02",
+      "path": "market-data-engineering/order-book-feed-engineering/level-2-snapshot-and-delta-reconstruction",
+      "entry": "reconstructL2",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "snapshot"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D01-F05-A03",
+      "path": "market-data-engineering/order-book-feed-engineering/level-3-order-by-order-reconstruction",
+      "entry": "reconstructL3",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "snapshot_orders"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D01-F05-A04",
+      "path": "market-data-engineering/order-book-feed-engineering/sequence-gap-detection-and-recovery",
+      "entry": "recoverSequenceStream",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "arrivals"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D01-F05-A05",
+      "path": "market-data-engineering/order-book-feed-engineering/price-level-quantity-aggregation",
+      "entry": "aggregatePriceLevels",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "orders"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D01-F05-A06",
+      "path": "market-data-engineering/order-book-feed-engineering/snapshot-incremental-feed-reconciliation",
+      "entry": "reconcileSnapshotIncrementals",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "snapshot"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D01-F05-A07",
+      "path": "market-data-engineering/order-book-feed-engineering/multi-venue-best-quote-and-book-consolidation",
+      "entry": "consolidateVenues",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "quotes"
       ],
       "fixtureKeys": []
     },
@@ -713,6 +809,18 @@
         "syntheticAvailabilityAssumptions",
         "derivedDifference"
       ]
+    },
+    {
+      "id": "D02-F04-A05",
+      "path": "corporate-actions-and-security-master-data/point-in-time-universe/corporate-action-status-and-effective-date-reconciliation",
+      "entry": "reconcileCorporateAction",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": []
     },
     {
       "id": "D03-F01-A01",
@@ -3371,6 +3479,1087 @@
         "expected_trace",
         "independent_check"
       ]
+    },
+    {
+      "id": "D09-F05-A01",
+      "path": "statistical-time-series/decomposition-and-cycles/stl-decomposition",
+      "entry": "stlDecompose",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "values",
+        "period",
+        "seasonalWindow",
+        "trendWindow",
+        "robustIterations"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D09-F05-A02",
+      "path": "statistical-time-series/decomposition-and-cycles/hodrick-prescott-filter",
+      "entry": "hpFilter",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "values",
+        "smoothing"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D09-F05-A03",
+      "path": "statistical-time-series/decomposition-and-cycles/baxter-king-filter",
+      "entry": "bkFilter",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "values",
+        "low",
+        "high",
+        "K"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D09-F05-A04",
+      "path": "statistical-time-series/decomposition-and-cycles/christiano-fitzgerald-filter",
+      "entry": "cfFilter",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "values",
+        "low",
+        "high",
+        "drift"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D09-F05-A05",
+      "path": "statistical-time-series/decomposition-and-cycles/fast-fourier-transform-periodogram",
+      "entry": "fftPeriodogram",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "values",
+        "sampleFrequency",
+        "detrend",
+        "window"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D09-F05-A06",
+      "path": "statistical-time-series/decomposition-and-cycles/wavelet-decomposition",
+      "entry": "haarWavelet",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "values",
+        "levels"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D11-F01-A01",
+      "path": "market-microstructure/trade-classification/tick-test",
+      "entry": "tickTest",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "data",
+        "config"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D11-F01-A02",
+      "path": "market-microstructure/trade-classification/quote-test",
+      "entry": "quoteTest",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "data",
+        "config"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D11-F01-A03",
+      "path": "market-microstructure/trade-classification/lee-ready-trade-signing",
+      "entry": "leeReady",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "data",
+        "config"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D11-F01-A04",
+      "path": "market-microstructure/trade-classification/bulk-volume-classification",
+      "entry": "bulkVolumeClassification",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "data",
+        "config"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D11-F02-A01",
+      "path": "market-microstructure/liquidity-and-spreads/quoted-spread",
+      "entry": "quotedSpread",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "bid",
+        "ask"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D11-F02-A02",
+      "path": "market-microstructure/liquidity-and-spreads/effective-spread",
+      "entry": "effectiveSpread",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "bid",
+        "ask",
+        "tradePrice",
+        "side"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D11-F02-A03",
+      "path": "market-microstructure/liquidity-and-spreads/realized-spread",
+      "entry": "realizedSpread",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "bidAtTrade",
+        "askAtTrade",
+        "tradePrice",
+        "side",
+        "bidAfter",
+        "askAfter",
+        "horizonSeconds"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D11-F02-A04",
+      "path": "market-microstructure/liquidity-and-spreads/roll-spread-estimator",
+      "entry": "rollSpread",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "prices"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D11-F02-A05",
+      "path": "market-microstructure/liquidity-and-spreads/amihud-illiquidity-ratio",
+      "entry": "amihudIlliquidity",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "closes",
+        "dollarVolumes",
+        "scale"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D11-F02-A06",
+      "path": "market-microstructure/liquidity-and-spreads/corwin-schultz-spread-estimator",
+      "entry": "corwinSchultzSpread",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "highDay1",
+        "lowDay1",
+        "highDay2",
+        "lowDay2",
+        "clipNegative"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D11-F03-A01",
+      "path": "market-microstructure/order-flow-and-impact/order-flow-imbalance",
+      "entry": "orderFlowImbalance",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "inputRows",
+        "resetOnSession",
+        "normalizeByDepth"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D11-F03-A02",
+      "path": "market-microstructure/order-flow-and-impact/queue-imbalance",
+      "entry": "queueImbalance",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "inputRows",
+        "levels",
+        "decay"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D11-F03-A03",
+      "path": "market-microstructure/order-flow-and-impact/kyle-lambda",
+      "entry": "kyleLambda",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "inputRows",
+        "volumeTransform",
+        "intercept"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D11-F03-A04",
+      "path": "market-microstructure/order-flow-and-impact/hasbrouck-price-impact",
+      "entry": "hasbrouckPriceImpact",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "inputRows",
+        "horizon"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D11-F03-A05",
+      "path": "market-microstructure/order-flow-and-impact/pin",
+      "entry": "pin",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "inputRows",
+        "starts",
+        "balancedNoise",
+        "iterations"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D11-F03-A06",
+      "path": "market-microstructure/order-flow-and-impact/vpin",
+      "entry": "vpin",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "inputRows",
+        "bucketVolume",
+        "windowBuckets",
+        "includePartial"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D11-F04-A01",
+      "path": "market-microstructure/order-book-dynamics/order-book-slope",
+      "entry": "orderBookSlope",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "bidPrices",
+        "bidSizes",
+        "askPrices",
+        "askSizes"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D11-F04-A02",
+      "path": "market-microstructure/order-book-dynamics/depth-weighted-midprice",
+      "entry": "depthWeightedMidprice",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "bidPrices",
+        "bidSizes",
+        "askPrices",
+        "askSizes"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D11-F04-A03",
+      "path": "market-microstructure/order-book-dynamics/microprice",
+      "entry": "microprice",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "bid",
+        "bidSize",
+        "ask",
+        "askSize"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D11-F04-A04",
+      "path": "market-microstructure/order-book-dynamics/order-book-resiliency",
+      "entry": "orderBookResiliency",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "timesSeconds",
+        "displacementBps",
+        "forecastSeconds"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D11-F04-A05",
+      "path": "market-microstructure/order-book-dynamics/hawkes-order-arrival-model",
+      "entry": "hawkesOrderArrival",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "eventTimesSeconds",
+        "baselineIntensity",
+        "excitationJump",
+        "decayRate",
+        "evaluationTimeSeconds",
+        "horizonSeconds"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D11-F05-A01",
+      "path": "market-microstructure/market-depth-analytics/cumulative-bid-ask-depth",
+      "entry": "cumulativeDepth",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "bidsRaw",
+        "asksRaw",
+        "tickRaw"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D11-F05-A02",
+      "path": "market-microstructure/market-depth-analytics/top-n-depth-imbalance",
+      "entry": "topNDepthImbalance",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "bidsRaw",
+        "asksRaw",
+        "nRaw",
+        "thresholdRaw"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D11-F05-A03",
+      "path": "market-microstructure/market-depth-analytics/depth-at-distance-profile",
+      "entry": "depthAtDistanceProfile",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "bidsRaw",
+        "asksRaw",
+        "tickRaw",
+        "maxRaw"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D11-F05-A04",
+      "path": "market-microstructure/market-depth-analytics/expected-market-order-fill-price",
+      "entry": "expectedFillPrice",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "bids",
+        "asks",
+        "side",
+        "quantity",
+        "limitPrice"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D11-F05-A05",
+      "path": "market-microstructure/market-depth-analytics/multi-level-sweep-cost-and-slippage",
+      "entry": "sweepCostAndSlippage",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "bids",
+        "asks",
+        "side",
+        "quantity",
+        "benchmarkRaw",
+        "benchmarkPriceRaw",
+        "limitPrice"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D11-F05-A06",
+      "path": "market-microstructure/market-depth-analytics/liquidity-wall-and-concentration-detection",
+      "entry": "liquidityWallConcentration",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "levelsRaw",
+        "multipleRaw",
+        "minShareRaw",
+        "thresholdRaw"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D11-F05-A07",
+      "path": "market-microstructure/market-depth-analytics/depth-depletion-and-replenishment",
+      "entry": "depthDepletionReplenishment",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "seriesRaw"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D11-F05-A08",
+      "path": "market-microstructure/market-depth-analytics/market-depth-heatmap-aggregation",
+      "entry": "marketDepthHeatmap",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "snapshotsRaw",
+        "tickRaw",
+        "binRaw",
+        "maxRaw"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D12-F01-A01",
+      "path": "matching-engines-and-venue-logic/continuous-matching/price-time-priority",
+      "entry": "priceTimePriority",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "incomingRaw",
+        "restingRaw"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D12-F01-A02",
+      "path": "matching-engines-and-venue-logic/continuous-matching/pro-rata-matching",
+      "entry": "proRataMatching",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "incomingRaw",
+        "priceRaw",
+        "lotRaw",
+        "restingRaw"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D12-F01-A03",
+      "path": "matching-engines-and-venue-logic/continuous-matching/size-time-priority",
+      "entry": "sizeTimePriority",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "incomingRaw",
+        "priceRaw",
+        "lotRaw",
+        "restingRaw"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D12-F01-A04",
+      "path": "matching-engines-and-venue-logic/continuous-matching/hybrid-pro-rata-time-matching",
+      "entry": "calculate",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "topicId",
+        "inputs"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D12-F02-A01",
+      "path": "matching-engines-and-venue-logic/auctions/maximum-executable-volume-auction",
+      "entry": "maximumExecutableVolumeAuction",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "ordersRaw",
+        "referenceRaw",
+        "tickRaw"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D12-F02-A02",
+      "path": "matching-engines-and-venue-logic/auctions/minimum-imbalance-tie-break",
+      "entry": "minimumImbalanceTieBreak",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "ordersRaw",
+        "referenceRaw",
+        "tickRaw"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D12-F02-A03",
+      "path": "matching-engines-and-venue-logic/auctions/opening-cross-price",
+      "entry": "openingCrossPrice",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "orders",
+        "previousClose",
+        "tick",
+        "low",
+        "high"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D12-F02-A04",
+      "path": "matching-engines-and-venue-logic/auctions/closing-cross-price",
+      "entry": "closingCrossPrice",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "orders",
+        "reference",
+        "tick",
+        "low",
+        "high"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D12-F02-A05",
+      "path": "matching-engines-and-venue-logic/auctions/volatility-auction-reopening",
+      "entry": "volatilityAuctionReopening",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "inputs"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D12-F03-A01",
+      "path": "matching-engines-and-venue-logic/order-controls/tick-size-validation",
+      "entry": "tickSizeValidation",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "price_atoms",
+        "tick_size_atoms",
+        "price_scale",
+        "effective_policy_id"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D12-F03-A02",
+      "path": "matching-engines-and-venue-logic/order-controls/price-band-validation",
+      "entry": "priceBandValidation",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "side",
+        "limit_price_atoms",
+        "lower_band_atoms",
+        "upper_band_atoms",
+        "band_as_of_ns",
+        "inclusive"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D12-F03-A03",
+      "path": "matching-engines-and-venue-logic/order-controls/self-trade-prevention",
+      "entry": "selfTradePrevention",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "incoming_order",
+        "resting_orders",
+        "mode"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D12-F03-A04",
+      "path": "matching-engines-and-venue-logic/order-controls/cancel-on-disconnect",
+      "entry": "cancelOnDisconnect",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "disconnected_session_id",
+        "disconnect_type",
+        "trigger_disconnect_types",
+        "policy",
+        "orders"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D12-F03-A05",
+      "path": "matching-engines-and-venue-logic/order-controls/fat-finger-limit",
+      "entry": "fatFingerLimit",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "side",
+        "limit_price_atoms",
+        "reference_price_atoms",
+        "quantity",
+        "max_quantity",
+        "max_notional_atoms",
+        "max_aggressive_deviation_bps"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D12-F03-A06",
+      "path": "matching-engines-and-venue-logic/order-controls/circuit-breaker-trigger",
+      "entry": "circuitBreakerTrigger",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "reference_close_atoms",
+        "current_index_atoms",
+        "level_thresholds_bps",
+        "previously_triggered_level"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D12-F04-A01",
+      "path": "matching-engines-and-venue-logic/order-lifecycle-and-queue-state/limit-order-lifecycle-state-machine",
+      "entry": "limitOrderLifecycle",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "orderIdRaw",
+        "orderQuantityRaw",
+        "eventsRaw"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D12-F04-A02",
+      "path": "matching-engines-and-venue-logic/order-lifecycle-and-queue-state/cancel-replace-priority-rule",
+      "entry": "cancelReplacePriority",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "originalRaw",
+        "replacementRaw"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D12-F04-A03",
+      "path": "matching-engines-and-venue-logic/order-lifecycle-and-queue-state/partial-fill-and-residual-quantity-processing",
+      "entry": "partialFillResidual",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "orderQuantityRaw",
+        "fillsRaw"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D12-F04-A04",
+      "path": "matching-engines-and-venue-logic/order-lifecycle-and-queue-state/queue-position-and-ahead-volume-calculation",
+      "entry": "queuePositionAheadVolume",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "ordersRaw",
+        "targetIdRaw"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D12-F04-A05",
+      "path": "matching-engines-and-venue-logic/order-lifecycle-and-queue-state/iceberg-reserve-order-replenishment",
+      "entry": "icebergReplenishment",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "totalRaw",
+        "initialRaw",
+        "displaySizeRaw",
+        "fillsRaw",
+        "priorityRaw"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D12-F04-A06",
+      "path": "matching-engines-and-venue-logic/order-lifecycle-and-queue-state/marketable-order-multi-level-sweep",
+      "entry": "marketableOrderSweep",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "incomingRaw",
+        "restingRaw"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D13-F01-A01",
+      "path": "execution-and-transaction-cost-analysis/schedule-based-execution/twap-execution",
+      "entry": "twapExecution",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "total_quantity",
+        "start_time_ms",
+        "end_time_ms",
+        "bucket_count",
+        "lot_size"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D13-F01-A02",
+      "path": "execution-and-transaction-cost-analysis/schedule-based-execution/historical-vwap-execution",
+      "entry": "historicalVwapExecution",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "total_quantity",
+        "historical_bucket_volumes",
+        "lot_size",
+        "profile_id"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D13-F01-A03",
+      "path": "execution-and-transaction-cost-analysis/schedule-based-execution/adaptive-vwap-execution",
+      "entry": "adaptiveVwapExecution",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "total_quantity",
+        "realized_market_volumes",
+        "remaining_forecast_volumes",
+        "executed_quantity",
+        "lot_size",
+        "forecast_version"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D13-F01-A04",
+      "path": "execution-and-transaction-cost-analysis/schedule-based-execution/percentage-of-volume-execution",
+      "entry": "percentageOfVolumeExecution",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "total_quantity",
+        "participation_rate_bps",
+        "market_volume_buckets",
+        "lot_size",
+        "max_child_quantity"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D13-F02-A01",
+      "path": "execution-and-transaction-cost-analysis/cost-risk-optimization/almgren-chriss-optimal-execution",
+      "entry": "almgrenChrissOptimalExecution",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D13-F02-A02",
+      "path": "execution-and-transaction-cost-analysis/cost-risk-optimization/implementation-shortfall-execution",
+      "entry": "implementationShortfallExecution",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D13-F02-A03",
+      "path": "execution-and-transaction-cost-analysis/cost-risk-optimization/arrival-price-execution",
+      "entry": "arrivalPriceExecution",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D13-F02-A04",
+      "path": "execution-and-transaction-cost-analysis/cost-risk-optimization/liquidity-seeking-execution",
+      "entry": "liquiditySeekingExecution",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D13-F02-A05",
+      "path": "execution-and-transaction-cost-analysis/cost-risk-optimization/opportunistic-dark-pool-execution",
+      "entry": "opportunisticDarkPoolExecution",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D25-F01-A01",
+      "path": "digital-assets-and-on-chain-finance/amm-pricing/constant-product-amm",
+      "entry": "constantProductQuote",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "reserve0",
+        "reserve1",
+        "amount0In",
+        "feeRate"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D25-F01-A02",
+      "path": "digital-assets-and-on-chain-finance/amm-pricing/constant-sum-amm",
+      "entry": "constantSumQuote",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "reserve0",
+        "reserve1",
+        "amount0In",
+        "feeRate"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D25-F01-A03",
+      "path": "digital-assets-and-on-chain-finance/amm-pricing/stableswap-invariant",
+      "entry": "stableSwapQuote",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "balances",
+        "amountIn",
+        "amplification",
+        "feeRate",
+        "inputIndex",
+        "outputIndex"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D25-F01-A04",
+      "path": "digital-assets-and-on-chain-finance/amm-pricing/weighted-product-amm",
+      "entry": "weightedProductQuote",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "balanceIn",
+        "balanceOut",
+        "weightIn",
+        "weightOut",
+        "amountIn",
+        "feeRate"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D25-F01-A05",
+      "path": "digital-assets-and-on-chain-finance/amm-pricing/concentrated-liquidity-position",
+      "entry": "concentratedLiquidityPosition",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "liquidity",
+        "priceLower",
+        "priceUpper",
+        "currentPrice"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D25-F02-A01",
+      "path": "digital-assets-and-on-chain-finance/liquidity-and-liquidation/impermanent-loss-calculation",
+      "entry": "impermanentLoss",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "data",
+        "config"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D25-F02-A02",
+      "path": "digital-assets-and-on-chain-finance/liquidity-and-liquidation/liquidity-provider-fee-apr",
+      "entry": "feeApr",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "data",
+        "config"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D25-F02-A03",
+      "path": "digital-assets-and-on-chain-finance/liquidity-and-liquidation/collateral-health-factor",
+      "entry": "healthFactor",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "data",
+        "config"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D25-F02-A04",
+      "path": "digital-assets-and-on-chain-finance/liquidity-and-liquidation/liquidation-price-calculation",
+      "entry": "liquidationPrice",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "data",
+        "config"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D25-F02-A05",
+      "path": "digital-assets-and-on-chain-finance/liquidity-and-liquidation/liquidation-waterfall",
+      "entry": "liquidationWaterfall",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "data",
+        "config"
+      ],
+      "fixtureKeys": []
     },
     {
       "id": "D46-F01-A05",
