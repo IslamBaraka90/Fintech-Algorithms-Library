@@ -1,6 +1,6 @@
 {
   "name": "fintech-algorithms",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "description": "The Fintech Builder algorithm library — canonical, cross-language reference implementations of market-data, corporate-action, index, breadth, candlestick and technical-indicator algorithms, exposed as provider-agnostic subpath modules.",
   "keywords": [
     "fintech",
