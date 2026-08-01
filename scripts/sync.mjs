@@ -220,7 +220,7 @@ function analyse(source) {
 }
 
 /** Trailing nouns that appear in a topic slug but not in its function name. */
-const GENERIC_SUFFIXES = ["oscillator", "index", "line", "bands", "channels", "cloud", "ratio", "indicator"];
+const GENERIC_SUFFIXES = ["oscillator", "index", "line", "bands", "channels", "cloud", "ratio", "indicator", "estimator", "detector", "detection", "calculation", "analysis", "model", "test", "rule", "engine", "method"];
 
 /**
  * Reviewed entry points for topics whose module exports two peer functions and
@@ -247,6 +247,54 @@ const ENTRY_OVERRIDES = {
   "D01-F04-A05": "asOfSnapshot",
   // guardSurvivorship is the guard; compareEqualWeightedReturns illustrates the bias.
   "D02-F04-A02": "guardSurvivorship",
+  // The trade-classification family shares one body exporting tickTest, quoteTest
+  // and leeReady side by side. `leeReady` is this topic's algorithm; the stem
+  // matcher cannot reach it because the slug carries two extra words
+  // (lee-ready-trade-signing) that the export name does not.
+  "D11-F01-A03": "leeReady",
+
+  // Families below share one implementation whose exports are deliberate
+  // abbreviations of the slug — `hodrick-prescott-filter` is exported as
+  // `hpFilter`, `level-2-snapshot-and-delta-reconstruction` as `reconstructL2`.
+  // No general rule can derive those, and every one of these families also
+  // exports a generic `calculate`/`runTopic`, so without an explicit choice the
+  // whole family would collapse onto it. Each line below is a reviewed decision.
+
+  // D01-F05 order-book feed engineering
+  "D01-F05-A01": "normalizeEvents",
+  "D01-F05-A02": "reconstructL2",
+  "D01-F05-A03": "reconstructL3",
+  "D01-F05-A04": "recoverSequenceStream",
+  "D01-F05-A05": "aggregatePriceLevels",
+  "D01-F05-A06": "reconcileSnapshotIncrementals",
+  "D01-F05-A07": "consolidateVenues",
+
+  // D09-F05 decomposition and cycles
+  "D09-F05-A01": "stlDecompose",
+  "D09-F05-A02": "hpFilter",
+  "D09-F05-A03": "bkFilter",
+  "D09-F05-A04": "cfFilter",
+  "D09-F05-A05": "fftPeriodogram",
+  "D09-F05-A06": "haarWavelet",
+
+  // D11-F05 market-depth analytics
+  "D11-F05-A01": "cumulativeDepth",
+  "D11-F05-A04": "expectedFillPrice",
+  "D11-F05-A05": "sweepCostAndSlippage",
+  "D11-F05-A06": "liquidityWallConcentration",
+  "D11-F05-A07": "depthDepletionReplenishment",
+  "D11-F05-A08": "marketDepthHeatmap",
+
+  // D12-F04 order lifecycle and queue state
+  "D12-F04-A01": "limitOrderLifecycle",
+  "D12-F04-A03": "partialFillResidual",
+  "D12-F04-A04": "queuePositionAheadVolume",
+  "D12-F04-A05": "icebergReplenishment",
+  "D12-F04-A06": "marketableOrderSweep",
+
+  // D25-F02 DeFi position analytics
+  "D25-F02-A02": "feeApr",
+  "D25-F02-A03": "healthFactor",
 };
 
 /**
@@ -291,6 +339,32 @@ function entryFromTest(topicDir, exportedFunctions) {
  * An earlier version fell back to `functions[0]`, which silently gave every
  * momentum topic `rsi()` and every volume topic `obv()`.
  */
+/**
+ * Every name the slug can justify, in decreasing strength of evidence.
+ *
+ * Trailing generic nouns are dropped one at a time rather than only once:
+ * `corwin-schultz-spread-estimator` reaches `corwinSchultzSpread` only after
+ * shedding `estimator`, and slugs routinely carry two such words.
+ */
+function matchBySlug(functions, topicSlug) {
+  const has = (name) => (functions.includes(name) ? name : null);
+
+  const direct =
+    has(topicSlug.replace(/-/g, "_")) ??
+    has(camel(topicSlug)) ??
+    // Abbreviation from the slug's initials: relative-strength-index -> rsi.
+    has(topicSlug.split("-").map((word) => word[0]).join(""));
+  if (direct) return direct;
+
+  let parts = topicSlug.split("-");
+  while (parts.length > 1 && GENERIC_SUFFIXES.includes(parts.at(-1))) {
+    parts = parts.slice(0, -1);
+    const trimmed = has(parts.join("_")) ?? has(camel(parts.join("-")));
+    if (trimmed) return trimmed;
+  }
+  return null;
+}
+
 function chooseEntry(functions, topicSlug, topicDir, topicId) {
   if (functions.length === 0) return null;
   if (functions.length === 1) return functions[0];
@@ -303,27 +377,25 @@ function chooseEntry(functions, topicSlug, topicDir, topicId) {
     return override;
   }
 
+  /*
+   * Slug rules run before the test signal, and the order is load-bearing.
+   *
+   * A name derived from the slug is *evidence*: `amihud-illiquidity-ratio`
+   * matching an exported `amihudIlliquidity` can only mean one thing. The test
+   * signal is a *heuristic*, and it fails in one specific way — when a family's
+   * per-topic tests all call a generic `calculate()` wrapper, it hands the same
+   * function to every sibling, and six subpaths silently resolve to one
+   * algorithm. That is the momentum/`rsi()` collapse in a new costume.
+   *
+   * The test signal keeps its job: shared bodies where no slug rule can pick
+   * between peer exports. It is just no longer allowed to overrule a name the
+   * slug identifies outright.
+   */
+  const fromSlug = matchBySlug(functions, topicSlug);
+  if (fromSlug) return fromSlug;
+
   const fromTest = entryFromTest(topicDir, functions);
   if (fromTest) return fromTest;
-
-  const snake = topicSlug.replace(/-/g, "_");
-  if (functions.includes(snake)) return snake;
-
-  const camelCased = camel(topicSlug);
-  if (functions.includes(camelCased)) return camelCased;
-
-  // Abbreviation from the slug's initials: relative-strength-index -> rsi.
-  const initials = topicSlug.split("-").map((word) => word[0]).join("");
-  if (functions.includes(initials)) return initials;
-
-  // Drop a trailing generic noun: stochastic-oscillator -> stochastic.
-  const parts = topicSlug.split("-");
-  if (parts.length > 1 && GENERIC_SUFFIXES.includes(parts.at(-1))) {
-    const trimmed = parts.slice(0, -1);
-    for (const candidate of [trimmed.join("_"), camel(trimmed.join("-"))]) {
-      if (functions.includes(candidate)) return candidate;
-    }
-  }
 
   if (functions.includes("calculate")) return "calculate";
 
