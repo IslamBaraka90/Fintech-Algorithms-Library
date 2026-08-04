@@ -1,0 +1,19 @@
+{
+  "input": {
+    "features": {
+      "geometry": 0.9,
+      "support_resistance": 0.8,
+      "trend": 0.6,
+      "volatility": 0.7,
+      "volume": 1.0,
+      "confirmation": 0.5
+    },
+    "minimum_coverage": 0.7
+  },
+  "expected": {
+    "state": "ready",
+    "score": 76.49999999999999,
+    "evidence_coverage": 1.0,
+    "interpretation": "context-fit-index-not-probability"
+  }
+}

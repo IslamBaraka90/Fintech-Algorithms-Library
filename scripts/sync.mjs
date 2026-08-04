@@ -120,14 +120,42 @@ function camel(text) {
 
 const TOPIC_DIR_RE = /^D\d{2}-F\d{2}-A\d{2}-/;
 
+/**
+ * Domains present in the catalog but deliberately not published yet.
+ *
+ * The catalog is written ahead of the package: a domain lands there complete
+ * enough to validate long before its articles are finished, and publishing a
+ * subpath commits us to its API forever. Holding one back is a publishing
+ * decision, so it is made here, by id, in the open — not inferred from
+ * `status:` in metadata, which marks editorial progress and is carried by
+ * plenty of already-published topics.
+ *
+ * Deleting a line here ships that domain on the next sync. The held-back count
+ * is printed in the run summary so this never silently swallows work.
+ */
+const DOMAINS_NOT_READY = {
+  D18: "articles still being written",
+};
+
 function listDirs(dir) {
   if (!existsSync(dir)) return [];
   return readdirSync(dir).filter((name) => statSync(join(dir, name)).isDirectory());
 }
 
+/** Domains skipped by DOMAINS_NOT_READY, with how many topics each held back. */
+const heldBack = [];
+
 function discoverTopics() {
   const found = [];
   for (const domainDir of listDirs(DOMAINS_DIR)) {
+    const reason = DOMAINS_NOT_READY[domainDir.slice(0, 3)];
+    if (reason) {
+      const count = listDirs(join(DOMAINS_DIR, domainDir))
+        .flatMap((familyDir) => listDirs(join(DOMAINS_DIR, domainDir, familyDir)))
+        .filter((topicDir) => TOPIC_DIR_RE.test(topicDir)).length;
+      heldBack.push({ domain: domainDir, count, reason });
+      continue;
+    }
     for (const familyDir of listDirs(join(DOMAINS_DIR, domainDir))) {
       for (const topicDir of listDirs(join(DOMAINS_DIR, domainDir, familyDir))) {
         if (!TOPIC_DIR_RE.test(topicDir)) continue; // skips __pycache__, shared/, etc.
@@ -992,6 +1020,11 @@ console.log(`  fixtures     : ${withFixture}/${topics.length} runnable  (A ${byC
 console.log(`\n  by shape:`);
 for (const [shape, count] of Object.entries(byArchetype).sort((a, b) => b[1] - a[1])) {
   console.log(`    ${shape.padEnd(20)} ${count}`);
+}
+if (heldBack.length) {
+  const total = heldBack.reduce((sum, h) => sum + h.count, 0);
+  console.log(`\n  held back (${total} topics — DOMAINS_NOT_READY in this script):`);
+  for (const h of heldBack) console.log(`    ${h.domain} — ${h.count} topics — ${h.reason}`);
 }
 if (skipped.length) {
   console.log(`\n  skipped (${skipped.length}):`);

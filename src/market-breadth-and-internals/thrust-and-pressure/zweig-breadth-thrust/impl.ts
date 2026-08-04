@@ -14,7 +14,7 @@ export function calculate(rows: any[], emaLength=10, lowThreshold=0.4, highThres
   const alpha=2/(emaLength+1); let current:number|null=null, armedAt:number|null=null, previousDate:string|null=null; const series:any[]=[];
   for (let index=0;index<rows.length;index++) { const row=rows[index];
     if (row.ready===false) return {status:"incomplete",reason:"unready observation",series};
-    if(typeof row.session_date!=="string"||!/^\d{4}-\d{2}-\d{2}$/.test(row.session_date)||Number.isNaN(Date.parse(row.session_date)))return{status:"incomplete",reason:"invalid_session_date",series};
+    if(typeof row.session_date!=="string"||!/^\d{4}-\d{2}-\d{2}$/.test(row.session_date)||Number.isNaN(Date.parse(row.session_date))||new Date(row.session_date+"T00:00:00Z").toISOString().slice(0,10)!==row.session_date)return{status:"incomplete",reason:"invalid_session_date",series};
     if(previousDate!==null&&row.session_date<=previousDate)return{status:"incomplete",reason:"session_dates_must_increase",series};
     const advances=numberValue(row.advances,"advances"), declines=numberValue(row.declines,"declines");
     if (advances<0 || declines<0 || advances+declines<=0) return {status:"incomplete",reason:"invalid breadth counts",series};

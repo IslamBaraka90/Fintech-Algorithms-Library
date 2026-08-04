@@ -265,8 +265,12 @@ export function calculateNormalizedAdLine(
     else if (identity !== currentIdentity) {
       return result("unsupported", ["series_break"], future, seed, scale, minimumCoverage, options.cutoff);
     }
+      // A shape check plus Date.parse is NOT enough: JS rolls impossible dates over,
+      // so "2026-02-30" parses happily as March 2. Python's date parsing rejects it,
+      // so without this round-trip the two implementations disagree on the same input.
     if (!/^\d{4}-\d{2}-\d{2}$/.test(record.session_date)
-      || Number.isNaN(Date.parse(`${record.session_date}T00:00:00Z`))) {
+      || Number.isNaN(Date.parse(`${record.session_date}T00:00:00Z`))
+      || new Date(`${record.session_date}T00:00:00Z`).toISOString().slice(0, 10) !== record.session_date) {
       throw new NormalizedADLineValidationError("session_date must be a valid YYYY-MM-DD date.");
     }
     if (previousDate && record.session_date <= previousDate) {

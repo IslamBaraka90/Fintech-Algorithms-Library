@@ -64,6 +64,13 @@ export function classifyMarkets(
   }
 
   return quotes.map((quote, index) => {
+    // A non-object row must be CLASSIFIED, not thrown: the module's contract is that
+    // one bad quote can neither abort the batch nor vanish from it. Without this
+    // guard the `in` operator below throws on a string or a number, which the Python
+    // port does not.
+    if (quote === null || typeof quote !== "object" || Array.isArray(quote)) {
+      return invalid({}, index, "quote must be a mapping");
+    }
     const missing = requiredContext.filter((field) => !(field in quote));
     if (missing.length) return invalid(quote, index, `missing context: ${missing.join(", ")}`);
 

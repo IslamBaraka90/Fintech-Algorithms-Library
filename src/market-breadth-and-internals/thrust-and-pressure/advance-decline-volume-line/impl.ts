@@ -12,7 +12,7 @@ export function calculate(rows:any[],seed=0):Result {
   if(!rows.length)return{status:"incomplete",reason:"no observations",value:null,series:[]};
   let level=numberValue(seed,"seed"),previousDate:string|null=null; const series:any[]=[];
   for (const row of rows) {if(row.ready===false)return{status:"incomplete",reason:"unready observation",value:null,series};
-    if(typeof row.session_date!=="string"||!/^\d{4}-\d{2}-\d{2}$/.test(row.session_date)||Number.isNaN(Date.parse(row.session_date)))return{status:"incomplete",reason:"invalid_session_date",value:null,series};
+    if(typeof row.session_date!=="string"||!/^\d{4}-\d{2}-\d{2}$/.test(row.session_date)||Number.isNaN(Date.parse(row.session_date))||new Date(row.session_date+"T00:00:00Z").toISOString().slice(0,10)!==row.session_date)return{status:"incomplete",reason:"invalid_session_date",value:null,series};
     if(previousDate!==null&&row.session_date<=previousDate)return{status:"incomplete",reason:"session_dates_must_increase",value:null,series};
     const up=numberValue(row.advancing_volume,"advancing_volume"),down=numberValue(row.declining_volume,"declining_volume");
     if(up<0||down<0)return{status:"incomplete",reason:"negative volume",value:null,series};

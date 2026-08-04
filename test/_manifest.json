@@ -1,6 +1,6 @@
 {
   "generatedFrom": "scripts/sync.mjs",
-  "topicCount": 271,
+  "topicCount": 324,
   "topics": [
     {
       "id": "D01-F01-A01",
@@ -2026,6 +2026,465 @@
       ]
     },
     {
+      "id": "D06-F01-A03",
+      "path": "price-action-and-candlesticks/candle-foundations/shadow-to-body-ratio",
+      "entry": "shadowToBodyRatio",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "inputs"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D06-F01-A04",
+      "path": "price-action-and-candlesticks/candle-foundations/gap-classification",
+      "entry": "gapClassification",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "inputs"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D06-F01-A05",
+      "path": "price-action-and-candlesticks/candle-foundations/trend-context-filter",
+      "entry": "trendContextFilter",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "inputs"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D06-F02-A01",
+      "path": "price-action-and-candlesticks/single-candle-patterns/doji",
+      "entry": "doji",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "inputs"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D06-F02-A02",
+      "path": "price-action-and-candlesticks/single-candle-patterns/dragonfly-doji",
+      "entry": "dragonflyDoji",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "inputs"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D06-F02-A03",
+      "path": "price-action-and-candlesticks/single-candle-patterns/gravestone-doji",
+      "entry": "gravestoneDoji",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "inputs"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D06-F02-A04",
+      "path": "price-action-and-candlesticks/single-candle-patterns/marubozu",
+      "entry": "marubozu",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "inputs"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D06-F02-A05",
+      "path": "price-action-and-candlesticks/single-candle-patterns/spinning-top",
+      "entry": "spinningTop",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "inputs"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D06-F02-A06",
+      "path": "price-action-and-candlesticks/single-candle-patterns/hammer",
+      "entry": "hammer",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "inputs"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D06-F02-A07",
+      "path": "price-action-and-candlesticks/single-candle-patterns/hanging-man",
+      "entry": "hangingMan",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "inputs"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D06-F02-A08",
+      "path": "price-action-and-candlesticks/single-candle-patterns/inverted-hammer",
+      "entry": "invertedHammer",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "inputs"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D06-F02-A09",
+      "path": "price-action-and-candlesticks/single-candle-patterns/shooting-star",
+      "entry": "shootingStar",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "inputs"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D06-F03-A01",
+      "path": "price-action-and-candlesticks/two-candle-patterns/bullish-engulfing",
+      "entry": "bullishEngulfing",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "inputs"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D06-F03-A02",
+      "path": "price-action-and-candlesticks/two-candle-patterns/bearish-engulfing",
+      "entry": "bearishEngulfing",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "inputs"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D06-F03-A03",
+      "path": "price-action-and-candlesticks/two-candle-patterns/bullish-harami",
+      "entry": "bullishHarami",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "inputs"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D06-F03-A04",
+      "path": "price-action-and-candlesticks/two-candle-patterns/bearish-harami",
+      "entry": "bearishHarami",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "inputs"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D06-F03-A05",
+      "path": "price-action-and-candlesticks/two-candle-patterns/piercing-line",
+      "entry": "piercingLine",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "inputs"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D06-F03-A06",
+      "path": "price-action-and-candlesticks/two-candle-patterns/dark-cloud-cover",
+      "entry": "darkCloudCover",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "inputs"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D06-F03-A07",
+      "path": "price-action-and-candlesticks/two-candle-patterns/tweezer-top",
+      "entry": "tweezerTop",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "inputs"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D06-F03-A08",
+      "path": "price-action-and-candlesticks/two-candle-patterns/tweezer-bottom",
+      "entry": "tweezerBottom",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "inputs"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D06-F04-A01",
+      "path": "price-action-and-candlesticks/multi-candle-patterns/morning-star",
+      "entry": "morningStar",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "inputs"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D06-F04-A02",
+      "path": "price-action-and-candlesticks/multi-candle-patterns/evening-star",
+      "entry": "eveningStar",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "inputs"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D06-F04-A03",
+      "path": "price-action-and-candlesticks/multi-candle-patterns/three-white-soldiers",
+      "entry": "threeWhiteSoldiers",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "inputs"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D06-F04-A04",
+      "path": "price-action-and-candlesticks/multi-candle-patterns/three-black-crows",
+      "entry": "threeBlackCrows",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "inputs"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D06-F04-A05",
+      "path": "price-action-and-candlesticks/multi-candle-patterns/three-inside-up-down",
+      "entry": "threeInsideUpDown",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "inputs"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D06-F04-A06",
+      "path": "price-action-and-candlesticks/multi-candle-patterns/three-outside-up-down",
+      "entry": "threeOutsideUpDown",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "inputs"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D06-F04-A07",
+      "path": "price-action-and-candlesticks/multi-candle-patterns/abandoned-baby",
+      "entry": "abandonedBaby",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "inputs"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D06-F05-A01",
+      "path": "price-action-and-candlesticks/candlestick-scanning-and-context/unified-candlestick-pattern-registry",
+      "entry": "buildRegistry",
+      "archetype": "record-transform",
+      "fixture": "D06-F05-A01.json",
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D06-F05-A02",
+      "path": "price-action-and-candlesticks/candlestick-scanning-and-context/candlestick-pattern-occurrence-contract",
+      "entry": "makeOccurrence",
+      "archetype": "record-transform",
+      "fixture": "D06-F05-A02.json",
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D06-F05-A03",
+      "path": "price-action-and-candlesticks/candlestick-scanning-and-context/market-wide-candlestick-pattern-scanner",
+      "entry": "scanMarket",
+      "archetype": "record-transform",
+      "fixture": "D06-F05-A03.json",
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D06-F05-A04",
+      "path": "price-action-and-candlesticks/candlestick-scanning-and-context/contextual-candlestick-confidence-score",
+      "entry": "scoreContext",
+      "archetype": "record-transform",
+      "fixture": "D06-F05-A04.json",
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D06-F05-A05",
+      "path": "price-action-and-candlesticks/candlestick-scanning-and-context/support-resistance-pattern-context",
+      "entry": "supportResistanceContext",
+      "archetype": "record-transform",
+      "fixture": "D06-F05-A05.json",
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D06-F05-A06",
+      "path": "price-action-and-candlesticks/candlestick-scanning-and-context/trend-volatility-and-volume-pattern-context",
+      "entry": "trendVolatilityVolumeContext",
+      "archetype": "record-transform",
+      "fixture": "D06-F05-A06.json",
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D06-F05-A07",
+      "path": "price-action-and-candlesticks/candlestick-scanning-and-context/overlapping-pattern-conflict-resolver",
+      "entry": "resolveConflicts",
+      "archetype": "row-classify",
+      "fixture": "D06-F05-A07.json",
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D06-F05-A08",
+      "path": "price-action-and-candlesticks/candlestick-scanning-and-context/candlestick-confirmation-and-invalidation-state-machine",
+      "entry": "runConfirmationStateMachine",
+      "archetype": "record-transform",
+      "fixture": "D06-F05-A08.json",
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D06-F05-A09",
+      "path": "price-action-and-candlesticks/candlestick-scanning-and-context/candlestick-scanner-ranking-and-deduplication",
+      "entry": "rankAndDeduplicate",
+      "archetype": "record-transform",
+      "fixture": "D06-F05-A09.json",
+      "convention": "A",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "input",
+        "expected"
+      ]
+    },
+    {
       "id": "D07-F01-A01",
       "path": "technical-indicators/trend-smoothing/sma",
       "entry": "calculateSma",
@@ -3039,6 +3498,210 @@
       "fixture": null,
       "convention": "none",
       "entryParams": [],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D08-F05-A01",
+      "path": "geometric-chart-patterns/indicator-divergence-detection/price-indicator-pivot-alignment",
+      "entry": "priceIndicatorPivotAlignment",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "payload"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D08-F05-A02",
+      "path": "geometric-chart-patterns/indicator-divergence-detection/regular-bullish-bearish-divergence-detection",
+      "entry": "regularBullishBearishDivergenceDetection",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "payload"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D08-F05-A03",
+      "path": "geometric-chart-patterns/indicator-divergence-detection/hidden-bullish-bearish-divergence-detection",
+      "entry": "hiddenBullishBearishDivergenceDetection",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "payload"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D08-F05-A04",
+      "path": "geometric-chart-patterns/indicator-divergence-detection/multi-indicator-divergence-adapters",
+      "entry": "multiIndicatorDivergenceAdapters",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "payload"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D08-F05-A05",
+      "path": "geometric-chart-patterns/indicator-divergence-detection/divergence-strength-and-quality-scoring",
+      "entry": "divergenceStrengthAndQualityScoring",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "payload"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D08-F05-A06",
+      "path": "geometric-chart-patterns/indicator-divergence-detection/divergence-confirmation-and-invalidation-state-machine",
+      "entry": "divergenceConfirmationAndInvalidationStateMachine",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "payload"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D08-F05-A07",
+      "path": "geometric-chart-patterns/indicator-divergence-detection/multi-indicator-divergence-confluence",
+      "entry": "multiIndicatorDivergenceConfluence",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "payload"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D08-F05-A08",
+      "path": "geometric-chart-patterns/indicator-divergence-detection/market-wide-divergence-scanner-and-ranking",
+      "entry": "marketWideDivergenceScannerAndRanking",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "payload"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D08-F06-A01",
+      "path": "geometric-chart-patterns/level-confluence-and-zone-scoring/price-by-volume-profile-construction",
+      "entry": "priceByVolumeProfileConstruction",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D08-F06-A02",
+      "path": "geometric-chart-patterns/level-confluence-and-zone-scoring/poc-value-area-hvn-lvn-detection",
+      "entry": "pocValueAreaHvnLvnDetection",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D08-F06-A03",
+      "path": "geometric-chart-patterns/level-confluence-and-zone-scoring/fibonacci-retracement-extension-projection",
+      "entry": "fibonacciRetracementExtensionProjection",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D08-F06-A04",
+      "path": "geometric-chart-patterns/level-confluence-and-zone-scoring/psychological-round-number-level-generation",
+      "entry": "psychologicalRoundNumberLevelGeneration",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D08-F06-A05",
+      "path": "geometric-chart-patterns/level-confluence-and-zone-scoring/multi-source-support-resistance-zone-fusion",
+      "entry": "multiSourceSupportResistanceZoneFusion",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D08-F06-A06",
+      "path": "geometric-chart-patterns/level-confluence-and-zone-scoring/support-resistance-zone-strength-decay-scoring",
+      "entry": "supportResistanceZoneStrengthDecayScoring",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D08-F06-A07",
+      "path": "geometric-chart-patterns/level-confluence-and-zone-scoring/support-resistance-role-reversal-state-machine",
+      "entry": "supportResistanceRoleReversalStateMachine",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D08-F06-A08",
+      "path": "geometric-chart-patterns/level-confluence-and-zone-scoring/breakout-and-retest-detection",
+      "entry": "breakoutAndRetestDetection",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D08-F06-A09",
+      "path": "geometric-chart-patterns/level-confluence-and-zone-scoring/market-wide-zone-proximity-scanner-ranking",
+      "entry": "marketWideZoneProximityScannerRanking",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "input"
+      ],
       "fixtureKeys": []
     },
     {

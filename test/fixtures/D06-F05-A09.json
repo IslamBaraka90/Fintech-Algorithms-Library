@@ -1,0 +1,49 @@
+{
+  "input": {
+    "recency_half_life_bars": 5,
+    "dedup_window_bars": 2,
+    "occurrences": [
+      {
+        "occurrence_id": "A",
+        "instrument_id": "SYNTH:AAA",
+        "interval": "5m",
+        "pattern_id": "D06-F03-A01",
+        "direction": "bullish",
+        "end_index": 10,
+        "confidence": 90,
+        "age_bars": 1,
+        "liquidity_score": 0.8,
+        "priority_score": 0.8
+      },
+      {
+        "occurrence_id": "B",
+        "instrument_id": "SYNTH:AAA",
+        "interval": "5m",
+        "pattern_id": "D06-F03-A01",
+        "direction": "bullish",
+        "end_index": 11,
+        "confidence": 85,
+        "age_bars": 0,
+        "liquidity_score": 0.9,
+        "priority_score": 0.9
+      },
+      {
+        "occurrence_id": "C",
+        "instrument_id": "SYNTH:BBB",
+        "interval": "5m",
+        "pattern_id": "D06-F02-A06",
+        "direction": "bullish",
+        "end_index": 11,
+        "confidence": 70,
+        "age_bars": 2,
+        "liquidity_score": 1.0,
+        "priority_score": 0.5
+      }
+    ]
+  },
+  "expected": {
+    "state": "ready",
+    "ranked_count": 2,
+    "suppressed_count": 1
+  }
+}

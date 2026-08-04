@@ -78,10 +78,14 @@ function timestamp(value: unknown, field: string): number {
 }
 
 function day(value: unknown, field: string): string {
+  // A shape check plus Date.parse is NOT enough: JS rolls impossible dates over, so
+  // "2026-02-30" parses happily as March 2 while Python's date parsing rejects it.
+  // The round-trip keeps the two implementations agreeing on the same input.
   if (
     typeof value !== "string" ||
     !/^\d{4}-\d{2}-\d{2}$/.test(value) ||
-    Number.isNaN(Date.parse(`${value}T00:00:00Z`))
+    Number.isNaN(Date.parse(`${value}T00:00:00Z`)) ||
+    new Date(`${value}T00:00:00Z`).toISOString().slice(0, 10) !== value
   ) {
     throw new Error(`${field} must be YYYY-MM-DD`);
   }

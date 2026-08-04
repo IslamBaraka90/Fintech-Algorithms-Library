@@ -1,0 +1,27 @@
+{
+  "input": {
+    "detection_index": 10,
+    "direction": "bullish",
+    "confirmation_level": 105,
+    "invalidation_level": 95,
+    "expires_after_bars": 3,
+    "events": [
+      {
+        "bar_index": 11,
+        "bar_closed": true,
+        "close": 102
+      },
+      {
+        "bar_index": 12,
+        "bar_closed": true,
+        "close": 106
+      }
+    ]
+  },
+  "expected": {
+    "state": "confirmed",
+    "terminal": true,
+    "confirmation_level": 105,
+    "invalidation_level": 95
+  }
+}

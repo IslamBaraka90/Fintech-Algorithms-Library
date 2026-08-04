@@ -1,0 +1,47 @@
+{
+  "input": {
+    "occurrences": [
+      {
+        "occurrence_id": "A",
+        "instrument_id": "SYNTH:AAA",
+        "interval": "5m",
+        "pattern_id": "D06-F02-A01",
+        "direction": "neutral",
+        "start_index": 10,
+        "end_index": 10,
+        "priority": 1,
+        "confidence": 90,
+        "geometry_score": 0.95
+      },
+      {
+        "occurrence_id": "B",
+        "instrument_id": "SYNTH:AAA",
+        "interval": "5m",
+        "pattern_id": "D06-F03-A01",
+        "direction": "bullish",
+        "start_index": 10,
+        "end_index": 11,
+        "priority": 2,
+        "confidence": 70,
+        "geometry_score": 0.85
+      },
+      {
+        "occurrence_id": "C",
+        "instrument_id": "SYNTH:AAA",
+        "interval": "5m",
+        "pattern_id": "D06-F02-A04",
+        "direction": "bullish",
+        "start_index": 15,
+        "end_index": 15,
+        "priority": 1,
+        "confidence": 80,
+        "geometry_score": 0.9
+      }
+    ]
+  },
+  "expected": {
+    "state": "ready",
+    "winner_count": 2,
+    "suppressed_count": 1
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "input": {
+    "instrument_id": "SYNTH:AAA",
+    "interval": "5m",
+    "price_basis": "raw-trades",
+    "session": "synthetic-utc",
+    "pattern_id": "D06-F03-A01",
+    "pattern_name": "Bullish Engulfing",
+    "direction": "bullish",
+    "start_index": 10,
+    "end_index": 11,
+    "start_time": "2026-01-05T10:00:00Z",
+    "end_time": "2026-01-05T10:05:00Z",
+    "detected_at": "2026-01-05T10:05:01Z",
+    "available_at": "2026-01-05T10:05:01Z",
+    "bar_closed": true,
+    "detector_version": "v1",
+    "geometry_score": 0.9,
+    "reason_codes": [
+      "geometry-matched"
+    ]
+  },
+  "expected": {
+    "occurrence_id": "SYNTH:AAA|5m|2026-01-05T10:05:00Z|D06-F03-A01|10:11|v1",
+    "bar_closed": true,
+    "geometry_score": 0.9
+  }
+}

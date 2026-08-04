@@ -1,0 +1,35 @@
+{
+  "input": {
+    "pattern_price": 100.0,
+    "atr": 2.0,
+    "direction": "bullish",
+    "occurrence_index": 10,
+    "max_distance_atr": 2.0,
+    "levels": [
+      {
+        "price": 99.0,
+        "kind": "support",
+        "strength": 0.8,
+        "confirmed_index": 9
+      },
+      {
+        "price": 101.0,
+        "kind": "resistance",
+        "strength": 0.9,
+        "confirmed_index": 8
+      },
+      {
+        "price": 100.2,
+        "kind": "support",
+        "strength": 1.0,
+        "confirmed_index": 11
+      }
+    ]
+  },
+  "expected": {
+    "state": "ready",
+    "target_kind": "support",
+    "distance_atr": 0.5,
+    "context_score": 0.75
+  }
+}

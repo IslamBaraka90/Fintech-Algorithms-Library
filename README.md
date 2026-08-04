@@ -83,9 +83,9 @@ Requires Node ≥ 22.
 ## Verified against published worked examples
 
 <!-- coverage:start -->
-**79 of 271 topics** are verified against the catalog's own published numbers
-(41 via `{ input, expected }`, 11 via row fixtures, 27 via bar/checkpoint fixtures).
-The remaining 192 are proven to load and expose a callable entry point, but their
+**88 of 324 topics** are verified against the catalog's own published numbers
+(50 via `{ input, expected }`, 11 via row fixtures, 27 via bar/checkpoint fixtures).
+The remaining 236 are proven to load and expose a callable entry point, but their
 arithmetic is not asserted here — those topics ship no machine-readable expected
 values in the catalog.
 <!-- coverage:end -->
@@ -120,9 +120,9 @@ Every topic is an instance of one of five archetypes:
 <!-- shapes:start -->
 | Archetype | Signature | Count | Example |
 |---|---|--:|---|
-| `record-transform` | `(input) → output` | 205 | backward-split-adjustment |
+| `record-transform` | `(input) → output` | 257 | backward-split-adjustment |
 | `series-transform` | `(values, ...params) → (number\|null)[]` | 37 | ema, rsi, macd |
-| `row-classify` | `(rows, config?) → verdict[]` | 16 | ohlc-consistency-validator |
+| `row-classify` | `(rows, config?) → verdict[]` | 17 | ohlc-consistency-validator |
 | `tape-aggregate` | `(trades, config) → bar[]` | 7 | time-bars, volume-bars |
 | `snapshot-evaluate` | `(snapshot, policy) → result` | 6 | price-source-consensus-check |
 <!-- shapes:end -->
@@ -155,7 +155,7 @@ repo URL.
 ## Coverage
 
 <!-- stats:start -->
-**271 topics** · 13 domains · 48 families
+**324 topics** · 13 domains · 54 families
 
 | Domain | Topics | Families | Name |
 |---|--:|--:|---|
@@ -163,9 +163,9 @@ repo URL.
 | D02 | 20 | 4 | Corporate Actions and Security Master Data |
 | D03 | 40 | 6 | Index and Benchmark Engineering |
 | D04 | 28 | 5 | Market Breadth and Internals |
-| D06 | 2 | 1 | Price Action and Candlesticks |
+| D06 | 38 | 5 | Price Action and Candlesticks |
 | D07 | 37 | 5 | Technical Indicators |
-| D08 | 10 | 2 | Geometric Chart Patterns |
+| D08 | 27 | 4 | Geometric Chart Patterns |
 | D09 | 29 | 5 | Statistical Time Series |
 | D11 | 29 | 5 | Market Microstructure |
 | D12 | 21 | 4 | Matching Engines and Venue Logic |
@@ -234,9 +234,17 @@ tier, diagrams and source.
 **Concentration and Diffusion** — [Top-N Index Contribution](https://docs.thefintechbuilder.com/market-breadth-and-internals/concentration-and-diffusion/top-n-index-contribution/) · [Herfindahl Constituent Concentration](https://docs.thefintechbuilder.com/market-breadth-and-internals/concentration-and-diffusion/herfindahl-constituent-concentration/) · [Effective Number of Constituents](https://docs.thefintechbuilder.com/market-breadth-and-internals/concentration-and-diffusion/effective-number-of-constituents/) · [Sector Diffusion Index](https://docs.thefintechbuilder.com/market-breadth-and-internals/concentration-and-diffusion/sector-diffusion-index/) · [Factor Diffusion Index](https://docs.thefintechbuilder.com/market-breadth-and-internals/concentration-and-diffusion/factor-diffusion-index/)
 
 
-### D06 — Price Action and Candlesticks · 2 topics
+### D06 — Price Action and Candlesticks · 38 topics
 
-**Candle Foundations** — [Candle Anatomy](https://docs.thefintechbuilder.com/price-action-and-candlesticks/candle-foundations/candle-anatomy/) · [Scale-Aware Body Classification](https://docs.thefintechbuilder.com/price-action-and-candlesticks/candle-foundations/scale-aware-body-classification/)
+**Candle Foundations** — [Candle Anatomy](https://docs.thefintechbuilder.com/price-action-and-candlesticks/candle-foundations/candle-anatomy/) · [Scale-Aware Body Classification](https://docs.thefintechbuilder.com/price-action-and-candlesticks/candle-foundations/scale-aware-body-classification/) · [Shadow-to-Body Ratio](https://docs.thefintechbuilder.com/price-action-and-candlesticks/candle-foundations/shadow-to-body-ratio/) · [Gap Classification](https://docs.thefintechbuilder.com/price-action-and-candlesticks/candle-foundations/gap-classification/) · [Trend-Context Filter](https://docs.thefintechbuilder.com/price-action-and-candlesticks/candle-foundations/trend-context-filter/)
+
+**Single-Candle Patterns** — [Doji](https://docs.thefintechbuilder.com/price-action-and-candlesticks/single-candle-patterns/doji/) · [Dragonfly Doji](https://docs.thefintechbuilder.com/price-action-and-candlesticks/single-candle-patterns/dragonfly-doji/) · [Gravestone Doji](https://docs.thefintechbuilder.com/price-action-and-candlesticks/single-candle-patterns/gravestone-doji/) · [Marubozu](https://docs.thefintechbuilder.com/price-action-and-candlesticks/single-candle-patterns/marubozu/) · [Spinning Top](https://docs.thefintechbuilder.com/price-action-and-candlesticks/single-candle-patterns/spinning-top/) · [Hammer](https://docs.thefintechbuilder.com/price-action-and-candlesticks/single-candle-patterns/hammer/) · [Hanging Man](https://docs.thefintechbuilder.com/price-action-and-candlesticks/single-candle-patterns/hanging-man/) · [Inverted Hammer](https://docs.thefintechbuilder.com/price-action-and-candlesticks/single-candle-patterns/inverted-hammer/) · [Shooting Star](https://docs.thefintechbuilder.com/price-action-and-candlesticks/single-candle-patterns/shooting-star/)
+
+**Two-Candle Patterns** — [Bullish Engulfing](https://docs.thefintechbuilder.com/price-action-and-candlesticks/two-candle-patterns/bullish-engulfing/) · [Bearish Engulfing](https://docs.thefintechbuilder.com/price-action-and-candlesticks/two-candle-patterns/bearish-engulfing/) · [Bullish Harami](https://docs.thefintechbuilder.com/price-action-and-candlesticks/two-candle-patterns/bullish-harami/) · [Bearish Harami](https://docs.thefintechbuilder.com/price-action-and-candlesticks/two-candle-patterns/bearish-harami/) · [Piercing Line](https://docs.thefintechbuilder.com/price-action-and-candlesticks/two-candle-patterns/piercing-line/) · [Dark Cloud Cover](https://docs.thefintechbuilder.com/price-action-and-candlesticks/two-candle-patterns/dark-cloud-cover/) · [Tweezer Top](https://docs.thefintechbuilder.com/price-action-and-candlesticks/two-candle-patterns/tweezer-top/) · [Tweezer Bottom](https://docs.thefintechbuilder.com/price-action-and-candlesticks/two-candle-patterns/tweezer-bottom/)
+
+**Multi-Candle Patterns** — [Morning Star](https://docs.thefintechbuilder.com/price-action-and-candlesticks/multi-candle-patterns/morning-star/) · [Evening Star](https://docs.thefintechbuilder.com/price-action-and-candlesticks/multi-candle-patterns/evening-star/) · [Three White Soldiers](https://docs.thefintechbuilder.com/price-action-and-candlesticks/multi-candle-patterns/three-white-soldiers/) · [Three Black Crows](https://docs.thefintechbuilder.com/price-action-and-candlesticks/multi-candle-patterns/three-black-crows/) · [Three Inside Up/Down](https://docs.thefintechbuilder.com/price-action-and-candlesticks/multi-candle-patterns/three-inside-up-down/) · [Three Outside Up/Down](https://docs.thefintechbuilder.com/price-action-and-candlesticks/multi-candle-patterns/three-outside-up-down/) · [Abandoned Baby](https://docs.thefintechbuilder.com/price-action-and-candlesticks/multi-candle-patterns/abandoned-baby/)
+
+**Candlestick Scanning and Context** — [Unified Candlestick Pattern Registry](https://docs.thefintechbuilder.com/price-action-and-candlesticks/candlestick-scanning-and-context/unified-candlestick-pattern-registry/) · [Candlestick Pattern Occurrence Contract](https://docs.thefintechbuilder.com/price-action-and-candlesticks/candlestick-scanning-and-context/candlestick-pattern-occurrence-contract/) · [Market-Wide Candlestick Pattern Scanner](https://docs.thefintechbuilder.com/price-action-and-candlesticks/candlestick-scanning-and-context/market-wide-candlestick-pattern-scanner/) · [Contextual Candlestick Confidence Score](https://docs.thefintechbuilder.com/price-action-and-candlesticks/candlestick-scanning-and-context/contextual-candlestick-confidence-score/) · [Support/Resistance Pattern Context](https://docs.thefintechbuilder.com/price-action-and-candlesticks/candlestick-scanning-and-context/support-resistance-pattern-context/) · [Trend, Volatility, and Volume Pattern Context](https://docs.thefintechbuilder.com/price-action-and-candlesticks/candlestick-scanning-and-context/trend-volatility-and-volume-pattern-context/) · [Overlapping-Pattern Conflict Resolver](https://docs.thefintechbuilder.com/price-action-and-candlesticks/candlestick-scanning-and-context/overlapping-pattern-conflict-resolver/) · [Candlestick Confirmation and Invalidation State Machine](https://docs.thefintechbuilder.com/price-action-and-candlesticks/candlestick-scanning-and-context/candlestick-confirmation-and-invalidation-state-machine/) · [Candlestick Scanner Ranking and Deduplication](https://docs.thefintechbuilder.com/price-action-and-candlesticks/candlestick-scanning-and-context/candlestick-scanner-ranking-and-deduplication/)
 
 
 ### D07 — Technical Indicators · 37 topics
@@ -252,11 +260,15 @@ tier, diagrams and source.
 **Volume Indicators** — [On-Balance Volume (OBV)](https://docs.thefintechbuilder.com/technical-indicators/volume-indicators/obv/) · [Accumulation/Distribution Line](https://docs.thefintechbuilder.com/technical-indicators/volume-indicators/accumulation-distribution-line/) · [Chaikin Money Flow](https://docs.thefintechbuilder.com/technical-indicators/volume-indicators/chaikin-money-flow/) · [Money Flow Index](https://docs.thefintechbuilder.com/technical-indicators/volume-indicators/money-flow-index/) · [Volume Price Trend](https://docs.thefintechbuilder.com/technical-indicators/volume-indicators/volume-price-trend/) · [Force Index](https://docs.thefintechbuilder.com/technical-indicators/volume-indicators/force-index/)
 
 
-### D08 — Geometric Chart Patterns · 10 topics
+### D08 — Geometric Chart Patterns · 27 topics
 
 **Pivots and Levels** — [Causal Pivot Detection](https://docs.thefintechbuilder.com/geometric-chart-patterns/pivots-and-levels/causal-pivot-detection/) · [ZigZag Segmentation](https://docs.thefintechbuilder.com/geometric-chart-patterns/pivots-and-levels/zigzag-segmentation/) · [Support/Resistance Clustering](https://docs.thefintechbuilder.com/geometric-chart-patterns/pivots-and-levels/support-resistance-clustering/) · [Robust Trendline Fitting](https://docs.thefintechbuilder.com/geometric-chart-patterns/pivots-and-levels/robust-trendline-fitting/)
 
 **Reversal Structures** — [Double Top](https://docs.thefintechbuilder.com/geometric-chart-patterns/reversal-structures/double-top/) · [Double Bottom](https://docs.thefintechbuilder.com/geometric-chart-patterns/reversal-structures/double-bottom/) · [Triple Top](https://docs.thefintechbuilder.com/geometric-chart-patterns/reversal-structures/triple-top/) · [Triple Bottom](https://docs.thefintechbuilder.com/geometric-chart-patterns/reversal-structures/triple-bottom/) · [Head and Shoulders](https://docs.thefintechbuilder.com/geometric-chart-patterns/reversal-structures/head-and-shoulders/) · [Inverse Head and Shoulders](https://docs.thefintechbuilder.com/geometric-chart-patterns/reversal-structures/inverse-head-and-shoulders/)
+
+**Indicator Divergence Detection** — [Price–Indicator Pivot Alignment](https://docs.thefintechbuilder.com/geometric-chart-patterns/indicator-divergence-detection/price-indicator-pivot-alignment/) · [Regular Bullish/Bearish Divergence Detection](https://docs.thefintechbuilder.com/geometric-chart-patterns/indicator-divergence-detection/regular-bullish-bearish-divergence-detection/) · [Hidden Bullish/Bearish Divergence Detection](https://docs.thefintechbuilder.com/geometric-chart-patterns/indicator-divergence-detection/hidden-bullish-bearish-divergence-detection/) · [Multi-Indicator Divergence Adapters](https://docs.thefintechbuilder.com/geometric-chart-patterns/indicator-divergence-detection/multi-indicator-divergence-adapters/) · [Divergence Strength and Quality Scoring](https://docs.thefintechbuilder.com/geometric-chart-patterns/indicator-divergence-detection/divergence-strength-and-quality-scoring/) · [Divergence Confirmation and Invalidation State Machine](https://docs.thefintechbuilder.com/geometric-chart-patterns/indicator-divergence-detection/divergence-confirmation-and-invalidation-state-machine/) · [Multi-Indicator Divergence Confluence](https://docs.thefintechbuilder.com/geometric-chart-patterns/indicator-divergence-detection/multi-indicator-divergence-confluence/) · [Market-Wide Divergence Scanner and Ranking](https://docs.thefintechbuilder.com/geometric-chart-patterns/indicator-divergence-detection/market-wide-divergence-scanner-and-ranking/)
+
+**Level Confluence and Zone Scoring** — [Price-by-Volume Profile Construction](https://docs.thefintechbuilder.com/geometric-chart-patterns/level-confluence-and-zone-scoring/price-by-volume-profile-construction/) · [Point of Control, Value Area, HVN, and LVN Detection](https://docs.thefintechbuilder.com/geometric-chart-patterns/level-confluence-and-zone-scoring/poc-value-area-hvn-lvn-detection/) · [Fibonacci Retracement and Extension Projection](https://docs.thefintechbuilder.com/geometric-chart-patterns/level-confluence-and-zone-scoring/fibonacci-retracement-extension-projection/) · [Psychological Round-Number Level Generation](https://docs.thefintechbuilder.com/geometric-chart-patterns/level-confluence-and-zone-scoring/psychological-round-number-level-generation/) · [Multi-Source Support/Resistance Zone Fusion](https://docs.thefintechbuilder.com/geometric-chart-patterns/level-confluence-and-zone-scoring/multi-source-support-resistance-zone-fusion/) · [Support/Resistance Zone Strength and Decay Scoring](https://docs.thefintechbuilder.com/geometric-chart-patterns/level-confluence-and-zone-scoring/support-resistance-zone-strength-decay-scoring/) · [Support/Resistance Role-Reversal State Machine](https://docs.thefintechbuilder.com/geometric-chart-patterns/level-confluence-and-zone-scoring/support-resistance-role-reversal-state-machine/) · [Breakout and Retest Detection](https://docs.thefintechbuilder.com/geometric-chart-patterns/level-confluence-and-zone-scoring/breakout-and-retest-detection/) · [Market-Wide Zone-Proximity Scanner and Ranking](https://docs.thefintechbuilder.com/geometric-chart-patterns/level-confluence-and-zone-scoring/market-wide-zone-proximity-scanner-ranking/)
 
 
 ### D09 — Statistical Time Series · 29 topics

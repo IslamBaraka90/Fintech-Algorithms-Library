@@ -1,0 +1,33 @@
+{
+  "input": {
+    "patterns": [
+      {
+        "pattern_id": "D06-F03-A01",
+        "name": "Bullish Engulfing",
+        "direction": "bullish",
+        "window": 2,
+        "detector": "bullish_engulfing",
+        "version": "v1",
+        "enabled": true,
+        "priority": 2
+      },
+      {
+        "pattern_id": "D06-F02-A01",
+        "name": "Doji",
+        "direction": "neutral",
+        "window": 1,
+        "detector": "doji",
+        "version": "v1",
+        "enabled": false,
+        "priority": 1
+      }
+    ]
+  },
+  "expected": {
+    "state": "ready",
+    "pattern_count": 2,
+    "enabled_count": 1,
+    "max_window": 2,
+    "registry_id": "D06-F02-A01@v1;D06-F03-A01@v1"
+  }
+}

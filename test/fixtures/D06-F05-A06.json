@@ -1,0 +1,39 @@
+{
+  "input": {
+    "prior_closes": [
+      105,
+      104,
+      103,
+      102,
+      101
+    ],
+    "prior_ranges": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "prior_volumes": [
+      100,
+      100,
+      100,
+      100,
+      100
+    ],
+    "lookback": 5,
+    "expected_prior_trend": "downtrend",
+    "current_range": 3,
+    "current_volume": 150,
+    "target_volume_ratio": 1.5
+  },
+  "expected": {
+    "state": "ready",
+    "normalized_slope": -0.5,
+    "trend_score": 0.5,
+    "volatility_ratio": 1.5,
+    "volatility_score": 0.75,
+    "volume_ratio": 1.5,
+    "volume_score": 1.0
+  }
+}

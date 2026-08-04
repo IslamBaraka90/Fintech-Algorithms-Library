@@ -540,6 +540,150 @@
       "types": "./dist/price-action-and-candlesticks/candle-foundations/scale-aware-body-classification/index.d.ts",
       "import": "./dist/price-action-and-candlesticks/candle-foundations/scale-aware-body-classification/index.js"
     },
+    "./price-action-and-candlesticks/candle-foundations/shadow-to-body-ratio": {
+      "types": "./dist/price-action-and-candlesticks/candle-foundations/shadow-to-body-ratio/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/candle-foundations/shadow-to-body-ratio/index.js"
+    },
+    "./price-action-and-candlesticks/candle-foundations/gap-classification": {
+      "types": "./dist/price-action-and-candlesticks/candle-foundations/gap-classification/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/candle-foundations/gap-classification/index.js"
+    },
+    "./price-action-and-candlesticks/candle-foundations/trend-context-filter": {
+      "types": "./dist/price-action-and-candlesticks/candle-foundations/trend-context-filter/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/candle-foundations/trend-context-filter/index.js"
+    },
+    "./price-action-and-candlesticks/single-candle-patterns/doji": {
+      "types": "./dist/price-action-and-candlesticks/single-candle-patterns/doji/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/single-candle-patterns/doji/index.js"
+    },
+    "./price-action-and-candlesticks/single-candle-patterns/dragonfly-doji": {
+      "types": "./dist/price-action-and-candlesticks/single-candle-patterns/dragonfly-doji/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/single-candle-patterns/dragonfly-doji/index.js"
+    },
+    "./price-action-and-candlesticks/single-candle-patterns/gravestone-doji": {
+      "types": "./dist/price-action-and-candlesticks/single-candle-patterns/gravestone-doji/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/single-candle-patterns/gravestone-doji/index.js"
+    },
+    "./price-action-and-candlesticks/single-candle-patterns/marubozu": {
+      "types": "./dist/price-action-and-candlesticks/single-candle-patterns/marubozu/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/single-candle-patterns/marubozu/index.js"
+    },
+    "./price-action-and-candlesticks/single-candle-patterns/spinning-top": {
+      "types": "./dist/price-action-and-candlesticks/single-candle-patterns/spinning-top/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/single-candle-patterns/spinning-top/index.js"
+    },
+    "./price-action-and-candlesticks/single-candle-patterns/hammer": {
+      "types": "./dist/price-action-and-candlesticks/single-candle-patterns/hammer/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/single-candle-patterns/hammer/index.js"
+    },
+    "./price-action-and-candlesticks/single-candle-patterns/hanging-man": {
+      "types": "./dist/price-action-and-candlesticks/single-candle-patterns/hanging-man/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/single-candle-patterns/hanging-man/index.js"
+    },
+    "./price-action-and-candlesticks/single-candle-patterns/inverted-hammer": {
+      "types": "./dist/price-action-and-candlesticks/single-candle-patterns/inverted-hammer/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/single-candle-patterns/inverted-hammer/index.js"
+    },
+    "./price-action-and-candlesticks/single-candle-patterns/shooting-star": {
+      "types": "./dist/price-action-and-candlesticks/single-candle-patterns/shooting-star/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/single-candle-patterns/shooting-star/index.js"
+    },
+    "./price-action-and-candlesticks/two-candle-patterns/bullish-engulfing": {
+      "types": "./dist/price-action-and-candlesticks/two-candle-patterns/bullish-engulfing/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/two-candle-patterns/bullish-engulfing/index.js"
+    },
+    "./price-action-and-candlesticks/two-candle-patterns/bearish-engulfing": {
+      "types": "./dist/price-action-and-candlesticks/two-candle-patterns/bearish-engulfing/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/two-candle-patterns/bearish-engulfing/index.js"
+    },
+    "./price-action-and-candlesticks/two-candle-patterns/bullish-harami": {
+      "types": "./dist/price-action-and-candlesticks/two-candle-patterns/bullish-harami/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/two-candle-patterns/bullish-harami/index.js"
+    },
+    "./price-action-and-candlesticks/two-candle-patterns/bearish-harami": {
+      "types": "./dist/price-action-and-candlesticks/two-candle-patterns/bearish-harami/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/two-candle-patterns/bearish-harami/index.js"
+    },
+    "./price-action-and-candlesticks/two-candle-patterns/piercing-line": {
+      "types": "./dist/price-action-and-candlesticks/two-candle-patterns/piercing-line/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/two-candle-patterns/piercing-line/index.js"
+    },
+    "./price-action-and-candlesticks/two-candle-patterns/dark-cloud-cover": {
+      "types": "./dist/price-action-and-candlesticks/two-candle-patterns/dark-cloud-cover/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/two-candle-patterns/dark-cloud-cover/index.js"
+    },
+    "./price-action-and-candlesticks/two-candle-patterns/tweezer-top": {
+      "types": "./dist/price-action-and-candlesticks/two-candle-patterns/tweezer-top/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/two-candle-patterns/tweezer-top/index.js"
+    },
+    "./price-action-and-candlesticks/two-candle-patterns/tweezer-bottom": {
+      "types": "./dist/price-action-and-candlesticks/two-candle-patterns/tweezer-bottom/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/two-candle-patterns/tweezer-bottom/index.js"
+    },
+    "./price-action-and-candlesticks/multi-candle-patterns/morning-star": {
+      "types": "./dist/price-action-and-candlesticks/multi-candle-patterns/morning-star/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/multi-candle-patterns/morning-star/index.js"
+    },
+    "./price-action-and-candlesticks/multi-candle-patterns/evening-star": {
+      "types": "./dist/price-action-and-candlesticks/multi-candle-patterns/evening-star/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/multi-candle-patterns/evening-star/index.js"
+    },
+    "./price-action-and-candlesticks/multi-candle-patterns/three-white-soldiers": {
+      "types": "./dist/price-action-and-candlesticks/multi-candle-patterns/three-white-soldiers/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/multi-candle-patterns/three-white-soldiers/index.js"
+    },
+    "./price-action-and-candlesticks/multi-candle-patterns/three-black-crows": {
+      "types": "./dist/price-action-and-candlesticks/multi-candle-patterns/three-black-crows/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/multi-candle-patterns/three-black-crows/index.js"
+    },
+    "./price-action-and-candlesticks/multi-candle-patterns/three-inside-up-down": {
+      "types": "./dist/price-action-and-candlesticks/multi-candle-patterns/three-inside-up-down/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/multi-candle-patterns/three-inside-up-down/index.js"
+    },
+    "./price-action-and-candlesticks/multi-candle-patterns/three-outside-up-down": {
+      "types": "./dist/price-action-and-candlesticks/multi-candle-patterns/three-outside-up-down/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/multi-candle-patterns/three-outside-up-down/index.js"
+    },
+    "./price-action-and-candlesticks/multi-candle-patterns/abandoned-baby": {
+      "types": "./dist/price-action-and-candlesticks/multi-candle-patterns/abandoned-baby/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/multi-candle-patterns/abandoned-baby/index.js"
+    },
+    "./price-action-and-candlesticks/candlestick-scanning-and-context/unified-candlestick-pattern-registry": {
+      "types": "./dist/price-action-and-candlesticks/candlestick-scanning-and-context/unified-candlestick-pattern-registry/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/candlestick-scanning-and-context/unified-candlestick-pattern-registry/index.js"
+    },
+    "./price-action-and-candlesticks/candlestick-scanning-and-context/candlestick-pattern-occurrence-contract": {
+      "types": "./dist/price-action-and-candlesticks/candlestick-scanning-and-context/candlestick-pattern-occurrence-contract/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/candlestick-scanning-and-context/candlestick-pattern-occurrence-contract/index.js"
+    },
+    "./price-action-and-candlesticks/candlestick-scanning-and-context/market-wide-candlestick-pattern-scanner": {
+      "types": "./dist/price-action-and-candlesticks/candlestick-scanning-and-context/market-wide-candlestick-pattern-scanner/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/candlestick-scanning-and-context/market-wide-candlestick-pattern-scanner/index.js"
+    },
+    "./price-action-and-candlesticks/candlestick-scanning-and-context/contextual-candlestick-confidence-score": {
+      "types": "./dist/price-action-and-candlesticks/candlestick-scanning-and-context/contextual-candlestick-confidence-score/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/candlestick-scanning-and-context/contextual-candlestick-confidence-score/index.js"
+    },
+    "./price-action-and-candlesticks/candlestick-scanning-and-context/support-resistance-pattern-context": {
+      "types": "./dist/price-action-and-candlesticks/candlestick-scanning-and-context/support-resistance-pattern-context/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/candlestick-scanning-and-context/support-resistance-pattern-context/index.js"
+    },
+    "./price-action-and-candlesticks/candlestick-scanning-and-context/trend-volatility-and-volume-pattern-context": {
+      "types": "./dist/price-action-and-candlesticks/candlestick-scanning-and-context/trend-volatility-and-volume-pattern-context/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/candlestick-scanning-and-context/trend-volatility-and-volume-pattern-context/index.js"
+    },
+    "./price-action-and-candlesticks/candlestick-scanning-and-context/overlapping-pattern-conflict-resolver": {
+      "types": "./dist/price-action-and-candlesticks/candlestick-scanning-and-context/overlapping-pattern-conflict-resolver/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/candlestick-scanning-and-context/overlapping-pattern-conflict-resolver/index.js"
+    },
+    "./price-action-and-candlesticks/candlestick-scanning-and-context/candlestick-confirmation-and-invalidation-state-machine": {
+      "types": "./dist/price-action-and-candlesticks/candlestick-scanning-and-context/candlestick-confirmation-and-invalidation-state-machine/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/candlestick-scanning-and-context/candlestick-confirmation-and-invalidation-state-machine/index.js"
+    },
+    "./price-action-and-candlesticks/candlestick-scanning-and-context/candlestick-scanner-ranking-and-deduplication": {
+      "types": "./dist/price-action-and-candlesticks/candlestick-scanning-and-context/candlestick-scanner-ranking-and-deduplication/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/candlestick-scanning-and-context/candlestick-scanner-ranking-and-deduplication/index.js"
+    },
     "./technical-indicators/trend-smoothing/sma": {
       "types": "./dist/technical-indicators/trend-smoothing/sma/index.d.ts",
       "import": "./dist/technical-indicators/trend-smoothing/sma/index.js"
@@ -727,6 +871,74 @@
     "./geometric-chart-patterns/reversal-structures/inverse-head-and-shoulders": {
       "types": "./dist/geometric-chart-patterns/reversal-structures/inverse-head-and-shoulders/index.d.ts",
       "import": "./dist/geometric-chart-patterns/reversal-structures/inverse-head-and-shoulders/index.js"
+    },
+    "./geometric-chart-patterns/indicator-divergence-detection/price-indicator-pivot-alignment": {
+      "types": "./dist/geometric-chart-patterns/indicator-divergence-detection/price-indicator-pivot-alignment/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/indicator-divergence-detection/price-indicator-pivot-alignment/index.js"
+    },
+    "./geometric-chart-patterns/indicator-divergence-detection/regular-bullish-bearish-divergence-detection": {
+      "types": "./dist/geometric-chart-patterns/indicator-divergence-detection/regular-bullish-bearish-divergence-detection/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/indicator-divergence-detection/regular-bullish-bearish-divergence-detection/index.js"
+    },
+    "./geometric-chart-patterns/indicator-divergence-detection/hidden-bullish-bearish-divergence-detection": {
+      "types": "./dist/geometric-chart-patterns/indicator-divergence-detection/hidden-bullish-bearish-divergence-detection/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/indicator-divergence-detection/hidden-bullish-bearish-divergence-detection/index.js"
+    },
+    "./geometric-chart-patterns/indicator-divergence-detection/multi-indicator-divergence-adapters": {
+      "types": "./dist/geometric-chart-patterns/indicator-divergence-detection/multi-indicator-divergence-adapters/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/indicator-divergence-detection/multi-indicator-divergence-adapters/index.js"
+    },
+    "./geometric-chart-patterns/indicator-divergence-detection/divergence-strength-and-quality-scoring": {
+      "types": "./dist/geometric-chart-patterns/indicator-divergence-detection/divergence-strength-and-quality-scoring/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/indicator-divergence-detection/divergence-strength-and-quality-scoring/index.js"
+    },
+    "./geometric-chart-patterns/indicator-divergence-detection/divergence-confirmation-and-invalidation-state-machine": {
+      "types": "./dist/geometric-chart-patterns/indicator-divergence-detection/divergence-confirmation-and-invalidation-state-machine/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/indicator-divergence-detection/divergence-confirmation-and-invalidation-state-machine/index.js"
+    },
+    "./geometric-chart-patterns/indicator-divergence-detection/multi-indicator-divergence-confluence": {
+      "types": "./dist/geometric-chart-patterns/indicator-divergence-detection/multi-indicator-divergence-confluence/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/indicator-divergence-detection/multi-indicator-divergence-confluence/index.js"
+    },
+    "./geometric-chart-patterns/indicator-divergence-detection/market-wide-divergence-scanner-and-ranking": {
+      "types": "./dist/geometric-chart-patterns/indicator-divergence-detection/market-wide-divergence-scanner-and-ranking/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/indicator-divergence-detection/market-wide-divergence-scanner-and-ranking/index.js"
+    },
+    "./geometric-chart-patterns/level-confluence-and-zone-scoring/price-by-volume-profile-construction": {
+      "types": "./dist/geometric-chart-patterns/level-confluence-and-zone-scoring/price-by-volume-profile-construction/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/level-confluence-and-zone-scoring/price-by-volume-profile-construction/index.js"
+    },
+    "./geometric-chart-patterns/level-confluence-and-zone-scoring/poc-value-area-hvn-lvn-detection": {
+      "types": "./dist/geometric-chart-patterns/level-confluence-and-zone-scoring/poc-value-area-hvn-lvn-detection/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/level-confluence-and-zone-scoring/poc-value-area-hvn-lvn-detection/index.js"
+    },
+    "./geometric-chart-patterns/level-confluence-and-zone-scoring/fibonacci-retracement-extension-projection": {
+      "types": "./dist/geometric-chart-patterns/level-confluence-and-zone-scoring/fibonacci-retracement-extension-projection/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/level-confluence-and-zone-scoring/fibonacci-retracement-extension-projection/index.js"
+    },
+    "./geometric-chart-patterns/level-confluence-and-zone-scoring/psychological-round-number-level-generation": {
+      "types": "./dist/geometric-chart-patterns/level-confluence-and-zone-scoring/psychological-round-number-level-generation/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/level-confluence-and-zone-scoring/psychological-round-number-level-generation/index.js"
+    },
+    "./geometric-chart-patterns/level-confluence-and-zone-scoring/multi-source-support-resistance-zone-fusion": {
+      "types": "./dist/geometric-chart-patterns/level-confluence-and-zone-scoring/multi-source-support-resistance-zone-fusion/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/level-confluence-and-zone-scoring/multi-source-support-resistance-zone-fusion/index.js"
+    },
+    "./geometric-chart-patterns/level-confluence-and-zone-scoring/support-resistance-zone-strength-decay-scoring": {
+      "types": "./dist/geometric-chart-patterns/level-confluence-and-zone-scoring/support-resistance-zone-strength-decay-scoring/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/level-confluence-and-zone-scoring/support-resistance-zone-strength-decay-scoring/index.js"
+    },
+    "./geometric-chart-patterns/level-confluence-and-zone-scoring/support-resistance-role-reversal-state-machine": {
+      "types": "./dist/geometric-chart-patterns/level-confluence-and-zone-scoring/support-resistance-role-reversal-state-machine/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/level-confluence-and-zone-scoring/support-resistance-role-reversal-state-machine/index.js"
+    },
+    "./geometric-chart-patterns/level-confluence-and-zone-scoring/breakout-and-retest-detection": {
+      "types": "./dist/geometric-chart-patterns/level-confluence-and-zone-scoring/breakout-and-retest-detection/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/level-confluence-and-zone-scoring/breakout-and-retest-detection/index.js"
+    },
+    "./geometric-chart-patterns/level-confluence-and-zone-scoring/market-wide-zone-proximity-scanner-ranking": {
+      "types": "./dist/geometric-chart-patterns/level-confluence-and-zone-scoring/market-wide-zone-proximity-scanner-ranking/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/level-confluence-and-zone-scoring/market-wide-zone-proximity-scanner-ranking/index.js"
     },
     "./statistical-time-series/diagnostics/acf": {
       "types": "./dist/statistical-time-series/diagnostics/acf/index.d.ts",
