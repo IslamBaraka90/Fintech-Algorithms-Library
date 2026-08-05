@@ -1,5 +1,27 @@
 {
-  "topic_id": "D08-F01-A01",
+  "topicId": "D08-F01-A01",
+  "input": {
+    "bars": [
+      {"timestamp": "2026-01-01T00:00:00Z", "high": 10, "low": 8, "close": 9},
+      {"timestamp": "2026-01-01T01:00:00Z", "high": 12, "low": 10, "close": 11},
+      {"timestamp": "2026-01-01T02:00:00Z", "high": 15, "low": 13, "close": 14},
+      {"timestamp": "2026-01-01T03:00:00Z", "high": 13, "low": 11, "close": 12},
+      {"timestamp": "2026-01-01T04:00:00Z", "high": 11, "low": 9, "close": 10}
+    ],
+    "leftSpan": 2,
+    "rightSpan": 2,
+    "minSeparation": 0
+  },
+  "expected": {
+    "0": {
+      "kind": "high",
+      "event_index": 2,
+      "confirmation_index": 4,
+      "price": 15,
+      "separation": 2,
+      "latency": 2
+    }
+  },
   "classification": "author-derived calculation over synthetic teaching input",
   "selected_variant": "Asymmetric left/right OHLC extrema with earliest-plateau equality and a price-unit separation floor.",
   "formulae": [

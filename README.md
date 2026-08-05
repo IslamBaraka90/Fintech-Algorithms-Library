@@ -83,9 +83,9 @@ Requires Node ≥ 22.
 ## Verified against published worked examples
 
 <!-- coverage:start -->
-**88 of 324 topics** are verified against the catalog's own published numbers
-(50 via `{ input, expected }`, 11 via row fixtures, 27 via bar/checkpoint fixtures).
-The remaining 236 are proven to load and expose a callable entry point, but their
+**158 of 324 topics** are verified against the catalog's own published numbers
+(117 via `{ input, expected }`, 11 via row fixtures, 30 via bar/checkpoint fixtures).
+The remaining 166 are proven to load and expose a callable entry point, but their
 arithmetic is not asserted here — those topics ship no machine-readable expected
 values in the catalog.
 <!-- coverage:end -->

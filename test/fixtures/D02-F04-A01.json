@@ -1,10 +1,258 @@
 {
-  "description": "Synthetic bitemporal roster query before a later correction is available",
-  "fixture": "../tests/shared_fixture.json",
-  "queryName": "revision one remains valid before correction is known",
-  "result": {
-    "status": "resolved",
-    "securityIds": ["SEC:E", "SEC:F", "SEC:G", "SEC:H", "SEC:I", "SEC:J"],
-    "appliedEventVersions": ["EV-001@1", "EV-002@1", "EV-003@1", "EV-004@1", "EV-005@1", "EV-006@1"]
-  }
+    "topicId":  "D02-F04-A01",
+    "input":  {
+                  "indexId":  "IDX:SYNTH:ALPHA",
+                  "effectiveAt":  "2024-08-15T00:00:00Z",
+                  "knownAt":  "2024-08-15T12:00:00Z",
+                  "snapshots":  [
+                                    {
+                                        "snapshotId":  "BASE-2024",
+                                        "indexId":  "IDX:SYNTH:ALPHA",
+                                        "revision":  1,
+                                        "effectiveAt":  "2024-01-01T00:00:00Z",
+                                        "availableAt":  "2024-01-02T09:00:00Z",
+                                        "lastSequence":  0,
+                                        "status":  "active",
+                                        "securityIds":  [
+                                                            "SEC:A",
+                                                            "SEC:B",
+                                                            "SEC:C",
+                                                            "SEC:D"
+                                                        ],
+                                        "sourceId":  "SYNTH-BASE"
+                                    }
+                                ],
+                  "events":  [
+                                 {
+                                     "eventId":  "EV-001",
+                                     "indexId":  "IDX:SYNTH:ALPHA",
+                                     "revision":  1,
+                                     "sequence":  1,
+                                     "eventType":  "add",
+                                     "effectiveOrder":  0,
+                                     "effectiveAt":  "2024-02-01T00:00:00Z",
+                                     "announcedAt":  "2024-01-15T12:00:00Z",
+                                     "availableAt":  "2024-01-15T12:05:00Z",
+                                     "status":  "active",
+                                     "changes":  [
+                                                     {
+                                                         "action":  "add",
+                                                         "securityId":  "SEC:E"
+                                                     }
+                                                 ],
+                                     "sourceId":  "SYNTH-NOTICE-001"
+                                 },
+                                 {
+                                     "eventId":  "EV-002",
+                                     "indexId":  "IDX:SYNTH:ALPHA",
+                                     "revision":  1,
+                                     "sequence":  2,
+                                     "eventType":  "replace",
+                                     "effectiveOrder":  0,
+                                     "effectiveAt":  "2024-03-01T00:00:00Z",
+                                     "announcedAt":  "2024-02-20T16:00:00Z",
+                                     "availableAt":  "2024-02-20T16:03:00Z",
+                                     "status":  "active",
+                                     "changes":  [
+                                                     {
+                                                         "action":  "delete",
+                                                         "securityId":  "SEC:B"
+                                                     },
+                                                     {
+                                                         "action":  "add",
+                                                         "securityId":  "SEC:F"
+                                                     }
+                                                 ],
+                                     "sourceId":  "SYNTH-NOTICE-002"
+                                 },
+                                 {
+                                     "eventId":  "EV-003",
+                                     "indexId":  "IDX:SYNTH:ALPHA",
+                                     "revision":  1,
+                                     "sequence":  3,
+                                     "eventType":  "rebalance",
+                                     "effectiveOrder":  0,
+                                     "effectiveAt":  "2024-04-01T00:00:00Z",
+                                     "announcedAt":  "2024-03-20T15:00:00Z",
+                                     "availableAt":  "2024-03-20T15:04:00Z",
+                                     "status":  "active",
+                                     "changes":  [
+
+                                                 ],
+                                     "sourceId":  "SYNTH-NOTICE-003"
+                                 },
+                                 {
+                                     "eventId":  "EV-004",
+                                     "indexId":  "IDX:SYNTH:ALPHA",
+                                     "revision":  1,
+                                     "sequence":  4,
+                                     "eventType":  "corporate_action",
+                                     "effectiveOrder":  0,
+                                     "effectiveAt":  "2024-04-15T00:00:00Z",
+                                     "announcedAt":  "2024-04-10T14:00:00Z",
+                                     "availableAt":  "2024-04-10T14:02:00Z",
+                                     "status":  "active",
+                                     "changes":  [
+                                                     {
+                                                         "action":  "delete",
+                                                         "securityId":  "SEC:C"
+                                                     },
+                                                     {
+                                                         "action":  "add",
+                                                         "securityId":  "SEC:G"
+                                                     }
+                                                 ],
+                                     "sourceId":  "SYNTH-NOTICE-004"
+                                 },
+                                 {
+                                     "eventId":  "EV-005",
+                                     "indexId":  "IDX:SYNTH:ALPHA",
+                                     "revision":  1,
+                                     "sequence":  5,
+                                     "eventType":  "reconstitution",
+                                     "effectiveOrder":  0,
+                                     "effectiveAt":  "2024-07-01T00:00:00Z",
+                                     "announcedAt":  "2024-06-20T13:00:00Z",
+                                     "availableAt":  "2024-06-20T13:05:00Z",
+                                     "status":  "active",
+                                     "changes":  [
+                                                     {
+                                                         "action":  "delete",
+                                                         "securityId":  "SEC:A"
+                                                     },
+                                                     {
+                                                         "action":  "delete",
+                                                         "securityId":  "SEC:D"
+                                                     },
+                                                     {
+                                                         "action":  "add",
+                                                         "securityId":  "SEC:H"
+                                                     },
+                                                     {
+                                                         "action":  "add",
+                                                         "securityId":  "SEC:I"
+                                                     }
+                                                 ],
+                                     "sourceId":  "SYNTH-NOTICE-005"
+                                 },
+                                 {
+                                     "eventId":  "EV-006",
+                                     "indexId":  "IDX:SYNTH:ALPHA",
+                                     "revision":  1,
+                                     "sequence":  6,
+                                     "eventType":  "add",
+                                     "effectiveOrder":  0,
+                                     "effectiveAt":  "2024-08-01T00:00:00Z",
+                                     "announcedAt":  "2024-07-20T10:00:00Z",
+                                     "availableAt":  "2024-07-20T10:03:00Z",
+                                     "status":  "active",
+                                     "changes":  [
+                                                     {
+                                                         "action":  "add",
+                                                         "securityId":  "SEC:J"
+                                                     }
+                                                 ],
+                                     "sourceId":  "SYNTH-NOTICE-006-R1"
+                                 },
+                                 {
+                                     "eventId":  "EV-006",
+                                     "indexId":  "IDX:SYNTH:ALPHA",
+                                     "revision":  2,
+                                     "sequence":  6,
+                                     "eventType":  "add",
+                                     "effectiveOrder":  0,
+                                     "effectiveAt":  "2024-08-01T00:00:00Z",
+                                     "announcedAt":  "2024-09-01T09:00:00Z",
+                                     "availableAt":  "2024-09-01T09:04:00Z",
+                                     "status":  "active",
+                                     "changes":  [
+                                                     {
+                                                         "action":  "add",
+                                                         "securityId":  "SEC:K"
+                                                     }
+                                                 ],
+                                     "sourceId":  "SYNTH-NOTICE-006-R2"
+                                 },
+                                 {
+                                     "eventId":  "EV-007",
+                                     "indexId":  "IDX:SYNTH:ALPHA",
+                                     "revision":  1,
+                                     "sequence":  7,
+                                     "eventType":  "delete",
+                                     "effectiveOrder":  0,
+                                     "effectiveAt":  "2024-10-01T00:00:00Z",
+                                     "announcedAt":  "2024-09-20T11:00:00Z",
+                                     "availableAt":  "2024-09-20T11:04:00Z",
+                                     "status":  "active",
+                                     "changes":  [
+                                                     {
+                                                         "action":  "delete",
+                                                         "securityId":  "SEC:F"
+                                                     }
+                                                 ],
+                                     "sourceId":  "SYNTH-NOTICE-007-R1"
+                                 },
+                                 {
+                                     "eventId":  "EV-007",
+                                     "indexId":  "IDX:SYNTH:ALPHA",
+                                     "revision":  2,
+                                     "sequence":  7,
+                                     "eventType":  "delete",
+                                     "effectiveOrder":  0,
+                                     "effectiveAt":  "2024-10-01T00:00:00Z",
+                                     "announcedAt":  "2024-10-02T08:00:00Z",
+                                     "availableAt":  "2024-10-02T08:05:00Z",
+                                     "status":  "cancelled",
+                                     "changes":  [
+
+                                                 ],
+                                     "sourceId":  "SYNTH-NOTICE-007-R2"
+                                 }
+                             ]
+              },
+    "expected":  {
+                     "status":  "resolved",
+                     "securityIds":  [
+                                         "SEC:E",
+                                         "SEC:F",
+                                         "SEC:G",
+                                         "SEC:H",
+                                         "SEC:I",
+                                         "SEC:J"
+                                     ],
+                     "appliedEventVersions":  [
+                                                  "EV-001@1",
+                                                  "EV-002@1",
+                                                  "EV-003@1",
+                                                  "EV-004@1",
+                                                  "EV-005@1",
+                                                  "EV-006@1"
+                                              ],
+                     "cancelledEventIds":  [
+
+                                           ]
+                 },
+    "description":  "Synthetic bitemporal roster query before a later correction is available",
+    "fixture":  "../tests/shared_fixture.json",
+    "queryName":  "revision one remains valid before correction is known",
+    "result":  {
+                   "status":  "resolved",
+                   "securityIds":  [
+                                       "SEC:E",
+                                       "SEC:F",
+                                       "SEC:G",
+                                       "SEC:H",
+                                       "SEC:I",
+                                       "SEC:J"
+                                   ],
+                   "appliedEventVersions":  [
+                                                "EV-001@1",
+                                                "EV-002@1",
+                                                "EV-003@1",
+                                                "EV-004@1",
+                                                "EV-005@1",
+                                                "EV-006@1"
+                                            ]
+               },
+    "evidenceNote":  "Every index, identity, timestamp, and membership result in this fixture is synthetic."
 }

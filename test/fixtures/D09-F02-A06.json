@@ -1,5 +1,11 @@
 {
-  "topic_id": "D09-F02-A06",
+  "topicId": "D09-F02-A06",
+  "input": {
+    "values": [10, 12, 14, 16],
+    "alpha": 0.5,
+    "horizon": 2
+  },
+  "expected": {"forecast": [16.125, 17.125]},
   "classification": "author-derived arithmetic over synthetic teaching input",
   "selected_variant": "Classical theta-zero/theta-two point forecast in its exact non-seasonal SES-with-drift form, fixed alpha in (0,1], OLS slope over t=0...n-1, and finite-sample correction.",
   "values": [

@@ -26,7 +26,7 @@ throw new TypeError(`${name} must contain only finite numbers`);
 throw new RangeError("close must lie inside each high-low range");
       }
     }
-function directional_movement(high: number[], low: number[], close: number[], period = 14) {
+function directionalMovement(high: number[], low: number[], close: number[], period = 14) {
   validateHLC(high, low, close);
   if (!Number.isInteger(period) || period < 1) throw new RangeError("period must be a positive integer");
   const size = high.length;
@@ -69,7 +69,7 @@ function directional_movement(high: number[], low: number[], close: number[], pe
   return { true_range, plus_dm, minus_dm, smoothed_tr, smoothed_plus_dm, smoothed_minus_dm, atr, plus_di, minus_di, dx };
 }
 export function adx(high: number[], low: number[], close: number[], period = 14) {
-  const movement = directional_movement(high, low, close, period);
+  const movement = directionalMovement(high, low, close, period);
   const values: Numeric[] = Array(high.length).fill(null);
   const first = 2 * period - 1;
   if (high.length > first) {

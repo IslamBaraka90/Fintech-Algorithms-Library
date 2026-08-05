@@ -1,6 +1,107 @@
 {
-  "label": "Synthetic three-view worked result; full auditable input is tests/shared_fixture.json",
-  "marketData": {"referencePrice":"25.00000000","grossCash":"2.00000000","theoreticalExPrice":"23.00000000","backwardFactor":"0.92000000"},
-  "observedReturns": {"observedExPrice":"23.15000000","rawPriceReturn":"-0.07400000","grossTotalReturn":"0.00600000","netCashReturn":"0.00120000"},
-  "usTaxIllustration": {"scope":"US_FEDERAL_INDIVIDUAL_TAXABLE_2025","basisBefore":"1.50000000","confirmedNondividendAmount":"1.20000000","basisAfter":"0.30000000"}
+    "topicId":  "D02-F02-A05",
+    "input":  {
+                  "asOf":  "2025-02-03T21:05:00Z",
+                  "revisions":  [
+                                    {
+                                        "eventId":  "SYN-ROC-2025-001",
+                                        "revisionId":  "SYN-ANNOUNCEMENT-R1",
+                                        "revisionSequence":  1,
+                                        "observedAt":  "2025-01-20T14:00:00Z",
+                                        "availableAt":  "2025-01-20T14:02:00Z",
+                                        "sourceId":  "SYN-ISSUER-NOTICE",
+                                        "status":  "confirmed",
+                                        "exAt":  "2025-02-03T14:30:00Z",
+                                        "sameDayOrdering":  {
+                                                                "sequence":  1,
+                                                                "priorEventIds":  [
+
+                                                                                  ]
+                                                            },
+                                        "terms":  {
+                                                      "eventCurrency":  "USD",
+                                                      "grossCapitalReturnPerShare":  "2.00000000",
+                                                      "withholdingPerShare":  "0.10000000",
+                                                      "feesPerShare":  "0.02000000"
+                                                  }
+                                    }
+                                ],
+                  "referenceObservation":  {
+                                               "price":  "25.00000000",
+                                               "currency":  "USD",
+                                               "observedAt":  "2025-01-31T21:00:00Z",
+                                               "availableAt":  "2025-01-31T21:00:05Z",
+                                               "sourceId":  "SYN-OFFICIAL-CLOSE"
+                                           },
+                  "fxObservation":  {
+                                        "priceCurrencyPerEventCurrency":  "1.00000000",
+                                        "pair":  "USD/USD",
+                                        "anchorPolicy":  "ON_OR_BEFORE_REFERENCE_OBSERVATION",
+                                        "observedAt":  "2025-01-31T21:00:00Z",
+                                        "availableAt":  "2025-01-31T21:00:00Z",
+                                        "sourceId":  "IDENTITY-FX"
+                                    },
+                  "exObservation":  {
+                                        "price":  "23.15000000",
+                                        "currency":  "USD",
+                                        "observedAt":  "2025-02-03T21:00:00Z",
+                                        "availableAt":  "2025-02-03T21:00:04Z",
+                                        "sourceId":  "SYN-OFFICIAL-CLOSE"
+                                    },
+                  "taxIllustration":  {
+                                          "jurisdiction":  "US_FEDERAL_INDIVIDUAL_TAXABLE_2025",
+                                          "currency":  "USD",
+                                          "basisPerShareBefore":  "1.50000000",
+                                          "confirmedReturnOfCapitalPerShare":  "1.20000000",
+                                          "sourceId":  "SYN-FINAL-ISSUER-TAX-CLASSIFICATION",
+                                          "observedAt":  "2025-02-03T20:00:00Z",
+                                          "availableAt":  "2025-02-03T20:05:00Z"
+                                      }
+              },
+    "expected":  {
+                     "eventId":  "SYN-ROC-2025-001",
+                     "revisionId":  "SYN-ANNOUNCEMENT-R1",
+                     "state":  "confirmed",
+                     "applied":  true,
+                     "priceCurrency":  "USD",
+                     "marketDataAdjustment":  {
+                                                  "referencePrice":  "25.00000000",
+                                                  "grossDistributionInPriceCurrency":  "2.00000000",
+                                                  "theoreticalExPrice":  "23.00000000",
+                                                  "backwardHistoryFactor":  "0.92000000",
+                                                  "forwardPostEventFactor":  "1.08695652",
+                                                  "factorDirection":  "multiply_pre_ex_history_by_backwardHistoryFactor",
+                                                  "theoreticalPriceIsObservedTrade":  false
+                                              },
+                     "investorReturnDiagnostics":  {
+                                                       "rawPriceReturn":  "-0.07400000",
+                                                       "grossTotalReturn":  "0.00600000",
+                                                       "netCashReturn":  "0.00120000"
+                                                   },
+                     "usFederalTaxIllustration":  {
+                                                      "basisPerShareAfter":  "0.30000000",
+                                                      "basisReductionPerShare":  "1.20000000",
+                                                      "excessOverBasisPerShare":  "0.00000000"
+                                                  }
+                 },
+    "label":  "Synthetic three-view worked result; full auditable input is tests/shared_fixture.json",
+    "marketData":  {
+                       "referencePrice":  "25.00000000",
+                       "grossCash":  "2.00000000",
+                       "theoreticalExPrice":  "23.00000000",
+                       "backwardFactor":  "0.92000000"
+                   },
+    "observedReturns":  {
+                            "observedExPrice":  "23.15000000",
+                            "rawPriceReturn":  "-0.07400000",
+                            "grossTotalReturn":  "0.00600000",
+                            "netCashReturn":  "0.00120000"
+                        },
+    "usTaxIllustration":  {
+                              "scope":  "US_FEDERAL_INDIVIDUAL_TAXABLE_2025",
+                              "basisBefore":  "1.50000000",
+                              "confirmedNondividendAmount":  "1.20000000",
+                              "basisAfter":  "0.30000000"
+                          },
+    "caseLabel":  "Explicitly synthetic USD capital return with separate price, return, and US-tax views"
 }

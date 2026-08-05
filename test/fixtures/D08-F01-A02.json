@@ -1,5 +1,16 @@
 {
-  "topic_id": "D08-F01-A02",
+  "topicId": "D08-F01-A02",
+  "input": {
+    "closes": [100, 103, 106, 101, 100],
+    "threshold": 0.05,
+    "minBars": 2
+  },
+  "expected": {
+    "pivots": [
+      {"kind": "low", "event_index": 0, "confirmation_index": 2, "price": 100},
+      {"kind": "high", "event_index": 2, "confirmation_index": 4, "price": 106}
+    ]
+  },
   "classification": "author-derived calculation over synthetic teaching input",
   "selected_variant": "Close-only percentage reversal, minimum bar separation, strict extreme updates, and a separate provisional endpoint.",
   "formulae": [
@@ -39,24 +50,24 @@
       "index_or_object": "0",
       "value": "100",
       "calculation_state": "searching",
-      "published_interpretation": "running high and low both 100"
+      "published_interpretation": "running high and low both 100; no confirmation yet"
     },
     {
       "index_or_object": "1",
       "value": "103",
       "calculation_state": "searching",
-      "published_interpretation": "running high becomes 103"
+      "published_interpretation": "running high becomes 103; the rise is below 5%"
     },
     {
       "index_or_object": "2",
       "value": "106",
-      "calculation_state": "searching",
-      "published_interpretation": "running high becomes 106"
+      "calculation_state": "up",
+      "published_interpretation": "rise reaches 6%; confirm the low at index 0 and start an up leg"
     },
     {
       "index_or_object": "3",
       "value": "101",
-      "calculation_state": "searching",
+      "calculation_state": "up",
       "published_interpretation": "decline 4.71698%; below 5%"
     },
     {
@@ -66,7 +77,7 @@
       "published_interpretation": "decline 5.66038%; confirm high event 2 at index 4"
     }
   ],
-  "explanation": "Start at 100 with a 5% threshold. Prices rise through 103 to\n106, so the running high is 106. A fall to 101 is only 4.72% and does not\nconfirm the high. A fall to 100 is 5.66%; the high at 106 becomes confirmed on\nthe 100 observation. Its event time and confirmation time are different, while\nthe new low endpoint remains provisional.",
+  "explanation": "Start at 100 with a 5% threshold and a two-bar minimum separation. The rise to 106 confirms the low at index 0 on index 2 and starts an up leg. A fall to 101 is only 4.72% and does not confirm the high. A fall to 100 is 5.66%; the high at 106 becomes confirmed on index 4. Each pivot therefore keeps separate event and confirmation indexes, while the newest endpoint remains provisional.",
   "historical_example_decision": "not useful",
   "evidence_boundary": "Definition and detection behavior only; no prediction or profitability claim."
 }

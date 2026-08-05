@@ -1,22 +1,184 @@
 {
-  "topicId": "D02-F03-A05",
-  "case": "Synthetic mixed cash-and-stock terminal proceeds",
-  "license": "CC0-1.0 synthetic educational example",
-  "arithmetic": {
-    "previousRegularPriceUsd": "48.000000000000",
-    "lastRegularPriceUsd": "50.000000000000",
-    "cashEurPerOldShare": "10.000000000000",
-    "usdPerEur": "1.100000000000",
-    "cashValueUsd": "11.000000000000",
-    "successorSharesPerOldShare": "0.800000000000",
-    "successorPriceUsd": "52.500000000000",
-    "stockValueUsd": "42.000000000000",
-    "grossTerminalValueUsd": "53.000000000000",
-    "feesAndWithholdingUsd": "0.500000000000",
-    "netTerminalValueUsd": "52.500000000000",
-    "lastRegularReturn": "0.041666666667",
-    "terminalReturn": "0.050000000000",
-    "linkedReturn": "0.093750000000"
-  },
-  "guard": "If the same known legs are flagged partial, their USD 52.50 subtotal remains visible but terminalReturn and linkedReturn are null."
+    "topicId":  "D02-F03-A05",
+    "input":  {
+                  "asOf":  "2026-04-17T12:00:00Z",
+                  "baseCurrency":  "USD",
+                  "previousRegularObservation":  {
+                                                     "securityId":  "SYNTH-OLD-A",
+                                                     "price":  "48",
+                                                     "currency":  "USD",
+                                                     "tradingAt":  "2026-04-10T20:00:00Z",
+                                                     "observedAt":  "2026-04-10T20:00:00Z",
+                                                     "sourceAt":  "2026-04-10T20:01:00Z",
+                                                     "availableAt":  "2026-04-10T20:05:00Z",
+                                                     "sourceId":  "SYNTH-PRICES"
+                                                 },
+                  "lastRegularObservation":  {
+                                                 "securityId":  "SYNTH-OLD-A",
+                                                 "price":  "50",
+                                                 "currency":  "USD",
+                                                 "tradingAt":  "2026-04-14T20:00:00Z",
+                                                 "observedAt":  "2026-04-14T20:00:00Z",
+                                                 "sourceAt":  "2026-04-14T20:01:00Z",
+                                                 "availableAt":  "2026-04-14T20:05:00Z",
+                                                 "sourceId":  "SYNTH-PRICES"
+                                             },
+                  "event":  {
+                                "eventId":  "SYNTH-EVENT-001",
+                                "reason":  "merger",
+                                "effectiveAt":  "2026-04-15T13:30:00Z",
+                                "observedAt":  "2026-04-01T14:00:00Z",
+                                "sourceAt":  "2026-04-01T14:01:00Z",
+                                "availableAt":  "2026-04-01T14:05:00Z",
+                                "sourceId":  "SYNTH-EVENTS"
+                            },
+                  "proceedsStatus":  "complete",
+                  "proceeds":  [
+                                   {
+                                       "kind":  "cash",
+                                       "amountPerOldShare":  "10",
+                                       "currency":  "EUR",
+                                       "effectiveAt":  "2026-04-15T13:30:00Z",
+                                       "observedAt":  "2026-04-15T15:00:00Z",
+                                       "sourceAt":  "2026-04-15T15:01:00Z",
+                                       "availableAt":  "2026-04-16T00:00:00Z",
+                                       "sourceId":  "SYNTH-PAYMENTS",
+                                       "fxToBase":  {
+                                                        "fromCurrency":  "EUR",
+                                                        "toCurrency":  "USD",
+                                                        "rate":  "1.1",
+                                                        "rateAt":  "2026-04-15T20:00:00Z",
+                                                        "observedAt":  "2026-04-15T20:00:00Z",
+                                                        "sourceAt":  "2026-04-15T20:01:00Z",
+                                                        "availableAt":  "2026-04-16T00:00:00Z",
+                                                        "sourceId":  "SYNTH-FX"
+                                                    }
+                                   },
+                                   {
+                                       "kind":  "stock",
+                                       "quantityPerOldShare":  "0.8",
+                                       "successorSecurityId":  "SYNTH-NEW-B",
+                                       "valuationPrice":  "52.5",
+                                       "priceCurrency":  "USD",
+                                       "valuationAt":  "2026-04-15T20:00:00Z",
+                                       "observedAt":  "2026-04-15T20:00:00Z",
+                                       "sourceAt":  "2026-04-15T20:01:00Z",
+                                       "availableAt":  "2026-04-16T00:00:00Z",
+                                       "sourceId":  "SYNTH-SUCCESSOR-PRICE",
+                                       "fxToBase":  {
+                                                        "fromCurrency":  "USD",
+                                                        "toCurrency":  "USD",
+                                                        "rate":  "1",
+                                                        "rateAt":  "2026-04-15T20:00:00Z",
+                                                        "observedAt":  "2026-04-15T20:00:00Z",
+                                                        "sourceAt":  "2026-04-15T20:01:00Z",
+                                                        "availableAt":  "2026-04-16T00:00:00Z",
+                                                        "sourceId":  "SYNTH-FX-IDENTITY"
+                                                    }
+                                   }
+                               ],
+                  "deductions":  [
+                                     {
+                                         "kind":  "fee",
+                                         "amountPerOldShare":  "0.2",
+                                         "currency":  "USD",
+                                         "effectiveAt":  "2026-04-15T13:30:00Z",
+                                         "observedAt":  "2026-04-15T21:00:00Z",
+                                         "sourceAt":  "2026-04-15T21:01:00Z",
+                                         "availableAt":  "2026-04-16T00:00:00Z",
+                                         "sourceId":  "SYNTH-FEES",
+                                         "fxToBase":  {
+                                                          "fromCurrency":  "USD",
+                                                          "toCurrency":  "USD",
+                                                          "rate":  "1",
+                                                          "rateAt":  "2026-04-15T20:00:00Z",
+                                                          "observedAt":  "2026-04-15T20:00:00Z",
+                                                          "sourceAt":  "2026-04-15T20:01:00Z",
+                                                          "availableAt":  "2026-04-16T00:00:00Z",
+                                                          "sourceId":  "SYNTH-FX-IDENTITY"
+                                                      }
+                                     },
+                                     {
+                                         "kind":  "withholding",
+                                         "amountPerOldShare":  "0.3",
+                                         "currency":  "USD",
+                                         "effectiveAt":  "2026-04-15T13:30:00Z",
+                                         "observedAt":  "2026-04-15T21:00:00Z",
+                                         "sourceAt":  "2026-04-15T21:01:00Z",
+                                         "availableAt":  "2026-04-16T00:00:00Z",
+                                         "sourceId":  "SYNTH-WITHHOLDING",
+                                         "fxToBase":  {
+                                                          "fromCurrency":  "USD",
+                                                          "toCurrency":  "USD",
+                                                          "rate":  "1",
+                                                          "rateAt":  "2026-04-15T20:00:00Z",
+                                                          "observedAt":  "2026-04-15T20:00:00Z",
+                                                          "sourceAt":  "2026-04-15T20:01:00Z",
+                                                          "availableAt":  "2026-04-16T00:00:00Z",
+                                                          "sourceId":  "SYNTH-FX-IDENTITY"
+                                                      }
+                                     }
+                                 ],
+                  "researchImputation":  null
+              },
+    "expected":  {
+                     "observed":  {
+                                      "status":  "complete",
+                                      "lastRegularReturn":  "0.041666666667",
+                                      "terminalGrossValuePerOldShare":  "53.000000000000",
+                                      "deductionsPerOldShare":  "0.500000000000",
+                                      "terminalNetValuePerOldShare":  "52.500000000000",
+                                      "terminalReturn":  "0.050000000000",
+                                      "linkedReturn":  "0.093750000000",
+                                      "proceedsBasis":  "complete_observed",
+                                      "knownObservedGrossValuePerOldShare":  null,
+                                      "knownObservedDeductionsPerOldShare":  null,
+                                      "knownObservedNetValuePerOldShare":  null
+                                  },
+                     "researchEstimate":  null,
+                     "diagnostics":  {
+                                         "eventId":  "SYNTH-EVENT-001",
+                                         "eventReason":  "merger",
+                                         "asOf":  "2026-04-17T12:00:00Z",
+                                         "effectiveAt":  "2026-04-15T13:30:00Z",
+                                         "lastRegularTradingAt":  "2026-04-14T20:00:00Z",
+                                         "observedEvidenceAvailable":  true,
+                                         "missingEvidence":  [
+
+                                                             ],
+                                         "withheldEvidence":  [
+
+                                                              ],
+                                         "knownProceedsEvidence":  [
+                                                                       "deductions[0]",
+                                                                       "deductions[0].fxToBase",
+                                                                       "deductions[1]",
+                                                                       "deductions[1].fxToBase",
+                                                                       "proceeds[0]",
+                                                                       "proceeds[0].fxToBase",
+                                                                       "proceeds[1]",
+                                                                       "proceeds[1].fxToBase"
+                                                                   ],
+                                         "baseCurrency":  "USD"
+                                     }
+                 },
+    "case":  "Synthetic mixed cash-and-stock terminal proceeds",
+    "license":  "CC0-1.0 synthetic educational example",
+    "arithmetic":  {
+                       "previousRegularPriceUsd":  "48.000000000000",
+                       "lastRegularPriceUsd":  "50.000000000000",
+                       "cashEurPerOldShare":  "10.000000000000",
+                       "usdPerEur":  "1.100000000000",
+                       "cashValueUsd":  "11.000000000000",
+                       "successorSharesPerOldShare":  "0.800000000000",
+                       "successorPriceUsd":  "52.500000000000",
+                       "stockValueUsd":  "42.000000000000",
+                       "grossTerminalValueUsd":  "53.000000000000",
+                       "feesAndWithholdingUsd":  "0.500000000000",
+                       "netTerminalValueUsd":  "52.500000000000",
+                       "lastRegularReturn":  "0.041666666667",
+                       "terminalReturn":  "0.050000000000",
+                       "linkedReturn":  "0.093750000000"
+                   },
+    "guard":  "If the same known legs are flagged partial, their USD 52.50 subtotal remains visible but terminalReturn and linkedReturn are null."
 }

@@ -1,24 +1,66 @@
 {
-  "classification": "synthetic teaching input with author-derived calculations",
-  "values": [100, 101, 102, 103, 104, 103, 104, 103, 104, 108, 109],
-  "parameters": {
-    "efficiency_period": 4,
-    "fast_period": 2,
-    "slow_period": 30
-  },
-  "internal_seed": {
-    "index": 3,
-    "value": 103,
-    "published": false
-  },
-  "rows": [
-    {"index": 4, "value": 104, "change": 4, "path_length": 4, "efficiency_ratio": 1, "smoothing_constant": 0.4444444444444444, "kama": 103.44444444444444},
-    {"index": 5, "value": 103, "change": 2, "path_length": 4, "efficiency_ratio": 0.5, "smoothing_constant": 0.13365707018152384, "kama": 103.38504130214154},
-    {"index": 6, "value": 104, "change": 2, "path_length": 4, "efficiency_ratio": 0.5, "smoothing_constant": 0.13365707018152384, "kama": 103.46723487997996},
-    {"index": 7, "value": 103, "change": 0, "path_length": 4, "efficiency_ratio": 0, "smoothing_constant": 0.004162330905306971, "kama": 103.46529009379898},
-    {"index": 8, "value": 104, "change": 0, "path_length": 4, "efficiency_ratio": 0, "smoothing_constant": 0.004162330905306971, "kama": 103.46751573336694},
-    {"index": 9, "value": 108, "change": 5, "path_length": 7, "efficiency_ratio": 0.7142857142857143, "smoothing_constant": 0.24465256098970975, "kama": 104.57639961684428},
-    {"index": 10, "value": 109, "change": 5, "path_length": 7, "efficiency_ratio": 0.7142857142857143, "smoothing_constant": 0.24465256098970975, "kama": 105.65864477937839}
+  "topicId": "D07-F01-A08",
+  "bars": [
+    {"close": 100}, {"close": 101}, {"close": 102}, {"close": 103},
+    {"close": 104}, {"close": 103}, {"close": 104}, {"close": 103},
+    {"close": 104}, {"close": 105}, {"close": 106}, {"close": 105},
+    {"close": 107}, {"close": 108}, {"close": 107}, {"close": 110}
   ],
-  "rounding": "No intermediate rounding; displayed values may be rounded."
+  "canonical_parameters": {"efficiencyPeriod": 10, "fastPeriod": 2, "slowPeriod": 30},
+  "checkpoints": [
+    {"index": 9, "efficiencyRatio": null, "smoothingConstant": null, "kama": null},
+    {"index": 10, "efficiencyRatio": 0.6, "smoothingConstant": 0.18131113423517162, "kama": 105.18131113423517},
+    {"index": 12, "efficiencyRatio": 0.45454545454545453, "smoothingConstant": 0.11439338995861552, "kama": 105.37438317823111},
+    {"index": 15, "efficiencyRatio": 0.5384615384615384, "smoothingConstant": 0.15112736636790103, "kama": 106.38726276301216}
+  ],
+  "contract": {
+    "seed": "values[efficiency_period - 1], internal and unpublished",
+    "first_ready_index": "efficiency_period",
+    "zero_path_efficiency_ratio": 1,
+    "warm_up": "null",
+    "missing_values": "reject",
+    "rounding": "none"
+  },
+  "cases": [
+    {
+      "name": "canonical-default-10-2-30",
+      "values": [100, 101, 102, 103, 104, 103, 104, 103, 104, 105, 106, 105, 107, 108, 107, 110],
+      "efficiency_period": 10,
+      "fast_period": 2,
+      "slow_period": 30,
+      "efficiency_ratio": [null, null, null, null, null, null, null, null, null, null, 0.6, 0.4, 0.45454545454545453, 0.45454545454545453, 0.2727272727272727, 0.5384615384615384],
+      "smoothing_constant": [null, null, null, null, null, null, null, null, null, null, 0.18131113423517162, 0.09325471152734419, 0.11439338995861552, 0.11439338995861552, 0.0523215314625777, 0.15112736636790103],
+      "kama": [null, null, null, null, null, null, null, null, null, null, 105.18131113423517, 105.16440301671538, 105.37438317823111, 105.67473638720563, 105.74407620901866, 106.38726276301216]
+    },
+    {
+      "name": "worked-path-4-2-30",
+      "values": [100, 101, 102, 103, 104, 103, 104, 103, 104, 108, 109],
+      "efficiency_period": 4,
+      "fast_period": 2,
+      "slow_period": 30,
+      "efficiency_ratio": [null, null, null, null, 1, 0.5, 0.5, 0, 0, 0.7142857142857143, 0.7142857142857143],
+      "smoothing_constant": [null, null, null, null, 0.4444444444444444, 0.13365707018152384, 0.13365707018152384, 0.004162330905306971, 0.004162330905306971, 0.24465256098970975, 0.24465256098970975],
+      "kama": [null, null, null, null, 103.44444444444444, 103.38504130214154, 103.46723487997996, 103.46529009379898, 103.46751573336694, 104.57639961684428, 105.65864477937839]
+    },
+    {
+      "name": "zero-path-after-step",
+      "values": [100, 100, 100, 100, 110, 110, 110, 110, 110],
+      "efficiency_period": 4,
+      "fast_period": 2,
+      "slow_period": 30,
+      "efficiency_ratio": [null, null, null, null, 1, 1, 1, 1, 1],
+      "smoothing_constant": [null, null, null, null, 0.4444444444444444, 0.4444444444444444, 0.4444444444444444, 0.4444444444444444, 0.4444444444444444],
+      "kama": [null, null, null, null, 104.44444444444444, 106.91358024691358, 108.28532235939643, 109.0474013107758, 109.47077850598656]
+    },
+    {
+      "name": "constant-series",
+      "values": [7, 7, 7, 7, 7, 7, 7, 7],
+      "efficiency_period": 3,
+      "fast_period": 2,
+      "slow_period": 30,
+      "efficiency_ratio": [null, null, null, 1, 1, 1, 1, 1],
+      "smoothing_constant": [null, null, null, 0.4444444444444444, 0.4444444444444444, 0.4444444444444444, 0.4444444444444444, 0.4444444444444444],
+      "kama": [null, null, null, 7, 7, 7, 7, 7]
+    }
+  ]
 }

@@ -1,6 +1,5 @@
 /**
- * Structural guarantees that hold for all 114 topics, including the 73 without a
- * machine-checkable worked example.
+ * Structural guarantees that hold for every generated topic.
  *
  * This is the safety net for the generator: if `scripts/sync.mjs` mis-detects an
  * entry point, drops a subpath from the exports map, or emits metadata that
@@ -20,6 +19,19 @@ const REPO = join(HERE, "..");
 const pkg = JSON.parse(readFileSync(join(REPO, "package.json"), "utf8")) as {
   exports: Record<string, unknown>;
 };
+const testManifest = JSON.parse(readFileSync(join(HERE, "_manifest.json"), "utf8")) as {
+  topics: Array<{ id: string; entryParams: string[] }>;
+};
+const docsPayload = JSON.parse(readFileSync(join(REPO, "docs.json"), "utf8")) as {
+  topics: Array<{
+    id: string;
+    api: null | {
+      params: Array<{ name: string; type: string }>;
+      returns: null | { description?: string };
+      warmup: null | { count: string; value: string; note: string };
+    };
+  }>;
+};
 
 describe("registry", () => {
   test("is non-empty and internally consistent", () => {
@@ -37,6 +49,26 @@ describe("registry", () => {
       [],
       "topics missing from the exports map — re-run npm run sync",
     );
+  });
+
+  test("public TypeScript entries use camelCase", () => {
+    const offenders = topics.filter((t) => t.entry.includes("_")).map((t) => `${t.id}: ${t.entry}`);
+    assert.deepStrictEqual(offenders, []);
+  });
+
+  test("record inputs and readiness rules are machine-readable", () => {
+    const opaque: string[] = [];
+    const proseOnlyWarmups: string[] = [];
+    for (const topic of docsPayload.topics) {
+      for (const param of topic.api?.params ?? []) {
+        if (param.type === "Record<string, unknown>") opaque.push(`${topic.id}: ${param.name}`);
+      }
+      if (/warmup|warm-up/i.test(topic.api?.returns?.description ?? "") && !topic.api?.warmup) {
+        proseOnlyWarmups.push(topic.id);
+      }
+    }
+    assert.deepStrictEqual(opaque, [], "opaque public input contracts");
+    assert.deepStrictEqual(proseOnlyWarmups, [], "warm-up rules present only in prose");
   });
 
   test("subpath mirrors the article URL", () => {
@@ -105,7 +137,7 @@ describe("registry", () => {
       "D02-F04-A02": "guardSurvivorship",
       "D04-F03-A04": "evaluateSnapshot", "D04-F03-A05": "evaluateSnapshot", "D04-F03-A06": "evaluateSnapshot",
       "D07-F01-A04": "calculateRma",
-      "D07-F04-A02": "average_true_range", // slug is the initialism ATR
+      "D07-F04-A02": "averageTrueRange", // slug is the initialism ATR
 
       // Structural VAR. The module exports nine functions, and the topic's own
       // catalog test invokes fitRecursiveSVAR() and nothing else — the highest
@@ -156,6 +188,35 @@ describe("registry", () => {
       .map(([key, ids]) => `${key} claimed by ${ids.join(", ")}`);
 
     assert.deepStrictEqual(clashes, [], "topics from a shared implementation file collapsed onto one entry point");
+  });
+
+  test("reversal subpaths expose only their own public pattern wrapper", async () => {
+    const entries = [
+      "doubleTop",
+      "doubleBottom",
+      "tripleTop",
+      "tripleBottom",
+      "headAndShoulders",
+      "inverseHeadAndShoulders",
+    ];
+    const reversalTopics = topics.filter((t) => t.familyId === "D08-F02");
+    assert.equal(reversalTopics.length, entries.length, "D08-F02 topic count changed without updating this contract");
+
+    for (const t of reversalTopics) {
+      const mod = (await load(t.id)) as Record<string, unknown>;
+      assert.ok(entries.includes(t.entry), `${t.id}: unexpected reversal entry ${t.entry}`);
+      assert.equal(typeof mod[t.entry], "function", `${t.id}: own wrapper is missing`);
+      assert.equal(mod.run, mod[t.entry], `${t.id}: run is not the own wrapper alias`);
+      for (const helper of ["confirmedPivots", "detectReversal", "traceReversal"]) {
+        assert.equal(typeof mod[helper], "function", `${t.id}: supported helper ${helper} is missing`);
+      }
+      for (const peer of entries.filter((entry) => entry !== t.entry)) {
+        assert.equal(Object.hasOwn(mod, peer), false, `${t.id}: leaked peer wrapper ${peer}`);
+      }
+
+      const manifestTopic = testManifest.topics.find((candidate) => candidate.id === t.id);
+      assert.deepStrictEqual(manifestTopic?.entryParams, ["close", "params"], `${t.id}: wrapper parameters`);
+    }
   });
 
   test("lookup helpers agree with the registry", () => {

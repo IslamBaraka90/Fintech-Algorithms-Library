@@ -1,5 +1,24 @@
 {
-  "topic_id": "D09-F04-A02",
+  "topicId": "D09-F04-A02",
+  "input": {
+    "observations": [0.1740564489, 0.7180957323, 0.0365723689],
+    "config": {"a": 0.9, "b": 0.22, "c": 0.04, "q": 0.06, "r": 0.49, "initial_mean": 0.0, "initial_variance": 1.5}
+  },
+  "expected": {
+    "2": {
+      "index": 2,
+      "transition_jacobian": 1.0979025313193456,
+      "measurement_jacobian": 1.040234775932769,
+      "predicted_mean": 0.5029346991596126,
+      "predicted_variance": 0.36799793432466277,
+      "predicted_observation": 0.5130524316243634,
+      "innovation": -0.47648006272436344,
+      "innovation_variance": 0.8882062919307445,
+      "kalman_gain": 0.4309857431023305,
+      "filtered_mean": 0.2975785852529078,
+      "filtered_variance": 0.20301476071185573
+    }
+  },
   "classification": "author-derived from deterministic synthetic input",
   "configuration": {
     "a": 0.9,

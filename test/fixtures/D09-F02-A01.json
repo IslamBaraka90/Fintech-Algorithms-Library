@@ -1,5 +1,12 @@
 {
-  "topic_id": "D09-F02-A01",
+  "topicId": "D09-F02-A01",
+  "input": {
+    "values": [10, 12, 11],
+    "ar": [0.5],
+    "intercept": 5,
+    "horizon": 2
+  },
+  "expected": {"forecast": [10.5, 10.25]},
   "classification": "author-derived arithmetic over synthetic teaching input",
   "selected_variant": "Fixed-coefficient AR(p) with an intercept, contiguous lags 1 through p, recursive point forecasts, and no exogenous or seasonal terms.",
   "values": [

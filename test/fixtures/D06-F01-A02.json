@@ -1,12 +1,38 @@
 {
   "topic_id": "D06-F01-A02",
   "input": {
-    "prior_closed_bodies": [1, 2, 2, 3, 12],
-    "current_body": 4,
-    "current_range": 6,
-    "window": 5,
-    "min_periods": 5,
-    "tick_size": 0.01
+    "observation": {
+      "timestamp": "2026-01-05T10:25:00Z",
+      "instrument_id": "SYNTH:ABC",
+      "interval": "5m",
+      "body": 4,
+      "range": 6,
+      "is_closed": true,
+      "price_basis": "raw",
+      "session": "continuous"
+    },
+    "priorClosedBodies": [1, 2, 2, 3, 12],
+    "configInput": {
+      "window": 5,
+      "min_periods": 5,
+      "tick_size": 0.01,
+      "thresholds": {
+        "tiny_max": 0.25,
+        "small_max": 0.75,
+        "long_min": 1.5
+      }
+    }
+  },
+  "expected": {
+    "status": "ready",
+    "body_class": "long",
+    "body_score": 2,
+    "raw_scale": 2,
+    "effective_scale": 2,
+    "scale_floor_applied": false,
+    "history_count": 5,
+    "body_to_current_range": 0.6666666666666666,
+    "is_provisional": false
   },
   "derivation": {
     "sorted_reference": [1, 2, 2, 3, 12],

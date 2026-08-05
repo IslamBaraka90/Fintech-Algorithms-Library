@@ -270,6 +270,38 @@ const SHARED_ENTRY_EXEMPT = [
   ["D04-F05-A04", "D04-F05-A05"],
 ];
 
+/**
+ * Exact topic sets whose shared implementation intentionally exposes every
+ * topic entry through every peer subpath. New or expanded broad facades must be
+ * reviewed here; otherwise sync fails instead of silently widening the public
+ * API. D08-F02 is deliberately absent because each reversal subpath is private.
+ */
+const REVIEWED_SHARED_SURFACES = new Set([
+  "D01-F05-A01,D01-F05-A02,D01-F05-A03,D01-F05-A04,D01-F05-A05,D01-F05-A06,D01-F05-A07",
+  "D06-F01-A03,D06-F01-A04,D06-F01-A05,D06-F02-A01,D06-F02-A02,D06-F02-A03,D06-F02-A04,D06-F02-A05,D06-F02-A06,D06-F02-A07,D06-F02-A08,D06-F02-A09,D06-F03-A01,D06-F03-A02,D06-F03-A03,D06-F03-A04,D06-F03-A05,D06-F03-A06,D06-F03-A07,D06-F03-A08",
+  "D06-F04-A01,D06-F04-A02,D06-F04-A03,D06-F04-A04,D06-F04-A05,D06-F04-A06,D06-F04-A07",
+  "D07-F03-A01,D07-F03-A02,D07-F03-A03,D07-F03-A04,D07-F03-A05,D07-F03-A06,D07-F03-A07,D07-F03-A08",
+  "D07-F05-A01,D07-F05-A02,D07-F05-A03,D07-F05-A04,D07-F05-A05,D07-F05-A06",
+  "D08-F05-A01,D08-F05-A02,D08-F05-A03,D08-F05-A04,D08-F05-A05,D08-F05-A06,D08-F05-A07,D08-F05-A08",
+  "D08-F06-A01,D08-F06-A02,D08-F06-A03,D08-F06-A04,D08-F06-A05,D08-F06-A06,D08-F06-A07,D08-F06-A08,D08-F06-A09",
+  "D09-F01-A01,D09-F01-A02,D09-F01-A03,D09-F01-A04,D09-F01-A05,D09-F01-A06",
+  "D09-F03-A01,D09-F03-A02,D09-F03-A03,D09-F03-A04,D09-F03-A05",
+  "D09-F05-A01,D09-F05-A02,D09-F05-A03,D09-F05-A04,D09-F05-A05,D09-F05-A06",
+  "D11-F01-A01,D11-F01-A02,D11-F01-A03,D11-F01-A04",
+  "D11-F02-A01,D11-F02-A02,D11-F02-A03,D11-F02-A04,D11-F02-A05,D11-F02-A06",
+  "D11-F03-A01,D11-F03-A02,D11-F03-A03,D11-F03-A04,D11-F03-A05,D11-F03-A06",
+  "D11-F04-A01,D11-F04-A02,D11-F04-A03,D11-F04-A04,D11-F04-A05",
+  "D11-F05-A01,D11-F05-A02,D11-F05-A03,D11-F05-A04,D11-F05-A05,D11-F05-A06,D11-F05-A07,D11-F05-A08",
+  "D12-F01-A01,D12-F01-A02,D12-F01-A03,D12-F01-A04",
+  "D12-F02-A01,D12-F02-A02,D12-F02-A03,D12-F02-A04,D12-F02-A05",
+  "D12-F03-A01,D12-F03-A02,D12-F03-A03,D12-F03-A04,D12-F03-A05,D12-F03-A06",
+  "D12-F04-A01,D12-F04-A02,D12-F04-A03,D12-F04-A04,D12-F04-A05,D12-F04-A06",
+  "D13-F01-A01,D13-F01-A02,D13-F01-A03,D13-F01-A04",
+  "D13-F02-A01,D13-F02-A02,D13-F02-A03,D13-F02-A04,D13-F02-A05",
+  "D25-F01-A01,D25-F01-A02,D25-F01-A03,D25-F01-A04,D25-F01-A05",
+  "D25-F02-A01,D25-F02-A02,D25-F02-A03,D25-F02-A04,D25-F02-A05",
+]);
+
 const ENTRY_OVERRIDES = {
   // asOfSnapshot builds the point-in-time view; leakageAudit reports on it.
   "D01-F04-A05": "asOfSnapshot",
@@ -688,6 +720,14 @@ if (unresolved.length > 0) {
   process.exit(1);
 }
 
+const snakeCasePublicEntries = topics.filter((topic) => topic.entry.includes("_"));
+if (snakeCasePublicEntries.length > 0) {
+  console.error(`\n  FAILED: ${snakeCasePublicEntries.length} snake_case TypeScript public entry point(s).\n`);
+  for (const topic of snakeCasePublicEntries) console.error(`    ${topic.id}: ${topic.entry}()`);
+  console.error("\n  Public TypeScript entries must use camelCase; keep snake_case for Python and data fields only.\n");
+  process.exit(1);
+}
+
 // Two topics resolving to the same entry is only a bug when they also come from
 // the SAME implementation file. Different files that each export `calculate` are
 // the catalog's normal convention and collide only in name, never in behaviour.
@@ -711,6 +751,36 @@ if (collided.length > 0) {
     console.error(`    ${source.split(":")[0]}  ${entry}()  claimed by ${ids.join(", ")}`);
   }
   console.error(`\n  Each topic must expose its own function. See chooseEntry() in this script.\n`);
+  process.exit(1);
+}
+
+// A shared body can also be wrong when each topic resolves to a distinct entry
+// but `export *` exposes all peer entries through every subpath. Preserve only
+// the exact legacy groups reviewed above; reject a new or expanded broad facade.
+const broadSurfaceGroups = new Map();
+for (const topic of topics) {
+  broadSurfaceGroups.set(topic.sourceKey, [...(broadSurfaceGroups.get(topic.sourceKey) ?? []), topic]);
+}
+const unreviewedBroadSurfaces = [];
+for (const group of broadSurfaceGroups.values()) {
+  if (group.length < 2) continue;
+  const entries = [...new Set(group.map((topic) => topic.entry).filter(Boolean))];
+  if (entries.length < 2) continue;
+  const exposesEveryPeer = group.every((topic) => entries.every((entry) => topic.exports.includes(entry)));
+  if (!exposesEveryPeer) continue;
+  const ids = group.map((topic) => topic.id).sort();
+  if (!REVIEWED_SHARED_SURFACES.has(ids.join(","))) unreviewedBroadSurfaces.push({ ids, entries });
+}
+if (unreviewedBroadSurfaces.length > 0) {
+  console.error(`\n  FAILED: ${unreviewedBroadSurfaces.length} unreviewed shared public surface(s).\n`);
+  for (const group of unreviewedBroadSurfaces) {
+    console.error(`    ${group.ids.join(", ")}`);
+    console.error(`      peer entries exposed by every subpath: ${group.entries.join(", ")}`);
+  }
+  console.error(
+    `\n  Split each topic facade, or add the exact topic set to REVIEWED_SHARED_SURFACES\n` +
+      `  after confirming the cross-topic exports are an intentional compatibility contract.\n`,
+  );
   process.exit(1);
 }
 

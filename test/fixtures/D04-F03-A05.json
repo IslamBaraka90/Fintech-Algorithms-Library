@@ -1,5 +1,31 @@
 {
-  "topic_id": "D04-F03-A05",
+  "topicId": "D04-F03-A05",
+  "input": {
+    "snapshot": {
+      "window_sessions": 50,
+      "price_field": "adjusted_close",
+      "securities": [
+        {
+          "security_id": "SYNTH-ABOVE",
+          "member_at_session": true,
+          "source_evidence_state": "ready",
+          "available_at": "2026-06-30T21:30:00Z",
+          "adjustment_basis": "split-adjusted-price-return",
+          "prices": [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 120]
+        }
+      ]
+    },
+    "decisionTime": "2026-06-30T22:00:00Z"
+  },
+  "expected": {
+    "status": "resolved",
+    "reason": null,
+    "window_sessions": 50,
+    "eligible_count": 1,
+    "above_count": 1,
+    "equal_count": 0,
+    "percent_above": 100
+  },
   "source_class": "synthetic teaching input and author-derived arithmetic",
   "canonical_display_state": {
     "status": "resolved",

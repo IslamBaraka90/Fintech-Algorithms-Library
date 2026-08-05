@@ -27000,6 +27000,133 @@
    ]
   }
  },
+ "D02-F02-A04": {
+  "args": [
+   {
+    "securityId": "SYNTHETIC-SECURITY-004",
+    "eventId": "SYNTHETIC-SPECIAL-DIVIDEND-2026-01",
+    "asOf": "2026-03-16T20:10:00Z",
+    "methodology": {
+     "id": "SYNTHETIC-NET-RETURN-POLICY",
+     "version": "1.0",
+     "sourceId": "SYNTHETIC-METHODOLOGY-NOTE",
+     "classificationMode": "source-designated",
+     "priceAdjustmentCashBasis": "net",
+     "referenceAnchor": "previous-session-official-close",
+     "outputDecimals": 8
+    },
+    "eventRevisions": [
+     {
+      "revisionId": "R1",
+      "securityId": "SYNTHETIC-SECURITY-004",
+      "eventId": "SYNTHETIC-SPECIAL-DIVIDEND-2026-01",
+      "status": "announced",
+      "issuerClassification": "special",
+      "grossAmount": 15,
+      "currency": "EUR",
+      "announcedAt": "2026-02-02T12:00:00Z",
+      "availableAt": "2026-02-02T12:05:00Z",
+      "exAt": "2026-03-16T13:30:00Z",
+      "paymentAt": "2026-03-20T12:00:00Z",
+      "actionOrder": 20,
+      "amountBasisOrder": 0,
+      "sourceId": "SYNTHETIC-ISSUER-NOTICE-R1"
+     },
+     {
+      "revisionId": "R2",
+      "securityId": "SYNTHETIC-SECURITY-004",
+      "eventId": "SYNTHETIC-SPECIAL-DIVIDEND-2026-01",
+      "status": "announced",
+      "issuerClassification": "special",
+      "grossAmount": 16,
+      "currency": "EUR",
+      "announcedAt": "2026-02-05T14:00:00Z",
+      "availableAt": "2026-02-05T14:10:00Z",
+      "exAt": "2026-03-16T13:30:00Z",
+      "paymentAt": "2026-03-20T12:00:00Z",
+      "actionOrder": 20,
+      "amountBasisOrder": 0,
+      "sourceId": "SYNTHETIC-ISSUER-NOTICE-R2"
+     }
+    ],
+    "referencePrice": {
+     "value": 100,
+     "currency": "USD",
+     "anchorType": "previous-session-official-close",
+     "anchorAt": "2026-03-13T20:00:00Z",
+     "observedAt": "2026-03-13T20:00:00Z",
+     "availableAt": "2026-03-13T20:00:05Z",
+     "sourceId": "SYNTHETIC-OFFICIAL-CLOSE"
+    },
+    "precedingActions": [
+     {
+      "actionId": "SYNTHETIC-2-FOR-1-SPLIT",
+      "actionOrder": 10,
+      "priceFactor": 0.5,
+      "perShareAmountFactor": 0.5,
+      "effectiveAt": "2026-03-16T13:30:00Z",
+      "observedAt": "2026-02-01T10:00:00Z",
+      "availableAt": "2026-02-01T10:05:00Z",
+      "sourceId": "SYNTHETIC-ACTION-SOURCE"
+     }
+    ],
+    "fxRate": {
+     "baseCurrency": "EUR",
+     "quoteCurrency": "USD",
+     "rate": 1.1,
+     "observedAt": "2026-03-13T20:00:00Z",
+     "availableAt": "2026-03-13T20:00:05Z",
+     "sourceId": "SYNTHETIC-FX-CLOSE"
+    },
+    "taxProfile": {
+     "withholdingRate": 0.25,
+     "jurisdiction": "SYNTHETIC-JURISDICTION",
+     "investorCategory": "SYNTHETIC-NONRESIDENT",
+     "observedAt": "2026-01-05T09:00:00Z",
+     "availableAt": "2026-01-05T09:05:00Z",
+     "sourceId": "SYNTHETIC-TAX-RULE"
+    },
+    "exPriceObservation": {
+     "value": 43.75,
+     "currency": "USD",
+     "observedAt": "2026-03-16T20:00:00Z",
+     "availableAt": "2026-03-16T20:00:05Z",
+     "sourceId": "SYNTHETIC-EX-CLOSE"
+    }
+   }
+  ],
+  "value": {
+   "eventState": "effective",
+   "selectedRevisionId": "R2",
+   "classificationDecision": "special",
+   "classificationReason": "source designation: special",
+   "adjustmentApplied": true,
+   "referencePriceOnEventBasis": 50,
+   "grossDividendOnEventBasis": 8.8,
+   "netDividendOnEventBasis": 6.6,
+   "adjustmentCashAmount": 6.6,
+   "theoreticalExPrice": 43.4,
+   "adjustmentFactor": 0.868,
+   "grossDistributionYield": 0.176,
+   "methodologyId": "SYNTHETIC-NET-RETURN-POLICY",
+   "methodologyVersion": "1.0",
+   "lineage": {
+    "eventSourceId": "SYNTHETIC-ISSUER-NOTICE-R2",
+    "eventAvailableAt": "2026-02-05T14:10:00Z",
+    "referenceSourceId": "SYNTHETIC-OFFICIAL-CLOSE",
+    "methodologySourceId": "SYNTHETIC-METHODOLOGY-NOTE",
+    "fxSourceId": "SYNTHETIC-FX-CLOSE",
+    "taxSourceId": "SYNTHETIC-TAX-RULE",
+    "exPriceSourceId": "SYNTHETIC-EX-CLOSE"
+   },
+   "returns": {
+    "priceReturn": -0.125,
+    "grossTotalReturn": 0.051,
+    "netTotalReturn": 0.007,
+    "adjustedPriceReturn": 0.00806452
+   }
+  }
+ },
  "D02-F02-A05": {
   "args": [
    {
@@ -93704,8 +93831,7 @@
     "min_prior_trend": 0.03,
     "break_buffer": 0
    }
-  },
-  "derived": true
+  }
  },
  "D08-F02-A02": {
   "args": [
@@ -93890,8 +94016,7 @@
     "min_prior_trend": 0.03,
     "break_buffer": 0
    }
-  },
-  "derived": true
+  }
  },
  "D08-F02-A03": {
   "args": [
@@ -94100,8 +94225,7 @@
     "min_prior_trend": 0.03,
     "break_buffer": 0
    }
-  },
-  "derived": true
+  }
  },
  "D08-F02-A04": {
   "args": [
@@ -94310,8 +94434,7 @@
     "min_prior_trend": 0.03,
     "break_buffer": 0
    }
-  },
-  "derived": true
+  }
  },
  "D08-F02-A05": {
   "args": [
@@ -94520,8 +94643,7 @@
     "min_prior_trend": 0.03,
     "break_buffer": 0
    }
-  },
-  "derived": true
+  }
  },
  "D08-F02-A06": {
   "args": [
@@ -94730,8 +94852,7 @@
     "min_prior_trend": 0.03,
     "break_buffer": 0
    }
-  },
-  "derived": true
+  }
  },
  "D08-F05-A01": {
   "args": [

@@ -1,5 +1,17 @@
 {
-  "topic_id": "D09-F02-A05",
+  "topicId": "D09-F02-A05",
+  "input": {
+    "values": [10, 12, 11, 13],
+    "alpha": 0.5,
+    "beta": 0.5,
+    "gamma": 0.5,
+    "period": 2,
+    "horizon": 2,
+    "initialLevel": 9,
+    "initialTrend": 1,
+    "initialSeasonals": [-1, 1]
+  },
+  "expected": {"forecast": [12.35546875, 14.58203125]},
   "classification": "author-derived arithmetic over synthetic teaching input",
   "selected_variant": "Additive trend and additive seasonality, fixed alpha/beta/gamma-star in [0,1], a supplied known initial state with published provenance, no damping, and deterministic recursive updates.",
   "values": [

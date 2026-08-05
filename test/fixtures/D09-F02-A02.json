@@ -1,5 +1,13 @@
 {
-  "topic_id": "D09-F02-A02",
+  "topicId": "D09-F02-A02",
+  "input": {
+    "values": [10, 12, 11],
+    "ar": [0.5],
+    "ma": [0.25],
+    "intercept": 5,
+    "horizon": 2
+  },
+  "expected": {"forecast": [10.375, 10.1875]},
   "classification": "author-derived arithmetic over synthetic teaching input",
   "selected_variant": "Fixed-coefficient ARMA(p,q) with an intercept, contiguous lags, zero pre-sample innovations, recursively reconstructed in-sample residuals, and zero future innovations.",
   "values": [

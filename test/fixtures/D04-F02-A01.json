@@ -1,5 +1,20 @@
 {
-  "topic_id": "D04-F02-A01",
+  "topicId": "D04-F02-A01",
+  "input": [
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0,
+    100, 100, -100, 0, -100
+  ],
+  "expected": {
+    "38": {"observation": 39, "fast_ema": 0, "slow_ema": 0, "oscillator": 0, "status": "ready"},
+    "39": {"observation": 40, "fast_ema": 10, "slow_ema": 5, "oscillator": 5, "status": "ready"},
+    "40": {"observation": 41, "fast_ema": 19, "slow_ema": 9.75, "oscillator": 9.25, "status": "ready"},
+    "41": {"observation": 42, "fast_ema": 7.1, "slow_ema": 4.2625, "oscillator": 2.8375, "status": "ready"},
+    "42": {"observation": 43, "fast_ema": 6.39, "slow_ema": 4.049375, "oscillator": 2.340625, "status": "ready"},
+    "43": {"observation": 44, "fast_ema": -4.249, "slow_ema": -1.15309375, "oscillator": -3.09590625, "status": "ready"}
+  },
   "metric": "traditional_mcclellan_oscillator",
   "convention": {
     "input": "advances_minus_declines",

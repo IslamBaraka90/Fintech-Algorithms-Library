@@ -1,13 +1,221 @@
 {
-  "topicId": "D02-F01-A03",
-  "source": "../../tests/shared_fixture.json",
-  "headline": {
-    "priorClose": 102,
-    "exDateClose": 99,
-    "grossDividend": 3,
-    "priceReturn": -0.029411764706,
-    "grossTotalReturn": 0,
-    "backwardFactor": 0.970588235294
-  },
-  "note": "All values are synthetic. The factor uses the ex-date close and is applied only to earlier observations."
+    "topicId":  "D02-F01-A03",
+    "input":  {
+                  "asOf":  "2026-01-09T23:00:00Z",
+                  "returnVariant":  "gross",
+                  "priceCurrency":  "USD",
+                  "anchorBasis":  "latest_raw_close",
+                  "specialDistributionPolicy":  "exclude",
+                  "observations":  [
+                                       {
+                                           "date":  "2026-01-02",
+                                           "close":  100,
+                                           "availableAt":  "2026-01-02T21:01:00Z"
+                                       },
+                                       {
+                                           "date":  "2026-01-05",
+                                           "close":  102,
+                                           "availableAt":  "2026-01-05T21:01:00Z"
+                                       },
+                                       {
+                                           "date":  "2026-01-06",
+                                           "close":  99,
+                                           "availableAt":  "2026-01-06T21:01:00Z"
+                                       },
+                                       {
+                                           "date":  "2026-01-07",
+                                           "close":  101,
+                                           "availableAt":  "2026-01-07T21:01:00Z"
+                                       },
+                                       {
+                                           "date":  "2026-01-08",
+                                           "close":  98,
+                                           "availableAt":  "2026-01-08T21:01:00Z"
+                                       },
+                                       {
+                                           "date":  "2026-01-09",
+                                           "close":  100,
+                                           "availableAt":  "2026-01-09T21:01:00Z"
+                                       }
+                                   ],
+                  "eventRevisions":  [
+                                         {
+                                             "eventId":  "SYNTH-DIV-A",
+                                             "revision":  1,
+                                             "status":  "confirmed",
+                                             "classification":  "ordinary",
+                                             "exDate":  "2026-01-06",
+                                             "grossDividend":  2.5,
+                                             "dividendCurrency":  "USD",
+                                             "withholdingRate":  0.15,
+                                             "fxRateToPriceCurrency":  1,
+                                             "fxObservedAt":  null,
+                                             "availableAt":  "2026-01-05T15:00:00Z",
+                                             "sourceId":  "SYNTHETIC-ACTION-FEED"
+                                         },
+                                         {
+                                             "eventId":  "SYNTH-DIV-A",
+                                             "revision":  2,
+                                             "status":  "confirmed",
+                                             "classification":  "ordinary",
+                                             "exDate":  "2026-01-06",
+                                             "grossDividend":  3,
+                                             "dividendCurrency":  "USD",
+                                             "withholdingRate":  0.15,
+                                             "fxRateToPriceCurrency":  1,
+                                             "fxObservedAt":  null,
+                                             "availableAt":  "2026-01-05T18:00:00Z",
+                                             "sourceId":  "SYNTHETIC-ACTION-FEED"
+                                         },
+                                         {
+                                             "eventId":  "SYNTH-SPECIAL-B",
+                                             "revision":  1,
+                                             "status":  "confirmed",
+                                             "classification":  "special",
+                                             "exDate":  "2026-01-08",
+                                             "grossDividend":  3,
+                                             "dividendCurrency":  "USD",
+                                             "withholdingRate":  0.15,
+                                             "fxRateToPriceCurrency":  1,
+                                             "fxObservedAt":  null,
+                                             "availableAt":  "2026-01-07T18:00:00Z",
+                                             "sourceId":  "SYNTHETIC-ACTION-FEED"
+                                         },
+                                         {
+                                             "eventId":  "SYNTH-CANCELLED-C",
+                                             "revision":  1,
+                                             "status":  "confirmed",
+                                             "classification":  "ordinary",
+                                             "exDate":  "2026-01-08",
+                                             "grossDividend":  1,
+                                             "dividendCurrency":  "USD",
+                                             "withholdingRate":  0.15,
+                                             "fxRateToPriceCurrency":  1,
+                                             "fxObservedAt":  null,
+                                             "availableAt":  "2026-01-06T18:00:00Z",
+                                             "sourceId":  "SYNTHETIC-ACTION-FEED"
+                                         },
+                                         {
+                                             "eventId":  "SYNTH-CANCELLED-C",
+                                             "revision":  2,
+                                             "status":  "cancelled",
+                                             "classification":  "ordinary",
+                                             "exDate":  "2026-01-08",
+                                             "grossDividend":  1,
+                                             "dividendCurrency":  "USD",
+                                             "withholdingRate":  0.15,
+                                             "fxRateToPriceCurrency":  1,
+                                             "fxObservedAt":  null,
+                                             "availableAt":  "2026-01-07T19:00:00Z",
+                                             "sourceId":  "SYNTHETIC-ACTION-FEED"
+                                         }
+                                     ]
+              },
+    "expected":  {
+                     "methodology":  "backward_adjusted_ex_date_close_total_return",
+                     "returnVariant":  "gross",
+                     "priceCurrency":  "USD",
+                     "asOf":  "2026-01-09T23:00:00Z",
+                     "anchor":  {
+                                    "basis":  "latest_raw_close",
+                                    "date":  "2026-01-09",
+                                    "rawClose":  100
+                                },
+                     "adjustedPrices":  [
+                                            97.058823529412,
+                                            99,
+                                            99,
+                                            101,
+                                            98,
+                                            100
+                                        ],
+                     "cumulativeFactors":  [
+                                               0.970588235294,
+                                               0.970588235294,
+                                               1,
+                                               1,
+                                               1,
+                                               1
+                                           ],
+                     "eventAdjustments":  [
+                                              {
+                                                  "exDate":  "2026-01-06",
+                                                  "exIndex":  2,
+                                                  "eventIds":  [
+                                                                   "SYNTH-DIV-A"
+                                                               ],
+                                                  "selectedRevisions":  [
+                                                                            2
+                                                                        ],
+                                                  "sourceIds":  [
+                                                                    "SYNTHETIC-ACTION-FEED"
+                                                                ],
+                                                  "priorClose":  102,
+                                                  "exDateClose":  99,
+                                                  "grossDividendPriceCurrency":  3,
+                                                  "effectiveDividend":  3,
+                                                  "backwardFactor":  0.970588235294,
+                                                  "factorAppliesTo":  "indices \u003c 2"
+                                              }
+                                          ],
+                     "returnLinks":  [
+                                         {
+                                             "date":  "2026-01-05",
+                                             "priceReturn":  0.02,
+                                             "totalReturn":  0.02,
+                                             "effectiveDividend":  0
+                                         },
+                                         {
+                                             "date":  "2026-01-06",
+                                             "priceReturn":  -0.029411764706,
+                                             "totalReturn":  0,
+                                             "effectiveDividend":  3
+                                         },
+                                         {
+                                             "date":  "2026-01-07",
+                                             "priceReturn":  0.020202020202,
+                                             "totalReturn":  0.020202020202,
+                                             "effectiveDividend":  0
+                                         },
+                                         {
+                                             "date":  "2026-01-08",
+                                             "priceReturn":  -0.029702970297,
+                                             "totalReturn":  -0.029702970297,
+                                             "effectiveDividend":  0
+                                         },
+                                         {
+                                             "date":  "2026-01-09",
+                                             "priceReturn":  0.020408163265,
+                                             "totalReturn":  0.020408163265,
+                                             "effectiveDividend":  0
+                                         }
+                                     ],
+                     "excludedEvents":  [
+                                            {
+                                                "eventId":  "SYNTH-CANCELLED-C",
+                                                "selectedRevision":  2,
+                                                "reason":  "cancelled"
+                                            },
+                                            {
+                                                "eventId":  "SYNTH-SPECIAL-B",
+                                                "selectedRevision":  1,
+                                                "reason":  "special_excluded_by_policy"
+                                            }
+                                        ],
+                     "rounding":  {
+                                      "internal":  "unrounded IEEE-754 binary64",
+                                      "serializedDecimalPlaces":  12,
+                                      "factorCompounding":  "multiply unrounded factors, round only serialized output"
+                                  }
+                 },
+    "source":  "../../tests/shared_fixture.json",
+    "headline":  {
+                     "priorClose":  102,
+                     "exDateClose":  99,
+                     "grossDividend":  3,
+                     "priceReturn":  -0.029411764706,
+                     "grossTotalReturn":  0,
+                     "backwardFactor":  0.970588235294
+                 },
+    "note":  "All values are synthetic. The factor uses the ex-date close and is applied only to earlier observations."
 }

@@ -1,5 +1,35 @@
 {
-  "topic_id": "D04-F01-A05",
+  "topicId": "D04-F01-A05",
+  "input": {
+    "decision_time": "2026-01-05T22:00:00Z",
+    "metric_variant": "raw_issue_count",
+    "records": [
+      {
+        "record_id": "ABI-R1", "revision": 1, "supersedes_record_id": null,
+        "kind": "observation", "effective_at": "2026-01-05T21:00:00Z",
+        "available_at": "2026-01-05T21:05:00Z", "is_final": true,
+        "session_date": "2026-01-05", "venue_id": "SYNTH-X", "universe_id": "SYNTH-100",
+        "universe_revision": "U1", "session_id": "regular", "calendar_id": "SYNTH-CAL",
+        "comparison_basis": "comparable-prior-close", "corporate_action_policy": "provider-adjusted",
+        "listing_identifier_scheme": "synthetic-listing-id", "advances": 60, "declines": 30,
+        "unchanged": 8, "excluded": 2, "missing": 0, "unclassified": 0, "universe_size": 100
+      }
+    ]
+  },
+  "expected": {
+    "evaluation_state": "resolved",
+    "publishable": true,
+    "reason_codes": [],
+    "record_id": "ABI-R1",
+    "revision": 1,
+    "is_provisional": false,
+    "net_advances": 30,
+    "absolute_breadth_index": 30,
+    "mover_count": 90,
+    "classified_count": 98,
+    "coverage_ratio": 0.98,
+    "breadth_state": "advances_imbalanced"
+  },
   "label": "Synthetic resolved examples",
   "note": "These examples satisfy the package's complete point-in-time contract; they are not historical observations.",
   "rows": [

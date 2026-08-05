@@ -371,6 +371,15 @@ function apiContract(topic, dir, entryParams) {
     );
   }
 
+  for (const param of api.params ?? []) {
+    if (param.type === "Record<string, unknown>") {
+      apiErrors.push(`${topic.id}: api.params.${param.name} uses opaque Record<string, unknown>`);
+    }
+  }
+  if (/warmup|warm-up/i.test(api.returns?.description ?? "") && !api.warmup) {
+    apiErrors.push(`${topic.id}: return prose mentions warm-up but api.warmup is missing`);
+  }
+
   return {
     summary: api.summary ?? null,
     params: (api.params ?? []).map((p) => ({

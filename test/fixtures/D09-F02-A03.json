@@ -1,5 +1,14 @@
 {
-  "topic_id": "D09-F02-A03",
+  "topicId": "D09-F02-A03",
+  "input": {
+    "values": [100, 102, 105, 109, 114, 120],
+    "ar": [0.5],
+    "ma": [],
+    "intercept": 1,
+    "differenceOrder": 1,
+    "horizon": 2
+  },
+  "expected": {"forecast": [124, 127]},
   "classification": "author-derived arithmetic over synthetic teaching input",
   "selected_variant": "Fixed-coefficient non-seasonal ARIMA(p,d,q), d in {0,1,2}, conditional ARMA residuals, and recursive reintegration from recorded anchors.",
   "values": [

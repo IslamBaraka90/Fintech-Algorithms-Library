@@ -84,6 +84,52 @@ function closeEnough(actual: unknown, expected: unknown, label: string): void {
   assert.deepStrictEqual(actual, expected, label);
 }
 
+/**
+ * Assert a published expected value recursively. Object fixtures may document
+ * a deliberate subset; arrays are complete ordered values.
+ */
+function expectedSubset(actual: unknown, expected: unknown, label: string): void {
+  if (Array.isArray(expected)) {
+    assert.ok(Array.isArray(actual), `${label}: expected an array, got ${typeof actual}`);
+    assert.equal(actual.length, expected.length, `${label}: array length`);
+    expected.forEach((want, index) => expectedSubset(actual[index], want, `${label}[${index}]`));
+    return;
+  }
+  if (expected !== null && typeof expected === "object") {
+    assert.ok(actual !== null && typeof actual === "object", `${label}: expected an object, got ${typeof actual}`);
+    for (const [field, want] of Object.entries(expected as Record<string, unknown>)) {
+      assert.ok(Object.hasOwn(actual as object, field), `${label}: missing field \`${field}\``);
+      expectedSubset((actual as Record<string, unknown>)[field], want, `${label}.${field}`);
+    }
+    return;
+  }
+  closeEnough(actual, expected, label);
+}
+
+const flattenedName = (name: string) => name.toLowerCase().replace(/[-_]/g, "");
+
+/** Bind Convention A's named input object to a multi-argument entry function. */
+function conventionAArgs(topic: ManifestTopic, input: unknown): unknown[] {
+  const cloned = structuredClone(input);
+  if (topic.entryParams.length <= 1 || cloned === null || typeof cloned !== "object" || Array.isArray(cloned)) {
+    return [cloned];
+  }
+
+  const named = cloned as Record<string, unknown>;
+  const supplied = Object.entries(named);
+  const hasDeclaredName = topic.entryParams.some((name) =>
+    supplied.some(([key]) => flattenedName(key) === flattenedName(name)),
+  );
+  if (!hasDeclaredName) return [cloned];
+
+  const args = topic.entryParams.map((name) => {
+    if (Object.hasOwn(named, name)) return named[name];
+    return supplied.find(([key]) => flattenedName(key) === flattenedName(name))?.[1];
+  });
+  while (args.length && args.at(-1) === undefined) args.pop();
+  return args;
+}
+
 describe("conformance: catalog worked examples", () => {
   test("the catalog still ships fixtures to check", () => {
     assert.ok(runnable.length > 0, "no runnable fixtures found — did scripts/sync.mjs run?");
@@ -94,16 +140,11 @@ describe("conformance: catalog worked examples", () => {
   describe("A · { input, expected }", () => {
     for (const topic of runnable.filter((t) => t.convention === "A")) {
       test(`${topic.id} — ${topic.path}`, async () => {
-        const fixture = loadFixture(topic) as { input: unknown; expected: Record<string, unknown> };
+        const fixture = loadFixture(topic) as { input: unknown; expected: unknown };
         const run = await loadEntry(topic);
-        // structuredClone guards against an implementation mutating its input.
-        const actual = run(structuredClone(fixture.input)) as Record<string, unknown>;
-        assert.ok(actual !== null && typeof actual === "object", `${topic.id} returned ${typeof actual}`);
-        // `expected` is asserted as a subset: some fixtures document only the
-        // fields the article walks through, not the whole payload.
-        for (const [field, want] of Object.entries(fixture.expected)) {
-          assert.deepStrictEqual(actual[field], want, `${topic.id}: field \`${field}\``);
-        }
+        // conventionAArgs clones input to guard against implementations that mutate it.
+        const actual = run(...conventionAArgs(topic, fixture.input));
+        expectedSubset(actual, fixture.expected, topic.id);
       });
     }
   });
@@ -173,7 +214,7 @@ describe("conformance: catalog worked examples", () => {
   /** Price-series columns a parameter name can be bound to. */
   const SERIES_PARAMS = new Set(["open", "high", "low", "close", "volume", "values", "price", "prices"]);
 
-  const flatten = (name: string) => name.toLowerCase().replace(/[-_]/g, "");
+  const flatten = flattenedName;
 
   /**
    * Fixtures express parameters either as an object or as prose — several write

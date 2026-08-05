@@ -1,17 +1,205 @@
 {
-  "topicId": "D02-F03-A02",
-  "synthetic": true,
-  "question": "Which symbol did listing SYN-LST-001 use at 2024-07-01T15:00:00Z, using only assignment revisions available by 2024-08-01T12:00:00Z?",
-  "answer": {
-    "symbol": "NXT",
-    "listingId": "SYN-LST-001",
-    "instrumentId": "SYN-INS-001",
-    "issuerId": "SYN-ISS-001",
-    "venueMic": "XNAS",
-    "currency": "USD",
-    "shareClassId": "SYN-CLS-A",
-    "selectedAssignment": "SYN-ASG-200 revision 1",
-    "pathVisibleAsOf": ["ALP", "NXT"]
-  },
-  "counterfactualKnowledgeCutoff": "A correction available on 2024-12-20 must not appear in the 2024-08-01 answer."
+    "topicId":  "D02-F03-A02",
+    "input":  {
+                  "issuers":  [
+                                  {
+                                      "issuerId":  "SYN-ISS-001"
+                                  },
+                                  {
+                                      "issuerId":  "SYN-ISS-002"
+                                  }
+                              ],
+                  "instruments":  [
+                                      {
+                                          "instrumentId":  "SYN-INS-001",
+                                          "issuerId":  "SYN-ISS-001",
+                                          "shareClassId":  "SYN-CLS-A"
+                                      },
+                                      {
+                                          "instrumentId":  "SYN-INS-002",
+                                          "issuerId":  "SYN-ISS-002",
+                                          "shareClassId":  "SYN-CLS-COM"
+                                      }
+                                  ],
+                  "listings":  [
+                                   {
+                                       "listingId":  "SYN-LST-001",
+                                       "instrumentId":  "SYN-INS-001",
+                                       "venueMic":  "XNAS",
+                                       "currency":  "USD"
+                                   },
+                                   {
+                                       "listingId":  "SYN-LST-002",
+                                       "instrumentId":  "SYN-INS-001",
+                                       "venueMic":  "XLON",
+                                       "currency":  "GBP"
+                                   },
+                                   {
+                                       "listingId":  "SYN-LST-099",
+                                       "instrumentId":  "SYN-INS-002",
+                                       "venueMic":  "XNAS",
+                                       "currency":  "USD"
+                                   }
+                               ],
+                  "assignments":  [
+                                      {
+                                          "assignmentId":  "SYN-ASG-100",
+                                          "revision":  1,
+                                          "status":  "active",
+                                          "listingId":  "SYN-LST-001",
+                                          "symbol":  "ALP",
+                                          "effectiveAt":  "2020-01-02T14:30:00Z",
+                                          "validTo":  "2024-06-10T13:30:00Z",
+                                          "announcedAt":  "2019-12-18T15:00:00Z",
+                                          "availableAt":  "2019-12-18T15:05:00Z",
+                                          "changeKind":  "initial_listing",
+                                          "sourceId":  "SYN-SRC-XNAS-100"
+                                      },
+                                      {
+                                          "assignmentId":  "SYN-ASG-200",
+                                          "revision":  1,
+                                          "status":  "active",
+                                          "listingId":  "SYN-LST-001",
+                                          "symbol":  "NXT",
+                                          "effectiveAt":  "2024-06-10T13:30:00Z",
+                                          "validTo":  "2025-01-10T14:30:00Z",
+                                          "announcedAt":  "2024-05-15T12:00:00Z",
+                                          "availableAt":  "2024-05-15T12:07:00Z",
+                                          "changeKind":  "administrative",
+                                          "sourceId":  "SYN-SRC-XNAS-200-R1"
+                                      },
+                                      {
+                                          "assignmentId":  "SYN-ASG-200",
+                                          "revision":  2,
+                                          "status":  "active",
+                                          "listingId":  "SYN-LST-001",
+                                          "symbol":  "NXT",
+                                          "effectiveAt":  "2024-06-10T13:30:00Z",
+                                          "validTo":  "2025-01-15T14:30:00Z",
+                                          "announcedAt":  "2024-05-15T12:00:00Z",
+                                          "availableAt":  "2024-12-20T16:10:00Z",
+                                          "changeKind":  "administrative",
+                                          "sourceId":  "SYN-SRC-XNAS-200-R2"
+                                      },
+                                      {
+                                          "assignmentId":  "SYN-ASG-300",
+                                          "revision":  1,
+                                          "status":  "active",
+                                          "listingId":  "SYN-LST-001",
+                                          "symbol":  "NVA",
+                                          "effectiveAt":  "2025-01-15T14:30:00Z",
+                                          "validTo":  null,
+                                          "announcedAt":  "2024-12-18T13:00:00Z",
+                                          "availableAt":  "2024-12-20T16:12:00Z",
+                                          "changeKind":  "corporate_action",
+                                          "sourceId":  "SYN-SRC-XNAS-300"
+                                      },
+                                      {
+                                          "assignmentId":  "SYN-ASG-400",
+                                          "revision":  1,
+                                          "status":  "active",
+                                          "listingId":  "SYN-LST-002",
+                                          "symbol":  "ALP.L",
+                                          "effectiveAt":  "2020-01-03T08:00:00Z",
+                                          "validTo":  null,
+                                          "announcedAt":  "2019-12-19T10:00:00Z",
+                                          "availableAt":  "2019-12-19T10:04:00Z",
+                                          "changeKind":  "initial_listing",
+                                          "sourceId":  "SYN-SRC-XLON-400"
+                                      },
+                                      {
+                                          "assignmentId":  "SYN-ASG-900",
+                                          "revision":  1,
+                                          "status":  "active",
+                                          "listingId":  "SYN-LST-099",
+                                          "symbol":  "ALP",
+                                          "effectiveAt":  "2026-03-02T14:30:00Z",
+                                          "validTo":  null,
+                                          "announcedAt":  "2026-02-12T14:00:00Z",
+                                          "availableAt":  "2026-02-12T14:06:00Z",
+                                          "changeKind":  "initial_listing",
+                                          "sourceId":  "SYN-SRC-XNAS-900"
+                                      }
+                                  ],
+                  "query":  {
+                                "direction":  "listing_to_symbol",
+                                "listingId":  "SYN-LST-001",
+                                "queryAt":  "2024-07-01T15:00:00Z",
+                                "asOf":  "2024-08-01T12:00:00Z"
+                            }
+              },
+    "expected":  {
+                     "status":  "resolved",
+                     "direction":  "listing_to_symbol",
+                     "queryAt":  "2024-07-01T15:00:00Z",
+                     "asOf":  "2024-08-01T12:00:00Z",
+                     "symbol":  "NXT",
+                     "listingId":  "SYN-LST-001",
+                     "instrumentId":  "SYN-INS-001",
+                     "issuerId":  "SYN-ISS-001",
+                     "shareClassId":  "SYN-CLS-A",
+                     "venueMic":  "XNAS",
+                     "currency":  "USD",
+                     "assignmentId":  "SYN-ASG-200",
+                     "revision":  1,
+                     "changeKind":  "administrative",
+                     "sourceId":  "SYN-SRC-XNAS-200-R1",
+                     "announcedAt":  "2024-05-15T12:00:00Z",
+                     "availableAt":  "2024-05-15T12:07:00Z",
+                     "effectiveAt":  "2024-06-10T13:30:00Z",
+                     "validTo":  "2025-01-10T14:30:00Z",
+                     "chain":  [
+                                   {
+                                       "assignmentId":  "SYN-ASG-100",
+                                       "revision":  1,
+                                       "symbol":  "ALP",
+                                       "effectiveAt":  "2020-01-02T14:30:00Z",
+                                       "validTo":  "2024-06-10T13:30:00Z",
+                                       "changeKind":  "initial_listing",
+                                       "sourceId":  "SYN-SRC-XNAS-100",
+                                       "announcedAt":  "2019-12-18T15:00:00Z",
+                                       "availableAt":  "2019-12-18T15:05:00Z"
+                                   },
+                                   {
+                                       "assignmentId":  "SYN-ASG-200",
+                                       "revision":  1,
+                                       "symbol":  "NXT",
+                                       "effectiveAt":  "2024-06-10T13:30:00Z",
+                                       "validTo":  "2025-01-10T14:30:00Z",
+                                       "changeKind":  "administrative",
+                                       "sourceId":  "SYN-SRC-XNAS-200-R1",
+                                       "announcedAt":  "2024-05-15T12:00:00Z",
+                                       "availableAt":  "2024-05-15T12:07:00Z"
+                                   }
+                               ],
+                     "diagnostics":  {
+                                         "visibleAssignmentCount":  3,
+                                         "chainSegmentCount":  2,
+                                         "gapCount":  0,
+                                         "gaps":  [
+
+                                                  ],
+                                         "reusedSymbolsWithinListing":  [
+
+                                                                        ]
+                                     }
+                 },
+    "synthetic":  true,
+    "question":  "Which symbol did listing SYN-LST-001 use at 2024-07-01T15:00:00Z, using only assignment revisions available by 2024-08-01T12:00:00Z?",
+    "answer":  {
+                   "symbol":  "NXT",
+                   "listingId":  "SYN-LST-001",
+                   "instrumentId":  "SYN-INS-001",
+                   "issuerId":  "SYN-ISS-001",
+                   "venueMic":  "XNAS",
+                   "currency":  "USD",
+                   "shareClassId":  "SYN-CLS-A",
+                   "selectedAssignment":  "SYN-ASG-200 revision 1",
+                   "pathVisibleAsOf":  [
+                                           "ALP",
+                                           "NXT"
+                                       ]
+               },
+    "counterfactualKnowledgeCutoff":  "A correction available on 2024-12-20 must not appear in the 2024-08-01 answer.",
+    "license":  "Synthetic educational fixture; no issuer, exchange, or vendor records"
 }

@@ -1,5 +1,57 @@
 {
   "topicId": "D01-F01-A04",
+  "input": {
+    "trades": [
+      {
+        "tradeId": "W1",
+        "timestamp": "2026-01-05T14:30:00.000Z",
+        "session": "2026-01-05",
+        "symbol": "SYNTH",
+        "price": 100,
+        "volume": 40,
+        "currency": "USD"
+      },
+      {
+        "tradeId": "W2",
+        "timestamp": "2026-01-05T14:30:01.000Z",
+        "session": "2026-01-05",
+        "symbol": "SYNTH",
+        "price": 90,
+        "volume": 70,
+        "currency": "USD"
+      }
+    ],
+    "config": {
+      "targetDollar": 10000,
+      "currency": "USD",
+      "priceDecimals": 2,
+      "quantityDecimals": 0,
+      "closePartial": true
+    }
+  },
+  "expected": [
+    {
+      "barIndex": 0,
+      "session": "2026-01-05",
+      "symbol": "SYNTH",
+      "currency": "USD",
+      "startTime": "2026-01-05T14:30:00.000Z",
+      "endTime": "2026-01-05T14:30:01.000Z",
+      "lastTradeTime": "2026-01-05T14:30:01.000Z",
+      "open": 100,
+      "high": 100,
+      "low": 90,
+      "close": 90,
+      "volume": 110,
+      "dollarValue": 10300,
+      "targetDollar": 10000,
+      "excessDollar": 300,
+      "tickCount": 2,
+      "firstTradeId": "W1",
+      "lastTradeId": "W2",
+      "closeReason": "threshold"
+    }
+  ],
   "sourceType": "deterministic synthetic example",
   "config": {
     "targetDollar": 10000,

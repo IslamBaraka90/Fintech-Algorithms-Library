@@ -1,9 +1,131 @@
 {
-  "note": "Synthetic arithmetic using the sourced four-for-one ratio; values are not Apple market observations.",
-  "ratioConvention": "new_shares_per_old_share",
-  "ratio": "4 / 1",
-  "targetBasis": "pre-split share basis",
-  "boundary": "effectiveAt is inclusive",
-  "beforeBoundary": {"rawPrice": 120, "rawVolume": 1000, "adjustedPrice": 120, "adjustedVolume": 1000},
-  "atBoundary": {"rawPrice": 30, "rawVolume": 4000, "priceFactor": 4, "quantityFactor": 0.25, "adjustedPrice": 120, "adjustedVolume": 1000}
+    "topicId":  "D02-F01-A02",
+    "input":  {
+                  "targetBasisAt":  "2020-08-30T23:59:59Z",
+                  "knowledgeAt":  "2020-09-02T00:00:00Z",
+                  "roundDecimalPlaces":  6,
+                  "observations":  [
+                                       {
+                                           "timestamp":  "2020-08-28T20:00:00Z",
+                                           "price":  120,
+                                           "volume":  1000,
+                                           "sharesOutstanding":  1000000
+                                       },
+                                       {
+                                           "timestamp":  "2020-08-31T00:00:00Z",
+                                           "price":  30,
+                                           "volume":  4000,
+                                           "sharesOutstanding":  4000000
+                                       },
+                                       {
+                                           "timestamp":  "2020-09-01T00:00:00Z",
+                                           "price":  31,
+                                           "volume":  3600,
+                                           "sharesOutstanding":  4000000
+                                       }
+                                   ],
+                  "eventRevisions":  [
+                                         {
+                                             "eventId":  "SYNTH-SPLIT-2020",
+                                             "revisionId":  "SYNTH-SPLIT-2020-R1",
+                                             "supersedesRevisionId":  null,
+                                             "publishedAt":  "2020-07-30T20:30:00Z",
+                                             "effectiveAt":  "2020-08-31T00:00:00Z",
+                                             "newShares":  4,
+                                             "oldShares":  1,
+                                             "status":  "active",
+                                             "sourceId":  "synthetic-fixture"
+                                         }
+                                     ]
+              },
+    "expected":  {
+                     "basis":  {
+                                   "targetBasisAt":  "2020-08-30T23:59:59Z",
+                                   "knowledgeAt":  "2020-09-02T00:00:00Z",
+                                   "ratioConvention":  "new_shares_per_old_share",
+                                   "boundaryRule":  "targetBasisAt \u003c effectiveAt \u003c= observation.timestamp",
+                                   "priceDirection":  "multiply_post_boundary_values_to_earlier_basis",
+                                   "quantityDirection":  "divide_post_boundary_share_quantities_to_earlier_basis",
+                                   "roundDecimalPlaces":  6
+                               },
+                     "selectedRevisions":  [
+                                               {
+                                                   "eventId":  "SYNTH-SPLIT-2020",
+                                                   "revisionId":  "SYNTH-SPLIT-2020-R1",
+                                                   "supersedesRevisionId":  null,
+                                                   "publishedAt":  "2020-07-30T20:30:00Z",
+                                                   "effectiveAt":  "2020-08-31T00:00:00Z",
+                                                   "newShares":  4,
+                                                   "oldShares":  1,
+                                                   "status":  "active",
+                                                   "sourceId":  "synthetic-fixture"
+                                               }
+                                           ],
+                     "observations":  [
+                                          {
+                                              "timestamp":  "2020-08-28T20:00:00Z",
+                                              "rawPrice":  120,
+                                              "adjustedPrice":  120,
+                                              "rawVolume":  1000,
+                                              "adjustedVolume":  1000,
+                                              "rawSharesOutstanding":  1000000,
+                                              "adjustedSharesOutstanding":  1000000,
+                                              "cumulativePriceFactor":  1,
+                                              "cumulativeQuantityFactor":  1,
+                                              "appliedEventIds":  [
+
+                                                                  ]
+                                          },
+                                          {
+                                              "timestamp":  "2020-08-31T00:00:00Z",
+                                              "rawPrice":  30,
+                                              "adjustedPrice":  120,
+                                              "rawVolume":  4000,
+                                              "adjustedVolume":  1000,
+                                              "rawSharesOutstanding":  4000000,
+                                              "adjustedSharesOutstanding":  1000000,
+                                              "cumulativePriceFactor":  4,
+                                              "cumulativeQuantityFactor":  0.25,
+                                              "appliedEventIds":  [
+                                                                      "SYNTH-SPLIT-2020"
+                                                                  ]
+                                          },
+                                          {
+                                              "timestamp":  "2020-09-01T00:00:00Z",
+                                              "rawPrice":  31,
+                                              "adjustedPrice":  124,
+                                              "rawVolume":  3600,
+                                              "adjustedVolume":  900,
+                                              "rawSharesOutstanding":  4000000,
+                                              "adjustedSharesOutstanding":  1000000,
+                                              "cumulativePriceFactor":  4,
+                                              "cumulativeQuantityFactor":  0.25,
+                                              "appliedEventIds":  [
+                                                                      "SYNTH-SPLIT-2020"
+                                                                  ]
+                                          }
+                                      ],
+                     "warnings":  [
+                                      "rounded outputs may not reverse exactly"
+                                  ]
+                 },
+    "note":  "Synthetic arithmetic using the sourced four-for-one ratio; values are not Apple market observations.",
+    "ratioConvention":  "new_shares_per_old_share",
+    "ratio":  "4 / 1",
+    "targetBasis":  "pre-split share basis",
+    "boundary":  "effectiveAt is inclusive",
+    "beforeBoundary":  {
+                           "rawPrice":  120,
+                           "rawVolume":  1000,
+                           "adjustedPrice":  120,
+                           "adjustedVolume":  1000
+                       },
+    "atBoundary":  {
+                       "rawPrice":  30,
+                       "rawVolume":  4000,
+                       "priceFactor":  4,
+                       "quantityFactor":  0.25,
+                       "adjustedPrice":  120,
+                       "adjustedVolume":  1000
+                   }
 }

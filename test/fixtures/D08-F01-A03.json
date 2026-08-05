@@ -1,5 +1,33 @@
 {
-  "topic_id": "D08-F01-A03",
+  "topicId": "D08-F01-A03",
+  "input": {
+    "pivots": [
+      {"kind": "high", "event_index": 0, "confirmation_index": 1, "price": 100},
+      {"kind": "high", "event_index": 2, "confirmation_index": 3, "price": 100.3},
+      {"kind": "high", "event_index": 4, "confirmation_index": 5, "price": 99.9},
+      {"kind": "high", "event_index": 6, "confirmation_index": 7, "price": 105}
+    ],
+    "epsBps": 50,
+    "minTouches": 3
+  },
+  "expected": {
+    "clusters": [
+      {
+        "kind": "high",
+        "cluster_id": "high-0",
+        "level": 100,
+        "lower": 99.9,
+        "upper": 100.3,
+        "touch_count": 3,
+        "first_confirmation_index": 1,
+        "last_confirmation_index": 5,
+        "member_event_indexes": [0, 2, 4]
+      }
+    ],
+    "noise": [
+      {"kind": "high", "event_index": 6, "confirmation_index": 7, "price": 105}
+    ]
+  },
   "classification": "author-derived calculation over synthetic teaching input",
   "selected_variant": "Same-kind one-dimensional DBSCAN in log-price space, median cluster level, and confirmation-time availability.",
   "formulae": [

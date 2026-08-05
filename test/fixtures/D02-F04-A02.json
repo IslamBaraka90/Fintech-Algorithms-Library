@@ -1,14 +1,185 @@
 {
-  "note": "Synthetic arithmetic copied from tests/shared_fixture.json.",
-  "effectiveAt": "2023-12-31T23:59:59Z",
-  "knownAt": "2024-01-02T12:00:00Z",
-  "historicallyEligible": ["SEC:A", "SEC:B", "SEC:C"],
-  "historicallyIneligible": ["SEC:D"],
-  "laterRoster": ["SEC:A", "SEC:C", "SEC:D"],
-  "missingFromLaterRoster": ["SEC:B"],
-  "retentionRatio": 0.666667,
-  "historicalEqualWeightedReturn": -0.166667,
-  "laterRosterSubsetEqualWeightedReturn": 0.15,
-  "signedDifference": 0.316667,
-  "interpretation": "This sign and magnitude are synthetic and not universal."
+    "topicId":  "D02-F04-A02",
+    "input":  {
+                  "universeId":  "UNIVERSE:SYNTH:CORE",
+                  "definitionId":  "DEF:SYNTH:CORE",
+                  "effectiveAt":  "2023-12-31T23:59:59Z",
+                  "knownAt":  "2024-01-02T12:00:00Z",
+                  "candidateUniverse":  {
+                                            "construction":  "historical_membership_ledger",
+                                            "asOf":  "2023-12-31T23:59:59Z",
+                                            "availableAt":  "2024-01-02T10:00:00Z",
+                                            "securityIds":  [
+                                                                "SEC:A",
+                                                                "SEC:B",
+                                                                "SEC:C",
+                                                                "SEC:D"
+                                                            ],
+                                            "sourceId":  "SYNTH-CANDIDATE-LEDGER"
+                                        },
+                  "universeDefinitions":  [
+                                              {
+                                                  "definitionId":  "DEF:SYNTH:CORE",
+                                                  "universeId":  "UNIVERSE:SYNTH:CORE",
+                                                  "revision":  1,
+                                                  "effectiveFrom":  "2020-01-01T00:00:00Z",
+                                                  "effectiveTo":  null,
+                                                  "announcedAt":  "2019-12-15T12:00:00Z",
+                                                  "availableAt":  "2019-12-15T12:05:00Z",
+                                                  "status":  "active",
+                                                  "baseType":  "named_research_universe",
+                                                  "baseId":  "BASE:SYNTH:001",
+                                                  "ruleSummary":  "Synthetic members documented by effective-dated membership evidence.",
+                                                  "sourceId":  "SYNTH-DEFINITION-R1"
+                                              },
+                                              {
+                                                  "definitionId":  "DEF:SYNTH:CORE",
+                                                  "universeId":  "UNIVERSE:SYNTH:CORE",
+                                                  "revision":  2,
+                                                  "effectiveFrom":  "2020-01-01T00:00:00Z",
+                                                  "effectiveTo":  null,
+                                                  "announcedAt":  "2024-02-01T09:00:00Z",
+                                                  "availableAt":  "2024-02-01T09:05:00Z",
+                                                  "status":  "active",
+                                                  "baseType":  "named_research_universe",
+                                                  "baseId":  "BASE:SYNTH:001",
+                                                  "ruleSummary":  "Later documentation revision; unavailable to the canonical query.",
+                                                  "sourceId":  "SYNTH-DEFINITION-R2"
+                                              }
+                                          ],
+                  "membershipRecords":  [
+                                            {
+                                                "membershipId":  "MEM-A",
+                                                "revision":  1,
+                                                "universeId":  "UNIVERSE:SYNTH:CORE",
+                                                "securityId":  "SEC:A",
+                                                "validFrom":  "2020-01-01T00:00:00Z",
+                                                "validTo":  null,
+                                                "announcedAt":  "2019-12-15T12:00:00Z",
+                                                "availableAt":  "2019-12-15T12:05:00Z",
+                                                "status":  "active",
+                                                "changeType":  "entry",
+                                                "eventId":  "EVENT-A-ENTRY",
+                                                "sourceId":  "SYNTH-MEM-A"
+                                            },
+                                            {
+                                                "membershipId":  "MEM-B",
+                                                "revision":  1,
+                                                "universeId":  "UNIVERSE:SYNTH:CORE",
+                                                "securityId":  "SEC:B",
+                                                "validFrom":  "2020-01-01T00:00:00Z",
+                                                "validTo":  "2024-06-01T00:00:00Z",
+                                                "announcedAt":  "2023-12-20T10:00:00Z",
+                                                "availableAt":  "2023-12-20T10:05:00Z",
+                                                "status":  "active",
+                                                "changeType":  "exit",
+                                                "eventId":  "EVENT-B-EXIT",
+                                                "sourceId":  "SYNTH-MEM-B-R1"
+                                            },
+                                            {
+                                                "membershipId":  "MEM-B",
+                                                "revision":  2,
+                                                "universeId":  "UNIVERSE:SYNTH:CORE",
+                                                "securityId":  "SEC:B",
+                                                "validFrom":  "2020-01-01T00:00:00Z",
+                                                "validTo":  "2023-12-15T00:00:00Z",
+                                                "announcedAt":  "2024-01-10T08:00:00Z",
+                                                "availableAt":  "2024-01-10T08:05:00Z",
+                                                "status":  "active",
+                                                "changeType":  "revision",
+                                                "eventId":  "EVENT-B-CORRECTION",
+                                                "sourceId":  "SYNTH-MEM-B-R2"
+                                            },
+                                            {
+                                                "membershipId":  "MEM-C",
+                                                "revision":  1,
+                                                "universeId":  "UNIVERSE:SYNTH:CORE",
+                                                "securityId":  "SEC:C",
+                                                "validFrom":  "2021-01-01T00:00:00Z",
+                                                "validTo":  null,
+                                                "announcedAt":  "2020-12-20T10:00:00Z",
+                                                "availableAt":  "2020-12-20T10:05:00Z",
+                                                "status":  "active",
+                                                "changeType":  "entry",
+                                                "eventId":  "EVENT-C-ENTRY",
+                                                "sourceId":  "SYNTH-MEM-C"
+                                            },
+                                            {
+                                                "membershipId":  "MEM-D",
+                                                "revision":  1,
+                                                "universeId":  "UNIVERSE:SYNTH:CORE",
+                                                "securityId":  "SEC:D",
+                                                "validFrom":  "2024-02-01T00:00:00Z",
+                                                "validTo":  null,
+                                                "announcedAt":  "2023-12-20T11:00:00Z",
+                                                "availableAt":  "2023-12-20T11:05:00Z",
+                                                "status":  "active",
+                                                "changeType":  "entry",
+                                                "eventId":  "EVENT-D-ENTRY",
+                                                "sourceId":  "SYNTH-MEM-D"
+                                            }
+                                        ],
+                  "comparisonRoster":  {
+                                           "observedAt":  "2025-01-02T00:00:00Z",
+                                           "availableAt":  "2025-01-02T12:00:00Z",
+                                           "securityIds":  [
+                                                               "SEC:A",
+                                                               "SEC:C",
+                                                               "SEC:D"
+                                                           ],
+                                           "sourceId":  "SYNTH-CURRENT-ROSTER"
+                                       }
+              },
+    "expected":  {
+                     "status":  "resolved",
+                     "definitionVersion":  "DEF:SYNTH:CORE@1",
+                     "eligibleSecurityIds":  [
+                                                 "SEC:A",
+                                                 "SEC:B",
+                                                 "SEC:C"
+                                             ],
+                     "ineligibleSecurityIds":  [
+                                                   "SEC:D"
+                                               ],
+                     "unknownSecurityIds":  [
+
+                                            ],
+                     "ambiguousSecurityIds":  [
+
+                                              ],
+                     "hindsightDiagnostics":  {
+                                                  "historicallyEligibleMissingFromCurrent":  [
+                                                                                                 "SEC:B"
+                                                                                             ],
+                                                  "currentRosterNotHistoricallyEligible":  [
+                                                                                               "SEC:D"
+                                                                                           ],
+                                                  "retentionRatio":  0.666667
+                                              }
+                 },
+    "note":  "Synthetic arithmetic copied from tests/shared_fixture.json.",
+    "effectiveAt":  "2023-12-31T23:59:59Z",
+    "knownAt":  "2024-01-02T12:00:00Z",
+    "historicallyEligible":  [
+                                 "SEC:A",
+                                 "SEC:B",
+                                 "SEC:C"
+                             ],
+    "historicallyIneligible":  [
+                                   "SEC:D"
+                               ],
+    "laterRoster":  [
+                        "SEC:A",
+                        "SEC:C",
+                        "SEC:D"
+                    ],
+    "missingFromLaterRoster":  [
+                                   "SEC:B"
+                               ],
+    "retentionRatio":  0.666667,
+    "historicalEqualWeightedReturn":  -0.166667,
+    "laterRosterSubsetEqualWeightedReturn":  0.15,
+    "signedDifference":  0.316667,
+    "interpretation":  "This sign and magnitude are synthetic and not universal.",
+    "evidenceNote":  "Every identifier, membership, timestamp, roster, and return is synthetic."
 }

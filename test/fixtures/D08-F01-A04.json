@@ -1,5 +1,29 @@
 {
-  "topic_id": "D08-F01-A04",
+  "topicId": "D08-F01-A04",
+  "input": {
+    "pivots": [
+      {"kind": "low", "event_index": 0, "confirmation_index": 2, "price": 99.48431564193378},
+      {"kind": "low", "event_index": 10, "confirmation_index": 12, "price": 109.94717245212352},
+      {"kind": "low", "event_index": 20, "confirmation_index": 22, "price": 121.51041751873485},
+      {"kind": "low", "event_index": 30, "confirmation_index": 32, "price": 244.69193226422038}
+    ],
+    "kind": "low",
+    "toleranceBps": 50,
+    "minInliers": 3,
+    "maxPoints": 12
+  },
+  "expected": {
+    "kind": "low",
+    "slope_log_per_bar": 0.010000000000000009,
+    "intercept_log": 4.6,
+    "projected_index": 31,
+    "projected_price": 135.63941440846523,
+    "inlier_count": 3,
+    "outlier_count": 1,
+    "median_absolute_residual_bps": 0,
+    "inlier_event_indexes": [0, 10, 20],
+    "source_pivot_count": 4
+  },
   "classification": "author-derived calculation over synthetic teaching input",
   "selected_variant": "Exhaustive two-point consensus in log-price space, inclusive residual tolerance, deterministic tie-breaking, then least-squares refit on inliers.",
   "formulae": [

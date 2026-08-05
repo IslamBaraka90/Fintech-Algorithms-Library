@@ -1,5 +1,7 @@
 {
-  "topic_id": "D07-F01-A04",
+  "topicId": "D07-F01-A04",
+  "input": {"values": [10, 13, 12, 15, 14, 18], "period": 3},
+  "expected": [null, null, 11.666666666666666, 12.777777777777779, 13.185185185185185, 14.790123456790123],
   "series_id": "synthetic-demo",
   "unit": "index points",
   "frequency": "one observation step",

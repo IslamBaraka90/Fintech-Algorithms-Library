@@ -1,5 +1,81 @@
 {
   "topicId": "D01-F01-A01",
+  "input": {
+    "trades": [
+      {"tradeId": "W1", "timestamp": "2026-01-05T14:30:00.000Z", "session": "S1", "symbol": "SYNTH", "price": 100.0, "volume": 10, "currency": "USD"},
+      {"tradeId": "W2", "timestamp": "2026-01-05T14:30:59.999Z", "session": "S1", "symbol": "SYNTH", "price": 101.0, "volume": 5, "currency": "USD"},
+      {"tradeId": "W3", "timestamp": "2026-01-05T14:31:00.000Z", "session": "S1", "symbol": "SYNTH", "price": 99.0, "volume": 8, "currency": "USD"},
+      {"tradeId": "W4", "timestamp": "2026-01-05T14:33:15.000Z", "session": "S1", "symbol": "SYNTH", "price": 102.0, "volume": 2, "currency": "USD"}
+    ],
+    "config": {
+      "intervalSeconds": 60,
+      "sessionStarts": {"S1": "2026-01-05T14:30:00.000Z"},
+      "emptyBarPolicy": "omit",
+      "closePartial": true
+    }
+  },
+  "expected": [
+    {
+      "barIndex": 0,
+      "session": "S1",
+      "intervalIndex": 0,
+      "startTime": "2026-01-05T14:30:00.000Z",
+      "endTime": "2026-01-05T14:31:00.000Z",
+      "firstTradeTime": "2026-01-05T14:30:00.000Z",
+      "lastTradeTime": "2026-01-05T14:30:59.999Z",
+      "open": 100,
+      "high": 101,
+      "low": 100,
+      "close": 101,
+      "volume": 15,
+      "dollarValue": 1505,
+      "tickCount": 2,
+      "firstTradeId": "W1",
+      "lastTradeId": "W2",
+      "emptyIntervalsBefore": 0,
+      "closeReason": "interval"
+    },
+    {
+      "barIndex": 1,
+      "session": "S1",
+      "intervalIndex": 1,
+      "startTime": "2026-01-05T14:31:00.000Z",
+      "endTime": "2026-01-05T14:32:00.000Z",
+      "firstTradeTime": "2026-01-05T14:31:00.000Z",
+      "lastTradeTime": "2026-01-05T14:31:00.000Z",
+      "open": 99,
+      "high": 99,
+      "low": 99,
+      "close": 99,
+      "volume": 8,
+      "dollarValue": 792,
+      "tickCount": 1,
+      "firstTradeId": "W3",
+      "lastTradeId": "W3",
+      "emptyIntervalsBefore": 0,
+      "closeReason": "interval"
+    },
+    {
+      "barIndex": 2,
+      "session": "S1",
+      "intervalIndex": 3,
+      "startTime": "2026-01-05T14:33:00.000Z",
+      "endTime": "2026-01-05T14:34:00.000Z",
+      "firstTradeTime": "2026-01-05T14:33:15.000Z",
+      "lastTradeTime": "2026-01-05T14:33:15.000Z",
+      "open": 102,
+      "high": 102,
+      "low": 102,
+      "close": 102,
+      "volume": 2,
+      "dollarValue": 204,
+      "tickCount": 1,
+      "firstTradeId": "W4",
+      "lastTradeId": "W4",
+      "emptyIntervalsBefore": 1,
+      "closeReason": "stream_end"
+    }
+  ],
   "dataStatus": "synthetic",
   "canonicalRule": "k(t)=floor((t-a_s)/Delta), I_(s,k)=[a_s+k*Delta, a_s+(k+1)*Delta)",
   "config": {

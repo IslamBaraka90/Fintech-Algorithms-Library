@@ -1,4 +1,61 @@
 {
+  "topicId": "D04-F01-A03",
+  "input": {
+    "contract": {
+      "metric": "cumulative_issue_count_advance_decline_line",
+      "series_id": "SYNTH-AD",
+      "continuity_id": "SYNTH-CONTINUITY",
+      "venue_id": "SYNTH-X",
+      "universe_id": "SYNTH-5",
+      "calendar_id": "SYNTH-CAL",
+      "session_type": "regular",
+      "comparison_basis": "comparable-prior-close",
+      "seed": 0,
+      "seed_lineage_id": "SEED-0",
+      "seed_effective_at": "2026-01-04T21:00:00Z",
+      "seed_available_at": "2026-01-04T21:05:00Z",
+      "expected_sessions": [
+        {"session_sequence": 1, "session_date": "2026-01-05"},
+        {"session_sequence": 2, "session_date": "2026-01-06"}
+      ]
+    },
+    "events": [
+      {
+        "event_id": "AD-1", "ingest_sequence": 1, "revision_number": 1,
+        "supersedes_event_id": null, "action": "upsert", "session_sequence": 1,
+        "session_date": "2026-01-05", "effective_at": "2026-01-05T21:00:00Z",
+        "available_at": "2026-01-05T21:05:00Z", "series_id": "SYNTH-AD",
+        "continuity_id": "SYNTH-CONTINUITY", "venue_id": "SYNTH-X",
+        "universe_id": "SYNTH-5", "calendar_id": "SYNTH-CAL", "session_type": "regular",
+        "comparison_basis": "comparable-prior-close", "universe_snapshot_id": "U-1",
+        "is_final": true, "source_evidence_state": "ready", "advances": 3,
+        "declines": 1, "unchanged": 1, "excluded": 0, "unclassified": 0, "universe_size": 5
+      },
+      {
+        "event_id": "AD-2", "ingest_sequence": 2, "revision_number": 1,
+        "supersedes_event_id": null, "action": "upsert", "session_sequence": 2,
+        "session_date": "2026-01-06", "effective_at": "2026-01-06T21:00:00Z",
+        "available_at": "2026-01-06T21:05:00Z", "series_id": "SYNTH-AD",
+        "continuity_id": "SYNTH-CONTINUITY", "venue_id": "SYNTH-X",
+        "universe_id": "SYNTH-5", "calendar_id": "SYNTH-CAL", "session_type": "regular",
+        "comparison_basis": "comparable-prior-close", "universe_snapshot_id": "U-2",
+        "is_final": true, "source_evidence_state": "ready", "advances": 1,
+        "declines": 2, "unchanged": 2, "excluded": 0, "unclassified": 0, "universe_size": 5
+      }
+    ],
+    "knowledgeCutoff": "2026-01-06T22:00:00Z"
+  },
+  "expected": {
+    "status": "resolved",
+    "reasons": [],
+    "final_value": 1,
+    "contains_provisional": false,
+    "ignored_future_event_count": 0,
+    "points": {
+      "0": {"session_sequence": 1, "net_advances": 2, "cumulative_line": 2},
+      "1": {"session_sequence": 2, "net_advances": -1, "cumulative_line": 1}
+    }
+  },
   "data_class": "synthetic",
   "seed": 0,
   "original": {

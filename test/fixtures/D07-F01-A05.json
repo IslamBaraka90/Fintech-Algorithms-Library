@@ -1,5 +1,12 @@
 {
-  "topic_id": "D07-F01-A05",
+  "topicId": "D07-F01-A05",
+  "input": {"values": [10, 13, 12, 15, 14, 18, 17, 20], "span": 3},
+  "expected": {
+    "4": {"dema": 14.444444444444445, "status": "ready"},
+    "5": {"dema": 17.305555555555557, "status": "ready"},
+    "6": {"dema": 17.444444444444443, "status": "ready"},
+    "7": {"dema": 19.618055555555557, "status": "ready"}
+  },
   "convention": {
     "span": 3,
     "alpha": "1/2",

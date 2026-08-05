@@ -1,21 +1,255 @@
 {
-  "topicId": "D02-F04-A03",
-  "description": "Synthetic traditional-IPO evidence under a declared research-availability policy.",
-  "beforeLocalIngestion": {
-    "effectiveAt": "2025-05-13T13:36:10Z",
-    "knownAt": "2025-05-13T13:35:30Z",
-    "status": "incomplete",
-    "missingEventTypes": ["local_ingestion"],
-    "effectiveGateAt": null,
-    "knowledgeGateAt": null
-  },
-  "afterLocalIngestion": {
-    "effectiveAt": "2025-05-13T13:36:10Z",
-    "knownAt": "2025-05-13T13:36:10Z",
-    "status": "resolved",
-    "missingEventTypes": [],
-    "effectiveGateAt": "2025-05-13T13:36:00Z",
-    "knowledgeGateAt": "2025-05-13T13:36:05Z"
-  },
-  "boundary": "The result describes this research policy only. It does not establish investability, tradability, liquidity, offering eligibility, or returns."
+    "topicId":  "D02-F04-A03",
+    "input":  {
+                  "query":  {
+                                "issuerId":  "ISSUER-SYN-001",
+                                "instrumentId":  "INSTRUMENT-SYN-001",
+                                "listingId":  "LISTING-SYN-XNAS",
+                                "effectiveAt":  "2025-05-13T13:36:10Z",
+                                "knownAt":  "2025-05-13T13:36:10Z",
+                                "policyId":  "POLICY-SYN-IPO-RESEARCH"
+                            },
+                  "policies":  [
+                                   {
+                                       "policyId":  "POLICY-SYN-IPO-RESEARCH",
+                                       "revision":  1,
+                                       "state":  "active",
+                                       "effectiveAt":  "2025-05-01T00:00:00Z",
+                                       "availableAt":  "2025-05-01T00:05:00Z",
+                                       "sourceId":  "SYN-RESEARCH-GOVERNANCE",
+                                       "context":  "traditional_ipo",
+                                       "marketPhase":  "regular",
+                                       "requiredEventTypes":  [
+                                                                  "registration_effective",
+                                                                  "listing_notice",
+                                                                  "first_eligible_session",
+                                                                  "first_observed_trade",
+                                                                  "vendor_release",
+                                                                  "local_ingestion"
+                                                              ]
+                                   },
+                                   {
+                                       "policyId":  "POLICY-SYN-IPO-RESEARCH",
+                                       "revision":  2,
+                                       "state":  "active",
+                                       "effectiveAt":  "2025-05-01T00:00:00Z",
+                                       "availableAt":  "2025-05-14T09:00:00Z",
+                                       "sourceId":  "SYN-RESEARCH-GOVERNANCE",
+                                       "context":  "traditional_ipo",
+                                       "marketPhase":  "regular",
+                                       "requiredEventTypes":  [
+                                                                  "registration_effective",
+                                                                  "listing_notice",
+                                                                  "first_eligible_session",
+                                                                  "first_observed_quote",
+                                                                  "first_observed_trade",
+                                                                  "vendor_release",
+                                                                  "local_ingestion"
+                                                              ]
+                                   }
+                               ],
+                  "records":  [
+                                  {
+                                      "eventId":  "EV-FILING",
+                                      "revision":  1,
+                                      "state":  "active",
+                                      "eventType":  "issuer_filing",
+                                      "issuerId":  "ISSUER-SYN-001",
+                                      "instrumentId":  "INSTRUMENT-SYN-001",
+                                      "listingId":  "LISTING-SYN-XNAS",
+                                      "marketPhase":  "all",
+                                      "effectiveAt":  "2025-05-05T14:00:00Z",
+                                      "availableAt":  "2025-05-05T14:03:00Z",
+                                      "clockOwner":  "regulator",
+                                      "sourceId":  "SYN-REGULATOR-FILING"
+                                  },
+                                  {
+                                      "eventId":  "EV-EFFECT",
+                                      "revision":  1,
+                                      "state":  "active",
+                                      "eventType":  "registration_effective",
+                                      "issuerId":  "ISSUER-SYN-001",
+                                      "instrumentId":  "INSTRUMENT-SYN-001",
+                                      "listingId":  "LISTING-SYN-XNAS",
+                                      "marketPhase":  "all",
+                                      "effectiveAt":  "2025-05-08T12:00:00Z",
+                                      "availableAt":  "2025-05-08T12:02:00Z",
+                                      "clockOwner":  "regulator",
+                                      "sourceId":  "SYN-REGULATOR-EFFECT"
+                                  },
+                                  {
+                                      "eventId":  "EV-LIST",
+                                      "revision":  1,
+                                      "state":  "active",
+                                      "eventType":  "listing_notice",
+                                      "issuerId":  "ISSUER-SYN-001",
+                                      "instrumentId":  "INSTRUMENT-SYN-001",
+                                      "listingId":  "LISTING-SYN-XNAS",
+                                      "marketPhase":  "all",
+                                      "effectiveAt":  "2025-05-13T13:30:00Z",
+                                      "availableAt":  "2025-05-08T15:10:00Z",
+                                      "clockOwner":  "exchange",
+                                      "sourceId":  "SYN-EXCHANGE-NOTICE"
+                                  },
+                                  {
+                                      "eventId":  "EV-LIST",
+                                      "revision":  2,
+                                      "state":  "active",
+                                      "eventType":  "listing_notice",
+                                      "issuerId":  "ISSUER-SYN-001",
+                                      "instrumentId":  "INSTRUMENT-SYN-001",
+                                      "listingId":  "LISTING-SYN-XNAS",
+                                      "marketPhase":  "all",
+                                      "effectiveAt":  "2025-05-13T13:35:00Z",
+                                      "availableAt":  "2025-05-09T16:00:00Z",
+                                      "clockOwner":  "exchange",
+                                      "sourceId":  "SYN-EXCHANGE-NOTICE"
+                                  },
+                                  {
+                                      "eventId":  "EV-LIST",
+                                      "revision":  3,
+                                      "state":  "active",
+                                      "eventType":  "listing_notice",
+                                      "issuerId":  "ISSUER-SYN-001",
+                                      "instrumentId":  "INSTRUMENT-SYN-001",
+                                      "listingId":  "LISTING-SYN-XNAS",
+                                      "marketPhase":  "all",
+                                      "effectiveAt":  "2025-05-13T13:36:00Z",
+                                      "availableAt":  "2025-05-14T09:05:00Z",
+                                      "clockOwner":  "exchange",
+                                      "sourceId":  "SYN-EXCHANGE-NOTICE"
+                                  },
+                                  {
+                                      "eventId":  "EV-PRICE",
+                                      "revision":  1,
+                                      "state":  "active",
+                                      "eventType":  "offer_pricing",
+                                      "issuerId":  "ISSUER-SYN-001",
+                                      "instrumentId":  "INSTRUMENT-SYN-001",
+                                      "listingId":  "LISTING-SYN-XNAS",
+                                      "marketPhase":  "all",
+                                      "effectiveAt":  "2025-05-12T22:00:00Z",
+                                      "availableAt":  "2025-05-12T22:05:00Z",
+                                      "clockOwner":  "underwriter",
+                                      "sourceId":  "SYN-PRICING-NOTICE"
+                                  },
+                                  {
+                                      "eventId":  "EV-ALLOC",
+                                      "revision":  1,
+                                      "state":  "active",
+                                      "eventType":  "allocation",
+                                      "issuerId":  "ISSUER-SYN-001",
+                                      "instrumentId":  "INSTRUMENT-SYN-001",
+                                      "listingId":  "LISTING-SYN-XNAS",
+                                      "marketPhase":  "all",
+                                      "effectiveAt":  "2025-05-13T00:30:00Z",
+                                      "availableAt":  "2025-05-13T00:50:00Z",
+                                      "clockOwner":  "underwriter",
+                                      "sourceId":  "SYN-ALLOCATION-FEED"
+                                  },
+                                  {
+                                      "eventId":  "EV-SESSION",
+                                      "revision":  1,
+                                      "state":  "active",
+                                      "eventType":  "first_eligible_session",
+                                      "issuerId":  "ISSUER-SYN-001",
+                                      "instrumentId":  "INSTRUMENT-SYN-001",
+                                      "listingId":  "LISTING-SYN-XNAS",
+                                      "marketPhase":  "regular",
+                                      "effectiveAt":  "2025-05-13T13:30:00Z",
+                                      "availableAt":  "2025-05-12T15:15:00Z",
+                                      "clockOwner":  "exchange",
+                                      "sourceId":  "SYN-XNAS-CALENDAR",
+                                      "calendarId":  "XNAS",
+                                      "sessionId":  "XNAS-2025-05-13"
+                                  },
+                                  {
+                                      "eventId":  "EV-QUOTE",
+                                      "revision":  1,
+                                      "state":  "active",
+                                      "eventType":  "first_observed_quote",
+                                      "issuerId":  "ISSUER-SYN-001",
+                                      "instrumentId":  "INSTRUMENT-SYN-001",
+                                      "listingId":  "LISTING-SYN-XNAS",
+                                      "marketPhase":  "regular",
+                                      "effectiveAt":  "2025-05-13T13:35:02Z",
+                                      "availableAt":  "2025-05-13T13:35:05Z",
+                                      "clockOwner":  "vendor",
+                                      "sourceId":  "SYN-VENDOR-QUOTE"
+                                  },
+                                  {
+                                      "eventId":  "EV-TRADE",
+                                      "revision":  1,
+                                      "state":  "active",
+                                      "eventType":  "first_observed_trade",
+                                      "issuerId":  "ISSUER-SYN-001",
+                                      "instrumentId":  "INSTRUMENT-SYN-001",
+                                      "listingId":  "LISTING-SYN-XNAS",
+                                      "marketPhase":  "regular",
+                                      "effectiveAt":  "2025-05-13T13:35:07Z",
+                                      "availableAt":  "2025-05-13T13:35:12Z",
+                                      "clockOwner":  "vendor",
+                                      "sourceId":  "SYN-VENDOR-TRADE"
+                                  },
+                                  {
+                                      "eventId":  "EV-VENDOR",
+                                      "revision":  1,
+                                      "state":  "active",
+                                      "eventType":  "vendor_release",
+                                      "issuerId":  "ISSUER-SYN-001",
+                                      "instrumentId":  "INSTRUMENT-SYN-001",
+                                      "listingId":  "LISTING-SYN-XNAS",
+                                      "marketPhase":  "all",
+                                      "effectiveAt":  "2025-05-13T13:35:20Z",
+                                      "availableAt":  "2025-05-13T13:35:24Z",
+                                      "clockOwner":  "vendor",
+                                      "sourceId":  "SYN-VENDOR-REFERENCE"
+                                  },
+                                  {
+                                      "eventId":  "EV-LOCAL",
+                                      "revision":  1,
+                                      "state":  "active",
+                                      "eventType":  "local_ingestion",
+                                      "issuerId":  "ISSUER-SYN-001",
+                                      "instrumentId":  "INSTRUMENT-SYN-001",
+                                      "listingId":  "LISTING-SYN-XNAS",
+                                      "marketPhase":  "all",
+                                      "effectiveAt":  "2025-05-13T13:36:00Z",
+                                      "availableAt":  "2025-05-13T13:36:05Z",
+                                      "clockOwner":  "research_system",
+                                      "sourceId":  "SYN-LOCAL-PIPELINE"
+                                  }
+                              ]
+              },
+    "expected":  {
+                     "status":  "resolved",
+                     "effectiveGateAt":  "2025-05-13T13:36:00Z",
+                     "knowledgeGateAt":  "2025-05-13T13:36:05Z",
+                     "missingEventTypes":  [
+
+                                           ]
+                 },
+    "description":  "Synthetic traditional-IPO evidence under a declared research-availability policy.",
+    "beforeLocalIngestion":  {
+                                 "effectiveAt":  "2025-05-13T13:36:10Z",
+                                 "knownAt":  "2025-05-13T13:35:30Z",
+                                 "status":  "incomplete",
+                                 "missingEventTypes":  [
+                                                           "local_ingestion"
+                                                       ],
+                                 "effectiveGateAt":  null,
+                                 "knowledgeGateAt":  null
+                             },
+    "afterLocalIngestion":  {
+                                "effectiveAt":  "2025-05-13T13:36:10Z",
+                                "knownAt":  "2025-05-13T13:36:10Z",
+                                "status":  "resolved",
+                                "missingEventTypes":  [
+
+                                                      ],
+                                "effectiveGateAt":  "2025-05-13T13:36:00Z",
+                                "knowledgeGateAt":  "2025-05-13T13:36:05Z"
+                            },
+    "boundary":  "The result describes this research policy only. It does not establish investability, tradability, liquidity, offering eligibility, or returns.",
+    "evidenceNote":  "Every event, identifier, source, and timestamp in this fixture is synthetic. The policy evaluates research data readiness only."
 }

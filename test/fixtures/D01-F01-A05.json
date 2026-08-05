@@ -1,5 +1,46 @@
 {
   "topicId": "D01-F01-A05",
+  "input": {
+    "trades": [
+      {"tradeId":"W1","timestamp":"2026-01-05T14:30:00.000Z","session":"2026-01-05","symbol":"SYNTH","price":100.0,"volume":10,"currency":"USD"},
+      {"tradeId":"W2","timestamp":"2026-01-05T14:30:01.000Z","session":"2026-01-05","symbol":"SYNTH","price":100.0,"volume":10,"currency":"USD"},
+      {"tradeId":"W3","timestamp":"2026-01-05T14:30:02.000Z","session":"2026-01-05","symbol":"SYNTH","price":100.1,"volume":10,"currency":"USD"},
+      {"tradeId":"W4","timestamp":"2026-01-05T14:30:03.000Z","session":"2026-01-05","symbol":"SYNTH","price":100.05,"volume":10,"currency":"USD"},
+      {"tradeId":"W5","timestamp":"2026-01-05T14:30:04.000Z","session":"2026-01-05","symbol":"SYNTH","price":100.1,"volume":10,"currency":"USD"},
+      {"tradeId":"W6","timestamp":"2026-01-05T14:30:05.000Z","session":"2026-01-05","symbol":"SYNTH","price":100.15,"volume":10,"currency":"USD"}
+    ],
+    "config": {
+      "closePartial": true,
+      "initialTickSign": 1,
+      "initialExpectedTicks": 8,
+      "initialExpectedTickImbalance": 0.5,
+      "alphaTicks": 0.25,
+      "alphaTickImbalance": 0.5,
+      "thresholdFloor": 3,
+      "thresholdMultiplier": 1
+    }
+  },
+  "expected": [
+    {
+      "barIndex": 0,
+      "session": "2026-01-05",
+      "startTime": "2026-01-05T14:30:00.000Z",
+      "endTime": "2026-01-05T14:30:05.000Z",
+      "lastTradeTime": "2026-01-05T14:30:05.000Z",
+      "open": 100,
+      "high": 100.15,
+      "low": 100,
+      "close": 100.15,
+      "volume": 60,
+      "dollarValue": 6004,
+      "tickCount": 6,
+      "firstTradeId": "W1",
+      "lastTradeId": "W6",
+      "closeReason": "threshold",
+      "imbalance": 4,
+      "threshold": 4
+    }
+  ],
   "evidenceClass": "deterministic package derivation",
   "config": {
     "closePartial": true,

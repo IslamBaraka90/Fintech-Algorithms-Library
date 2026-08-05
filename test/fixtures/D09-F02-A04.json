@@ -1,5 +1,21 @@
 {
-  "topic_id": "D09-F02-A04",
+  "topicId": "D09-F02-A04",
+  "input": {
+    "values": [12, 15, 18, 21, 24, 27, 30, 33],
+    "exog": [[1], [2], [3], [4], [5], [6], [7], [8]],
+    "futureExog": [[9], [10]],
+    "beta": [2],
+    "ar": [0.5],
+    "ma": [],
+    "seasonalAr": [0.25],
+    "seasonalMa": [],
+    "intercept": 0,
+    "differenceOrder": 1,
+    "seasonalDifferenceOrder": 0,
+    "period": 2,
+    "horizon": 2
+  },
+  "expected": {"forecast": [35.625, 38.0625]},
   "classification": "author-derived arithmetic over synthetic teaching input",
   "selected_variant": "Regression plus multiplicative SARIMA errors with fixed coefficients, d and D in {0,1}, known future exogenous rows, zero future innovations, and explicit polynomial cross-terms.",
   "values": [

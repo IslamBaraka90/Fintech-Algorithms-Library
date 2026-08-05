@@ -1,4 +1,13 @@
 {
+  "topicId": "D07-F02-A01",
+  "input": {"values": [10, 11, 12, 13, 14, 15, 16, 15, 14, 13, 12, 13, 15, 18], "fastSpan": 3, "slowSpan": 5, "signalSpan": 3},
+  "expected": {
+    "4": {"fastEma": 13, "slowEma": 12, "macd": 1, "signal": null, "histogram": null, "status": "warming_signal"},
+    "6": {"fastEma": 15, "slowEma": 14, "macd": 1, "signal": 1, "histogram": 0, "status": "ready"},
+    "7": {"fastEma": 15, "slowEma": 14.333333333333334, "macd": 0.6666666666666661, "signal": 0.833333333333333, "histogram": -0.16666666666666696, "status": "ready"},
+    "9": {"macd": -0.06481481481481488, "signal": 0.24537037037037002, "histogram": -0.3101851851851849, "status": "ready"},
+    "12": {"macd": 0.2088048696844993, "signal": 0.04260973936899856, "histogram": 0.16619513031550073, "status": "ready"}
+  },
   "title": "A 3/5/3 MACD through rise, reversal, and recovery",
   "spans": {"fast": 3, "slow": 5, "signal": 3},
   "alphas": {"fast": "1/2", "slow": "1/3", "signal": "1/2"},

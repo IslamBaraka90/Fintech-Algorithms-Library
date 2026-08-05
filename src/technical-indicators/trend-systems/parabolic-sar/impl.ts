@@ -26,7 +26,7 @@ throw new TypeError(`${name} must contain only finite numbers`);
 throw new RangeError("close must lie inside each high-low range");
       }
     }
-export function parabolic_sar(high: number[], low: number[], initialDirection: "long" | "short" = "long", accelerationStep = 0.02, accelerationMax = 0.2) {
+export function parabolicSar(high: number[], low: number[], initialDirection: "long" | "short" = "long", accelerationStep = 0.02, accelerationMax = 0.2) {
   validateHL(high, low);
   if (high.length < 2) throw new RangeError("at least two observations are required");
   if (!["long", "short"].includes(initialDirection)) throw new RangeError("initialDirection must be long or short");

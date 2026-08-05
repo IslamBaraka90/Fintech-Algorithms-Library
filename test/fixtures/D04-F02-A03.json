@@ -1,5 +1,41 @@
 {
-  "topic_id": "D04-F02-A03",
+  "topicId": "D04-F02-A03",
+  "input": {
+    "records": [
+      {
+        "session_date": "2026-01-02",
+        "session_sequence": 1,
+        "effective_at": "2026-01-02T21:00:00Z",
+        "available_at": "2026-01-02T21:20:00Z",
+        "revision": 0,
+        "event_type": "upsert",
+        "source_evidence_state": "ready",
+        "venue_id": "SYNTH-X",
+        "universe_id": "SYNTH-STABLE-200",
+        "methodology_id": "close-vs-comparable-prior-close-v1",
+        "calendar_id": "SYNTH-WEEKDAY",
+        "volume_unit": "shares",
+        "volume_adjustment_basis": "reported-unadjusted",
+        "advances": 100,
+        "declines": 100,
+        "unchanged": 20,
+        "excluded": 0,
+        "unclassified": 0,
+        "universe_size": 220,
+        "up_volume": 1000000,
+        "down_volume": 1000000,
+        "unchanged_volume": 100000,
+        "total_volume": 2100000
+      }
+    ],
+    "cutoff": "2026-04-01T00:00:00Z"
+  },
+  "expected": {
+    "status": "resolved",
+    "latest_oscillator": null,
+    "latest_index_value": null,
+    "ignored_future_records": 0
+  },
   "classification": "synthetic teaching input and author-derived arithmetic",
   "first_ready": {
     "observation": 39,

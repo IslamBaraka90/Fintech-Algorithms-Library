@@ -1,10 +1,129 @@
 {
-  "notice": "Synthetic CRSP CIZ 2.0-shaped values; not licensed CRSP observations.",
-  "crspField": "DlyCumFacShr",
-  "crspBasisDate": "2024-09-05",
-  "rows": [
-    {"date": "2024-08-28", "rawSharesOutstandingThousands": 250, "rawVolumeShares": 100, "DlyCumFacShr": 4, "crspAdjustedSharesOutstandingThousands": 1000, "crspAdjustedVolumeShares": 400},
-    {"date": "2024-08-29", "rawSharesOutstandingThousands": 250, "rawVolumeShares": 125, "DlyCumFacShr": 4, "crspAdjustedSharesOutstandingThousands": 1000, "crspAdjustedVolumeShares": 500},
-    {"date": "2024-08-30", "rawSharesOutstandingThousands": 1000, "rawVolumeShares": 460, "DlyCumFacShr": 1, "crspAdjustedSharesOutstandingThousands": 1000, "crspAdjustedVolumeShares": 460}
-  ]
+    "topicId":  "D02-F01-A05",
+    "input":  {
+                  "schemaVersion":  "CRSP_US_STOCK_CIZ_2_0",
+                  "sourceRelease":  "synthetic-ciz-2.0-fixture-v1",
+                  "crspBasisDate":  "2024-09-05",
+                  "extractCoverage":  "full_history",
+                  "records":  [
+                                  {
+                                      "packageSecurityKey":  "SYNTHETIC-CRSP-CIZ-001",
+                                      "date":  "2024-08-28",
+                                      "frequency":  "daily",
+                                      "crspFactorField":  "DlyCumFacShr",
+                                      "crspCumulativeShareFactor":  4,
+                                      "crspFactorStatus":  "observed",
+                                      "rawSharesOutstandingThousands":  250,
+                                      "rawVolumeShares":  100
+                                  },
+                                  {
+                                      "packageSecurityKey":  "SYNTHETIC-CRSP-CIZ-001",
+                                      "date":  "2024-08-29",
+                                      "frequency":  "daily",
+                                      "crspFactorField":  "DlyCumFacShr",
+                                      "crspCumulativeShareFactor":  4,
+                                      "crspFactorStatus":  "observed",
+                                      "rawSharesOutstandingThousands":  250,
+                                      "rawVolumeShares":  125
+                                  },
+                                  {
+                                      "packageSecurityKey":  "SYNTHETIC-CRSP-CIZ-001",
+                                      "date":  "2024-08-30",
+                                      "frequency":  "daily",
+                                      "crspFactorField":  "DlyCumFacShr",
+                                      "crspCumulativeShareFactor":  1,
+                                      "crspFactorStatus":  "observed",
+                                      "rawSharesOutstandingThousands":  1000,
+                                      "rawVolumeShares":  460
+                                  },
+                                  {
+                                      "packageSecurityKey":  "SYNTHETIC-CRSP-CIZ-001",
+                                      "date":  "2024-09-03",
+                                      "frequency":  "daily",
+                                      "crspFactorField":  "DlyCumFacShr",
+                                      "crspCumulativeShareFactor":  1,
+                                      "crspFactorStatus":  "observed",
+                                      "rawSharesOutstandingThousands":  1000,
+                                      "rawVolumeShares":  520
+                                  },
+                                  {
+                                      "packageSecurityKey":  "SYNTHETIC-CRSP-CIZ-001",
+                                      "date":  "2024-09-04",
+                                      "frequency":  "daily",
+                                      "crspFactorField":  "DlyCumFacShr",
+                                      "crspCumulativeShareFactor":  1,
+                                      "crspFactorStatus":  "observed",
+                                      "rawSharesOutstandingThousands":  1000,
+                                      "rawVolumeShares":  null
+                                  },
+                                  {
+                                      "packageSecurityKey":  "SYNTHETIC-CRSP-CIZ-001",
+                                      "date":  "2024-09-05",
+                                      "frequency":  "daily",
+                                      "crspFactorField":  "DlyCumFacShr",
+                                      "crspCumulativeShareFactor":  1,
+                                      "crspFactorStatus":  "observed",
+                                      "rawSharesOutstandingThousands":  1000,
+                                      "rawVolumeShares":  510
+                                  }
+                              ]
+              },
+    "expected":  {
+                     "rows":  [
+                                  {
+                                      "crspAdjustedSharesOutstandingThousands":  1000,
+                                      "crspAdjustedVolumeShares":  400
+                                  },
+                                  {
+                                      "crspAdjustedSharesOutstandingThousands":  1000,
+                                      "crspAdjustedVolumeShares":  500
+                                  },
+                                  {
+                                      "crspAdjustedSharesOutstandingThousands":  1000,
+                                      "crspAdjustedVolumeShares":  460
+                                  },
+                                  {
+                                      "crspAdjustedSharesOutstandingThousands":  1000,
+                                      "crspAdjustedVolumeShares":  520
+                                  },
+                                  {
+                                      "crspAdjustedSharesOutstandingThousands":  1000,
+                                      "crspAdjustedVolumeShares":  null
+                                  },
+                                  {
+                                      "crspAdjustedSharesOutstandingThousands":  1000,
+                                      "crspAdjustedVolumeShares":  510
+                                  }
+                              ]
+                 },
+    "notice":  "Synthetic CRSP CIZ 2.0-shaped values; not licensed CRSP observations.",
+    "crspField":  "DlyCumFacShr",
+    "crspBasisDate":  "2024-09-05",
+    "rows":  [
+                 {
+                     "date":  "2024-08-28",
+                     "rawSharesOutstandingThousands":  250,
+                     "rawVolumeShares":  100,
+                     "DlyCumFacShr":  4,
+                     "crspAdjustedSharesOutstandingThousands":  1000,
+                     "crspAdjustedVolumeShares":  400
+                 },
+                 {
+                     "date":  "2024-08-29",
+                     "rawSharesOutstandingThousands":  250,
+                     "rawVolumeShares":  125,
+                     "DlyCumFacShr":  4,
+                     "crspAdjustedSharesOutstandingThousands":  1000,
+                     "crspAdjustedVolumeShares":  500
+                 },
+                 {
+                     "date":  "2024-08-30",
+                     "rawSharesOutstandingThousands":  1000,
+                     "rawVolumeShares":  460,
+                     "DlyCumFacShr":  1,
+                     "crspAdjustedSharesOutstandingThousands":  1000,
+                     "crspAdjustedVolumeShares":  460
+                 }
+             ],
+    "evidenceScope":  "Synthetic values shaped like CRSP CIZ 2.0 fields; no CRSP observations are redistributed."
 }

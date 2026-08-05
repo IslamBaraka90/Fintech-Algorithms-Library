@@ -1,5 +1,47 @@
 {
-  "topic_id": "D04-F01-A01",
+  "topicId": "D04-F01-A01",
+  "input": {
+    "session_date": "2026-01-05",
+    "session_id": "regular",
+    "session_timezone": "UTC",
+    "venue_id": "SYNTH-X",
+    "universe_id": "SYNTH-3",
+    "comparison_basis": "comparable-prior-close",
+    "corporate_action_policy": "provider-adjusted",
+    "price_tolerance": 0,
+    "calculation_as_of": "2026-01-05T22:00:00Z",
+    "revisions": [
+      {
+        "revision_id": "R1",
+        "revision_sequence": 1,
+        "supersedes_revision_id": null,
+        "effective_at": "2026-01-05T21:00:00Z",
+        "available_at": "2026-01-05T21:05:00Z",
+        "is_final": true,
+        "members": [
+          {"listing_id": "L-A", "security_id": "S-A", "ticker": "A", "state": "eligible", "current_price": 11, "prior_comparable_price": 10},
+          {"listing_id": "L-D", "security_id": "S-D", "ticker": "D", "state": "eligible", "current_price": 9, "prior_comparable_price": 10},
+          {"listing_id": "L-U", "security_id": "S-U", "ticker": "U", "state": "eligible", "current_price": 10, "prior_comparable_price": 10}
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "status": "ready",
+    "direction": "balanced",
+    "selected_revision_id": "R1",
+    "advances": 1,
+    "declines": 1,
+    "unchanged": 1,
+    "excluded": 0,
+    "unclassified": 0,
+    "universe_size": 3,
+    "mover_count": 2,
+    "classified_count": 3,
+    "coverage_ratio": 1,
+    "net_advances": 0,
+    "is_provisional": false
+  },
   "fixture": "../datasets/net-advances-fixtures.json",
   "query_before_correction": {
     "calculation_as_of": "2026-01-05T21:30:00Z",

@@ -1,8 +1,9 @@
 {
-  "topic_id": "D07-F01-A01",
+  "topicId": "D07-F01-A01",
   "title": "Three-observation trailing SMA",
   "window": 3,
   "values": [10, 13, 12, 15, 14, 18],
+  "input": {"values": [10, 13, 12, 15, 14, 18], "window": 3},
   "expected": [null, null, 11.666666666666666, 13.333333333333334, 13.666666666666666, 15.666666666666666],
   "steps": [
     {"observation": 1, "incoming": 10, "outgoing": null, "window_values": [10], "window_sum": null, "sma": null, "status": "warming"},

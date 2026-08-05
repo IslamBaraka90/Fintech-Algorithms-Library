@@ -1,21 +1,790 @@
 {
-  "notice": "Synthetic educational output derived from tests/shared_fixture.json; not a real issuer or provider record.",
-  "query": {
-    "validAt": "2026-03-01T12:00:00Z",
-    "knownAt": "2026-03-05T12:00:00Z",
-    "leftShareClassId": "SYN-CLASS-FOUNDER",
-    "rightShareClassId": "SYN-CLASS-PUBLIC"
-  },
-  "result": {
-    "state": "RESOLVED",
-    "sameIssuerShareClassIds": ["SYN-CLASS-FOUNDER", "SYN-CLASS-PREFERRED", "SYN-CLASS-PUBLIC"],
-    "votingRightsRatioLeftToRight": {"status":"ESTABLISHED","numerator":10,"denominator":1,"unit":"votes_per_share"},
-    "economicRightsRatioLeftToRight": {"status":"ESTABLISHED","numerator":1,"denominator":1,"unit":"distribution_units_per_share"},
-    "equalEconomics": true,
-    "conversion": {"status":"ESTABLISHED","direction":"SYN-CLASS-FOUNDER->SYN-CLASS-PUBLIC","ratio":{"numerator":1,"denominator":1},"conditions":["qualifying_transfer"]},
-    "classFungibility": {"status":"NOT_ESTABLISHED"},
-    "priceConvertibility": "NOT_ESTABLISHED",
-    "excludedFutureRevisionCount": 1,
-    "cancelledAssertionIds": ["R-LIST-OLD"]
-  }
+    "topicId":  "D02-F03-A03",
+    "input":  {
+                  "query":  {
+                                "rootEntityId":  "SYN-CLASS-FOUNDER",
+                                "validAt":  "2026-03-01T12:00:00Z",
+                                "knownAt":  "2026-03-05T12:00:00Z",
+                                "compareShareClassIds":  [
+                                                             "SYN-CLASS-FOUNDER",
+                                                             "SYN-CLASS-PUBLIC"
+                                                         ]
+                            },
+                  "entities":  [
+                                   {
+                                       "entityId":  "SYN-ISSUER-ALPHA",
+                                       "entityType":  "ISSUER",
+                                       "label":  "Synthetic Alpha Holdings"
+                                   },
+                                   {
+                                       "entityId":  "SYN-INSTRUMENT-COMMON",
+                                       "entityType":  "LEGAL_INSTRUMENT",
+                                       "label":  "Synthetic Alpha Common Equity"
+                                   },
+                                   {
+                                       "entityId":  "SYN-INSTRUMENT-PREFERRED",
+                                       "entityType":  "LEGAL_INSTRUMENT",
+                                       "label":  "Synthetic Alpha Preferred Equity"
+                                   },
+                                   {
+                                       "entityId":  "SYN-CLASS-FOUNDER",
+                                       "entityType":  "SHARE_CLASS",
+                                       "label":  "Founder Class"
+                                   },
+                                   {
+                                       "entityId":  "SYN-CLASS-PUBLIC",
+                                       "entityType":  "SHARE_CLASS",
+                                       "label":  "Public Class"
+                                   },
+                                   {
+                                       "entityId":  "SYN-CLASS-PREFERRED",
+                                       "entityType":  "SHARE_CLASS",
+                                       "label":  "Preferred Class"
+                                   },
+                                   {
+                                       "entityId":  "SYN-LISTING-US",
+                                       "entityType":  "LISTING",
+                                       "label":  "Synthetic US Listing"
+                                   },
+                                   {
+                                       "entityId":  "SYN-LISTING-EU",
+                                       "entityType":  "LISTING",
+                                       "label":  "Synthetic EU Listing"
+                                   },
+                                   {
+                                       "entityId":  "SYN-LISTING-OLD",
+                                       "entityType":  "LISTING",
+                                       "label":  "Cancelled Legacy Listing"
+                                   },
+                                   {
+                                       "entityId":  "SYN-LINE-US",
+                                       "entityType":  "TRADING_LINE",
+                                       "label":  "Synthetic USD Trading Line"
+                                   },
+                                   {
+                                       "entityId":  "SYN-LINE-EU",
+                                       "entityType":  "TRADING_LINE",
+                                       "label":  "Synthetic EUR Trading Line"
+                                   },
+                                   {
+                                       "entityId":  "SYN-VENUE-PRIMARY",
+                                       "entityType":  "VENUE",
+                                       "label":  "Synthetic Primary Venue"
+                                   },
+                                   {
+                                       "entityId":  "SYN-VENUE-ALT",
+                                       "entityType":  "VENUE",
+                                       "label":  "Synthetic Alternate Venue"
+                                   }
+                               ],
+                  "relationships":  [
+                                        {
+                                            "assertionId":  "R-ISSUE-COMMON",
+                                            "revisionNumber":  1,
+                                            "status":  "ACTIVE",
+                                            "relationshipType":  "ISSUED_BY",
+                                            "sourceEntityId":  "SYN-INSTRUMENT-COMMON",
+                                            "targetEntityId":  "SYN-ISSUER-ALPHA",
+                                            "effectiveFrom":  "2026-01-01T00:00:00Z",
+                                            "effectiveTo":  null,
+                                            "observedAt":  "2025-12-15T09:00:00Z",
+                                            "availableAt":  "2025-12-15T10:00:00Z",
+                                            "source":  {
+                                                           "sourceId":  "SYN-CHARTER-1",
+                                                           "sourceType":  "synthetic_charter",
+                                                           "documentDate":  "2025-12-15",
+                                                           "locator":  "Article IV"
+                                                       },
+                                            "terms":  {
+                                                          "basis":  "legal-issuer"
+                                                      },
+                                            "unsupportedTerms":  [
+
+                                                                 ]
+                                        },
+                                        {
+                                            "assertionId":  "R-ISSUE-PREF",
+                                            "revisionNumber":  1,
+                                            "status":  "ACTIVE",
+                                            "relationshipType":  "ISSUED_BY",
+                                            "sourceEntityId":  "SYN-INSTRUMENT-PREFERRED",
+                                            "targetEntityId":  "SYN-ISSUER-ALPHA",
+                                            "effectiveFrom":  "2026-01-01T00:00:00Z",
+                                            "effectiveTo":  null,
+                                            "observedAt":  "2025-12-15T09:00:00Z",
+                                            "availableAt":  "2025-12-15T10:00:00Z",
+                                            "source":  {
+                                                           "sourceId":  "SYN-CHARTER-1",
+                                                           "sourceType":  "synthetic_charter",
+                                                           "documentDate":  "2025-12-15",
+                                                           "locator":  "Article IV"
+                                                       },
+                                            "terms":  {
+                                                          "basis":  "legal-issuer"
+                                                      },
+                                            "unsupportedTerms":  [
+
+                                                                 ]
+                                        },
+                                        {
+                                            "assertionId":  "R-CLASS-FOUNDER",
+                                            "revisionNumber":  1,
+                                            "status":  "ACTIVE",
+                                            "relationshipType":  "CLASS_OF",
+                                            "sourceEntityId":  "SYN-CLASS-FOUNDER",
+                                            "targetEntityId":  "SYN-INSTRUMENT-COMMON",
+                                            "effectiveFrom":  "2026-01-01T00:00:00Z",
+                                            "effectiveTo":  null,
+                                            "observedAt":  "2025-12-15T09:00:00Z",
+                                            "availableAt":  "2025-12-15T10:00:00Z",
+                                            "source":  {
+                                                           "sourceId":  "SYN-CHARTER-1",
+                                                           "sourceType":  "synthetic_charter",
+                                                           "documentDate":  "2025-12-15",
+                                                           "locator":  "Article IV.1"
+                                                       },
+                                            "terms":  {
+                                                          "classCode":  "F"
+                                                      },
+                                            "unsupportedTerms":  [
+
+                                                                 ]
+                                        },
+                                        {
+                                            "assertionId":  "R-CLASS-PUBLIC",
+                                            "revisionNumber":  1,
+                                            "status":  "ACTIVE",
+                                            "relationshipType":  "CLASS_OF",
+                                            "sourceEntityId":  "SYN-CLASS-PUBLIC",
+                                            "targetEntityId":  "SYN-INSTRUMENT-COMMON",
+                                            "effectiveFrom":  "2026-01-01T00:00:00Z",
+                                            "effectiveTo":  null,
+                                            "observedAt":  "2025-12-15T09:00:00Z",
+                                            "availableAt":  "2025-12-15T10:00:00Z",
+                                            "source":  {
+                                                           "sourceId":  "SYN-CHARTER-1",
+                                                           "sourceType":  "synthetic_charter",
+                                                           "documentDate":  "2025-12-15",
+                                                           "locator":  "Article IV.2"
+                                                       },
+                                            "terms":  {
+                                                          "classCode":  "P"
+                                                      },
+                                            "unsupportedTerms":  [
+
+                                                                 ]
+                                        },
+                                        {
+                                            "assertionId":  "R-CLASS-PREF",
+                                            "revisionNumber":  1,
+                                            "status":  "ACTIVE",
+                                            "relationshipType":  "CLASS_OF",
+                                            "sourceEntityId":  "SYN-CLASS-PREFERRED",
+                                            "targetEntityId":  "SYN-INSTRUMENT-PREFERRED",
+                                            "effectiveFrom":  "2026-01-01T00:00:00Z",
+                                            "effectiveTo":  null,
+                                            "observedAt":  "2025-12-15T09:00:00Z",
+                                            "availableAt":  "2025-12-15T10:00:00Z",
+                                            "source":  {
+                                                           "sourceId":  "SYN-CHARTER-1",
+                                                           "sourceType":  "synthetic_charter",
+                                                           "documentDate":  "2025-12-15",
+                                                           "locator":  "Article IV.3"
+                                                       },
+                                            "terms":  {
+                                                          "classCode":  "PR"
+                                                      },
+                                            "unsupportedTerms":  [
+
+                                                                 ]
+                                        },
+                                        {
+                                            "assertionId":  "R-LIST-US",
+                                            "revisionNumber":  1,
+                                            "status":  "ACTIVE",
+                                            "relationshipType":  "LISTED_AS",
+                                            "sourceEntityId":  "SYN-CLASS-PUBLIC",
+                                            "targetEntityId":  "SYN-LISTING-US",
+                                            "effectiveFrom":  "2026-01-10T14:30:00Z",
+                                            "effectiveTo":  null,
+                                            "observedAt":  "2026-01-05T14:00:00Z",
+                                            "availableAt":  "2026-01-05T15:00:00Z",
+                                            "source":  {
+                                                           "sourceId":  "SYN-EXCHANGE-NOTICE-US",
+                                                           "sourceType":  "synthetic_exchange_notice",
+                                                           "documentDate":  "2026-01-05",
+                                                           "locator":  "listing table row 1"
+                                                       },
+                                            "terms":  {
+                                                          "listingCurrency":  "USD"
+                                                      },
+                                            "unsupportedTerms":  [
+
+                                                                 ]
+                                        },
+                                        {
+                                            "assertionId":  "R-LIST-EU",
+                                            "revisionNumber":  1,
+                                            "status":  "ACTIVE",
+                                            "relationshipType":  "LISTED_AS",
+                                            "sourceEntityId":  "SYN-CLASS-PUBLIC",
+                                            "targetEntityId":  "SYN-LISTING-EU",
+                                            "effectiveFrom":  "2026-02-01T08:00:00Z",
+                                            "effectiveTo":  null,
+                                            "observedAt":  "2026-01-20T08:00:00Z",
+                                            "availableAt":  "2026-01-20T09:00:00Z",
+                                            "source":  {
+                                                           "sourceId":  "SYN-EXCHANGE-NOTICE-EU",
+                                                           "sourceType":  "synthetic_exchange_notice",
+                                                           "documentDate":  "2026-01-20",
+                                                           "locator":  "listing table row 1"
+                                                       },
+                                            "terms":  {
+                                                          "listingCurrency":  "EUR"
+                                                      },
+                                            "unsupportedTerms":  [
+
+                                                                 ]
+                                        },
+                                        {
+                                            "assertionId":  "R-LIST-OLD",
+                                            "revisionNumber":  1,
+                                            "status":  "CANCELLED",
+                                            "relationshipType":  "LISTED_AS",
+                                            "sourceEntityId":  "SYN-CLASS-PUBLIC",
+                                            "targetEntityId":  "SYN-LISTING-OLD",
+                                            "effectiveFrom":  "2026-01-20T08:00:00Z",
+                                            "effectiveTo":  null,
+                                            "observedAt":  "2026-01-10T08:00:00Z",
+                                            "availableAt":  "2026-01-10T09:00:00Z",
+                                            "source":  {
+                                                           "sourceId":  "SYN-EXCHANGE-CANCEL",
+                                                           "sourceType":  "synthetic_exchange_notice",
+                                                           "documentDate":  "2026-01-10",
+                                                           "locator":  "cancellation row 1"
+                                                       },
+                                            "terms":  {
+                                                          "listingCurrency":  "GBP"
+                                                      },
+                                            "unsupportedTerms":  [
+
+                                                                 ]
+                                        },
+                                        {
+                                            "assertionId":  "R-LINE-US",
+                                            "revisionNumber":  1,
+                                            "status":  "ACTIVE",
+                                            "relationshipType":  "TRADING_LINE_OF",
+                                            "sourceEntityId":  "SYN-LINE-US",
+                                            "targetEntityId":  "SYN-LISTING-US",
+                                            "effectiveFrom":  "2026-01-10T14:30:00Z",
+                                            "effectiveTo":  null,
+                                            "observedAt":  "2026-01-05T14:00:00Z",
+                                            "availableAt":  "2026-01-05T15:00:00Z",
+                                            "source":  {
+                                                           "sourceId":  "SYN-EXCHANGE-NOTICE-US",
+                                                           "sourceType":  "synthetic_exchange_notice",
+                                                           "documentDate":  "2026-01-05",
+                                                           "locator":  "trading line row 1"
+                                                       },
+                                            "terms":  {
+                                                          "ticker":  "SYN.A"
+                                                      },
+                                            "unsupportedTerms":  [
+
+                                                                 ]
+                                        },
+                                        {
+                                            "assertionId":  "R-LINE-EU",
+                                            "revisionNumber":  1,
+                                            "status":  "ACTIVE",
+                                            "relationshipType":  "TRADING_LINE_OF",
+                                            "sourceEntityId":  "SYN-LINE-EU",
+                                            "targetEntityId":  "SYN-LISTING-EU",
+                                            "effectiveFrom":  "2026-02-01T08:00:00Z",
+                                            "effectiveTo":  null,
+                                            "observedAt":  "2026-01-20T08:00:00Z",
+                                            "availableAt":  "2026-01-20T09:00:00Z",
+                                            "source":  {
+                                                           "sourceId":  "SYN-EXCHANGE-NOTICE-EU",
+                                                           "sourceType":  "synthetic_exchange_notice",
+                                                           "documentDate":  "2026-01-20",
+                                                           "locator":  "trading line row 1"
+                                                       },
+                                            "terms":  {
+                                                          "ticker":  "SYNA"
+                                                      },
+                                            "unsupportedTerms":  [
+
+                                                                 ]
+                                        },
+                                        {
+                                            "assertionId":  "R-VENUE-US",
+                                            "revisionNumber":  1,
+                                            "status":  "ACTIVE",
+                                            "relationshipType":  "TRADES_ON",
+                                            "sourceEntityId":  "SYN-LINE-US",
+                                            "targetEntityId":  "SYN-VENUE-PRIMARY",
+                                            "effectiveFrom":  "2026-01-10T14:30:00Z",
+                                            "effectiveTo":  null,
+                                            "observedAt":  "2026-01-05T14:00:00Z",
+                                            "availableAt":  "2026-01-05T15:00:00Z",
+                                            "source":  {
+                                                           "sourceId":  "SYN-EXCHANGE-NOTICE-US",
+                                                           "sourceType":  "synthetic_exchange_notice",
+                                                           "documentDate":  "2026-01-05",
+                                                           "locator":  "venue row 1"
+                                                       },
+                                            "terms":  {
+                                                          "marketIdentifierCode":  "X-SYN-1"
+                                                      },
+                                            "unsupportedTerms":  [
+
+                                                                 ]
+                                        },
+                                        {
+                                            "assertionId":  "R-VENUE-EU",
+                                            "revisionNumber":  1,
+                                            "status":  "ACTIVE",
+                                            "relationshipType":  "TRADES_ON",
+                                            "sourceEntityId":  "SYN-LINE-EU",
+                                            "targetEntityId":  "SYN-VENUE-ALT",
+                                            "effectiveFrom":  "2026-02-01T08:00:00Z",
+                                            "effectiveTo":  null,
+                                            "observedAt":  "2026-01-20T08:00:00Z",
+                                            "availableAt":  "2026-01-20T09:00:00Z",
+                                            "source":  {
+                                                           "sourceId":  "SYN-EXCHANGE-NOTICE-EU",
+                                                           "sourceType":  "synthetic_exchange_notice",
+                                                           "documentDate":  "2026-01-20",
+                                                           "locator":  "venue row 1"
+                                                       },
+                                            "terms":  {
+                                                          "marketIdentifierCode":  "X-SYN-2"
+                                                      },
+                                            "unsupportedTerms":  [
+
+                                                                 ]
+                                        },
+                                        {
+                                            "assertionId":  "R-VOTE-FOUNDER",
+                                            "revisionNumber":  1,
+                                            "status":  "ACTIVE",
+                                            "relationshipType":  "VOTING_RIGHTS",
+                                            "sourceEntityId":  "SYN-CLASS-FOUNDER",
+                                            "targetEntityId":  "SYN-ISSUER-ALPHA",
+                                            "effectiveFrom":  "2026-01-01T00:00:00Z",
+                                            "effectiveTo":  null,
+                                            "observedAt":  "2025-12-15T09:00:00Z",
+                                            "availableAt":  "2025-12-15T10:00:00Z",
+                                            "source":  {
+                                                           "sourceId":  "SYN-CHARTER-1",
+                                                           "sourceType":  "synthetic_charter",
+                                                           "documentDate":  "2025-12-15",
+                                                           "locator":  "Article V.1"
+                                                       },
+                                            "terms":  {
+                                                          "numerator":  10,
+                                                          "denominator":  1,
+                                                          "unit":  "votes_per_share"
+                                                      },
+                                            "unsupportedTerms":  [
+
+                                                                 ]
+                                        },
+                                        {
+                                            "assertionId":  "R-VOTE-FOUNDER",
+                                            "revisionNumber":  2,
+                                            "status":  "ACTIVE",
+                                            "relationshipType":  "VOTING_RIGHTS",
+                                            "sourceEntityId":  "SYN-CLASS-FOUNDER",
+                                            "targetEntityId":  "SYN-ISSUER-ALPHA",
+                                            "effectiveFrom":  "2026-04-01T00:00:00Z",
+                                            "effectiveTo":  null,
+                                            "observedAt":  "2026-03-20T09:00:00Z",
+                                            "availableAt":  "2026-03-20T10:00:00Z",
+                                            "source":  {
+                                                           "sourceId":  "SYN-CHARTER-2",
+                                                           "sourceType":  "synthetic_charter_amendment",
+                                                           "documentDate":  "2026-03-20",
+                                                           "locator":  "Article V.1 amended"
+                                                       },
+                                            "terms":  {
+                                                          "numerator":  20,
+                                                          "denominator":  1,
+                                                          "unit":  "votes_per_share"
+                                                      },
+                                            "unsupportedTerms":  [
+
+                                                                 ]
+                                        },
+                                        {
+                                            "assertionId":  "R-VOTE-PUBLIC",
+                                            "revisionNumber":  1,
+                                            "status":  "ACTIVE",
+                                            "relationshipType":  "VOTING_RIGHTS",
+                                            "sourceEntityId":  "SYN-CLASS-PUBLIC",
+                                            "targetEntityId":  "SYN-ISSUER-ALPHA",
+                                            "effectiveFrom":  "2026-01-01T00:00:00Z",
+                                            "effectiveTo":  null,
+                                            "observedAt":  "2025-12-15T09:00:00Z",
+                                            "availableAt":  "2025-12-15T10:00:00Z",
+                                            "source":  {
+                                                           "sourceId":  "SYN-CHARTER-1",
+                                                           "sourceType":  "synthetic_charter",
+                                                           "documentDate":  "2025-12-15",
+                                                           "locator":  "Article V.2"
+                                                       },
+                                            "terms":  {
+                                                          "numerator":  1,
+                                                          "denominator":  1,
+                                                          "unit":  "votes_per_share"
+                                                      },
+                                            "unsupportedTerms":  [
+
+                                                                 ]
+                                        },
+                                        {
+                                            "assertionId":  "R-VOTE-PREF",
+                                            "revisionNumber":  1,
+                                            "status":  "ACTIVE",
+                                            "relationshipType":  "VOTING_RIGHTS",
+                                            "sourceEntityId":  "SYN-CLASS-PREFERRED",
+                                            "targetEntityId":  "SYN-ISSUER-ALPHA",
+                                            "effectiveFrom":  "2026-01-01T00:00:00Z",
+                                            "effectiveTo":  null,
+                                            "observedAt":  "2025-12-15T09:00:00Z",
+                                            "availableAt":  "2025-12-15T10:00:00Z",
+                                            "source":  {
+                                                           "sourceId":  "SYN-CHARTER-1",
+                                                           "sourceType":  "synthetic_charter",
+                                                           "documentDate":  "2025-12-15",
+                                                           "locator":  "Article V.3"
+                                                       },
+                                            "terms":  {
+                                                          "numerator":  0,
+                                                          "denominator":  1,
+                                                          "unit":  "votes_per_share"
+                                                      },
+                                            "unsupportedTerms":  [
+
+                                                                 ]
+                                        },
+                                        {
+                                            "assertionId":  "R-ECON-FOUNDER",
+                                            "revisionNumber":  1,
+                                            "status":  "ACTIVE",
+                                            "relationshipType":  "ECONOMIC_RIGHTS",
+                                            "sourceEntityId":  "SYN-CLASS-FOUNDER",
+                                            "targetEntityId":  "SYN-INSTRUMENT-COMMON",
+                                            "effectiveFrom":  "2026-01-01T00:00:00Z",
+                                            "effectiveTo":  null,
+                                            "observedAt":  "2025-12-15T09:00:00Z",
+                                            "availableAt":  "2025-12-15T10:00:00Z",
+                                            "source":  {
+                                                           "sourceId":  "SYN-CHARTER-1",
+                                                           "sourceType":  "synthetic_charter",
+                                                           "documentDate":  "2025-12-15",
+                                                           "locator":  "Article VI.1"
+                                                       },
+                                            "terms":  {
+                                                          "numerator":  1,
+                                                          "denominator":  1,
+                                                          "unit":  "distribution_units_per_share"
+                                                      },
+                                            "unsupportedTerms":  [
+
+                                                                 ]
+                                        },
+                                        {
+                                            "assertionId":  "R-ECON-PUBLIC",
+                                            "revisionNumber":  1,
+                                            "status":  "ACTIVE",
+                                            "relationshipType":  "ECONOMIC_RIGHTS",
+                                            "sourceEntityId":  "SYN-CLASS-PUBLIC",
+                                            "targetEntityId":  "SYN-INSTRUMENT-COMMON",
+                                            "effectiveFrom":  "2026-01-01T00:00:00Z",
+                                            "effectiveTo":  null,
+                                            "observedAt":  "2025-12-15T09:00:00Z",
+                                            "availableAt":  "2025-12-15T10:00:00Z",
+                                            "source":  {
+                                                           "sourceId":  "SYN-CHARTER-1",
+                                                           "sourceType":  "synthetic_charter",
+                                                           "documentDate":  "2025-12-15",
+                                                           "locator":  "Article VI.2"
+                                                       },
+                                            "terms":  {
+                                                          "numerator":  1,
+                                                          "denominator":  1,
+                                                          "unit":  "distribution_units_per_share"
+                                                      },
+                                            "unsupportedTerms":  [
+
+                                                                 ]
+                                        },
+                                        {
+                                            "assertionId":  "R-DIV-PREF",
+                                            "revisionNumber":  1,
+                                            "status":  "ACTIVE",
+                                            "relationshipType":  "DIVIDEND_PREFERENCE",
+                                            "sourceEntityId":  "SYN-CLASS-PREFERRED",
+                                            "targetEntityId":  "SYN-INSTRUMENT-PREFERRED",
+                                            "effectiveFrom":  "2026-01-01T00:00:00Z",
+                                            "effectiveTo":  null,
+                                            "observedAt":  "2025-12-15T09:00:00Z",
+                                            "availableAt":  "2025-12-15T10:00:00Z",
+                                            "source":  {
+                                                           "sourceId":  "SYN-CHARTER-1",
+                                                           "sourceType":  "synthetic_charter",
+                                                           "documentDate":  "2025-12-15",
+                                                           "locator":  "Article VI.3"
+                                                       },
+                                            "terms":  {
+                                                          "currency":  "USD",
+                                                          "minorUnits":  250,
+                                                          "perShares":  1,
+                                                          "cumulative":  true,
+                                                          "frequency":  "annual"
+                                                      },
+                                            "unsupportedTerms":  [
+
+                                                                 ]
+                                        },
+                                        {
+                                            "assertionId":  "R-CONVERT-FOUNDER",
+                                            "revisionNumber":  1,
+                                            "status":  "ACTIVE",
+                                            "relationshipType":  "CONVERTS_TO",
+                                            "sourceEntityId":  "SYN-CLASS-FOUNDER",
+                                            "targetEntityId":  "SYN-CLASS-PUBLIC",
+                                            "effectiveFrom":  "2026-01-01T00:00:00Z",
+                                            "effectiveTo":  null,
+                                            "observedAt":  "2025-12-15T09:00:00Z",
+                                            "availableAt":  "2025-12-15T10:00:00Z",
+                                            "source":  {
+                                                           "sourceId":  "SYN-CHARTER-1",
+                                                           "sourceType":  "synthetic_charter",
+                                                           "documentDate":  "2025-12-15",
+                                                           "locator":  "Article VII.1"
+                                                       },
+                                            "terms":  {
+                                                          "numerator":  1,
+                                                          "denominator":  1,
+                                                          "unit":  "target_shares_per_source_share",
+                                                          "conditions":  [
+                                                                             "qualifying_transfer"
+                                                                         ]
+                                                      },
+                                            "unsupportedTerms":  [
+
+                                                                 ]
+                                        },
+                                        {
+                                            "assertionId":  "R-REDEEM-PREF",
+                                            "revisionNumber":  1,
+                                            "status":  "ACTIVE",
+                                            "relationshipType":  "REDEEMABLE_FOR",
+                                            "sourceEntityId":  "SYN-CLASS-PREFERRED",
+                                            "targetEntityId":  "SYN-ISSUER-ALPHA",
+                                            "effectiveFrom":  "2026-01-01T00:00:00Z",
+                                            "effectiveTo":  null,
+                                            "observedAt":  "2025-12-15T09:00:00Z",
+                                            "availableAt":  "2025-12-15T10:00:00Z",
+                                            "source":  {
+                                                           "sourceId":  "SYN-CHARTER-1",
+                                                           "sourceType":  "synthetic_charter",
+                                                           "documentDate":  "2025-12-15",
+                                                           "locator":  "Article VIII.1"
+                                                       },
+                                            "terms":  {
+                                                          "currency":  "USD",
+                                                          "minorUnits":  10000,
+                                                          "perShares":  1,
+                                                          "holderOption":  false,
+                                                          "conditions":  [
+                                                                             "issuer_call_after_2030-01-01"
+                                                                         ]
+                                                      },
+                                            "unsupportedTerms":  [
+
+                                                                 ]
+                                        },
+                                        {
+                                            "assertionId":  "R-PARTICIPATE-PREF",
+                                            "revisionNumber":  1,
+                                            "status":  "ACTIVE",
+                                            "relationshipType":  "PARTICIPATION_RIGHTS",
+                                            "sourceEntityId":  "SYN-CLASS-PREFERRED",
+                                            "targetEntityId":  "SYN-INSTRUMENT-PREFERRED",
+                                            "effectiveFrom":  "2026-01-01T00:00:00Z",
+                                            "effectiveTo":  null,
+                                            "observedAt":  "2025-12-15T09:00:00Z",
+                                            "availableAt":  "2025-12-15T10:00:00Z",
+                                            "source":  {
+                                                           "sourceId":  "SYN-CHARTER-1",
+                                                           "sourceType":  "synthetic_charter",
+                                                           "documentDate":  "2025-12-15",
+                                                           "locator":  "Article VIII.2"
+                                                       },
+                                            "terms":  {
+                                                          "mode":  "nonparticipating"
+                                                      },
+                                            "unsupportedTerms":  [
+
+                                                                 ]
+                                        },
+                                        {
+                                            "assertionId":  "R-SENIOR-PREF-PUBLIC",
+                                            "revisionNumber":  1,
+                                            "status":  "ACTIVE",
+                                            "relationshipType":  "SENIOR_TO",
+                                            "sourceEntityId":  "SYN-CLASS-PREFERRED",
+                                            "targetEntityId":  "SYN-CLASS-PUBLIC",
+                                            "effectiveFrom":  "2026-01-01T00:00:00Z",
+                                            "effectiveTo":  null,
+                                            "observedAt":  "2025-12-15T09:00:00Z",
+                                            "availableAt":  "2025-12-15T10:00:00Z",
+                                            "source":  {
+                                                           "sourceId":  "SYN-CHARTER-1",
+                                                           "sourceType":  "synthetic_charter",
+                                                           "documentDate":  "2025-12-15",
+                                                           "locator":  "Article VIII.3"
+                                                       },
+                                            "terms":  {
+                                                          "scope":  [
+                                                                        "dividend",
+                                                                        "liquidation"
+                                                                    ]
+                                                      },
+                                            "unsupportedTerms":  [
+
+                                                                 ]
+                                        },
+                                        {
+                                            "assertionId":  "R-FUNGIBLE-LINES",
+                                            "revisionNumber":  1,
+                                            "status":  "ACTIVE",
+                                            "relationshipType":  "FUNGIBLE_WITH",
+                                            "sourceEntityId":  "SYN-LINE-US",
+                                            "targetEntityId":  "SYN-LINE-EU",
+                                            "effectiveFrom":  "2026-02-01T08:00:00Z",
+                                            "effectiveTo":  null,
+                                            "observedAt":  "2026-01-25T08:00:00Z",
+                                            "availableAt":  "2026-01-25T09:00:00Z",
+                                            "source":  {
+                                                           "sourceId":  "SYN-DEPOSITARY-NOTICE",
+                                                           "sourceType":  "synthetic_depositary_notice",
+                                                           "documentDate":  "2026-01-25",
+                                                           "locator":  "operational link row 1"
+                                                       },
+                                            "terms":  {
+                                                          "numerator":  1,
+                                                          "denominator":  1,
+                                                          "unit":  "target_units_per_source_unit",
+                                                          "conditions":  [
+                                                                             "settlement_bridge_open",
+                                                                             "same_beneficial_owner"
+                                                                         ],
+                                                          "symmetric":  true
+                                                      },
+                                            "unsupportedTerms":  [
+
+                                                                 ]
+                                        }
+                                    ]
+              },
+    "expected":  {
+                     "state":  "RESOLVED",
+                     "sameIssuerShareClassIds":  [
+                                                     "SYN-CLASS-FOUNDER",
+                                                     "SYN-CLASS-PREFERRED",
+                                                     "SYN-CLASS-PUBLIC"
+                                                 ],
+                     "comparison":  {
+                                        "votingRightsRatioLeftToRight":  {
+                                                                             "status":  "ESTABLISHED",
+                                                                             "numerator":  10,
+                                                                             "denominator":  1,
+                                                                             "unit":  "votes_per_share"
+                                                                         },
+                                        "economicRightsRatioLeftToRight":  {
+                                                                               "status":  "ESTABLISHED",
+                                                                               "numerator":  1,
+                                                                               "denominator":  1,
+                                                                               "unit":  "distribution_units_per_share"
+                                                                           },
+                                        "equalEconomics":  true,
+                                        "conversion":  {
+                                                           "status":  "ESTABLISHED",
+                                                           "direction":  "SYN-CLASS-FOUNDER-\u003eSYN-CLASS-PUBLIC",
+                                                           "relationshipType":  "CONVERTS_TO",
+                                                           "ratio":  {
+                                                                         "numerator":  1,
+                                                                         "denominator":  1
+                                                                     },
+                                                           "unit":  "target_shares_per_source_share",
+                                                           "conditions":  [
+                                                                              "qualifying_transfer"
+                                                                          ]
+                                                       },
+                                        "fungibility":  {
+                                                            "status":  "NOT_ESTABLISHED"
+                                                        },
+                                        "priceConvertibility":  "NOT_ESTABLISHED"
+                                    },
+                     "diagnostics":  {
+                                         "excludedFutureRevisionCount":  1,
+                                         "cancelledAssertionIds":  [
+                                                                       "R-LIST-OLD"
+                                                                   ]
+                                     }
+                 },
+    "notice":  "Synthetic educational output derived from tests/shared_fixture.json; not a real issuer or provider record.",
+    "query":  {
+                  "validAt":  "2026-03-01T12:00:00Z",
+                  "knownAt":  "2026-03-05T12:00:00Z",
+                  "leftShareClassId":  "SYN-CLASS-FOUNDER",
+                  "rightShareClassId":  "SYN-CLASS-PUBLIC"
+              },
+    "result":  {
+                   "state":  "RESOLVED",
+                   "sameIssuerShareClassIds":  [
+                                                   "SYN-CLASS-FOUNDER",
+                                                   "SYN-CLASS-PREFERRED",
+                                                   "SYN-CLASS-PUBLIC"
+                                               ],
+                   "votingRightsRatioLeftToRight":  {
+                                                        "status":  "ESTABLISHED",
+                                                        "numerator":  10,
+                                                        "denominator":  1,
+                                                        "unit":  "votes_per_share"
+                                                    },
+                   "economicRightsRatioLeftToRight":  {
+                                                          "status":  "ESTABLISHED",
+                                                          "numerator":  1,
+                                                          "denominator":  1,
+                                                          "unit":  "distribution_units_per_share"
+                                                      },
+                   "equalEconomics":  true,
+                   "conversion":  {
+                                      "status":  "ESTABLISHED",
+                                      "direction":  "SYN-CLASS-FOUNDER-\u003eSYN-CLASS-PUBLIC",
+                                      "ratio":  {
+                                                    "numerator":  1,
+                                                    "denominator":  1
+                                                },
+                                      "conditions":  [
+                                                         "qualifying_transfer"
+                                                     ]
+                                  },
+                   "classFungibility":  {
+                                            "status":  "NOT_ESTABLISHED"
+                                        },
+                   "priceConvertibility":  "NOT_ESTABLISHED",
+                   "excludedFutureRevisionCount":  1,
+                   "cancelledAssertionIds":  [
+                                                 "R-LIST-OLD"
+                                             ]
+               },
+    "license":  "CC0-1.0 synthetic educational fixture"
 }

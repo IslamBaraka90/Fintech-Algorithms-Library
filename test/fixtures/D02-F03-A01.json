@@ -1,13 +1,152 @@
 {
-  "notice": "Every value is synthetic and is not a real identifier assignment.",
-  "query": "TICKER ALP / XNAS / trading_line",
-  "validAt": "2024-06-15T14:30:00Z",
-  "knowledgeAt": "2024-06-20T12:00:00Z",
-  "selectedRevision": "SYN-MAP-001 revision 1",
-  "excluded": [
-    "revision 2: unavailable until 2024-06-25T09:05:00Z",
-    "July mapping: validity has not started",
-    "ALP / XLON: different venue-qualified source key"
-  ],
-  "result": {"status": "resolved", "canonicalId": "SYN-LINE-ALPHA-XNAS-USD"}
+    "topicId":  "D02-F03-A01",
+    "input":  {
+                  "query":  {
+                                "source":  {
+                                               "scheme":  "TICKER",
+                                               "value":  "alp",
+                                               "entityLevel":  "trading_line",
+                                               "venueMic":  "xnas"
+                                           },
+                                "validAt":  "2024-06-15T14:30:00Z",
+                                "knowledgeAt":  "2024-06-20T12:00:00Z"
+                            },
+                  "assertions":  [
+                                     {
+                                         "assertionId":  "SYN-MAP-001",
+                                         "revision":  1,
+                                         "source":  {
+                                                        "scheme":  "TICKER",
+                                                        "value":  "ALP",
+                                                        "entityLevel":  "trading_line",
+                                                        "venueMic":  "XNAS"
+                                                    },
+                                         "target":  {
+                                                        "canonicalId":  "SYN-LINE-ALPHA-XNAS-USD",
+                                                        "entityLevel":  "trading_line"
+                                                    },
+                                         "validFrom":  "2024-01-02T14:30:00Z",
+                                         "validTo":  "2024-07-01T13:30:00Z",
+                                         "observedAt":  "2023-12-20T18:00:00Z",
+                                         "availableAt":  "2023-12-20T18:05:00Z",
+                                         "status":  "active",
+                                         "confidence":  "authoritative",
+                                         "checkDigitStatus":  "not_applicable",
+                                         "assignmentAuthority":  "SYNTHETIC EXCHANGE NOTICE SERVICE",
+                                         "sourceDocumentId":  "SYN-NOTICE-100-R1"
+                                     },
+                                     {
+                                         "assertionId":  "SYN-MAP-001",
+                                         "revision":  2,
+                                         "source":  {
+                                                        "scheme":  "TICKER",
+                                                        "value":  "ALP",
+                                                        "entityLevel":  "trading_line",
+                                                        "venueMic":  "XNAS"
+                                                    },
+                                         "target":  {
+                                                        "canonicalId":  "SYN-LINE-BETA-XNAS-USD",
+                                                        "entityLevel":  "trading_line"
+                                                    },
+                                         "validFrom":  "2024-01-02T14:30:00Z",
+                                         "validTo":  "2024-07-01T13:30:00Z",
+                                         "observedAt":  "2024-06-25T09:00:00Z",
+                                         "availableAt":  "2024-06-25T09:05:00Z",
+                                         "status":  "active",
+                                         "confidence":  "authoritative",
+                                         "checkDigitStatus":  "not_applicable",
+                                         "assignmentAuthority":  "SYNTHETIC EXCHANGE NOTICE SERVICE",
+                                         "sourceDocumentId":  "SYN-CORRECTION-100-R2"
+                                     },
+                                     {
+                                         "assertionId":  "SYN-MAP-002",
+                                         "revision":  1,
+                                         "source":  {
+                                                        "scheme":  "TICKER",
+                                                        "value":  "ALP",
+                                                        "entityLevel":  "trading_line",
+                                                        "venueMic":  "XNAS"
+                                                    },
+                                         "target":  {
+                                                        "canonicalId":  "SYN-LINE-GAMMA-XNAS-USD",
+                                                        "entityLevel":  "trading_line"
+                                                    },
+                                         "validFrom":  "2024-07-01T13:30:00Z",
+                                         "validTo":  null,
+                                         "observedAt":  "2024-06-10T16:00:00Z",
+                                         "availableAt":  "2024-06-10T16:03:00Z",
+                                         "status":  "active",
+                                         "confidence":  "authoritative",
+                                         "checkDigitStatus":  "not_applicable",
+                                         "assignmentAuthority":  "SYNTHETIC EXCHANGE NOTICE SERVICE",
+                                         "sourceDocumentId":  "SYN-NOTICE-101-R1"
+                                     },
+                                     {
+                                         "assertionId":  "SYN-MAP-003",
+                                         "revision":  1,
+                                         "source":  {
+                                                        "scheme":  "TICKER",
+                                                        "value":  "ALP",
+                                                        "entityLevel":  "trading_line",
+                                                        "venueMic":  "XLON"
+                                                    },
+                                         "target":  {
+                                                        "canonicalId":  "SYN-LINE-DELTA-XLON-GBP",
+                                                        "entityLevel":  "trading_line"
+                                                    },
+                                         "validFrom":  "2024-01-02T08:00:00Z",
+                                         "validTo":  null,
+                                         "observedAt":  "2023-12-21T10:00:00Z",
+                                         "availableAt":  "2023-12-21T10:04:00Z",
+                                         "status":  "active",
+                                         "confidence":  "authoritative",
+                                         "checkDigitStatus":  "not_applicable",
+                                         "assignmentAuthority":  "SYNTHETIC MARKET OPERATOR",
+                                         "sourceDocumentId":  "SYN-LONDON-NOTICE-9"
+                                     }
+                                 ]
+              },
+    "expected":  {
+                     "status":  "resolved",
+                     "source":  {
+                                    "scheme":  "TICKER",
+                                    "value":  "ALP",
+                                    "entityLevel":  "trading_line",
+                                    "venueMic":  "XNAS"
+                                },
+                     "validAt":  "2024-06-15T14:30:00Z",
+                     "knowledgeAt":  "2024-06-20T12:00:00Z",
+                     "canonicalId":  "SYN-LINE-ALPHA-XNAS-USD",
+                     "candidateCanonicalIds":  [
+                                                   "SYN-LINE-ALPHA-XNAS-USD"
+                                               ],
+                     "confidence":  "authoritative",
+                     "evidence":  [
+                                      {
+                                          "assertionId":  "SYN-MAP-001",
+                                          "revision":  1,
+                                          "availableAt":  "2023-12-20T18:05:00Z",
+                                          "assignmentAuthority":  "SYNTHETIC EXCHANGE NOTICE SERVICE",
+                                          "sourceDocumentId":  "SYN-NOTICE-100-R1",
+                                          "confidence":  "authoritative",
+                                          "checkDigitStatus":  "not_applicable"
+                                      }
+                                  ],
+                     "reason":  "Exactly one canonical entity is supported at both requested clocks."
+                 },
+    "notice":  "Every value is synthetic and is not a real identifier assignment.",
+    "query":  "TICKER ALP / XNAS / trading_line",
+    "validAt":  "2024-06-15T14:30:00Z",
+    "knowledgeAt":  "2024-06-20T12:00:00Z",
+    "selectedRevision":  "SYN-MAP-001 revision 1",
+    "excluded":  [
+                     "revision 2: unavailable until 2024-06-25T09:05:00Z",
+                     "July mapping: validity has not started",
+                     "ALP / XLON: different venue-qualified source key"
+                 ],
+    "result":  {
+                   "status":  "resolved",
+                   "canonicalId":  "SYN-LINE-ALPHA-XNAS-USD"
+               },
+    "license":  "CC0 synthetic educational fixture; no identifier is asserted to be assigned by a real authority"
 }

@@ -1,5 +1,33 @@
 {
-  "topic_id": "D04-F03-A02",
+  "topicId": "D04-F03-A02",
+  "input": {
+    "records": [
+      {
+        "session_date": "2026-01-15",
+        "available_at": "2026-01-15T21:30:00Z",
+        "source_evidence_state": "ready",
+        "venue_id": "SYNTH-X",
+        "universe_id": "SYNTH-HIGH-LOW-12",
+        "methodology_id": "synthetic-high-low-v1",
+        "lookback_sessions": 252,
+        "new_highs": 2,
+        "new_lows": 10,
+        "eligible_issues": 12,
+        "overlap_issues": 0
+      }
+    ],
+    "decisionTime": "2026-03-01T00:00:00Z"
+  },
+  "expected": {
+    "0": {
+      "session_date": "2026-01-15",
+      "new_highs": 2,
+      "new_lows": 10,
+      "value": 0.2,
+      "status": "resolved",
+      "reason": null
+    }
+  },
   "source_class": "synthetic teaching input and author-derived arithmetic",
   "canonical_display_state": {
     "session_date": "2026-01-15",

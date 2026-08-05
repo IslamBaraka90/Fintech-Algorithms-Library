@@ -1,21 +1,82 @@
 {
-  "event": "National Grid plc 2024 rights issue",
-  "sourcedFacts": {
-    "terms": "7 new shares for 24 existing shares",
-    "subscriptionPrice": "645 GBp per new share",
-    "closingMiddleMarketPrice": "1127.5 GBp on 2024-05-22",
-    "cashDisadvantage": "39.12 GBp FY24 final dividend not payable on new shares",
-    "recordDate": "2024-05-20 18:00 Europe/London",
-    "exRightsAndNilPaidTradingStart": "2024-05-24 08:00 Europe/London",
-    "acceptanceAndPaymentDeadline": "2024-06-10 11:00 Europe/London",
-    "newSharesTradingStart": "2024-06-12 08:00 Europe/London"
-  },
-  "derivation": {
-    "referencePrice": "1127.5 - 39.12 = 1088.38 GBp",
-    "terp": "(24 x 1088.38 + 7 x 645) / 31 = 988.261935 GBp",
-    "valuePerOldShare": "1088.38 - 988.261935 = 100.118065 GBp",
-    "valuePerNewShareRight": "988.261935 - 645 = 343.261935 GBp",
-    "adjustmentFactor": "988.261935 / 1088.38 = 0.908012"
-  },
-  "interpretation": "The calculation reproduces the issuer's rounded 34.7% issue-price discount to TERP. It does not claim that 988.261935 GBp traded on the ex-rights date."
+    "topicId":  "D02-F02-A01",
+    "input":  {
+                  "asOf":  "2024-05-24T00:00:00Z",
+                  "revisions":  [
+                                    {
+                                        "eventId":  "NG-2024-RIGHTS",
+                                        "revisionId":  "NG-PROSPECTUS-2024-05-23",
+                                        "revisionSequence":  1,
+                                        "availableAt":  "2024-05-23T23:59:59Z",
+                                        "status":  "confirmed",
+                                        "recordAt":  "2024-05-20T18:00:00+01:00",
+                                        "exAt":  "2024-05-24T08:00:00+01:00",
+                                        "rightsTradingStartAt":  "2024-05-24T08:00:00+01:00",
+                                        "paymentDeadlineAt":  "2024-06-10T11:00:00+01:00",
+                                        "newSharesTradeAt":  "2024-06-12T08:00:00+01:00",
+                                        "terms":  {
+                                                      "oldShares":  24,
+                                                      "newShares":  7,
+                                                      "rawCumRightsPrice":  1127.5,
+                                                      "cashDisadvantage":  39.12,
+                                                      "quoteCurrency":  "GBp",
+                                                      "subscriptionPrice":  645,
+                                                      "subscriptionCurrency":  "GBp",
+                                                      "fxQuotePerSubscription":  1,
+                                                      "feesPerNewShareQuote":  0,
+                                                      "taxesPerNewShareQuote":  0,
+                                                      "holdingOldShares":  100,
+                                                      "outOfMoneyPolicy":  "reject",
+                                                      "priceSourceId":  "NG-PROSPECTUS-P52-LSE-DOL-QUOTE",
+                                                      "priceDate":  "2024-05-22",
+                                                      "referencePriceConvention":  "raw_cum_price_less_cash_disadvantage",
+                                                      "renounceable":  true,
+                                                      "nilPaidRights":  true,
+                                                      "oversubscriptionPolicy":  "not_documented_in_teaching_extract",
+                                                      "fractionalPolicy":  "round_down_company_benefit_with_nominee_exception"
+                                                  }
+                                    }
+                                ]
+              },
+    "expected":  {
+                     "eventId":  "NG-2024-RIGHTS",
+                     "revisionId":  "NG-PROSPECTUS-2024-05-23",
+                     "availableAt":  "2024-05-23T23:59:59Z",
+                     "quoteCurrency":  "GBp",
+                     "referencePrice":  1088.38,
+                     "subscriptionCashQuote":  645,
+                     "terp":  988.261935,
+                     "valuePerOldShare":  100.118065,
+                     "valuePerNewShareRight":  343.261935,
+                     "adjustmentFactor":  0.908012,
+                     "issueDiscountToTerp":  0.347339,
+                     "inTheMoney":  true,
+                     "applied":  true,
+                     "entitlement":  {
+                                         "exactNewShares":  29.166667,
+                                         "wholeNewShares":  29,
+                                         "fractionalNewShare":  0.166667
+                                     },
+                     "referencePriceIsTradedFact":  false
+                 },
+    "event":  "National Grid plc 2024 rights issue",
+    "sourcedFacts":  {
+                         "terms":  "7 new shares for 24 existing shares",
+                         "subscriptionPrice":  "645 GBp per new share",
+                         "closingMiddleMarketPrice":  "1127.5 GBp on 2024-05-22",
+                         "cashDisadvantage":  "39.12 GBp FY24 final dividend not payable on new shares",
+                         "recordDate":  "2024-05-20 18:00 Europe/London",
+                         "exRightsAndNilPaidTradingStart":  "2024-05-24 08:00 Europe/London",
+                         "acceptanceAndPaymentDeadline":  "2024-06-10 11:00 Europe/London",
+                         "newSharesTradingStart":  "2024-06-12 08:00 Europe/London"
+                     },
+    "derivation":  {
+                       "referencePrice":  "1127.5 - 39.12 = 1088.38 GBp",
+                       "terp":  "(24 x 1088.38 + 7 x 645) / 31 = 988.261935 GBp",
+                       "valuePerOldShare":  "1088.38 - 988.261935 = 100.118065 GBp",
+                       "valuePerNewShareRight":  "988.261935 - 645 = 343.261935 GBp",
+                       "adjustmentFactor":  "988.261935 / 1088.38 = 0.908012"
+                   },
+    "interpretation":  "The calculation reproduces the issuer\u0027s rounded 34.7% issue-price discount to TERP. It does not claim that 988.261935 GBp traded on the ex-rights date.",
+    "caseLabel":  "National Grid 2024 issuer-fact terms plus an explicitly derived reference price"
 }

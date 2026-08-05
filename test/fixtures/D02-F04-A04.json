@@ -1,21 +1,90 @@
 {
-  "topicId": "D02-F04-A04",
-  "source": "tests/shared_fixture.json",
-  "case": "Esterline Technologies fiscal 2017 Form 10-K and Form 10-K/A",
-  "historicalFacts": {
-    "originalAccession": "0001564590-17-024189",
-    "originalAcceptedAt": "2017-11-21T16:32:41Z",
-    "amendmentAccession": "0001564590-18-007244",
-    "amendmentAcceptedAt": "2018-03-30T14:43:54Z",
-    "basicEpsAsReported": 3.94,
-    "basicEpsRestated": 3.75
-  },
-  "syntheticAvailabilityAssumptions": {
-    "originalIngestedAt": "2017-11-21T16:40:00Z",
-    "amendmentIngestedAt": "2018-03-30T15:00:00Z"
-  },
-  "derivedDifference": {
-    "basicEpsChangeUsdPerShare": -0.19,
-    "interpretation": "A revision of the historical filing value, not evidence of a market return or a new fiscal-period result."
-  }
+    "topicId":  "D02-F04-A04",
+    "input":  {
+                  "entityId":  "CIK0000033619",
+                  "reportPeriod":  "2017-09-29",
+                  "formFamily":  "10-K",
+                  "asOf":  "2018-02-01T00:00:00Z",
+                  "records":  [
+                                  {
+                                      "entityId":  "CIK0000033619",
+                                      "reportPeriod":  "2017-09-29",
+                                      "form":  "10-K",
+                                      "accessionNo":  "0001564590-17-024189",
+                                      "amendmentNumber":  0,
+                                      "acceptedAt":  "2017-11-21T16:32:41Z",
+                                      "ingestedAt":  "2017-11-21T16:40:00Z",
+                                      "amendmentScope":  [
+                                                             "Original annual filing"
+                                                         ],
+                                      "facts":  {
+                                                    "basicEpsUsdPerShare":  3.94,
+                                                    "netEarningsUsdMillions":  117.387
+                                                }
+                                  },
+                                  {
+                                      "entityId":  "CIK0000033619",
+                                      "reportPeriod":  "2017-09-29",
+                                      "form":  "10-K/A",
+                                      "accessionNo":  "0001564590-18-007244",
+                                      "amendmentNumber":  1,
+                                      "acceptedAt":  "2018-03-30T14:43:54Z",
+                                      "ingestedAt":  "2018-03-30T15:00:00Z",
+                                      "amendmentScope":  [
+                                                             "Item 6",
+                                                             "Item 7",
+                                                             "Item 8",
+                                                             "Item 9A",
+                                                             "Item 15"
+                                                         ],
+                                      "facts":  {
+                                                    "basicEpsUsdPerShare":  3.75,
+                                                    "netEarningsUsdMillions":  111.554
+                                                }
+                                  }
+                              ]
+              },
+    "expected":  {
+                     "entityId":  "CIK0000033619",
+                     "reportPeriod":  "2017-09-29",
+                     "asOf":  "2018-02-01T00:00:00Z",
+                     "selectionBasis":  "latest accepted filing among locally ingested versions",
+                     "accessionNo":  "0001564590-17-024189",
+                     "form":  "10-K",
+                     "amendmentNumber":  0,
+                     "acceptedAt":  "2017-11-21T16:32:41Z",
+                     "ingestedAt":  "2017-11-21T16:40:00Z",
+                     "amendmentScope":  [
+                                            "Original annual filing"
+                                        ],
+                     "facts":  {
+                                   "basicEpsUsdPerShare":  3.94,
+                                   "netEarningsUsdMillions":  117.387
+                               },
+                     "eligibleAccessions":  [
+                                                "0001564590-17-024189"
+                                            ],
+                     "excludedNotYetIngested":  [
+                                                    "0001564590-18-007244"
+                                                ]
+                 },
+    "source":  "tests/shared_fixture.json",
+    "case":  "Esterline Technologies fiscal 2017 Form 10-K and Form 10-K/A",
+    "historicalFacts":  {
+                            "originalAccession":  "0001564590-17-024189",
+                            "originalAcceptedAt":  "2017-11-21T16:32:41Z",
+                            "amendmentAccession":  "0001564590-18-007244",
+                            "amendmentAcceptedAt":  "2018-03-30T14:43:54Z",
+                            "basicEpsAsReported":  3.94,
+                            "basicEpsRestated":  3.75
+                        },
+    "syntheticAvailabilityAssumptions":  {
+                                             "originalIngestedAt":  "2017-11-21T16:40:00Z",
+                                             "amendmentIngestedAt":  "2018-03-30T15:00:00Z"
+                                         },
+    "derivedDifference":  {
+                              "basicEpsChangeUsdPerShare":  -0.19,
+                              "interpretation":  "A revision of the historical filing value, not evidence of a market return or a new fiscal-period result."
+                          },
+    "evidenceNote":  "Accession, form, report-period, acceptance, and EPS facts are from SEC filing records. ingestedAt and query asOf values are synthetic local-system assumptions."
 }

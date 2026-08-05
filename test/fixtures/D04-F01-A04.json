@@ -1,4 +1,50 @@
 {
+  "topicId": "D04-F01-A04",
+  "input": {
+    "records": [
+      {
+        "event_id": "NAD-1", "revision": 1, "supersedes_revision": null,
+        "event_type": "upsert", "session_sequence": 1, "session_date": "2026-01-05",
+        "effective_at": "2026-01-05T21:00:00Z", "available_at": "2026-01-05T21:05:00Z",
+        "venue_id": "SYNTH-X", "universe_id": "SYNTH-100", "calendar_id": "SYNTH-CAL",
+        "session": "regular", "comparison_basis": "comparable-prior-close",
+        "corporate_action_policy": "provider-adjusted", "stable_id_scheme": "synthetic-id",
+        "methodology_id": "mover-normalized-v1", "denominator_policy": "movers",
+        "seed": 0, "scale": 100, "roster_complete": true, "classification_complete": true,
+        "advances": 60, "declines": 30, "unchanged": 10, "excluded": 0,
+        "unclassified": 0, "universe_size": 100
+      },
+      {
+        "event_id": "NAD-2", "revision": 1, "supersedes_revision": null,
+        "event_type": "upsert", "session_sequence": 2, "session_date": "2026-01-06",
+        "effective_at": "2026-01-06T21:00:00Z", "available_at": "2026-01-06T21:05:00Z",
+        "venue_id": "SYNTH-X", "universe_id": "SYNTH-100", "calendar_id": "SYNTH-CAL",
+        "session": "regular", "comparison_basis": "comparable-prior-close",
+        "corporate_action_policy": "provider-adjusted", "stable_id_scheme": "synthetic-id",
+        "methodology_id": "mover-normalized-v1", "denominator_policy": "movers",
+        "seed": 0, "scale": 100, "roster_complete": true, "classification_complete": true,
+        "advances": 35, "declines": 55, "unchanged": 10, "excluded": 0,
+        "unclassified": 0, "universe_size": 100
+      }
+    ],
+    "options": {
+      "cutoff": "2026-01-06T22:00:00Z",
+      "expectedStartSequence": 1,
+      "expectedEndSequence": 2,
+      "initialValue": 0,
+      "scale": 100,
+      "minimumCoverage": 0.95
+    }
+  },
+  "expected": {
+    "state": "resolved",
+    "reason_codes": [],
+    "ignored_future_revisions": 0,
+    "points": {
+      "0": {"net_advances": 30, "mover_count": 90, "scaled_contribution": 33.33333333333333, "normalized_line": 33.33333333333333},
+      "1": {"net_advances": -20, "mover_count": 90, "scaled_contribution": -22.22222222222222, "normalized_line": 11.111111111111107}
+    }
+  },
   "classification": "synthetic",
   "initial_value": "0",
   "scale": "100",

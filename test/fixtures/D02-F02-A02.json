@@ -1,15 +1,167 @@
 {
-  "description": "Synthetic multi-child example; not an issuer or provider observation",
-  "parentCumPriceUSD": 120,
-  "children": [
-    {"securityId": "SYNTH-CHILD-A", "ratio": "1:4", "priceEUR": 40, "USDPerEUR": 1.1, "valuePerParentUSD": 11},
-    {"securityId": "SYNTH-CHILD-B", "ratio": "1:10", "priceUSD": 25, "valuePerParentUSD": 2.5}
-  ],
-  "distributedValuePerParentUSD": 13.5,
-  "theoreticalParentExReferenceUSD": 106.5,
-  "backwardAdjustmentFactor": 0.8875,
-  "factorDirection": "multiply pre-event parent-only prices",
-  "parentExObservedUSD": 108,
-  "grossCombinedValueUSD": 121.5,
-  "grossReturn": 0.0125
+    "topicId":  "D02-F02-A02",
+    "input":  {
+                  "asOf":  "2026-06-02T20:00:00Z",
+                  "revisions":  [
+                                    {
+                                        "eventId":  "SYNTH-SPIN-2026",
+                                        "revisionId":  "SYNTH-SPIN-2026-R1",
+                                        "revisionSequence":  1,
+                                        "availableAt":  "2026-05-21T12:00:00Z",
+                                        "status":  "confirmed",
+                                        "quoteCurrency":  "USD",
+                                        "recordAt":  "2026-05-20T20:00:00Z",
+                                        "whenIssuedStartAt":  "2026-05-27T13:30:00Z",
+                                        "distributionAt":  "2026-06-01T12:00:00Z",
+                                        "parentExAt":  "2026-06-01T13:30:00Z",
+                                        "childRegularWayAt":  "2026-06-01T13:30:00Z",
+                                        "unavailableChildPricePolicy":  "pending",
+                                        "parentCumObservation":  {
+                                                                     "price":  120,
+                                                                     "currency":  "USD",
+                                                                     "priceType":  "regular_way_cum_distribution",
+                                                                     "observedAt":  "2026-05-29T20:00:00Z",
+                                                                     "availableAt":  "2026-05-29T20:00:05Z",
+                                                                     "sourceId":  "SYNTH-PARENT-CLOSE"
+                                                                 },
+                                        "parentExObservation":  {
+                                                                    "price":  108,
+                                                                    "currency":  "USD",
+                                                                    "priceType":  "regular_way_ex_distribution",
+                                                                    "observedAt":  "2026-06-01T20:00:00Z",
+                                                                    "availableAt":  "2026-06-01T20:00:05Z",
+                                                                    "sourceId":  "SYNTH-PARENT-EX-CLOSE"
+                                                                },
+                                        "feesPerParentQuote":  0.2,
+                                        "taxesPerParentQuote":  0.3,
+                                        "holdingParentShares":  23,
+                                        "children":  [
+                                                         {
+                                                             "securityId":  "SYNTH-CHILD-A",
+                                                             "childShares":  1,
+                                                             "parentShares":  4,
+                                                             "reference":  {
+                                                                               "status":  "available",
+                                                                               "price":  40,
+                                                                               "currency":  "EUR",
+                                                                               "priceType":  "when_issued",
+                                                                               "observedAt":  "2026-05-29T20:00:00Z",
+                                                                               "availableAt":  "2026-05-29T20:00:05Z",
+                                                                               "sourceId":  "SYNTH-CHILD-A-WI",
+                                                                               "fxQuotePerChildCurrency":  1.1,
+                                                                               "fxObservedAt":  "2026-05-29T20:00:00Z",
+                                                                               "fxAvailableAt":  "2026-05-29T20:00:05Z",
+                                                                               "fxSourceId":  "SYNTH-EURUSD"
+                                                                           }
+                                                         },
+                                                         {
+                                                             "securityId":  "SYNTH-CHILD-B",
+                                                             "childShares":  1,
+                                                             "parentShares":  10,
+                                                             "reference":  {
+                                                                               "status":  "available",
+                                                                               "price":  25,
+                                                                               "currency":  "USD",
+                                                                               "priceType":  "regular_way",
+                                                                               "observedAt":  "2026-06-01T20:00:00Z",
+                                                                               "availableAt":  "2026-06-01T20:00:05Z",
+                                                                               "sourceId":  "SYNTH-CHILD-B-RW",
+                                                                               "fxQuotePerChildCurrency":  1
+                                                                           }
+                                                         }
+                                                     ]
+                                    }
+                                ]
+              },
+    "expected":  {
+                     "eventId":  "SYNTH-SPIN-2026",
+                     "revisionId":  "SYNTH-SPIN-2026-R1",
+                     "availableAt":  "2026-05-21T12:00:00Z",
+                     "status":  "ready",
+                     "quoteCurrency":  "USD",
+                     "parentCumPrice":  120,
+                     "distributedValuePerParent":  13.5,
+                     "theoreticalParentExReference":  106.5,
+                     "backwardAdjustmentFactor":  0.8875,
+                     "factorDirection":  "multiply_pre_event_parent_prices",
+                     "factorAnchor":  "post_event_parent_only_basis",
+                     "rounding":  "shortest_decimal_half_up_6_on_output_only",
+                     "components":  [
+                                        {
+                                            "securityId":  "SYNTH-CHILD-A",
+                                            "entitlementRatio":  0.25,
+                                            "priceType":  "when_issued",
+                                            "priceQuote":  44,
+                                            "valuePerParent":  11,
+                                            "holderEntitlement":  {
+                                                                      "exactChildShares":  5.75,
+                                                                      "wholeChildShares":  5,
+                                                                      "fractionalChildShare":  0.75,
+                                                                      "fractionalReferenceValue":  33,
+                                                                      "actualCashInLieuKnown":  false
+                                                                  }
+                                        },
+                                        {
+                                            "securityId":  "SYNTH-CHILD-B",
+                                            "entitlementRatio":  0.1,
+                                            "priceType":  "regular_way",
+                                            "priceQuote":  25,
+                                            "valuePerParent":  2.5,
+                                            "holderEntitlement":  {
+                                                                      "exactChildShares":  2.3,
+                                                                      "wholeChildShares":  2,
+                                                                      "fractionalChildShare":  0.3,
+                                                                      "fractionalReferenceValue":  7.5,
+                                                                      "actualCashInLieuKnown":  false
+                                                                  }
+                                        }
+                                    ],
+                     "economicValueAllocation":  {
+                                                     "parentWeight":  0.8875,
+                                                     "children":  [
+                                                                      {
+                                                                          "securityId":  "SYNTH-CHILD-A",
+                                                                          "weight":  0.091667
+                                                                      },
+                                                                      {
+                                                                          "securityId":  "SYNTH-CHILD-B",
+                                                                          "weight":  0.020833
+                                                                      }
+                                                                  ]
+                                                 },
+                     "totalReturnBridge":  {
+                                               "parentExObserved":  108,
+                                               "grossCombinedValue":  121.5,
+                                               "grossReturn":  0.0125,
+                                               "netCombinedValue":  121,
+                                               "netReturn":  0.008333,
+                                               "feesPerParentQuote":  0.2,
+                                               "taxesPerParentQuote":  0.3
+                                           },
+                     "referenceIsTradedParentExFact":  false
+                 },
+    "description":  "Synthetic multi-child example; not an issuer or provider observation",
+    "parentCumPriceUSD":  120,
+    "children":  [
+                     {
+                         "securityId":  "SYNTH-CHILD-A",
+                         "ratio":  "1:4",
+                         "priceEUR":  40,
+                         "USDPerEUR":  1.1,
+                         "valuePerParentUSD":  11
+                     },
+                     {
+                         "securityId":  "SYNTH-CHILD-B",
+                         "ratio":  "1:10",
+                         "priceUSD":  25,
+                         "valuePerParentUSD":  2.5
+                     }
+                 ],
+    "distributedValuePerParentUSD":  13.5,
+    "theoreticalParentExReferenceUSD":  106.5,
+    "backwardAdjustmentFactor":  0.8875,
+    "factorDirection":  "multiply pre-event parent-only prices",
+    "parentExObservedUSD":  108,
+    "grossCombinedValueUSD":  121.5,
+    "grossReturn":  0.0125
 }

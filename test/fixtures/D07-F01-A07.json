@@ -1,16 +1,65 @@
 {
-  "topic_id": "D07-F01-A07",
-  "window": 5,
-  "rounding_policy": "floor",
-  "half_length": 2,
-  "root_length": 2,
-  "values": [10, 13, 12, 15, 14, 18, 17, 20, 19, 22],
-  "first_ready_observation": 6,
-  "first_ready_components": {
-    "short_wma": 16.666666666666668,
-    "long_wma": 15.2,
-    "raw_hull": 18.133333333333336,
-    "previous_raw_hull": 15.200000000000001,
-    "hull_ma": 17.15555555555556
-  }
+  "topicId": "D07-F01-A07",
+  "bars": [
+    {"close": 10}, {"close": 13}, {"close": 12}, {"close": 15}, {"close": 14},
+    {"close": 18}, {"close": 17}, {"close": 20}, {"close": 19}, {"close": 22}
+  ],
+  "canonical_parameters": {"window": 5},
+  "checkpoints": [
+    {"index": 4, "shortWma": 14.333333333333334, "longWma": 13.466666666666667, "rawHull": 15.200000000000001, "hullMa": null},
+    {"index": 5, "shortWma": 16.666666666666668, "longWma": 15.2, "rawHull": 18.133333333333336, "hullMa": 17.15555555555556},
+    {"index": 9, "shortWma": 21, "longWma": 19.866666666666667, "rawHull": 22.133333333333333, "hullMa": 21.51111111111111}
+  ],
+  "contract": {
+    "rounding": "floor",
+    "weight_order": "oldest=1,newest=window",
+    "warm_up": "null",
+    "missing_values": "reject"
+  },
+  "cases": [
+    {
+      "name": "worked-window-five",
+      "values": [10, 13, 12, 15, 14, 18, 17, 20, 19, 22],
+      "window": 5,
+      "half_length": 2,
+      "root_length": 2,
+      "short_wma": [null, 12, 12.333333333333334, 14, 14.333333333333334, 16.666666666666668, 17.333333333333332, 19, 19.333333333333332, 21],
+      "long_wma": [null, null, null, null, 13.466666666666667, 15.2, 16.066666666666666, 17.666666666666668, 18.4, 19.866666666666667],
+      "raw_hull": [null, null, null, null, 15.200000000000001, 18.133333333333336, 18.599999999999998, 20.333333333333332, 20.266666666666666, 22.133333333333333],
+      "hull_ma": [null, null, null, null, null, 17.15555555555556, 18.444444444444443, 19.755555555555556, 20.288888888888888, 21.51111111111111]
+    },
+    {
+      "name": "period-one-identity",
+      "values": [-2, 0, 7.5],
+      "window": 1,
+      "half_length": 1,
+      "root_length": 1,
+      "short_wma": [-2, 0, 7.5],
+      "long_wma": [-2, 0, 7.5],
+      "raw_hull": [-2, 0, 7.5],
+      "hull_ma": [-2, 0, 7.5]
+    },
+    {
+      "name": "constant-window-six",
+      "values": [4, 4, 4, 4, 4, 4, 4, 4],
+      "window": 6,
+      "half_length": 3,
+      "root_length": 2,
+      "short_wma": [null, null, 4, 4, 4, 4, 4, 4],
+      "long_wma": [null, null, null, null, null, 4, 4, 4],
+      "raw_hull": [null, null, null, null, null, 4, 4, 4],
+      "hull_ma": [null, null, null, null, null, null, 4, 4]
+    },
+    {
+      "name": "signed-weight-step-overshoot",
+      "values": [0, 0, 0, 0, 10, 10],
+      "window": 5,
+      "half_length": 2,
+      "root_length": 2,
+      "short_wma": [null, 0, 0, 0, 6.666666666666667, 10],
+      "long_wma": [null, null, null, null, 3.3333333333333335, 6],
+      "raw_hull": [null, null, null, null, 10, 14],
+      "hull_ma": [null, null, null, null, null, 12.666666666666666]
+    }
+  ]
 }

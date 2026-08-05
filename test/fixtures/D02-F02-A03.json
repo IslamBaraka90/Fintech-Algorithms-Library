@@ -1,11 +1,185 @@
 {
-  "classification": "synthetic teaching arithmetic",
-  "ratesNewSharesPerOld": [0.1, 0.2],
-  "shareFactors": [1.1, 1.2],
-  "cumulativeShareFactor": 1.32,
-  "rawObservation": {"price": 50, "shares": 200, "volume": 80},
-  "volumePolicy": "adjust_to_anchor_basis",
-  "adjustedObservation": {"price": 37.878787878788, "shares": 264, "volume": 105.6},
-  "valueBeforeOutputRounding": {"raw": 10000, "adjusted": 10000},
-  "canonicalSource": "../tests/shared_fixture.json"
+    "topicId":  "D02-F02-A03",
+    "input":  {
+                  "method":  "backward_post_event_same_class",
+                  "securityId":  "SYNTH-CLASS-A",
+                  "asOf":  "2026-02-04T12:00:00Z",
+                  "anchorAt":  "2026-02-03T21:00:00Z",
+                  "volumePolicy":  "adjust_to_anchor_basis",
+                  "events":  [
+                                 {
+                                     "eventId":  "SD-001",
+                                     "subjectSecurityId":  "SYNTH-CLASS-A",
+                                     "distributedSecurityId":  "SYNTH-CLASS-A",
+                                     "exAt":  "2026-01-15T14:30:00Z",
+                                     "recordDate":  "2026-01-15",
+                                     "payableDate":  "2026-01-20",
+                                     "revisions":  [
+                                                       {
+                                                           "publishedAt":  "2026-01-05T18:00:00Z",
+                                                           "status":  "confirmed",
+                                                           "rateNewSharesPerOld":  0.1,
+                                                           "sourceId":  "SYNTH-NOTICE-1"
+                                                       }
+                                                   ]
+                                 },
+                                 {
+                                     "eventId":  "SD-002",
+                                     "subjectSecurityId":  "SYNTH-CLASS-A",
+                                     "distributedSecurityId":  "SYNTH-CLASS-A",
+                                     "exAt":  "2026-02-03T14:30:00Z",
+                                     "recordDate":  "2026-01-30",
+                                     "payableDate":  "2026-02-02",
+                                     "revisions":  [
+                                                       {
+                                                           "publishedAt":  "2026-01-20T18:00:00Z",
+                                                           "status":  "confirmed",
+                                                           "rateNewSharesPerOld":  0.15,
+                                                           "sourceId":  "SYNTH-NOTICE-2-R1"
+                                                       },
+                                                       {
+                                                           "publishedAt":  "2026-01-25T18:00:00Z",
+                                                           "status":  "confirmed",
+                                                           "rateNewSharesPerOld":  0.2,
+                                                           "sourceId":  "SYNTH-NOTICE-2-R2"
+                                                       }
+                                                   ]
+                                 }
+                             ],
+                  "observations":  [
+                                       {
+                                           "at":  "2026-01-02T21:00:00Z",
+                                           "availableAt":  "2026-01-02T21:00:05Z",
+                                           "sourceId":  "SYNTH-CLOSES-V1",
+                                           "price":  50,
+                                           "shares":  200,
+                                           "volume":  80
+                                       },
+                                       {
+                                           "at":  "2026-02-02T21:00:00Z",
+                                           "availableAt":  "2026-02-02T21:00:05Z",
+                                           "sourceId":  "SYNTH-CLOSES-V1",
+                                           "price":  55,
+                                           "shares":  220,
+                                           "volume":  90
+                                       },
+                                       {
+                                           "at":  "2026-02-03T14:30:00Z",
+                                           "availableAt":  "2026-02-03T14:30:05Z",
+                                           "sourceId":  "SYNTH-CLOSES-V1",
+                                           "price":  46,
+                                           "shares":  264,
+                                           "volume":  100
+                                       }
+                                   ]
+              },
+    "expected":  {
+                     "method":  "backward_post_event_same_class",
+                     "securityId":  "SYNTH-CLASS-A",
+                     "asOf":  "2026-02-04T12:00:00Z",
+                     "anchorAt":  "2026-02-03T21:00:00Z",
+                     "volumePolicy":  "adjust_to_anchor_basis",
+                     "appliedEvents":  [
+                                           {
+                                               "eventId":  "SD-001",
+                                               "exAt":  "2026-01-15T14:30:00Z",
+                                               "revisionPublishedAt":  "2026-01-05T18:00:00Z",
+                                               "knownByExDate":  true,
+                                               "rateNewSharesPerOld":  0.1,
+                                               "shareFactor":  1.1,
+                                               "priceFactor":  0.909090909091,
+                                               "sourceId":  "SYNTH-NOTICE-1"
+                                           },
+                                           {
+                                               "eventId":  "SD-002",
+                                               "exAt":  "2026-02-03T14:30:00Z",
+                                               "revisionPublishedAt":  "2026-01-25T18:00:00Z",
+                                               "knownByExDate":  true,
+                                               "rateNewSharesPerOld":  0.2,
+                                               "shareFactor":  1.2,
+                                               "priceFactor":  0.833333333333,
+                                               "sourceId":  "SYNTH-NOTICE-2-R2"
+                                           }
+                                       ],
+                     "unavailableEventIds":  [
+
+                                             ],
+                     "cancelledEventIds":  [
+
+                                           ],
+                     "rows":  [
+                                  {
+                                      "at":  "2026-01-02T21:00:00Z",
+                                      "availableAt":  "2026-01-02T21:00:05Z",
+                                      "sourceId":  "SYNTH-CLOSES-V1",
+                                      "rawPrice":  50,
+                                      "adjustedPrice":  37.878787878788,
+                                      "rawShares":  200,
+                                      "adjustedShares":  264,
+                                      "rawVolume":  80,
+                                      "adjustedVolume":  105.6,
+                                      "cumulativeShareFactor":  1.32,
+                                      "appliedEventIds":  [
+                                                              "SD-001",
+                                                              "SD-002"
+                                                          ]
+                                  },
+                                  {
+                                      "at":  "2026-02-02T21:00:00Z",
+                                      "availableAt":  "2026-02-02T21:00:05Z",
+                                      "sourceId":  "SYNTH-CLOSES-V1",
+                                      "rawPrice":  55,
+                                      "adjustedPrice":  45.833333333333,
+                                      "rawShares":  220,
+                                      "adjustedShares":  264,
+                                      "rawVolume":  90,
+                                      "adjustedVolume":  108,
+                                      "cumulativeShareFactor":  1.2,
+                                      "appliedEventIds":  [
+                                                              "SD-002"
+                                                          ]
+                                  },
+                                  {
+                                      "at":  "2026-02-03T14:30:00Z",
+                                      "availableAt":  "2026-02-03T14:30:05Z",
+                                      "sourceId":  "SYNTH-CLOSES-V1",
+                                      "rawPrice":  46,
+                                      "adjustedPrice":  46,
+                                      "rawShares":  264,
+                                      "adjustedShares":  264,
+                                      "rawVolume":  100,
+                                      "adjustedVolume":  100,
+                                      "cumulativeShareFactor":  1,
+                                      "appliedEventIds":  [
+
+                                                          ]
+                                  }
+                              ]
+                 },
+    "classification":  "synthetic teaching arithmetic",
+    "ratesNewSharesPerOld":  [
+                                 0.1,
+                                 0.2
+                             ],
+    "shareFactors":  [
+                         1.1,
+                         1.2
+                     ],
+    "cumulativeShareFactor":  1.32,
+    "rawObservation":  {
+                           "price":  50,
+                           "shares":  200,
+                           "volume":  80
+                       },
+    "volumePolicy":  "adjust_to_anchor_basis",
+    "adjustedObservation":  {
+                                "price":  37.878787878788,
+                                "shares":  264,
+                                "volume":  105.6
+                            },
+    "valueBeforeOutputRounding":  {
+                                      "raw":  10000,
+                                      "adjusted":  10000
+                                  },
+    "canonicalSource":  "../tests/shared_fixture.json"
 }
