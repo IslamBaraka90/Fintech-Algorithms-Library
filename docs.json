@@ -10,7 +10,7 @@
     "domains": 13,
     "families": 54,
     "verified": 88,
-    "withExample": 279,
+    "withExample": 323,
     "withDiagram": 324,
     "withApiContract": 280
   },
@@ -5600,7 +5600,7 @@
       ],
       "links": {
         "article": "https://thefintechbuilder.com/market-data-engineering/data-quality/price-source-consensus-check/",
-        "repo": null,
+        "repo": "https://github.com/IslamBaraka90/Fintech-Price-Source-Consensus-Check-Data-Quality-algorithm",
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-data-engineering/data-quality/price-source-consensus-check/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
@@ -5871,7 +5871,7 @@
       ],
       "links": {
         "article": "https://thefintechbuilder.com/market-data-engineering/data-quality/schema-drift-detector/",
-        "repo": null,
+        "repo": "https://github.com/IslamBaraka90/Fintech-Schema-Drift-Detector-Data-Quality-algorithm",
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-data-engineering/data-quality/schema-drift-detector/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
@@ -6082,7 +6082,7 @@
       ],
       "links": {
         "article": "https://thefintechbuilder.com/market-data-engineering/data-quality/point-in-time-availability-guard/",
-        "repo": null,
+        "repo": "https://github.com/IslamBaraka90/Fintech-Point-In-Time-Availability-Guard-Data-Quality-algorithm",
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-data-engineering/data-quality/point-in-time-availability-guard/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
@@ -10423,131 +10423,7 @@
           "space": "O(1)"
         }
       },
-      "example": {
-        "origin": "executed",
-        "verified": false,
-        "source": "executed against the catalog's own test input",
-        "call": "calculate({\"securityId\":\"SYNTHETIC-SECURITY-004\",\"eventId\":\"SYNTHETIC-SPECIAL-DIVIDEND-2026-01\",\"asOf\":\"2026-03-16T20:10:00Z\",\"methodology\":{\"id\":\"SYNTHETIC-NET-RETURN-POLICY\",\"version\":\"1.0\",\"sourceId\":\"SYNTHETIC-METHODOLOGY-NOTE\",\"classificationMode\":\"source-designated\",\"priceAdjustmentCashBasis\":\"net\",\"referenceAnchor\":\"previous-session-official-close\",\"outputDecimals\":8},\"eventRevisions\":[{\"revisionId\":\"R1\",\"securityId\":\"SYNTHETIC-SECURITY-004\",\"eventId\":\"SYNTHETIC-SPECIAL-DIVIDEND-2026-01\",\"status\":\"announced\",\"issuerClassification\":\"special\",\"grossAmount\":15,\"currency\":\"EUR\",\"announcedAt\":\"2026-02-02T12:00:00Z\",\"availableAt\":\"2026-02-02T12:05:00Z\",\"exAt\":\"2026-03-16T13:30:00Z\",\"paymentAt\":\"2026-03-20T12:00:00Z\",\"actionOrder\":20,\"amountBasisOrder\":0,\"sourceId\":\"SYNTHETIC-ISSUER-NOTICE-R1\"},{\"revisionId\":\"R2\",\"securityId\":\"SYNTHETIC-SECURITY-004\",\"eventId\":\"SYNTHETIC-SPECIAL-DIVIDEND-2026-01\",\"status\":\"announced\",\"issuerClassification\":\"special\",\"grossAmount\":16,\"currency\":\"EUR\",\"announcedAt\":\"2026-02-05T14:00:00Z\",\"availableAt\":\"2026-02-05T14:10:00Z\",\"exAt\":\"2026-03-16T13:30:00Z\",\"paymentAt\":\"2026-03-20T12:00:00Z\",\"actionOrder\":20,\"amountBasisOrder\":0,\"sourceId\":\"SYNTHETIC-ISSUER-NOTICE-R2\"}],\"referencePrice\":{\"value\":100,\"currency\":\"USD\",\"anchorType\":\"previous-session-official-close\",\"anchorAt\":\"2026-03-13T20:00:00Z\",\"observedAt\":\"2026-03-13T20:00:00Z\",\"availableAt\":\"2026-03-13T20:00:05Z\",\"sourceId\":\"SYNTHETIC-OFFICIAL-CLOSE\"},\"precedingActions\":[{\"actionId\":\"SYNTHETIC-2-FOR-1-SPLIT\",\"actionOrder\":10,\"priceFactor\":0.5,\"perShareAmountFactor\":0.5,\"effectiveAt\":\"2026-03-16T13:30:00Z\",\"observedAt\":\"2026-02-01T10:00:00Z\",\"availableAt\":\"2026-02-01T10:05:00Z\",\"sourceId\":\"SYNTHETIC-ACTION-SOURCE\"}],\"fxRate\":{\"baseCurrency\":\"EUR\",\"quoteCurrency\":\"USD\",\"rate\":1.1,\"observedAt\":\"2026-03-13T20:00:00Z\",\"availableAt\":\"2026-03-13T20:00:05Z\",\"sourceId\":\"SYNTHETIC-FX-CLOSE\"},\"taxProfile\":{\"withholdingRate\":0.25,\"jurisdiction\":\"SYNTHETIC-JURISDICTION\",\"investorCategory\":\"SYNTHETIC-NONRESIDENT\",\"observedAt\":\"2026-01-05T09:00:00Z\",\"availableAt\":\"2026-01-05T09:05:00Z\",\"sourceId\":\"SYNTHETIC-TAX-RULE\"},\"exPriceObservation\":{\"value\":43.75,\"currency\":\"USD\",\"observedAt\":\"2026-03-16T20:00:00Z\",\"availableAt\":\"2026-03-16T20:00:05Z\",\"sourceId\":\"SYNTHETIC-EX-CLOSE\"}})",
-        "args": [
-          {
-            "value": {
-              "securityId": "SYNTHETIC-SECURITY-004",
-              "eventId": "SYNTHETIC-SPECIAL-DIVIDEND-2026-01",
-              "asOf": "2026-03-16T20:10:00Z",
-              "methodology": {
-                "id": "SYNTHETIC-NET-RETURN-POLICY",
-                "version": "1.0",
-                "sourceId": "SYNTHETIC-METHODOLOGY-NOTE",
-                "classificationMode": "source-designated",
-                "priceAdjustmentCashBasis": "net",
-                "referenceAnchor": "previous-session-official-close",
-                "outputDecimals": 8
-              },
-              "eventRevisions": [
-                {
-                  "revisionId": "R1",
-                  "securityId": "SYNTHETIC-SECURITY-004",
-                  "eventId": "SYNTHETIC-SPECIAL-DIVIDEND-2026-01",
-                  "status": "announced",
-                  "issuerClassification": "special",
-                  "grossAmount": 15,
-                  "currency": "EUR",
-                  "announcedAt": "2026-02-02T12:00:00Z",
-                  "availableAt": "2026-02-02T12:05:00Z",
-                  "exAt": "2026-03-16T13:30:00Z",
-                  "paymentAt": "2026-03-20T12:00:00Z",
-                  "actionOrder": 20,
-                  "amountBasisOrder": 0,
-                  "sourceId": "SYNTHETIC-ISSUER-NOTICE-R1"
-                },
-                {
-                  "revisionId": "R2",
-                  "securityId": "SYNTHETIC-SECURITY-004",
-                  "eventId": "SYNTHETIC-SPECIAL-DIVIDEND-2026-01",
-                  "status": "announced",
-                  "issuerClassification": "special",
-                  "grossAmount": 16,
-                  "currency": "EUR",
-                  "announcedAt": "2026-02-05T14:00:00Z",
-                  "availableAt": "2026-02-05T14:10:00Z",
-                  "exAt": "2026-03-16T13:30:00Z",
-                  "paymentAt": "2026-03-20T12:00:00Z",
-                  "actionOrder": 20,
-                  "amountBasisOrder": 0,
-                  "sourceId": "SYNTHETIC-ISSUER-NOTICE-R2"
-                }
-              ],
-              "referencePrice": {
-                "value": 100,
-                "currency": "USD",
-                "anchorType": "previous-session-official-close",
-                "anchorAt": "2026-03-13T20:00:00Z",
-                "observedAt": "2026-03-13T20:00:00Z",
-                "availableAt": "2026-03-13T20:00:05Z",
-                "sourceId": "SYNTHETIC-OFFICIAL-CLOSE"
-              },
-              "precedingActions": [
-                {
-                  "actionId": "SYNTHETIC-2-FOR-1-SPLIT",
-                  "actionOrder": 10,
-                  "priceFactor": 0.5,
-                  "perShareAmountFactor": 0.5,
-                  "effectiveAt": "2026-03-16T13:30:00Z",
-                  "observedAt": "2026-02-01T10:00:00Z",
-                  "availableAt": "2026-02-01T10:05:00Z",
-                  "sourceId": "SYNTHETIC-ACTION-SOURCE"
-                }
-              ],
-              "fxRate": {
-                "baseCurrency": "EUR",
-                "quoteCurrency": "USD",
-                "rate": 1.1,
-                "observedAt": "2026-03-13T20:00:00Z",
-                "availableAt": "2026-03-13T20:00:05Z",
-                "sourceId": "SYNTHETIC-FX-CLOSE"
-              },
-              "taxProfile": {
-                "withholdingRate": 0.25,
-                "jurisdiction": "SYNTHETIC-JURISDICTION",
-                "investorCategory": "SYNTHETIC-NONRESIDENT",
-                "observedAt": "2026-01-05T09:00:00Z",
-                "availableAt": "2026-01-05T09:05:00Z",
-                "sourceId": "SYNTHETIC-TAX-RULE"
-              },
-              "exPriceObservation": {
-                "value": 43.75,
-                "currency": "USD",
-                "observedAt": "2026-03-16T20:00:00Z",
-                "availableAt": "2026-03-16T20:00:05Z",
-                "sourceId": "SYNTHETIC-EX-CLOSE"
-              }
-            },
-            "elided": null
-          }
-        ],
-        "output": {
-          "eventState": "effective",
-          "selectedRevisionId": "R2",
-          "classificationDecision": "special",
-          "classificationReason": "source designation: special",
-          "adjustmentApplied": true,
-          "referencePriceOnEventBasis": 50,
-          "grossDividendOnEventBasis": 8.8,
-          "netDividendOnEventBasis": 6.6,
-          "adjustmentCashAmount": 6.6,
-          "theoreticalExPrice": 43.4,
-          "adjustmentFactor": 0.868,
-          "grossDistributionYield": 0.176,
-          "methodologyId": "SYNTHETIC-NET-RETURN-POLICY",
-          "methodologyVersion": "1.0"
-        },
-        "outputElided": {
-          "kind": "object",
-          "shown": 14,
-          "total": 16
-        },
-        "outputShape": "object with 16 fields: eventState, selectedRevisionId, classificationDecision, classificationReason, adjustmentApplied, referencePriceOnEventBasis, grossDividendOnEventBasis, netDividendOnEventBasis, …"
-      },
+      "example": null,
       "verification": {
         "tier": "contract",
         "via": null
@@ -24216,7 +24092,61 @@
           "space": "O(n)"
         }
       },
-      "example": null,
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "calculateMcClellanValues([0,0,0,0,0,0])",
+        "args": [
+          {
+            "value": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "elided": {
+              "kind": "array",
+              "shown": 6,
+              "total": 44
+            }
+          }
+        ],
+        "output": [
+          {
+            "observation": 1,
+            "net_advances": 0,
+            "fast_ema": null,
+            "slow_ema": null,
+            "oscillator": null,
+            "status": "warming_fast"
+          },
+          {
+            "observation": 2,
+            "net_advances": 0,
+            "fast_ema": null,
+            "slow_ema": null,
+            "oscillator": null,
+            "status": "warming_fast"
+          },
+          {
+            "observation": 3,
+            "net_advances": 0,
+            "fast_ema": null,
+            "slow_ema": null,
+            "oscillator": null,
+            "status": "warming_fast"
+          }
+        ],
+        "outputElided": {
+          "kind": "array",
+          "shown": 3,
+          "total": 44
+        },
+        "outputShape": "array of 44 objects"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -29297,7 +29227,48 @@
         "signature": "shadowToBodyRatio(inputs)"
       },
       "api": null,
-      "example": null,
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "shadowToBodyRatio({\"candle\":{\"open\":100,\"high\":105,\"low\":97,\"close\":102},\"tick_size\":0.1})",
+        "args": [
+          {
+            "value": {
+              "candle": {
+                "open": 100,
+                "high": 105,
+                "low": 97,
+                "close": 102
+              },
+              "tick_size": 0.1
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "state": "calculated",
+          "body": 2,
+          "upper_shadow": 3,
+          "lower_shadow": 3,
+          "range": 8,
+          "tick_size": 0.1,
+          "effective_body": 2,
+          "upper_to_body": 1.5,
+          "lower_to_body": 1.5,
+          "upper_to_effective_body": 1.5,
+          "lower_to_effective_body": 1.5,
+          "upper_to_range": 0.375,
+          "lower_to_range": 0.375,
+          "dominant_shadow": "balanced"
+        },
+        "outputElided": {
+          "kind": "object",
+          "shown": 14,
+          "total": 15
+        },
+        "outputShape": "object with 15 fields: state, body, upper_shadow, lower_shadow, range, tick_size, effective_body, upper_to_body, …"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -29394,7 +29365,51 @@
         "signature": "gapClassification(inputs)"
       },
       "api": null,
-      "example": null,
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "gapClassification({\"previous\":{\"open\":100,\"high\":105,\"low\":99,\"close\":104},\"current\":{\"open\":106,\"high\":110,\"low\":106,\"close\":109},\"tick_size\":1,\"minimum_gap_ticks\":1})",
+        "args": [
+          {
+            "value": {
+              "previous": {
+                "open": 100,
+                "high": 105,
+                "low": 99,
+                "close": 104
+              },
+              "current": {
+                "open": 106,
+                "high": 110,
+                "low": 106,
+                "close": 109
+              },
+              "tick_size": 1,
+              "minimum_gap_ticks": 1
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "state": "gap",
+          "gap_direction": "up",
+          "gap_type": "full-range",
+          "gap_distance": 1,
+          "threshold_distance": 1,
+          "open_gap_up": true,
+          "open_gap_down": false,
+          "body_gap_up": true,
+          "body_gap_down": false,
+          "full_range_gap_up": true,
+          "full_range_gap_down": false,
+          "signed_open_gap": 2,
+          "previous_close": 104,
+          "current_open": 106
+        },
+        "outputElided": null,
+        "outputShape": "object with 14 fields: state, gap_direction, gap_type, gap_distance, threshold_distance, open_gap_up, open_gap_down, body_gap_up, …"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -29491,7 +29506,50 @@
         "signature": "trendContextFilter(inputs)"
       },
       "api": null,
-      "example": null,
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "trendContextFilter({\"prior_closes\":[100,99,98,97,96,95],\"prior_ranges\":[2,2,2,2,2,2],\"lookback\":8,\"minimum_efficiency\":0.6,\"minimum_move_scale\":2})",
+        "args": [
+          {
+            "value": {
+              "prior_closes": [
+                100,
+                99,
+                98,
+                97,
+                96,
+                95
+              ],
+              "prior_ranges": [
+                2,
+                2,
+                2,
+                2,
+                2,
+                2
+              ],
+              "lookback": 8,
+              "minimum_efficiency": 0.6,
+              "minimum_move_scale": 2
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "state": "ready",
+          "trend_context": "downtrend",
+          "history_count": 8,
+          "net_move": -7,
+          "path_move": 7,
+          "efficiency": 1,
+          "range_scale": 2,
+          "normalized_move": -3.5
+        },
+        "outputElided": null,
+        "outputShape": "object with 8 fields: state, trend_context, history_count, net_move, path_move, efficiency, range_scale, normalized_move"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -29594,7 +29652,65 @@
         "signature": "doji(inputs)"
       },
       "api": null,
-      "example": null,
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "doji({\"current\":{\"open\":100,\"high\":103,\"low\":98,\"close\":100.5},\"prior_bodies\":[2,2.2,1.8,2.1,1.9,2],\"prior_ranges\":[5,5,5,5,5,5],\"trend_context\":\"sideways\",\"tick_size\":0.1})",
+        "args": [
+          {
+            "value": {
+              "current": {
+                "open": 100,
+                "high": 103,
+                "low": 98,
+                "close": 100.5
+              },
+              "prior_bodies": [
+                2,
+                2.2,
+                1.8,
+                2.1,
+                1.9,
+                2
+              ],
+              "prior_ranges": [
+                5,
+                5,
+                5,
+                5,
+                5,
+                5
+              ],
+              "trend_context": "sideways",
+              "tick_size": 0.1
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "topic_id": "D06-F02-A01",
+          "pattern": "Doji",
+          "matched": true,
+          "state": "matched",
+          "direction": "bullish",
+          "trend_context": "sideways",
+          "required_context": null,
+          "body": 0.5,
+          "upper_shadow": 2.5,
+          "lower_shadow": 2,
+          "range": 5,
+          "body_scale": 2,
+          "range_scale": 5,
+          "history_count": 10
+        },
+        "outputElided": {
+          "kind": "object",
+          "shown": 14,
+          "total": 17
+        },
+        "outputShape": "object with 17 fields: topic_id, pattern, matched, state, direction, trend_context, required_context, body, …"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -29697,7 +29813,65 @@
         "signature": "dragonflyDoji(inputs)"
       },
       "api": null,
-      "example": null,
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "dragonflyDoji({\"current\":{\"open\":103,\"high\":103.4,\"low\":100,\"close\":103.2},\"prior_bodies\":[2,2.2,1.8,2.1,1.9,2],\"prior_ranges\":[5,5,5,5,5,5],\"trend_context\":\"sideways\",\"tick_size\":0.1})",
+        "args": [
+          {
+            "value": {
+              "current": {
+                "open": 103,
+                "high": 103.4,
+                "low": 100,
+                "close": 103.2
+              },
+              "prior_bodies": [
+                2,
+                2.2,
+                1.8,
+                2.1,
+                1.9,
+                2
+              ],
+              "prior_ranges": [
+                5,
+                5,
+                5,
+                5,
+                5,
+                5
+              ],
+              "trend_context": "sideways",
+              "tick_size": 0.1
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "topic_id": "D06-F02-A02",
+          "pattern": "Dragonfly Doji",
+          "matched": true,
+          "state": "matched",
+          "direction": "bullish",
+          "trend_context": "sideways",
+          "required_context": null,
+          "body": 0.20000000000000284,
+          "upper_shadow": 0.20000000000000284,
+          "lower_shadow": 3,
+          "range": 3.4000000000000057,
+          "body_scale": 2,
+          "range_scale": 5,
+          "history_count": 10
+        },
+        "outputElided": {
+          "kind": "object",
+          "shown": 14,
+          "total": 17
+        },
+        "outputShape": "object with 17 fields: topic_id, pattern, matched, state, direction, trend_context, required_context, body, …"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -29800,7 +29974,65 @@
         "signature": "gravestoneDoji(inputs)"
       },
       "api": null,
-      "example": null,
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "gravestoneDoji({\"current\":{\"open\":100,\"high\":103.2,\"low\":100,\"close\":100.2},\"prior_bodies\":[2,2.2,1.8,2.1,1.9,2],\"prior_ranges\":[5,5,5,5,5,5],\"trend_context\":\"sideways\",\"tick_size\":0.1})",
+        "args": [
+          {
+            "value": {
+              "current": {
+                "open": 100,
+                "high": 103.2,
+                "low": 100,
+                "close": 100.2
+              },
+              "prior_bodies": [
+                2,
+                2.2,
+                1.8,
+                2.1,
+                1.9,
+                2
+              ],
+              "prior_ranges": [
+                5,
+                5,
+                5,
+                5,
+                5,
+                5
+              ],
+              "trend_context": "sideways",
+              "tick_size": 0.1
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "topic_id": "D06-F02-A03",
+          "pattern": "Gravestone Doji",
+          "matched": true,
+          "state": "matched",
+          "direction": "bullish",
+          "trend_context": "sideways",
+          "required_context": null,
+          "body": 0.20000000000000284,
+          "upper_shadow": 3,
+          "lower_shadow": 0,
+          "range": 3.200000000000003,
+          "body_scale": 2,
+          "range_scale": 5,
+          "history_count": 10
+        },
+        "outputElided": {
+          "kind": "object",
+          "shown": 14,
+          "total": 17
+        },
+        "outputShape": "object with 17 fields: topic_id, pattern, matched, state, direction, trend_context, required_context, body, …"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -29903,7 +30135,65 @@
         "signature": "marubozu(inputs)"
       },
       "api": null,
-      "example": null,
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "marubozu({\"current\":{\"open\":100,\"high\":102.6,\"low\":99.8,\"close\":102.4},\"prior_bodies\":[2,2.2,1.8,2.1,1.9,2],\"prior_ranges\":[5,5,5,5,5,5],\"trend_context\":\"sideways\",\"tick_size\":0.1})",
+        "args": [
+          {
+            "value": {
+              "current": {
+                "open": 100,
+                "high": 102.6,
+                "low": 99.8,
+                "close": 102.4
+              },
+              "prior_bodies": [
+                2,
+                2.2,
+                1.8,
+                2.1,
+                1.9,
+                2
+              ],
+              "prior_ranges": [
+                5,
+                5,
+                5,
+                5,
+                5,
+                5
+              ],
+              "trend_context": "sideways",
+              "tick_size": 0.1
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "topic_id": "D06-F02-A04",
+          "pattern": "Marubozu",
+          "matched": true,
+          "state": "matched",
+          "direction": "bullish",
+          "trend_context": "sideways",
+          "required_context": null,
+          "body": 2.4000000000000057,
+          "upper_shadow": 0.19999999999998863,
+          "lower_shadow": 0.20000000000000284,
+          "range": 2.799999999999997,
+          "body_scale": 2,
+          "range_scale": 5,
+          "history_count": 10
+        },
+        "outputElided": {
+          "kind": "object",
+          "shown": 14,
+          "total": 17
+        },
+        "outputShape": "object with 17 fields: topic_id, pattern, matched, state, direction, trend_context, required_context, body, …"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -30006,7 +30296,65 @@
         "signature": "spinningTop(inputs)"
       },
       "api": null,
-      "example": null,
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "spinningTop({\"current\":{\"open\":100,\"high\":102.4,\"low\":98.8,\"close\":101.2},\"prior_bodies\":[2,2.2,1.8,2.1,1.9,2],\"prior_ranges\":[5,5,5,5,5,5],\"trend_context\":\"sideways\",\"tick_size\":0.1})",
+        "args": [
+          {
+            "value": {
+              "current": {
+                "open": 100,
+                "high": 102.4,
+                "low": 98.8,
+                "close": 101.2
+              },
+              "prior_bodies": [
+                2,
+                2.2,
+                1.8,
+                2.1,
+                1.9,
+                2
+              ],
+              "prior_ranges": [
+                5,
+                5,
+                5,
+                5,
+                5,
+                5
+              ],
+              "trend_context": "sideways",
+              "tick_size": 0.1
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "topic_id": "D06-F02-A05",
+          "pattern": "Spinning Top",
+          "matched": true,
+          "state": "matched",
+          "direction": "bullish",
+          "trend_context": "sideways",
+          "required_context": null,
+          "body": 1.2000000000000028,
+          "upper_shadow": 1.2000000000000028,
+          "lower_shadow": 1.2000000000000028,
+          "range": 3.6000000000000085,
+          "body_scale": 2,
+          "range_scale": 5,
+          "history_count": 10
+        },
+        "outputElided": {
+          "kind": "object",
+          "shown": 14,
+          "total": 17
+        },
+        "outputShape": "object with 17 fields: topic_id, pattern, matched, state, direction, trend_context, required_context, body, …"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -30109,7 +30457,65 @@
         "signature": "hammer(inputs)"
       },
       "api": null,
-      "example": null,
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "hammer({\"current\":{\"open\":102,\"high\":103.2,\"low\":100,\"close\":103},\"prior_bodies\":[2,2.2,1.8,2.1,1.9,2],\"prior_ranges\":[5,5,5,5,5,5],\"trend_context\":\"downtrend\",\"tick_size\":0.1})",
+        "args": [
+          {
+            "value": {
+              "current": {
+                "open": 102,
+                "high": 103.2,
+                "low": 100,
+                "close": 103
+              },
+              "prior_bodies": [
+                2,
+                2.2,
+                1.8,
+                2.1,
+                1.9,
+                2
+              ],
+              "prior_ranges": [
+                5,
+                5,
+                5,
+                5,
+                5,
+                5
+              ],
+              "trend_context": "downtrend",
+              "tick_size": 0.1
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "topic_id": "D06-F02-A06",
+          "pattern": "Hammer",
+          "matched": true,
+          "state": "matched",
+          "direction": "bullish",
+          "trend_context": "downtrend",
+          "required_context": "downtrend",
+          "body": 1,
+          "upper_shadow": 0.20000000000000284,
+          "lower_shadow": 2,
+          "range": 3.200000000000003,
+          "body_scale": 2,
+          "range_scale": 5,
+          "history_count": 10
+        },
+        "outputElided": {
+          "kind": "object",
+          "shown": 14,
+          "total": 17
+        },
+        "outputShape": "object with 17 fields: topic_id, pattern, matched, state, direction, trend_context, required_context, body, …"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -30212,7 +30618,65 @@
         "signature": "hangingMan(inputs)"
       },
       "api": null,
-      "example": null,
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "hangingMan({\"current\":{\"open\":102,\"high\":103.2,\"low\":100,\"close\":103},\"prior_bodies\":[2,2.2,1.8,2.1,1.9,2],\"prior_ranges\":[5,5,5,5,5,5],\"trend_context\":\"uptrend\",\"tick_size\":0.1})",
+        "args": [
+          {
+            "value": {
+              "current": {
+                "open": 102,
+                "high": 103.2,
+                "low": 100,
+                "close": 103
+              },
+              "prior_bodies": [
+                2,
+                2.2,
+                1.8,
+                2.1,
+                1.9,
+                2
+              ],
+              "prior_ranges": [
+                5,
+                5,
+                5,
+                5,
+                5,
+                5
+              ],
+              "trend_context": "uptrend",
+              "tick_size": 0.1
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "topic_id": "D06-F02-A07",
+          "pattern": "Hanging Man",
+          "matched": true,
+          "state": "matched",
+          "direction": "bullish",
+          "trend_context": "uptrend",
+          "required_context": "uptrend",
+          "body": 1,
+          "upper_shadow": 0.20000000000000284,
+          "lower_shadow": 2,
+          "range": 3.200000000000003,
+          "body_scale": 2,
+          "range_scale": 5,
+          "history_count": 10
+        },
+        "outputElided": {
+          "kind": "object",
+          "shown": 14,
+          "total": 17
+        },
+        "outputShape": "object with 17 fields: topic_id, pattern, matched, state, direction, trend_context, required_context, body, …"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -30315,7 +30779,65 @@
         "signature": "invertedHammer(inputs)"
       },
       "api": null,
-      "example": null,
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "invertedHammer({\"current\":{\"open\":100,\"high\":103,\"low\":99.8,\"close\":101},\"prior_bodies\":[2,2.2,1.8,2.1,1.9,2],\"prior_ranges\":[5,5,5,5,5,5],\"trend_context\":\"downtrend\",\"tick_size\":0.1})",
+        "args": [
+          {
+            "value": {
+              "current": {
+                "open": 100,
+                "high": 103,
+                "low": 99.8,
+                "close": 101
+              },
+              "prior_bodies": [
+                2,
+                2.2,
+                1.8,
+                2.1,
+                1.9,
+                2
+              ],
+              "prior_ranges": [
+                5,
+                5,
+                5,
+                5,
+                5,
+                5
+              ],
+              "trend_context": "downtrend",
+              "tick_size": 0.1
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "topic_id": "D06-F02-A08",
+          "pattern": "Inverted Hammer",
+          "matched": true,
+          "state": "matched",
+          "direction": "bullish",
+          "trend_context": "downtrend",
+          "required_context": "downtrend",
+          "body": 1,
+          "upper_shadow": 2,
+          "lower_shadow": 0.20000000000000284,
+          "range": 3.200000000000003,
+          "body_scale": 2,
+          "range_scale": 5,
+          "history_count": 10
+        },
+        "outputElided": {
+          "kind": "object",
+          "shown": 14,
+          "total": 17
+        },
+        "outputShape": "object with 17 fields: topic_id, pattern, matched, state, direction, trend_context, required_context, body, …"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -30418,7 +30940,65 @@
         "signature": "shootingStar(inputs)"
       },
       "api": null,
-      "example": null,
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "shootingStar({\"current\":{\"open\":100,\"high\":103,\"low\":99.8,\"close\":101},\"prior_bodies\":[2,2.2,1.8,2.1,1.9,2],\"prior_ranges\":[5,5,5,5,5,5],\"trend_context\":\"uptrend\",\"tick_size\":0.1})",
+        "args": [
+          {
+            "value": {
+              "current": {
+                "open": 100,
+                "high": 103,
+                "low": 99.8,
+                "close": 101
+              },
+              "prior_bodies": [
+                2,
+                2.2,
+                1.8,
+                2.1,
+                1.9,
+                2
+              ],
+              "prior_ranges": [
+                5,
+                5,
+                5,
+                5,
+                5,
+                5
+              ],
+              "trend_context": "uptrend",
+              "tick_size": 0.1
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "topic_id": "D06-F02-A09",
+          "pattern": "Shooting Star",
+          "matched": true,
+          "state": "matched",
+          "direction": "bullish",
+          "trend_context": "uptrend",
+          "required_context": "uptrend",
+          "body": 1,
+          "upper_shadow": 2,
+          "lower_shadow": 0.20000000000000284,
+          "range": 3.200000000000003,
+          "body_scale": 2,
+          "range_scale": 5,
+          "history_count": 10
+        },
+        "outputElided": {
+          "kind": "object",
+          "shown": 14,
+          "total": 17
+        },
+        "outputShape": "object with 17 fields: topic_id, pattern, matched, state, direction, trend_context, required_context, body, …"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -30521,7 +31101,72 @@
         "signature": "bullishEngulfing(inputs)"
       },
       "api": null,
-      "example": null,
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "bullishEngulfing({\"first\":{\"open\":105,\"high\":105.5,\"low\":101.5,\"close\":102},\"second\":{\"open\":101.5,\"high\":106,\"low\":101,\"close\":105.5},\"prior_bodies\":[2,2.2,1.8,2.1,1.9,2],\"prior_ranges\":[5,5,5,5,5,5],\"trend_context\":\"downtrend\",\"tick_size\":0.1,\"price_tolerance_ticks\":2})",
+        "args": [
+          {
+            "value": {
+              "first": {
+                "open": 105,
+                "high": 105.5,
+                "low": 101.5,
+                "close": 102
+              },
+              "second": {
+                "open": 101.5,
+                "high": 106,
+                "low": 101,
+                "close": 105.5
+              },
+              "prior_bodies": [
+                2,
+                2.2,
+                1.8,
+                2.1,
+                1.9,
+                2
+              ],
+              "prior_ranges": [
+                5,
+                5,
+                5,
+                5,
+                5,
+                5
+              ],
+              "trend_context": "downtrend",
+              "tick_size": 0.1,
+              "price_tolerance_ticks": 2
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "topic_id": "D06-F03-A01",
+          "pattern": "Bullish Engulfing",
+          "matched": true,
+          "state": "matched",
+          "direction": "bullish",
+          "trend_context": "downtrend",
+          "required_context": "downtrend",
+          "body": 4,
+          "upper_shadow": 0.5,
+          "lower_shadow": 0.5,
+          "range": 5,
+          "body_scale": 2,
+          "range_scale": 5,
+          "history_count": 10
+        },
+        "outputElided": {
+          "kind": "object",
+          "shown": 14,
+          "total": 31
+        },
+        "outputShape": "object with 31 fields: topic_id, pattern, matched, state, direction, trend_context, required_context, body, …"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -30624,7 +31269,72 @@
         "signature": "bearishEngulfing(inputs)"
       },
       "api": null,
-      "example": null,
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "bearishEngulfing({\"first\":{\"open\":102,\"high\":105.5,\"low\":101.5,\"close\":105},\"second\":{\"open\":105.5,\"high\":106,\"low\":101,\"close\":101.5},\"prior_bodies\":[2,2.2,1.8,2.1,1.9,2],\"prior_ranges\":[5,5,5,5,5,5],\"trend_context\":\"uptrend\",\"tick_size\":0.1,\"price_tolerance_ticks\":2})",
+        "args": [
+          {
+            "value": {
+              "first": {
+                "open": 102,
+                "high": 105.5,
+                "low": 101.5,
+                "close": 105
+              },
+              "second": {
+                "open": 105.5,
+                "high": 106,
+                "low": 101,
+                "close": 101.5
+              },
+              "prior_bodies": [
+                2,
+                2.2,
+                1.8,
+                2.1,
+                1.9,
+                2
+              ],
+              "prior_ranges": [
+                5,
+                5,
+                5,
+                5,
+                5,
+                5
+              ],
+              "trend_context": "uptrend",
+              "tick_size": 0.1,
+              "price_tolerance_ticks": 2
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "topic_id": "D06-F03-A02",
+          "pattern": "Bearish Engulfing",
+          "matched": true,
+          "state": "matched",
+          "direction": "bearish",
+          "trend_context": "uptrend",
+          "required_context": "uptrend",
+          "body": 4,
+          "upper_shadow": 0.5,
+          "lower_shadow": 0.5,
+          "range": 5,
+          "body_scale": 2,
+          "range_scale": 5,
+          "history_count": 10
+        },
+        "outputElided": {
+          "kind": "object",
+          "shown": 14,
+          "total": 31
+        },
+        "outputShape": "object with 31 fields: topic_id, pattern, matched, state, direction, trend_context, required_context, body, …"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -30727,7 +31437,72 @@
         "signature": "bullishHarami(inputs)"
       },
       "api": null,
-      "example": null,
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "bullishHarami({\"first\":{\"open\":105,\"high\":105.5,\"low\":101.5,\"close\":102},\"second\":{\"open\":103,\"high\":104.2,\"low\":102.8,\"close\":104},\"prior_bodies\":[2,2.2,1.8,2.1,1.9,2],\"prior_ranges\":[5,5,5,5,5,5],\"trend_context\":\"downtrend\",\"tick_size\":0.1,\"price_tolerance_ticks\":2})",
+        "args": [
+          {
+            "value": {
+              "first": {
+                "open": 105,
+                "high": 105.5,
+                "low": 101.5,
+                "close": 102
+              },
+              "second": {
+                "open": 103,
+                "high": 104.2,
+                "low": 102.8,
+                "close": 104
+              },
+              "prior_bodies": [
+                2,
+                2.2,
+                1.8,
+                2.1,
+                1.9,
+                2
+              ],
+              "prior_ranges": [
+                5,
+                5,
+                5,
+                5,
+                5,
+                5
+              ],
+              "trend_context": "downtrend",
+              "tick_size": 0.1,
+              "price_tolerance_ticks": 2
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "topic_id": "D06-F03-A03",
+          "pattern": "Bullish Harami",
+          "matched": true,
+          "state": "matched",
+          "direction": "bullish",
+          "trend_context": "downtrend",
+          "required_context": "downtrend",
+          "body": 1,
+          "upper_shadow": 0.20000000000000284,
+          "lower_shadow": 0.20000000000000284,
+          "range": 1.4000000000000057,
+          "body_scale": 2,
+          "range_scale": 5,
+          "history_count": 10
+        },
+        "outputElided": {
+          "kind": "object",
+          "shown": 14,
+          "total": 31
+        },
+        "outputShape": "object with 31 fields: topic_id, pattern, matched, state, direction, trend_context, required_context, body, …"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -30830,7 +31605,72 @@
         "signature": "bearishHarami(inputs)"
       },
       "api": null,
-      "example": null,
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "bearishHarami({\"first\":{\"open\":102,\"high\":105.5,\"low\":101.5,\"close\":105},\"second\":{\"open\":104,\"high\":104.2,\"low\":102.8,\"close\":103},\"prior_bodies\":[2,2.2,1.8,2.1,1.9,2],\"prior_ranges\":[5,5,5,5,5,5],\"trend_context\":\"uptrend\",\"tick_size\":0.1,\"price_tolerance_ticks\":2})",
+        "args": [
+          {
+            "value": {
+              "first": {
+                "open": 102,
+                "high": 105.5,
+                "low": 101.5,
+                "close": 105
+              },
+              "second": {
+                "open": 104,
+                "high": 104.2,
+                "low": 102.8,
+                "close": 103
+              },
+              "prior_bodies": [
+                2,
+                2.2,
+                1.8,
+                2.1,
+                1.9,
+                2
+              ],
+              "prior_ranges": [
+                5,
+                5,
+                5,
+                5,
+                5,
+                5
+              ],
+              "trend_context": "uptrend",
+              "tick_size": 0.1,
+              "price_tolerance_ticks": 2
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "topic_id": "D06-F03-A04",
+          "pattern": "Bearish Harami",
+          "matched": true,
+          "state": "matched",
+          "direction": "bearish",
+          "trend_context": "uptrend",
+          "required_context": "uptrend",
+          "body": 1,
+          "upper_shadow": 0.20000000000000284,
+          "lower_shadow": 0.20000000000000284,
+          "range": 1.4000000000000057,
+          "body_scale": 2,
+          "range_scale": 5,
+          "history_count": 10
+        },
+        "outputElided": {
+          "kind": "object",
+          "shown": 14,
+          "total": 31
+        },
+        "outputShape": "object with 31 fields: topic_id, pattern, matched, state, direction, trend_context, required_context, body, …"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -30933,7 +31773,72 @@
         "signature": "piercingLine(inputs)"
       },
       "api": null,
-      "example": null,
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "piercingLine({\"first\":{\"open\":105,\"high\":105.5,\"low\":101.5,\"close\":102},\"second\":{\"open\":101.4,\"high\":104,\"low\":101.2,\"close\":103.6},\"prior_bodies\":[2,2.2,1.8,2.1,1.9,2],\"prior_ranges\":[5,5,5,5,5,5],\"trend_context\":\"downtrend\",\"tick_size\":0.1,\"price_tolerance_ticks\":2})",
+        "args": [
+          {
+            "value": {
+              "first": {
+                "open": 105,
+                "high": 105.5,
+                "low": 101.5,
+                "close": 102
+              },
+              "second": {
+                "open": 101.4,
+                "high": 104,
+                "low": 101.2,
+                "close": 103.6
+              },
+              "prior_bodies": [
+                2,
+                2.2,
+                1.8,
+                2.1,
+                1.9,
+                2
+              ],
+              "prior_ranges": [
+                5,
+                5,
+                5,
+                5,
+                5,
+                5
+              ],
+              "trend_context": "downtrend",
+              "tick_size": 0.1,
+              "price_tolerance_ticks": 2
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "topic_id": "D06-F03-A05",
+          "pattern": "Piercing Line",
+          "matched": true,
+          "state": "matched",
+          "direction": "bullish",
+          "trend_context": "downtrend",
+          "required_context": "downtrend",
+          "body": 2.1999999999999886,
+          "upper_shadow": 0.4000000000000057,
+          "lower_shadow": 0.20000000000000284,
+          "range": 2.799999999999997,
+          "body_scale": 2,
+          "range_scale": 5,
+          "history_count": 10
+        },
+        "outputElided": {
+          "kind": "object",
+          "shown": 14,
+          "total": 31
+        },
+        "outputShape": "object with 31 fields: topic_id, pattern, matched, state, direction, trend_context, required_context, body, …"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -31036,7 +31941,72 @@
         "signature": "darkCloudCover(inputs)"
       },
       "api": null,
-      "example": null,
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "darkCloudCover({\"first\":{\"open\":102,\"high\":105.5,\"low\":101.5,\"close\":105},\"second\":{\"open\":105.6,\"high\":105.8,\"low\":103,\"close\":103.4},\"prior_bodies\":[2,2.2,1.8,2.1,1.9,2],\"prior_ranges\":[5,5,5,5,5,5],\"trend_context\":\"uptrend\",\"tick_size\":0.1,\"price_tolerance_ticks\":2})",
+        "args": [
+          {
+            "value": {
+              "first": {
+                "open": 102,
+                "high": 105.5,
+                "low": 101.5,
+                "close": 105
+              },
+              "second": {
+                "open": 105.6,
+                "high": 105.8,
+                "low": 103,
+                "close": 103.4
+              },
+              "prior_bodies": [
+                2,
+                2.2,
+                1.8,
+                2.1,
+                1.9,
+                2
+              ],
+              "prior_ranges": [
+                5,
+                5,
+                5,
+                5,
+                5,
+                5
+              ],
+              "trend_context": "uptrend",
+              "tick_size": 0.1,
+              "price_tolerance_ticks": 2
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "topic_id": "D06-F03-A06",
+          "pattern": "Dark Cloud Cover",
+          "matched": true,
+          "state": "matched",
+          "direction": "bearish",
+          "trend_context": "uptrend",
+          "required_context": "uptrend",
+          "body": 2.1999999999999886,
+          "upper_shadow": 0.20000000000000284,
+          "lower_shadow": 0.4000000000000057,
+          "range": 2.799999999999997,
+          "body_scale": 2,
+          "range_scale": 5,
+          "history_count": 10
+        },
+        "outputElided": {
+          "kind": "object",
+          "shown": 14,
+          "total": 31
+        },
+        "outputShape": "object with 31 fields: topic_id, pattern, matched, state, direction, trend_context, required_context, body, …"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -31139,7 +32109,72 @@
         "signature": "tweezerTop(inputs)"
       },
       "api": null,
-      "example": null,
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "tweezerTop({\"first\":{\"open\":100,\"high\":103,\"low\":99.8,\"close\":102},\"second\":{\"open\":102.1,\"high\":103.1,\"low\":100.3,\"close\":100.5},\"prior_bodies\":[2,2.2,1.8,2.1,1.9,2],\"prior_ranges\":[5,5,5,5,5,5],\"trend_context\":\"uptrend\",\"tick_size\":0.1,\"price_tolerance_ticks\":2})",
+        "args": [
+          {
+            "value": {
+              "first": {
+                "open": 100,
+                "high": 103,
+                "low": 99.8,
+                "close": 102
+              },
+              "second": {
+                "open": 102.1,
+                "high": 103.1,
+                "low": 100.3,
+                "close": 100.5
+              },
+              "prior_bodies": [
+                2,
+                2.2,
+                1.8,
+                2.1,
+                1.9,
+                2
+              ],
+              "prior_ranges": [
+                5,
+                5,
+                5,
+                5,
+                5,
+                5
+              ],
+              "trend_context": "uptrend",
+              "tick_size": 0.1,
+              "price_tolerance_ticks": 2
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "topic_id": "D06-F03-A07",
+          "pattern": "Tweezer Top",
+          "matched": true,
+          "state": "matched",
+          "direction": "bearish",
+          "trend_context": "uptrend",
+          "required_context": "uptrend",
+          "body": 1.5999999999999943,
+          "upper_shadow": 1,
+          "lower_shadow": 0.20000000000000284,
+          "range": 2.799999999999997,
+          "body_scale": 2,
+          "range_scale": 5,
+          "history_count": 10
+        },
+        "outputElided": {
+          "kind": "object",
+          "shown": 14,
+          "total": 31
+        },
+        "outputShape": "object with 31 fields: topic_id, pattern, matched, state, direction, trend_context, required_context, body, …"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -31242,7 +32277,72 @@
         "signature": "tweezerBottom(inputs)"
       },
       "api": null,
-      "example": null,
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "tweezerBottom({\"first\":{\"open\":102,\"high\":102.2,\"low\":99,\"close\":100},\"second\":{\"open\":99.9,\"high\":101.7,\"low\":99.1,\"close\":101.5},\"prior_bodies\":[2,2.2,1.8,2.1,1.9,2],\"prior_ranges\":[5,5,5,5,5,5],\"trend_context\":\"downtrend\",\"tick_size\":0.1,\"price_tolerance_ticks\":2})",
+        "args": [
+          {
+            "value": {
+              "first": {
+                "open": 102,
+                "high": 102.2,
+                "low": 99,
+                "close": 100
+              },
+              "second": {
+                "open": 99.9,
+                "high": 101.7,
+                "low": 99.1,
+                "close": 101.5
+              },
+              "prior_bodies": [
+                2,
+                2.2,
+                1.8,
+                2.1,
+                1.9,
+                2
+              ],
+              "prior_ranges": [
+                5,
+                5,
+                5,
+                5,
+                5,
+                5
+              ],
+              "trend_context": "downtrend",
+              "tick_size": 0.1,
+              "price_tolerance_ticks": 2
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "topic_id": "D06-F03-A08",
+          "pattern": "Tweezer Bottom",
+          "matched": true,
+          "state": "matched",
+          "direction": "bullish",
+          "trend_context": "downtrend",
+          "required_context": "downtrend",
+          "body": 1.5999999999999943,
+          "upper_shadow": 0.20000000000000284,
+          "lower_shadow": 0.8000000000000114,
+          "range": 2.6000000000000085,
+          "body_scale": 2,
+          "range_scale": 5,
+          "history_count": 10
+        },
+        "outputElided": {
+          "kind": "object",
+          "shown": 14,
+          "total": 31
+        },
+        "outputShape": "object with 31 fields: topic_id, pattern, matched, state, direction, trend_context, required_context, body, …"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -31332,7 +32432,87 @@
         "signature": "morningStar(inputs)"
       },
       "api": null,
-      "example": null,
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "morningStar({\"candles\":[{\"open\":105,\"high\":105.5,\"low\":100.5,\"close\":101},{\"open\":100.4,\"high\":101.2,\"low\":99.8,\"close\":100.8},{\"open\":100.7,\"high\":104.2,\"low\":100.6,\"close\":103.5}],\"trend_context\":\"downtrend\",\"prior_bodies\":[2,2.1,1.9,2.2,2,2.1],\"prior_ranges\":[3,3.2,2.9,3.1,3,3.3],\"tick_size\":0.1,\"penetration_fraction\":0.5})",
+        "args": [
+          {
+            "value": {
+              "candles": [
+                {
+                  "open": 105,
+                  "high": 105.5,
+                  "low": 100.5,
+                  "close": 101
+                },
+                {
+                  "open": 100.4,
+                  "high": 101.2,
+                  "low": 99.8,
+                  "close": 100.8
+                },
+                {
+                  "open": 100.7,
+                  "high": 104.2,
+                  "low": 100.6,
+                  "close": 103.5
+                }
+              ],
+              "trend_context": "downtrend",
+              "prior_bodies": [
+                2,
+                2.1,
+                1.9,
+                2.2,
+                2,
+                2.1
+              ],
+              "prior_ranges": [
+                3,
+                3.2,
+                2.9,
+                3.1,
+                3,
+                3.3
+              ],
+              "tick_size": 0.1,
+              "penetration_fraction": 0.5
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "topic_id": "D06-F04-A01",
+          "pattern": "Morning Star",
+          "matched": true,
+          "state": "matched",
+          "direction": "bullish",
+          "trend_context": "downtrend",
+          "required_context": "downtrend",
+          "history_count": 10,
+          "body_scale": 2,
+          "range_scale": 3,
+          "geometry_score": 1,
+          "checks": {
+            "first_bearish": true,
+            "first_long": true,
+            "second_short": true,
+            "body_gap_down": true,
+            "third_bullish": true,
+            "third_penetrates": true
+          },
+          "failed_checks": [],
+          "reason": "all declared checks pass"
+        },
+        "outputElided": {
+          "kind": "object",
+          "shown": 14,
+          "total": 16
+        },
+        "outputShape": "object with 16 fields: topic_id, pattern, matched, state, direction, trend_context, required_context, history_count, …"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -31422,7 +32602,87 @@
         "signature": "eveningStar(inputs)"
       },
       "api": null,
-      "example": null,
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "eveningStar({\"candles\":[{\"open\":100,\"high\":104.5,\"low\":99.5,\"close\":104},{\"open\":104.6,\"high\":105.1,\"low\":103.9,\"close\":104.2},{\"open\":104.3,\"high\":104.4,\"low\":101.1,\"close\":101.5}],\"trend_context\":\"uptrend\",\"prior_bodies\":[2,2.1,1.9,2.2,2,2.1],\"prior_ranges\":[3,3.2,2.9,3.1,3,3.3],\"tick_size\":0.1,\"penetration_fraction\":0.5})",
+        "args": [
+          {
+            "value": {
+              "candles": [
+                {
+                  "open": 100,
+                  "high": 104.5,
+                  "low": 99.5,
+                  "close": 104
+                },
+                {
+                  "open": 104.6,
+                  "high": 105.1,
+                  "low": 103.9,
+                  "close": 104.2
+                },
+                {
+                  "open": 104.3,
+                  "high": 104.4,
+                  "low": 101.1,
+                  "close": 101.5
+                }
+              ],
+              "trend_context": "uptrend",
+              "prior_bodies": [
+                2,
+                2.1,
+                1.9,
+                2.2,
+                2,
+                2.1
+              ],
+              "prior_ranges": [
+                3,
+                3.2,
+                2.9,
+                3.1,
+                3,
+                3.3
+              ],
+              "tick_size": 0.1,
+              "penetration_fraction": 0.5
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "topic_id": "D06-F04-A02",
+          "pattern": "Evening Star",
+          "matched": true,
+          "state": "matched",
+          "direction": "bearish",
+          "trend_context": "uptrend",
+          "required_context": "uptrend",
+          "history_count": 10,
+          "body_scale": 2,
+          "range_scale": 3,
+          "geometry_score": 1,
+          "checks": {
+            "first_bullish": true,
+            "first_long": true,
+            "second_short": true,
+            "body_gap_up": true,
+            "third_bearish": true,
+            "third_penetrates": true
+          },
+          "failed_checks": [],
+          "reason": "all declared checks pass"
+        },
+        "outputElided": {
+          "kind": "object",
+          "shown": 14,
+          "total": 16
+        },
+        "outputShape": "object with 16 fields: topic_id, pattern, matched, state, direction, trend_context, required_context, history_count, …"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -31512,7 +32772,87 @@
         "signature": "threeWhiteSoldiers(inputs)"
       },
       "api": null,
-      "example": null,
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "threeWhiteSoldiers({\"candles\":[{\"open\":100,\"high\":102.2,\"low\":99.8,\"close\":102},{\"open\":101.5,\"high\":103.7,\"low\":101.3,\"close\":103.5},{\"open\":103,\"high\":105.2,\"low\":102.8,\"close\":105}],\"trend_context\":\"downtrend\",\"prior_bodies\":[2,2.1,1.9,2.2,2,2.1],\"prior_ranges\":[3,3.2,2.9,3.1,3,3.3],\"tick_size\":0.1,\"penetration_fraction\":0.5})",
+        "args": [
+          {
+            "value": {
+              "candles": [
+                {
+                  "open": 100,
+                  "high": 102.2,
+                  "low": 99.8,
+                  "close": 102
+                },
+                {
+                  "open": 101.5,
+                  "high": 103.7,
+                  "low": 101.3,
+                  "close": 103.5
+                },
+                {
+                  "open": 103,
+                  "high": 105.2,
+                  "low": 102.8,
+                  "close": 105
+                }
+              ],
+              "trend_context": "downtrend",
+              "prior_bodies": [
+                2,
+                2.1,
+                1.9,
+                2.2,
+                2,
+                2.1
+              ],
+              "prior_ranges": [
+                3,
+                3.2,
+                2.9,
+                3.1,
+                3,
+                3.3
+              ],
+              "tick_size": 0.1,
+              "penetration_fraction": 0.5
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "topic_id": "D06-F04-A03",
+          "pattern": "Three White Soldiers",
+          "matched": true,
+          "state": "matched",
+          "direction": "bullish",
+          "trend_context": "downtrend",
+          "required_context": "downtrend",
+          "history_count": 10,
+          "body_scale": 2,
+          "range_scale": 3,
+          "geometry_score": 1,
+          "checks": {
+            "three_bullish": true,
+            "material_bodies": true,
+            "rising_closes": true,
+            "second_opens_in_prior_body": true,
+            "third_opens_in_prior_body": true,
+            "short_upper_shadows": true
+          },
+          "failed_checks": [],
+          "reason": "all declared checks pass"
+        },
+        "outputElided": {
+          "kind": "object",
+          "shown": 14,
+          "total": 16
+        },
+        "outputShape": "object with 16 fields: topic_id, pattern, matched, state, direction, trend_context, required_context, history_count, …"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -31602,7 +32942,87 @@
         "signature": "threeBlackCrows(inputs)"
       },
       "api": null,
-      "example": null,
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "threeBlackCrows({\"candles\":[{\"open\":105,\"high\":105.2,\"low\":102.8,\"close\":103},{\"open\":103.5,\"high\":103.7,\"low\":101.3,\"close\":101.5},{\"open\":102,\"high\":102.2,\"low\":99.8,\"close\":100}],\"trend_context\":\"uptrend\",\"prior_bodies\":[2,2.1,1.9,2.2,2,2.1],\"prior_ranges\":[3,3.2,2.9,3.1,3,3.3],\"tick_size\":0.1,\"penetration_fraction\":0.5})",
+        "args": [
+          {
+            "value": {
+              "candles": [
+                {
+                  "open": 105,
+                  "high": 105.2,
+                  "low": 102.8,
+                  "close": 103
+                },
+                {
+                  "open": 103.5,
+                  "high": 103.7,
+                  "low": 101.3,
+                  "close": 101.5
+                },
+                {
+                  "open": 102,
+                  "high": 102.2,
+                  "low": 99.8,
+                  "close": 100
+                }
+              ],
+              "trend_context": "uptrend",
+              "prior_bodies": [
+                2,
+                2.1,
+                1.9,
+                2.2,
+                2,
+                2.1
+              ],
+              "prior_ranges": [
+                3,
+                3.2,
+                2.9,
+                3.1,
+                3,
+                3.3
+              ],
+              "tick_size": 0.1,
+              "penetration_fraction": 0.5
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "topic_id": "D06-F04-A04",
+          "pattern": "Three Black Crows",
+          "matched": true,
+          "state": "matched",
+          "direction": "bearish",
+          "trend_context": "uptrend",
+          "required_context": "uptrend",
+          "history_count": 10,
+          "body_scale": 2,
+          "range_scale": 3,
+          "geometry_score": 1,
+          "checks": {
+            "three_bearish": true,
+            "material_bodies": true,
+            "falling_closes": true,
+            "second_opens_in_prior_body": true,
+            "third_opens_in_prior_body": true,
+            "short_lower_shadows": true
+          },
+          "failed_checks": [],
+          "reason": "all declared checks pass"
+        },
+        "outputElided": {
+          "kind": "object",
+          "shown": 14,
+          "total": 16
+        },
+        "outputShape": "object with 16 fields: topic_id, pattern, matched, state, direction, trend_context, required_context, history_count, …"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -31692,7 +33112,86 @@
         "signature": "threeInsideUpDown(inputs)"
       },
       "api": null,
-      "example": null,
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "threeInsideUpDown({\"candles\":[{\"open\":105,\"high\":105.4,\"low\":100.6,\"close\":101},{\"open\":102,\"high\":103.2,\"low\":101.8,\"close\":103},{\"open\":102.8,\"high\":105.5,\"low\":102.6,\"close\":105.3}],\"trend_context\":\"downtrend\",\"prior_bodies\":[2,2.1,1.9,2.2,2,2.1],\"prior_ranges\":[3,3.2,2.9,3.1,3,3.3],\"tick_size\":0.1,\"penetration_fraction\":0.5})",
+        "args": [
+          {
+            "value": {
+              "candles": [
+                {
+                  "open": 105,
+                  "high": 105.4,
+                  "low": 100.6,
+                  "close": 101
+                },
+                {
+                  "open": 102,
+                  "high": 103.2,
+                  "low": 101.8,
+                  "close": 103
+                },
+                {
+                  "open": 102.8,
+                  "high": 105.5,
+                  "low": 102.6,
+                  "close": 105.3
+                }
+              ],
+              "trend_context": "downtrend",
+              "prior_bodies": [
+                2,
+                2.1,
+                1.9,
+                2.2,
+                2,
+                2.1
+              ],
+              "prior_ranges": [
+                3,
+                3.2,
+                2.9,
+                3.1,
+                3,
+                3.3
+              ],
+              "tick_size": 0.1,
+              "penetration_fraction": 0.5
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "topic_id": "D06-F04-A05",
+          "pattern": "Three Inside Up/Down",
+          "matched": true,
+          "state": "matched",
+          "direction": "bullish",
+          "trend_context": "downtrend",
+          "required_context": "downtrend",
+          "history_count": 10,
+          "body_scale": 2,
+          "range_scale": 3,
+          "geometry_score": 1,
+          "checks": {
+            "opposite_first_pair": true,
+            "first_long": true,
+            "second_short": true,
+            "second_body_inside": true,
+            "third_confirms_past_first_open": true
+          },
+          "failed_checks": [],
+          "reason": "all declared checks pass"
+        },
+        "outputElided": {
+          "kind": "object",
+          "shown": 14,
+          "total": 16
+        },
+        "outputShape": "object with 16 fields: topic_id, pattern, matched, state, direction, trend_context, required_context, history_count, …"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -31782,7 +33281,84 @@
         "signature": "threeOutsideUpDown(inputs)"
       },
       "api": null,
-      "example": null,
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "threeOutsideUpDown({\"candles\":[{\"open\":103,\"high\":103.3,\"low\":100.7,\"close\":101},{\"open\":100.5,\"high\":103.8,\"low\":100.3,\"close\":103.5},{\"open\":103,\"high\":104.7,\"low\":102.8,\"close\":104.5}],\"trend_context\":\"downtrend\",\"prior_bodies\":[2,2.1,1.9,2.2,2,2.1],\"prior_ranges\":[3,3.2,2.9,3.1,3,3.3],\"tick_size\":0.1,\"penetration_fraction\":0.5})",
+        "args": [
+          {
+            "value": {
+              "candles": [
+                {
+                  "open": 103,
+                  "high": 103.3,
+                  "low": 100.7,
+                  "close": 101
+                },
+                {
+                  "open": 100.5,
+                  "high": 103.8,
+                  "low": 100.3,
+                  "close": 103.5
+                },
+                {
+                  "open": 103,
+                  "high": 104.7,
+                  "low": 102.8,
+                  "close": 104.5
+                }
+              ],
+              "trend_context": "downtrend",
+              "prior_bodies": [
+                2,
+                2.1,
+                1.9,
+                2.2,
+                2,
+                2.1
+              ],
+              "prior_ranges": [
+                3,
+                3.2,
+                2.9,
+                3.1,
+                3,
+                3.3
+              ],
+              "tick_size": 0.1,
+              "penetration_fraction": 0.5
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "topic_id": "D06-F04-A06",
+          "pattern": "Three Outside Up/Down",
+          "matched": true,
+          "state": "matched",
+          "direction": "bullish",
+          "trend_context": "downtrend",
+          "required_context": "downtrend",
+          "history_count": 10,
+          "body_scale": 2,
+          "range_scale": 3,
+          "geometry_score": 1,
+          "checks": {
+            "opposite_first_pair": true,
+            "second_body_engulfs": true,
+            "third_confirms_beyond_second_close": true
+          },
+          "failed_checks": [],
+          "reason": "all declared checks pass"
+        },
+        "outputElided": {
+          "kind": "object",
+          "shown": 14,
+          "total": 16
+        },
+        "outputShape": "object with 16 fields: topic_id, pattern, matched, state, direction, trend_context, required_context, history_count, …"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -31872,7 +33448,86 @@
         "signature": "abandonedBaby(inputs)"
       },
       "api": null,
-      "example": null,
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "abandonedBaby({\"candles\":[{\"open\":105,\"high\":105.5,\"low\":100.5,\"close\":101},{\"open\":99.8,\"high\":100.3,\"low\":99.4,\"close\":99.85},{\"open\":100.7,\"high\":103.7,\"low\":100.5,\"close\":103.4}],\"trend_context\":\"downtrend\",\"prior_bodies\":[2,2.1,1.9,2.2,2,2.1],\"prior_ranges\":[3,3.2,2.9,3.1,3,3.3],\"tick_size\":0.1,\"penetration_fraction\":0.5})",
+        "args": [
+          {
+            "value": {
+              "candles": [
+                {
+                  "open": 105,
+                  "high": 105.5,
+                  "low": 100.5,
+                  "close": 101
+                },
+                {
+                  "open": 99.8,
+                  "high": 100.3,
+                  "low": 99.4,
+                  "close": 99.85
+                },
+                {
+                  "open": 100.7,
+                  "high": 103.7,
+                  "low": 100.5,
+                  "close": 103.4
+                }
+              ],
+              "trend_context": "downtrend",
+              "prior_bodies": [
+                2,
+                2.1,
+                1.9,
+                2.2,
+                2,
+                2.1
+              ],
+              "prior_ranges": [
+                3,
+                3.2,
+                2.9,
+                3.1,
+                3,
+                3.3
+              ],
+              "tick_size": 0.1,
+              "penetration_fraction": 0.5
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "topic_id": "D06-F04-A07",
+          "pattern": "Abandoned Baby",
+          "matched": true,
+          "state": "matched",
+          "direction": "bullish",
+          "trend_context": "downtrend",
+          "required_context": "downtrend",
+          "history_count": 10,
+          "body_scale": 2,
+          "range_scale": 3,
+          "geometry_score": 1,
+          "checks": {
+            "opposite_outer_candles": true,
+            "first_long": true,
+            "middle_doji": true,
+            "full_range_isolation": true,
+            "third_penetrates": true
+          },
+          "failed_checks": [],
+          "reason": "all declared checks pass"
+        },
+        "outputElided": {
+          "kind": "object",
+          "shown": 14,
+          "total": 16
+        },
+        "outputShape": "object with 16 fields: topic_id, pattern, matched, state, direction, trend_context, required_context, history_count, …"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -44842,7 +46497,225 @@
         "signature": "priceIndicatorPivotAlignment(payload)"
       },
       "api": null,
-      "example": null,
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "priceIndicatorPivotAlignment({\"topic_id\":\"D08-F05-A01\",\"data_class\":\"synthetic-teaching\",\"as_of\":\"2026-01-08T13:30:00Z\",\"bars\":[{\"timestamp\":\"2026-01-05T14:30:00Z\",\"open\":105.75,\"high\":107,\"low\":105,\"close\":106,\"finalized\":true},{\"timestamp\":\"2026-01-05T15:30:00Z\",\"open\":106.112,\"high\":107.362,\"low\":105.362,\"close\":106.362,\"finalized\":true},{\"timestamp\":\"2026-01-05T16:30:00Z\",\"open\":106.4614,\"high\":107.7114,\"low\":105.7114,\"close\":106.7114,\"finalized\":true}],\"price_pivots\":[{\"kind\":\"low\",\"event_index\":18,\"confirmation_index\":21,\"price\":98,\"prominence\":0.72},{\"kind\":\"low\",\"event_index\":42,\"confirmation_index\":45,\"price\":94,\"prominence\":0.84}],\"indicators\":[{\"name\":\"RSI\",\"family\":\"bounded-momentum\",\"polarity\":1,\"scale\":100,\"pivots\":[{\"kind\":\"low\",\"event_index\":19,\"confirmation_index\":22,\"value\":28,\"prominence\":0.76},{\"kind\":\"low\",\"event_index\":41,\"confirmation_index\":44,\"value\":36,\"prominence\":0.86}]},{\"name\":\"MACD-Histogram\",\"family\":\"moving-average-momentum\",\"polarity\":1,\"scale\":5,\"pivots\":[{\"kind\":\"low\",\"event_index\":18,\"confirmation_index\":21,\"value\":-2.2,\"prominence\":0.7},{\"kind\":\"low\",\"event_index\":42,\"confirmation_index\":45,\"value\":-1,\"prominence\":0.81}]},{\"name\":\"Stochastic-K\",\"family\":\"range-momentum\",\"polarity\":1,\"scale\":100,\"pivots\":[{\"kind\":\"low\",\"event_index\":17,\"confirmation_index\":20,\"value\":18,\"prominence\":0.68},{\"kind\":\"low\",\"event_index\":43,\"confirmation_index\":46,\"value\":29,\"prominence\":0.78}]}],\"parameters\":{\"max_lag\":3,\"min_separation\":5,\"max_separation\":40,\"min_price_fraction\":0.005,\"min_indicator_delta\":0.05,\"confirmation_horizon\":12,\"invalidation_buffer\":0.005,\"minimum_indicators\":2},\"weights\":{\"RSI\":0.4,\"MACD-Histogram\":0.35,\"Stochastic-K\":0.25},\"as_of_index\":71,\"universe\":[{\"symbol\":\"SYNTH-A\",\"state\":\"confirmed\",\"divergence_type\":\"regular-bullish\",\"confluence_score\":86,\"freshness\":92,\"liquidity\":80,\"data_quality\":98,\"available_index\":47,\"eligible\":true},{\"symbol\":\"SYNTH-B\",\"state\":\"candidate\",\"divergence_type\":\"regular-bearish\",\"confluence_score\":91,\"freshness\":98,\"liquidity\":72,\"data_quality\":94,\"available_index\":54,\"eligible\":true},{\"symbol\":\"SYNTH-C\",\"state\":\"confirmed\",\"divergence_type\":\"hidden-bullish\",\"confluence_score\":74,\"freshness\":70,\"liquidity\":96,\"data_quality\":90,\"available_index\":39,\"eligible\":true}]})",
+        "args": [
+          {
+            "value": {
+              "topic_id": "D08-F05-A01",
+              "data_class": "synthetic-teaching",
+              "as_of": "2026-01-08T13:30:00Z",
+              "bars": [
+                {
+                  "timestamp": "2026-01-05T14:30:00Z",
+                  "open": 105.75,
+                  "high": 107,
+                  "low": 105,
+                  "close": 106,
+                  "finalized": true
+                },
+                {
+                  "timestamp": "2026-01-05T15:30:00Z",
+                  "open": 106.112,
+                  "high": 107.362,
+                  "low": 105.362,
+                  "close": 106.362,
+                  "finalized": true
+                },
+                {
+                  "timestamp": "2026-01-05T16:30:00Z",
+                  "open": 106.4614,
+                  "high": 107.7114,
+                  "low": 105.7114,
+                  "close": 106.7114,
+                  "finalized": true
+                }
+              ],
+              "price_pivots": [
+                {
+                  "kind": "low",
+                  "event_index": 18,
+                  "confirmation_index": 21,
+                  "price": 98,
+                  "prominence": 0.72
+                },
+                {
+                  "kind": "low",
+                  "event_index": 42,
+                  "confirmation_index": 45,
+                  "price": 94,
+                  "prominence": 0.84
+                }
+              ],
+              "indicators": [
+                {
+                  "name": "RSI",
+                  "family": "bounded-momentum",
+                  "polarity": 1,
+                  "scale": 100,
+                  "pivots": [
+                    {
+                      "kind": "low",
+                      "event_index": 19,
+                      "confirmation_index": 22,
+                      "value": 28,
+                      "prominence": 0.76
+                    },
+                    {
+                      "kind": "low",
+                      "event_index": 41,
+                      "confirmation_index": 44,
+                      "value": 36,
+                      "prominence": 0.86
+                    }
+                  ]
+                },
+                {
+                  "name": "MACD-Histogram",
+                  "family": "moving-average-momentum",
+                  "polarity": 1,
+                  "scale": 5,
+                  "pivots": [
+                    {
+                      "kind": "low",
+                      "event_index": 18,
+                      "confirmation_index": 21,
+                      "value": -2.2,
+                      "prominence": 0.7
+                    },
+                    {
+                      "kind": "low",
+                      "event_index": 42,
+                      "confirmation_index": 45,
+                      "value": -1,
+                      "prominence": 0.81
+                    }
+                  ]
+                },
+                {
+                  "name": "Stochastic-K",
+                  "family": "range-momentum",
+                  "polarity": 1,
+                  "scale": 100,
+                  "pivots": [
+                    {
+                      "kind": "low",
+                      "event_index": 17,
+                      "confirmation_index": 20,
+                      "value": 18,
+                      "prominence": 0.68
+                    },
+                    {
+                      "kind": "low",
+                      "event_index": 43,
+                      "confirmation_index": 46,
+                      "value": 29,
+                      "prominence": 0.78
+                    }
+                  ]
+                }
+              ],
+              "parameters": {
+                "max_lag": 3,
+                "min_separation": 5,
+                "max_separation": 40,
+                "min_price_fraction": 0.005,
+                "min_indicator_delta": 0.05,
+                "confirmation_horizon": 12,
+                "invalidation_buffer": 0.005,
+                "minimum_indicators": 2
+              },
+              "weights": {
+                "RSI": 0.4,
+                "MACD-Histogram": 0.35,
+                "Stochastic-K": 0.25
+              },
+              "as_of_index": 71,
+              "universe": [
+                {
+                  "symbol": "SYNTH-A",
+                  "state": "confirmed",
+                  "divergence_type": "regular-bullish",
+                  "confluence_score": 86,
+                  "freshness": 92,
+                  "liquidity": 80,
+                  "data_quality": 98,
+                  "available_index": 47,
+                  "eligible": true
+                },
+                {
+                  "symbol": "SYNTH-B",
+                  "state": "candidate",
+                  "divergence_type": "regular-bearish",
+                  "confluence_score": 91,
+                  "freshness": 98,
+                  "liquidity": 72,
+                  "data_quality": 94,
+                  "available_index": 54,
+                  "eligible": true
+                },
+                {
+                  "symbol": "SYNTH-C",
+                  "state": "confirmed",
+                  "divergence_type": "hidden-bullish",
+                  "confluence_score": 74,
+                  "freshness": 70,
+                  "liquidity": 96,
+                  "data_quality": 90,
+                  "available_index": 39,
+                  "eligible": true
+                }
+              ]
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "topic_id": "D08-F05-A01",
+          "state": "ready",
+          "alignments": [
+            {
+              "kind": "low",
+              "price_event_index": 18,
+              "price_confirmation_index": 21,
+              "price": 98,
+              "price_prominence": 0.72,
+              "indicator_event_index": 19,
+              "indicator_confirmation_index": 22,
+              "indicator_value": 0.28,
+              "indicator_raw_value": 28,
+              "indicator_prominence": 0.76,
+              "lag": 1,
+              "knowledge_index": 22,
+              "indicator": "RSI",
+              "indicator_family": "bounded-momentum"
+            },
+            {
+              "kind": "low",
+              "price_event_index": 42,
+              "price_confirmation_index": 45,
+              "price": 94,
+              "price_prominence": 0.84,
+              "indicator_event_index": 41,
+              "indicator_confirmation_index": 44,
+              "indicator_value": 0.36,
+              "indicator_raw_value": 36,
+              "indicator_prominence": 0.86,
+              "lag": 1,
+              "knowledge_index": 45,
+              "indicator": "RSI",
+              "indicator_family": "bounded-momentum"
+            }
+          ],
+          "alignment_count": 2,
+          "reason": "aligned"
+        },
+        "outputElided": null,
+        "outputShape": "object with 5 fields: topic_id, state, alignments, alignment_count, reason"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -44982,7 +46855,276 @@
         "signature": "regularBullishBearishDivergenceDetection(payload)"
       },
       "api": null,
-      "example": null,
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "regularBullishBearishDivergenceDetection({\"topic_id\":\"D08-F05-A02\",\"data_class\":\"synthetic-teaching\",\"as_of\":\"2026-01-08T13:30:00Z\",\"bars\":[{\"timestamp\":\"2026-01-05T14:30:00Z\",\"open\":105.75,\"high\":107,\"low\":105,\"close\":106,\"finalized\":true},{\"timestamp\":\"2026-01-05T15:30:00Z\",\"open\":106.112,\"high\":107.362,\"low\":105.362,\"close\":106.362,\"finalized\":true},{\"timestamp\":\"2026-01-05T16:30:00Z\",\"open\":106.4614,\"high\":107.7114,\"low\":105.7114,\"close\":106.7114,\"finalized\":true}],\"price_pivots\":[{\"kind\":\"low\",\"event_index\":18,\"confirmation_index\":21,\"price\":98,\"prominence\":0.72},{\"kind\":\"low\",\"event_index\":42,\"confirmation_index\":45,\"price\":94,\"prominence\":0.84}],\"indicators\":[{\"name\":\"RSI\",\"family\":\"bounded-momentum\",\"polarity\":1,\"scale\":100,\"pivots\":[{\"kind\":\"low\",\"event_index\":19,\"confirmation_index\":22,\"value\":28,\"prominence\":0.76},{\"kind\":\"low\",\"event_index\":41,\"confirmation_index\":44,\"value\":36,\"prominence\":0.86}]},{\"name\":\"MACD-Histogram\",\"family\":\"moving-average-momentum\",\"polarity\":1,\"scale\":5,\"pivots\":[{\"kind\":\"low\",\"event_index\":18,\"confirmation_index\":21,\"value\":-2.2,\"prominence\":0.7},{\"kind\":\"low\",\"event_index\":42,\"confirmation_index\":45,\"value\":-1,\"prominence\":0.81}]},{\"name\":\"Stochastic-K\",\"family\":\"range-momentum\",\"polarity\":1,\"scale\":100,\"pivots\":[{\"kind\":\"low\",\"event_index\":17,\"confirmation_index\":20,\"value\":18,\"prominence\":0.68},{\"kind\":\"low\",\"event_index\":43,\"confirmation_index\":46,\"value\":29,\"prominence\":0.78}]}],\"parameters\":{\"max_lag\":3,\"min_separation\":5,\"max_separation\":40,\"min_price_fraction\":0.005,\"min_indicator_delta\":0.05,\"confirmation_horizon\":12,\"invalidation_buffer\":0.005,\"minimum_indicators\":2},\"weights\":{\"RSI\":0.4,\"MACD-Histogram\":0.35,\"Stochastic-K\":0.25},\"as_of_index\":71,\"universe\":[{\"symbol\":\"SYNTH-A\",\"state\":\"confirmed\",\"divergence_type\":\"regular-bullish\",\"confluence_score\":86,\"freshness\":92,\"liquidity\":80,\"data_quality\":98,\"available_index\":47,\"eligible\":true},{\"symbol\":\"SYNTH-B\",\"state\":\"candidate\",\"divergence_type\":\"regular-bearish\",\"confluence_score\":91,\"freshness\":98,\"liquidity\":72,\"data_quality\":94,\"available_index\":54,\"eligible\":true},{\"symbol\":\"SYNTH-C\",\"state\":\"confirmed\",\"divergence_type\":\"hidden-bullish\",\"confluence_score\":74,\"freshness\":70,\"liquidity\":96,\"data_quality\":90,\"available_index\":39,\"eligible\":true}]})",
+        "args": [
+          {
+            "value": {
+              "topic_id": "D08-F05-A02",
+              "data_class": "synthetic-teaching",
+              "as_of": "2026-01-08T13:30:00Z",
+              "bars": [
+                {
+                  "timestamp": "2026-01-05T14:30:00Z",
+                  "open": 105.75,
+                  "high": 107,
+                  "low": 105,
+                  "close": 106,
+                  "finalized": true
+                },
+                {
+                  "timestamp": "2026-01-05T15:30:00Z",
+                  "open": 106.112,
+                  "high": 107.362,
+                  "low": 105.362,
+                  "close": 106.362,
+                  "finalized": true
+                },
+                {
+                  "timestamp": "2026-01-05T16:30:00Z",
+                  "open": 106.4614,
+                  "high": 107.7114,
+                  "low": 105.7114,
+                  "close": 106.7114,
+                  "finalized": true
+                }
+              ],
+              "price_pivots": [
+                {
+                  "kind": "low",
+                  "event_index": 18,
+                  "confirmation_index": 21,
+                  "price": 98,
+                  "prominence": 0.72
+                },
+                {
+                  "kind": "low",
+                  "event_index": 42,
+                  "confirmation_index": 45,
+                  "price": 94,
+                  "prominence": 0.84
+                }
+              ],
+              "indicators": [
+                {
+                  "name": "RSI",
+                  "family": "bounded-momentum",
+                  "polarity": 1,
+                  "scale": 100,
+                  "pivots": [
+                    {
+                      "kind": "low",
+                      "event_index": 19,
+                      "confirmation_index": 22,
+                      "value": 28,
+                      "prominence": 0.76
+                    },
+                    {
+                      "kind": "low",
+                      "event_index": 41,
+                      "confirmation_index": 44,
+                      "value": 36,
+                      "prominence": 0.86
+                    }
+                  ]
+                },
+                {
+                  "name": "MACD-Histogram",
+                  "family": "moving-average-momentum",
+                  "polarity": 1,
+                  "scale": 5,
+                  "pivots": [
+                    {
+                      "kind": "low",
+                      "event_index": 18,
+                      "confirmation_index": 21,
+                      "value": -2.2,
+                      "prominence": 0.7
+                    },
+                    {
+                      "kind": "low",
+                      "event_index": 42,
+                      "confirmation_index": 45,
+                      "value": -1,
+                      "prominence": 0.81
+                    }
+                  ]
+                },
+                {
+                  "name": "Stochastic-K",
+                  "family": "range-momentum",
+                  "polarity": 1,
+                  "scale": 100,
+                  "pivots": [
+                    {
+                      "kind": "low",
+                      "event_index": 17,
+                      "confirmation_index": 20,
+                      "value": 18,
+                      "prominence": 0.68
+                    },
+                    {
+                      "kind": "low",
+                      "event_index": 43,
+                      "confirmation_index": 46,
+                      "value": 29,
+                      "prominence": 0.78
+                    }
+                  ]
+                }
+              ],
+              "parameters": {
+                "max_lag": 3,
+                "min_separation": 5,
+                "max_separation": 40,
+                "min_price_fraction": 0.005,
+                "min_indicator_delta": 0.05,
+                "confirmation_horizon": 12,
+                "invalidation_buffer": 0.005,
+                "minimum_indicators": 2
+              },
+              "weights": {
+                "RSI": 0.4,
+                "MACD-Histogram": 0.35,
+                "Stochastic-K": 0.25
+              },
+              "as_of_index": 71,
+              "universe": [
+                {
+                  "symbol": "SYNTH-A",
+                  "state": "confirmed",
+                  "divergence_type": "regular-bullish",
+                  "confluence_score": 86,
+                  "freshness": 92,
+                  "liquidity": 80,
+                  "data_quality": 98,
+                  "available_index": 47,
+                  "eligible": true
+                },
+                {
+                  "symbol": "SYNTH-B",
+                  "state": "candidate",
+                  "divergence_type": "regular-bearish",
+                  "confluence_score": 91,
+                  "freshness": 98,
+                  "liquidity": 72,
+                  "data_quality": 94,
+                  "available_index": 54,
+                  "eligible": true
+                },
+                {
+                  "symbol": "SYNTH-C",
+                  "state": "confirmed",
+                  "divergence_type": "hidden-bullish",
+                  "confluence_score": 74,
+                  "freshness": 70,
+                  "liquidity": 96,
+                  "data_quality": 90,
+                  "available_index": 39,
+                  "eligible": true
+                }
+              ]
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "topic_id": "D08-F05-A02",
+          "state": "detected",
+          "events": [
+            {
+              "type": "regular-bullish",
+              "direction": "bullish",
+              "kind": "low",
+              "indicator": "MACD-Histogram",
+              "indicator_family": "moving-average-momentum",
+              "price_pair": [
+                18,
+                42
+              ],
+              "indicator_pair": [
+                18,
+                42
+              ],
+              "price_values": [
+                98,
+                94
+              ],
+              "indicator_values": [
+                -0.44000000000000006,
+                -0.2
+              ],
+              "price_delta_fraction": -0.04081632653061224,
+              "indicator_delta": 0.24000000000000005,
+              "separation": 24,
+              "max_alignment_lag": 0,
+              "prominence": 0.7675
+            },
+            {
+              "type": "regular-bullish",
+              "direction": "bullish",
+              "kind": "low",
+              "indicator": "RSI",
+              "indicator_family": "bounded-momentum",
+              "price_pair": [
+                18,
+                42
+              ],
+              "indicator_pair": [
+                19,
+                41
+              ],
+              "price_values": [
+                98,
+                94
+              ],
+              "indicator_values": [
+                0.28,
+                0.36
+              ],
+              "price_delta_fraction": -0.04081632653061224,
+              "indicator_delta": 0.07999999999999996,
+              "separation": 24,
+              "max_alignment_lag": 1,
+              "prominence": 0.795
+            },
+            {
+              "type": "regular-bullish",
+              "direction": "bullish",
+              "kind": "low",
+              "indicator": "Stochastic-K",
+              "indicator_family": "range-momentum",
+              "price_pair": [
+                18,
+                42
+              ],
+              "indicator_pair": [
+                17,
+                43
+              ],
+              "price_values": [
+                98,
+                94
+              ],
+              "indicator_values": [
+                0.18,
+                0.29
+              ],
+              "price_delta_fraction": -0.04081632653061224,
+              "indicator_delta": 0.10999999999999999,
+              "separation": 24,
+              "max_alignment_lag": 1,
+              "prominence": 0.7550000000000001
+            }
+          ],
+          "event_count": 3
+        },
+        "outputElided": null,
+        "outputShape": "object with 4 fields: topic_id, state, events, event_count"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -45122,7 +47264,276 @@
         "signature": "hiddenBullishBearishDivergenceDetection(payload)"
       },
       "api": null,
-      "example": null,
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "hiddenBullishBearishDivergenceDetection({\"topic_id\":\"D08-F05-A03\",\"data_class\":\"synthetic-teaching\",\"as_of\":\"2026-01-08T13:30:00Z\",\"bars\":[{\"timestamp\":\"2026-01-05T14:30:00Z\",\"open\":105.75,\"high\":107,\"low\":105,\"close\":106,\"finalized\":true},{\"timestamp\":\"2026-01-05T15:30:00Z\",\"open\":106.112,\"high\":107.362,\"low\":105.362,\"close\":106.362,\"finalized\":true},{\"timestamp\":\"2026-01-05T16:30:00Z\",\"open\":106.4614,\"high\":107.7114,\"low\":105.7114,\"close\":106.7114,\"finalized\":true}],\"price_pivots\":[{\"kind\":\"low\",\"event_index\":18,\"confirmation_index\":21,\"price\":98,\"prominence\":0.72},{\"kind\":\"low\",\"event_index\":42,\"confirmation_index\":45,\"price\":102,\"prominence\":0.84}],\"indicators\":[{\"name\":\"RSI\",\"family\":\"bounded-momentum\",\"polarity\":1,\"scale\":100,\"pivots\":[{\"kind\":\"low\",\"event_index\":19,\"confirmation_index\":22,\"value\":36,\"prominence\":0.76},{\"kind\":\"low\",\"event_index\":41,\"confirmation_index\":44,\"value\":28,\"prominence\":0.86}]},{\"name\":\"MACD-Histogram\",\"family\":\"moving-average-momentum\",\"polarity\":1,\"scale\":5,\"pivots\":[{\"kind\":\"low\",\"event_index\":18,\"confirmation_index\":21,\"value\":-1,\"prominence\":0.7},{\"kind\":\"low\",\"event_index\":42,\"confirmation_index\":45,\"value\":-2.2,\"prominence\":0.81}]},{\"name\":\"Stochastic-K\",\"family\":\"range-momentum\",\"polarity\":1,\"scale\":100,\"pivots\":[{\"kind\":\"low\",\"event_index\":17,\"confirmation_index\":20,\"value\":31,\"prominence\":0.68},{\"kind\":\"low\",\"event_index\":43,\"confirmation_index\":46,\"value\":19,\"prominence\":0.78}]}],\"parameters\":{\"max_lag\":3,\"min_separation\":5,\"max_separation\":40,\"min_price_fraction\":0.005,\"min_indicator_delta\":0.05,\"confirmation_horizon\":12,\"invalidation_buffer\":0.005,\"minimum_indicators\":2},\"weights\":{\"RSI\":0.4,\"MACD-Histogram\":0.35,\"Stochastic-K\":0.25},\"as_of_index\":71,\"universe\":[{\"symbol\":\"SYNTH-A\",\"state\":\"confirmed\",\"divergence_type\":\"regular-bullish\",\"confluence_score\":86,\"freshness\":92,\"liquidity\":80,\"data_quality\":98,\"available_index\":47,\"eligible\":true},{\"symbol\":\"SYNTH-B\",\"state\":\"candidate\",\"divergence_type\":\"regular-bearish\",\"confluence_score\":91,\"freshness\":98,\"liquidity\":72,\"data_quality\":94,\"available_index\":54,\"eligible\":true},{\"symbol\":\"SYNTH-C\",\"state\":\"confirmed\",\"divergence_type\":\"hidden-bullish\",\"confluence_score\":74,\"freshness\":70,\"liquidity\":96,\"data_quality\":90,\"available_index\":39,\"eligible\":true}]})",
+        "args": [
+          {
+            "value": {
+              "topic_id": "D08-F05-A03",
+              "data_class": "synthetic-teaching",
+              "as_of": "2026-01-08T13:30:00Z",
+              "bars": [
+                {
+                  "timestamp": "2026-01-05T14:30:00Z",
+                  "open": 105.75,
+                  "high": 107,
+                  "low": 105,
+                  "close": 106,
+                  "finalized": true
+                },
+                {
+                  "timestamp": "2026-01-05T15:30:00Z",
+                  "open": 106.112,
+                  "high": 107.362,
+                  "low": 105.362,
+                  "close": 106.362,
+                  "finalized": true
+                },
+                {
+                  "timestamp": "2026-01-05T16:30:00Z",
+                  "open": 106.4614,
+                  "high": 107.7114,
+                  "low": 105.7114,
+                  "close": 106.7114,
+                  "finalized": true
+                }
+              ],
+              "price_pivots": [
+                {
+                  "kind": "low",
+                  "event_index": 18,
+                  "confirmation_index": 21,
+                  "price": 98,
+                  "prominence": 0.72
+                },
+                {
+                  "kind": "low",
+                  "event_index": 42,
+                  "confirmation_index": 45,
+                  "price": 102,
+                  "prominence": 0.84
+                }
+              ],
+              "indicators": [
+                {
+                  "name": "RSI",
+                  "family": "bounded-momentum",
+                  "polarity": 1,
+                  "scale": 100,
+                  "pivots": [
+                    {
+                      "kind": "low",
+                      "event_index": 19,
+                      "confirmation_index": 22,
+                      "value": 36,
+                      "prominence": 0.76
+                    },
+                    {
+                      "kind": "low",
+                      "event_index": 41,
+                      "confirmation_index": 44,
+                      "value": 28,
+                      "prominence": 0.86
+                    }
+                  ]
+                },
+                {
+                  "name": "MACD-Histogram",
+                  "family": "moving-average-momentum",
+                  "polarity": 1,
+                  "scale": 5,
+                  "pivots": [
+                    {
+                      "kind": "low",
+                      "event_index": 18,
+                      "confirmation_index": 21,
+                      "value": -1,
+                      "prominence": 0.7
+                    },
+                    {
+                      "kind": "low",
+                      "event_index": 42,
+                      "confirmation_index": 45,
+                      "value": -2.2,
+                      "prominence": 0.81
+                    }
+                  ]
+                },
+                {
+                  "name": "Stochastic-K",
+                  "family": "range-momentum",
+                  "polarity": 1,
+                  "scale": 100,
+                  "pivots": [
+                    {
+                      "kind": "low",
+                      "event_index": 17,
+                      "confirmation_index": 20,
+                      "value": 31,
+                      "prominence": 0.68
+                    },
+                    {
+                      "kind": "low",
+                      "event_index": 43,
+                      "confirmation_index": 46,
+                      "value": 19,
+                      "prominence": 0.78
+                    }
+                  ]
+                }
+              ],
+              "parameters": {
+                "max_lag": 3,
+                "min_separation": 5,
+                "max_separation": 40,
+                "min_price_fraction": 0.005,
+                "min_indicator_delta": 0.05,
+                "confirmation_horizon": 12,
+                "invalidation_buffer": 0.005,
+                "minimum_indicators": 2
+              },
+              "weights": {
+                "RSI": 0.4,
+                "MACD-Histogram": 0.35,
+                "Stochastic-K": 0.25
+              },
+              "as_of_index": 71,
+              "universe": [
+                {
+                  "symbol": "SYNTH-A",
+                  "state": "confirmed",
+                  "divergence_type": "regular-bullish",
+                  "confluence_score": 86,
+                  "freshness": 92,
+                  "liquidity": 80,
+                  "data_quality": 98,
+                  "available_index": 47,
+                  "eligible": true
+                },
+                {
+                  "symbol": "SYNTH-B",
+                  "state": "candidate",
+                  "divergence_type": "regular-bearish",
+                  "confluence_score": 91,
+                  "freshness": 98,
+                  "liquidity": 72,
+                  "data_quality": 94,
+                  "available_index": 54,
+                  "eligible": true
+                },
+                {
+                  "symbol": "SYNTH-C",
+                  "state": "confirmed",
+                  "divergence_type": "hidden-bullish",
+                  "confluence_score": 74,
+                  "freshness": 70,
+                  "liquidity": 96,
+                  "data_quality": 90,
+                  "available_index": 39,
+                  "eligible": true
+                }
+              ]
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "topic_id": "D08-F05-A03",
+          "state": "detected",
+          "events": [
+            {
+              "type": "hidden-bullish",
+              "direction": "bullish",
+              "kind": "low",
+              "indicator": "MACD-Histogram",
+              "indicator_family": "moving-average-momentum",
+              "price_pair": [
+                18,
+                42
+              ],
+              "indicator_pair": [
+                18,
+                42
+              ],
+              "price_values": [
+                98,
+                102
+              ],
+              "indicator_values": [
+                -0.2,
+                -0.44000000000000006
+              ],
+              "price_delta_fraction": 0.04081632653061224,
+              "indicator_delta": -0.24000000000000005,
+              "separation": 24,
+              "max_alignment_lag": 0,
+              "prominence": 0.7675
+            },
+            {
+              "type": "hidden-bullish",
+              "direction": "bullish",
+              "kind": "low",
+              "indicator": "RSI",
+              "indicator_family": "bounded-momentum",
+              "price_pair": [
+                18,
+                42
+              ],
+              "indicator_pair": [
+                19,
+                41
+              ],
+              "price_values": [
+                98,
+                102
+              ],
+              "indicator_values": [
+                0.36,
+                0.28
+              ],
+              "price_delta_fraction": 0.04081632653061224,
+              "indicator_delta": -0.07999999999999996,
+              "separation": 24,
+              "max_alignment_lag": 1,
+              "prominence": 0.795
+            },
+            {
+              "type": "hidden-bullish",
+              "direction": "bullish",
+              "kind": "low",
+              "indicator": "Stochastic-K",
+              "indicator_family": "range-momentum",
+              "price_pair": [
+                18,
+                42
+              ],
+              "indicator_pair": [
+                17,
+                43
+              ],
+              "price_values": [
+                98,
+                102
+              ],
+              "indicator_values": [
+                0.31,
+                0.19
+              ],
+              "price_delta_fraction": 0.04081632653061224,
+              "indicator_delta": -0.12,
+              "separation": 24,
+              "max_alignment_lag": 1,
+              "prominence": 0.7550000000000001
+            }
+          ],
+          "event_count": 3
+        },
+        "outputElided": null,
+        "outputShape": "object with 4 fields: topic_id, state, events, event_count"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -45262,7 +47673,264 @@
         "signature": "multiIndicatorDivergenceAdapters(payload)"
       },
       "api": null,
-      "example": null,
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "multiIndicatorDivergenceAdapters({\"topic_id\":\"D08-F05-A04\",\"data_class\":\"synthetic-teaching\",\"as_of\":\"2026-01-08T13:30:00Z\",\"bars\":[{\"timestamp\":\"2026-01-05T14:30:00Z\",\"open\":105.75,\"high\":107,\"low\":105,\"close\":106,\"finalized\":true},{\"timestamp\":\"2026-01-05T15:30:00Z\",\"open\":106.112,\"high\":107.362,\"low\":105.362,\"close\":106.362,\"finalized\":true},{\"timestamp\":\"2026-01-05T16:30:00Z\",\"open\":106.4614,\"high\":107.7114,\"low\":105.7114,\"close\":106.7114,\"finalized\":true}],\"price_pivots\":[{\"kind\":\"low\",\"event_index\":18,\"confirmation_index\":21,\"price\":98,\"prominence\":0.72},{\"kind\":\"low\",\"event_index\":42,\"confirmation_index\":45,\"price\":94,\"prominence\":0.84}],\"indicators\":[{\"name\":\"RSI\",\"family\":\"bounded-momentum\",\"polarity\":1,\"scale\":100,\"pivots\":[{\"kind\":\"low\",\"event_index\":19,\"confirmation_index\":22,\"value\":28,\"prominence\":0.76},{\"kind\":\"low\",\"event_index\":41,\"confirmation_index\":44,\"value\":36,\"prominence\":0.86}]},{\"name\":\"MACD-Histogram\",\"family\":\"moving-average-momentum\",\"polarity\":1,\"scale\":5,\"pivots\":[{\"kind\":\"low\",\"event_index\":18,\"confirmation_index\":21,\"value\":-2.2,\"prominence\":0.7},{\"kind\":\"low\",\"event_index\":42,\"confirmation_index\":45,\"value\":-1,\"prominence\":0.81}]},{\"name\":\"Stochastic-K\",\"family\":\"range-momentum\",\"polarity\":1,\"scale\":100,\"pivots\":[{\"kind\":\"low\",\"event_index\":17,\"confirmation_index\":20,\"value\":18,\"prominence\":0.68},{\"kind\":\"low\",\"event_index\":43,\"confirmation_index\":46,\"value\":29,\"prominence\":0.78}]}],\"parameters\":{\"max_lag\":3,\"min_separation\":5,\"max_separation\":40,\"min_price_fraction\":0.005,\"min_indicator_delta\":0.05,\"confirmation_horizon\":12,\"invalidation_buffer\":0.005,\"minimum_indicators\":2},\"weights\":{\"RSI\":0.4,\"MACD-Histogram\":0.35,\"Stochastic-K\":0.25},\"as_of_index\":71,\"universe\":[{\"symbol\":\"SYNTH-A\",\"state\":\"confirmed\",\"divergence_type\":\"regular-bullish\",\"confluence_score\":86,\"freshness\":92,\"liquidity\":80,\"data_quality\":98,\"available_index\":47,\"eligible\":true},{\"symbol\":\"SYNTH-B\",\"state\":\"candidate\",\"divergence_type\":\"regular-bearish\",\"confluence_score\":91,\"freshness\":98,\"liquidity\":72,\"data_quality\":94,\"available_index\":54,\"eligible\":true},{\"symbol\":\"SYNTH-C\",\"state\":\"confirmed\",\"divergence_type\":\"hidden-bullish\",\"confluence_score\":74,\"freshness\":70,\"liquidity\":96,\"data_quality\":90,\"available_index\":39,\"eligible\":true}]})",
+        "args": [
+          {
+            "value": {
+              "topic_id": "D08-F05-A04",
+              "data_class": "synthetic-teaching",
+              "as_of": "2026-01-08T13:30:00Z",
+              "bars": [
+                {
+                  "timestamp": "2026-01-05T14:30:00Z",
+                  "open": 105.75,
+                  "high": 107,
+                  "low": 105,
+                  "close": 106,
+                  "finalized": true
+                },
+                {
+                  "timestamp": "2026-01-05T15:30:00Z",
+                  "open": 106.112,
+                  "high": 107.362,
+                  "low": 105.362,
+                  "close": 106.362,
+                  "finalized": true
+                },
+                {
+                  "timestamp": "2026-01-05T16:30:00Z",
+                  "open": 106.4614,
+                  "high": 107.7114,
+                  "low": 105.7114,
+                  "close": 106.7114,
+                  "finalized": true
+                }
+              ],
+              "price_pivots": [
+                {
+                  "kind": "low",
+                  "event_index": 18,
+                  "confirmation_index": 21,
+                  "price": 98,
+                  "prominence": 0.72
+                },
+                {
+                  "kind": "low",
+                  "event_index": 42,
+                  "confirmation_index": 45,
+                  "price": 94,
+                  "prominence": 0.84
+                }
+              ],
+              "indicators": [
+                {
+                  "name": "RSI",
+                  "family": "bounded-momentum",
+                  "polarity": 1,
+                  "scale": 100,
+                  "pivots": [
+                    {
+                      "kind": "low",
+                      "event_index": 19,
+                      "confirmation_index": 22,
+                      "value": 28,
+                      "prominence": 0.76
+                    },
+                    {
+                      "kind": "low",
+                      "event_index": 41,
+                      "confirmation_index": 44,
+                      "value": 36,
+                      "prominence": 0.86
+                    }
+                  ]
+                },
+                {
+                  "name": "MACD-Histogram",
+                  "family": "moving-average-momentum",
+                  "polarity": 1,
+                  "scale": 5,
+                  "pivots": [
+                    {
+                      "kind": "low",
+                      "event_index": 18,
+                      "confirmation_index": 21,
+                      "value": -2.2,
+                      "prominence": 0.7
+                    },
+                    {
+                      "kind": "low",
+                      "event_index": 42,
+                      "confirmation_index": 45,
+                      "value": -1,
+                      "prominence": 0.81
+                    }
+                  ]
+                },
+                {
+                  "name": "Stochastic-K",
+                  "family": "range-momentum",
+                  "polarity": 1,
+                  "scale": 100,
+                  "pivots": [
+                    {
+                      "kind": "low",
+                      "event_index": 17,
+                      "confirmation_index": 20,
+                      "value": 18,
+                      "prominence": 0.68
+                    },
+                    {
+                      "kind": "low",
+                      "event_index": 43,
+                      "confirmation_index": 46,
+                      "value": 29,
+                      "prominence": 0.78
+                    }
+                  ]
+                }
+              ],
+              "parameters": {
+                "max_lag": 3,
+                "min_separation": 5,
+                "max_separation": 40,
+                "min_price_fraction": 0.005,
+                "min_indicator_delta": 0.05,
+                "confirmation_horizon": 12,
+                "invalidation_buffer": 0.005,
+                "minimum_indicators": 2
+              },
+              "weights": {
+                "RSI": 0.4,
+                "MACD-Histogram": 0.35,
+                "Stochastic-K": 0.25
+              },
+              "as_of_index": 71,
+              "universe": [
+                {
+                  "symbol": "SYNTH-A",
+                  "state": "confirmed",
+                  "divergence_type": "regular-bullish",
+                  "confluence_score": 86,
+                  "freshness": 92,
+                  "liquidity": 80,
+                  "data_quality": 98,
+                  "available_index": 47,
+                  "eligible": true
+                },
+                {
+                  "symbol": "SYNTH-B",
+                  "state": "candidate",
+                  "divergence_type": "regular-bearish",
+                  "confluence_score": 91,
+                  "freshness": 98,
+                  "liquidity": 72,
+                  "data_quality": 94,
+                  "available_index": 54,
+                  "eligible": true
+                },
+                {
+                  "symbol": "SYNTH-C",
+                  "state": "confirmed",
+                  "divergence_type": "hidden-bullish",
+                  "confluence_score": 74,
+                  "freshness": 70,
+                  "liquidity": 96,
+                  "data_quality": 90,
+                  "available_index": 39,
+                  "eligible": true
+                }
+              ]
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "topic_id": "D08-F05-A04",
+          "state": "ready",
+          "adapters": [
+            {
+              "name": "RSI",
+              "family": "bounded-momentum",
+              "polarity": 1,
+              "scale": 100,
+              "pivots": [
+                {
+                  "kind": "low",
+                  "event_index": 19,
+                  "confirmation_index": 22,
+                  "raw_value": 28,
+                  "normalized_value": 0.28,
+                  "prominence": 0.76
+                },
+                {
+                  "kind": "low",
+                  "event_index": 41,
+                  "confirmation_index": 44,
+                  "raw_value": 36,
+                  "normalized_value": 0.36,
+                  "prominence": 0.86
+                }
+              ]
+            },
+            {
+              "name": "MACD-Histogram",
+              "family": "moving-average-momentum",
+              "polarity": 1,
+              "scale": 5,
+              "pivots": [
+                {
+                  "kind": "low",
+                  "event_index": 18,
+                  "confirmation_index": 21,
+                  "raw_value": -2.2,
+                  "normalized_value": -0.44000000000000006,
+                  "prominence": 0.7
+                },
+                {
+                  "kind": "low",
+                  "event_index": 42,
+                  "confirmation_index": 45,
+                  "raw_value": -1,
+                  "normalized_value": -0.2,
+                  "prominence": 0.81
+                }
+              ]
+            },
+            {
+              "name": "Stochastic-K",
+              "family": "range-momentum",
+              "polarity": 1,
+              "scale": 100,
+              "pivots": [
+                {
+                  "kind": "low",
+                  "event_index": 17,
+                  "confirmation_index": 20,
+                  "raw_value": 18,
+                  "normalized_value": 0.18,
+                  "prominence": 0.68
+                },
+                {
+                  "kind": "low",
+                  "event_index": 43,
+                  "confirmation_index": 46,
+                  "raw_value": 29,
+                  "normalized_value": 0.29,
+                  "prominence": 0.78
+                }
+              ]
+            }
+          ],
+          "adapter_count": 3
+        },
+        "outputElided": null,
+        "outputShape": "object with 4 fields: topic_id, state, adapters, adapter_count"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -45402,7 +48070,229 @@
         "signature": "divergenceStrengthAndQualityScoring(payload)"
       },
       "api": null,
-      "example": null,
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "divergenceStrengthAndQualityScoring({\"topic_id\":\"D08-F05-A05\",\"data_class\":\"synthetic-teaching\",\"as_of\":\"2026-01-08T13:30:00Z\",\"bars\":[{\"timestamp\":\"2026-01-05T14:30:00Z\",\"open\":105.75,\"high\":107,\"low\":105,\"close\":106,\"finalized\":true},{\"timestamp\":\"2026-01-05T15:30:00Z\",\"open\":106.112,\"high\":107.362,\"low\":105.362,\"close\":106.362,\"finalized\":true},{\"timestamp\":\"2026-01-05T16:30:00Z\",\"open\":106.4614,\"high\":107.7114,\"low\":105.7114,\"close\":106.7114,\"finalized\":true}],\"price_pivots\":[{\"kind\":\"low\",\"event_index\":18,\"confirmation_index\":21,\"price\":98,\"prominence\":0.72},{\"kind\":\"low\",\"event_index\":42,\"confirmation_index\":45,\"price\":94,\"prominence\":0.84}],\"indicators\":[{\"name\":\"RSI\",\"family\":\"bounded-momentum\",\"polarity\":1,\"scale\":100,\"pivots\":[{\"kind\":\"low\",\"event_index\":19,\"confirmation_index\":22,\"value\":28,\"prominence\":0.76},{\"kind\":\"low\",\"event_index\":41,\"confirmation_index\":44,\"value\":36,\"prominence\":0.86}]},{\"name\":\"MACD-Histogram\",\"family\":\"moving-average-momentum\",\"polarity\":1,\"scale\":5,\"pivots\":[{\"kind\":\"low\",\"event_index\":18,\"confirmation_index\":21,\"value\":-2.2,\"prominence\":0.7},{\"kind\":\"low\",\"event_index\":42,\"confirmation_index\":45,\"value\":-1,\"prominence\":0.81}]},{\"name\":\"Stochastic-K\",\"family\":\"range-momentum\",\"polarity\":1,\"scale\":100,\"pivots\":[{\"kind\":\"low\",\"event_index\":17,\"confirmation_index\":20,\"value\":18,\"prominence\":0.68},{\"kind\":\"low\",\"event_index\":43,\"confirmation_index\":46,\"value\":29,\"prominence\":0.78}]}],\"parameters\":{\"max_lag\":3,\"min_separation\":5,\"max_separation\":40,\"min_price_fraction\":0.005,\"min_indicator_delta\":0.05,\"confirmation_horizon\":12,\"invalidation_buffer\":0.005,\"minimum_indicators\":2},\"weights\":{\"RSI\":0.4,\"MACD-Histogram\":0.35,\"Stochastic-K\":0.25},\"as_of_index\":71,\"universe\":[{\"symbol\":\"SYNTH-A\",\"state\":\"confirmed\",\"divergence_type\":\"regular-bullish\",\"confluence_score\":86,\"freshness\":92,\"liquidity\":80,\"data_quality\":98,\"available_index\":47,\"eligible\":true},{\"symbol\":\"SYNTH-B\",\"state\":\"candidate\",\"divergence_type\":\"regular-bearish\",\"confluence_score\":91,\"freshness\":98,\"liquidity\":72,\"data_quality\":94,\"available_index\":54,\"eligible\":true},{\"symbol\":\"SYNTH-C\",\"state\":\"confirmed\",\"divergence_type\":\"hidden-bullish\",\"confluence_score\":74,\"freshness\":70,\"liquidity\":96,\"data_quality\":90,\"available_index\":39,\"eligible\":true}]})",
+        "args": [
+          {
+            "value": {
+              "topic_id": "D08-F05-A05",
+              "data_class": "synthetic-teaching",
+              "as_of": "2026-01-08T13:30:00Z",
+              "bars": [
+                {
+                  "timestamp": "2026-01-05T14:30:00Z",
+                  "open": 105.75,
+                  "high": 107,
+                  "low": 105,
+                  "close": 106,
+                  "finalized": true
+                },
+                {
+                  "timestamp": "2026-01-05T15:30:00Z",
+                  "open": 106.112,
+                  "high": 107.362,
+                  "low": 105.362,
+                  "close": 106.362,
+                  "finalized": true
+                },
+                {
+                  "timestamp": "2026-01-05T16:30:00Z",
+                  "open": 106.4614,
+                  "high": 107.7114,
+                  "low": 105.7114,
+                  "close": 106.7114,
+                  "finalized": true
+                }
+              ],
+              "price_pivots": [
+                {
+                  "kind": "low",
+                  "event_index": 18,
+                  "confirmation_index": 21,
+                  "price": 98,
+                  "prominence": 0.72
+                },
+                {
+                  "kind": "low",
+                  "event_index": 42,
+                  "confirmation_index": 45,
+                  "price": 94,
+                  "prominence": 0.84
+                }
+              ],
+              "indicators": [
+                {
+                  "name": "RSI",
+                  "family": "bounded-momentum",
+                  "polarity": 1,
+                  "scale": 100,
+                  "pivots": [
+                    {
+                      "kind": "low",
+                      "event_index": 19,
+                      "confirmation_index": 22,
+                      "value": 28,
+                      "prominence": 0.76
+                    },
+                    {
+                      "kind": "low",
+                      "event_index": 41,
+                      "confirmation_index": 44,
+                      "value": 36,
+                      "prominence": 0.86
+                    }
+                  ]
+                },
+                {
+                  "name": "MACD-Histogram",
+                  "family": "moving-average-momentum",
+                  "polarity": 1,
+                  "scale": 5,
+                  "pivots": [
+                    {
+                      "kind": "low",
+                      "event_index": 18,
+                      "confirmation_index": 21,
+                      "value": -2.2,
+                      "prominence": 0.7
+                    },
+                    {
+                      "kind": "low",
+                      "event_index": 42,
+                      "confirmation_index": 45,
+                      "value": -1,
+                      "prominence": 0.81
+                    }
+                  ]
+                },
+                {
+                  "name": "Stochastic-K",
+                  "family": "range-momentum",
+                  "polarity": 1,
+                  "scale": 100,
+                  "pivots": [
+                    {
+                      "kind": "low",
+                      "event_index": 17,
+                      "confirmation_index": 20,
+                      "value": 18,
+                      "prominence": 0.68
+                    },
+                    {
+                      "kind": "low",
+                      "event_index": 43,
+                      "confirmation_index": 46,
+                      "value": 29,
+                      "prominence": 0.78
+                    }
+                  ]
+                }
+              ],
+              "parameters": {
+                "max_lag": 3,
+                "min_separation": 5,
+                "max_separation": 40,
+                "min_price_fraction": 0.005,
+                "min_indicator_delta": 0.05,
+                "confirmation_horizon": 12,
+                "invalidation_buffer": 0.005,
+                "minimum_indicators": 2
+              },
+              "weights": {
+                "RSI": 0.4,
+                "MACD-Histogram": 0.35,
+                "Stochastic-K": 0.25
+              },
+              "as_of_index": 71,
+              "universe": [
+                {
+                  "symbol": "SYNTH-A",
+                  "state": "confirmed",
+                  "divergence_type": "regular-bullish",
+                  "confluence_score": 86,
+                  "freshness": 92,
+                  "liquidity": 80,
+                  "data_quality": 98,
+                  "available_index": 47,
+                  "eligible": true
+                },
+                {
+                  "symbol": "SYNTH-B",
+                  "state": "candidate",
+                  "divergence_type": "regular-bearish",
+                  "confluence_score": 91,
+                  "freshness": 98,
+                  "liquidity": 72,
+                  "data_quality": 94,
+                  "available_index": 54,
+                  "eligible": true
+                },
+                {
+                  "symbol": "SYNTH-C",
+                  "state": "confirmed",
+                  "divergence_type": "hidden-bullish",
+                  "confluence_score": 74,
+                  "freshness": 70,
+                  "liquidity": 96,
+                  "data_quality": 90,
+                  "available_index": 39,
+                  "eligible": true
+                }
+              ]
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "topic_id": "D08-F05-A05",
+          "state": "scored",
+          "event": {
+            "type": "regular-bullish",
+            "direction": "bullish",
+            "kind": "low",
+            "indicator": "MACD-Histogram",
+            "indicator_family": "moving-average-momentum",
+            "price_pair": [
+              18,
+              42
+            ],
+            "indicator_pair": [
+              18,
+              42
+            ],
+            "price_values": [
+              98,
+              94
+            ],
+            "indicator_values": [
+              -0.44000000000000006,
+              -0.2
+            ],
+            "price_delta_fraction": -0.04081632653061224,
+            "indicator_delta": 0.24000000000000005,
+            "separation": 24,
+            "max_alignment_lag": 0,
+            "prominence": 0.7675
+          },
+          "score": {
+            "score": 95.815,
+            "quality": "exceptional",
+            "components": {
+              "price_geometry": 1,
+              "indicator_geometry": 1,
+              "prominence": 0.7675,
+              "alignment": 1,
+              "separation": 1
+            },
+            "interpretation": "definition-strength score; not probability or expected return"
+          }
+        },
+        "outputElided": null,
+        "outputShape": "object with 4 fields: topic_id, state, event, score"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -45542,7 +48432,242 @@
         "signature": "divergenceConfirmationAndInvalidationStateMachine(payload)"
       },
       "api": null,
-      "example": null,
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "divergenceConfirmationAndInvalidationStateMachine({\"topic_id\":\"D08-F05-A06\",\"data_class\":\"synthetic-teaching\",\"as_of\":\"2026-01-08T13:30:00Z\",\"bars\":[{\"timestamp\":\"2026-01-05T14:30:00Z\",\"open\":105.75,\"high\":107,\"low\":105,\"close\":106,\"finalized\":true},{\"timestamp\":\"2026-01-05T15:30:00Z\",\"open\":106.112,\"high\":107.362,\"low\":105.362,\"close\":106.362,\"finalized\":true},{\"timestamp\":\"2026-01-05T16:30:00Z\",\"open\":106.4614,\"high\":107.7114,\"low\":105.7114,\"close\":106.7114,\"finalized\":true}],\"price_pivots\":[{\"kind\":\"low\",\"event_index\":18,\"confirmation_index\":21,\"price\":98,\"prominence\":0.72},{\"kind\":\"low\",\"event_index\":42,\"confirmation_index\":45,\"price\":94,\"prominence\":0.84}],\"indicators\":[{\"name\":\"RSI\",\"family\":\"bounded-momentum\",\"polarity\":1,\"scale\":100,\"pivots\":[{\"kind\":\"low\",\"event_index\":19,\"confirmation_index\":22,\"value\":28,\"prominence\":0.76},{\"kind\":\"low\",\"event_index\":41,\"confirmation_index\":44,\"value\":36,\"prominence\":0.86}]},{\"name\":\"MACD-Histogram\",\"family\":\"moving-average-momentum\",\"polarity\":1,\"scale\":5,\"pivots\":[{\"kind\":\"low\",\"event_index\":18,\"confirmation_index\":21,\"value\":-2.2,\"prominence\":0.7},{\"kind\":\"low\",\"event_index\":42,\"confirmation_index\":45,\"value\":-1,\"prominence\":0.81}]},{\"name\":\"Stochastic-K\",\"family\":\"range-momentum\",\"polarity\":1,\"scale\":100,\"pivots\":[{\"kind\":\"low\",\"event_index\":17,\"confirmation_index\":20,\"value\":18,\"prominence\":0.68},{\"kind\":\"low\",\"event_index\":43,\"confirmation_index\":46,\"value\":29,\"prominence\":0.78}]}],\"parameters\":{\"max_lag\":3,\"min_separation\":5,\"max_separation\":40,\"min_price_fraction\":0.005,\"min_indicator_delta\":0.05,\"confirmation_horizon\":12,\"invalidation_buffer\":0.005,\"minimum_indicators\":2},\"weights\":{\"RSI\":0.4,\"MACD-Histogram\":0.35,\"Stochastic-K\":0.25},\"as_of_index\":71,\"universe\":[{\"symbol\":\"SYNTH-A\",\"state\":\"confirmed\",\"divergence_type\":\"regular-bullish\",\"confluence_score\":86,\"freshness\":92,\"liquidity\":80,\"data_quality\":98,\"available_index\":47,\"eligible\":true},{\"symbol\":\"SYNTH-B\",\"state\":\"candidate\",\"divergence_type\":\"regular-bearish\",\"confluence_score\":91,\"freshness\":98,\"liquidity\":72,\"data_quality\":94,\"available_index\":54,\"eligible\":true},{\"symbol\":\"SYNTH-C\",\"state\":\"confirmed\",\"divergence_type\":\"hidden-bullish\",\"confluence_score\":74,\"freshness\":70,\"liquidity\":96,\"data_quality\":90,\"available_index\":39,\"eligible\":true}]})",
+        "args": [
+          {
+            "value": {
+              "topic_id": "D08-F05-A06",
+              "data_class": "synthetic-teaching",
+              "as_of": "2026-01-08T13:30:00Z",
+              "bars": [
+                {
+                  "timestamp": "2026-01-05T14:30:00Z",
+                  "open": 105.75,
+                  "high": 107,
+                  "low": 105,
+                  "close": 106,
+                  "finalized": true
+                },
+                {
+                  "timestamp": "2026-01-05T15:30:00Z",
+                  "open": 106.112,
+                  "high": 107.362,
+                  "low": 105.362,
+                  "close": 106.362,
+                  "finalized": true
+                },
+                {
+                  "timestamp": "2026-01-05T16:30:00Z",
+                  "open": 106.4614,
+                  "high": 107.7114,
+                  "low": 105.7114,
+                  "close": 106.7114,
+                  "finalized": true
+                }
+              ],
+              "price_pivots": [
+                {
+                  "kind": "low",
+                  "event_index": 18,
+                  "confirmation_index": 21,
+                  "price": 98,
+                  "prominence": 0.72
+                },
+                {
+                  "kind": "low",
+                  "event_index": 42,
+                  "confirmation_index": 45,
+                  "price": 94,
+                  "prominence": 0.84
+                }
+              ],
+              "indicators": [
+                {
+                  "name": "RSI",
+                  "family": "bounded-momentum",
+                  "polarity": 1,
+                  "scale": 100,
+                  "pivots": [
+                    {
+                      "kind": "low",
+                      "event_index": 19,
+                      "confirmation_index": 22,
+                      "value": 28,
+                      "prominence": 0.76
+                    },
+                    {
+                      "kind": "low",
+                      "event_index": 41,
+                      "confirmation_index": 44,
+                      "value": 36,
+                      "prominence": 0.86
+                    }
+                  ]
+                },
+                {
+                  "name": "MACD-Histogram",
+                  "family": "moving-average-momentum",
+                  "polarity": 1,
+                  "scale": 5,
+                  "pivots": [
+                    {
+                      "kind": "low",
+                      "event_index": 18,
+                      "confirmation_index": 21,
+                      "value": -2.2,
+                      "prominence": 0.7
+                    },
+                    {
+                      "kind": "low",
+                      "event_index": 42,
+                      "confirmation_index": 45,
+                      "value": -1,
+                      "prominence": 0.81
+                    }
+                  ]
+                },
+                {
+                  "name": "Stochastic-K",
+                  "family": "range-momentum",
+                  "polarity": 1,
+                  "scale": 100,
+                  "pivots": [
+                    {
+                      "kind": "low",
+                      "event_index": 17,
+                      "confirmation_index": 20,
+                      "value": 18,
+                      "prominence": 0.68
+                    },
+                    {
+                      "kind": "low",
+                      "event_index": 43,
+                      "confirmation_index": 46,
+                      "value": 29,
+                      "prominence": 0.78
+                    }
+                  ]
+                }
+              ],
+              "parameters": {
+                "max_lag": 3,
+                "min_separation": 5,
+                "max_separation": 40,
+                "min_price_fraction": 0.005,
+                "min_indicator_delta": 0.05,
+                "confirmation_horizon": 12,
+                "invalidation_buffer": 0.005,
+                "minimum_indicators": 2
+              },
+              "weights": {
+                "RSI": 0.4,
+                "MACD-Histogram": 0.35,
+                "Stochastic-K": 0.25
+              },
+              "as_of_index": 71,
+              "universe": [
+                {
+                  "symbol": "SYNTH-A",
+                  "state": "confirmed",
+                  "divergence_type": "regular-bullish",
+                  "confluence_score": 86,
+                  "freshness": 92,
+                  "liquidity": 80,
+                  "data_quality": 98,
+                  "available_index": 47,
+                  "eligible": true
+                },
+                {
+                  "symbol": "SYNTH-B",
+                  "state": "candidate",
+                  "divergence_type": "regular-bearish",
+                  "confluence_score": 91,
+                  "freshness": 98,
+                  "liquidity": 72,
+                  "data_quality": 94,
+                  "available_index": 54,
+                  "eligible": true
+                },
+                {
+                  "symbol": "SYNTH-C",
+                  "state": "confirmed",
+                  "divergence_type": "hidden-bullish",
+                  "confluence_score": 74,
+                  "freshness": 70,
+                  "liquidity": 96,
+                  "data_quality": 90,
+                  "available_index": 39,
+                  "eligible": true
+                }
+              ]
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "topic_id": "D08-F05-A06",
+          "state": "confirmed",
+          "event": {
+            "type": "regular-bullish",
+            "direction": "bullish",
+            "kind": "low",
+            "indicator": "MACD-Histogram",
+            "indicator_family": "moving-average-momentum",
+            "price_pair": [
+              18,
+              42
+            ],
+            "indicator_pair": [
+              18,
+              42
+            ],
+            "price_values": [
+              98,
+              94
+            ],
+            "indicator_values": [
+              -0.44000000000000006,
+              -0.2
+            ],
+            "price_delta_fraction": -0.04081632653061224,
+            "indicator_delta": 0.24000000000000005,
+            "separation": 24,
+            "max_alignment_lag": 0,
+            "prominence": 0.7675
+          },
+          "lifecycle": {
+            "state": "confirmed",
+            "candidate_index": 45,
+            "final_index": 47,
+            "confirmation_level": 109.5372,
+            "invalidation_level": 93.53,
+            "deadline": 57,
+            "trace": [
+              {
+                "index": 45,
+                "state": "candidate",
+                "close": 99
+              },
+              {
+                "index": 46,
+                "state": "candidate",
+                "close": 103
+              },
+              {
+                "index": 47,
+                "state": "confirmed",
+                "close": 112
+              }
+            ]
+          }
+        },
+        "outputElided": null,
+        "outputShape": "object with 4 fields: topic_id, state, event, lifecycle"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -45682,7 +48807,212 @@
         "signature": "multiIndicatorDivergenceConfluence(payload)"
       },
       "api": null,
-      "example": null,
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "multiIndicatorDivergenceConfluence({\"topic_id\":\"D08-F05-A07\",\"data_class\":\"synthetic-teaching\",\"as_of\":\"2026-01-08T13:30:00Z\",\"bars\":[{\"timestamp\":\"2026-01-05T14:30:00Z\",\"open\":105.75,\"high\":107,\"low\":105,\"close\":106,\"finalized\":true},{\"timestamp\":\"2026-01-05T15:30:00Z\",\"open\":106.112,\"high\":107.362,\"low\":105.362,\"close\":106.362,\"finalized\":true},{\"timestamp\":\"2026-01-05T16:30:00Z\",\"open\":106.4614,\"high\":107.7114,\"low\":105.7114,\"close\":106.7114,\"finalized\":true}],\"price_pivots\":[{\"kind\":\"low\",\"event_index\":18,\"confirmation_index\":21,\"price\":98,\"prominence\":0.72},{\"kind\":\"low\",\"event_index\":42,\"confirmation_index\":45,\"price\":94,\"prominence\":0.84}],\"indicators\":[{\"name\":\"RSI\",\"family\":\"bounded-momentum\",\"polarity\":1,\"scale\":100,\"pivots\":[{\"kind\":\"low\",\"event_index\":19,\"confirmation_index\":22,\"value\":28,\"prominence\":0.76},{\"kind\":\"low\",\"event_index\":41,\"confirmation_index\":44,\"value\":36,\"prominence\":0.86}]},{\"name\":\"MACD-Histogram\",\"family\":\"moving-average-momentum\",\"polarity\":1,\"scale\":5,\"pivots\":[{\"kind\":\"low\",\"event_index\":18,\"confirmation_index\":21,\"value\":-2.2,\"prominence\":0.7},{\"kind\":\"low\",\"event_index\":42,\"confirmation_index\":45,\"value\":-1,\"prominence\":0.81}]},{\"name\":\"Stochastic-K\",\"family\":\"range-momentum\",\"polarity\":1,\"scale\":100,\"pivots\":[{\"kind\":\"low\",\"event_index\":17,\"confirmation_index\":20,\"value\":18,\"prominence\":0.68},{\"kind\":\"low\",\"event_index\":43,\"confirmation_index\":46,\"value\":29,\"prominence\":0.78}]}],\"parameters\":{\"max_lag\":3,\"min_separation\":5,\"max_separation\":40,\"min_price_fraction\":0.005,\"min_indicator_delta\":0.05,\"confirmation_horizon\":12,\"invalidation_buffer\":0.005,\"minimum_indicators\":2},\"weights\":{\"RSI\":0.4,\"MACD-Histogram\":0.35,\"Stochastic-K\":0.25},\"as_of_index\":71,\"universe\":[{\"symbol\":\"SYNTH-A\",\"state\":\"confirmed\",\"divergence_type\":\"regular-bullish\",\"confluence_score\":86,\"freshness\":92,\"liquidity\":80,\"data_quality\":98,\"available_index\":47,\"eligible\":true},{\"symbol\":\"SYNTH-B\",\"state\":\"candidate\",\"divergence_type\":\"regular-bearish\",\"confluence_score\":91,\"freshness\":98,\"liquidity\":72,\"data_quality\":94,\"available_index\":54,\"eligible\":true},{\"symbol\":\"SYNTH-C\",\"state\":\"confirmed\",\"divergence_type\":\"hidden-bullish\",\"confluence_score\":74,\"freshness\":70,\"liquidity\":96,\"data_quality\":90,\"available_index\":39,\"eligible\":true}]})",
+        "args": [
+          {
+            "value": {
+              "topic_id": "D08-F05-A07",
+              "data_class": "synthetic-teaching",
+              "as_of": "2026-01-08T13:30:00Z",
+              "bars": [
+                {
+                  "timestamp": "2026-01-05T14:30:00Z",
+                  "open": 105.75,
+                  "high": 107,
+                  "low": 105,
+                  "close": 106,
+                  "finalized": true
+                },
+                {
+                  "timestamp": "2026-01-05T15:30:00Z",
+                  "open": 106.112,
+                  "high": 107.362,
+                  "low": 105.362,
+                  "close": 106.362,
+                  "finalized": true
+                },
+                {
+                  "timestamp": "2026-01-05T16:30:00Z",
+                  "open": 106.4614,
+                  "high": 107.7114,
+                  "low": 105.7114,
+                  "close": 106.7114,
+                  "finalized": true
+                }
+              ],
+              "price_pivots": [
+                {
+                  "kind": "low",
+                  "event_index": 18,
+                  "confirmation_index": 21,
+                  "price": 98,
+                  "prominence": 0.72
+                },
+                {
+                  "kind": "low",
+                  "event_index": 42,
+                  "confirmation_index": 45,
+                  "price": 94,
+                  "prominence": 0.84
+                }
+              ],
+              "indicators": [
+                {
+                  "name": "RSI",
+                  "family": "bounded-momentum",
+                  "polarity": 1,
+                  "scale": 100,
+                  "pivots": [
+                    {
+                      "kind": "low",
+                      "event_index": 19,
+                      "confirmation_index": 22,
+                      "value": 28,
+                      "prominence": 0.76
+                    },
+                    {
+                      "kind": "low",
+                      "event_index": 41,
+                      "confirmation_index": 44,
+                      "value": 36,
+                      "prominence": 0.86
+                    }
+                  ]
+                },
+                {
+                  "name": "MACD-Histogram",
+                  "family": "moving-average-momentum",
+                  "polarity": 1,
+                  "scale": 5,
+                  "pivots": [
+                    {
+                      "kind": "low",
+                      "event_index": 18,
+                      "confirmation_index": 21,
+                      "value": -2.2,
+                      "prominence": 0.7
+                    },
+                    {
+                      "kind": "low",
+                      "event_index": 42,
+                      "confirmation_index": 45,
+                      "value": -1,
+                      "prominence": 0.81
+                    }
+                  ]
+                },
+                {
+                  "name": "Stochastic-K",
+                  "family": "range-momentum",
+                  "polarity": 1,
+                  "scale": 100,
+                  "pivots": [
+                    {
+                      "kind": "low",
+                      "event_index": 17,
+                      "confirmation_index": 20,
+                      "value": 18,
+                      "prominence": 0.68
+                    },
+                    {
+                      "kind": "low",
+                      "event_index": 43,
+                      "confirmation_index": 46,
+                      "value": 29,
+                      "prominence": 0.78
+                    }
+                  ]
+                }
+              ],
+              "parameters": {
+                "max_lag": 3,
+                "min_separation": 5,
+                "max_separation": 40,
+                "min_price_fraction": 0.005,
+                "min_indicator_delta": 0.05,
+                "confirmation_horizon": 12,
+                "invalidation_buffer": 0.005,
+                "minimum_indicators": 2
+              },
+              "weights": {
+                "RSI": 0.4,
+                "MACD-Histogram": 0.35,
+                "Stochastic-K": 0.25
+              },
+              "as_of_index": 71,
+              "universe": [
+                {
+                  "symbol": "SYNTH-A",
+                  "state": "confirmed",
+                  "divergence_type": "regular-bullish",
+                  "confluence_score": 86,
+                  "freshness": 92,
+                  "liquidity": 80,
+                  "data_quality": 98,
+                  "available_index": 47,
+                  "eligible": true
+                },
+                {
+                  "symbol": "SYNTH-B",
+                  "state": "candidate",
+                  "divergence_type": "regular-bearish",
+                  "confluence_score": 91,
+                  "freshness": 98,
+                  "liquidity": 72,
+                  "data_quality": 94,
+                  "available_index": 54,
+                  "eligible": true
+                },
+                {
+                  "symbol": "SYNTH-C",
+                  "state": "confirmed",
+                  "divergence_type": "hidden-bullish",
+                  "confluence_score": 74,
+                  "freshness": 70,
+                  "liquidity": 96,
+                  "data_quality": 90,
+                  "available_index": 39,
+                  "eligible": true
+                }
+              ]
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "topic_id": "D08-F05-A07",
+          "state": "confluent",
+          "groups": [
+            {
+              "type": "regular-bullish",
+              "direction": "bullish",
+              "price_pair": [
+                18,
+                42
+              ],
+              "indicators": [
+                "MACD-Histogram",
+                "RSI",
+                "Stochastic-K"
+              ],
+              "indicator_count": 3,
+              "weighted_quality": 85.830084,
+              "weight_coverage": 1,
+              "family_coverage": 1,
+              "confluence_score": 93.623538,
+              "knowledge_index": 46,
+              "interpretation": "agreement score; not independent evidence or probability"
+            }
+          ],
+          "group_count": 1
+        },
+        "outputElided": null,
+        "outputShape": "object with 4 fields: topic_id, state, groups, group_count"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -45822,7 +49152,237 @@
         "signature": "marketWideDivergenceScannerAndRanking(payload)"
       },
       "api": null,
-      "example": null,
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "marketWideDivergenceScannerAndRanking({\"topic_id\":\"D08-F05-A08\",\"data_class\":\"synthetic-teaching\",\"as_of\":\"2026-01-08T13:30:00Z\",\"bars\":[{\"timestamp\":\"2026-01-05T14:30:00Z\",\"open\":105.75,\"high\":107,\"low\":105,\"close\":106,\"finalized\":true},{\"timestamp\":\"2026-01-05T15:30:00Z\",\"open\":106.112,\"high\":107.362,\"low\":105.362,\"close\":106.362,\"finalized\":true},{\"timestamp\":\"2026-01-05T16:30:00Z\",\"open\":106.4614,\"high\":107.7114,\"low\":105.7114,\"close\":106.7114,\"finalized\":true}],\"price_pivots\":[{\"kind\":\"low\",\"event_index\":18,\"confirmation_index\":21,\"price\":98,\"prominence\":0.72},{\"kind\":\"low\",\"event_index\":42,\"confirmation_index\":45,\"price\":94,\"prominence\":0.84}],\"indicators\":[{\"name\":\"RSI\",\"family\":\"bounded-momentum\",\"polarity\":1,\"scale\":100,\"pivots\":[{\"kind\":\"low\",\"event_index\":19,\"confirmation_index\":22,\"value\":28,\"prominence\":0.76},{\"kind\":\"low\",\"event_index\":41,\"confirmation_index\":44,\"value\":36,\"prominence\":0.86}]},{\"name\":\"MACD-Histogram\",\"family\":\"moving-average-momentum\",\"polarity\":1,\"scale\":5,\"pivots\":[{\"kind\":\"low\",\"event_index\":18,\"confirmation_index\":21,\"value\":-2.2,\"prominence\":0.7},{\"kind\":\"low\",\"event_index\":42,\"confirmation_index\":45,\"value\":-1,\"prominence\":0.81}]},{\"name\":\"Stochastic-K\",\"family\":\"range-momentum\",\"polarity\":1,\"scale\":100,\"pivots\":[{\"kind\":\"low\",\"event_index\":17,\"confirmation_index\":20,\"value\":18,\"prominence\":0.68},{\"kind\":\"low\",\"event_index\":43,\"confirmation_index\":46,\"value\":29,\"prominence\":0.78}]}],\"parameters\":{\"max_lag\":3,\"min_separation\":5,\"max_separation\":40,\"min_price_fraction\":0.005,\"min_indicator_delta\":0.05,\"confirmation_horizon\":12,\"invalidation_buffer\":0.005,\"minimum_indicators\":2},\"weights\":{\"RSI\":0.4,\"MACD-Histogram\":0.35,\"Stochastic-K\":0.25},\"as_of_index\":71,\"universe\":[{\"symbol\":\"SYNTH-A\",\"state\":\"confirmed\",\"divergence_type\":\"regular-bullish\",\"confluence_score\":86,\"freshness\":92,\"liquidity\":80,\"data_quality\":98,\"available_index\":47,\"eligible\":true},{\"symbol\":\"SYNTH-B\",\"state\":\"candidate\",\"divergence_type\":\"regular-bearish\",\"confluence_score\":91,\"freshness\":98,\"liquidity\":72,\"data_quality\":94,\"available_index\":54,\"eligible\":true},{\"symbol\":\"SYNTH-C\",\"state\":\"confirmed\",\"divergence_type\":\"hidden-bullish\",\"confluence_score\":74,\"freshness\":70,\"liquidity\":96,\"data_quality\":90,\"available_index\":39,\"eligible\":true}]})",
+        "args": [
+          {
+            "value": {
+              "topic_id": "D08-F05-A08",
+              "data_class": "synthetic-teaching",
+              "as_of": "2026-01-08T13:30:00Z",
+              "bars": [
+                {
+                  "timestamp": "2026-01-05T14:30:00Z",
+                  "open": 105.75,
+                  "high": 107,
+                  "low": 105,
+                  "close": 106,
+                  "finalized": true
+                },
+                {
+                  "timestamp": "2026-01-05T15:30:00Z",
+                  "open": 106.112,
+                  "high": 107.362,
+                  "low": 105.362,
+                  "close": 106.362,
+                  "finalized": true
+                },
+                {
+                  "timestamp": "2026-01-05T16:30:00Z",
+                  "open": 106.4614,
+                  "high": 107.7114,
+                  "low": 105.7114,
+                  "close": 106.7114,
+                  "finalized": true
+                }
+              ],
+              "price_pivots": [
+                {
+                  "kind": "low",
+                  "event_index": 18,
+                  "confirmation_index": 21,
+                  "price": 98,
+                  "prominence": 0.72
+                },
+                {
+                  "kind": "low",
+                  "event_index": 42,
+                  "confirmation_index": 45,
+                  "price": 94,
+                  "prominence": 0.84
+                }
+              ],
+              "indicators": [
+                {
+                  "name": "RSI",
+                  "family": "bounded-momentum",
+                  "polarity": 1,
+                  "scale": 100,
+                  "pivots": [
+                    {
+                      "kind": "low",
+                      "event_index": 19,
+                      "confirmation_index": 22,
+                      "value": 28,
+                      "prominence": 0.76
+                    },
+                    {
+                      "kind": "low",
+                      "event_index": 41,
+                      "confirmation_index": 44,
+                      "value": 36,
+                      "prominence": 0.86
+                    }
+                  ]
+                },
+                {
+                  "name": "MACD-Histogram",
+                  "family": "moving-average-momentum",
+                  "polarity": 1,
+                  "scale": 5,
+                  "pivots": [
+                    {
+                      "kind": "low",
+                      "event_index": 18,
+                      "confirmation_index": 21,
+                      "value": -2.2,
+                      "prominence": 0.7
+                    },
+                    {
+                      "kind": "low",
+                      "event_index": 42,
+                      "confirmation_index": 45,
+                      "value": -1,
+                      "prominence": 0.81
+                    }
+                  ]
+                },
+                {
+                  "name": "Stochastic-K",
+                  "family": "range-momentum",
+                  "polarity": 1,
+                  "scale": 100,
+                  "pivots": [
+                    {
+                      "kind": "low",
+                      "event_index": 17,
+                      "confirmation_index": 20,
+                      "value": 18,
+                      "prominence": 0.68
+                    },
+                    {
+                      "kind": "low",
+                      "event_index": 43,
+                      "confirmation_index": 46,
+                      "value": 29,
+                      "prominence": 0.78
+                    }
+                  ]
+                }
+              ],
+              "parameters": {
+                "max_lag": 3,
+                "min_separation": 5,
+                "max_separation": 40,
+                "min_price_fraction": 0.005,
+                "min_indicator_delta": 0.05,
+                "confirmation_horizon": 12,
+                "invalidation_buffer": 0.005,
+                "minimum_indicators": 2
+              },
+              "weights": {
+                "RSI": 0.4,
+                "MACD-Histogram": 0.35,
+                "Stochastic-K": 0.25
+              },
+              "as_of_index": 71,
+              "universe": [
+                {
+                  "symbol": "SYNTH-A",
+                  "state": "confirmed",
+                  "divergence_type": "regular-bullish",
+                  "confluence_score": 86,
+                  "freshness": 92,
+                  "liquidity": 80,
+                  "data_quality": 98,
+                  "available_index": 47,
+                  "eligible": true
+                },
+                {
+                  "symbol": "SYNTH-B",
+                  "state": "candidate",
+                  "divergence_type": "regular-bearish",
+                  "confluence_score": 91,
+                  "freshness": 98,
+                  "liquidity": 72,
+                  "data_quality": 94,
+                  "available_index": 54,
+                  "eligible": true
+                },
+                {
+                  "symbol": "SYNTH-C",
+                  "state": "confirmed",
+                  "divergence_type": "hidden-bullish",
+                  "confluence_score": 74,
+                  "freshness": 70,
+                  "liquidity": 96,
+                  "data_quality": 90,
+                  "available_index": 39,
+                  "eligible": true
+                }
+              ]
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "topic_id": "D08-F05-A08",
+          "state": "ranked",
+          "ranking": [
+            {
+              "symbol": "SYNTH-A",
+              "state": "confirmed",
+              "divergence_type": "regular-bullish",
+              "rank_score": 89.3,
+              "components": {
+                "confluence_score": 86,
+                "freshness": 92,
+                "liquidity": 80,
+                "data_quality": 98
+              },
+              "as_of_index": 71,
+              "interpretation": "deterministic triage priority; not an order or return forecast",
+              "rank": 1
+            },
+            {
+              "symbol": "SYNTH-B",
+              "state": "candidate",
+              "divergence_type": "regular-bearish",
+              "rank_score": 86.95,
+              "components": {
+                "confluence_score": 91,
+                "freshness": 98,
+                "liquidity": 72,
+                "data_quality": 94
+              },
+              "as_of_index": 71,
+              "interpretation": "deterministic triage priority; not an order or return forecast",
+              "rank": 2
+            },
+            {
+              "symbol": "SYNTH-C",
+              "state": "confirmed",
+              "divergence_type": "hidden-bullish",
+              "rank_score": 81.3,
+              "components": {
+                "confluence_score": 74,
+                "freshness": 70,
+                "liquidity": 96,
+                "data_quality": 90
+              },
+              "as_of_index": 71,
+              "interpretation": "deterministic triage priority; not an order or return forecast",
+              "rank": 3
+            }
+          ],
+          "eligible_count": 4
+        },
+        "outputElided": null,
+        "outputShape": "object with 4 fields: topic_id, state, ranking, eligible_count"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -45956,7 +49516,82 @@
         "signature": "priceByVolumeProfileConstruction(input)"
       },
       "api": null,
-      "example": null,
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "priceByVolumeProfileConstruction({\"tick_size\":0.25,\"bin_size_ticks\":2,\"window_end\":\"2026-08-03T10:30:00Z\",\"trades\":[{\"trade_id\":\"T01\",\"timestamp\":\"2026-08-03T10:00:00Z\",\"price\":99,\"volume\":10,\"final\":true},{\"trade_id\":\"T02\",\"timestamp\":\"2026-08-03T10:02:00Z\",\"price\":99.25,\"volume\":15,\"final\":true},{\"trade_id\":\"T03\",\"timestamp\":\"2026-08-03T10:04:00Z\",\"price\":99.5,\"volume\":25,\"final\":true}]})",
+        "args": [
+          {
+            "value": {
+              "tick_size": 0.25,
+              "bin_size_ticks": 2,
+              "window_end": "2026-08-03T10:30:00Z",
+              "trades": [
+                {
+                  "trade_id": "T01",
+                  "timestamp": "2026-08-03T10:00:00Z",
+                  "price": 99,
+                  "volume": 10,
+                  "final": true
+                },
+                {
+                  "trade_id": "T02",
+                  "timestamp": "2026-08-03T10:02:00Z",
+                  "price": 99.25,
+                  "volume": 15,
+                  "final": true
+                },
+                {
+                  "trade_id": "T03",
+                  "timestamp": "2026-08-03T10:04:00Z",
+                  "price": 99.5,
+                  "volume": 25,
+                  "final": true
+                }
+              ]
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "state": "calculated",
+          "tick_size": 0.25,
+          "bin_size_ticks": 2,
+          "bin_width": 0.5,
+          "total_volume": 340,
+          "trade_count": 12,
+          "eligible_trade_count": 12,
+          "rows": [
+            {
+              "bin_index": 198,
+              "lower": 99,
+              "upper": 99.5,
+              "midpoint": 99.25,
+              "volume": 25,
+              "share": 0.073529411765
+            },
+            {
+              "bin_index": 199,
+              "lower": 99.5,
+              "upper": 100,
+              "midpoint": 99.75,
+              "volume": 45,
+              "share": 0.132352941176
+            },
+            {
+              "bin_index": 200,
+              "lower": 100,
+              "upper": 100.5,
+              "midpoint": 100.25,
+              "volume": 152,
+              "share": 0.447058823529
+            }
+          ]
+        },
+        "outputElided": null,
+        "outputShape": "object with 8 fields: state, tick_size, bin_size_ticks, bin_width, total_volume, trade_count, eligible_trade_count, rows"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -46042,7 +49677,85 @@
         "signature": "pocValueAreaHvnLvnDetection(input)"
       },
       "api": null,
-      "example": null,
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "pocValueAreaHvnLvnDetection({\"profile_rows\":[{\"lower\":99,\"upper\":99.5,\"volume\":10},{\"lower\":99.5,\"upper\":100,\"volume\":18},{\"lower\":100,\"upper\":100.5,\"volume\":35}],\"value_area_fraction\":0.7,\"hvn_median_ratio\":1.2,\"lvn_median_ratio\":0.65})",
+        "args": [
+          {
+            "value": {
+              "profile_rows": [
+                {
+                  "lower": 99,
+                  "upper": 99.5,
+                  "volume": 10
+                },
+                {
+                  "lower": 99.5,
+                  "upper": 100,
+                  "volume": 18
+                },
+                {
+                  "lower": 100,
+                  "upper": 100.5,
+                  "volume": 35
+                }
+              ],
+              "value_area_fraction": 0.7,
+              "hvn_median_ratio": 1.2,
+              "lvn_median_ratio": 0.65
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "state": "calculated",
+          "poc_index": 4,
+          "poc_price": 101.25,
+          "poc_volume": 120,
+          "value_area_low": 100,
+          "value_area_high": 102.5,
+          "value_area_volume": 350,
+          "value_area_share": 0.755939524838,
+          "target_share": 0.7,
+          "included_indices": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "expansion_trace": [
+            4,
+            5,
+            3,
+            6,
+            2
+          ],
+          "hvn": [
+            {
+              "price": 101.25,
+              "volume": 120,
+              "median_ratio": 3
+            },
+            {
+              "price": 103.25,
+              "volume": 50,
+              "median_ratio": 1.25
+            }
+          ],
+          "lvn": [
+            {
+              "price": 102.75,
+              "volume": 20,
+              "median_ratio": 0.5
+            }
+          ]
+        },
+        "outputElided": null,
+        "outputShape": "object with 13 fields: state, poc_index, poc_price, poc_volume, value_area_low, value_area_high, value_area_volume, value_area_share, …"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -46128,7 +49841,78 @@
         "signature": "fibonacciRetracementExtensionProjection(input)"
       },
       "api": null,
-      "example": null,
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "fibonacciRetracementExtensionProjection({\"start_price\":100,\"end_price\":120,\"retracement_end_price\":112,\"tick_size\":0.1,\"retracement_ratios\":[0.236,0.382,0.5,0.618,0.786],\"extension_ratios\":[1,1.272,1.618,2]})",
+        "args": [
+          {
+            "value": {
+              "start_price": 100,
+              "end_price": 120,
+              "retracement_end_price": 112,
+              "tick_size": 0.1,
+              "retracement_ratios": [
+                0.236,
+                0.382,
+                0.5,
+                0.618,
+                0.786
+              ],
+              "extension_ratios": [
+                1,
+                1.272,
+                1.618,
+                2
+              ]
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "state": "calculated",
+          "direction": "up",
+          "leg_size": 20,
+          "retracement_levels": [
+            {
+              "ratio": 0.236,
+              "raw_price": 115.28,
+              "price": 115.3
+            },
+            {
+              "ratio": 0.382,
+              "raw_price": 112.36,
+              "price": 112.4
+            },
+            {
+              "ratio": 0.5,
+              "raw_price": 110,
+              "price": 110
+            }
+          ],
+          "extension_levels": [
+            {
+              "ratio": 1,
+              "raw_price": 132,
+              "price": 132
+            },
+            {
+              "ratio": 1.272,
+              "raw_price": 137.44,
+              "price": 137.4
+            },
+            {
+              "ratio": 1.618,
+              "raw_price": 144.36,
+              "price": 144.4
+            }
+          ],
+          "rounding": "nearest tick, half away from zero"
+        },
+        "outputElided": null,
+        "outputShape": "object with 6 fields: state, direction, leg_size, retracement_levels, extension_levels, rounding"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -46214,7 +49998,61 @@
         "signature": "psychologicalRoundNumberLevelGeneration(input)"
       },
       "api": null,
-      "example": null,
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "psychologicalRoundNumberLevelGeneration({\"current_price\":103.4,\"lower_bound\":95,\"upper_bound\":110,\"tick_size\":0.1,\"base_unit\":1})",
+        "args": [
+          {
+            "value": {
+              "current_price": 103.4,
+              "lower_bound": 95,
+              "upper_bound": 110,
+              "tick_size": 0.1,
+              "base_unit": 1
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "state": "calculated",
+          "base_unit": 1,
+          "level_count": 16,
+          "closest_level": {
+            "price": 103,
+            "class": "minor",
+            "salience_weight": 0.5,
+            "distance": 0.4,
+            "distance_bps": 38.684719535784
+          },
+          "levels": [
+            {
+              "price": 95,
+              "class": "half",
+              "salience_weight": 0.75,
+              "distance": 8.4,
+              "distance_bps": 812.379110251451
+            },
+            {
+              "price": 96,
+              "class": "minor",
+              "salience_weight": 0.5,
+              "distance": 7.4,
+              "distance_bps": 715.667311411993
+            },
+            {
+              "price": 97,
+              "class": "minor",
+              "salience_weight": 0.5,
+              "distance": 6.4,
+              "distance_bps": 618.955512572534
+            }
+          ]
+        },
+        "outputElided": null,
+        "outputShape": "object with 5 fields: state, base_unit, level_count, closest_level, levels"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -46294,7 +50132,87 @@
         "signature": "multiSourceSupportResistanceZoneFusion(input)"
       },
       "api": null,
-      "example": null,
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "multiSourceSupportResistanceZoneFusion({\"fusion_tolerance\":0.25,\"minimum_sources\":2,\"levels\":[{\"level_id\":\"PIV-1\",\"source\":\"pivot\",\"price\":99.8,\"weight\":0.9},{\"level_id\":\"FIB-1\",\"source\":\"fibonacci\",\"price\":100.1,\"weight\":0.7},{\"level_id\":\"RND-1\",\"source\":\"round-number\",\"price\":100,\"weight\":0.8}]})",
+        "args": [
+          {
+            "value": {
+              "fusion_tolerance": 0.25,
+              "minimum_sources": 2,
+              "levels": [
+                {
+                  "level_id": "PIV-1",
+                  "source": "pivot",
+                  "price": 99.8,
+                  "weight": 0.9
+                },
+                {
+                  "level_id": "FIB-1",
+                  "source": "fibonacci",
+                  "price": 100.1,
+                  "weight": 0.7
+                },
+                {
+                  "level_id": "RND-1",
+                  "source": "round-number",
+                  "price": 100,
+                  "weight": 0.8
+                }
+              ]
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "state": "calculated",
+          "zones": [
+            {
+              "zone_id": "Z01",
+              "lower": 99.55,
+              "upper": 100.45,
+              "center": 100.026470588235,
+              "source_count": 4,
+              "sources": [
+                "fibonacci",
+                "pivot",
+                "round-number",
+                "volume-profile"
+              ],
+              "weight_sum": 3.4,
+              "member_ids": [
+                "PIV-1",
+                "RND-1",
+                "FIB-1",
+                "VOL-1"
+              ]
+            }
+          ],
+          "rejected_clusters": [
+            {
+              "zone_id": "Z02",
+              "lower": 104.75,
+              "upper": 105.25,
+              "center": 105,
+              "source_count": 1,
+              "sources": [
+                "pivot"
+              ],
+              "weight_sum": 0.6,
+              "member_ids": [
+                "PIV-2"
+              ],
+              "reason": "insufficient-distinct-sources"
+            }
+          ],
+          "fusion_tolerance": 0.25,
+          "minimum_sources": 2
+        },
+        "outputElided": null,
+        "outputShape": "object with 5 fields: state, zones, rejected_clusters, fusion_tolerance, minimum_sources"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -46386,7 +50304,54 @@
         "signature": "supportResistanceZoneStrengthDecayScoring(input)"
       },
       "api": null,
-      "example": null,
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "supportResistanceZoneStrengthDecayScoring({\"source_confluence\":0.8,\"zone_age_bars\":10,\"half_life_bars\":20,\"break_count\":0,\"rejection_target_atr\":1,\"touches\":[{\"age_bars\":2,\"rejection_atr\":0.8},{\"age_bars\":8,\"rejection_atr\":1.4},{\"age_bars\":20,\"rejection_atr\":0.4}]})",
+        "args": [
+          {
+            "value": {
+              "source_confluence": 0.8,
+              "zone_age_bars": 10,
+              "half_life_bars": 20,
+              "break_count": 0,
+              "rejection_target_atr": 1,
+              "touches": [
+                {
+                  "age_bars": 2,
+                  "rejection_atr": 0.8
+                },
+                {
+                  "age_bars": 8,
+                  "rejection_atr": 1.4
+                },
+                {
+                  "age_bars": 20,
+                  "rejection_atr": 0.4
+                }
+              ]
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "state": "calculated",
+          "score": 81.604861183733,
+          "grade": "strong",
+          "components": {
+            "source": 24,
+            "touch": 31.086403443236,
+            "rejection": 19.447389928631,
+            "durability": 7.071067811865,
+            "break_penalty": 0
+          },
+          "decayed_touch_evidence": 2.190891274792,
+          "touch_count": 3
+        },
+        "outputElided": null,
+        "outputShape": "object with 6 fields: state, score, grade, components, decayed_touch_evidence, touch_count"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -46472,7 +50437,57 @@
         "signature": "supportResistanceRoleReversalStateMachine(input)"
       },
       "api": null,
-      "example": null,
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "supportResistanceRoleReversalStateMachine({\"zone_lower\":99.5,\"zone_upper\":100.5,\"break_buffer\":0.2,\"confirmation_closes\":2,\"initial_role\":\"support\",\"closes\":[101,100.2,99.2,99.1,99.8,99.1]})",
+        "args": [
+          {
+            "value": {
+              "zone_lower": 99.5,
+              "zone_upper": 100.5,
+              "break_buffer": 0.2,
+              "confirmation_closes": 2,
+              "initial_role": "support",
+              "closes": [
+                101,
+                100.2,
+                99.2,
+                99.1,
+                99.8,
+                99.1
+              ]
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "state": "confirmed-resistance",
+          "final_role": "resistance",
+          "confirmed": true,
+          "retest_seen": true,
+          "transitions": [
+            {
+              "index": 3,
+              "close": 99.1,
+              "from": "active-support",
+              "to": "awaiting-resistance-retest",
+              "side": "below"
+            },
+            {
+              "index": 5,
+              "close": 99.1,
+              "from": "awaiting-resistance-retest",
+              "to": "confirmed-resistance",
+              "side": "below"
+            }
+          ],
+          "observations": 6
+        },
+        "outputElided": null,
+        "outputShape": "object with 6 fields: state, final_role, confirmed, retest_seen, transitions, observations"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -46558,7 +50573,73 @@
         "signature": "breakoutAndRetestDetection(input)"
       },
       "api": null,
-      "example": null,
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "breakoutAndRetestDetection({\"zone_lower\":99.5,\"zone_upper\":100.5,\"break_buffer\":0.2,\"retest_tolerance\":0.15,\"breakout_closes\":2,\"max_retest_bars\":5,\"direction\":\"up\",\"bars\":[{\"high\":100.5,\"low\":99.8,\"close\":100.2},{\"high\":101,\"low\":100.3,\"close\":100.8},{\"high\":101.3,\"low\":100.7,\"close\":101}]})",
+        "args": [
+          {
+            "value": {
+              "zone_lower": 99.5,
+              "zone_upper": 100.5,
+              "break_buffer": 0.2,
+              "retest_tolerance": 0.15,
+              "breakout_closes": 2,
+              "max_retest_bars": 5,
+              "direction": "up",
+              "bars": [
+                {
+                  "high": 100.5,
+                  "low": 99.8,
+                  "close": 100.2
+                },
+                {
+                  "high": 101,
+                  "low": 100.3,
+                  "close": 100.8
+                },
+                {
+                  "high": 101.3,
+                  "low": 100.7,
+                  "close": 101
+                }
+              ]
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "state": "confirmed",
+          "confirmed": true,
+          "direction": "up",
+          "breakout_index": 2,
+          "retest_index": 3,
+          "confirmation_index": 4,
+          "transitions": [
+            {
+              "index": 1,
+              "from": "searching",
+              "to": "breakout-pending",
+              "close": 100.8
+            },
+            {
+              "index": 2,
+              "from": "breakout-pending",
+              "to": "awaiting-retest",
+              "close": 101
+            },
+            {
+              "index": 3,
+              "from": "awaiting-retest",
+              "to": "retest-contact",
+              "close": 100.7
+            }
+          ]
+        },
+        "outputElided": null,
+        "outputShape": "object with 7 fields: state, confirmed, direction, breakout_index, retest_index, confirmation_index, transitions"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -46644,7 +50725,96 @@
         "signature": "marketWideZoneProximityScannerRanking(input)"
       },
       "api": null,
-      "example": null,
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "marketWideZoneProximityScannerRanking({\"as_of\":\"2026-08-03T12:00:00Z\",\"max_distance_bps\":40,\"freshness_half_life_hours\":12,\"instruments\":[{\"instrument_id\":\"SYN01\",\"current_price\":79.76,\"zone_lower\":79.82,\"zone_upper\":80.18,\"zone_strength\":55,\"observed_at\":\"2026-08-03T12:00:00Z\"},{\"instrument_id\":\"SYN02\",\"current_price\":83.84,\"zone_lower\":83.82,\"zone_upper\":84.18,\"zone_strength\":62,\"observed_at\":\"2026-08-03T11:00:00Z\"},{\"instrument_id\":\"SYN03\",\"current_price\":87.92,\"zone_lower\":87.82,\"zone_upper\":88.18,\"zone_strength\":69,\"observed_at\":\"2026-08-03T10:00:00Z\"}]})",
+        "args": [
+          {
+            "value": {
+              "as_of": "2026-08-03T12:00:00Z",
+              "max_distance_bps": 40,
+              "freshness_half_life_hours": 12,
+              "instruments": [
+                {
+                  "instrument_id": "SYN01",
+                  "current_price": 79.76,
+                  "zone_lower": 79.82,
+                  "zone_upper": 80.18,
+                  "zone_strength": 55,
+                  "observed_at": "2026-08-03T12:00:00Z"
+                },
+                {
+                  "instrument_id": "SYN02",
+                  "current_price": 83.84,
+                  "zone_lower": 83.82,
+                  "zone_upper": 84.18,
+                  "zone_strength": 62,
+                  "observed_at": "2026-08-03T11:00:00Z"
+                },
+                {
+                  "instrument_id": "SYN03",
+                  "current_price": 87.92,
+                  "zone_lower": 87.82,
+                  "zone_upper": 88.18,
+                  "zone_strength": 69,
+                  "observed_at": "2026-08-03T10:00:00Z"
+                }
+              ]
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "state": "calculated",
+          "as_of": "2026-08-03T12:00:00Z",
+          "eligible_count": 24,
+          "ranked": [
+            {
+              "instrument_id": "SYN24",
+              "current_price": 171.92,
+              "zone_lower": 171.82,
+              "zone_upper": 172.18,
+              "inside_zone": true,
+              "distance": 0,
+              "distance_bps": 0,
+              "strength": 93,
+              "freshness": 0.749153538438,
+              "rank_score": 94.137303076575,
+              "rank": 1
+            },
+            {
+              "instrument_id": "SYN18",
+              "current_price": 148,
+              "zone_lower": 147.82,
+              "zone_upper": 148.18,
+              "inside_zone": true,
+              "distance": 0,
+              "distance_bps": 0,
+              "strength": 92,
+              "freshness": 0.749153538438,
+              "rank_score": 93.837303076575,
+              "rank": 2
+            },
+            {
+              "instrument_id": "SYN12",
+              "current_price": 124.08,
+              "zone_lower": 123.82,
+              "zone_upper": 124.18,
+              "inside_zone": true,
+              "distance": 0,
+              "distance_bps": 0,
+              "strength": 91,
+              "freshness": 0.749153538438,
+              "rank_score": 93.537303076575,
+              "rank": 3
+            }
+          ]
+        },
+        "outputElided": null,
+        "outputShape": "object with 4 fields: state, as_of, eligible_count, ranked"
+      },
       "verification": {
         "tier": "contract",
         "via": null
