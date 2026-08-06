@@ -15,7 +15,12 @@
     "index-construction",
     "market-breadth",
     "candlesticks",
-    "finance"
+    "finance",
+    "agent-skills",
+    "claude-skills",
+    "claude-code",
+    "ai-agent",
+    "llm"
   ],
   "homepage": "https://docs.thefintechbuilder.com",
   "repository": {

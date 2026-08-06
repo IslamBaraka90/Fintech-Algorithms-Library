@@ -25,6 +25,27 @@ back-office arithmetic is the reason this one exists.
 npm install fintech-algorithms
 ```
 
+## Use it from a coding agent
+
+An agent skill ships with the library, so Claude Code, Codex, Cursor and the
+other agents that read the [Agent Skills](https://agentskills.io) format can use
+these algorithms without guessing at an API they have not read.
+
+```bash
+npx skills add IslamBaraka90/Fintech-Algorithms-Library
+```
+
+It gives the agent the routing rules for all 324 topics, the five input shapes
+with executed examples, the data-ingestion patterns for wiring up a provider,
+and a lookup script that reads the installed `docs.json` offline — plus the
+failure modes that do not throw, which is the category that otherwise produces a
+confident wrong number.
+
+The skill is [`skills/fintech-algorithms/`](skills/fintech-algorithms/) in this
+repository and also ships inside the npm tarball, next to the `docs.json` it
+documents. Background on how an agent should read this library:
+[Using this library from an agent](https://docs.thefintechbuilder.com/guides/ai-agents/).
+
 ## Adjust a price history for a 2-for-1 split
 
 ```ts
