@@ -28,7 +28,7 @@
  *    as source, and playground links are omitted rather than guessed.
  *
  * Usage:
- *   node scripts/gen-docs.mjs [--content-root <path>] [--check]
+ *   node scripts/gen-docs.mjs [--content-root <path>] [--check] [--strict-contracts]
  */
 
 import { readFileSync, writeFileSync, existsSync, readdirSync, statSync } from "node:fs";
@@ -39,8 +39,12 @@ import { parseYaml } from "./lib/yaml-subset.mjs";
 const REPO = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 
 /** Payload shape version. Independent of the package version — bump only when
- *  the structure changes, because the docs site pins a major. */
-const SCHEMA_VERSION = "1.0.0";
+ *  the structure changes, because the docs site pins a major.
+ *
+ *  2.0.0 — per-topic `languages` became `catalogLanguages`; `package` grew the
+ *  runtime and machine-surface facts; `archetypes` and `domains[].slug` added.
+ *  The rename is the reason this is a major and not a minor. */
+const SCHEMA_VERSION = "2.0.0";
 
 const SITE = "https://thefintechbuilder.com";
 const GITHUB = "https://github.com/IslamBaraka90/Fintech-Algorithms-Library";
@@ -50,6 +54,7 @@ function argValue(flag, fallback) {
   return i !== -1 && process.argv[i + 1] ? process.argv[i + 1] : fallback;
 }
 const CHECK = process.argv.includes("--check");
+const STRICT_CONTRACTS = process.argv.includes("--strict-contracts");
 const CONTENT_ROOT = resolve(
   argValue("--content-root", process.env.FINTECH_CONTENT_ROOT ?? resolve(REPO, "..", "..")),
 );
@@ -63,6 +68,12 @@ const TOPIC_ID_RE = /^(D\d{2}-F\d{2}-A\d{2})-/;
 const registrySrc = readFileSync(join(REPO, "src", "_registry.ts"), "utf8");
 const pkg = JSON.parse(readFileSync(join(REPO, "package.json"), "utf8"));
 const manifest = JSON.parse(readFileSync(join(REPO, "test", "_manifest.json"), "utf8"));
+
+/**
+ * The documentation site, which doubles as the machine surface. Read off
+ * `homepage` rather than repeated as a literal, so the two can never disagree.
+ */
+const DOCS = pkg.homepage.replace(/\/+$/, "");
 
 /**
  * The registry is generated TypeScript. Parsing it with a regex rather than
@@ -199,6 +210,25 @@ function references(dir) {
     });
   }
   return out;
+}
+
+/**
+ * Which languages the *catalog* publishes for a topic, read from the
+ * `implementations/<language>/` directories that are actually there.
+ *
+ * This is a catalog fact and is named like one. It used to be the literal
+ * `["typescript", "python"]` on all 324 topics, which read as a promise that a
+ * Python package exists — it does not, and an agent trusting that field would
+ * confidently write `pip install fintech-algorithms`. What this *package* ships
+ * is stated once, as `package.languages`, and it is TypeScript alone.
+ */
+function implementationLanguages(dir) {
+  const src = dir ? join(dir, "implementations") : null;
+  if (!src || !existsSync(src)) return ["typescript"];
+  const langs = readdirSync(src)
+    .filter((d) => statSync(join(src, d)).isDirectory())
+    .sort();
+  return langs.length ? langs : ["typescript"];
 }
 
 // ------------------------------------------------------------- examples
@@ -443,17 +473,33 @@ const topics = topicsFromRegistry.map((t) => {
       source: `${GITHUB}/blob/main/src/${t.path}/impl.ts`,
       npm: `https://www.npmjs.com/package/${pkg.name}`,
     },
-    languages: ["typescript", "python"],
+    catalogLanguages: implementationLanguages(dir),
   };
 });
+
+/** Inconsistencies in the payload's own structure, collected and reported the
+ *  same way contract errors are: refuse to emit rather than mislead. */
+const structureErrors = [];
 
 /** Domain → family tree, so the site can build navigation without regrouping. */
 const domains = [...new Set(topics.map((t) => t.taxonomy.domainId))].sort().map((domainId) => {
   const inDomain = topics.filter((t) => t.taxonomy.domainId === domainId);
   const familyIds = [...new Set(inDomain.map((t) => t.taxonomy.familyId))].sort();
+
+  // The first path segment is the domain's URL slug everywhere — on the site,
+  // in the per-domain llms.txt route, in the topic page URL. Emitting it means
+  // a consumer never has to rediscover it by finding a topic in the domain and
+  // splitting its path; a domain whose topics disagree would silently produce
+  // two different routes for one domain, so it fails the build instead.
+  const slugs = [...new Set(inDomain.map((t) => t.path.split("/")[0]))];
+  if (slugs.length !== 1) {
+    structureErrors.push(`${domainId}: topics span more than one path root — ${slugs.join(", ")}`);
+  }
+
   return {
     id: domainId,
     name: inDomain[0].taxonomy.domain,
+    slug: slugs[0],
     topicCount: inDomain.length,
     families: familyIds.map((familyId) => {
       const inFamily = inDomain.filter((t) => t.taxonomy.familyId === familyId);
@@ -462,9 +508,238 @@ const domains = [...new Set(topics.map((t) => t.taxonomy.domainId))].sort().map(
   };
 });
 
+// ----------------------------------------------------------- archetypes
+
+/**
+ * The five fields every quote in a consensus snapshot must agree on. Shared
+ * between the quotes and the policy's `expected_contract` so the example cannot
+ * drift apart from itself — a mismatch there is the exact failure the algorithm
+ * reports, which would make the worked example a demonstration of the error.
+ */
+const CONSENSUS_CONTRACT = {
+  instrument_id: "SYNTH-USD",
+  currency: "USD",
+  price_type: "last_trade",
+  adjustment: "unadjusted",
+  session: "regular",
+};
+const CONSENSUS_AS_OF = "2026-07-13T13:30:01.000Z";
+
+/**
+ * The five input shapes, as data.
+ *
+ * `import.archetype` already labels every topic, but a label alone does not
+ * tell a consumer how to map its own data onto it: what the first argument
+ * actually is, what a minimal payload looks like, or what to run before
+ * trusting the input. That is the machine half of the prose guide at
+ * `/guides/archetypes/`, and without it an agent has to read the page.
+ *
+ * Counts are derived from the catalog. Everything else is static, because it
+ * describes a *shape* rather than a catalog row — and every `example` below was
+ * executed against the built package before being written down.
+ *
+ * Insertion order is the emitted order, and it is the guide's order: the
+ * smallest shapes have the cleanest contracts, and `record-transform` is a
+ * residual bucket that is deliberately last.
+ */
+const ARCHETYPES = {
+  "series-transform": {
+    firstArgument: "(number | null)[]",
+    returns: "an array of the same length, aligned index-for-index with the input",
+    type: "type SeriesTransform = (values: (number | null)[], ...params: number[]) => (number | null)[];",
+    example: {
+      subpath: "fintech-algorithms/technical-indicators/trend-smoothing/sma",
+      entry: "calculateSma",
+      call: "calculateSma([10, 13, 12, 15, 14, 18], 3)",
+      args: [[10, 13, 12, 15, 14, 18], 3],
+    },
+    validator: {
+      subpath:
+        "fintech-algorithms/market-data-engineering/cleaning-and-validation/median-absolute-deviation-outlier-filter",
+      note: "A numeric series has no structure to check, so check its values. Takes the same number[] you are about to pass to the indicator.",
+    },
+    caveat:
+      "Leading nulls are warm-up, not missing data. The output is the same length as the input so that bars[i] and result[i] describe the same instant; filtering the nulls shifts the series left and nothing errors.",
+  },
+  "tape-aggregate": {
+    firstArgument: "Trade[]",
+    returns: "Bar[]",
+    type: "type TapeAggregate = (trades: Trade[], config: object) => Bar[];",
+    example: {
+      subpath: "fintech-algorithms/market-data-engineering/bar-construction/time-bars",
+      entry: "constructBars",
+      call: "constructBars(trades, { intervalSeconds: 60, sessionStarts: { RTH: … } })",
+      args: [
+        [
+          {
+            tradeId: "1",
+            timestamp: "2026-07-20T09:30:01.000Z",
+            session: "RTH",
+            symbol: "DEMO",
+            price: 100,
+            volume: 500,
+            currency: "USD",
+          },
+        ],
+        { intervalSeconds: 60, sessionStarts: { RTH: "2026-07-20T09:30:00.000Z" } },
+      ],
+    },
+    validator: {
+      subpath:
+        "fintech-algorithms/market-data-engineering/cleaning-and-validation/duplicate-trade-resolver",
+      note: "Run before aggregating. A duplicated print inflates volume permanently and is invisible once it is inside a bar.",
+    },
+    caveat:
+      "The only shape that cares about ordering and sessions. Trades must arrive in chronological order, and sessionStarts anchors every bucket boundary — get it wrong and every bar edge is off by the same amount, consistently enough to look correct.",
+  },
+  "row-classify": {
+    firstArgument: "an array of rows",
+    returns: "one verdict per row, in the same order — verdicts.length === rows.length",
+    type: "type RowClassify = (rows: Row[], config?: object) => Verdict[];",
+    example: {
+      subpath:
+        "fintech-algorithms/market-data-engineering/cleaning-and-validation/ohlc-consistency-validator",
+      entry: "validateBars",
+      call: "validateBars(bars, { tickSize: 0.01, toleranceTicks: 1, priceScale: 1 })",
+      args: [
+        [
+          {
+            timestamp: "2026-07-20T09:30:00Z",
+            symbol: "DEMO",
+            open: 100,
+            high: 101,
+            low: 99.5,
+            close: 100.5,
+            volume: 1000,
+          },
+        ],
+        { tickSize: 0.01, toleranceTicks: 1, priceScale: 1 },
+      ],
+    },
+    validator: {
+      subpath: null,
+      note: "This archetype is the boundary. It is what you run before the other four.",
+    },
+    caveat:
+      "Nothing signals failure except the verdict. These never throw on bad input — one malformed record in ten thousand should lose neither the record nor the other 9,999 — so ignoring the return value looks like success.",
+  },
+  "snapshot-evaluate": {
+    firstArgument: "one point-in-time snapshot",
+    returns: "a single verdict about that instant",
+    type: "type SnapshotEvaluate = (snapshot: object, policyOrTime: object | string) => Verdict;",
+    example: {
+      subpath: "fintech-algorithms/market-data-engineering/data-quality/price-source-consensus-check",
+      entry: "consensus",
+      call: "consensus({ as_of, quotes }, policy)",
+      args: [
+        {
+          as_of: CONSENSUS_AS_OF,
+          quotes: [
+            { source_id: "A", owner_id: "OWNER-A", price: 100, ...CONSENSUS_CONTRACT, event_time: CONSENSUS_AS_OF },
+            { source_id: "B", owner_id: "OWNER-B", price: 100.01, ...CONSENSUS_CONTRACT, event_time: CONSENSUS_AS_OF },
+            { source_id: "C", owner_id: "OWNER-C", price: 100.02, ...CONSENSUS_CONTRACT, event_time: CONSENSUS_AS_OF },
+          ],
+        },
+        {
+          minimum_independent_sources: 3,
+          z_threshold: 3.5,
+          absolute_tolerance: 0.03,
+          maximum_tolerance: 0.15,
+          max_age_ms: 500,
+          expected_contract: CONSENSUS_CONTRACT,
+        },
+      ],
+    },
+    validator: {
+      subpath: null,
+      note: "These are themselves validators. Feed them the snapshot you are about to trust.",
+    },
+    caveat:
+      "The second argument is usually a decision time, and it is what makes the result reproducible. Passing 'now' instead of the instant being evaluated turns a point-in-time check into look-ahead.",
+  },
+  "record-transform": {
+    firstArgument: "a domain-specific record or array",
+    returns: "a domain-specific result",
+    type: null,
+    example: null,
+    validator: {
+      subpath: null,
+      note: "Whichever matches the record being passed: a bar → ohlc-consistency-validator, a quote → stale-quote-detector, a corporate action → its own family's guard.",
+    },
+    caveat:
+      "Not a shape. This is the residual bucket — a topic lands here when it is none of the other four — so it spans twelve of the thirteen domains and shares no field names between families. Read the topic's own `api` block and `example` in this payload instead.",
+  },
+};
+
+const archetypeCounts = new Map();
+for (const t of topics) {
+  archetypeCounts.set(t.import.archetype, (archetypeCounts.get(t.import.archetype) ?? 0) + 1);
+}
+
+// A sixth archetype appearing in the catalog, or a documented one going empty,
+// means this block is describing a library that no longer exists. Fail rather
+// than emit a distribution that silently omits a shape.
+for (const name of archetypeCounts.keys()) {
+  if (!ARCHETYPES[name]) structureErrors.push(`archetype "${name}" has topics but no description`);
+}
+for (const name of Object.keys(ARCHETYPES)) {
+  if (!archetypeCounts.get(name)) structureErrors.push(`archetype "${name}" is described but has no topics`);
+}
+
+const archetypes = Object.entries(ARCHETYPES).map(([name, a]) => ({
+  name,
+  topicCount: archetypeCounts.get(name) ?? 0,
+  ...a,
+}));
+
 const payload = {
   schemaVersion: SCHEMA_VERSION,
-  package: { name: pkg.name, version: pkg.version, homepage: pkg.homepage },
+  package: {
+    name: pkg.name,
+    version: pkg.version,
+    homepage: pkg.homepage,
+    license: pkg.license,
+    type: pkg.type,
+    engines: pkg.engines,
+
+    // What the *package* ships, as opposed to what the catalog publishes per
+    // topic in `catalogLanguages`. There is no Python package.
+    languages: ["typescript"],
+
+    entryPoints: {
+      root: {
+        specifier: pkg.name,
+        contains: "metadata",
+        note:
+          "The root export carries the topic registry and the lookup helpers " +
+          "(topic, byDomain, byFamily, byArchetype, load, runner). No algorithm is re-exported here.",
+      },
+      topic: {
+        pattern: `${pkg.name}/{topic.path}`,
+        conditions: ["import", "require"],
+        note:
+          "Algorithms are subpath-only. Each subpath exports the function named in its `import.entry` " +
+          "and its own types; a sibling topic's function is never re-exported, so import it from its own subpath.",
+        commonjs:
+          "The require condition resolves to the same ES module as import — there is no separate " +
+          "CommonJS build — so require() needs a runtime that supports require(esm).",
+      },
+    },
+
+    // Every route below was requested against the live site and returned 200.
+    // Patterns name the payload field that fills them, so a consumer holding
+    // only this file can construct them without guessing.
+    machineSurface: {
+      site: DOCS,
+      llms: `${DOCS}/llms.txt`,
+      versionEndpoint: `${DOCS}/version.json`,
+      payload: `${DOCS}/reference/payload.json`,
+      domainLlms: `${DOCS}/{domain.slug}/llms.txt`,
+      topicPage: `${DOCS}/{topic.path}/`,
+      topicMarkdown: `${DOCS}/{topic.path}/index.md`,
+      archetypeGuide: `${DOCS}/guides/archetypes/`,
+    },
+  },
   counts: {
     topics: topics.length,
     domains: domains.length,
@@ -474,17 +749,34 @@ const payload = {
     withDiagram: topics.filter((t) => t.assets.diagrams.length).length,
     withApiContract: topics.filter((t) => t.api).length,
   },
+  archetypes,
   domains,
   topics,
 };
 
-// A contract that contradicts the code is worse than no contract: refuse to
-// emit rather than publish documentation the implementation disagrees with.
+// `--strict-contracts` refuses to emit when a topic has *no* contract at all.
+// It is off by default because the `api:` block was populated family by family
+// and a topic without one is not malformed, only undocumented. CI turns it on:
+// coverage that nothing enforced is exactly how a complete 271/271 quietly
+// became 280/324 as the catalog grew.
+if (STRICT_CONTRACTS) {
+  for (const t of topics.filter((x) => !x.api)) {
+    apiErrors.push(`${t.id}: no api: block — ${t.path}/metadata.yaml`);
+  }
+}
+
+// A contract that contradicts the code is worse than no contract, and a payload
+// whose own structure is inconsistent will mislead every consumer downstream:
+// refuse to emit rather than publish either.
+if (structureErrors.length) {
+  console.error(`gen-docs: ${structureErrors.length} payload structure error(s)`);
+  for (const e of structureErrors) console.error(`    ${e}`);
+}
 if (apiErrors.length) {
   console.error(`gen-docs: ${apiErrors.length} api: contract error(s)`);
   for (const e of apiErrors) console.error(`    ${e}`);
-  process.exit(1);
 }
+if (structureErrors.length || apiErrors.length) process.exit(1);
 
 const json = JSON.stringify(payload, null, 2) + "\n";
 

@@ -992,14 +992,29 @@ emit("src/index.ts", rootIndex);
 
 const pkgPath = join(REPO, "package.json");
 const pkg = JSON.parse(readFileSync(pkgPath, "utf8"));
-const exportsMap = {
-  ".": { types: "./dist/index.d.ts", import: "./dist/index.js" },
-};
+
+/**
+ * One entry of the `exports` map.
+ *
+ * `require` points at the *same* ES module as `import`, which is deliberate.
+ * Node resolves `require()` against the `require` condition only, so a package
+ * that declares `import` alone is unreachable from CommonJS — not because the
+ * module cannot be loaded, but because resolution fails before loading is
+ * attempted. Node can `require()` an ES module, so the fix is the condition,
+ * not a second CommonJS build: the tarball stays one copy of every module, and
+ * a dual-package hazard is impossible because there is only ever one copy of a
+ * module's state. Consumers on a runtime without `require(esm)` still need
+ * `import`.
+ */
+const exportEntry = (base) => ({
+  types: `${base}/index.d.ts`,
+  import: `${base}/index.js`,
+  require: `${base}/index.js`,
+});
+
+const exportsMap = { ".": exportEntry("./dist") };
 for (const t of topics) {
-  exportsMap[`./${t.path}`] = {
-    types: `./dist/${t.path}/index.d.ts`,
-    import: `./dist/${t.path}/index.js`,
-  };
+  exportsMap[`./${t.path}`] = exportEntry(`./dist/${t.path}`);
 }
 exportsMap["./package.json"] = "./package.json";
 pkg.exports = exportsMap;

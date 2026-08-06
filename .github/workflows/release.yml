@@ -61,6 +61,14 @@ jobs:
             if (out[2] !== 13 || out[3] !== 16) throw new Error("EMA regression: " + JSON.stringify(out));
             console.log(`tarball OK — ${topics.length} topics resolvable from a clean consumer`);
           '
+          node --input-type=commonjs -e '
+            const { topics } = require("fintech-algorithms");
+            const { calculateEma } = require("fintech-algorithms/technical-indicators/trend-smoothing/ema");
+            if (topics.length === 0) throw new Error("registry is empty");
+            const out = calculateEma([10, 13, 16, 19], 3);
+            if (out[2] !== 13 || out[3] !== 16) throw new Error("EMA regression: " + JSON.stringify(out));
+            console.log(`tarball OK from CommonJS — ${topics.length} topics`);
+          '
 
       # No NODE_AUTH_TOKEN: npm authenticates over OIDC via the trusted
       # publisher configured on npmjs.com for this repository and workflow file.

@@ -26,6 +26,23 @@ jobs:
       - name: Build
         run: npm run build
 
+      # Contract coverage is invisible to the drift guard: a topic that never had
+      # an `api:` block round-trips perfectly, which is how a complete 271/271
+      # quietly became 280/324. This reads the committed payload, so it runs on
+      # every pull request whether or not the catalog checkout is available.
+      - name: Enforce contract coverage
+        run: |
+          node -e '
+            const p = require("./docs.json");
+            const missing = p.topics.filter((t) => !t.api);
+            if (missing.length) {
+              console.error(`${missing.length} of ${p.topics.length} topics have no api: contract`);
+              for (const t of missing.slice(0, 20)) console.error(`    ${t.id} ${t.path}`);
+              process.exit(1);
+            }
+            console.log(`contract coverage: ${p.topics.length}/${p.topics.length}`);
+          '
+
       # Proves the published tarball is self-contained: the exports map resolves,
       # dist/ is complete, and no file the package needs was left out of `files`.
       - name: Pack and smoke-test the tarball
@@ -41,6 +58,21 @@ jobs:
             const out = calculateEma([10, 13, 16, 19], 3);
             if (out[2] !== 13 || out[3] !== 16) throw new Error("EMA regression: " + JSON.stringify(out));
             console.log(`tarball OK — ${topics.length} topics resolvable from a clean consumer`);
+          '
+
+      # The same consumer, from CommonJS. The exports map declares a `require`
+      # condition pointing at the ES module, so this fails loudly if that
+      # condition is ever dropped — resolution, not loading, is what breaks.
+      - name: Smoke-test the tarball from CommonJS
+        working-directory: /tmp/consumer
+        run: |
+          node --input-type=commonjs -e '
+            const { topics } = require("fintech-algorithms");
+            const { calculateEma } = require("fintech-algorithms/technical-indicators/trend-smoothing/ema");
+            if (topics.length === 0) throw new Error("registry is empty");
+            const out = calculateEma([10, 13, 16, 19], 3);
+            if (out[2] !== 13 || out[3] !== 16) throw new Error("EMA regression: " + JSON.stringify(out));
+            console.log(`tarball OK from CommonJS — ${topics.length} topics`);
           '
 
   # The package is generated from the edufintech catalog, which lives in a
@@ -66,3 +98,10 @@ jobs:
       - name: Fail if the package has drifted from the catalog
         working-directory: package
         run: node scripts/sync.mjs --check --content-root ../catalog
+
+      # With the catalog present the same coverage question can be asked of the
+      # source rather than the payload: a topic arriving without an `api:` block
+      # fails here, before it can ever reach a committed docs.json.
+      - name: Fail if any topic reaches the payload without a contract
+        working-directory: package
+        run: node scripts/gen-docs.mjs --check --strict-contracts --content-root ../catalog

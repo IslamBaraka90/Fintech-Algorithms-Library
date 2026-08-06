@@ -1,9 +1,43 @@
 {
-  "schemaVersion": "1.0.0",
+  "schemaVersion": "2.0.0",
   "package": {
     "name": "fintech-algorithms",
     "version": "0.12.0",
-    "homepage": "https://docs.thefintechbuilder.com"
+    "homepage": "https://docs.thefintechbuilder.com",
+    "license": "MIT",
+    "type": "module",
+    "engines": {
+      "node": ">=22"
+    },
+    "languages": [
+      "typescript"
+    ],
+    "entryPoints": {
+      "root": {
+        "specifier": "fintech-algorithms",
+        "contains": "metadata",
+        "note": "The root export carries the topic registry and the lookup helpers (topic, byDomain, byFamily, byArchetype, load, runner). No algorithm is re-exported here."
+      },
+      "topic": {
+        "pattern": "fintech-algorithms/{topic.path}",
+        "conditions": [
+          "import",
+          "require"
+        ],
+        "note": "Algorithms are subpath-only. Each subpath exports the function named in its `import.entry` and its own types; a sibling topic's function is never re-exported, so import it from its own subpath.",
+        "commonjs": "The require condition resolves to the same ES module as import — there is no separate CommonJS build — so require() needs a runtime that supports require(esm)."
+      }
+    },
+    "machineSurface": {
+      "site": "https://docs.thefintechbuilder.com",
+      "llms": "https://docs.thefintechbuilder.com/llms.txt",
+      "versionEndpoint": "https://docs.thefintechbuilder.com/version.json",
+      "payload": "https://docs.thefintechbuilder.com/reference/payload.json",
+      "domainLlms": "https://docs.thefintechbuilder.com/{domain.slug}/llms.txt",
+      "topicPage": "https://docs.thefintechbuilder.com/{topic.path}/",
+      "topicMarkdown": "https://docs.thefintechbuilder.com/{topic.path}/index.md",
+      "archetypeGuide": "https://docs.thefintechbuilder.com/guides/archetypes/"
+    }
   },
   "counts": {
     "topics": 324,
@@ -14,10 +48,196 @@
     "withDiagram": 324,
     "withApiContract": 324
   },
+  "archetypes": [
+    {
+      "name": "series-transform",
+      "topicCount": 37,
+      "firstArgument": "(number | null)[]",
+      "returns": "an array of the same length, aligned index-for-index with the input",
+      "type": "type SeriesTransform = (values: (number | null)[], ...params: number[]) => (number | null)[];",
+      "example": {
+        "subpath": "fintech-algorithms/technical-indicators/trend-smoothing/sma",
+        "entry": "calculateSma",
+        "call": "calculateSma([10, 13, 12, 15, 14, 18], 3)",
+        "args": [
+          [
+            10,
+            13,
+            12,
+            15,
+            14,
+            18
+          ],
+          3
+        ]
+      },
+      "validator": {
+        "subpath": "fintech-algorithms/market-data-engineering/cleaning-and-validation/median-absolute-deviation-outlier-filter",
+        "note": "A numeric series has no structure to check, so check its values. Takes the same number[] you are about to pass to the indicator."
+      },
+      "caveat": "Leading nulls are warm-up, not missing data. The output is the same length as the input so that bars[i] and result[i] describe the same instant; filtering the nulls shifts the series left and nothing errors."
+    },
+    {
+      "name": "tape-aggregate",
+      "topicCount": 7,
+      "firstArgument": "Trade[]",
+      "returns": "Bar[]",
+      "type": "type TapeAggregate = (trades: Trade[], config: object) => Bar[];",
+      "example": {
+        "subpath": "fintech-algorithms/market-data-engineering/bar-construction/time-bars",
+        "entry": "constructBars",
+        "call": "constructBars(trades, { intervalSeconds: 60, sessionStarts: { RTH: … } })",
+        "args": [
+          [
+            {
+              "tradeId": "1",
+              "timestamp": "2026-07-20T09:30:01.000Z",
+              "session": "RTH",
+              "symbol": "DEMO",
+              "price": 100,
+              "volume": 500,
+              "currency": "USD"
+            }
+          ],
+          {
+            "intervalSeconds": 60,
+            "sessionStarts": {
+              "RTH": "2026-07-20T09:30:00.000Z"
+            }
+          }
+        ]
+      },
+      "validator": {
+        "subpath": "fintech-algorithms/market-data-engineering/cleaning-and-validation/duplicate-trade-resolver",
+        "note": "Run before aggregating. A duplicated print inflates volume permanently and is invisible once it is inside a bar."
+      },
+      "caveat": "The only shape that cares about ordering and sessions. Trades must arrive in chronological order, and sessionStarts anchors every bucket boundary — get it wrong and every bar edge is off by the same amount, consistently enough to look correct."
+    },
+    {
+      "name": "row-classify",
+      "topicCount": 17,
+      "firstArgument": "an array of rows",
+      "returns": "one verdict per row, in the same order — verdicts.length === rows.length",
+      "type": "type RowClassify = (rows: Row[], config?: object) => Verdict[];",
+      "example": {
+        "subpath": "fintech-algorithms/market-data-engineering/cleaning-and-validation/ohlc-consistency-validator",
+        "entry": "validateBars",
+        "call": "validateBars(bars, { tickSize: 0.01, toleranceTicks: 1, priceScale: 1 })",
+        "args": [
+          [
+            {
+              "timestamp": "2026-07-20T09:30:00Z",
+              "symbol": "DEMO",
+              "open": 100,
+              "high": 101,
+              "low": 99.5,
+              "close": 100.5,
+              "volume": 1000
+            }
+          ],
+          {
+            "tickSize": 0.01,
+            "toleranceTicks": 1,
+            "priceScale": 1
+          }
+        ]
+      },
+      "validator": {
+        "subpath": null,
+        "note": "This archetype is the boundary. It is what you run before the other four."
+      },
+      "caveat": "Nothing signals failure except the verdict. These never throw on bad input — one malformed record in ten thousand should lose neither the record nor the other 9,999 — so ignoring the return value looks like success."
+    },
+    {
+      "name": "snapshot-evaluate",
+      "topicCount": 6,
+      "firstArgument": "one point-in-time snapshot",
+      "returns": "a single verdict about that instant",
+      "type": "type SnapshotEvaluate = (snapshot: object, policyOrTime: object | string) => Verdict;",
+      "example": {
+        "subpath": "fintech-algorithms/market-data-engineering/data-quality/price-source-consensus-check",
+        "entry": "consensus",
+        "call": "consensus({ as_of, quotes }, policy)",
+        "args": [
+          {
+            "as_of": "2026-07-13T13:30:01.000Z",
+            "quotes": [
+              {
+                "source_id": "A",
+                "owner_id": "OWNER-A",
+                "price": 100,
+                "instrument_id": "SYNTH-USD",
+                "currency": "USD",
+                "price_type": "last_trade",
+                "adjustment": "unadjusted",
+                "session": "regular",
+                "event_time": "2026-07-13T13:30:01.000Z"
+              },
+              {
+                "source_id": "B",
+                "owner_id": "OWNER-B",
+                "price": 100.01,
+                "instrument_id": "SYNTH-USD",
+                "currency": "USD",
+                "price_type": "last_trade",
+                "adjustment": "unadjusted",
+                "session": "regular",
+                "event_time": "2026-07-13T13:30:01.000Z"
+              },
+              {
+                "source_id": "C",
+                "owner_id": "OWNER-C",
+                "price": 100.02,
+                "instrument_id": "SYNTH-USD",
+                "currency": "USD",
+                "price_type": "last_trade",
+                "adjustment": "unadjusted",
+                "session": "regular",
+                "event_time": "2026-07-13T13:30:01.000Z"
+              }
+            ]
+          },
+          {
+            "minimum_independent_sources": 3,
+            "z_threshold": 3.5,
+            "absolute_tolerance": 0.03,
+            "maximum_tolerance": 0.15,
+            "max_age_ms": 500,
+            "expected_contract": {
+              "instrument_id": "SYNTH-USD",
+              "currency": "USD",
+              "price_type": "last_trade",
+              "adjustment": "unadjusted",
+              "session": "regular"
+            }
+          }
+        ]
+      },
+      "validator": {
+        "subpath": null,
+        "note": "These are themselves validators. Feed them the snapshot you are about to trust."
+      },
+      "caveat": "The second argument is usually a decision time, and it is what makes the result reproducible. Passing 'now' instead of the instant being evaluated turns a point-in-time check into look-ahead."
+    },
+    {
+      "name": "record-transform",
+      "topicCount": 257,
+      "firstArgument": "a domain-specific record or array",
+      "returns": "a domain-specific result",
+      "type": null,
+      "example": null,
+      "validator": {
+        "subpath": null,
+        "note": "Whichever matches the record being passed: a bar → ohlc-consistency-validator, a quote → stale-quote-detector, a corporate action → its own family's guard."
+      },
+      "caveat": "Not a shape. This is the residual bucket — a topic lands here when it is none of the other four — so it spans twelve of the thirteen domains and shares no field names between families. Read the topic's own `api` block and `example` in this payload instead."
+    }
+  ],
   "domains": [
     {
       "id": "D01",
       "name": "Market Data Engineering",
+      "slug": "market-data-engineering",
       "topicCount": 31,
       "families": [
         {
@@ -50,6 +270,7 @@
     {
       "id": "D02",
       "name": "Corporate Actions and Security Master Data",
+      "slug": "corporate-actions-and-security-master-data",
       "topicCount": 20,
       "families": [
         {
@@ -77,6 +298,7 @@
     {
       "id": "D03",
       "name": "Index and Benchmark Engineering",
+      "slug": "index-and-benchmark-engineering",
       "topicCount": 40,
       "families": [
         {
@@ -114,6 +336,7 @@
     {
       "id": "D04",
       "name": "Market Breadth and Internals",
+      "slug": "market-breadth-and-internals",
       "topicCount": 28,
       "families": [
         {
@@ -146,6 +369,7 @@
     {
       "id": "D06",
       "name": "Price Action and Candlesticks",
+      "slug": "price-action-and-candlesticks",
       "topicCount": 38,
       "families": [
         {
@@ -178,6 +402,7 @@
     {
       "id": "D07",
       "name": "Technical Indicators",
+      "slug": "technical-indicators",
       "topicCount": 37,
       "families": [
         {
@@ -210,6 +435,7 @@
     {
       "id": "D08",
       "name": "Geometric Chart Patterns",
+      "slug": "geometric-chart-patterns",
       "topicCount": 27,
       "families": [
         {
@@ -237,6 +463,7 @@
     {
       "id": "D09",
       "name": "Statistical Time Series",
+      "slug": "statistical-time-series",
       "topicCount": 29,
       "families": [
         {
@@ -269,6 +496,7 @@
     {
       "id": "D11",
       "name": "Market Microstructure",
+      "slug": "market-microstructure",
       "topicCount": 29,
       "families": [
         {
@@ -301,6 +529,7 @@
     {
       "id": "D12",
       "name": "Matching Engines and Venue Logic",
+      "slug": "matching-engines-and-venue-logic",
       "topicCount": 21,
       "families": [
         {
@@ -328,6 +557,7 @@
     {
       "id": "D13",
       "name": "Execution and Transaction Cost Analysis",
+      "slug": "execution-and-transaction-cost-analysis",
       "topicCount": 9,
       "families": [
         {
@@ -345,6 +575,7 @@
     {
       "id": "D25",
       "name": "Digital Assets and On-Chain Finance",
+      "slug": "digital-assets-and-on-chain-finance",
       "topicCount": 10,
       "families": [
         {
@@ -362,6 +593,7 @@
     {
       "id": "D46",
       "name": "Earnings and Per-Share Analytics",
+      "slug": "earnings-and-per-share-analytics",
       "topicCount": 5,
       "families": [
         {
@@ -619,9 +851,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-data-engineering/bar-construction/time-bars/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -857,9 +1089,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-data-engineering/bar-construction/tick-bars/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -1095,9 +1327,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-data-engineering/bar-construction/volume-bars/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -1295,9 +1527,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-data-engineering/bar-construction/dollar-bars/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -1507,9 +1739,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-data-engineering/bar-construction/tick-imbalance-bars/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -1735,9 +1967,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-data-engineering/bar-construction/volume-imbalance-bars/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -1959,9 +2191,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-data-engineering/bar-construction/tick-run-bars/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -2239,9 +2471,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-data-engineering/cleaning-and-validation/ohlc-consistency-validator/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -2465,9 +2697,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-data-engineering/cleaning-and-validation/hampel-bad-tick-filter/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -2683,9 +2915,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-data-engineering/cleaning-and-validation/median-absolute-deviation-outlier-filter/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -2930,9 +3162,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-data-engineering/cleaning-and-validation/stale-quote-detector/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -3420,9 +3652,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-data-engineering/cleaning-and-validation/duplicate-trade-resolver/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -3682,9 +3914,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-data-engineering/cleaning-and-validation/crossed-locked-market-detector/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -3929,9 +4161,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-data-engineering/time-synchronization/previous-tick-interpolation/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -4199,9 +4431,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-data-engineering/time-synchronization/linear-quote-interpolation/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -4485,9 +4717,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-data-engineering/time-synchronization/refresh-time-sampling/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -4742,9 +4974,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-data-engineering/time-synchronization/exchange-calendar-alignment/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -4908,9 +5140,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-data-engineering/time-synchronization/asynchronous-return-alignment/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -5070,9 +5302,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-data-engineering/data-quality/missing-bar-gap-classifier/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -5230,9 +5462,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-data-engineering/data-quality/feed-latency-monitor/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -5456,9 +5688,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-data-engineering/data-quality/price-source-consensus-check/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -5727,9 +5959,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-data-engineering/data-quality/schema-drift-detector/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -5938,9 +6170,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-data-engineering/data-quality/point-in-time-availability-guard/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -6135,9 +6367,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-data-engineering/data-quality/provider-adjustment-basis-drift-detector/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -6415,9 +6647,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-data-engineering/order-book-feed-engineering/trade-and-quote-event-normalization/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -6694,9 +6926,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-data-engineering/order-book-feed-engineering/level-2-snapshot-and-delta-reconstruction/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -6993,9 +7225,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-data-engineering/order-book-feed-engineering/level-3-order-by-order-reconstruction/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -7259,9 +7491,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-data-engineering/order-book-feed-engineering/sequence-gap-detection-and-recovery/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -7512,9 +7744,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-data-engineering/order-book-feed-engineering/price-level-quantity-aggregation/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -7850,9 +8082,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-data-engineering/order-book-feed-engineering/snapshot-incremental-feed-reconciliation/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -8250,9 +8482,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-data-engineering/order-book-feed-engineering/multi-venue-best-quote-and-book-consolidation/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -8422,9 +8654,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/corporate-actions-and-security-master-data/adjustment-factors/backward-split-adjustment/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -8677,9 +8909,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/corporate-actions-and-security-master-data/adjustment-factors/forward-split-adjustment/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -8978,9 +9210,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/corporate-actions-and-security-master-data/adjustment-factors/cash-dividend-total-return-adjustment/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -9212,9 +9444,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/corporate-actions-and-security-master-data/adjustment-factors/crsp-cumulative-price-adjustment/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -9408,9 +9640,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/corporate-actions-and-security-master-data/adjustment-factors/crsp-cumulative-share-volume-adjustment/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -9623,9 +9855,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/corporate-actions-and-security-master-data/complex-distributions/rights-issue-terp-adjustment/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -9868,9 +10100,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/corporate-actions-and-security-master-data/complex-distributions/spin-off-price-adjustment/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -10174,9 +10406,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/corporate-actions-and-security-master-data/complex-distributions/stock-dividend-adjustment/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -10422,9 +10654,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/corporate-actions-and-security-master-data/complex-distributions/special-dividend-adjustment/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -10646,9 +10878,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/corporate-actions-and-security-master-data/complex-distributions/return-of-capital-adjustment/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -10929,9 +11161,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/corporate-actions-and-security-master-data/identity-continuity/permanent-security-identifier-mapping/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -11198,9 +11430,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/corporate-actions-and-security-master-data/identity-continuity/ticker-change-chain-resolution/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -11482,9 +11714,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/corporate-actions-and-security-master-data/identity-continuity/share-class-relationship-mapping/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -11857,9 +12089,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/corporate-actions-and-security-master-data/identity-continuity/merger-predecessor-successor-mapping/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -12161,9 +12393,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/corporate-actions-and-security-master-data/identity-continuity/delisting-return-reconstruction/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -12410,9 +12642,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/corporate-actions-and-security-master-data/point-in-time-universe/historical-constituent-reconstruction/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -12696,9 +12928,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/corporate-actions-and-security-master-data/point-in-time-universe/survivorship-bias-guard/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -12948,9 +13180,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/corporate-actions-and-security-master-data/point-in-time-universe/ipo-availability-timestamping/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -13164,9 +13396,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/corporate-actions-and-security-master-data/point-in-time-universe/filing-revision-versioning/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -13387,9 +13619,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/corporate-actions-and-security-master-data/point-in-time-universe/corporate-action-status-and-effective-date-reconciliation/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -13609,9 +13841,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/index-and-benchmark-engineering/index-initialization-and-continuity/base-date-base-value-initialization/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -13808,9 +14040,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/index-and-benchmark-engineering/index-initialization-and-continuity/index-divisor-initialization/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -14009,9 +14241,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/index-and-benchmark-engineering/index-initialization-and-continuity/divisor-continuity-adjustment/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -14212,9 +14444,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/index-and-benchmark-engineering/index-initialization-and-continuity/corporate-action-divisor-bridge/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -14476,9 +14708,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/index-and-benchmark-engineering/index-initialization-and-continuity/intraday-index-level-calculation/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -14686,9 +14918,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/index-and-benchmark-engineering/weighting-and-capping/price-weighted-index/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -14912,9 +15144,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/index-and-benchmark-engineering/weighting-and-capping/total-market-cap-index/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -15147,9 +15379,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/index-and-benchmark-engineering/weighting-and-capping/free-float-market-cap-index/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -15378,9 +15610,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/index-and-benchmark-engineering/weighting-and-capping/capped-free-float-market-cap-index/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -15604,9 +15836,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/index-and-benchmark-engineering/weighting-and-capping/modified-market-cap-index/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -15827,9 +16059,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/index-and-benchmark-engineering/weighting-and-capping/equal-weight-index/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -16060,9 +16292,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/index-and-benchmark-engineering/weighting-and-capping/iterative-cap-redistribution/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -16300,9 +16532,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/index-and-benchmark-engineering/weighting-and-capping/group-level-capping/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -16541,9 +16773,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/index-and-benchmark-engineering/alternative-weighting/fundamental-weighted-index/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -16764,9 +16996,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/index-and-benchmark-engineering/alternative-weighting/dividend-yield-weighted-index/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -17005,9 +17237,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/index-and-benchmark-engineering/alternative-weighting/factor-score-weighted-index/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -17233,9 +17465,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/index-and-benchmark-engineering/alternative-weighting/minimum-volatility-index/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -17468,9 +17700,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/index-and-benchmark-engineering/alternative-weighting/equal-risk-contribution-index/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -17713,9 +17945,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/index-and-benchmark-engineering/alternative-weighting/thematic-tilt-index/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -17932,9 +18164,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/index-and-benchmark-engineering/return-variants/price-return-index/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -18159,9 +18391,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/index-and-benchmark-engineering/return-variants/gross-total-return-index/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -18394,9 +18626,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/index-and-benchmark-engineering/return-variants/net-total-return-index/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -18622,9 +18854,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/index-and-benchmark-engineering/return-variants/excess-return-index/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -18851,9 +19083,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/index-and-benchmark-engineering/return-variants/dividend-point-index/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -19078,9 +19310,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/index-and-benchmark-engineering/return-variants/currency-converted-index/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -19305,9 +19537,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/index-and-benchmark-engineering/return-variants/currency-hedged-index/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -19528,9 +19760,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/index-and-benchmark-engineering/strategy-indices/leveraged-daily-reset-index/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -19751,9 +19983,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/index-and-benchmark-engineering/strategy-indices/inverse-daily-reset-index/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -19984,9 +20216,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/index-and-benchmark-engineering/strategy-indices/volatility-control-index/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -20206,9 +20438,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/index-and-benchmark-engineering/strategy-indices/fixed-decrement-index/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -20428,9 +20660,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/index-and-benchmark-engineering/strategy-indices/percentage-decrement-index/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -20671,9 +20903,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/index-and-benchmark-engineering/strategy-indices/index-of-indices/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -20914,9 +21146,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/index-and-benchmark-engineering/governance-and-maintenance/eligibility-screen/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -21168,9 +21400,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/index-and-benchmark-engineering/governance-and-maintenance/liquidity-screen/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -21398,9 +21630,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/index-and-benchmark-engineering/governance-and-maintenance/free-float-factor-calculation/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -21641,9 +21873,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/index-and-benchmark-engineering/governance-and-maintenance/ipo-fast-entry-rule/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -21866,9 +22098,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/index-and-benchmark-engineering/governance-and-maintenance/reconstitution-algorithm/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -22100,9 +22332,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/index-and-benchmark-engineering/governance-and-maintenance/rebalancing-algorithm/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -22325,9 +22557,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/index-and-benchmark-engineering/governance-and-maintenance/turnover-buffer-rule/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -22564,9 +22796,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/index-and-benchmark-engineering/governance-and-maintenance/index-replication-cost-estimator/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -22777,9 +23009,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-breadth-and-internals/advance-decline-breadth/net-advances/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -22969,9 +23201,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-breadth-and-internals/advance-decline-breadth/advance-decline-ratio/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -23211,9 +23443,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-breadth-and-internals/advance-decline-breadth/cumulative-advance-decline-line/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -23424,9 +23656,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-breadth-and-internals/advance-decline-breadth/normalized-advance-decline-line/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -23599,9 +23831,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-breadth-and-internals/advance-decline-breadth/absolute-breadth-index/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -23813,9 +24045,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-breadth-and-internals/mcclellan-family/traditional-mcclellan-oscillator/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -23980,9 +24212,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-breadth-and-internals/mcclellan-family/ratio-adjusted-mcclellan-oscillator/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -24147,9 +24379,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-breadth-and-internals/mcclellan-family/traditional-mcclellan-summation-index/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -24320,9 +24552,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-breadth-and-internals/mcclellan-family/ratio-adjusted-summation-index-rasi/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -24493,9 +24725,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-breadth-and-internals/mcclellan-family/mcclellan-volume-oscillator/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -24672,9 +24904,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-breadth-and-internals/mcclellan-family/mcclellan-volume-summation-index/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -24837,9 +25069,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-breadth-and-internals/high-low-and-trend-breadth/new-highs-new-lows/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -25002,9 +25234,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-breadth-and-internals/high-low-and-trend-breadth/high-low-ratio/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -25203,9 +25435,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-breadth-and-internals/high-low-and-trend-breadth/high-low-index/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -25372,9 +25604,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-breadth-and-internals/high-low-and-trend-breadth/percent-above-20-day-ma/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -25541,9 +25773,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-breadth-and-internals/high-low-and-trend-breadth/percent-above-50-day-ma/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -25710,9 +25942,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-breadth-and-internals/high-low-and-trend-breadth/percent-above-200-day-ma/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -25947,9 +26179,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-breadth-and-internals/thrust-and-pressure/zweig-breadth-thrust/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -26089,9 +26321,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-breadth-and-internals/thrust-and-pressure/arms-index-trin/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -26284,9 +26516,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-breadth-and-internals/thrust-and-pressure/advance-decline-volume-line/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -26424,9 +26656,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-breadth-and-internals/thrust-and-pressure/upside-downside-volume-ratio/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -26633,9 +26865,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-breadth-and-internals/thrust-and-pressure/cumulative-tick/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -26880,9 +27112,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-breadth-and-internals/thrust-and-pressure/breadth-divergence-detector/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -27054,9 +27286,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-breadth-and-internals/concentration-and-diffusion/top-n-index-contribution/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -27201,9 +27433,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-breadth-and-internals/concentration-and-diffusion/herfindahl-constituent-concentration/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -27355,9 +27587,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-breadth-and-internals/concentration-and-diffusion/effective-number-of-constituents/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -27509,9 +27741,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-breadth-and-internals/concentration-and-diffusion/sector-diffusion-index/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -27669,9 +27901,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-breadth-and-internals/concentration-and-diffusion/factor-diffusion-index/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -27862,9 +28094,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/price-action-and-candlesticks/candle-foundations/candle-anatomy/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -28077,9 +28309,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/price-action-and-candlesticks/candle-foundations/scale-aware-body-classification/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -28243,9 +28475,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/price-action-and-candlesticks/candle-foundations/shadow-to-body-ratio/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -28412,9 +28644,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/price-action-and-candlesticks/candle-foundations/gap-classification/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -28590,9 +28822,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/price-action-and-candlesticks/candle-foundations/trend-context-filter/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -28780,9 +29012,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/price-action-and-candlesticks/single-candle-patterns/doji/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -28970,9 +29202,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/price-action-and-candlesticks/single-candle-patterns/dragonfly-doji/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -29160,9 +29392,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/price-action-and-candlesticks/single-candle-patterns/gravestone-doji/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -29350,9 +29582,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/price-action-and-candlesticks/single-candle-patterns/marubozu/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -29540,9 +29772,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/price-action-and-candlesticks/single-candle-patterns/spinning-top/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -29730,9 +29962,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/price-action-and-candlesticks/single-candle-patterns/hammer/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -29920,9 +30152,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/price-action-and-candlesticks/single-candle-patterns/hanging-man/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -30110,9 +30342,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/price-action-and-candlesticks/single-candle-patterns/inverted-hammer/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -30300,9 +30532,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/price-action-and-candlesticks/single-candle-patterns/shooting-star/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -30497,9 +30729,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/price-action-and-candlesticks/two-candle-patterns/bullish-engulfing/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -30694,9 +30926,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/price-action-and-candlesticks/two-candle-patterns/bearish-engulfing/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -30891,9 +31123,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/price-action-and-candlesticks/two-candle-patterns/bullish-harami/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -31088,9 +31320,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/price-action-and-candlesticks/two-candle-patterns/bearish-harami/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -31285,9 +31517,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/price-action-and-candlesticks/two-candle-patterns/piercing-line/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -31482,9 +31714,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/price-action-and-candlesticks/two-candle-patterns/dark-cloud-cover/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -31679,9 +31911,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/price-action-and-candlesticks/two-candle-patterns/tweezer-top/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -31876,9 +32108,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/price-action-and-candlesticks/two-candle-patterns/tweezer-bottom/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -32075,9 +32307,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/price-action-and-candlesticks/multi-candle-patterns/morning-star/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -32274,9 +32506,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/price-action-and-candlesticks/multi-candle-patterns/evening-star/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -32473,9 +32705,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/price-action-and-candlesticks/multi-candle-patterns/three-white-soldiers/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -32672,9 +32904,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/price-action-and-candlesticks/multi-candle-patterns/three-black-crows/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -32870,9 +33102,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/price-action-and-candlesticks/multi-candle-patterns/three-inside-up-down/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -33066,9 +33298,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/price-action-and-candlesticks/multi-candle-patterns/three-outside-up-down/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -33264,9 +33496,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/price-action-and-candlesticks/multi-candle-patterns/abandoned-baby/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -33425,9 +33657,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/price-action-and-candlesticks/candlestick-scanning-and-context/unified-candlestick-pattern-registry/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -33580,9 +33812,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/price-action-and-candlesticks/candlestick-scanning-and-context/candlestick-pattern-occurrence-contract/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -33782,9 +34014,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/price-action-and-candlesticks/candlestick-scanning-and-context/market-wide-candlestick-pattern-scanner/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -33929,9 +34161,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/price-action-and-candlesticks/candlestick-scanning-and-context/contextual-candlestick-confidence-score/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -34092,9 +34324,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/price-action-and-candlesticks/candlestick-scanning-and-context/support-resistance-pattern-context/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -34263,9 +34495,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/price-action-and-candlesticks/candlestick-scanning-and-context/trend-volatility-and-volume-pattern-context/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -34438,9 +34670,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/price-action-and-candlesticks/candlestick-scanning-and-context/overlapping-pattern-conflict-resolver/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -34593,9 +34825,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/price-action-and-candlesticks/candlestick-scanning-and-context/candlestick-confirmation-and-invalidation-state-machine/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -34770,9 +35002,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/price-action-and-candlesticks/candlestick-scanning-and-context/candlestick-scanner-ranking-and-deduplication/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -34978,9 +35210,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/technical-indicators/trend-smoothing/sma/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -35158,9 +35390,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/technical-indicators/trend-smoothing/ema/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -35359,9 +35591,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/technical-indicators/trend-smoothing/wma/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -35546,9 +35778,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/technical-indicators/trend-smoothing/wilder-rma/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -35743,9 +35975,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/technical-indicators/trend-smoothing/dema/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -35943,9 +36175,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/technical-indicators/trend-smoothing/tema/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -36156,9 +36388,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/technical-indicators/trend-smoothing/hull-ma/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -36451,9 +36683,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/technical-indicators/trend-smoothing/kama/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -36787,9 +37019,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/technical-indicators/trend-smoothing/mama/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -37055,9 +37287,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/technical-indicators/trend-systems/macd/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -37302,9 +37534,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/technical-indicators/trend-systems/percentage-price-oscillator/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -37528,9 +37760,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/technical-indicators/trend-systems/aroon/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -37835,9 +38067,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/technical-indicators/trend-systems/directional-movement/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -38094,9 +38326,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/technical-indicators/trend-systems/adx/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -38427,9 +38659,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/technical-indicators/trend-systems/ichimoku-cloud/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -38694,9 +38926,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/technical-indicators/trend-systems/parabolic-sar/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -39009,9 +39241,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/technical-indicators/trend-systems/supertrend/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -39173,9 +39405,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/technical-indicators/momentum/rsi/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -39432,9 +39664,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/technical-indicators/momentum/stochastic-oscillator/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -39665,9 +39897,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/technical-indicators/momentum/stochastic-rsi/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -39888,9 +40120,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/technical-indicators/momentum/williams-r/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -40125,9 +40357,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/technical-indicators/momentum/cci/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -40384,9 +40616,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/technical-indicators/momentum/ultimate-oscillator/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -40567,9 +40799,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/technical-indicators/momentum/tsi/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -40788,9 +41020,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/technical-indicators/momentum/connors-rsi/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -41026,9 +41258,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/technical-indicators/volatility-and-channels/true-range/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -41268,9 +41500,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/technical-indicators/volatility-and-channels/atr/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -41500,9 +41732,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/technical-indicators/volatility-and-channels/bollinger-bands/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -41799,9 +42031,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/technical-indicators/volatility-and-channels/keltner-channels/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -42018,9 +42250,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/technical-indicators/volatility-and-channels/donchian-channels/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -42251,9 +42483,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/technical-indicators/volatility-and-channels/bollinger-bandwidth/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -42499,9 +42731,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/technical-indicators/volume-indicators/obv/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -42811,9 +43043,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/technical-indicators/volume-indicators/accumulation-distribution-line/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -43123,9 +43355,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/technical-indicators/volume-indicators/chaikin-money-flow/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -43450,9 +43682,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/technical-indicators/volume-indicators/money-flow-index/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -43698,9 +43930,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/technical-indicators/volume-indicators/volume-price-trend/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -43955,9 +44187,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/technical-indicators/volume-indicators/force-index/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -44163,9 +44395,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/geometric-chart-patterns/pivots-and-levels/causal-pivot-detection/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -44342,9 +44574,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/geometric-chart-patterns/pivots-and-levels/zigzag-segmentation/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -44550,9 +44782,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/geometric-chart-patterns/pivots-and-levels/support-resistance-clustering/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -44784,9 +45016,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/geometric-chart-patterns/pivots-and-levels/robust-trendline-fitting/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -45023,9 +45255,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/geometric-chart-patterns/reversal-structures/double-top/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -45262,9 +45494,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/geometric-chart-patterns/reversal-structures/double-bottom/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -45513,9 +45745,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/geometric-chart-patterns/reversal-structures/triple-top/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -45764,9 +45996,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/geometric-chart-patterns/reversal-structures/triple-bottom/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -46015,9 +46247,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/geometric-chart-patterns/reversal-structures/head-and-shoulders/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -46266,9 +46498,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/geometric-chart-patterns/reversal-structures/inverse-head-and-shoulders/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -46653,9 +46885,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/geometric-chart-patterns/indicator-divergence-detection/price-indicator-pivot-alignment/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -47087,9 +47319,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/geometric-chart-patterns/indicator-divergence-detection/regular-bullish-bearish-divergence-detection/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -47521,9 +47753,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/geometric-chart-patterns/indicator-divergence-detection/hidden-bullish-bearish-divergence-detection/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -47947,9 +48179,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/geometric-chart-patterns/indicator-divergence-detection/multi-indicator-divergence-adapters/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -48334,9 +48566,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/geometric-chart-patterns/indicator-divergence-detection/divergence-strength-and-quality-scoring/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -48734,9 +48966,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/geometric-chart-patterns/indicator-divergence-detection/divergence-confirmation-and-invalidation-state-machine/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -49104,9 +49336,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/geometric-chart-patterns/indicator-divergence-detection/multi-indicator-divergence-confluence/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -49499,9 +49731,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/geometric-chart-patterns/indicator-divergence-detection/market-wide-divergence-scanner-and-ranking/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -49685,9 +49917,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/geometric-chart-patterns/level-confluence-and-zone-scoring/price-by-volume-profile-construction/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -49878,9 +50110,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/geometric-chart-patterns/level-confluence-and-zone-scoring/poc-value-area-hvn-lvn-detection/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -50060,9 +50292,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/geometric-chart-patterns/level-confluence-and-zone-scoring/fibonacci-retracement-extension-projection/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -50219,9 +50451,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/geometric-chart-patterns/level-confluence-and-zone-scoring/psychological-round-number-level-generation/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -50416,9 +50648,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/geometric-chart-patterns/level-confluence-and-zone-scoring/multi-source-support-resistance-zone-fusion/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -50574,9 +50806,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/geometric-chart-patterns/level-confluence-and-zone-scoring/support-resistance-zone-strength-decay-scoring/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -50735,9 +50967,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/geometric-chart-patterns/level-confluence-and-zone-scoring/support-resistance-role-reversal-state-machine/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -50916,9 +51148,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/geometric-chart-patterns/level-confluence-and-zone-scoring/breakout-and-retest-detection/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -51122,9 +51354,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/geometric-chart-patterns/level-confluence-and-zone-scoring/market-wide-zone-proximity-scanner-ranking/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -51289,9 +51521,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/statistical-time-series/diagnostics/acf/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -51477,9 +51709,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/statistical-time-series/diagnostics/pacf/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -51661,9 +51893,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/statistical-time-series/diagnostics/augmented-dickey-fuller/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -51852,9 +52084,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/statistical-time-series/diagnostics/kpss/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -52068,9 +52300,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/statistical-time-series/diagnostics/ljung-box/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -52289,9 +52521,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/statistical-time-series/diagnostics/zivot-andrews-break-test/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -52486,9 +52718,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/statistical-time-series/forecast-models/autoreg/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -52699,9 +52931,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/statistical-time-series/forecast-models/arma/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -52930,9 +53162,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/statistical-time-series/forecast-models/arima/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -53300,9 +53532,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/statistical-time-series/forecast-models/sarima-sarimax/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -53578,9 +53810,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/statistical-time-series/forecast-models/holt-winters/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -53768,9 +54000,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/statistical-time-series/forecast-models/theta-forecast/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -54028,9 +54260,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/statistical-time-series/multivariate-systems/var/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -54288,9 +54520,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/statistical-time-series/multivariate-systems/structural-var/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -54558,9 +54790,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/statistical-time-series/multivariate-systems/vecm/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -54826,9 +55058,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/statistical-time-series/multivariate-systems/impulse-response-analysis/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -55099,9 +55331,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/statistical-time-series/multivariate-systems/forecast-error-variance-decomposition/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -55281,9 +55513,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/statistical-time-series/state-and-regime-models/kalman-filter/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -55466,9 +55698,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/statistical-time-series/state-and-regime-models/extended-kalman-filter/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -55655,9 +55887,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/statistical-time-series/state-and-regime-models/unscented-kalman-filter/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -55839,9 +56071,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/statistical-time-series/state-and-regime-models/hidden-markov-model/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -56036,9 +56268,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/statistical-time-series/state-and-regime-models/markov-switching-autoregression/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -56202,9 +56434,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/statistical-time-series/state-and-regime-models/bayesian-change-point-detection/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -56468,9 +56700,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/statistical-time-series/decomposition-and-cycles/stl-decomposition/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -56657,9 +56889,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/statistical-time-series/decomposition-and-cycles/hodrick-prescott-filter/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -56890,9 +57122,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/statistical-time-series/decomposition-and-cycles/baxter-king-filter/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -57119,9 +57351,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/statistical-time-series/decomposition-and-cycles/christiano-fitzgerald-filter/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -57342,9 +57574,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/statistical-time-series/decomposition-and-cycles/fast-fourier-transform-periodogram/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -57599,9 +57831,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/statistical-time-series/decomposition-and-cycles/wavelet-decomposition/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -57842,9 +58074,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-microstructure/trade-classification/tick-test/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -58132,9 +58364,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-microstructure/trade-classification/quote-test/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -58420,9 +58652,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-microstructure/trade-classification/lee-ready-trade-signing/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -58667,9 +58899,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-microstructure/trade-classification/bulk-volume-classification/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -58837,9 +59069,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-microstructure/liquidity-and-spreads/quoted-spread/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -59045,9 +59277,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-microstructure/liquidity-and-spreads/effective-spread/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -59291,9 +59523,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-microstructure/liquidity-and-spreads/realized-spread/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -59439,9 +59671,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-microstructure/liquidity-and-spreads/roll-spread-estimator/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -59634,9 +59866,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-microstructure/liquidity-and-spreads/amihud-illiquidity-ratio/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -59829,9 +60061,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-microstructure/liquidity-and-spreads/corwin-schultz-spread-estimator/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -60071,9 +60303,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-microstructure/order-flow-and-impact/order-flow-imbalance/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -60323,9 +60555,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-microstructure/order-flow-and-impact/queue-imbalance/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -60548,9 +60780,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-microstructure/order-flow-and-impact/kyle-lambda/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -60765,9 +60997,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-microstructure/order-flow-and-impact/hasbrouck-price-impact/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -61006,9 +61238,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-microstructure/order-flow-and-impact/pin/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -61268,9 +61500,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-microstructure/order-flow-and-impact/vpin/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -61475,9 +61707,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-microstructure/order-book-dynamics/order-book-slope/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -61665,9 +61897,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-microstructure/order-book-dynamics/depth-weighted-midprice/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -61843,9 +62075,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-microstructure/order-book-dynamics/microprice/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -62032,9 +62264,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-microstructure/order-book-dynamics/order-book-resiliency/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -62265,9 +62497,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-microstructure/order-book-dynamics/hawkes-order-arrival-model/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -62499,9 +62731,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-microstructure/market-depth-analytics/cumulative-bid-ask-depth/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -62723,9 +62955,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-microstructure/market-depth-analytics/top-n-depth-imbalance/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -62971,9 +63203,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-microstructure/market-depth-analytics/depth-at-distance-profile/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -63222,9 +63454,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-microstructure/market-depth-analytics/expected-market-order-fill-price/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -63501,9 +63733,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-microstructure/market-depth-analytics/multi-level-sweep-cost-and-slippage/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -63716,9 +63948,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-microstructure/market-depth-analytics/liquidity-wall-and-concentration-detection/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -63893,9 +64125,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-microstructure/market-depth-analytics/depth-depletion-and-replenishment/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -64209,9 +64441,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/market-microstructure/market-depth-analytics/market-depth-heatmap-aggregation/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -64417,9 +64649,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/matching-engines-and-venue-logic/continuous-matching/price-time-priority/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -64633,9 +64865,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/matching-engines-and-venue-logic/continuous-matching/pro-rata-matching/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -64859,9 +65091,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/matching-engines-and-venue-logic/continuous-matching/size-time-priority/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -65065,9 +65297,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/matching-engines-and-venue-logic/continuous-matching/hybrid-pro-rata-time-matching/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -65295,9 +65527,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/matching-engines-and-venue-logic/auctions/maximum-executable-volume-auction/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -65530,9 +65762,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/matching-engines-and-venue-logic/auctions/minimum-imbalance-tie-break/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -65805,9 +66037,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/matching-engines-and-venue-logic/auctions/opening-cross-price/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -66080,9 +66312,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/matching-engines-and-venue-logic/auctions/closing-cross-price/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -66251,9 +66483,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/matching-engines-and-venue-logic/auctions/volatility-auction-reopening/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -66428,9 +66660,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/matching-engines-and-venue-logic/order-controls/tick-size-validation/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -66633,9 +66865,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/matching-engines-and-venue-logic/order-controls/price-band-validation/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -66860,9 +67092,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/matching-engines-and-venue-logic/order-controls/self-trade-prevention/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -67087,9 +67319,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/matching-engines-and-venue-logic/order-controls/cancel-on-disconnect/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -67342,9 +67574,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/matching-engines-and-venue-logic/order-controls/fat-finger-limit/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -67530,9 +67762,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/matching-engines-and-venue-logic/order-controls/circuit-breaker-trigger/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -67741,9 +67973,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/matching-engines-and-venue-logic/order-lifecycle-and-queue-state/limit-order-lifecycle-state-machine/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -67906,9 +68138,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/matching-engines-and-venue-logic/order-lifecycle-and-queue-state/cancel-replace-priority-rule/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -68100,9 +68332,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/matching-engines-and-venue-logic/order-lifecycle-and-queue-state/partial-fill-and-residual-quantity-processing/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -68284,9 +68516,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/matching-engines-and-venue-logic/order-lifecycle-and-queue-state/queue-position-and-ahead-volume-calculation/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -68516,9 +68748,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/matching-engines-and-venue-logic/order-lifecycle-and-queue-state/iceberg-reserve-order-replenishment/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -68744,9 +68976,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/matching-engines-and-venue-logic/order-lifecycle-and-queue-state/marketable-order-multi-level-sweep/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -68956,9 +69188,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/execution-and-transaction-cost-analysis/schedule-based-execution/twap-execution/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -69170,9 +69402,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/execution-and-transaction-cost-analysis/schedule-based-execution/historical-vwap-execution/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -69431,9 +69663,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/execution-and-transaction-cost-analysis/schedule-based-execution/adaptive-vwap-execution/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -69674,9 +69906,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/execution-and-transaction-cost-analysis/schedule-based-execution/percentage-of-volume-execution/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -69840,9 +70072,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/execution-and-transaction-cost-analysis/cost-risk-optimization/almgren-chriss-optimal-execution/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -70025,9 +70257,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/execution-and-transaction-cost-analysis/cost-risk-optimization/implementation-shortfall-execution/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -70176,9 +70408,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/execution-and-transaction-cost-analysis/cost-risk-optimization/arrival-price-execution/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -70372,9 +70604,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/execution-and-transaction-cost-analysis/cost-risk-optimization/liquidity-seeking-execution/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -70581,9 +70813,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/execution-and-transaction-cost-analysis/cost-risk-optimization/opportunistic-dark-pool-execution/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -70781,9 +71013,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/digital-assets-and-on-chain-finance/amm-pricing/constant-product-amm/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -70981,9 +71213,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/digital-assets-and-on-chain-finance/amm-pricing/constant-sum-amm/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -71214,9 +71446,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/digital-assets-and-on-chain-finance/amm-pricing/stableswap-invariant/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -71448,9 +71680,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/digital-assets-and-on-chain-finance/amm-pricing/weighted-product-amm/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -71649,9 +71881,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/digital-assets-and-on-chain-finance/amm-pricing/concentrated-liquidity-position/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -71857,9 +72089,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/digital-assets-and-on-chain-finance/liquidity-and-liquidation/impermanent-loss-calculation/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -72086,9 +72318,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/digital-assets-and-on-chain-finance/liquidity-and-liquidation/liquidity-provider-fee-apr/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -72305,9 +72537,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/digital-assets-and-on-chain-finance/liquidity-and-liquidation/collateral-health-factor/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -72512,9 +72744,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/digital-assets-and-on-chain-finance/liquidity-and-liquidation/liquidation-price-calculation/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -72733,9 +72965,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/digital-assets-and-on-chain-finance/liquidity-and-liquidation/liquidation-waterfall/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -72927,9 +73159,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/earnings-and-per-share-analytics/earnings-and-share-foundations/stock-split-consolidation-eps-restatement/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -73123,9 +73355,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/earnings-and-per-share-analytics/earnings-and-share-foundations/basic-eps/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -73292,9 +73524,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/earnings-and-per-share-analytics/basic-and-diluted-eps/if-converted-convertible-preference-dilution/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -73461,9 +73693,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/earnings-and-per-share-analytics/basic-and-diluted-eps/treasury-share-method-for-options-warrants/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     },
     {
@@ -73648,9 +73880,9 @@
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/earnings-and-per-share-analytics/basic-and-diluted-eps/contingently-issuable-share-inclusion/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
-      "languages": [
-        "typescript",
-        "python"
+      "catalogLanguages": [
+        "python",
+        "typescript"
       ]
     }
   ]
