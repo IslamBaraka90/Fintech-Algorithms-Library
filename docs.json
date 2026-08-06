@@ -41341,9 +41341,9 @@
           "description": "Parallel series: `true_range` and `atr`."
         },
         "warmup": {
-          "count": "p",
+          "count": "p - 1",
           "value": "null",
-          "note": "The first ATR is the mean of the first p true ranges; Wilder smoothing continues from there."
+          "note": "Applies to `atr` only; `true_range` is defined from the first bar. The first ATR is the mean of the first p true ranges, so it lands at index p - 1 and Wilder smoothing continues from there."
         },
         "errors": [
           {
@@ -42557,9 +42557,9 @@
           "description": "Parallel series: `direction`, `volume`, `signed_volume` and the running `obv`."
         },
         "warmup": {
-          "count": "1",
-          "value": "null",
-          "note": "The first bar has no prior close, so it has no direction."
+          "count": "0",
+          "value": "not applicable — no position is null",
+          "note": "The first bar has no prior close, so its direction is 0 and the running total starts at `initial`. Those are defined values rather than warm-up nulls, so every position of every returned series is populated."
         },
         "errors": [
           {
