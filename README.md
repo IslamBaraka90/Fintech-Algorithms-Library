@@ -2,6 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/fintech-algorithms.svg)](https://www.npmjs.com/package/fintech-algorithms)
 [![docs](https://img.shields.io/badge/docs-docs.thefintechbuilder.com-0a58c8.svg)](https://docs.thefintechbuilder.com)
+[![agent skill](https://img.shields.io/badge/agent%20skill-included-8a3ffc.svg)](https://docs.thefintechbuilder.com/guides/agent-skill/)
 [![CI](https://github.com/IslamBaraka90/Fintech-Algorithms-Library/actions/workflows/ci.yml/badge.svg)](https://github.com/IslamBaraka90/Fintech-Algorithms-Library/actions/workflows/ci.yml)
 [![zero dependencies](https://img.shields.io/badge/dependencies-0-brightgreen.svg)](package.json)
 [![types included](https://img.shields.io/badge/types-included-blue.svg)](https://www.typescriptlang.org/)
@@ -25,25 +26,36 @@ back-office arithmetic is the reason this one exists.
 npm install fintech-algorithms
 ```
 
-## Use it from a coding agent
-
-An agent skill ships with the library, so Claude Code, Codex, Cursor and the
-other agents that read the [Agent Skills](https://agentskills.io) format can use
-these algorithms without guessing at an API they have not read.
+## Writing this code with an agent? Install the skill first
 
 ```bash
 npx skills add IslamBaraka90/Fintech-Algorithms-Library
 ```
 
-It gives the agent the routing rules for all 324 topics, the five input shapes
-with executed examples, the data-ingestion patterns for wiring up a provider,
-and a lookup script that reads the installed `docs.json` offline — plus the
-failure modes that do not throw, which is the category that otherwise produces a
-confident wrong number.
+**This is the single highest-value thing you can do before asking an agent to
+use this library.** 324 algorithms is more API than any model has read, and the
+failure mode is not refusal — it is a plausible import path, a plausible
+parameter and a plausible field name on the result, none of which exist. The
+skill replaces every one of those guesses with a lookup.
 
-The skill is [`skills/fintech-algorithms/`](skills/fintech-algorithms/) in this
-repository and also ships inside the npm tarball, next to the `docs.json` it
-documents. Background on how an agent should read this library:
+It ships in the [Agent Skills](https://agentskills.io) format, so Claude Code,
+Codex, Cursor and some seventy other agents load it on demand. It carries the
+routing rules for every topic, the five input shapes with executed examples,
+the data-ingestion patterns for wiring up a provider, the failure modes that do
+not throw — the category that otherwise produces a confident wrong number — and
+a lookup script that answers from the installed `docs.json`, offline:
+
+```bash
+node <skill-dir>/scripts/lookup.mjs show rsi
+# → signature, parameters, warm-up (p leading nulls), errors, executed example
+```
+
+The skill is [`skills/fintech-algorithms/`](skills/fintech-algorithms/) here and
+also ships inside the npm tarball, version-matched to the `docs.json` beside it,
+so a project that already depends on the package already has it.
+
+📘 **[The agent skill → docs.thefintechbuilder.com/guides/agent-skill/](https://docs.thefintechbuilder.com/guides/agent-skill/)**
+· Background on how an agent should read this library:
 [Using this library from an agent](https://docs.thefintechbuilder.com/guides/ai-agents/).
 
 ## Adjust a price history for a 2-for-1 split
