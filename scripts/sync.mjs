@@ -134,10 +134,12 @@ const TOPIC_DIR_RE = /^D\d{2}-F\d{2}-A\d{2}-/;
  * is printed in the run summary so this never silently swallows work.
  */
 const DOMAINS_NOT_READY = {
-  // All 52 articles are written; 11 of 52 topics have a worked example. Holding
-  // the domain until the rest are captured, so no valuation subpath ships with a
-  // bare docs page.
-  D18: "worked examples captured for 11 of 52 topics",
+  // All 52 articles are written and every topic has a TypeScript test, but five
+  // families still route every topic through one `calculate(topicId, …)`
+  // dispatcher, so 46 of the 52 resolve to the same entry point. Publishing that
+  // would give 46 valuation subpaths the same function. Give each topic its own
+  // slug-named export, as D40-F05 and D21-F01 did, and delete this line.
+  D18: "46 of 52 topics still share one calculate() dispatcher",
 };
 
 function listDirs(dir) {
