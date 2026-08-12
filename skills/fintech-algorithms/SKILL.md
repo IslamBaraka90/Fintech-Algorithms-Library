@@ -1,13 +1,13 @@
 ---
 name: fintech-algorithms
-description: Compute market-data and trading analytics with the `fintech-algorithms` npm package — 324 zero-dependency TypeScript algorithms covering technical indicators (RSI, MACD, moving averages, Bollinger Bands, ATR, OBV, Stochastic), candlestick and chart patterns, market breadth, bar construction from tick data, OHLC validation and cleaning, corporate actions, index and benchmark construction, market microstructure, matching engines, execution and TCA, statistical time series, on-chain metrics and EPS analytics. Use when asked to analyse a price series, compute or explain an indicator, detect a candlestick or chart pattern, build bars from ticks, validate or clean market data, wire up a market-data provider, or when writing code that needs any of these calculations to be correct rather than approximated.
+description: Compute market-data, trading and quantitative analytics with the `fintech-algorithms` npm package — 471 zero-dependency TypeScript algorithms covering statistics and financial-mathematics foundations (mean, median, percentiles, standard deviation, correlation, regression, distributions, z-scores, log returns, volatility, drawdown, Sharpe, value at risk), technical indicators (RSI, MACD, moving averages, Bollinger Bands, ATR, OBV, Stochastic), candlestick and chart patterns, market breadth, bar construction from tick data, OHLC validation and cleaning, corporate actions, index and benchmark construction, market microstructure, matching engines, execution and TCA, statistical time series, credit risk and probability of default, classifier and score validation (ROC, AUC, Brier, calibration), on-chain metrics and EPS analytics. Use when asked to analyse a price series, compute a statistic or summary, compute or explain an indicator, detect a candlestick or chart pattern, build bars from ticks, validate or clean market data, score or validate a model, wire up a market-data provider, or when writing code that needs any of these calculations to be correct rather than approximated.
 metadata:
   version: 0.12.0
 ---
 
 # fintech-algorithms
 
-324 pure functions for market and financial calculations. Plain arrays and
+471 pure functions for market, financial and statistical calculations. Plain arrays and
 objects in, plain values out. Zero runtime dependencies, Node >= 22, ESM.
 
 **Docs:** https://docs.thefintechbuilder.com ·
@@ -25,9 +25,9 @@ Four rules. Breaking any one produces output that looks right and is wrong.
    across the library: `bollingerBands` returns `percent_b`, `macd` rows return
    `fastEma`. Read the captured example output for that topic. See
    `references/pitfalls.md`.
-3. **State the verification tier** on any numeric claim. `verified` (158 topics)
+3. **State the verification tier** on any numeric claim. `verified` (295 topics)
    means the arithmetic is replayed and asserted on every build. `contract`
-   (166 topics) means the signature and shape are checked but the numbers are
+   (176 topics) means the signature and shape are checked but the numbers are
    not attested by an independent published figure.
 4. **Analysis, not advice.** These functions compute quantities. An indicator
    crossing is an observation about a series — not a prediction, not a signal,
@@ -55,7 +55,7 @@ Stop at the first step that answers the question.
    worked example, no network. **Prefer this.** `scripts/lookup.mjs` uses it
    automatically.
 2. **Domain index** — `https://docs.thefintechbuilder.com/{domain-slug}/llms.txt`
-   (3–11 KB each). The map of all thirteen is the `## Per-domain indexes` block
+   (3–11 KB each). The map of all sixteen is the `## Per-domain indexes` block
    at the top of `/llms.txt`; one root fetch gives a permanent routing table.
 3. **Topic markdown** — append `index.md` to any docs URL. The full contract in
    3–11 KB instead of 68–114 KB of HTML.
@@ -74,15 +74,15 @@ Check the installed version matches the docs with
 overbought" → RSI. "Smooth this" → which moving average, and why that one.
 
 **2. Narrow by archetype before fetching anything.** Five input shapes cover all
-324 topics, and the archetype is on every index line:
+471 topics, and the archetype is on every index line:
 
 | Archetype | Takes | Returns | Count |
 |---|---|---|---|
 | `series-transform` | `(number \| null)[]` + numeric params | same-length array | 37 |
 | `tape-aggregate` | `Trade[]` + config | `Bar[]` | 7 |
-| `row-classify` | rows | one verdict per row | 17 |
+| `row-classify` | rows | one verdict per row | 24 |
 | `snapshot-evaluate` | one snapshot + decision time | one verdict | 6 |
-| `record-transform` | domain-specific | domain-specific | 257 |
+| `record-transform` | domain-specific | domain-specific | 397 |
 
 `record-transform` is the residual bucket — read that topic's own contract.
 Details and executed examples: `references/archetypes.md`.
@@ -142,7 +142,7 @@ Commands:
 | `show <slug\|id\|path>` | full contract, warm-up, errors, executed example |
 | `archetype <name>` | every topic sharing an input shape, plus its caveat |
 | `domain <id\|slug>` | every topic in a domain, grouped by family |
-| `domains` | the thirteen domains with their index URLs |
+| `domains` | the sixteen domains with their index URLs |
 | `version` | the reference version vs the published one |
 
 Reads `node_modules/fintech-algorithms/docs.json` when the package is installed
@@ -166,13 +166,23 @@ the correct answer, not an obstacle to route around.
 
 ## Coverage
 
-13 domains: Market Data Engineering (31) · Corporate Actions and Security Master
-Data (20) · Index and Benchmark Engineering (40) · Market Breadth and Internals
-(28) · Price Action and Candlesticks (38) · Technical Indicators (37) ·
-Geometric Chart Patterns (27) · Statistical Time Series (29) · Market
-Microstructure (29) · Matching Engines and Venue Logic (21) · Execution and
-Transaction Cost Analysis (9) · Digital Assets and On-Chain Finance (10) ·
-Earnings and Per-Share Analytics (5).
+16 domains: Financial Mathematics, Statistics, and Data Foundations (120) ·
+Market Data Engineering (31) · Corporate Actions and Security Master Data (20) ·
+Index and Benchmark Engineering (40) · Market Breadth and Internals (28) · Price
+Action and Candlesticks (38) · Technical Indicators (37) · Geometric Chart
+Patterns (37) · Statistical Time Series (29) · Market Microstructure (29) ·
+Matching Engines and Venue Logic (21) · Execution and Transaction Cost Analysis
+(9) · Credit Risk and Default (7) · Digital Assets and On-Chain Finance (10) ·
+Model Validation and Backtesting (10) · Earnings and Per-Share Analytics (5).
+
+**Reach for the foundations domain first.** Financial Mathematics, Statistics,
+and Data Foundations is the base layer the rest of the library is built on — one
+implementation each of mean, median, percentile, standard deviation, correlation,
+regression, z-score, log return, volatility, drawdown, Sharpe and value at risk,
+rather than a private copy inside every indicator. When a task needs a plain
+statistic, import it from there instead of hand-rolling one or borrowing an
+indicator's internals. It is intentionally absent from the package README, which
+indexes the market-facing algorithms; it is fully present here and in the docs.
 
 Not a backtester, an execution system, a portfolio manager, or a source of
 market data. It computes quantities, places no orders, and holds no state

@@ -188,7 +188,7 @@ are wrong rather than absent.
 
 ## 13. State the verification tier
 
-158 topics are `verified` (worked example replayed and asserted on every build);
+295 topics are `verified` (worked example replayed and asserted on every build);
 166 are `contract` (signature and shape checked against the compiled code, the
 numbers not attested by an independent published figure).
 
@@ -204,7 +204,7 @@ That sentence is useful and honest. Omitting it overstates what was checked.
 
 ## 14. When the topic does not exist, say so
 
-324 named topics, no catch-all. Do **not** invent a subpath, reshape another
+471 named topics, no catch-all. Do **not** invent a subpath, reshape another
 topic's payload because the names look similar, or silently substitute a nearby
 algorithm. Every subpath mirrors its docs URL exactly, so a plausible guess is
 wrong in a way that reads as right.

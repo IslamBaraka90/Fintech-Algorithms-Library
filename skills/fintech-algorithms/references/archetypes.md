@@ -1,6 +1,6 @@
 # The five input shapes
 
-Every one of the 324 topics belongs to exactly one archetype. The archetype is
+Every one of the 471 topics belongs to exactly one archetype. The archetype is
 printed on every index line and in `lookup.mjs` output. **Filter on it before
 fetching anything** — it decides how much adapter code the task needs.
 
@@ -202,7 +202,7 @@ you could have known then.
 ## record-transform — 257 topics
 
 **Not a shape.** The residual bucket: a topic lands here when it is none of the
-other four. It spans twelve of the thirteen domains and shares no field names
+other four. It spans fourteen of the sixteen domains and shares no field names
 between families.
 
 There is no general rule. Read the topic's own `api` block and captured example:

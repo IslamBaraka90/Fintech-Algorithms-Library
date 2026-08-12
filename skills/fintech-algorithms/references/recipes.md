@@ -20,7 +20,7 @@ does exist, say how it differs, and do not substitute it silently.
 
 ```bash
 node "${SKILL_DIR}/scripts/lookup.mjs" domain D07        # browse a whole domain
-node "${SKILL_DIR}/scripts/lookup.mjs" domains           # the thirteen, with index URLs
+node "${SKILL_DIR}/scripts/lookup.mjs" domains           # the sixteen, with index URLs
 ```
 
 ---
@@ -227,7 +227,7 @@ direct subpath import when the algorithm is known at build time.
 ```js
 import { topics, byArchetype, byFamily, runner } from "fintech-algorithms";
 
-topics.length;                       // 324
+topics.length;                       // 471
 byArchetype("series-transform").length;   // 37
 byFamily("D07-F01").map((t) => t.slug);
 // → ["sma","ema","wma","wilder-rma","dema","tema","hull-ma","kama","mama"]
