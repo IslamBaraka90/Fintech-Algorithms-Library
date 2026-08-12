@@ -48,29 +48,47 @@ if (rows.length === 0) {
   process.exit(1);
 }
 
+/**
+ * Domains deliberately kept out of the README's generated blocks.
+ *
+ * D00 is the shared numerical foundation the rest of the catalog is built on —
+ * the single place a mean, a log return, a z-score or a t-statistic is
+ * implemented, so an indicator can call it instead of carrying its own copy.
+ * It ships, and every topic has a reference page, but it is not 120 more
+ * algorithms to advertise: listing it here would triple the index a reader
+ * walks to find `rsi` and bury the thing they actually came for.
+ *
+ * Excluded domains still sync, still export, and still appear in `docs.json`.
+ * This list governs the README's search surface, nothing else.
+ */
+const README_EXCLUDED_DOMAINS = new Set(["D00"]);
+
+const documented = rows.filter((r) => !README_EXCLUDED_DOMAINS.has(r.domainId));
+
 const manifest = existsSync(manifestPath) ? JSON.parse(readFileSync(manifestPath, "utf8")) : { topics: [] };
-const conventions = manifest.topics.reduce((acc, t) => {
+const manifestTopics = manifest.topics.filter((t) => !README_EXCLUDED_DOMAINS.has(t.id.slice(0, 3)));
+const conventions = manifestTopics.reduce((acc, t) => {
   acc[t.convention ?? "none"] = (acc[t.convention ?? "none"] ?? 0) + 1;
   return acc;
 }, {});
-const verified = manifest.topics.length - (conventions.none ?? 0);
+const verified = manifestTopics.length - (conventions.none ?? 0);
 
-const domains = [...new Set(rows.map((r) => r.domainId))].sort();
-const families = new Set(rows.map((r) => r.familyId));
+const domains = [...new Set(documented.map((r) => r.domainId))].sort();
+const families = new Set(documented.map((r) => r.familyId));
 
 const statsBlock = [
-  `**${rows.length} topics** · ${domains.length} domains · ${families.size} families`,
+  `**${documented.length} topics** · ${domains.length} domains · ${families.size} families`,
   ``,
   `| Domain | Topics | Families | Name |`,
   `|---|--:|--:|---|`,
   ...domains.map((id) => {
-    const inDomain = rows.filter((r) => r.domainId === id);
+    const inDomain = documented.filter((r) => r.domainId === id);
     const fams = new Set(inDomain.map((r) => r.familyId)).size;
     return `| ${id} | ${inDomain.length} | ${fams} | ${inDomain[0].domain} |`;
   }),
 ].join("\n");
 
-const shapeCounts = rows.reduce((acc, r) => ((acc[r.archetype] = (acc[r.archetype] ?? 0) + 1), acc), {});
+const shapeCounts = documented.reduce((acc, r) => ((acc[r.archetype] = (acc[r.archetype] ?? 0) + 1), acc), {});
 const SHAPE_DOC = {
   "record-transform": ["`(input) → output`", "backward-split-adjustment"],
   "series-transform": ["`(values, ...params) → (number\\|null)[]`", "ema, rsi, macd"],
@@ -90,7 +108,7 @@ const shapesBlock = [
 ].join("\n");
 
 const coverageBlock = [
-  `**${verified} of ${rows.length} topics** are verified against the catalog's own published numbers`,
+  `**${verified} of ${documented.length} topics** are verified against the catalog's own published numbers`,
   `(${conventions.A ?? 0} via \`{ input, expected }\`, ${conventions.B ?? 0} via row fixtures, ${conventions.C ?? 0} via bar/checkpoint fixtures).`,
   `The remaining ${conventions.none ?? 0} are proven to load and expose a callable entry point, but their`,
   `arithmetic is not asserted here — those topics ship no machine-readable expected`,
@@ -123,7 +141,7 @@ const shortName = (title) => title.split(/\s*[:—]\s*/)[0].trim();
 
 const topicsBlock = domains
   .flatMap((domainId) => {
-    const inDomain = rows.filter((r) => r.domainId === domainId);
+    const inDomain = documented.filter((r) => r.domainId === domainId);
     const familyIds = [...new Set(inDomain.map((r) => r.familyId))].sort();
     return [
       ``,
@@ -160,4 +178,8 @@ for (const [name, body] of [
 }
 
 writeFileSync(readmePath, readme, "utf8");
-console.log(`  README.md: ${replaced} generated block(s) refreshed — ${rows.length} topics, ${verified} verified`);
+const withheld = rows.length - documented.length;
+console.log(
+  `  README.md: ${replaced} generated block(s) refreshed — ${documented.length} topics, ${verified} verified` +
+    (withheld ? ` (${withheld} withheld: ${[...README_EXCLUDED_DOMAINS].join(", ")})` : ""),
+);

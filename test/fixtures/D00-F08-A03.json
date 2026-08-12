@@ -1,0 +1,31 @@
+{
+  "topic_id": "D00-F08-A03",
+  "source": "synthetic author-derived verification case",
+  "input": {
+    "sample": [
+      2,
+      3,
+      4,
+      3,
+      4
+    ],
+    "estimates": [
+      3.0,
+      3.1,
+      3.2,
+      3.3,
+      3.4
+    ],
+    "populationMean": 3.2,
+    "alpha": 0.05,
+    "mseBenchmark": 0.1,
+    "nullMean": 3,
+    "alternativeMean": 3.5,
+    "practicalThreshold": 0.1,
+    "comparisons": 5
+  },
+  "expected": {
+    "bias": 0.0,
+    "mse": 0.019999999999999983
+  }
+}

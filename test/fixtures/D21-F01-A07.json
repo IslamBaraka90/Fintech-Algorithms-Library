@@ -1,0 +1,20 @@
+{
+  "classification": "synthetic teaching input with author-derived arithmetic",
+  "input": {
+    "equity_value": 120.0,
+    "debt_face_value": 80.0,
+    "equity_volatility": 0.35,
+    "prior_year_equity_return": 0.08,
+    "horizon_years": 1.0
+  },
+  "expected": {
+    "naive_firm_value": 200.0,
+    "naive_debt_volatility": 0.1375,
+    "naive_asset_volatility": 0.265,
+    "naive_distance_to_default": 3.62708766745,
+    "naive_default_probability": 0.000143317997,
+    "state": "calculated",
+    "reason": "bharath-shumway-naive-approximation"
+  },
+  "independent_check": "The synthetic firm value is 200. Debt volatility is 13.75%; asset volatility is the equity/debt value-weighted combination. Prior return supplies drift, then the standardized log cushion produces naïve DD and Phi(-DD)."
+}

@@ -1,0 +1,468 @@
+{
+  "synthetic": true,
+  "input": {
+    "records": [
+      {
+        "id": "R01",
+        "label": 1,
+        "score": 0.95,
+        "probability": 0.92,
+        "weight": 1.0,
+        "sector": "Banking",
+        "country": "Egypt",
+        "regime": "Expansion",
+        "score_available_at": "2025-01-01T00:00:00Z",
+        "label_available_at": "2026-01-01T00:00:00Z"
+      },
+      {
+        "id": "R02",
+        "label": 0,
+        "score": 0.9,
+        "probability": 0.88,
+        "weight": 1.0,
+        "sector": "Insurance",
+        "country": "Egypt",
+        "regime": "Expansion",
+        "score_available_at": "2025-01-01T00:00:00Z",
+        "label_available_at": "2026-01-01T00:00:00Z"
+      },
+      {
+        "id": "R03",
+        "label": 1,
+        "score": 0.9,
+        "probability": 0.84,
+        "weight": 1.0,
+        "sector": "Markets",
+        "country": "Saudi Arabia",
+        "regime": "Expansion",
+        "score_available_at": "2025-01-01T00:00:00Z",
+        "label_available_at": "2026-01-01T00:00:00Z"
+      },
+      {
+        "id": "R04",
+        "label": 1,
+        "score": 0.82,
+        "probability": 0.8,
+        "weight": 1.0,
+        "sector": "Banking",
+        "country": "Saudi Arabia",
+        "regime": "Stress",
+        "score_available_at": "2025-01-01T00:00:00Z",
+        "label_available_at": "2026-01-01T00:00:00Z"
+      },
+      {
+        "id": "R05",
+        "label": 0,
+        "score": 0.78,
+        "probability": 0.76,
+        "weight": 1.0,
+        "sector": "Insurance",
+        "country": "UAE",
+        "regime": "Stress",
+        "score_available_at": "2025-01-01T00:00:00Z",
+        "label_available_at": "2026-01-01T00:00:00Z"
+      },
+      {
+        "id": "R06",
+        "label": 1,
+        "score": 0.75,
+        "probability": 0.72,
+        "weight": 1.0,
+        "sector": "Markets",
+        "country": "UAE",
+        "regime": "Stress",
+        "score_available_at": "2025-01-01T00:00:00Z",
+        "label_available_at": "2026-01-01T00:00:00Z"
+      },
+      {
+        "id": "R07",
+        "label": 0,
+        "score": 0.7,
+        "probability": 0.68,
+        "weight": 1.0,
+        "sector": "Banking",
+        "country": "Egypt",
+        "regime": "Expansion",
+        "score_available_at": "2025-01-01T00:00:00Z",
+        "label_available_at": "2026-01-01T00:00:00Z"
+      },
+      {
+        "id": "R08",
+        "label": 1,
+        "score": 0.66,
+        "probability": 0.64,
+        "weight": 1.0,
+        "sector": "Insurance",
+        "country": "Egypt",
+        "regime": "Expansion",
+        "score_available_at": "2025-01-01T00:00:00Z",
+        "label_available_at": "2026-01-01T00:00:00Z"
+      },
+      {
+        "id": "R09",
+        "label": 0,
+        "score": 0.6,
+        "probability": 0.6,
+        "weight": 1.0,
+        "sector": "Markets",
+        "country": "Saudi Arabia",
+        "regime": "Expansion",
+        "score_available_at": "2025-01-01T00:00:00Z",
+        "label_available_at": "2026-01-01T00:00:00Z"
+      },
+      {
+        "id": "R10",
+        "label": 0,
+        "score": 0.6,
+        "probability": 0.56,
+        "weight": 1.0,
+        "sector": "Banking",
+        "country": "Saudi Arabia",
+        "regime": "Stress",
+        "score_available_at": "2025-01-01T00:00:00Z",
+        "label_available_at": "2026-01-01T00:00:00Z"
+      },
+      {
+        "id": "R11",
+        "label": 1,
+        "score": 0.55,
+        "probability": 0.52,
+        "weight": 1.0,
+        "sector": "Insurance",
+        "country": "UAE",
+        "regime": "Stress",
+        "score_available_at": "2025-01-01T00:00:00Z",
+        "label_available_at": "2026-01-01T00:00:00Z"
+      },
+      {
+        "id": "R12",
+        "label": 0,
+        "score": 0.5,
+        "probability": 0.48,
+        "weight": 1.0,
+        "sector": "Markets",
+        "country": "UAE",
+        "regime": "Stress",
+        "score_available_at": "2025-01-01T00:00:00Z",
+        "label_available_at": "2026-01-01T00:00:00Z"
+      },
+      {
+        "id": "R13",
+        "label": 1,
+        "score": 0.45,
+        "probability": 0.44,
+        "weight": 1.0,
+        "sector": "Banking",
+        "country": "Egypt",
+        "regime": "Expansion",
+        "score_available_at": "2025-01-01T00:00:00Z",
+        "label_available_at": "2026-01-01T00:00:00Z"
+      },
+      {
+        "id": "R14",
+        "label": 0,
+        "score": 0.42,
+        "probability": 0.4,
+        "weight": 1.0,
+        "sector": "Insurance",
+        "country": "Egypt",
+        "regime": "Expansion",
+        "score_available_at": "2025-01-01T00:00:00Z",
+        "label_available_at": "2026-01-01T00:00:00Z"
+      },
+      {
+        "id": "R15",
+        "label": 0,
+        "score": 0.38,
+        "probability": 0.36,
+        "weight": 1.0,
+        "sector": "Markets",
+        "country": "Saudi Arabia",
+        "regime": "Expansion",
+        "score_available_at": "2025-01-01T00:00:00Z",
+        "label_available_at": "2026-01-01T00:00:00Z"
+      },
+      {
+        "id": "R16",
+        "label": 1,
+        "score": 0.34,
+        "probability": 0.32,
+        "weight": 1.0,
+        "sector": "Banking",
+        "country": "Saudi Arabia",
+        "regime": "Stress",
+        "score_available_at": "2025-01-01T00:00:00Z",
+        "label_available_at": "2026-01-01T00:00:00Z"
+      },
+      {
+        "id": "R17",
+        "label": 0,
+        "score": 0.3,
+        "probability": 0.28,
+        "weight": 1.0,
+        "sector": "Insurance",
+        "country": "UAE",
+        "regime": "Stress",
+        "score_available_at": "2025-01-01T00:00:00Z",
+        "label_available_at": "2026-01-01T00:00:00Z"
+      },
+      {
+        "id": "R18",
+        "label": 0,
+        "score": 0.26,
+        "probability": 0.24,
+        "weight": 1.0,
+        "sector": "Markets",
+        "country": "UAE",
+        "regime": "Stress",
+        "score_available_at": "2025-01-01T00:00:00Z",
+        "label_available_at": "2026-01-01T00:00:00Z"
+      },
+      {
+        "id": "R19",
+        "label": 1,
+        "score": 0.22,
+        "probability": 0.2,
+        "weight": 1.0,
+        "sector": "Banking",
+        "country": "Egypt",
+        "regime": "Expansion",
+        "score_available_at": "2025-01-01T00:00:00Z",
+        "label_available_at": "2026-01-01T00:00:00Z"
+      },
+      {
+        "id": "R20",
+        "label": 0,
+        "score": 0.18,
+        "probability": 0.16,
+        "weight": 1.0,
+        "sector": "Insurance",
+        "country": "Egypt",
+        "regime": "Expansion",
+        "score_available_at": "2025-01-01T00:00:00Z",
+        "label_available_at": "2026-01-01T00:00:00Z"
+      },
+      {
+        "id": "R21",
+        "label": 0,
+        "score": 0.14,
+        "probability": 0.12,
+        "weight": 1.0,
+        "sector": "Markets",
+        "country": "Saudi Arabia",
+        "regime": "Expansion",
+        "score_available_at": "2025-01-01T00:00:00Z",
+        "label_available_at": "2026-01-01T00:00:00Z"
+      },
+      {
+        "id": "R22",
+        "label": 1,
+        "score": 0.1,
+        "probability": 0.08,
+        "weight": 1.0,
+        "sector": "Banking",
+        "country": "Saudi Arabia",
+        "regime": "Stress",
+        "score_available_at": "2025-01-01T00:00:00Z",
+        "label_available_at": "2026-01-01T00:00:00Z"
+      },
+      {
+        "id": "R23",
+        "label": 0,
+        "score": 0.06,
+        "probability": 0.04,
+        "weight": 1.0,
+        "sector": "Insurance",
+        "country": "UAE",
+        "regime": "Stress",
+        "score_available_at": "2025-01-01T00:00:00Z",
+        "label_available_at": "2026-01-01T00:00:00Z"
+      },
+      {
+        "id": "R24",
+        "label": 0,
+        "score": 0.02,
+        "probability": 0.02,
+        "weight": 1.0,
+        "sector": "Markets",
+        "country": "UAE",
+        "regime": "Stress",
+        "score_available_at": "2025-01-01T00:00:00Z",
+        "label_available_at": "2026-01-01T00:00:00Z"
+      }
+    ],
+    "evaluation_cutoff": "2026-06-30T00:00:00Z"
+  },
+  "expected": {
+    "points": [
+      {
+        "threshold": null,
+        "true_positive": 0.0,
+        "false_positive": 0.0,
+        "precision": 1.0,
+        "recall": 0.0
+      },
+      {
+        "threshold": 0.95,
+        "true_positive": 1.0,
+        "false_positive": 0.0,
+        "precision": 1.0,
+        "recall": 0.1
+      },
+      {
+        "threshold": 0.9,
+        "true_positive": 2.0,
+        "false_positive": 1.0,
+        "precision": 0.6666666666666666,
+        "recall": 0.2
+      },
+      {
+        "threshold": 0.82,
+        "true_positive": 3.0,
+        "false_positive": 1.0,
+        "precision": 0.75,
+        "recall": 0.3
+      },
+      {
+        "threshold": 0.78,
+        "true_positive": 3.0,
+        "false_positive": 2.0,
+        "precision": 0.6,
+        "recall": 0.3
+      },
+      {
+        "threshold": 0.75,
+        "true_positive": 4.0,
+        "false_positive": 2.0,
+        "precision": 0.6666666666666666,
+        "recall": 0.4
+      },
+      {
+        "threshold": 0.7,
+        "true_positive": 4.0,
+        "false_positive": 3.0,
+        "precision": 0.5714285714285714,
+        "recall": 0.4
+      },
+      {
+        "threshold": 0.66,
+        "true_positive": 5.0,
+        "false_positive": 3.0,
+        "precision": 0.625,
+        "recall": 0.5
+      },
+      {
+        "threshold": 0.6,
+        "true_positive": 5.0,
+        "false_positive": 5.0,
+        "precision": 0.5,
+        "recall": 0.5
+      },
+      {
+        "threshold": 0.55,
+        "true_positive": 6.0,
+        "false_positive": 5.0,
+        "precision": 0.5454545454545454,
+        "recall": 0.6
+      },
+      {
+        "threshold": 0.5,
+        "true_positive": 6.0,
+        "false_positive": 6.0,
+        "precision": 0.5,
+        "recall": 0.6
+      },
+      {
+        "threshold": 0.45,
+        "true_positive": 7.0,
+        "false_positive": 6.0,
+        "precision": 0.5384615384615384,
+        "recall": 0.7
+      },
+      {
+        "threshold": 0.42,
+        "true_positive": 7.0,
+        "false_positive": 7.0,
+        "precision": 0.5,
+        "recall": 0.7
+      },
+      {
+        "threshold": 0.38,
+        "true_positive": 7.0,
+        "false_positive": 8.0,
+        "precision": 0.4666666666666667,
+        "recall": 0.7
+      },
+      {
+        "threshold": 0.34,
+        "true_positive": 8.0,
+        "false_positive": 8.0,
+        "precision": 0.5,
+        "recall": 0.8
+      },
+      {
+        "threshold": 0.3,
+        "true_positive": 8.0,
+        "false_positive": 9.0,
+        "precision": 0.47058823529411764,
+        "recall": 0.8
+      },
+      {
+        "threshold": 0.26,
+        "true_positive": 8.0,
+        "false_positive": 10.0,
+        "precision": 0.4444444444444444,
+        "recall": 0.8
+      },
+      {
+        "threshold": 0.22,
+        "true_positive": 9.0,
+        "false_positive": 10.0,
+        "precision": 0.47368421052631576,
+        "recall": 0.9
+      },
+      {
+        "threshold": 0.18,
+        "true_positive": 9.0,
+        "false_positive": 11.0,
+        "precision": 0.45,
+        "recall": 0.9
+      },
+      {
+        "threshold": 0.14,
+        "true_positive": 9.0,
+        "false_positive": 12.0,
+        "precision": 0.42857142857142855,
+        "recall": 0.9
+      },
+      {
+        "threshold": 0.1,
+        "true_positive": 10.0,
+        "false_positive": 12.0,
+        "precision": 0.45454545454545453,
+        "recall": 1.0
+      },
+      {
+        "threshold": 0.06,
+        "true_positive": 10.0,
+        "false_positive": 13.0,
+        "precision": 0.43478260869565216,
+        "recall": 1.0
+      },
+      {
+        "threshold": 0.02,
+        "true_positive": 10.0,
+        "false_positive": 14.0,
+        "precision": 0.4166666666666667,
+        "recall": 1.0
+      }
+    ],
+    "pr_auc_average_precision": 0.6220479082321188,
+    "baseline_prevalence": 0.4166666666666667,
+    "positive_weight": 10.0,
+    "negative_weight": 14.0,
+    "tie_group_count": 22,
+    "integration_rule": "average-precision-right-step",
+    "state": "ranking-evaluated"
+  }
+}

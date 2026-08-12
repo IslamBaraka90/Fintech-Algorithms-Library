@@ -1,0 +1,23 @@
+{
+  "topic_id": "D00-F05-A01",
+  "source": "synthetic author-derived verification case",
+  "input": {
+    "values": [
+      1,
+      2,
+      2,
+      4,
+      9
+    ]
+  },
+  "expected": {
+    "center": 3.6,
+    "deviations": [
+      -2.6,
+      -1.6,
+      -1.6,
+      0.3999999999999999,
+      5.4
+    ]
+  }
+}

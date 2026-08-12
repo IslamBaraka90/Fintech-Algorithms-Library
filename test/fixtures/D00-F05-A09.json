@@ -1,0 +1,17 @@
+{
+  "topic_id": "D00-F05-A09",
+  "source": "synthetic author-derived verification case",
+  "input": {
+    "values": [
+      1,
+      2,
+      2,
+      4,
+      9
+    ]
+  },
+  "expected": {
+    "momentSkewness": 1.1140963830468877,
+    "direction": "right"
+  }
+}

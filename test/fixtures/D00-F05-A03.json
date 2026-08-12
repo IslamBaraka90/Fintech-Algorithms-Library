@@ -1,0 +1,17 @@
+{
+  "topic_id": "D00-F05-A03",
+  "source": "synthetic author-derived verification case",
+  "input": {
+    "values": [
+      1,
+      2,
+      2,
+      4,
+      9
+    ]
+  },
+  "expected": {
+    "meanAbsoluteDeviation": 2.3200000000000003,
+    "center": 3.6
+  }
+}

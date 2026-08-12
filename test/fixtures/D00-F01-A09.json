@@ -1,0 +1,50 @@
+{
+  "topic_id": "D00-F01-A09",
+  "source": "synthetic author-derived verification case",
+  "input": {
+    "values": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "startingCash": 1000,
+    "inflows": 250,
+    "outflows": 120,
+    "slope": 2,
+    "intercept": 1,
+    "part": 25,
+    "whole": 200,
+    "elapsed": 5,
+    "old": 4.5,
+    "new": 4.75,
+    "base": 16,
+    "exponent": 0.5,
+    "a": 2,
+    "b": 1,
+    "c": 7,
+    "d": 1,
+    "e": -1,
+    "f": 2,
+    "candidate": 10.0049,
+    "lower": 0,
+    "upper": 10,
+    "scale": 2,
+    "offset": 1,
+    "sourceUnit": "SAR millions",
+    "digits": 2,
+    "reference": 10,
+    "tolerance": 0.01
+  },
+  "expected": {
+    "normalized": [
+      0.0,
+      0.5,
+      1.0,
+      1.5,
+      2.0
+    ],
+    "sourceUnit": "SAR millions"
+  }
+}

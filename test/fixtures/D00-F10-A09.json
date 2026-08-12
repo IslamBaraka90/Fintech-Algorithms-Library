@@ -1,0 +1,40 @@
+{
+  "topic_id": "D00-F10-A09",
+  "source": "synthetic author-derived verification case",
+  "input": {
+    "timestamps": [
+      "2025-01-01T00:00:00Z",
+      "2025-01-02T00:00:00Z",
+      "2025-01-03T00:00:00Z",
+      "2025-01-04T00:00:00Z",
+      "2025-01-05T00:00:00Z",
+      "2025-01-06T00:00:00Z"
+    ],
+    "values": [
+      100,
+      102,
+      101,
+      104,
+      106,
+      105
+    ],
+    "lag": 1,
+    "window": 3,
+    "resampleSize": 2,
+    "period": 3,
+    "stationarityTolerance": 3,
+    "alpha": 0.4,
+    "splitIndex": 4
+  },
+  "expected": {
+    "smoothed": [
+      100.0,
+      100.80000000000001,
+      100.88000000000001,
+      102.12800000000001,
+      103.67680000000001,
+      104.20608000000001
+    ],
+    "naiveNext": 105.0
+  }
+}

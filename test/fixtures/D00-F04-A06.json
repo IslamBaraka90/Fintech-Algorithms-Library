@@ -1,0 +1,30 @@
+{
+  "topic_id": "D00-F04-A06",
+  "source": "synthetic author-derived verification case",
+  "input": {
+    "values": [
+      1,
+      2,
+      2,
+      4,
+      9
+    ],
+    "weights": [
+      1,
+      1,
+      2,
+      1,
+      1
+    ],
+    "trimProportion": 0.2,
+    "bins": 4
+  },
+  "expected": {
+    "quantiles": {
+      "0.25": 2.0,
+      "0.5": 2.0,
+      "0.75": 4.0
+    },
+    "iqr": 2.0
+  }
+}

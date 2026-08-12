@@ -1,0 +1,636 @@
+{
+  "topic_id": "D08-F04-A01",
+  "kind": "template",
+  "series": [
+    99.874987,
+    100.159243,
+    100.421014,
+    100.350703,
+    100.560173,
+    100.558238,
+    100.419857,
+    100.360656,
+    100.360247,
+    100.618472,
+    100.572382,
+    100.701902,
+    100.724997,
+    100.846087,
+    100.67717,
+    100.63021,
+    100.769041,
+    100.894887,
+    100.887245,
+    100.594456,
+    100.766464,
+    100.850515,
+    101.098215,
+    101.023002,
+    101.287875,
+    101.336644,
+    101.472525,
+    101.347611,
+    101.501333,
+    101.519136,
+    101.499991,
+    101.420345,
+    101.552861,
+    101.341978,
+    101.134103,
+    101.004103,
+    101.011045,
+    101.101889,
+    101.181743,
+    101.16764,
+    101.027348,
+    101.073396,
+    101.140925,
+    101.285048,
+    101.554829,
+    101.475365,
+    101.519911,
+    101.797061,
+    101.881498,
+    101.701764,
+    101.484293,
+    101.428854,
+    101.620999,
+    101.546451,
+    101.472811,
+    101.351424,
+    101.489103,
+    101.452009,
+    112.0,
+    113.7,
+    116.25,
+    119.65,
+    122.2,
+    120.5,
+    117.44,
+    114.38,
+    112.34,
+    113.87,
+    116.76,
+    118.8,
+    102.36469,
+    102.611675,
+    102.709731,
+    102.683557,
+    102.512991,
+    102.222697,
+    101.873516,
+    101.695344,
+    101.464255,
+    101.582937,
+    101.355354,
+    101.472787,
+    101.539918,
+    101.455881,
+    101.296529,
+    101.254545,
+    101.296806,
+    101.555708,
+    101.4186,
+    101.393324,
+    101.61117,
+    101.720551,
+    101.621796,
+    101.43781,
+    101.365641,
+    101.455268
+  ],
+  "template": [
+    0,
+    1,
+    2.5,
+    4.5,
+    6,
+    5,
+    3.2,
+    1.4,
+    0.2,
+    1.1,
+    2.8,
+    4.0
+  ],
+  "expected": {
+    "template_length": 12,
+    "best_start": 58,
+    "best_end": 69,
+    "correlation": 0.9999999999999999,
+    "distance": 8.382057464382987e-15,
+    "profile": [
+      {
+        "start": 0,
+        "correlation": 0.5900738849254371,
+        "distance": 3.136594771689436,
+        "eligible": true
+      },
+      {
+        "start": 1,
+        "correlation": 0.3358103596358022,
+        "distance": 3.9925620056225477,
+        "eligible": true
+      },
+      {
+        "start": 2,
+        "correlation": -0.07196549176585781,
+        "distance": 5.072195954651257,
+        "eligible": true
+      },
+      {
+        "start": 3,
+        "correlation": -0.3517356658042147,
+        "distance": 5.6957577177493395,
+        "eligible": true
+      },
+      {
+        "start": 4,
+        "correlation": -0.5573235224506546,
+        "distance": 6.113572158633257,
+        "eligible": true
+      },
+      {
+        "start": 5,
+        "correlation": -0.17518955008924939,
+        "distance": 5.31079553382937,
+        "eligible": true
+      },
+      {
+        "start": 6,
+        "correlation": 0.2731672140000867,
+        "distance": 4.176599916678388,
+        "eligible": true
+      },
+      {
+        "start": 7,
+        "correlation": 0.45820562276344035,
+        "distance": 3.6059762968823614,
+        "eligible": true
+      },
+      {
+        "start": 8,
+        "correlation": 0.2979485835695604,
+        "distance": 4.104781844913386,
+        "eligible": true
+      },
+      {
+        "start": 9,
+        "correlation": 0.03841243667541416,
+        "distance": 4.803967268809194,
+        "eligible": true
+      },
+      {
+        "start": 10,
+        "correlation": 0.03232649601345412,
+        "distance": 4.819145577348447,
+        "eligible": true
+      },
+      {
+        "start": 11,
+        "correlation": 0.13930744655251318,
+        "distance": 4.544955586443026,
+        "eligible": true
+      },
+      {
+        "start": 12,
+        "correlation": 0.1851363398383048,
+        "distance": 4.422298931990089,
+        "eligible": true
+      },
+      {
+        "start": 13,
+        "correlation": 0.1420406248897518,
+        "distance": 4.537733465359766,
+        "eligible": true
+      },
+      {
+        "start": 14,
+        "correlation": 0.04690079886777756,
+        "distance": 4.782716887624996,
+        "eligible": true
+      },
+      {
+        "start": 15,
+        "correlation": -0.1257503861833264,
+        "distance": 5.19788507649023,
+        "eligible": true
+      },
+      {
+        "start": 16,
+        "correlation": -0.2894288958963464,
+        "distance": 5.562939286160897,
+        "eligible": true
+      },
+      {
+        "start": 17,
+        "correlation": -0.20997329029045908,
+        "distance": 5.388817956376984,
+        "eligible": true
+      },
+      {
+        "start": 18,
+        "correlation": -0.008775174166923055,
+        "distance": 4.9204272355158505,
+        "eligible": true
+      },
+      {
+        "start": 19,
+        "correlation": 0.16817499172673392,
+        "distance": 4.46808686112506,
+        "eligible": true
+      },
+      {
+        "start": 20,
+        "correlation": 0.19608324387655704,
+        "distance": 4.392493841425691,
+        "eligible": true
+      },
+      {
+        "start": 21,
+        "correlation": 0.2825111732742627,
+        "distance": 4.149666473515395,
+        "eligible": true
+      },
+      {
+        "start": 22,
+        "correlation": 0.2822739164217684,
+        "distance": 4.150352515856642,
+        "eligible": true
+      },
+      {
+        "start": 23,
+        "correlation": 0.19349151242387186,
+        "distance": 4.399568581330114,
+        "eligible": true
+      },
+      {
+        "start": 24,
+        "correlation": 0.02268402249506705,
+        "distance": 4.843096474376531,
+        "eligible": true
+      },
+      {
+        "start": 25,
+        "correlation": 0.15825852078705024,
+        "distance": 4.494640753287274,
+        "eligible": true
+      },
+      {
+        "start": 26,
+        "correlation": 0.32269455675496544,
+        "distance": 4.031790004189308,
+        "eligible": true
+      },
+      {
+        "start": 27,
+        "correlation": 0.4738222779541634,
+        "distance": 3.553627066688354,
+        "eligible": true
+      },
+      {
+        "start": 28,
+        "correlation": 0.29937581510281003,
+        "distance": 4.1006073254498,
+        "eligible": true
+      },
+      {
+        "start": 29,
+        "correlation": -0.05271269117480485,
+        "distance": 5.026440548558723,
+        "eligible": true
+      },
+      {
+        "start": 30,
+        "correlation": -0.4087121043504562,
+        "distance": 5.814558496086435,
+        "eligible": true
+      },
+      {
+        "start": 31,
+        "correlation": -0.5917879822810005,
+        "distance": 6.180850392522376,
+        "eligible": true
+      },
+      {
+        "start": 32,
+        "correlation": -0.4769707020390827,
+        "distance": 5.953763250998312,
+        "eligible": true
+      },
+      {
+        "start": 33,
+        "correlation": 0.037616797335630246,
+        "distance": 4.805954313551562,
+        "eligible": true
+      },
+      {
+        "start": 34,
+        "correlation": 0.18611842531608833,
+        "distance": 4.419633219217843,
+        "eligible": true
+      },
+      {
+        "start": 35,
+        "correlation": 0.0041526234206697805,
+        "distance": 4.888797095186496,
+        "eligible": true
+      },
+      {
+        "start": 36,
+        "correlation": -0.15651560265474926,
+        "distance": 5.268431879004793,
+        "eligible": true
+      },
+      {
+        "start": 37,
+        "correlation": -0.18162618023952723,
+        "distance": 5.325319551515068,
+        "eligible": true
+      },
+      {
+        "start": 38,
+        "correlation": -0.18383876898839813,
+        "distance": 5.330303036012263,
+        "eligible": true
+      },
+      {
+        "start": 39,
+        "correlation": -0.14387165644554953,
+        "distance": 5.239553392675104,
+        "eligible": true
+      },
+      {
+        "start": 40,
+        "correlation": 0.004563213766787341,
+        "distance": 4.887789159691435,
+        "eligible": true
+      },
+      {
+        "start": 41,
+        "correlation": 0.2266347560304952,
+        "distance": 4.308220729636321,
+        "eligible": true
+      },
+      {
+        "start": 42,
+        "correlation": 0.5021541430044699,
+        "distance": 3.456631390225565,
+        "eligible": true
+      },
+      {
+        "start": 43,
+        "correlation": 0.7074214210197879,
+        "distance": 2.6498841286979107,
+        "eligible": true
+      },
+      {
+        "start": 44,
+        "correlation": 0.5114614050652838,
+        "distance": 3.4241679687820783,
+        "eligible": true
+      },
+      {
+        "start": 45,
+        "correlation": 0.3079812937342987,
+        "distance": 4.075346482248697,
+        "eligible": true
+      },
+      {
+        "start": 46,
+        "correlation": -0.05916597317093384,
+        "distance": 5.041823415799328,
+        "eligible": true
+      },
+      {
+        "start": 47,
+        "correlation": 0.20459743843259673,
+        "distance": 4.369171715281705,
+        "eligible": true
+      },
+      {
+        "start": 48,
+        "correlation": 0.18469790547986656,
+        "distance": 4.423488472742209,
+        "eligible": true
+      },
+      {
+        "start": 49,
+        "correlation": 0.04592450563758832,
+        "distance": 4.785165813709894,
+        "eligible": true
+      },
+      {
+        "start": 50,
+        "correlation": -0.11585303439896806,
+        "distance": 5.17498529713614,
+        "eligible": true
+      },
+      {
+        "start": 51,
+        "correlation": -0.19801438280704112,
+        "distance": 5.3621213327720385,
+        "eligible": true
+      },
+      {
+        "start": 52,
+        "correlation": -0.23953557752986365,
+        "distance": 5.454250989890063,
+        "eligible": true
+      },
+      {
+        "start": 53,
+        "correlation": -0.20734309204649223,
+        "distance": 5.382957756579167,
+        "eligible": true
+      },
+      {
+        "start": 54,
+        "correlation": -0.05598840089344954,
+        "distance": 5.0342548228553925,
+        "eligible": true
+      },
+      {
+        "start": 55,
+        "correlation": 0.1605205914433747,
+        "distance": 4.4885973093338425,
+        "eligible": true
+      },
+      {
+        "start": 56,
+        "correlation": 0.43235335051647367,
+        "distance": 3.691005227252412,
+        "eligible": true
+      },
+      {
+        "start": 57,
+        "correlation": 0.7245207855440228,
+        "distance": 2.571283949108587,
+        "eligible": true
+      },
+      {
+        "start": 58,
+        "correlation": 0.9999999999999999,
+        "distance": 8.382057464382987e-15,
+        "eligible": true
+      },
+      {
+        "start": 59,
+        "correlation": 0.2230919914741695,
+        "distance": 4.318077373625897,
+        "eligible": true
+      },
+      {
+        "start": 60,
+        "correlation": -0.17497990198641108,
+        "distance": 5.310321802647544,
+        "eligible": true
+      },
+      {
+        "start": 61,
+        "correlation": -0.25646617864132387,
+        "distance": 5.491373989029682,
+        "eligible": true
+      },
+      {
+        "start": 62,
+        "correlation": -0.08310257936182595,
+        "distance": 5.098476429746813,
+        "eligible": true
+      },
+      {
+        "start": 63,
+        "correlation": 0.15777879931400002,
+        "distance": 4.495921353456263,
+        "eligible": true
+      },
+      {
+        "start": 64,
+        "correlation": 0.30235916080166464,
+        "distance": 4.091867561488281,
+        "eligible": true
+      },
+      {
+        "start": 65,
+        "correlation": 0.20738283737951416,
+        "distance": 4.361514863312018,
+        "eligible": true
+      },
+      {
+        "start": 66,
+        "correlation": -0.12254105147532456,
+        "distance": 5.190470617912,
+        "eligible": true
+      },
+      {
+        "start": 67,
+        "correlation": -0.39076080099835625,
+        "distance": 5.777392078088569,
+        "eligible": true
+      },
+      {
+        "start": 68,
+        "correlation": -0.4671818061453123,
+        "distance": 5.934000619100701,
+        "eligible": true
+      },
+      {
+        "start": 69,
+        "correlation": -0.3773361563391675,
+        "distance": 5.749440646892532,
+        "eligible": true
+      },
+      {
+        "start": 70,
+        "correlation": 0.2561390608452031,
+        "distance": 4.225241122079912,
+        "eligible": true
+      },
+      {
+        "start": 71,
+        "correlation": 0.02825254425570801,
+        "distance": 4.8292793393904025,
+        "eligible": true
+      },
+      {
+        "start": 72,
+        "correlation": -0.1821159078727905,
+        "distance": 5.326422982541564,
+        "eligible": true
+      },
+      {
+        "start": 73,
+        "correlation": -0.3683596505018873,
+        "distance": 5.730674621023715,
+        "eligible": true
+      },
+      {
+        "start": 74,
+        "correlation": -0.4758888026592604,
+        "distance": 5.9515822487656385,
+        "eligible": true
+      },
+      {
+        "start": 75,
+        "correlation": -0.43994996877810405,
+        "distance": 5.878673255988505,
+        "eligible": true
+      },
+      {
+        "start": 76,
+        "correlation": -0.18178229499678142,
+        "distance": 5.325671326689505,
+        "eligible": true
+      },
+      {
+        "start": 77,
+        "correlation": 0.10659156795140506,
+        "distance": 4.630529383252663,
+        "eligible": true
+      },
+      {
+        "start": 78,
+        "correlation": 0.1732813529956483,
+        "distance": 4.454351527226431,
+        "eligible": true
+      },
+      {
+        "start": 79,
+        "correlation": -0.11303888481776696,
+        "distance": 5.168455594820024,
+        "eligible": true
+      },
+      {
+        "start": 80,
+        "correlation": -0.14069046694660423,
+        "distance": 5.232262532281662,
+        "eligible": true
+      },
+      {
+        "start": 81,
+        "correlation": -0.39833718015227465,
+        "distance": 5.793107311594926,
+        "eligible": true
+      },
+      {
+        "start": 82,
+        "correlation": -0.5102464649491735,
+        "distance": 6.020458052239893,
+        "eligible": true
+      },
+      {
+        "start": 83,
+        "correlation": -0.3213324545312161,
+        "distance": 5.631338997853813,
+        "eligible": true
+      },
+      {
+        "start": 84,
+        "correlation": 0.01664684860785533,
+        "distance": 4.858032074143961,
+        "eligible": true
+      }
+    ],
+    "normalization": "population-z-score-per-window"
+  }
+}

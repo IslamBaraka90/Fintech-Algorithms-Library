@@ -1,7 +1,2047 @@
 {
   "generatedFrom": "scripts/sync.mjs",
-  "topicCount": 324,
+  "topicCount": 471,
   "topics": [
+    {
+      "id": "D00-F01-A01",
+      "path": "financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/variables-constants-expressions-and-equations",
+      "entry": "variablesConstantsExpressionsAndEquations",
+      "archetype": "record-transform",
+      "fixture": "D00-F01-A01.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F01-A02",
+      "path": "financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/functions-domains-ranges-and-graphs",
+      "entry": "functionsDomainsRangesAndGraphs",
+      "archetype": "record-transform",
+      "fixture": "D00-F01-A02.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F01-A03",
+      "path": "financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/ratios-proportions-rates-and-percentages",
+      "entry": "ratiosProportionsRatesAndPercentages",
+      "archetype": "record-transform",
+      "fixture": "D00-F01-A03.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F01-A04",
+      "path": "financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/percentage-change-percentage-points-and-basis-points",
+      "entry": "percentageChangePercentagePointsAndBasisPoints",
+      "archetype": "record-transform",
+      "fixture": "D00-F01-A04.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F01-A05",
+      "path": "financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/exponents-roots-and-logarithms",
+      "entry": "exponentsRootsAndLogarithms",
+      "archetype": "record-transform",
+      "fixture": "D00-F01-A05.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F01-A06",
+      "path": "financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/summation-products-and-index-notation",
+      "entry": "summationProductsAndIndexNotation",
+      "archetype": "record-transform",
+      "fixture": "D00-F01-A06.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F01-A07",
+      "path": "financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/linear-equations-and-systems",
+      "entry": "linearEquationsAndSystems",
+      "archetype": "record-transform",
+      "fixture": "D00-F01-A07.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F01-A08",
+      "path": "financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/inequalities-bounds-and-constraints",
+      "entry": "inequalitiesBoundsAndConstraints",
+      "archetype": "record-transform",
+      "fixture": "D00-F01-A08.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F01-A09",
+      "path": "financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/units-dimensions-scale-and-normalization",
+      "entry": "unitsDimensionsScaleAndNormalization",
+      "archetype": "record-transform",
+      "fixture": "D00-F01-A09.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F01-A10",
+      "path": "financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/rounding-precision-tolerance-and-significant-digits",
+      "entry": "roundingPrecisionToleranceAndSignificantDigits",
+      "archetype": "record-transform",
+      "fixture": "D00-F01-A10.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F02-A01",
+      "path": "financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/simple-interest",
+      "entry": "simpleInterest",
+      "archetype": "record-transform",
+      "fixture": "D00-F02-A01.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F02-A02",
+      "path": "financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/compound-interest",
+      "entry": "compoundInterest",
+      "archetype": "record-transform",
+      "fixture": "D00-F02-A02.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F02-A03",
+      "path": "financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/present-future-value",
+      "entry": "presentValueAndFutureValue",
+      "archetype": "record-transform",
+      "fixture": "D00-F02-A03.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F02-A04",
+      "path": "financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/discount-factors",
+      "entry": "discountFactorsAndDiscountRates",
+      "archetype": "record-transform",
+      "fixture": "D00-F02-A04.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F02-A05",
+      "path": "financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/cashflow-npv",
+      "entry": "cashFlowTimelinesAndNetPresentValue",
+      "archetype": "record-transform",
+      "fixture": "D00-F02-A05.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F02-A06",
+      "path": "financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/simple-return",
+      "entry": "simpleReturn",
+      "archetype": "record-transform",
+      "fixture": "D00-F02-A06.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F02-A07",
+      "path": "financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/log-return",
+      "entry": "logReturn",
+      "archetype": "record-transform",
+      "fixture": "D00-F02-A07.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F02-A08",
+      "path": "financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/holding-period-return",
+      "entry": "holdingPeriodAndCumulativeReturn",
+      "archetype": "record-transform",
+      "fixture": "D00-F02-A08.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F02-A09",
+      "path": "financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/arithmetic-geometric-return",
+      "entry": "arithmeticVersusGeometricAverageReturn",
+      "archetype": "record-transform",
+      "fixture": "D00-F02-A09.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F02-A10",
+      "path": "financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/annualization-deannualization",
+      "entry": "returnAnnualizationAndDeannualization",
+      "archetype": "record-transform",
+      "fixture": "D00-F02-A10.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F03-A01",
+      "path": "financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/observations-entities-variables-and-datasets",
+      "entry": "observationsEntitiesVariablesAndDatasets",
+      "archetype": "record-transform",
+      "fixture": "D00-F03-A01.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F03-A02",
+      "path": "financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/numeric-categorical-ordinal-and-binary-variables",
+      "entry": "numericCategoricalOrdinalAndBinaryVariables",
+      "archetype": "record-transform",
+      "fixture": "D00-F03-A02.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F03-A03",
+      "path": "financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/population-sample-census-and-sampling-frame",
+      "entry": "populationSampleCensusAndSamplingFrame",
+      "archetype": "record-transform",
+      "fixture": "D00-F03-A03.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F03-A04",
+      "path": "financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/cross-sectional-time-series-panel-and-event-data",
+      "entry": "crossSectionalTimeSeriesPanelAndEventData",
+      "archetype": "record-transform",
+      "fixture": "D00-F03-A04.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F03-A05",
+      "path": "financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/identifiers-keys-joins-and-data-grain",
+      "entry": "identifiersKeysJoinsAndDataGrain",
+      "archetype": "record-transform",
+      "fixture": "D00-F03-A05.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F03-A06",
+      "path": "financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/timestamps-time-zones-calendars-and-observation-time",
+      "entry": "timestampsTimeZonesCalendarsAndObservationTime",
+      "archetype": "record-transform",
+      "fixture": "D00-F03-A06.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F03-A07",
+      "path": "financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/missing-nonfinite-censored-and-truncated-values",
+      "entry": "missingNonfiniteCensoredAndTruncatedValues",
+      "archetype": "record-transform",
+      "fixture": "D00-F03-A07.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F03-A08",
+      "path": "financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/measurement-error-resolution-accuracy-and-precision",
+      "entry": "measurementErrorResolutionAccuracyAndPrecision",
+      "archetype": "record-transform",
+      "fixture": "D00-F03-A08.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F03-A09",
+      "path": "financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/revisions-vintages-and-point-in-time-availability",
+      "entry": "revisionsVintagesAndPointInTimeAvailability",
+      "archetype": "record-transform",
+      "fixture": "D00-F03-A09.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F03-A10",
+      "path": "financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/data-provenance-lineage-ownership-and-licensing",
+      "entry": "dataProvenanceLineageOwnershipAndLicensing",
+      "archetype": "record-transform",
+      "fixture": "D00-F03-A10.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F04-A01",
+      "path": "financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/count-sum-minimum-maximum-and-range",
+      "entry": "countSumMinimumMaximumAndRange",
+      "archetype": "record-transform",
+      "fixture": "D00-F04-A01.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F04-A02",
+      "path": "financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/arithmetic-mean",
+      "entry": "arithmeticMean",
+      "archetype": "record-transform",
+      "fixture": "D00-F04-A02.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F04-A03",
+      "path": "financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/weighted-mean",
+      "entry": "weightedMean",
+      "archetype": "record-transform",
+      "fixture": "D00-F04-A03.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F04-A04",
+      "path": "financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/median-and-mode",
+      "entry": "medianAndMode",
+      "archetype": "record-transform",
+      "fixture": "D00-F04-A04.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F04-A05",
+      "path": "financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/trimmed-and-winsorized-means",
+      "entry": "trimmedAndWinsorizedMeans",
+      "archetype": "record-transform",
+      "fixture": "D00-F04-A05.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F04-A06",
+      "path": "financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/percentiles-quantiles-and-quartiles",
+      "entry": "percentilesQuantilesAndQuartiles",
+      "archetype": "record-transform",
+      "fixture": "D00-F04-A06.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F04-A07",
+      "path": "financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/ranks-ties-and-percentile-rank",
+      "entry": "ranksTiesAndPercentileRank",
+      "archetype": "record-transform",
+      "fixture": "D00-F04-A07.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F04-A08",
+      "path": "financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/frequency-tables-and-relative-frequency",
+      "entry": "frequencyTablesAndRelativeFrequency",
+      "archetype": "record-transform",
+      "fixture": "D00-F04-A08.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F04-A09",
+      "path": "financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/histograms-and-empirical-distribution-functions",
+      "entry": "histogramsAndEmpiricalDistributionFunctions",
+      "archetype": "record-transform",
+      "fixture": "D00-F04-A09.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F04-A10",
+      "path": "financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/five-number-summary-and-box-plot",
+      "entry": "fiveNumberSummaryAndBoxPlot",
+      "archetype": "record-transform",
+      "fixture": "D00-F04-A10.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F05-A01",
+      "path": "financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/deviation-absolute-deviation-and-squared-deviation",
+      "entry": "deviationAbsoluteDeviationAndSquaredDeviation",
+      "archetype": "record-transform",
+      "fixture": "D00-F05-A01.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F05-A02",
+      "path": "financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/range-and-interquartile-range",
+      "entry": "rangeAndInterquartileRange",
+      "archetype": "record-transform",
+      "fixture": "D00-F05-A02.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F05-A03",
+      "path": "financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/mean-absolute-deviation",
+      "entry": "meanAbsoluteDeviation",
+      "archetype": "record-transform",
+      "fixture": "D00-F05-A03.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F05-A04",
+      "path": "financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/median-absolute-deviation",
+      "entry": "medianAbsoluteDeviation",
+      "archetype": "record-transform",
+      "fixture": "D00-F05-A04.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F05-A05",
+      "path": "financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/population-and-sample-variance",
+      "entry": "populationAndSampleVariance",
+      "archetype": "record-transform",
+      "fixture": "D00-F05-A05.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F05-A06",
+      "path": "financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/population-and-sample-standard-deviation",
+      "entry": "populationAndSampleStandardDeviation",
+      "archetype": "record-transform",
+      "fixture": "D00-F05-A06.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F05-A07",
+      "path": "financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/coefficient-of-variation-and-scale-comparability",
+      "entry": "coefficientOfVariationAndScaleComparability",
+      "archetype": "record-transform",
+      "fixture": "D00-F05-A07.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F05-A08",
+      "path": "financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/z-score-robust-z-score-and-standardization",
+      "entry": "zScoreRobustZScoreAndStandardization",
+      "archetype": "record-transform",
+      "fixture": "D00-F05-A08.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F05-A09",
+      "path": "financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/skewness-and-tail-asymmetry",
+      "entry": "skewnessAndTailAsymmetry",
+      "archetype": "record-transform",
+      "fixture": "D00-F05-A09.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F05-A10",
+      "path": "financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/kurtosis-excess-kurtosis-and-tail-weight",
+      "entry": "kurtosisExcessKurtosisAndTailWeight",
+      "archetype": "record-transform",
+      "fixture": "D00-F05-A10.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F06-A01",
+      "path": "financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/experiments-outcomes-sample-spaces-and-events",
+      "entry": "experimentsOutcomesSampleSpacesAndEvents",
+      "archetype": "record-transform",
+      "fixture": "D00-F06-A01.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F06-A02",
+      "path": "financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/probability-rules-complements-unions-and-intersections",
+      "entry": "probabilityRulesComplementsUnionsAndIntersections",
+      "archetype": "record-transform",
+      "fixture": "D00-F06-A02.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F06-A03",
+      "path": "financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/conditional-probability",
+      "entry": "conditionalProbability",
+      "archetype": "record-transform",
+      "fixture": "D00-F06-A03.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F06-A04",
+      "path": "financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/independence-and-dependence",
+      "entry": "independenceAndDependence",
+      "archetype": "record-transform",
+      "fixture": "D00-F06-A04.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F06-A05",
+      "path": "financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/bayes-theorem-and-base-rates",
+      "entry": "bayesTheoremAndBaseRates",
+      "archetype": "record-transform",
+      "fixture": "D00-F06-A05.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F06-A06",
+      "path": "financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/discrete-and-continuous-random-variables",
+      "entry": "discreteAndContinuousRandomVariables",
+      "archetype": "record-transform",
+      "fixture": "D00-F06-A06.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F06-A07",
+      "path": "financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/expected-value",
+      "entry": "expectedValue",
+      "archetype": "record-transform",
+      "fixture": "D00-F06-A07.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F06-A08",
+      "path": "financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/variance-moments-and-moment-generating-intuition",
+      "entry": "varianceMomentsAndMomentGeneratingIntuition",
+      "archetype": "record-transform",
+      "fixture": "D00-F06-A08.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F06-A09",
+      "path": "financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/joint-marginal-and-conditional-distributions",
+      "entry": "jointMarginalAndConditionalDistributions",
+      "archetype": "record-transform",
+      "fixture": "D00-F06-A09.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F06-A10",
+      "path": "financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/covariance-and-correlation-of-random-variables",
+      "entry": "covarianceAndCorrelationOfRandomVariables",
+      "archetype": "record-transform",
+      "fixture": "D00-F06-A10.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F07-A01",
+      "path": "financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/pmf-pdf-cdf-survival-and-quantile-functions",
+      "entry": "pmfPdfCdfSurvivalAndQuantileFunctions",
+      "archetype": "record-transform",
+      "fixture": "D00-F07-A01.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F07-A02",
+      "path": "financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/bernoulli-and-binomial-distributions",
+      "entry": "bernoulliAndBinomialDistributions",
+      "archetype": "record-transform",
+      "fixture": "D00-F07-A02.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F07-A03",
+      "path": "financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/poisson-distribution-and-event-counts",
+      "entry": "poissonDistributionAndEventCounts",
+      "archetype": "record-transform",
+      "fixture": "D00-F07-A03.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F07-A04",
+      "path": "financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/uniform-distribution-and-random-sampling",
+      "entry": "uniformDistributionAndRandomSampling",
+      "archetype": "record-transform",
+      "fixture": "D00-F07-A04.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F07-A05",
+      "path": "financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/normal-distribution-and-standard-normal",
+      "entry": "normalDistributionAndStandardNormal",
+      "archetype": "record-transform",
+      "fixture": "D00-F07-A05.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F07-A06",
+      "path": "financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/lognormal-distribution-and-positive-quantities",
+      "entry": "lognormalDistributionAndPositiveQuantities",
+      "archetype": "record-transform",
+      "fixture": "D00-F07-A06.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F07-A07",
+      "path": "financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/student-t-distribution-and-heavy-tails",
+      "entry": "studentTDistributionAndHeavyTails",
+      "archetype": "record-transform",
+      "fixture": "D00-F07-A07.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F07-A08",
+      "path": "financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/exponential-gamma-and-weibull-waiting-time-models",
+      "entry": "exponentialGammaAndWeibullWaitingTimeModels",
+      "archetype": "record-transform",
+      "fixture": "D00-F07-A08.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F07-A09",
+      "path": "financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/mixture-distributions-multimodality-and-fat-tails",
+      "entry": "mixtureDistributionsMultimodalityAndFatTails",
+      "archetype": "record-transform",
+      "fixture": "D00-F07-A09.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F07-A10",
+      "path": "financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/random-sampling-and-monte-carlo-intuition",
+      "entry": "randomSamplingAndMonteCarloIntuition",
+      "archetype": "record-transform",
+      "fixture": "D00-F07-A10.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F08-A01",
+      "path": "financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/parameters-statistics-estimands-and-estimators",
+      "entry": "parametersStatisticsEstimandsAndEstimators",
+      "archetype": "record-transform",
+      "fixture": "D00-F08-A01.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F08-A02",
+      "path": "financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/sampling-distributions",
+      "entry": "samplingDistributions",
+      "archetype": "record-transform",
+      "fixture": "D00-F08-A02.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F08-A03",
+      "path": "financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/estimator-bias-consistency-efficiency-and-robustness",
+      "entry": "estimatorBiasConsistencyEfficiencyAndRobustness",
+      "archetype": "record-transform",
+      "fixture": "D00-F08-A03.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F08-A04",
+      "path": "financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/law-of-large-numbers",
+      "entry": "lawOfLargeNumbers",
+      "archetype": "record-transform",
+      "fixture": "D00-F08-A04.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F08-A05",
+      "path": "financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/central-limit-theorem",
+      "entry": "centralLimitTheorem",
+      "archetype": "record-transform",
+      "fixture": "D00-F08-A05.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F08-A06",
+      "path": "financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/standard-error",
+      "entry": "standardError",
+      "archetype": "record-transform",
+      "fixture": "D00-F08-A06.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F08-A07",
+      "path": "financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/confidence-intervals-and-coverage",
+      "entry": "confidenceIntervalsAndCoverage",
+      "archetype": "record-transform",
+      "fixture": "D00-F08-A07.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F08-A08",
+      "path": "financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/null-and-alternative-hypotheses",
+      "entry": "nullAndAlternativeHypotheses",
+      "archetype": "record-transform",
+      "fixture": "D00-F08-A08.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F08-A09",
+      "path": "financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/p-values-significance-type-i-ii-errors-and-power",
+      "entry": "pValuesSignificanceTypeIIiErrorsAndPower",
+      "archetype": "record-transform",
+      "fixture": "D00-F08-A09.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F08-A10",
+      "path": "financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/effect-size-practical-significance-and-multiple-comparisons",
+      "entry": "effectSizePracticalSignificanceAndMultipleComparisons",
+      "archetype": "record-transform",
+      "fixture": "D00-F08-A10.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F09-A01",
+      "path": "financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/scatter-plots-association-and-nonlinear-patterns",
+      "entry": "scatterPlotsAssociationAndNonlinearPatterns",
+      "archetype": "record-transform",
+      "fixture": "D00-F09-A01.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F09-A02",
+      "path": "financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/sample-covariance-calculation-and-interpretation",
+      "entry": "sampleCovarianceCalculationAndInterpretation",
+      "archetype": "record-transform",
+      "fixture": "D00-F09-A02.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F09-A03",
+      "path": "financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/pearson-correlation-calculation-and-interpretation",
+      "entry": "pearsonCorrelationCalculationAndInterpretation",
+      "archetype": "record-transform",
+      "fixture": "D00-F09-A03.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F09-A04",
+      "path": "financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/spearman-rank-correlation-and-kendall-tau",
+      "entry": "spearmanRankCorrelationAndKendallTau",
+      "archetype": "record-transform",
+      "fixture": "D00-F09-A04.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F09-A05",
+      "path": "financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/correlation-causation-confounding-and-spurious-relationships",
+      "entry": "correlationCausationConfoundingAndSpuriousRelationships",
+      "archetype": "record-transform",
+      "fixture": "D00-F09-A05.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F09-A06",
+      "path": "financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/simple-ordinary-least-squares-regression",
+      "entry": "simpleOrdinaryLeastSquaresRegression",
+      "archetype": "record-transform",
+      "fixture": "D00-F09-A06.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F09-A07",
+      "path": "financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/intercepts-slopes-coefficients-and-predictions",
+      "entry": "interceptsSlopesCoefficientsAndPredictions",
+      "archetype": "record-transform",
+      "fixture": "D00-F09-A07.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F09-A08",
+      "path": "financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/residuals-mae-mse-and-rmse",
+      "entry": "residualsMaeMseAndRmse",
+      "archetype": "record-transform",
+      "fixture": "D00-F09-A08.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F09-A09",
+      "path": "financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/r-squared-and-adjusted-r-squared",
+      "entry": "rSquaredAndAdjustedRSquared",
+      "archetype": "record-transform",
+      "fixture": "D00-F09-A09.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F09-A10",
+      "path": "financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/regression-assumptions-heteroskedasticity-and-multicollinearity",
+      "entry": "regressionAssumptionsHeteroskedasticityAndMulticollinearity",
+      "archetype": "record-transform",
+      "fixture": "D00-F09-A10.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F10-A01",
+      "path": "financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/time-order-frequency-regularity-and-financial-calendars",
+      "entry": "timeOrderFrequencyRegularityAndFinancialCalendars",
+      "archetype": "record-transform",
+      "fixture": "D00-F10-A01.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F10-A02",
+      "path": "financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/levels-changes-differences-and-returns",
+      "entry": "levelsChangesDifferencesAndReturns",
+      "archetype": "record-transform",
+      "fixture": "D00-F10-A02.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F10-A03",
+      "path": "financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/lags-leads-and-temporal-dependence",
+      "entry": "lagsLeadsAndTemporalDependence",
+      "archetype": "record-transform",
+      "fixture": "D00-F10-A03.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F10-A04",
+      "path": "financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/rolling-and-expanding-windows",
+      "entry": "rollingAndExpandingWindows",
+      "archetype": "record-transform",
+      "fixture": "D00-F10-A04.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F10-A05",
+      "path": "financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/resampling-aggregation-and-time-alignment",
+      "entry": "resamplingAggregationAndTimeAlignment",
+      "archetype": "record-transform",
+      "fixture": "D00-F10-A05.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F10-A06",
+      "path": "financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/trend-seasonality-cycles-and-remainder",
+      "entry": "trendSeasonalityCyclesAndRemainder",
+      "archetype": "record-transform",
+      "fixture": "D00-F10-A06.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F10-A07",
+      "path": "financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/autocovariance-and-autocorrelation",
+      "entry": "autocovarianceAndAutocorrelation",
+      "archetype": "record-transform",
+      "fixture": "D00-F10-A07.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F10-A08",
+      "path": "financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/stationarity-and-differencing-intuition",
+      "entry": "stationarityAndDifferencingIntuition",
+      "archetype": "record-transform",
+      "fixture": "D00-F10-A08.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F10-A09",
+      "path": "financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/smoothing-baselines-and-naive-forecasts",
+      "entry": "smoothingBaselinesAndNaiveForecasts",
+      "archetype": "record-transform",
+      "fixture": "D00-F10-A09.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F10-A10",
+      "path": "financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/look-ahead-leakage-and-time-aware-data-splits",
+      "entry": "lookAheadLeakageAndTimeAwareDataSplits",
+      "archetype": "record-transform",
+      "fixture": "D00-F10-A10.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F11-A01",
+      "path": "financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/volatility-and-annualized-volatility",
+      "entry": "volatilityAndAnnualizedVolatility",
+      "archetype": "record-transform",
+      "fixture": "D00-F11-A01.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F11-A02",
+      "path": "financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/downside-deviation-and-target-shortfall",
+      "entry": "downsideDeviationAndTargetShortfall",
+      "archetype": "record-transform",
+      "fixture": "D00-F11-A02.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F11-A03",
+      "path": "financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/drawdown-and-maximum-drawdown",
+      "entry": "drawdownAndMaximumDrawdown",
+      "archetype": "record-transform",
+      "fixture": "D00-F11-A03.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F11-A04",
+      "path": "financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/loss-distributions-and-loss-quantiles",
+      "entry": "lossDistributionsAndLossQuantiles",
+      "archetype": "record-transform",
+      "fixture": "D00-F11-A04.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F11-A05",
+      "path": "financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/value-at-risk-intuition",
+      "entry": "valueAtRiskIntuition",
+      "archetype": "record-transform",
+      "fixture": "D00-F11-A05.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F11-A06",
+      "path": "financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/expected-shortfall-intuition",
+      "entry": "expectedShortfallIntuition",
+      "archetype": "record-transform",
+      "fixture": "D00-F11-A06.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F11-A07",
+      "path": "financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/beta-and-market-relative-risk",
+      "entry": "betaAndMarketRelativeRisk",
+      "archetype": "record-transform",
+      "fixture": "D00-F11-A07.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F11-A08",
+      "path": "financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/sharpe-sortino-and-information-ratio-intuition",
+      "entry": "sharpeSortinoAndInformationRatioIntuition",
+      "archetype": "record-transform",
+      "fixture": "D00-F11-A08.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F11-A09",
+      "path": "financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/active-return-and-tracking-error",
+      "entry": "activeReturnAndTrackingError",
+      "archetype": "record-transform",
+      "fixture": "D00-F11-A09.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F11-A10",
+      "path": "financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/covariance-matrices-portfolio-variance-and-diversification",
+      "entry": "covarianceMatricesPortfolioVarianceAndDiversification",
+      "archetype": "record-transform",
+      "fixture": "D00-F11-A10.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F12-A01",
+      "path": "financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/floating-point-representation-overflow-and-underflow",
+      "entry": "floatingPointRepresentationOverflowAndUnderflow",
+      "archetype": "record-transform",
+      "fixture": "D00-F12-A01.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F12-A02",
+      "path": "financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/stable-summation-and-mean-calculation",
+      "entry": "stableSummationAndMeanCalculation",
+      "archetype": "record-transform",
+      "fixture": "D00-F12-A02.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F12-A03",
+      "path": "financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/stable-online-variance-and-welford-s-algorithm",
+      "entry": "stableOnlineVarianceAndWelfordsAlgorithm",
+      "archetype": "record-transform",
+      "fixture": "D00-F12-A03.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F12-A04",
+      "path": "financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/batch-rolling-and-streaming-statistic-equivalence",
+      "entry": "batchRollingAndStreamingStatisticEquivalence",
+      "archetype": "record-transform",
+      "fixture": "D00-F12-A04.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F12-A05",
+      "path": "financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/missing-infinite-invalid-and-unsupported-state-policies",
+      "entry": "missingInfiniteInvalidAndUnsupportedStatePolicies",
+      "archetype": "record-transform",
+      "fixture": "D00-F12-A05.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F12-A06",
+      "path": "financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/pseudorandom-numbers-seeds-and-reproducibility",
+      "entry": "pseudorandomNumbersSeedsAndReproducibility",
+      "archetype": "record-transform",
+      "fixture": "D00-F12-A06.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F12-A07",
+      "path": "financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/vectorization-index-alignment-and-shape-safety",
+      "entry": "vectorizationIndexAlignmentAndShapeSafety",
+      "archetype": "record-transform",
+      "fixture": "D00-F12-A07.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F12-A08",
+      "path": "financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/leakage-free-fitting-scaling-and-preprocessing",
+      "entry": "leakageFreeFittingScalingAndPreprocessing",
+      "archetype": "record-transform",
+      "fixture": "D00-F12-A08.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F12-A09",
+      "path": "financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/fixtures-numerical-tolerances-and-property-tests",
+      "entry": "fixturesNumericalTolerancesAndPropertyTests",
+      "archetype": "record-transform",
+      "fixture": "D00-F12-A09.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D00-F12-A10",
+      "path": "financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/reproducible-analysis-metadata-and-audit-trails",
+      "entry": "reproducibleAnalysisMetadataAndAuditTrails",
+      "archetype": "record-transform",
+      "fixture": "D00-F12-A10.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "input",
+        "expected"
+      ]
+    },
     {
       "id": "D01-F01-A01",
       "path": "market-data-engineering/bar-construction/time-bars",
@@ -3656,6 +5696,164 @@
       "fixtureKeys": []
     },
     {
+      "id": "D08-F03-A01",
+      "path": "geometric-chart-patterns/continuation-structures/ascending-triangle",
+      "entry": "detectAscendingTriangle",
+      "archetype": "row-classify",
+      "fixture": "D08-F03-A01.json",
+      "convention": "none",
+      "entryParams": [],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "close",
+        "expected"
+      ]
+    },
+    {
+      "id": "D08-F03-A02",
+      "path": "geometric-chart-patterns/continuation-structures/descending-triangle",
+      "entry": "detectDescendingTriangle",
+      "archetype": "row-classify",
+      "fixture": "D08-F03-A02.json",
+      "convention": "none",
+      "entryParams": [],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "close",
+        "expected"
+      ]
+    },
+    {
+      "id": "D08-F03-A03",
+      "path": "geometric-chart-patterns/continuation-structures/symmetrical-triangle",
+      "entry": "detectSymmetricalTriangle",
+      "archetype": "row-classify",
+      "fixture": "D08-F03-A03.json",
+      "convention": "none",
+      "entryParams": [],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "close",
+        "expected"
+      ]
+    },
+    {
+      "id": "D08-F03-A04",
+      "path": "geometric-chart-patterns/continuation-structures/flag",
+      "entry": "detectFlag",
+      "archetype": "row-classify",
+      "fixture": "D08-F03-A04.json",
+      "convention": "none",
+      "entryParams": [],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "close",
+        "expected"
+      ]
+    },
+    {
+      "id": "D08-F03-A05",
+      "path": "geometric-chart-patterns/continuation-structures/pennant",
+      "entry": "detectPennant",
+      "archetype": "row-classify",
+      "fixture": "D08-F03-A05.json",
+      "convention": "none",
+      "entryParams": [],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "close",
+        "expected"
+      ]
+    },
+    {
+      "id": "D08-F03-A06",
+      "path": "geometric-chart-patterns/continuation-structures/rising-falling-wedge",
+      "entry": "detectRisingFallingWedge",
+      "archetype": "row-classify",
+      "fixture": "D08-F03-A06.json",
+      "convention": "none",
+      "entryParams": [],
+      "fixtureKeys": [
+        "topic_id",
+        "source",
+        "close",
+        "expected"
+      ]
+    },
+    {
+      "id": "D08-F04-A01",
+      "path": "geometric-chart-patterns/pattern-matching/normalized-template-matching",
+      "entry": "match",
+      "archetype": "record-transform",
+      "fixture": "D08-F04-A01.json",
+      "convention": "none",
+      "entryParams": [],
+      "fixtureKeys": [
+        "topic_id",
+        "kind",
+        "series",
+        "template",
+        "expected"
+      ]
+    },
+    {
+      "id": "D08-F04-A02",
+      "path": "geometric-chart-patterns/pattern-matching/dynamic-time-warping-pattern-match",
+      "entry": "match",
+      "archetype": "record-transform",
+      "fixture": "D08-F04-A02.json",
+      "convention": "none",
+      "entryParams": [],
+      "fixtureKeys": [
+        "topic_id",
+        "kind",
+        "query",
+        "candidate",
+        "radius",
+        "expected"
+      ]
+    },
+    {
+      "id": "D08-F04-A03",
+      "path": "geometric-chart-patterns/pattern-matching/matrix-profile-motif-discovery",
+      "entry": "discover",
+      "archetype": "record-transform",
+      "fixture": "D08-F04-A03.json",
+      "convention": "none",
+      "entryParams": [],
+      "fixtureKeys": [
+        "topic_id",
+        "kind",
+        "series",
+        "window",
+        "expected"
+      ]
+    },
+    {
+      "id": "D08-F04-A04",
+      "path": "geometric-chart-patterns/pattern-matching/shapelet-pattern-classifier",
+      "entry": "classify",
+      "archetype": "row-classify",
+      "fixture": "D08-F04-A04.json",
+      "convention": "none",
+      "entryParams": [],
+      "fixtureKeys": [
+        "topic_id",
+        "kind",
+        "shapelet",
+        "training_series",
+        "labels",
+        "model",
+        "target",
+        "expected"
+      ]
+    },
+    {
       "id": "D08-F05-A01",
       "path": "geometric-chart-patterns/indicator-divergence-detection/price-indicator-pivot-alignment",
       "entry": "priceIndicatorPivotAlignment",
@@ -5260,6 +7458,156 @@
       "fixtureKeys": []
     },
     {
+      "id": "D21-F01-A01",
+      "path": "credit-risk-and-default/probability-of-default/logistic-pd-model",
+      "entry": "logisticPdModel",
+      "archetype": "record-transform",
+      "fixture": "D21-F01-A01.json",
+      "convention": "A",
+      "entryParams": [
+        "intercept",
+        "coefficients",
+        "features",
+        "alert_threshold"
+      ],
+      "fixtureKeys": [
+        "classification",
+        "input",
+        "expected",
+        "independent_check"
+      ]
+    },
+    {
+      "id": "D21-F01-A02",
+      "path": "credit-risk-and-default/probability-of-default/probit-pd-model",
+      "entry": "probitPdModel",
+      "archetype": "record-transform",
+      "fixture": "D21-F01-A02.json",
+      "convention": "A",
+      "entryParams": [
+        "intercept",
+        "coefficients",
+        "features",
+        "alert_threshold"
+      ],
+      "fixtureKeys": [
+        "classification",
+        "input",
+        "expected",
+        "independent_check"
+      ]
+    },
+    {
+      "id": "D21-F01-A03",
+      "path": "credit-risk-and-default/probability-of-default/through-the-cycle-pd",
+      "entry": "throughTheCyclePd",
+      "archetype": "record-transform",
+      "fixture": "D21-F01-A03.json",
+      "convention": "A",
+      "entryParams": [
+        "annual_obligors",
+        "annual_defaults",
+        "current_year_index",
+        "minimum_years"
+      ],
+      "fixtureKeys": [
+        "classification",
+        "input",
+        "expected",
+        "independent_check"
+      ]
+    },
+    {
+      "id": "D21-F01-A04",
+      "path": "credit-risk-and-default/probability-of-default/point-in-time-pd",
+      "entry": "pointInTimePd",
+      "archetype": "record-transform",
+      "fixture": "D21-F01-A04.json",
+      "convention": "A",
+      "entryParams": [
+        "through_the_cycle_pd_value",
+        "borrower_log_odds_shift",
+        "macro_factor_z",
+        "macro_sensitivity",
+        "alert_threshold"
+      ],
+      "fixtureKeys": [
+        "classification",
+        "input",
+        "expected",
+        "independent_check"
+      ]
+    },
+    {
+      "id": "D21-F01-A05",
+      "path": "credit-risk-and-default/probability-of-default/merton-distance-to-default",
+      "entry": "mertonDistanceToDefault",
+      "archetype": "record-transform",
+      "fixture": "D21-F01-A05.json",
+      "convention": "A",
+      "entryParams": [
+        "equity_value",
+        "equity_volatility",
+        "debt_face_value",
+        "risk_free_rate",
+        "asset_drift",
+        "horizon_years",
+        "tolerance",
+        "max_iterations"
+      ],
+      "fixtureKeys": [
+        "classification",
+        "input",
+        "expected",
+        "independent_check"
+      ]
+    },
+    {
+      "id": "D21-F01-A06",
+      "path": "credit-risk-and-default/probability-of-default/campbell-hilscher-szilagyi-distress-probability",
+      "entry": "campbellHilscherSzilagyiDistressProbability",
+      "archetype": "record-transform",
+      "fixture": "D21-F01-A06.json",
+      "convention": "A",
+      "entryParams": [
+        "nimtaavg",
+        "tlmta",
+        "exretavg",
+        "sigma",
+        "rsize",
+        "cashmta",
+        "market_to_book",
+        "log_price"
+      ],
+      "fixtureKeys": [
+        "classification",
+        "input",
+        "expected",
+        "independent_check"
+      ]
+    },
+    {
+      "id": "D21-F01-A07",
+      "path": "credit-risk-and-default/probability-of-default/bharath-shumway-naive-distance-to-default",
+      "entry": "bharathShumwayNaiveDistanceToDefault",
+      "archetype": "record-transform",
+      "fixture": "D21-F01-A07.json",
+      "convention": "A",
+      "entryParams": [
+        "equity_value",
+        "debt_face_value",
+        "equity_volatility",
+        "prior_year_equity_return",
+        "horizon_years"
+      ],
+      "fixtureKeys": [
+        "classification",
+        "input",
+        "expected",
+        "independent_check"
+      ]
+    },
+    {
       "id": "D25-F01-A01",
       "path": "digital-assets-and-on-chain-finance/amm-pricing/constant-product-amm",
       "entry": "constantProductQuote",
@@ -5402,6 +7750,166 @@
         "config"
       ],
       "fixtureKeys": []
+    },
+    {
+      "id": "D40-F05-A01",
+      "path": "model-validation-and-backtesting/classification-and-score-validation/roc-curve-and-roc-auc",
+      "entry": "rocCurveAndRocAuc",
+      "archetype": "record-transform",
+      "fixture": "D40-F05-A01.json",
+      "convention": "A",
+      "entryParams": [
+        "inputs"
+      ],
+      "fixtureKeys": [
+        "synthetic",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D40-F05-A02",
+      "path": "model-validation-and-backtesting/classification-and-score-validation/precision-recall-curve-and-pr-auc",
+      "entry": "precisionRecallCurveAndPrAuc",
+      "archetype": "record-transform",
+      "fixture": "D40-F05-A02.json",
+      "convention": "A",
+      "entryParams": [
+        "inputs"
+      ],
+      "fixtureKeys": [
+        "synthetic",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D40-F05-A03",
+      "path": "model-validation-and-backtesting/classification-and-score-validation/brier-score",
+      "entry": "brierScore",
+      "archetype": "record-transform",
+      "fixture": "D40-F05-A03.json",
+      "convention": "A",
+      "entryParams": [
+        "inputs"
+      ],
+      "fixtureKeys": [
+        "synthetic",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D40-F05-A04",
+      "path": "model-validation-and-backtesting/classification-and-score-validation/log-loss",
+      "entry": "logLoss",
+      "archetype": "record-transform",
+      "fixture": "D40-F05-A04.json",
+      "convention": "A",
+      "entryParams": [
+        "inputs"
+      ],
+      "fixtureKeys": [
+        "synthetic",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D40-F05-A05",
+      "path": "model-validation-and-backtesting/classification-and-score-validation/reliability-diagram-and-expected-calibration-error",
+      "entry": "reliabilityDiagramAndExpectedCalibrationError",
+      "archetype": "record-transform",
+      "fixture": "D40-F05-A05.json",
+      "convention": "A",
+      "entryParams": [
+        "inputs"
+      ],
+      "fixtureKeys": [
+        "synthetic",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D40-F05-A06",
+      "path": "model-validation-and-backtesting/classification-and-score-validation/gains-lift-and-decile-capture",
+      "entry": "gainsLiftAndDecileCapture",
+      "archetype": "record-transform",
+      "fixture": "D40-F05-A06.json",
+      "convention": "A",
+      "entryParams": [
+        "inputs"
+      ],
+      "fixtureKeys": [
+        "synthetic",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D40-F05-A07",
+      "path": "model-validation-and-backtesting/classification-and-score-validation/cost-sensitive-threshold-optimization",
+      "entry": "costSensitiveThresholdOptimization",
+      "archetype": "record-transform",
+      "fixture": "D40-F05-A07.json",
+      "convention": "A",
+      "entryParams": [
+        "inputs"
+      ],
+      "fixtureKeys": [
+        "synthetic",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D40-F05-A08",
+      "path": "model-validation-and-backtesting/classification-and-score-validation/score-stability-and-migration-matrix",
+      "entry": "scoreStabilityAndMigrationMatrix",
+      "archetype": "record-transform",
+      "fixture": "D40-F05-A08.json",
+      "convention": "A",
+      "entryParams": [
+        "inputs"
+      ],
+      "fixtureKeys": [
+        "synthetic",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D40-F05-A09",
+      "path": "model-validation-and-backtesting/classification-and-score-validation/slice-based-validation-by-sector-country-and-regime",
+      "entry": "sliceBasedValidationBySectorCountryAndRegime",
+      "archetype": "record-transform",
+      "fixture": "D40-F05-A09.json",
+      "convention": "A",
+      "entryParams": [
+        "inputs"
+      ],
+      "fixtureKeys": [
+        "synthetic",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D40-F05-A10",
+      "path": "model-validation-and-backtesting/classification-and-score-validation/rare-event-backtest-and-confidence-bounds",
+      "entry": "rareEventBacktestAndConfidenceBounds",
+      "archetype": "record-transform",
+      "fixture": "D40-F05-A10.json",
+      "convention": "A",
+      "entryParams": [
+        "inputs"
+      ],
+      "fixtureKeys": [
+        "synthetic",
+        "input",
+        "expected"
+      ]
     },
     {
       "id": "D46-F01-A05",

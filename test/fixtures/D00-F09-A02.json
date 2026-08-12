@@ -1,0 +1,43 @@
+{
+  "topic_id": "D00-F09-A02",
+  "source": "synthetic author-derived verification case",
+  "input": {
+    "x": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "y": [
+      2,
+      3,
+      5,
+      4,
+      6,
+      7
+    ],
+    "groups": [
+      "A",
+      "A",
+      "A",
+      "B",
+      "B",
+      "B"
+    ],
+    "predictX": 7,
+    "otherPredictor": [
+      2,
+      4,
+      5,
+      8,
+      9,
+      13
+    ]
+  },
+  "expected": {
+    "sampleCovariance": 3.3,
+    "direction": "positive"
+  }
+}

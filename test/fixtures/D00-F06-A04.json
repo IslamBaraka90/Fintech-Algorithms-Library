@@ -1,0 +1,59 @@
+{
+  "topic_id": "D00-F06-A04",
+  "source": "synthetic author-derived verification case",
+  "input": {
+    "pA": 0.6,
+    "pB": 0.5,
+    "pAB": 0.3,
+    "outcomes": [
+      "up",
+      "flat",
+      "down"
+    ],
+    "event": [
+      "up",
+      "flat"
+    ],
+    "prior": 0.01,
+    "sensitivity": 0.9,
+    "falsePositiveRate": 0.05,
+    "randomValues": [
+      0,
+      1,
+      2
+    ],
+    "probabilities": [
+      0.2,
+      0.5,
+      0.3
+    ],
+    "randomVariableKind": "discrete",
+    "joint": [
+      {
+        "x": 0,
+        "y": 0,
+        "p": 0.3
+      },
+      {
+        "x": 0,
+        "y": 1,
+        "p": 0.2
+      },
+      {
+        "x": 1,
+        "y": 0,
+        "p": 0.1
+      },
+      {
+        "x": 1,
+        "y": 1,
+        "p": 0.4
+      }
+    ],
+    "conditionY": 1
+  },
+  "expected": {
+    "independent": true,
+    "dependenceGap": 0.0
+  }
+}

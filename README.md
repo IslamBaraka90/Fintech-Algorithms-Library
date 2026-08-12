@@ -116,9 +116,9 @@ Requires Node ≥ 22.
 ## Verified against published worked examples
 
 <!-- coverage:start -->
-**158 of 324 topics** are verified against the catalog's own published numbers
-(117 via `{ input, expected }`, 11 via row fixtures, 30 via bar/checkpoint fixtures).
-The remaining 166 are proven to load and expose a callable entry point, but their
+**175 of 351 topics** are verified against the catalog's own published numbers
+(134 via `{ input, expected }`, 11 via row fixtures, 30 via bar/checkpoint fixtures).
+The remaining 176 are proven to load and expose a callable entry point, but their
 arithmetic is not asserted here — those topics ship no machine-readable expected
 values in the catalog.
 <!-- coverage:end -->
@@ -153,9 +153,9 @@ Every topic is an instance of one of five archetypes:
 <!-- shapes:start -->
 | Archetype | Signature | Count | Example |
 |---|---|--:|---|
-| `record-transform` | `(input) → output` | 257 | backward-split-adjustment |
+| `record-transform` | `(input) → output` | 277 | backward-split-adjustment |
 | `series-transform` | `(values, ...params) → (number\|null)[]` | 37 | ema, rsi, macd |
-| `row-classify` | `(rows, config?) → verdict[]` | 17 | ohlc-consistency-validator |
+| `row-classify` | `(rows, config?) → verdict[]` | 24 | ohlc-consistency-validator |
 | `tape-aggregate` | `(trades, config) → bar[]` | 7 | time-bars, volume-bars |
 | `snapshot-evaluate` | `(snapshot, policy) → result` | 6 | price-source-consensus-check |
 <!-- shapes:end -->
@@ -188,7 +188,7 @@ repo URL.
 ## Coverage
 
 <!-- stats:start -->
-**324 topics** · 13 domains · 54 families
+**351 topics** · 15 domains · 58 families
 
 | Domain | Topics | Families | Name |
 |---|--:|--:|---|
@@ -198,12 +198,14 @@ repo URL.
 | D04 | 28 | 5 | Market Breadth and Internals |
 | D06 | 38 | 5 | Price Action and Candlesticks |
 | D07 | 37 | 5 | Technical Indicators |
-| D08 | 27 | 4 | Geometric Chart Patterns |
+| D08 | 37 | 6 | Geometric Chart Patterns |
 | D09 | 29 | 5 | Statistical Time Series |
 | D11 | 29 | 5 | Market Microstructure |
 | D12 | 21 | 4 | Matching Engines and Venue Logic |
 | D13 | 9 | 2 | Execution and Transaction Cost Analysis |
+| D21 | 7 | 1 | Credit Risk and Default |
 | D25 | 10 | 2 | Digital Assets and On-Chain Finance |
+| D40 | 10 | 1 | Model Validation and Backtesting |
 | D46 | 5 | 2 | Earnings and Per-Share Analytics |
 <!-- stats:end -->
 
@@ -212,7 +214,7 @@ repo URL.
 Each name links to its reference page — signature, worked example, verification
 tier, diagrams and source.
 
-**[Full reference for all 271 algorithms →](https://docs.thefintechbuilder.com)**
+**[Full reference for every algorithm →](https://docs.thefintechbuilder.com)**
 
 <!-- topics:start -->
 ### D01 — Market Data Engineering · 31 topics
@@ -293,11 +295,15 @@ tier, diagrams and source.
 **Volume Indicators** — [On-Balance Volume (OBV)](https://docs.thefintechbuilder.com/technical-indicators/volume-indicators/obv/) · [Accumulation/Distribution Line](https://docs.thefintechbuilder.com/technical-indicators/volume-indicators/accumulation-distribution-line/) · [Chaikin Money Flow](https://docs.thefintechbuilder.com/technical-indicators/volume-indicators/chaikin-money-flow/) · [Money Flow Index](https://docs.thefintechbuilder.com/technical-indicators/volume-indicators/money-flow-index/) · [Volume Price Trend](https://docs.thefintechbuilder.com/technical-indicators/volume-indicators/volume-price-trend/) · [Force Index](https://docs.thefintechbuilder.com/technical-indicators/volume-indicators/force-index/)
 
 
-### D08 — Geometric Chart Patterns · 27 topics
+### D08 — Geometric Chart Patterns · 37 topics
 
 **Pivots and Levels** — [Causal Pivot Detection](https://docs.thefintechbuilder.com/geometric-chart-patterns/pivots-and-levels/causal-pivot-detection/) · [ZigZag Segmentation](https://docs.thefintechbuilder.com/geometric-chart-patterns/pivots-and-levels/zigzag-segmentation/) · [Support/Resistance Clustering](https://docs.thefintechbuilder.com/geometric-chart-patterns/pivots-and-levels/support-resistance-clustering/) · [Robust Trendline Fitting](https://docs.thefintechbuilder.com/geometric-chart-patterns/pivots-and-levels/robust-trendline-fitting/)
 
 **Reversal Structures** — [Double Top](https://docs.thefintechbuilder.com/geometric-chart-patterns/reversal-structures/double-top/) · [Double Bottom](https://docs.thefintechbuilder.com/geometric-chart-patterns/reversal-structures/double-bottom/) · [Triple Top](https://docs.thefintechbuilder.com/geometric-chart-patterns/reversal-structures/triple-top/) · [Triple Bottom](https://docs.thefintechbuilder.com/geometric-chart-patterns/reversal-structures/triple-bottom/) · [Head and Shoulders](https://docs.thefintechbuilder.com/geometric-chart-patterns/reversal-structures/head-and-shoulders/) · [Inverse Head and Shoulders](https://docs.thefintechbuilder.com/geometric-chart-patterns/reversal-structures/inverse-head-and-shoulders/)
+
+**Continuation Structures** — [Ascending Triangle](https://docs.thefintechbuilder.com/geometric-chart-patterns/continuation-structures/ascending-triangle/) · [Descending Triangle](https://docs.thefintechbuilder.com/geometric-chart-patterns/continuation-structures/descending-triangle/) · [Symmetrical Triangle](https://docs.thefintechbuilder.com/geometric-chart-patterns/continuation-structures/symmetrical-triangle/) · [Flag](https://docs.thefintechbuilder.com/geometric-chart-patterns/continuation-structures/flag/) · [Pennant](https://docs.thefintechbuilder.com/geometric-chart-patterns/continuation-structures/pennant/) · [Rising/Falling Wedge](https://docs.thefintechbuilder.com/geometric-chart-patterns/continuation-structures/rising-falling-wedge/)
+
+**Pattern Matching** — [Normalized Template Matching](https://docs.thefintechbuilder.com/geometric-chart-patterns/pattern-matching/normalized-template-matching/) · [Dynamic-Time-Warping Pattern Match](https://docs.thefintechbuilder.com/geometric-chart-patterns/pattern-matching/dynamic-time-warping-pattern-match/) · [Matrix-Profile Motif Discovery](https://docs.thefintechbuilder.com/geometric-chart-patterns/pattern-matching/matrix-profile-motif-discovery/) · [Shapelet Pattern Classifier](https://docs.thefintechbuilder.com/geometric-chart-patterns/pattern-matching/shapelet-pattern-classifier/)
 
 **Indicator Divergence Detection** — [Price–Indicator Pivot Alignment](https://docs.thefintechbuilder.com/geometric-chart-patterns/indicator-divergence-detection/price-indicator-pivot-alignment/) · [Regular Bullish/Bearish Divergence Detection](https://docs.thefintechbuilder.com/geometric-chart-patterns/indicator-divergence-detection/regular-bullish-bearish-divergence-detection/) · [Hidden Bullish/Bearish Divergence Detection](https://docs.thefintechbuilder.com/geometric-chart-patterns/indicator-divergence-detection/hidden-bullish-bearish-divergence-detection/) · [Multi-Indicator Divergence Adapters](https://docs.thefintechbuilder.com/geometric-chart-patterns/indicator-divergence-detection/multi-indicator-divergence-adapters/) · [Divergence Strength and Quality Scoring](https://docs.thefintechbuilder.com/geometric-chart-patterns/indicator-divergence-detection/divergence-strength-and-quality-scoring/) · [Divergence Confirmation and Invalidation State Machine](https://docs.thefintechbuilder.com/geometric-chart-patterns/indicator-divergence-detection/divergence-confirmation-and-invalidation-state-machine/) · [Multi-Indicator Divergence Confluence](https://docs.thefintechbuilder.com/geometric-chart-patterns/indicator-divergence-detection/multi-indicator-divergence-confluence/) · [Market-Wide Divergence Scanner and Ranking](https://docs.thefintechbuilder.com/geometric-chart-patterns/indicator-divergence-detection/market-wide-divergence-scanner-and-ranking/)
 
@@ -348,11 +354,21 @@ tier, diagrams and source.
 **Cost/Risk Optimization** — [Almgren-Chriss Optimal Execution](https://docs.thefintechbuilder.com/execution-and-transaction-cost-analysis/cost-risk-optimization/almgren-chriss-optimal-execution/) · [Implementation-Shortfall Execution](https://docs.thefintechbuilder.com/execution-and-transaction-cost-analysis/cost-risk-optimization/implementation-shortfall-execution/) · [Arrival-Price Execution](https://docs.thefintechbuilder.com/execution-and-transaction-cost-analysis/cost-risk-optimization/arrival-price-execution/) · [Liquidity-Seeking Execution](https://docs.thefintechbuilder.com/execution-and-transaction-cost-analysis/cost-risk-optimization/liquidity-seeking-execution/) · [Opportunistic Dark-Pool Execution](https://docs.thefintechbuilder.com/execution-and-transaction-cost-analysis/cost-risk-optimization/opportunistic-dark-pool-execution/)
 
 
+### D21 — Credit Risk and Default · 7 topics
+
+**Probability of Default** — [Logistic PD Model](https://docs.thefintechbuilder.com/credit-risk-and-default/probability-of-default/logistic-pd-model/) · [Probit PD Model](https://docs.thefintechbuilder.com/credit-risk-and-default/probability-of-default/probit-pd-model/) · [Through-the-Cycle PD](https://docs.thefintechbuilder.com/credit-risk-and-default/probability-of-default/through-the-cycle-pd/) · [Point-in-Time PD](https://docs.thefintechbuilder.com/credit-risk-and-default/probability-of-default/point-in-time-pd/) · [Merton Distance-to-Default](https://docs.thefintechbuilder.com/credit-risk-and-default/probability-of-default/merton-distance-to-default/) · [Campbell-Hilscher-Szilagyi Distress Probability](https://docs.thefintechbuilder.com/credit-risk-and-default/probability-of-default/campbell-hilscher-szilagyi-distress-probability/) · [Bharath-Shumway Naive Distance-to-Default](https://docs.thefintechbuilder.com/credit-risk-and-default/probability-of-default/bharath-shumway-naive-distance-to-default/)
+
+
 ### D25 — Digital Assets and On-Chain Finance · 10 topics
 
 **AMM Pricing** — [Constant-Product AMM](https://docs.thefintechbuilder.com/digital-assets-and-on-chain-finance/amm-pricing/constant-product-amm/) · [Constant-Sum AMM](https://docs.thefintechbuilder.com/digital-assets-and-on-chain-finance/amm-pricing/constant-sum-amm/) · [StableSwap Invariant](https://docs.thefintechbuilder.com/digital-assets-and-on-chain-finance/amm-pricing/stableswap-invariant/) · [Weighted-Product AMM](https://docs.thefintechbuilder.com/digital-assets-and-on-chain-finance/amm-pricing/weighted-product-amm/) · [Concentrated-Liquidity Position](https://docs.thefintechbuilder.com/digital-assets-and-on-chain-finance/amm-pricing/concentrated-liquidity-position/)
 
 **Liquidity and Liquidation** — [Impermanent-Loss Calculation](https://docs.thefintechbuilder.com/digital-assets-and-on-chain-finance/liquidity-and-liquidation/impermanent-loss-calculation/) · [Liquidity-Provider Fee APR](https://docs.thefintechbuilder.com/digital-assets-and-on-chain-finance/liquidity-and-liquidation/liquidity-provider-fee-apr/) · [Collateral-Health Factor](https://docs.thefintechbuilder.com/digital-assets-and-on-chain-finance/liquidity-and-liquidation/collateral-health-factor/) · [Liquidation-Price Calculation](https://docs.thefintechbuilder.com/digital-assets-and-on-chain-finance/liquidity-and-liquidation/liquidation-price-calculation/) · [Liquidation Waterfall](https://docs.thefintechbuilder.com/digital-assets-and-on-chain-finance/liquidity-and-liquidation/liquidation-waterfall/)
+
+
+### D40 — Model Validation and Backtesting · 10 topics
+
+**Classification and Score Validation** — [ROC Curve and ROC-AUC](https://docs.thefintechbuilder.com/model-validation-and-backtesting/classification-and-score-validation/roc-curve-and-roc-auc/) · [Precision-Recall Curve and PR-AUC](https://docs.thefintechbuilder.com/model-validation-and-backtesting/classification-and-score-validation/precision-recall-curve-and-pr-auc/) · [Brier Score](https://docs.thefintechbuilder.com/model-validation-and-backtesting/classification-and-score-validation/brier-score/) · [Log Loss](https://docs.thefintechbuilder.com/model-validation-and-backtesting/classification-and-score-validation/log-loss/) · [Reliability Diagram and Expected Calibration Error](https://docs.thefintechbuilder.com/model-validation-and-backtesting/classification-and-score-validation/reliability-diagram-and-expected-calibration-error/) · [Gains, Lift, and Decile Capture](https://docs.thefintechbuilder.com/model-validation-and-backtesting/classification-and-score-validation/gains-lift-and-decile-capture/) · [Cost-Sensitive Threshold Optimization](https://docs.thefintechbuilder.com/model-validation-and-backtesting/classification-and-score-validation/cost-sensitive-threshold-optimization/) · [Score Stability and Migration Matrix](https://docs.thefintechbuilder.com/model-validation-and-backtesting/classification-and-score-validation/score-stability-and-migration-matrix/) · [Slice-Based Validation by Sector, Country, and Regime](https://docs.thefintechbuilder.com/model-validation-and-backtesting/classification-and-score-validation/slice-based-validation-by-sector-country-and-regime/) · [Rare-Event Backtest and Confidence Bounds](https://docs.thefintechbuilder.com/model-validation-and-backtesting/classification-and-score-validation/rare-event-backtest-and-confidence-bounds/)
 
 
 ### D46 — Earnings and Per-Share Analytics · 5 topics

@@ -1,0 +1,41 @@
+{
+  "topic_id": "D00-F07-A01",
+  "source": "synthetic author-derived verification case",
+  "input": {
+    "values": [
+      0.2,
+      0.5,
+      0.7,
+      1.0,
+      1.4
+    ],
+    "x": 1,
+    "p": 0.3,
+    "n": 5,
+    "k": 2,
+    "lambda": 2,
+    "seed": 42,
+    "sampleCount": 8,
+    "mu": 0,
+    "sigma": 1,
+    "df": 5,
+    "shape": 2,
+    "scale": 1.5,
+    "components": [
+      {
+        "weight": 0.7,
+        "mean": 0,
+        "sd": 1
+      },
+      {
+        "weight": 0.3,
+        "mean": 3,
+        "sd": 0.8
+      }
+    ]
+  },
+  "expected": {
+    "cdf": 0.8,
+    "survival": 0.2
+  }
+}

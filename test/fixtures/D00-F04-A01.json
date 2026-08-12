@@ -1,0 +1,26 @@
+{
+  "topic_id": "D00-F04-A01",
+  "source": "synthetic author-derived verification case",
+  "input": {
+    "values": [
+      1,
+      2,
+      2,
+      4,
+      9
+    ],
+    "weights": [
+      1,
+      1,
+      2,
+      1,
+      1
+    ],
+    "trimProportion": 0.2,
+    "bins": 4
+  },
+  "expected": {
+    "count": 5,
+    "sum": 18.0
+  }
+}

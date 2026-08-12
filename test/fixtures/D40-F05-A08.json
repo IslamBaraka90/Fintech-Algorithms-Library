@@ -1,0 +1,335 @@
+{
+  "synthetic": true,
+  "input": {
+    "baseline": [
+      {
+        "id": "E01",
+        "score": 0.08
+      },
+      {
+        "id": "E02",
+        "score": 0.14
+      },
+      {
+        "id": "E03",
+        "score": 0.19
+      },
+      {
+        "id": "E04",
+        "score": 0.24
+      },
+      {
+        "id": "E05",
+        "score": 0.32
+      },
+      {
+        "id": "E06",
+        "score": 0.38
+      },
+      {
+        "id": "E07",
+        "score": 0.44
+      },
+      {
+        "id": "E08",
+        "score": 0.51
+      },
+      {
+        "id": "E09",
+        "score": 0.58
+      },
+      {
+        "id": "E10",
+        "score": 0.66
+      },
+      {
+        "id": "E11",
+        "score": 0.74
+      },
+      {
+        "id": "E12",
+        "score": 0.86
+      }
+    ],
+    "current": [
+      {
+        "id": "E01",
+        "score": 0.1
+      },
+      {
+        "id": "E02",
+        "score": 0.18
+      },
+      {
+        "id": "E03",
+        "score": 0.17
+      },
+      {
+        "id": "E04",
+        "score": 0.31
+      },
+      {
+        "id": "E05",
+        "score": 0.29
+      },
+      {
+        "id": "E06",
+        "score": 0.47
+      },
+      {
+        "id": "E07",
+        "score": 0.41
+      },
+      {
+        "id": "E08",
+        "score": 0.56
+      },
+      {
+        "id": "E09",
+        "score": 0.63
+      },
+      {
+        "id": "E10",
+        "score": 0.61
+      },
+      {
+        "id": "E11",
+        "score": 0.82
+      },
+      {
+        "id": "E12",
+        "score": 0.9
+      }
+    ],
+    "band_edges": [
+      0.0,
+      0.2,
+      0.4,
+      0.6,
+      0.8,
+      1.0
+    ],
+    "higher_score_higher_risk": true,
+    "baseline_observed_at": "2025-01-01T00:00:00Z",
+    "current_observed_at": "2026-01-01T00:00:00Z"
+  },
+  "expected": {
+    "band_edges": [
+      0.0,
+      0.2,
+      0.4,
+      0.6,
+      0.8,
+      1.0
+    ],
+    "matrix": [
+      [
+        3,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        2,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    ],
+    "row_rates": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.6666666666666666,
+        0.3333333333333333,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.6666666666666666,
+        0.3333333333333333,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.5,
+        0.5
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "baseline_band_shares": [
+      0.25,
+      0.25,
+      0.25,
+      0.16666666666666666,
+      0.08333333333333333
+    ],
+    "current_band_shares": [
+      0.25,
+      0.16666666666666666,
+      0.25,
+      0.16666666666666666,
+      0.16666666666666666
+    ],
+    "migrations": [
+      {
+        "id": "E01",
+        "baseline_score": 0.08,
+        "current_score": 0.1,
+        "baseline_band": 1,
+        "current_band": 1,
+        "band_move": 0,
+        "score_change": 0.020000000000000004
+      },
+      {
+        "id": "E02",
+        "baseline_score": 0.14,
+        "current_score": 0.18,
+        "baseline_band": 1,
+        "current_band": 1,
+        "band_move": 0,
+        "score_change": 0.03999999999999998
+      },
+      {
+        "id": "E03",
+        "baseline_score": 0.19,
+        "current_score": 0.17,
+        "baseline_band": 1,
+        "current_band": 1,
+        "band_move": 0,
+        "score_change": -0.01999999999999999
+      },
+      {
+        "id": "E04",
+        "baseline_score": 0.24,
+        "current_score": 0.31,
+        "baseline_band": 2,
+        "current_band": 2,
+        "band_move": 0,
+        "score_change": 0.07
+      },
+      {
+        "id": "E05",
+        "baseline_score": 0.32,
+        "current_score": 0.29,
+        "baseline_band": 2,
+        "current_band": 2,
+        "band_move": 0,
+        "score_change": -0.030000000000000027
+      },
+      {
+        "id": "E06",
+        "baseline_score": 0.38,
+        "current_score": 0.47,
+        "baseline_band": 2,
+        "current_band": 3,
+        "band_move": 1,
+        "score_change": 0.08999999999999997
+      },
+      {
+        "id": "E07",
+        "baseline_score": 0.44,
+        "current_score": 0.41,
+        "baseline_band": 3,
+        "current_band": 3,
+        "band_move": 0,
+        "score_change": -0.030000000000000027
+      },
+      {
+        "id": "E08",
+        "baseline_score": 0.51,
+        "current_score": 0.56,
+        "baseline_band": 3,
+        "current_band": 3,
+        "band_move": 0,
+        "score_change": 0.050000000000000044
+      },
+      {
+        "id": "E09",
+        "baseline_score": 0.58,
+        "current_score": 0.63,
+        "baseline_band": 3,
+        "current_band": 4,
+        "band_move": 1,
+        "score_change": 0.050000000000000044
+      },
+      {
+        "id": "E10",
+        "baseline_score": 0.66,
+        "current_score": 0.61,
+        "baseline_band": 4,
+        "current_band": 4,
+        "band_move": 0,
+        "score_change": -0.050000000000000044
+      },
+      {
+        "id": "E11",
+        "baseline_score": 0.74,
+        "current_score": 0.82,
+        "baseline_band": 4,
+        "current_band": 5,
+        "band_move": 1,
+        "score_change": 0.07999999999999996
+      },
+      {
+        "id": "E12",
+        "baseline_score": 0.86,
+        "current_score": 0.9,
+        "baseline_band": 5,
+        "current_band": 5,
+        "band_move": 0,
+        "score_change": 0.040000000000000036
+      }
+    ],
+    "matched_count": 12,
+    "stable_count": 9,
+    "improved_count": 0,
+    "worsened_count": 3,
+    "stable_rate": 0.75,
+    "mean_band_move": 0.25,
+    "mean_absolute_band_move": 0.25,
+    "mean_score_change": 0.02583333333333333,
+    "mean_absolute_score_change": 0.04750000000000001,
+    "band_distribution_total_variation": 0.08333333333333334,
+    "state": "migration-evaluated"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "topic_id": "D00-F11-A09",
+  "source": "synthetic author-derived verification case",
+  "input": {
+    "returns": [
+      0.01,
+      -0.02,
+      0.015,
+      -0.01,
+      0.03
+    ],
+    "benchmark": [
+      0.008,
+      -0.01,
+      0.012,
+      -0.006,
+      0.02
+    ],
+    "frequency": 252,
+    "target": 0,
+    "confidence": 0.8,
+    "riskFree": 0.0001,
+    "weights": [
+      0.6,
+      0.4
+    ],
+    "covarianceMatrix": [
+      [
+        0.04,
+        0.01
+      ],
+      [
+        0.01,
+        0.09
+      ]
+    ]
+  },
+  "expected": {
+    "activeReturns": [
+      0.002,
+      -0.01,
+      0.002999999999999999,
+      -0.004,
+      0.009999999999999998
+    ],
+    "averageActiveReturn": 0.0001999999999999995
+  }
+}

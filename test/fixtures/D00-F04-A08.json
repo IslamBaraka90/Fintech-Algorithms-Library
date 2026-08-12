@@ -1,0 +1,36 @@
+{
+  "topic_id": "D00-F04-A08",
+  "source": "synthetic author-derived verification case",
+  "input": {
+    "values": [
+      1,
+      2,
+      2,
+      4,
+      9
+    ],
+    "weights": [
+      1,
+      1,
+      2,
+      1,
+      1
+    ],
+    "trimProportion": 0.2,
+    "bins": 4
+  },
+  "expected": {
+    "frequency": {
+      "1": 1,
+      "2": 2,
+      "4": 1,
+      "9": 1
+    },
+    "relativeFrequency": {
+      "1": 0.2,
+      "2": 0.4,
+      "4": 0.2,
+      "9": 0.2
+    }
+  }
+}

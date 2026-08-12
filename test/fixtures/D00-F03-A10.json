@@ -1,0 +1,79 @@
+{
+  "topic_id": "D00-F03-A10",
+  "source": "synthetic author-derived verification case",
+  "input": {
+    "rows": [
+      {
+        "entity": "A",
+        "timestamp": "2025-01-01T00:00:00Z",
+        "value": 10,
+        "rating": "low"
+      },
+      {
+        "entity": "A",
+        "timestamp": "2025-01-02T00:00:00Z",
+        "value": null,
+        "rating": "medium",
+        "censored": true
+      },
+      {
+        "entity": "B",
+        "timestamp": "2025-01-01T00:00:00Z",
+        "value": 12,
+        "rating": "high"
+      },
+      {
+        "entity": "B",
+        "timestamp": "2025-01-02T00:00:00Z",
+        "value": 13,
+        "rating": "high"
+      }
+    ],
+    "ordinalColumns": [
+      "rating"
+    ],
+    "populationSize": 100,
+    "frameSize": 80,
+    "keyColumns": [
+      "entity",
+      "timestamp"
+    ],
+    "truncationRule": "values below 5 excluded",
+    "measurements": [
+      9.9,
+      10.0,
+      10.1,
+      10.0
+    ],
+    "referenceValue": 10,
+    "vintages": [
+      {
+        "availableAt": "2025-02-01T00:00:00Z",
+        "value": 100
+      },
+      {
+        "availableAt": "2025-03-01T00:00:00Z",
+        "value": 102
+      },
+      {
+        "availableAt": "2025-04-01T00:00:00Z",
+        "value": 101
+      }
+    ],
+    "asOf": "2025-03-15T00:00:00Z",
+    "provenance": {
+      "source": "teaching.csv",
+      "owner": "Fintech Builder",
+      "license": "CC-BY-4.0",
+      "retrievedAt": "2026-08-10",
+      "transformations": [
+        "parse",
+        "validate"
+      ]
+    }
+  },
+  "expected": {
+    "complete": true,
+    "missingFields": []
+  }
+}

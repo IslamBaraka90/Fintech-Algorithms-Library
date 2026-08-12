@@ -1,0 +1,28 @@
+{
+  "topic_id": "D00-F04-A04",
+  "source": "synthetic author-derived verification case",
+  "input": {
+    "values": [
+      1,
+      2,
+      2,
+      4,
+      9
+    ],
+    "weights": [
+      1,
+      1,
+      2,
+      1,
+      1
+    ],
+    "trimProportion": 0.2,
+    "bins": 4
+  },
+  "expected": {
+    "median": 2.0,
+    "modes": [
+      2.0
+    ]
+  }
+}

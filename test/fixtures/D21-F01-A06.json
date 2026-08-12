@@ -1,0 +1,31 @@
+{
+  "classification": "synthetic teaching input with author-derived arithmetic",
+  "input": {
+    "nimtaavg": -0.015,
+    "tlmta": 0.62,
+    "exretavg": -0.04,
+    "sigma": 0.48,
+    "rsize": -8.5,
+    "cashmta": 0.08,
+    "market_to_book": 1.8,
+    "log_price": 2.3
+  },
+  "expected": {
+    "published_intercept": -9.164,
+    "score_contributions": {
+      "nimtaavg": 0.30396,
+      "tlmta": 0.87792,
+      "exretavg": 0.28516,
+      "sigma": 0.67728,
+      "rsize": 0.3825,
+      "cashmta": -0.17056,
+      "market_to_book": 0.135,
+      "log_price": -0.1334
+    },
+    "failure_log_odds": -6.80614,
+    "distress_probability": 0.00110573352,
+    "state": "published-score-replication",
+    "reason": "chs-table-4-twelve-month-lag-coefficients"
+  },
+  "independent_check": "Each synthetic predictor is multiplied by the Table 4 lag-12 coefficient. The contribution trace plus -9.164 reproduces LPFD exactly; the sigmoid produces a small decimal score probability. No feature or probability is presented as a current issuer observation."
+}

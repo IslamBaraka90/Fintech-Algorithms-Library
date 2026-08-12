@@ -1,0 +1,25 @@
+{
+  "classification": "synthetic teaching input with author-derived arithmetic",
+  "input": {
+    "equity_value": 120.0,
+    "equity_volatility": 0.35,
+    "debt_face_value": 80.0,
+    "risk_free_rate": 0.03,
+    "asset_drift": 0.06,
+    "horizon_years": 1.0,
+    "tolerance": 1e-10,
+    "max_iterations": 200
+  },
+  "expected": {
+    "asset_value": 197.635612721046,
+    "asset_volatility": 0.212513018382,
+    "distance_to_default": 4.431810702245,
+    "physical_default_probability": 4.672252e-06,
+    "risk_neutral_default_probability": 8.907831e-06,
+    "iterations": 2,
+    "residual": 5.5e-11,
+    "state": "converged",
+    "reason": "merton-equity-system-solved"
+  },
+  "independent_check": "The solver starts from equity plus discounted debt, updates V and sigma_V until both equations stabilize, then uses the supplied 6% physical drift for DD. Phi(-DD) and Phi(-d2) are kept separate because they use different measures."
+}

@@ -1,0 +1,32 @@
+{
+  "classification": "synthetic teaching input with author-derived arithmetic",
+  "input": {
+    "intercept": -2.4,
+    "coefficients": [
+      0.8,
+      -0.6,
+      1.1
+    ],
+    "features": [
+      0.5,
+      -0.4,
+      0.2
+    ],
+    "alert_threshold": 0.2
+  },
+  "expected": {
+    "linear_score": -1.54,
+    "feature_contributions": [
+      0.4,
+      0.24,
+      0.22
+    ],
+    "probability_of_default": 0.176535274779,
+    "survival_probability": 0.823464725221,
+    "odds_of_default": 0.214381101427,
+    "alert_threshold": 0.2,
+    "state": "below-alert",
+    "reason": "supplied-logit-score-transformed"
+  },
+  "independent_check": "The contributions are 0.40, 0.24, and 0.22, so z = -1.54. Applying the sigmoid gives PD about 17.65%; survival is about 82.35%, and odds are exp(-1.54). This verifies the transform, not calibration."
+}

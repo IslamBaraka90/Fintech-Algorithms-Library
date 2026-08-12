@@ -1,0 +1,22 @@
+{
+  "classification": "synthetic teaching input with author-derived arithmetic",
+  "input": {
+    "through_the_cycle_pd_value": 0.03,
+    "borrower_log_odds_shift": 0.25,
+    "macro_factor_z": 0.8,
+    "macro_sensitivity": 0.55,
+    "alert_threshold": 0.06
+  },
+  "expected": {
+    "through_the_cycle_pd": 0.03,
+    "baseline_log_odds": -3.476098689835,
+    "borrower_log_odds_shift": 0.25,
+    "macro_log_odds_shift": 0.44,
+    "point_in_time_pd": 0.058080015587,
+    "cycle_uplift": 0.028080015587,
+    "alert_threshold": 0.06,
+    "state": "below-alert",
+    "reason": "declared-log-odds-overlay-not-universal-ifrs-or-regulatory-formula"
+  },
+  "independent_check": "The 3% TTC anchor becomes log-odds, then the borrower adds 0.25 and the stressed macro scenario adds 0.44. The sigmoid of the combined score is the PIT PD; its difference from 3% is reported as cycle uplift."
+}

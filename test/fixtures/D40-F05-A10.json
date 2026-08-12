@@ -1,0 +1,29 @@
+{
+  "synthetic": true,
+  "input": {
+    "observed_events": 3,
+    "trials": 1000,
+    "expected_probability": 0.002,
+    "confidence_level": 0.95,
+    "horizon_start": "2025-01-01T00:00:00Z",
+    "horizon_end": "2026-01-01T00:00:00Z",
+    "knowledge_cutoff": "2026-06-30T00:00:00Z",
+    "sampling_assumption": "independent-bernoulli-approximation"
+  },
+  "expected": {
+    "observed_events": 3,
+    "trials": 1000,
+    "observed_rate": 0.003,
+    "expected_probability": 0.002,
+    "expected_count": 2.0,
+    "confidence_level": 0.95,
+    "z_value": 1.959963984540054,
+    "wilson_center": 0.004901898967320896,
+    "wilson_half_width": 0.0038811150861822775,
+    "wilson_lower": 0.0010207838811386186,
+    "wilson_upper": 0.008783014053503173,
+    "consistency": "inside-interval",
+    "sampling_assumption": "independent-bernoulli-approximation",
+    "state": "rare-event-evaluated"
+  }
+}

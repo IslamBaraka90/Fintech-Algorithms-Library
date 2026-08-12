@@ -1,0 +1,17 @@
+{
+  "topic_id": "D00-F05-A10",
+  "source": "synthetic author-derived verification case",
+  "input": {
+    "values": [
+      1,
+      2,
+      2,
+      4,
+      9
+    ]
+  },
+  "expected": {
+    "kurtosis": 2.6779621076444537,
+    "excessKurtosis": -0.32203789235554625
+  }
+}

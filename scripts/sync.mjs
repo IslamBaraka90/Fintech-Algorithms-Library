@@ -134,7 +134,10 @@ const TOPIC_DIR_RE = /^D\d{2}-F\d{2}-A\d{2}-/;
  * is printed in the run summary so this never silently swallows work.
  */
 const DOMAINS_NOT_READY = {
-  D18: "articles still being written",
+  // All 52 articles are written; 11 of 52 topics have a worked example. Holding
+  // the domain until the rest are captured, so no valuation subpath ships with a
+  // bare docs page.
+  D18: "worked examples captured for 11 of 52 topics",
 };
 
 function listDirs(dir) {
@@ -298,8 +301,10 @@ const REVIEWED_SHARED_SURFACES = new Set([
   "D12-F04-A01,D12-F04-A02,D12-F04-A03,D12-F04-A04,D12-F04-A05,D12-F04-A06",
   "D13-F01-A01,D13-F01-A02,D13-F01-A03,D13-F01-A04",
   "D13-F02-A01,D13-F02-A02,D13-F02-A03,D13-F02-A04,D13-F02-A05",
+  "D21-F01-A01,D21-F01-A02,D21-F01-A03,D21-F01-A04,D21-F01-A05,D21-F01-A06,D21-F01-A07",
   "D25-F01-A01,D25-F01-A02,D25-F01-A03,D25-F01-A04,D25-F01-A05",
   "D25-F02-A01,D25-F02-A02,D25-F02-A03,D25-F02-A04,D25-F02-A05",
+  "D40-F05-A01,D40-F05-A02,D40-F05-A03,D40-F05-A04,D40-F05-A05,D40-F05-A06,D40-F05-A07,D40-F05-A08,D40-F05-A09,D40-F05-A10",
 ]);
 
 const ENTRY_OVERRIDES = {
@@ -490,6 +495,116 @@ const BANNER = (source) =>
   `// Re-run \`npm run sync\` after changing the catalog implementation.\n`;
 
 // ---------------------------------------------------------------------------
+// Shared modules and the purity gate
+//
+// Two rules the catalog cannot enforce for us, both learned from real damage:
+//
+// 1. A topic implementation must be SELF-CONTAINED. Only the topic's own file is
+//    copied into the package, so `import "../../../shared/typescript/foo.ts"`
+//    compiles in the catalog and fails in the package. Rather than hardcoding
+//    one case per engine — which is how indexEngine and d00Engine were handled,
+//    and which silently broke the moment a third appeared — any relative import
+//    that climbs out of the topic directory is vendored into src/_shared/ once
+//    and the specifier rewritten.
+//
+// 2. The package is RUNTIME-AGNOSTIC. No `node:` builtins, ever. The catalog
+//    contains reference adapters that shell out to Python via
+//    `execFileSync` — legitimate for fixture generation and parity testing, and
+//    categorically not a TypeScript implementation of an algorithm. They import
+//    `node:child_process`, so they are refused here rather than shipped to
+//    browsers and edge runtimes that cannot run them.
+// ---------------------------------------------------------------------------
+
+/** Relative specifier in an import/export ... from "..." clause. */
+const RELATIVE_SPECIFIER_RE = /((?:from|import)\s*)(["'])(\.{1,2}\/[^"']+)\2/g;
+const NODE_BUILTIN_RE = /(?:from|import)\s*["']node:([^"']+)["']/g;
+
+/** Catalog path -> { name, source } for every module hoisted into src/_shared/. */
+const vendoredModules = new Map();
+const vendoredNames = new Set();
+
+function nodeBuiltinsIn(source) {
+  return [...new Set([...source.matchAll(NODE_BUILTIN_RE)].map((m) => `node:${m[1]}`))];
+}
+
+/** Resolve a specifier to a file on disk, mapping the catalog's `.js` to `.ts`. */
+function resolveSpecifier(fromDir, spec) {
+  const direct = resolve(fromDir, spec);
+  const candidates = spec.endsWith(".js")
+    ? [`${direct.slice(0, -3)}.ts`, direct]
+    : spec.endsWith(".ts")
+      ? [direct]
+      : [`${direct}.ts`, join(direct, "index.ts"), direct];
+  return candidates.find((c) => existsSync(c)) ?? null;
+}
+
+function vendor(absPath) {
+  const existing = vendoredModules.get(absPath);
+  if (existing) return existing;
+  const base = basename(absPath).replace(/\.[tj]s$/, "");
+  let name = base;
+  let n = 2;
+  while (vendoredNames.has(name)) name = `${base}${n++}`;
+  vendoredNames.add(name);
+  const record = { name, path: absPath, source: readFileSync(absPath, "utf8") };
+  vendoredModules.set(absPath, record);
+  return record;
+}
+
+/**
+ * Rewrite a topic's escaping imports to vendored `src/_shared/` modules.
+ *
+ * Returns `{ impure }` instead when the implementation — or anything it pulls in
+ * — reaches for a `node:` builtin. `topicId` is only used to make the refusal
+ * message name the topic.
+ */
+function resolveSharedImports(source, implFile, topicDir, topicId) {
+  const own = nodeBuiltinsIn(source);
+  if (own.length) {
+    return { impure: `imports ${own.join(", ")} — the package is runtime-agnostic` };
+  }
+
+  const implDir = dirname(implFile);
+  const pending = [];
+  let impure = null;
+
+  const rewritten = source.replace(RELATIVE_SPECIFIER_RE, (whole, keyword, quote, spec) => {
+    const abs = resolveSpecifier(implDir, spec);
+    // Unresolvable, or resolves inside the topic's own directory: leave it be.
+    // The former is the catalog's problem and shows up as a compile error; the
+    // latter is a sibling file that travels with the topic.
+    if (!abs) return whole;
+    if (!relativeEscapes(topicDir, abs)) return whole;
+
+    const shared = readFileSync(abs, "utf8");
+    const builtins = nodeBuiltinsIn(shared);
+    if (builtins.length) {
+      impure ??= `depends on ${basename(abs)}, which imports ${builtins.join(", ")} — the package is runtime-agnostic`;
+      return whole;
+    }
+    pending.push(abs);
+    return `${keyword}${quote}../../../_shared/__VENDOR__${pending.length - 1}__.ts${quote}`;
+  });
+
+  if (impure) return { impure };
+  if (!pending.length) return { source };
+
+  // Vendoring is deferred to here so a refusal above leaves src/_shared/ clean.
+  let out = rewritten;
+  pending.forEach((abs, i) => {
+    out = out.replace(`__VENDOR__${i}__`, vendor(abs).name);
+  });
+  return { source: out };
+}
+
+/** True when `abs` lies outside `topicDir`. */
+function relativeEscapes(topicDir, abs) {
+  const root = resolve(topicDir);
+  const target = resolve(abs);
+  return !target.startsWith(root + "\\") && !target.startsWith(root + "/");
+}
+
+// ---------------------------------------------------------------------------
 // Build
 // ---------------------------------------------------------------------------
 
@@ -522,11 +637,16 @@ for (const found of discoverTopics()) {
 
   let source = readFileSync(implFile, "utf8");
 
-  // The 40 index-engine topics share one helper; vendor it under src/_shared/.
-  source = source.replace(
-    /(["'])(?:\.\.\/)+shared\/typescript\/indexEngine\.ts\1/g,
-    '"../../../_shared/indexEngine.ts"',
-  );
+  // A topic implementation must be self-contained: only the topic's own file is
+  // copied, so a relative import that climbs out of the topic directory points
+  // at a family- or catalog-level module that would not exist in the package.
+  // Those modules are vendored into src/_shared/ and the specifier rewritten.
+  const resolved = resolveSharedImports(source, implFile, found.dir, meta.id);
+  if (resolved.impure) {
+    skipped.push({ topic: found.topicDir, reason: resolved.impure });
+    continue;
+  }
+  source = resolved.source;
 
   const { functions, allNames } = analyse(source);
   const entry = chooseEntry(functions, topicSlug, found.dir, meta.id);
@@ -804,7 +924,9 @@ for (const item of pendingImpls) {
 }
 
 const sharedNames = new Map(); // sourceKey -> file name under src/_shared/
-const takenNames = new Set(["indexEngine"]);
+// Hoisted bodies share src/_shared/ with the vendored modules, so they must not
+// claim a name one of those already took.
+const takenNames = new Set(vendoredNames);
 let hoisted = 0;
 let copiesSaved = 0;
 
@@ -839,18 +961,18 @@ for (const item of pendingImpls) {
   }
 }
 
-// --- vendored shared engine -------------------------------------------------
+// --- vendored shared modules ------------------------------------------------
+//
+// Every family- or catalog-level module a topic imported, hoisted once. This
+// replaces the per-engine special cases that used to live here: indexEngine and
+// d00Engine now arrive through the same path as everything else, so the next
+// shared module needs no change to this script.
 
-const sharedEngine = join(DOMAINS_DIR, "D03-index-and-benchmark-engineering", "shared", "typescript", "indexEngine.ts");
-if (existsSync(sharedEngine)) {
+for (const { name, path, source } of vendoredModules.values()) {
   emit(
-    "src/_shared/indexEngine.ts",
-    BANNER("algorithms/domains/D03-index-and-benchmark-engineering/shared/typescript/indexEngine.ts") +
-      "\n" +
-      readFileSync(sharedEngine, "utf8"),
+    `src/_shared/${name}.ts`,
+    BANNER(path.split(/[\\/]/).slice(-6).join("/")) + "\n" + source,
   );
-} else {
-  warnings.push("shared indexEngine.ts not found — 40 index topics will fail to compile");
 }
 
 // --- registry ---------------------------------------------------------------

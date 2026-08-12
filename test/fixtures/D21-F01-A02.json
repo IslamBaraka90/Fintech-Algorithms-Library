@@ -1,0 +1,31 @@
+{
+  "classification": "synthetic teaching input with author-derived arithmetic",
+  "input": {
+    "intercept": -1.5,
+    "coefficients": [
+      0.7,
+      -0.5,
+      0.9
+    ],
+    "features": [
+      0.6,
+      -0.2,
+      0.3
+    ],
+    "alert_threshold": 0.25
+  },
+  "expected": {
+    "latent_score": -0.71,
+    "feature_contributions": [
+      0.42,
+      0.1,
+      0.27
+    ],
+    "probability_of_default": 0.23885206809,
+    "survival_probability": 0.76114793191,
+    "alert_threshold": 0.25,
+    "state": "below-alert",
+    "reason": "supplied-probit-score-transformed"
+  },
+  "independent_check": "The contributions 0.42, 0.10, and 0.27 produce z = -0.71. Phi(-0.71) is about 23.89%, below the declared 25% alert. The numerical result is specific to the supplied probit scale."
+}

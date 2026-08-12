@@ -1,0 +1,30 @@
+{
+  "topic_id": "D00-F02-A09",
+  "source": "synthetic author-derived verification case",
+  "input": {
+    "principal": 1000,
+    "rate": 0.05,
+    "periods": 3,
+    "compoundsPerPeriod": 12,
+    "futureValue": 1200,
+    "cashFlows": [
+      -1000,
+      400,
+      400,
+      400
+    ],
+    "startValue": 100,
+    "endValue": 110,
+    "returns": [
+      0.1,
+      -0.05,
+      0.08
+    ],
+    "frequency": 12,
+    "periodicReturn": 0.01
+  },
+  "expected": {
+    "arithmeticAverage": 0.043333333333333335,
+    "geometricAverage": 0.04115010832757027
+  }
+}

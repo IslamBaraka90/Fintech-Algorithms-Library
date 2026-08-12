@@ -1,0 +1,76 @@
+{
+  "topic_id": "D00-F12-A10",
+  "source": "synthetic author-derived verification case",
+  "input": {
+    "values": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "floatingValue": 0.1,
+    "maxSafeMagnitude": 1.7976931348623157e+308,
+    "window": 3,
+    "rawValues": [
+      1,
+      null,
+      2,
+      "bad",
+      3
+    ],
+    "invalidPolicy": "drop-and-report",
+    "seed": 42,
+    "sampleCount": 5,
+    "leftVector": [
+      {
+        "index": "A",
+        "value": 1
+      },
+      {
+        "index": "B",
+        "value": 2
+      }
+    ],
+    "rightVector": [
+      {
+        "index": "B",
+        "value": 20
+      },
+      {
+        "index": "C",
+        "value": 30
+      }
+    ],
+    "train": [
+      10,
+      12,
+      14,
+      16
+    ],
+    "test": [
+      18,
+      20
+    ],
+    "actual": [
+      1,
+      2.0000001,
+      3
+    ],
+    "expected": [
+      1,
+      2,
+      3
+    ],
+    "tolerance": 1e-06,
+    "auditInputs": {
+      "symbol": "DEMO",
+      "rows": 5
+    },
+    "method": "sample-mean",
+    "version": "1.0.0"
+  },
+  "expected": {
+    "metadataComplete": true
+  }
+}

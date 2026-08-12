@@ -1,0 +1,47 @@
+{
+  "classification": "synthetic teaching input with author-derived arithmetic",
+  "input": {
+    "annual_obligors": [
+      1000,
+      1050,
+      980,
+      1100,
+      1080,
+      1120,
+      1150,
+      1180
+    ],
+    "annual_defaults": [
+      8,
+      11,
+      20,
+      15,
+      7,
+      25,
+      18,
+      10
+    ],
+    "current_year_index": 5,
+    "minimum_years": 5
+  },
+  "expected": {
+    "annual_default_rates": [
+      0.008,
+      0.010476190476,
+      0.020408163265,
+      0.013636363636,
+      0.006481481481,
+      0.022321428571,
+      0.015652173913,
+      0.008474576271
+    ],
+    "through_the_cycle_pd": 0.013181297202,
+    "pooled_default_rate": 0.013163972286,
+    "current_observed_default_rate": 0.022321428571,
+    "cycle_gap": 0.00914013137,
+    "observation_years": 8,
+    "state": "current-above-long-run",
+    "reason": "simple-average-of-annual-one-year-rates"
+  },
+  "independent_check": "Each year's defaults are divided by its own start-of-year obligor count, then the eight rates are averaged. The selected sixth year has 25/1120, above the long-run mean, so the cycle gap is positive; pooling is shown separately."
+}
