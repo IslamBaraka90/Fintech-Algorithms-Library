@@ -64,605 +64,605 @@
       "import": "./dist/index.js",
       "require": "./dist/index.js"
     },
-    "./financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/variables-constants-expressions-and-equations": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/variables-constants-expressions-and-equations/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/variables-constants-expressions-and-equations/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/variables-constants-expressions-and-equations/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/functions-domains-ranges-and-graphs": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/functions-domains-ranges-and-graphs/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/functions-domains-ranges-and-graphs/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/functions-domains-ranges-and-graphs/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/ratios-proportions-rates-and-percentages": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/ratios-proportions-rates-and-percentages/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/ratios-proportions-rates-and-percentages/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/ratios-proportions-rates-and-percentages/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/percentage-change-percentage-points-and-basis-points": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/percentage-change-percentage-points-and-basis-points/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/percentage-change-percentage-points-and-basis-points/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/percentage-change-percentage-points-and-basis-points/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/exponents-roots-and-logarithms": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/exponents-roots-and-logarithms/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/exponents-roots-and-logarithms/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/exponents-roots-and-logarithms/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/summation-products-and-index-notation": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/summation-products-and-index-notation/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/summation-products-and-index-notation/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/summation-products-and-index-notation/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/linear-equations-and-systems": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/linear-equations-and-systems/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/linear-equations-and-systems/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/linear-equations-and-systems/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/inequalities-bounds-and-constraints": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/inequalities-bounds-and-constraints/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/inequalities-bounds-and-constraints/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/inequalities-bounds-and-constraints/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/units-dimensions-scale-and-normalization": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/units-dimensions-scale-and-normalization/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/units-dimensions-scale-and-normalization/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/units-dimensions-scale-and-normalization/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/rounding-precision-tolerance-and-significant-digits": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/rounding-precision-tolerance-and-significant-digits/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/rounding-precision-tolerance-and-significant-digits/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/mathematical-language-and-quantitative-reasoning/rounding-precision-tolerance-and-significant-digits/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/simple-interest": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/simple-interest/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/simple-interest/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/simple-interest/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/compound-interest": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/compound-interest/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/compound-interest/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/compound-interest/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/present-future-value": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/present-future-value/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/present-future-value/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/present-future-value/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/discount-factors": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/discount-factors/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/discount-factors/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/discount-factors/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/cashflow-npv": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/cashflow-npv/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/cashflow-npv/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/cashflow-npv/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/simple-return": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/simple-return/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/simple-return/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/simple-return/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/log-return": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/log-return/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/log-return/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/log-return/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/holding-period-return": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/holding-period-return/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/holding-period-return/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/holding-period-return/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/arithmetic-geometric-return": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/arithmetic-geometric-return/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/arithmetic-geometric-return/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/arithmetic-geometric-return/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/annualization-deannualization": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/annualization-deannualization/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/annualization-deannualization/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/financial-arithmetic-time-value-and-returns/annualization-deannualization/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/observations-entities-variables-and-datasets": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/observations-entities-variables-and-datasets/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/observations-entities-variables-and-datasets/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/observations-entities-variables-and-datasets/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/numeric-categorical-ordinal-and-binary-variables": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/numeric-categorical-ordinal-and-binary-variables/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/numeric-categorical-ordinal-and-binary-variables/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/numeric-categorical-ordinal-and-binary-variables/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/population-sample-census-and-sampling-frame": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/population-sample-census-and-sampling-frame/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/population-sample-census-and-sampling-frame/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/population-sample-census-and-sampling-frame/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/cross-sectional-time-series-panel-and-event-data": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/cross-sectional-time-series-panel-and-event-data/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/cross-sectional-time-series-panel-and-event-data/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/cross-sectional-time-series-panel-and-event-data/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/identifiers-keys-joins-and-data-grain": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/identifiers-keys-joins-and-data-grain/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/identifiers-keys-joins-and-data-grain/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/identifiers-keys-joins-and-data-grain/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/timestamps-time-zones-calendars-and-observation-time": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/timestamps-time-zones-calendars-and-observation-time/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/timestamps-time-zones-calendars-and-observation-time/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/timestamps-time-zones-calendars-and-observation-time/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/missing-nonfinite-censored-and-truncated-values": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/missing-nonfinite-censored-and-truncated-values/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/missing-nonfinite-censored-and-truncated-values/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/missing-nonfinite-censored-and-truncated-values/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/measurement-error-resolution-accuracy-and-precision": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/measurement-error-resolution-accuracy-and-precision/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/measurement-error-resolution-accuracy-and-precision/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/measurement-error-resolution-accuracy-and-precision/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/revisions-vintages-and-point-in-time-availability": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/revisions-vintages-and-point-in-time-availability/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/revisions-vintages-and-point-in-time-availability/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/revisions-vintages-and-point-in-time-availability/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/data-provenance-lineage-ownership-and-licensing": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/data-provenance-lineage-ownership-and-licensing/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/data-provenance-lineage-ownership-and-licensing/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/data-variables-samples-and-measurement/data-provenance-lineage-ownership-and-licensing/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/count-sum-minimum-maximum-and-range": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/count-sum-minimum-maximum-and-range/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/count-sum-minimum-maximum-and-range/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/count-sum-minimum-maximum-and-range/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/arithmetic-mean": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/arithmetic-mean/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/arithmetic-mean/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/arithmetic-mean/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/weighted-mean": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/weighted-mean/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/weighted-mean/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/weighted-mean/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/median-and-mode": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/median-and-mode/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/median-and-mode/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/median-and-mode/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/trimmed-and-winsorized-means": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/trimmed-and-winsorized-means/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/trimmed-and-winsorized-means/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/trimmed-and-winsorized-means/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/percentiles-quantiles-and-quartiles": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/percentiles-quantiles-and-quartiles/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/percentiles-quantiles-and-quartiles/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/percentiles-quantiles-and-quartiles/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/ranks-ties-and-percentile-rank": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/ranks-ties-and-percentile-rank/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/ranks-ties-and-percentile-rank/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/ranks-ties-and-percentile-rank/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/frequency-tables-and-relative-frequency": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/frequency-tables-and-relative-frequency/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/frequency-tables-and-relative-frequency/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/frequency-tables-and-relative-frequency/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/histograms-and-empirical-distribution-functions": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/histograms-and-empirical-distribution-functions/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/histograms-and-empirical-distribution-functions/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/histograms-and-empirical-distribution-functions/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/five-number-summary-and-box-plot": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/five-number-summary-and-box-plot/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/five-number-summary-and-box-plot/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/location-ranking-and-exploratory-summaries/five-number-summary-and-box-plot/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/deviation-absolute-deviation-and-squared-deviation": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/deviation-absolute-deviation-and-squared-deviation/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/deviation-absolute-deviation-and-squared-deviation/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/deviation-absolute-deviation-and-squared-deviation/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/range-and-interquartile-range": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/range-and-interquartile-range/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/range-and-interquartile-range/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/range-and-interquartile-range/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/mean-absolute-deviation": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/mean-absolute-deviation/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/mean-absolute-deviation/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/mean-absolute-deviation/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/median-absolute-deviation": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/median-absolute-deviation/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/median-absolute-deviation/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/median-absolute-deviation/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/population-and-sample-variance": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/population-and-sample-variance/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/population-and-sample-variance/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/population-and-sample-variance/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/population-and-sample-standard-deviation": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/population-and-sample-standard-deviation/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/population-and-sample-standard-deviation/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/population-and-sample-standard-deviation/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/coefficient-of-variation-and-scale-comparability": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/coefficient-of-variation-and-scale-comparability/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/coefficient-of-variation-and-scale-comparability/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/coefficient-of-variation-and-scale-comparability/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/z-score-robust-z-score-and-standardization": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/z-score-robust-z-score-and-standardization/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/z-score-robust-z-score-and-standardization/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/z-score-robust-z-score-and-standardization/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/skewness-and-tail-asymmetry": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/skewness-and-tail-asymmetry/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/skewness-and-tail-asymmetry/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/skewness-and-tail-asymmetry/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/kurtosis-excess-kurtosis-and-tail-weight": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/kurtosis-excess-kurtosis-and-tail-weight/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/kurtosis-excess-kurtosis-and-tail-weight/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/dispersion-shape-and-robust-statistics/kurtosis-excess-kurtosis-and-tail-weight/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/experiments-outcomes-sample-spaces-and-events": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/experiments-outcomes-sample-spaces-and-events/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/experiments-outcomes-sample-spaces-and-events/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/experiments-outcomes-sample-spaces-and-events/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/probability-rules-complements-unions-and-intersections": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/probability-rules-complements-unions-and-intersections/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/probability-rules-complements-unions-and-intersections/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/probability-rules-complements-unions-and-intersections/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/conditional-probability": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/conditional-probability/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/conditional-probability/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/conditional-probability/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/independence-and-dependence": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/independence-and-dependence/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/independence-and-dependence/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/independence-and-dependence/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/bayes-theorem-and-base-rates": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/bayes-theorem-and-base-rates/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/bayes-theorem-and-base-rates/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/bayes-theorem-and-base-rates/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/discrete-and-continuous-random-variables": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/discrete-and-continuous-random-variables/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/discrete-and-continuous-random-variables/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/discrete-and-continuous-random-variables/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/expected-value": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/expected-value/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/expected-value/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/expected-value/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/variance-moments-and-moment-generating-intuition": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/variance-moments-and-moment-generating-intuition/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/variance-moments-and-moment-generating-intuition/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/variance-moments-and-moment-generating-intuition/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/joint-marginal-and-conditional-distributions": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/joint-marginal-and-conditional-distributions/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/joint-marginal-and-conditional-distributions/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/joint-marginal-and-conditional-distributions/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/covariance-and-correlation-of-random-variables": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/covariance-and-correlation-of-random-variables/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/covariance-and-correlation-of-random-variables/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/probability-and-random-variables/covariance-and-correlation-of-random-variables/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/pmf-pdf-cdf-survival-and-quantile-functions": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/pmf-pdf-cdf-survival-and-quantile-functions/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/pmf-pdf-cdf-survival-and-quantile-functions/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/pmf-pdf-cdf-survival-and-quantile-functions/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/bernoulli-and-binomial-distributions": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/bernoulli-and-binomial-distributions/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/bernoulli-and-binomial-distributions/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/bernoulli-and-binomial-distributions/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/poisson-distribution-and-event-counts": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/poisson-distribution-and-event-counts/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/poisson-distribution-and-event-counts/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/poisson-distribution-and-event-counts/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/uniform-distribution-and-random-sampling": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/uniform-distribution-and-random-sampling/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/uniform-distribution-and-random-sampling/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/uniform-distribution-and-random-sampling/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/normal-distribution-and-standard-normal": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/normal-distribution-and-standard-normal/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/normal-distribution-and-standard-normal/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/normal-distribution-and-standard-normal/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/lognormal-distribution-and-positive-quantities": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/lognormal-distribution-and-positive-quantities/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/lognormal-distribution-and-positive-quantities/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/lognormal-distribution-and-positive-quantities/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/student-t-distribution-and-heavy-tails": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/student-t-distribution-and-heavy-tails/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/student-t-distribution-and-heavy-tails/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/student-t-distribution-and-heavy-tails/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/exponential-gamma-and-weibull-waiting-time-models": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/exponential-gamma-and-weibull-waiting-time-models/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/exponential-gamma-and-weibull-waiting-time-models/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/exponential-gamma-and-weibull-waiting-time-models/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/mixture-distributions-multimodality-and-fat-tails": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/mixture-distributions-multimodality-and-fat-tails/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/mixture-distributions-multimodality-and-fat-tails/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/mixture-distributions-multimodality-and-fat-tails/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/random-sampling-and-monte-carlo-intuition": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/random-sampling-and-monte-carlo-intuition/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/random-sampling-and-monte-carlo-intuition/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/probability-distributions-and-simulation-basics/random-sampling-and-monte-carlo-intuition/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/parameters-statistics-estimands-and-estimators": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/parameters-statistics-estimands-and-estimators/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/parameters-statistics-estimands-and-estimators/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/parameters-statistics-estimands-and-estimators/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/sampling-distributions": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/sampling-distributions/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/sampling-distributions/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/sampling-distributions/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/estimator-bias-consistency-efficiency-and-robustness": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/estimator-bias-consistency-efficiency-and-robustness/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/estimator-bias-consistency-efficiency-and-robustness/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/estimator-bias-consistency-efficiency-and-robustness/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/law-of-large-numbers": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/law-of-large-numbers/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/law-of-large-numbers/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/law-of-large-numbers/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/central-limit-theorem": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/central-limit-theorem/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/central-limit-theorem/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/central-limit-theorem/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/standard-error": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/standard-error/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/standard-error/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/standard-error/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/confidence-intervals-and-coverage": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/confidence-intervals-and-coverage/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/confidence-intervals-and-coverage/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/confidence-intervals-and-coverage/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/null-and-alternative-hypotheses": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/null-and-alternative-hypotheses/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/null-and-alternative-hypotheses/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/null-and-alternative-hypotheses/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/p-values-significance-type-i-ii-errors-and-power": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/p-values-significance-type-i-ii-errors-and-power/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/p-values-significance-type-i-ii-errors-and-power/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/p-values-significance-type-i-ii-errors-and-power/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/effect-size-practical-significance-and-multiple-comparisons": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/effect-size-practical-significance-and-multiple-comparisons/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/effect-size-practical-significance-and-multiple-comparisons/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/sampling-estimation-and-statistical-inference/effect-size-practical-significance-and-multiple-comparisons/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/scatter-plots-association-and-nonlinear-patterns": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/scatter-plots-association-and-nonlinear-patterns/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/scatter-plots-association-and-nonlinear-patterns/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/scatter-plots-association-and-nonlinear-patterns/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/sample-covariance-calculation-and-interpretation": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/sample-covariance-calculation-and-interpretation/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/sample-covariance-calculation-and-interpretation/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/sample-covariance-calculation-and-interpretation/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/pearson-correlation-calculation-and-interpretation": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/pearson-correlation-calculation-and-interpretation/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/pearson-correlation-calculation-and-interpretation/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/pearson-correlation-calculation-and-interpretation/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/spearman-rank-correlation-and-kendall-tau": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/spearman-rank-correlation-and-kendall-tau/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/spearman-rank-correlation-and-kendall-tau/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/spearman-rank-correlation-and-kendall-tau/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/correlation-causation-confounding-and-spurious-relationships": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/correlation-causation-confounding-and-spurious-relationships/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/correlation-causation-confounding-and-spurious-relationships/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/correlation-causation-confounding-and-spurious-relationships/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/simple-ordinary-least-squares-regression": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/simple-ordinary-least-squares-regression/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/simple-ordinary-least-squares-regression/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/simple-ordinary-least-squares-regression/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/intercepts-slopes-coefficients-and-predictions": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/intercepts-slopes-coefficients-and-predictions/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/intercepts-slopes-coefficients-and-predictions/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/intercepts-slopes-coefficients-and-predictions/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/residuals-mae-mse-and-rmse": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/residuals-mae-mse-and-rmse/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/residuals-mae-mse-and-rmse/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/residuals-mae-mse-and-rmse/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/r-squared-and-adjusted-r-squared": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/r-squared-and-adjusted-r-squared/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/r-squared-and-adjusted-r-squared/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/r-squared-and-adjusted-r-squared/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/regression-assumptions-heteroskedasticity-and-multicollinearity": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/regression-assumptions-heteroskedasticity-and-multicollinearity/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/regression-assumptions-heteroskedasticity-and-multicollinearity/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/dependence-regression-and-model-foundations/regression-assumptions-heteroskedasticity-and-multicollinearity/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/time-order-frequency-regularity-and-financial-calendars": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/time-order-frequency-regularity-and-financial-calendars/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/time-order-frequency-regularity-and-financial-calendars/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/time-order-frequency-regularity-and-financial-calendars/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/levels-changes-differences-and-returns": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/levels-changes-differences-and-returns/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/levels-changes-differences-and-returns/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/levels-changes-differences-and-returns/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/lags-leads-and-temporal-dependence": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/lags-leads-and-temporal-dependence/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/lags-leads-and-temporal-dependence/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/lags-leads-and-temporal-dependence/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/rolling-and-expanding-windows": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/rolling-and-expanding-windows/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/rolling-and-expanding-windows/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/rolling-and-expanding-windows/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/resampling-aggregation-and-time-alignment": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/resampling-aggregation-and-time-alignment/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/resampling-aggregation-and-time-alignment/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/resampling-aggregation-and-time-alignment/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/trend-seasonality-cycles-and-remainder": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/trend-seasonality-cycles-and-remainder/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/trend-seasonality-cycles-and-remainder/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/trend-seasonality-cycles-and-remainder/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/autocovariance-and-autocorrelation": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/autocovariance-and-autocorrelation/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/autocovariance-and-autocorrelation/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/autocovariance-and-autocorrelation/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/stationarity-and-differencing-intuition": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/stationarity-and-differencing-intuition/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/stationarity-and-differencing-intuition/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/stationarity-and-differencing-intuition/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/smoothing-baselines-and-naive-forecasts": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/smoothing-baselines-and-naive-forecasts/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/smoothing-baselines-and-naive-forecasts/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/smoothing-baselines-and-naive-forecasts/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/look-ahead-leakage-and-time-aware-data-splits": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/look-ahead-leakage-and-time-aware-data-splits/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/look-ahead-leakage-and-time-aware-data-splits/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/financial-time-series-foundations/look-ahead-leakage-and-time-aware-data-splits/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/volatility-and-annualized-volatility": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/volatility-and-annualized-volatility/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/volatility-and-annualized-volatility/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/volatility-and-annualized-volatility/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/downside-deviation-and-target-shortfall": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/downside-deviation-and-target-shortfall/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/downside-deviation-and-target-shortfall/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/downside-deviation-and-target-shortfall/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/drawdown-and-maximum-drawdown": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/drawdown-and-maximum-drawdown/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/drawdown-and-maximum-drawdown/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/drawdown-and-maximum-drawdown/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/loss-distributions-and-loss-quantiles": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/loss-distributions-and-loss-quantiles/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/loss-distributions-and-loss-quantiles/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/loss-distributions-and-loss-quantiles/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/value-at-risk-intuition": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/value-at-risk-intuition/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/value-at-risk-intuition/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/value-at-risk-intuition/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/expected-shortfall-intuition": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/expected-shortfall-intuition/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/expected-shortfall-intuition/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/expected-shortfall-intuition/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/beta-and-market-relative-risk": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/beta-and-market-relative-risk/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/beta-and-market-relative-risk/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/beta-and-market-relative-risk/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/sharpe-sortino-and-information-ratio-intuition": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/sharpe-sortino-and-information-ratio-intuition/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/sharpe-sortino-and-information-ratio-intuition/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/sharpe-sortino-and-information-ratio-intuition/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/active-return-and-tracking-error": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/active-return-and-tracking-error/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/active-return-and-tracking-error/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/active-return-and-tracking-error/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/covariance-matrices-portfolio-variance-and-diversification": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/covariance-matrices-portfolio-variance-and-diversification/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/covariance-matrices-portfolio-variance-and-diversification/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/financial-risk-and-performance-statistics/covariance-matrices-portfolio-variance-and-diversification/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/floating-point-representation-overflow-and-underflow": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/floating-point-representation-overflow-and-underflow/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/floating-point-representation-overflow-and-underflow/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/floating-point-representation-overflow-and-underflow/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/stable-summation-and-mean-calculation": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/stable-summation-and-mean-calculation/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/stable-summation-and-mean-calculation/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/stable-summation-and-mean-calculation/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/stable-online-variance-and-welford-s-algorithm": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/stable-online-variance-and-welford-s-algorithm/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/stable-online-variance-and-welford-s-algorithm/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/stable-online-variance-and-welford-s-algorithm/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/batch-rolling-and-streaming-statistic-equivalence": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/batch-rolling-and-streaming-statistic-equivalence/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/batch-rolling-and-streaming-statistic-equivalence/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/batch-rolling-and-streaming-statistic-equivalence/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/missing-infinite-invalid-and-unsupported-state-policies": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/missing-infinite-invalid-and-unsupported-state-policies/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/missing-infinite-invalid-and-unsupported-state-policies/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/missing-infinite-invalid-and-unsupported-state-policies/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/pseudorandom-numbers-seeds-and-reproducibility": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/pseudorandom-numbers-seeds-and-reproducibility/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/pseudorandom-numbers-seeds-and-reproducibility/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/pseudorandom-numbers-seeds-and-reproducibility/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/vectorization-index-alignment-and-shape-safety": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/vectorization-index-alignment-and-shape-safety/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/vectorization-index-alignment-and-shape-safety/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/vectorization-index-alignment-and-shape-safety/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/leakage-free-fitting-scaling-and-preprocessing": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/leakage-free-fitting-scaling-and-preprocessing/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/leakage-free-fitting-scaling-and-preprocessing/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/leakage-free-fitting-scaling-and-preprocessing/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/fixtures-numerical-tolerances-and-property-tests": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/fixtures-numerical-tolerances-and-property-tests/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/fixtures-numerical-tolerances-and-property-tests/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/fixtures-numerical-tolerances-and-property-tests/index.js"
-    },
-    "./financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/reproducible-analysis-metadata-and-audit-trails": {
-      "types": "./dist/financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/reproducible-analysis-metadata-and-audit-trails/index.d.ts",
-      "import": "./dist/financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/reproducible-analysis-metadata-and-audit-trails/index.js",
-      "require": "./dist/financial-mathematics-statistics-and-data-foundations/statistical-computing-and-reproducibility/reproducible-analysis-metadata-and-audit-trails/index.js"
+    "./foundations/mathematical-language-and-quantitative-reasoning/variables-constants-expressions-and-equations": {
+      "types": "./dist/foundations/mathematical-language-and-quantitative-reasoning/variables-constants-expressions-and-equations/index.d.ts",
+      "import": "./dist/foundations/mathematical-language-and-quantitative-reasoning/variables-constants-expressions-and-equations/index.js",
+      "require": "./dist/foundations/mathematical-language-and-quantitative-reasoning/variables-constants-expressions-and-equations/index.js"
+    },
+    "./foundations/mathematical-language-and-quantitative-reasoning/functions-domains-ranges-and-graphs": {
+      "types": "./dist/foundations/mathematical-language-and-quantitative-reasoning/functions-domains-ranges-and-graphs/index.d.ts",
+      "import": "./dist/foundations/mathematical-language-and-quantitative-reasoning/functions-domains-ranges-and-graphs/index.js",
+      "require": "./dist/foundations/mathematical-language-and-quantitative-reasoning/functions-domains-ranges-and-graphs/index.js"
+    },
+    "./foundations/mathematical-language-and-quantitative-reasoning/ratios-proportions-rates-and-percentages": {
+      "types": "./dist/foundations/mathematical-language-and-quantitative-reasoning/ratios-proportions-rates-and-percentages/index.d.ts",
+      "import": "./dist/foundations/mathematical-language-and-quantitative-reasoning/ratios-proportions-rates-and-percentages/index.js",
+      "require": "./dist/foundations/mathematical-language-and-quantitative-reasoning/ratios-proportions-rates-and-percentages/index.js"
+    },
+    "./foundations/mathematical-language-and-quantitative-reasoning/percentage-change-percentage-points-and-basis-points": {
+      "types": "./dist/foundations/mathematical-language-and-quantitative-reasoning/percentage-change-percentage-points-and-basis-points/index.d.ts",
+      "import": "./dist/foundations/mathematical-language-and-quantitative-reasoning/percentage-change-percentage-points-and-basis-points/index.js",
+      "require": "./dist/foundations/mathematical-language-and-quantitative-reasoning/percentage-change-percentage-points-and-basis-points/index.js"
+    },
+    "./foundations/mathematical-language-and-quantitative-reasoning/exponents-roots-and-logarithms": {
+      "types": "./dist/foundations/mathematical-language-and-quantitative-reasoning/exponents-roots-and-logarithms/index.d.ts",
+      "import": "./dist/foundations/mathematical-language-and-quantitative-reasoning/exponents-roots-and-logarithms/index.js",
+      "require": "./dist/foundations/mathematical-language-and-quantitative-reasoning/exponents-roots-and-logarithms/index.js"
+    },
+    "./foundations/mathematical-language-and-quantitative-reasoning/summation-products-and-index-notation": {
+      "types": "./dist/foundations/mathematical-language-and-quantitative-reasoning/summation-products-and-index-notation/index.d.ts",
+      "import": "./dist/foundations/mathematical-language-and-quantitative-reasoning/summation-products-and-index-notation/index.js",
+      "require": "./dist/foundations/mathematical-language-and-quantitative-reasoning/summation-products-and-index-notation/index.js"
+    },
+    "./foundations/mathematical-language-and-quantitative-reasoning/linear-equations-and-systems": {
+      "types": "./dist/foundations/mathematical-language-and-quantitative-reasoning/linear-equations-and-systems/index.d.ts",
+      "import": "./dist/foundations/mathematical-language-and-quantitative-reasoning/linear-equations-and-systems/index.js",
+      "require": "./dist/foundations/mathematical-language-and-quantitative-reasoning/linear-equations-and-systems/index.js"
+    },
+    "./foundations/mathematical-language-and-quantitative-reasoning/inequalities-bounds-and-constraints": {
+      "types": "./dist/foundations/mathematical-language-and-quantitative-reasoning/inequalities-bounds-and-constraints/index.d.ts",
+      "import": "./dist/foundations/mathematical-language-and-quantitative-reasoning/inequalities-bounds-and-constraints/index.js",
+      "require": "./dist/foundations/mathematical-language-and-quantitative-reasoning/inequalities-bounds-and-constraints/index.js"
+    },
+    "./foundations/mathematical-language-and-quantitative-reasoning/units-dimensions-scale-and-normalization": {
+      "types": "./dist/foundations/mathematical-language-and-quantitative-reasoning/units-dimensions-scale-and-normalization/index.d.ts",
+      "import": "./dist/foundations/mathematical-language-and-quantitative-reasoning/units-dimensions-scale-and-normalization/index.js",
+      "require": "./dist/foundations/mathematical-language-and-quantitative-reasoning/units-dimensions-scale-and-normalization/index.js"
+    },
+    "./foundations/mathematical-language-and-quantitative-reasoning/rounding-precision-tolerance-and-significant-digits": {
+      "types": "./dist/foundations/mathematical-language-and-quantitative-reasoning/rounding-precision-tolerance-and-significant-digits/index.d.ts",
+      "import": "./dist/foundations/mathematical-language-and-quantitative-reasoning/rounding-precision-tolerance-and-significant-digits/index.js",
+      "require": "./dist/foundations/mathematical-language-and-quantitative-reasoning/rounding-precision-tolerance-and-significant-digits/index.js"
+    },
+    "./foundations/financial-arithmetic-time-value-and-returns/simple-interest": {
+      "types": "./dist/foundations/financial-arithmetic-time-value-and-returns/simple-interest/index.d.ts",
+      "import": "./dist/foundations/financial-arithmetic-time-value-and-returns/simple-interest/index.js",
+      "require": "./dist/foundations/financial-arithmetic-time-value-and-returns/simple-interest/index.js"
+    },
+    "./foundations/financial-arithmetic-time-value-and-returns/compound-interest": {
+      "types": "./dist/foundations/financial-arithmetic-time-value-and-returns/compound-interest/index.d.ts",
+      "import": "./dist/foundations/financial-arithmetic-time-value-and-returns/compound-interest/index.js",
+      "require": "./dist/foundations/financial-arithmetic-time-value-and-returns/compound-interest/index.js"
+    },
+    "./foundations/financial-arithmetic-time-value-and-returns/present-future-value": {
+      "types": "./dist/foundations/financial-arithmetic-time-value-and-returns/present-future-value/index.d.ts",
+      "import": "./dist/foundations/financial-arithmetic-time-value-and-returns/present-future-value/index.js",
+      "require": "./dist/foundations/financial-arithmetic-time-value-and-returns/present-future-value/index.js"
+    },
+    "./foundations/financial-arithmetic-time-value-and-returns/discount-factors": {
+      "types": "./dist/foundations/financial-arithmetic-time-value-and-returns/discount-factors/index.d.ts",
+      "import": "./dist/foundations/financial-arithmetic-time-value-and-returns/discount-factors/index.js",
+      "require": "./dist/foundations/financial-arithmetic-time-value-and-returns/discount-factors/index.js"
+    },
+    "./foundations/financial-arithmetic-time-value-and-returns/cashflow-npv": {
+      "types": "./dist/foundations/financial-arithmetic-time-value-and-returns/cashflow-npv/index.d.ts",
+      "import": "./dist/foundations/financial-arithmetic-time-value-and-returns/cashflow-npv/index.js",
+      "require": "./dist/foundations/financial-arithmetic-time-value-and-returns/cashflow-npv/index.js"
+    },
+    "./foundations/financial-arithmetic-time-value-and-returns/simple-return": {
+      "types": "./dist/foundations/financial-arithmetic-time-value-and-returns/simple-return/index.d.ts",
+      "import": "./dist/foundations/financial-arithmetic-time-value-and-returns/simple-return/index.js",
+      "require": "./dist/foundations/financial-arithmetic-time-value-and-returns/simple-return/index.js"
+    },
+    "./foundations/financial-arithmetic-time-value-and-returns/log-return": {
+      "types": "./dist/foundations/financial-arithmetic-time-value-and-returns/log-return/index.d.ts",
+      "import": "./dist/foundations/financial-arithmetic-time-value-and-returns/log-return/index.js",
+      "require": "./dist/foundations/financial-arithmetic-time-value-and-returns/log-return/index.js"
+    },
+    "./foundations/financial-arithmetic-time-value-and-returns/holding-period-return": {
+      "types": "./dist/foundations/financial-arithmetic-time-value-and-returns/holding-period-return/index.d.ts",
+      "import": "./dist/foundations/financial-arithmetic-time-value-and-returns/holding-period-return/index.js",
+      "require": "./dist/foundations/financial-arithmetic-time-value-and-returns/holding-period-return/index.js"
+    },
+    "./foundations/financial-arithmetic-time-value-and-returns/arithmetic-geometric-return": {
+      "types": "./dist/foundations/financial-arithmetic-time-value-and-returns/arithmetic-geometric-return/index.d.ts",
+      "import": "./dist/foundations/financial-arithmetic-time-value-and-returns/arithmetic-geometric-return/index.js",
+      "require": "./dist/foundations/financial-arithmetic-time-value-and-returns/arithmetic-geometric-return/index.js"
+    },
+    "./foundations/financial-arithmetic-time-value-and-returns/annualization-deannualization": {
+      "types": "./dist/foundations/financial-arithmetic-time-value-and-returns/annualization-deannualization/index.d.ts",
+      "import": "./dist/foundations/financial-arithmetic-time-value-and-returns/annualization-deannualization/index.js",
+      "require": "./dist/foundations/financial-arithmetic-time-value-and-returns/annualization-deannualization/index.js"
+    },
+    "./foundations/data-variables-samples-and-measurement/observations-entities-variables-and-datasets": {
+      "types": "./dist/foundations/data-variables-samples-and-measurement/observations-entities-variables-and-datasets/index.d.ts",
+      "import": "./dist/foundations/data-variables-samples-and-measurement/observations-entities-variables-and-datasets/index.js",
+      "require": "./dist/foundations/data-variables-samples-and-measurement/observations-entities-variables-and-datasets/index.js"
+    },
+    "./foundations/data-variables-samples-and-measurement/numeric-categorical-ordinal-and-binary-variables": {
+      "types": "./dist/foundations/data-variables-samples-and-measurement/numeric-categorical-ordinal-and-binary-variables/index.d.ts",
+      "import": "./dist/foundations/data-variables-samples-and-measurement/numeric-categorical-ordinal-and-binary-variables/index.js",
+      "require": "./dist/foundations/data-variables-samples-and-measurement/numeric-categorical-ordinal-and-binary-variables/index.js"
+    },
+    "./foundations/data-variables-samples-and-measurement/population-sample-census-and-sampling-frame": {
+      "types": "./dist/foundations/data-variables-samples-and-measurement/population-sample-census-and-sampling-frame/index.d.ts",
+      "import": "./dist/foundations/data-variables-samples-and-measurement/population-sample-census-and-sampling-frame/index.js",
+      "require": "./dist/foundations/data-variables-samples-and-measurement/population-sample-census-and-sampling-frame/index.js"
+    },
+    "./foundations/data-variables-samples-and-measurement/cross-sectional-time-series-panel-and-event-data": {
+      "types": "./dist/foundations/data-variables-samples-and-measurement/cross-sectional-time-series-panel-and-event-data/index.d.ts",
+      "import": "./dist/foundations/data-variables-samples-and-measurement/cross-sectional-time-series-panel-and-event-data/index.js",
+      "require": "./dist/foundations/data-variables-samples-and-measurement/cross-sectional-time-series-panel-and-event-data/index.js"
+    },
+    "./foundations/data-variables-samples-and-measurement/identifiers-keys-joins-and-data-grain": {
+      "types": "./dist/foundations/data-variables-samples-and-measurement/identifiers-keys-joins-and-data-grain/index.d.ts",
+      "import": "./dist/foundations/data-variables-samples-and-measurement/identifiers-keys-joins-and-data-grain/index.js",
+      "require": "./dist/foundations/data-variables-samples-and-measurement/identifiers-keys-joins-and-data-grain/index.js"
+    },
+    "./foundations/data-variables-samples-and-measurement/timestamps-time-zones-calendars-and-observation-time": {
+      "types": "./dist/foundations/data-variables-samples-and-measurement/timestamps-time-zones-calendars-and-observation-time/index.d.ts",
+      "import": "./dist/foundations/data-variables-samples-and-measurement/timestamps-time-zones-calendars-and-observation-time/index.js",
+      "require": "./dist/foundations/data-variables-samples-and-measurement/timestamps-time-zones-calendars-and-observation-time/index.js"
+    },
+    "./foundations/data-variables-samples-and-measurement/missing-nonfinite-censored-and-truncated-values": {
+      "types": "./dist/foundations/data-variables-samples-and-measurement/missing-nonfinite-censored-and-truncated-values/index.d.ts",
+      "import": "./dist/foundations/data-variables-samples-and-measurement/missing-nonfinite-censored-and-truncated-values/index.js",
+      "require": "./dist/foundations/data-variables-samples-and-measurement/missing-nonfinite-censored-and-truncated-values/index.js"
+    },
+    "./foundations/data-variables-samples-and-measurement/measurement-error-resolution-accuracy-and-precision": {
+      "types": "./dist/foundations/data-variables-samples-and-measurement/measurement-error-resolution-accuracy-and-precision/index.d.ts",
+      "import": "./dist/foundations/data-variables-samples-and-measurement/measurement-error-resolution-accuracy-and-precision/index.js",
+      "require": "./dist/foundations/data-variables-samples-and-measurement/measurement-error-resolution-accuracy-and-precision/index.js"
+    },
+    "./foundations/data-variables-samples-and-measurement/revisions-vintages-and-point-in-time-availability": {
+      "types": "./dist/foundations/data-variables-samples-and-measurement/revisions-vintages-and-point-in-time-availability/index.d.ts",
+      "import": "./dist/foundations/data-variables-samples-and-measurement/revisions-vintages-and-point-in-time-availability/index.js",
+      "require": "./dist/foundations/data-variables-samples-and-measurement/revisions-vintages-and-point-in-time-availability/index.js"
+    },
+    "./foundations/data-variables-samples-and-measurement/data-provenance-lineage-ownership-and-licensing": {
+      "types": "./dist/foundations/data-variables-samples-and-measurement/data-provenance-lineage-ownership-and-licensing/index.d.ts",
+      "import": "./dist/foundations/data-variables-samples-and-measurement/data-provenance-lineage-ownership-and-licensing/index.js",
+      "require": "./dist/foundations/data-variables-samples-and-measurement/data-provenance-lineage-ownership-and-licensing/index.js"
+    },
+    "./foundations/location-ranking-and-exploratory-summaries/count-sum-minimum-maximum-and-range": {
+      "types": "./dist/foundations/location-ranking-and-exploratory-summaries/count-sum-minimum-maximum-and-range/index.d.ts",
+      "import": "./dist/foundations/location-ranking-and-exploratory-summaries/count-sum-minimum-maximum-and-range/index.js",
+      "require": "./dist/foundations/location-ranking-and-exploratory-summaries/count-sum-minimum-maximum-and-range/index.js"
+    },
+    "./foundations/location-ranking-and-exploratory-summaries/arithmetic-mean": {
+      "types": "./dist/foundations/location-ranking-and-exploratory-summaries/arithmetic-mean/index.d.ts",
+      "import": "./dist/foundations/location-ranking-and-exploratory-summaries/arithmetic-mean/index.js",
+      "require": "./dist/foundations/location-ranking-and-exploratory-summaries/arithmetic-mean/index.js"
+    },
+    "./foundations/location-ranking-and-exploratory-summaries/weighted-mean": {
+      "types": "./dist/foundations/location-ranking-and-exploratory-summaries/weighted-mean/index.d.ts",
+      "import": "./dist/foundations/location-ranking-and-exploratory-summaries/weighted-mean/index.js",
+      "require": "./dist/foundations/location-ranking-and-exploratory-summaries/weighted-mean/index.js"
+    },
+    "./foundations/location-ranking-and-exploratory-summaries/median-and-mode": {
+      "types": "./dist/foundations/location-ranking-and-exploratory-summaries/median-and-mode/index.d.ts",
+      "import": "./dist/foundations/location-ranking-and-exploratory-summaries/median-and-mode/index.js",
+      "require": "./dist/foundations/location-ranking-and-exploratory-summaries/median-and-mode/index.js"
+    },
+    "./foundations/location-ranking-and-exploratory-summaries/trimmed-and-winsorized-means": {
+      "types": "./dist/foundations/location-ranking-and-exploratory-summaries/trimmed-and-winsorized-means/index.d.ts",
+      "import": "./dist/foundations/location-ranking-and-exploratory-summaries/trimmed-and-winsorized-means/index.js",
+      "require": "./dist/foundations/location-ranking-and-exploratory-summaries/trimmed-and-winsorized-means/index.js"
+    },
+    "./foundations/location-ranking-and-exploratory-summaries/percentiles-quantiles-and-quartiles": {
+      "types": "./dist/foundations/location-ranking-and-exploratory-summaries/percentiles-quantiles-and-quartiles/index.d.ts",
+      "import": "./dist/foundations/location-ranking-and-exploratory-summaries/percentiles-quantiles-and-quartiles/index.js",
+      "require": "./dist/foundations/location-ranking-and-exploratory-summaries/percentiles-quantiles-and-quartiles/index.js"
+    },
+    "./foundations/location-ranking-and-exploratory-summaries/ranks-ties-and-percentile-rank": {
+      "types": "./dist/foundations/location-ranking-and-exploratory-summaries/ranks-ties-and-percentile-rank/index.d.ts",
+      "import": "./dist/foundations/location-ranking-and-exploratory-summaries/ranks-ties-and-percentile-rank/index.js",
+      "require": "./dist/foundations/location-ranking-and-exploratory-summaries/ranks-ties-and-percentile-rank/index.js"
+    },
+    "./foundations/location-ranking-and-exploratory-summaries/frequency-tables-and-relative-frequency": {
+      "types": "./dist/foundations/location-ranking-and-exploratory-summaries/frequency-tables-and-relative-frequency/index.d.ts",
+      "import": "./dist/foundations/location-ranking-and-exploratory-summaries/frequency-tables-and-relative-frequency/index.js",
+      "require": "./dist/foundations/location-ranking-and-exploratory-summaries/frequency-tables-and-relative-frequency/index.js"
+    },
+    "./foundations/location-ranking-and-exploratory-summaries/histograms-and-empirical-distribution-functions": {
+      "types": "./dist/foundations/location-ranking-and-exploratory-summaries/histograms-and-empirical-distribution-functions/index.d.ts",
+      "import": "./dist/foundations/location-ranking-and-exploratory-summaries/histograms-and-empirical-distribution-functions/index.js",
+      "require": "./dist/foundations/location-ranking-and-exploratory-summaries/histograms-and-empirical-distribution-functions/index.js"
+    },
+    "./foundations/location-ranking-and-exploratory-summaries/five-number-summary-and-box-plot": {
+      "types": "./dist/foundations/location-ranking-and-exploratory-summaries/five-number-summary-and-box-plot/index.d.ts",
+      "import": "./dist/foundations/location-ranking-and-exploratory-summaries/five-number-summary-and-box-plot/index.js",
+      "require": "./dist/foundations/location-ranking-and-exploratory-summaries/five-number-summary-and-box-plot/index.js"
+    },
+    "./foundations/dispersion-shape-and-robust-statistics/deviation-absolute-deviation-and-squared-deviation": {
+      "types": "./dist/foundations/dispersion-shape-and-robust-statistics/deviation-absolute-deviation-and-squared-deviation/index.d.ts",
+      "import": "./dist/foundations/dispersion-shape-and-robust-statistics/deviation-absolute-deviation-and-squared-deviation/index.js",
+      "require": "./dist/foundations/dispersion-shape-and-robust-statistics/deviation-absolute-deviation-and-squared-deviation/index.js"
+    },
+    "./foundations/dispersion-shape-and-robust-statistics/range-and-interquartile-range": {
+      "types": "./dist/foundations/dispersion-shape-and-robust-statistics/range-and-interquartile-range/index.d.ts",
+      "import": "./dist/foundations/dispersion-shape-and-robust-statistics/range-and-interquartile-range/index.js",
+      "require": "./dist/foundations/dispersion-shape-and-robust-statistics/range-and-interquartile-range/index.js"
+    },
+    "./foundations/dispersion-shape-and-robust-statistics/mean-absolute-deviation": {
+      "types": "./dist/foundations/dispersion-shape-and-robust-statistics/mean-absolute-deviation/index.d.ts",
+      "import": "./dist/foundations/dispersion-shape-and-robust-statistics/mean-absolute-deviation/index.js",
+      "require": "./dist/foundations/dispersion-shape-and-robust-statistics/mean-absolute-deviation/index.js"
+    },
+    "./foundations/dispersion-shape-and-robust-statistics/median-absolute-deviation": {
+      "types": "./dist/foundations/dispersion-shape-and-robust-statistics/median-absolute-deviation/index.d.ts",
+      "import": "./dist/foundations/dispersion-shape-and-robust-statistics/median-absolute-deviation/index.js",
+      "require": "./dist/foundations/dispersion-shape-and-robust-statistics/median-absolute-deviation/index.js"
+    },
+    "./foundations/dispersion-shape-and-robust-statistics/population-and-sample-variance": {
+      "types": "./dist/foundations/dispersion-shape-and-robust-statistics/population-and-sample-variance/index.d.ts",
+      "import": "./dist/foundations/dispersion-shape-and-robust-statistics/population-and-sample-variance/index.js",
+      "require": "./dist/foundations/dispersion-shape-and-robust-statistics/population-and-sample-variance/index.js"
+    },
+    "./foundations/dispersion-shape-and-robust-statistics/population-and-sample-standard-deviation": {
+      "types": "./dist/foundations/dispersion-shape-and-robust-statistics/population-and-sample-standard-deviation/index.d.ts",
+      "import": "./dist/foundations/dispersion-shape-and-robust-statistics/population-and-sample-standard-deviation/index.js",
+      "require": "./dist/foundations/dispersion-shape-and-robust-statistics/population-and-sample-standard-deviation/index.js"
+    },
+    "./foundations/dispersion-shape-and-robust-statistics/coefficient-of-variation-and-scale-comparability": {
+      "types": "./dist/foundations/dispersion-shape-and-robust-statistics/coefficient-of-variation-and-scale-comparability/index.d.ts",
+      "import": "./dist/foundations/dispersion-shape-and-robust-statistics/coefficient-of-variation-and-scale-comparability/index.js",
+      "require": "./dist/foundations/dispersion-shape-and-robust-statistics/coefficient-of-variation-and-scale-comparability/index.js"
+    },
+    "./foundations/dispersion-shape-and-robust-statistics/z-score-robust-z-score-and-standardization": {
+      "types": "./dist/foundations/dispersion-shape-and-robust-statistics/z-score-robust-z-score-and-standardization/index.d.ts",
+      "import": "./dist/foundations/dispersion-shape-and-robust-statistics/z-score-robust-z-score-and-standardization/index.js",
+      "require": "./dist/foundations/dispersion-shape-and-robust-statistics/z-score-robust-z-score-and-standardization/index.js"
+    },
+    "./foundations/dispersion-shape-and-robust-statistics/skewness-and-tail-asymmetry": {
+      "types": "./dist/foundations/dispersion-shape-and-robust-statistics/skewness-and-tail-asymmetry/index.d.ts",
+      "import": "./dist/foundations/dispersion-shape-and-robust-statistics/skewness-and-tail-asymmetry/index.js",
+      "require": "./dist/foundations/dispersion-shape-and-robust-statistics/skewness-and-tail-asymmetry/index.js"
+    },
+    "./foundations/dispersion-shape-and-robust-statistics/kurtosis-excess-kurtosis-and-tail-weight": {
+      "types": "./dist/foundations/dispersion-shape-and-robust-statistics/kurtosis-excess-kurtosis-and-tail-weight/index.d.ts",
+      "import": "./dist/foundations/dispersion-shape-and-robust-statistics/kurtosis-excess-kurtosis-and-tail-weight/index.js",
+      "require": "./dist/foundations/dispersion-shape-and-robust-statistics/kurtosis-excess-kurtosis-and-tail-weight/index.js"
+    },
+    "./foundations/probability-and-random-variables/experiments-outcomes-sample-spaces-and-events": {
+      "types": "./dist/foundations/probability-and-random-variables/experiments-outcomes-sample-spaces-and-events/index.d.ts",
+      "import": "./dist/foundations/probability-and-random-variables/experiments-outcomes-sample-spaces-and-events/index.js",
+      "require": "./dist/foundations/probability-and-random-variables/experiments-outcomes-sample-spaces-and-events/index.js"
+    },
+    "./foundations/probability-and-random-variables/probability-rules-complements-unions-and-intersections": {
+      "types": "./dist/foundations/probability-and-random-variables/probability-rules-complements-unions-and-intersections/index.d.ts",
+      "import": "./dist/foundations/probability-and-random-variables/probability-rules-complements-unions-and-intersections/index.js",
+      "require": "./dist/foundations/probability-and-random-variables/probability-rules-complements-unions-and-intersections/index.js"
+    },
+    "./foundations/probability-and-random-variables/conditional-probability": {
+      "types": "./dist/foundations/probability-and-random-variables/conditional-probability/index.d.ts",
+      "import": "./dist/foundations/probability-and-random-variables/conditional-probability/index.js",
+      "require": "./dist/foundations/probability-and-random-variables/conditional-probability/index.js"
+    },
+    "./foundations/probability-and-random-variables/independence-and-dependence": {
+      "types": "./dist/foundations/probability-and-random-variables/independence-and-dependence/index.d.ts",
+      "import": "./dist/foundations/probability-and-random-variables/independence-and-dependence/index.js",
+      "require": "./dist/foundations/probability-and-random-variables/independence-and-dependence/index.js"
+    },
+    "./foundations/probability-and-random-variables/bayes-theorem-and-base-rates": {
+      "types": "./dist/foundations/probability-and-random-variables/bayes-theorem-and-base-rates/index.d.ts",
+      "import": "./dist/foundations/probability-and-random-variables/bayes-theorem-and-base-rates/index.js",
+      "require": "./dist/foundations/probability-and-random-variables/bayes-theorem-and-base-rates/index.js"
+    },
+    "./foundations/probability-and-random-variables/discrete-and-continuous-random-variables": {
+      "types": "./dist/foundations/probability-and-random-variables/discrete-and-continuous-random-variables/index.d.ts",
+      "import": "./dist/foundations/probability-and-random-variables/discrete-and-continuous-random-variables/index.js",
+      "require": "./dist/foundations/probability-and-random-variables/discrete-and-continuous-random-variables/index.js"
+    },
+    "./foundations/probability-and-random-variables/expected-value": {
+      "types": "./dist/foundations/probability-and-random-variables/expected-value/index.d.ts",
+      "import": "./dist/foundations/probability-and-random-variables/expected-value/index.js",
+      "require": "./dist/foundations/probability-and-random-variables/expected-value/index.js"
+    },
+    "./foundations/probability-and-random-variables/variance-moments-and-moment-generating-intuition": {
+      "types": "./dist/foundations/probability-and-random-variables/variance-moments-and-moment-generating-intuition/index.d.ts",
+      "import": "./dist/foundations/probability-and-random-variables/variance-moments-and-moment-generating-intuition/index.js",
+      "require": "./dist/foundations/probability-and-random-variables/variance-moments-and-moment-generating-intuition/index.js"
+    },
+    "./foundations/probability-and-random-variables/joint-marginal-and-conditional-distributions": {
+      "types": "./dist/foundations/probability-and-random-variables/joint-marginal-and-conditional-distributions/index.d.ts",
+      "import": "./dist/foundations/probability-and-random-variables/joint-marginal-and-conditional-distributions/index.js",
+      "require": "./dist/foundations/probability-and-random-variables/joint-marginal-and-conditional-distributions/index.js"
+    },
+    "./foundations/probability-and-random-variables/covariance-and-correlation-of-random-variables": {
+      "types": "./dist/foundations/probability-and-random-variables/covariance-and-correlation-of-random-variables/index.d.ts",
+      "import": "./dist/foundations/probability-and-random-variables/covariance-and-correlation-of-random-variables/index.js",
+      "require": "./dist/foundations/probability-and-random-variables/covariance-and-correlation-of-random-variables/index.js"
+    },
+    "./foundations/probability-distributions-and-simulation-basics/pmf-pdf-cdf-survival-and-quantile-functions": {
+      "types": "./dist/foundations/probability-distributions-and-simulation-basics/pmf-pdf-cdf-survival-and-quantile-functions/index.d.ts",
+      "import": "./dist/foundations/probability-distributions-and-simulation-basics/pmf-pdf-cdf-survival-and-quantile-functions/index.js",
+      "require": "./dist/foundations/probability-distributions-and-simulation-basics/pmf-pdf-cdf-survival-and-quantile-functions/index.js"
+    },
+    "./foundations/probability-distributions-and-simulation-basics/bernoulli-and-binomial-distributions": {
+      "types": "./dist/foundations/probability-distributions-and-simulation-basics/bernoulli-and-binomial-distributions/index.d.ts",
+      "import": "./dist/foundations/probability-distributions-and-simulation-basics/bernoulli-and-binomial-distributions/index.js",
+      "require": "./dist/foundations/probability-distributions-and-simulation-basics/bernoulli-and-binomial-distributions/index.js"
+    },
+    "./foundations/probability-distributions-and-simulation-basics/poisson-distribution-and-event-counts": {
+      "types": "./dist/foundations/probability-distributions-and-simulation-basics/poisson-distribution-and-event-counts/index.d.ts",
+      "import": "./dist/foundations/probability-distributions-and-simulation-basics/poisson-distribution-and-event-counts/index.js",
+      "require": "./dist/foundations/probability-distributions-and-simulation-basics/poisson-distribution-and-event-counts/index.js"
+    },
+    "./foundations/probability-distributions-and-simulation-basics/uniform-distribution-and-random-sampling": {
+      "types": "./dist/foundations/probability-distributions-and-simulation-basics/uniform-distribution-and-random-sampling/index.d.ts",
+      "import": "./dist/foundations/probability-distributions-and-simulation-basics/uniform-distribution-and-random-sampling/index.js",
+      "require": "./dist/foundations/probability-distributions-and-simulation-basics/uniform-distribution-and-random-sampling/index.js"
+    },
+    "./foundations/probability-distributions-and-simulation-basics/normal-distribution-and-standard-normal": {
+      "types": "./dist/foundations/probability-distributions-and-simulation-basics/normal-distribution-and-standard-normal/index.d.ts",
+      "import": "./dist/foundations/probability-distributions-and-simulation-basics/normal-distribution-and-standard-normal/index.js",
+      "require": "./dist/foundations/probability-distributions-and-simulation-basics/normal-distribution-and-standard-normal/index.js"
+    },
+    "./foundations/probability-distributions-and-simulation-basics/lognormal-distribution-and-positive-quantities": {
+      "types": "./dist/foundations/probability-distributions-and-simulation-basics/lognormal-distribution-and-positive-quantities/index.d.ts",
+      "import": "./dist/foundations/probability-distributions-and-simulation-basics/lognormal-distribution-and-positive-quantities/index.js",
+      "require": "./dist/foundations/probability-distributions-and-simulation-basics/lognormal-distribution-and-positive-quantities/index.js"
+    },
+    "./foundations/probability-distributions-and-simulation-basics/student-t-distribution-and-heavy-tails": {
+      "types": "./dist/foundations/probability-distributions-and-simulation-basics/student-t-distribution-and-heavy-tails/index.d.ts",
+      "import": "./dist/foundations/probability-distributions-and-simulation-basics/student-t-distribution-and-heavy-tails/index.js",
+      "require": "./dist/foundations/probability-distributions-and-simulation-basics/student-t-distribution-and-heavy-tails/index.js"
+    },
+    "./foundations/probability-distributions-and-simulation-basics/exponential-gamma-and-weibull-waiting-time-models": {
+      "types": "./dist/foundations/probability-distributions-and-simulation-basics/exponential-gamma-and-weibull-waiting-time-models/index.d.ts",
+      "import": "./dist/foundations/probability-distributions-and-simulation-basics/exponential-gamma-and-weibull-waiting-time-models/index.js",
+      "require": "./dist/foundations/probability-distributions-and-simulation-basics/exponential-gamma-and-weibull-waiting-time-models/index.js"
+    },
+    "./foundations/probability-distributions-and-simulation-basics/mixture-distributions-multimodality-and-fat-tails": {
+      "types": "./dist/foundations/probability-distributions-and-simulation-basics/mixture-distributions-multimodality-and-fat-tails/index.d.ts",
+      "import": "./dist/foundations/probability-distributions-and-simulation-basics/mixture-distributions-multimodality-and-fat-tails/index.js",
+      "require": "./dist/foundations/probability-distributions-and-simulation-basics/mixture-distributions-multimodality-and-fat-tails/index.js"
+    },
+    "./foundations/probability-distributions-and-simulation-basics/random-sampling-and-monte-carlo-intuition": {
+      "types": "./dist/foundations/probability-distributions-and-simulation-basics/random-sampling-and-monte-carlo-intuition/index.d.ts",
+      "import": "./dist/foundations/probability-distributions-and-simulation-basics/random-sampling-and-monte-carlo-intuition/index.js",
+      "require": "./dist/foundations/probability-distributions-and-simulation-basics/random-sampling-and-monte-carlo-intuition/index.js"
+    },
+    "./foundations/sampling-estimation-and-statistical-inference/parameters-statistics-estimands-and-estimators": {
+      "types": "./dist/foundations/sampling-estimation-and-statistical-inference/parameters-statistics-estimands-and-estimators/index.d.ts",
+      "import": "./dist/foundations/sampling-estimation-and-statistical-inference/parameters-statistics-estimands-and-estimators/index.js",
+      "require": "./dist/foundations/sampling-estimation-and-statistical-inference/parameters-statistics-estimands-and-estimators/index.js"
+    },
+    "./foundations/sampling-estimation-and-statistical-inference/sampling-distributions": {
+      "types": "./dist/foundations/sampling-estimation-and-statistical-inference/sampling-distributions/index.d.ts",
+      "import": "./dist/foundations/sampling-estimation-and-statistical-inference/sampling-distributions/index.js",
+      "require": "./dist/foundations/sampling-estimation-and-statistical-inference/sampling-distributions/index.js"
+    },
+    "./foundations/sampling-estimation-and-statistical-inference/estimator-bias-consistency-efficiency-and-robustness": {
+      "types": "./dist/foundations/sampling-estimation-and-statistical-inference/estimator-bias-consistency-efficiency-and-robustness/index.d.ts",
+      "import": "./dist/foundations/sampling-estimation-and-statistical-inference/estimator-bias-consistency-efficiency-and-robustness/index.js",
+      "require": "./dist/foundations/sampling-estimation-and-statistical-inference/estimator-bias-consistency-efficiency-and-robustness/index.js"
+    },
+    "./foundations/sampling-estimation-and-statistical-inference/law-of-large-numbers": {
+      "types": "./dist/foundations/sampling-estimation-and-statistical-inference/law-of-large-numbers/index.d.ts",
+      "import": "./dist/foundations/sampling-estimation-and-statistical-inference/law-of-large-numbers/index.js",
+      "require": "./dist/foundations/sampling-estimation-and-statistical-inference/law-of-large-numbers/index.js"
+    },
+    "./foundations/sampling-estimation-and-statistical-inference/central-limit-theorem": {
+      "types": "./dist/foundations/sampling-estimation-and-statistical-inference/central-limit-theorem/index.d.ts",
+      "import": "./dist/foundations/sampling-estimation-and-statistical-inference/central-limit-theorem/index.js",
+      "require": "./dist/foundations/sampling-estimation-and-statistical-inference/central-limit-theorem/index.js"
+    },
+    "./foundations/sampling-estimation-and-statistical-inference/standard-error": {
+      "types": "./dist/foundations/sampling-estimation-and-statistical-inference/standard-error/index.d.ts",
+      "import": "./dist/foundations/sampling-estimation-and-statistical-inference/standard-error/index.js",
+      "require": "./dist/foundations/sampling-estimation-and-statistical-inference/standard-error/index.js"
+    },
+    "./foundations/sampling-estimation-and-statistical-inference/confidence-intervals-and-coverage": {
+      "types": "./dist/foundations/sampling-estimation-and-statistical-inference/confidence-intervals-and-coverage/index.d.ts",
+      "import": "./dist/foundations/sampling-estimation-and-statistical-inference/confidence-intervals-and-coverage/index.js",
+      "require": "./dist/foundations/sampling-estimation-and-statistical-inference/confidence-intervals-and-coverage/index.js"
+    },
+    "./foundations/sampling-estimation-and-statistical-inference/null-and-alternative-hypotheses": {
+      "types": "./dist/foundations/sampling-estimation-and-statistical-inference/null-and-alternative-hypotheses/index.d.ts",
+      "import": "./dist/foundations/sampling-estimation-and-statistical-inference/null-and-alternative-hypotheses/index.js",
+      "require": "./dist/foundations/sampling-estimation-and-statistical-inference/null-and-alternative-hypotheses/index.js"
+    },
+    "./foundations/sampling-estimation-and-statistical-inference/p-values-significance-type-i-ii-errors-and-power": {
+      "types": "./dist/foundations/sampling-estimation-and-statistical-inference/p-values-significance-type-i-ii-errors-and-power/index.d.ts",
+      "import": "./dist/foundations/sampling-estimation-and-statistical-inference/p-values-significance-type-i-ii-errors-and-power/index.js",
+      "require": "./dist/foundations/sampling-estimation-and-statistical-inference/p-values-significance-type-i-ii-errors-and-power/index.js"
+    },
+    "./foundations/sampling-estimation-and-statistical-inference/effect-size-practical-significance-and-multiple-comparisons": {
+      "types": "./dist/foundations/sampling-estimation-and-statistical-inference/effect-size-practical-significance-and-multiple-comparisons/index.d.ts",
+      "import": "./dist/foundations/sampling-estimation-and-statistical-inference/effect-size-practical-significance-and-multiple-comparisons/index.js",
+      "require": "./dist/foundations/sampling-estimation-and-statistical-inference/effect-size-practical-significance-and-multiple-comparisons/index.js"
+    },
+    "./foundations/dependence-regression-and-model-foundations/scatter-plots-association-and-nonlinear-patterns": {
+      "types": "./dist/foundations/dependence-regression-and-model-foundations/scatter-plots-association-and-nonlinear-patterns/index.d.ts",
+      "import": "./dist/foundations/dependence-regression-and-model-foundations/scatter-plots-association-and-nonlinear-patterns/index.js",
+      "require": "./dist/foundations/dependence-regression-and-model-foundations/scatter-plots-association-and-nonlinear-patterns/index.js"
+    },
+    "./foundations/dependence-regression-and-model-foundations/sample-covariance-calculation-and-interpretation": {
+      "types": "./dist/foundations/dependence-regression-and-model-foundations/sample-covariance-calculation-and-interpretation/index.d.ts",
+      "import": "./dist/foundations/dependence-regression-and-model-foundations/sample-covariance-calculation-and-interpretation/index.js",
+      "require": "./dist/foundations/dependence-regression-and-model-foundations/sample-covariance-calculation-and-interpretation/index.js"
+    },
+    "./foundations/dependence-regression-and-model-foundations/pearson-correlation-calculation-and-interpretation": {
+      "types": "./dist/foundations/dependence-regression-and-model-foundations/pearson-correlation-calculation-and-interpretation/index.d.ts",
+      "import": "./dist/foundations/dependence-regression-and-model-foundations/pearson-correlation-calculation-and-interpretation/index.js",
+      "require": "./dist/foundations/dependence-regression-and-model-foundations/pearson-correlation-calculation-and-interpretation/index.js"
+    },
+    "./foundations/dependence-regression-and-model-foundations/spearman-rank-correlation-and-kendall-tau": {
+      "types": "./dist/foundations/dependence-regression-and-model-foundations/spearman-rank-correlation-and-kendall-tau/index.d.ts",
+      "import": "./dist/foundations/dependence-regression-and-model-foundations/spearman-rank-correlation-and-kendall-tau/index.js",
+      "require": "./dist/foundations/dependence-regression-and-model-foundations/spearman-rank-correlation-and-kendall-tau/index.js"
+    },
+    "./foundations/dependence-regression-and-model-foundations/correlation-causation-confounding-and-spurious-relationships": {
+      "types": "./dist/foundations/dependence-regression-and-model-foundations/correlation-causation-confounding-and-spurious-relationships/index.d.ts",
+      "import": "./dist/foundations/dependence-regression-and-model-foundations/correlation-causation-confounding-and-spurious-relationships/index.js",
+      "require": "./dist/foundations/dependence-regression-and-model-foundations/correlation-causation-confounding-and-spurious-relationships/index.js"
+    },
+    "./foundations/dependence-regression-and-model-foundations/simple-ordinary-least-squares-regression": {
+      "types": "./dist/foundations/dependence-regression-and-model-foundations/simple-ordinary-least-squares-regression/index.d.ts",
+      "import": "./dist/foundations/dependence-regression-and-model-foundations/simple-ordinary-least-squares-regression/index.js",
+      "require": "./dist/foundations/dependence-regression-and-model-foundations/simple-ordinary-least-squares-regression/index.js"
+    },
+    "./foundations/dependence-regression-and-model-foundations/intercepts-slopes-coefficients-and-predictions": {
+      "types": "./dist/foundations/dependence-regression-and-model-foundations/intercepts-slopes-coefficients-and-predictions/index.d.ts",
+      "import": "./dist/foundations/dependence-regression-and-model-foundations/intercepts-slopes-coefficients-and-predictions/index.js",
+      "require": "./dist/foundations/dependence-regression-and-model-foundations/intercepts-slopes-coefficients-and-predictions/index.js"
+    },
+    "./foundations/dependence-regression-and-model-foundations/residuals-mae-mse-and-rmse": {
+      "types": "./dist/foundations/dependence-regression-and-model-foundations/residuals-mae-mse-and-rmse/index.d.ts",
+      "import": "./dist/foundations/dependence-regression-and-model-foundations/residuals-mae-mse-and-rmse/index.js",
+      "require": "./dist/foundations/dependence-regression-and-model-foundations/residuals-mae-mse-and-rmse/index.js"
+    },
+    "./foundations/dependence-regression-and-model-foundations/r-squared-and-adjusted-r-squared": {
+      "types": "./dist/foundations/dependence-regression-and-model-foundations/r-squared-and-adjusted-r-squared/index.d.ts",
+      "import": "./dist/foundations/dependence-regression-and-model-foundations/r-squared-and-adjusted-r-squared/index.js",
+      "require": "./dist/foundations/dependence-regression-and-model-foundations/r-squared-and-adjusted-r-squared/index.js"
+    },
+    "./foundations/dependence-regression-and-model-foundations/regression-assumptions-heteroskedasticity-and-multicollinearity": {
+      "types": "./dist/foundations/dependence-regression-and-model-foundations/regression-assumptions-heteroskedasticity-and-multicollinearity/index.d.ts",
+      "import": "./dist/foundations/dependence-regression-and-model-foundations/regression-assumptions-heteroskedasticity-and-multicollinearity/index.js",
+      "require": "./dist/foundations/dependence-regression-and-model-foundations/regression-assumptions-heteroskedasticity-and-multicollinearity/index.js"
+    },
+    "./foundations/financial-time-series-foundations/time-order-frequency-regularity-and-financial-calendars": {
+      "types": "./dist/foundations/financial-time-series-foundations/time-order-frequency-regularity-and-financial-calendars/index.d.ts",
+      "import": "./dist/foundations/financial-time-series-foundations/time-order-frequency-regularity-and-financial-calendars/index.js",
+      "require": "./dist/foundations/financial-time-series-foundations/time-order-frequency-regularity-and-financial-calendars/index.js"
+    },
+    "./foundations/financial-time-series-foundations/levels-changes-differences-and-returns": {
+      "types": "./dist/foundations/financial-time-series-foundations/levels-changes-differences-and-returns/index.d.ts",
+      "import": "./dist/foundations/financial-time-series-foundations/levels-changes-differences-and-returns/index.js",
+      "require": "./dist/foundations/financial-time-series-foundations/levels-changes-differences-and-returns/index.js"
+    },
+    "./foundations/financial-time-series-foundations/lags-leads-and-temporal-dependence": {
+      "types": "./dist/foundations/financial-time-series-foundations/lags-leads-and-temporal-dependence/index.d.ts",
+      "import": "./dist/foundations/financial-time-series-foundations/lags-leads-and-temporal-dependence/index.js",
+      "require": "./dist/foundations/financial-time-series-foundations/lags-leads-and-temporal-dependence/index.js"
+    },
+    "./foundations/financial-time-series-foundations/rolling-and-expanding-windows": {
+      "types": "./dist/foundations/financial-time-series-foundations/rolling-and-expanding-windows/index.d.ts",
+      "import": "./dist/foundations/financial-time-series-foundations/rolling-and-expanding-windows/index.js",
+      "require": "./dist/foundations/financial-time-series-foundations/rolling-and-expanding-windows/index.js"
+    },
+    "./foundations/financial-time-series-foundations/resampling-aggregation-and-time-alignment": {
+      "types": "./dist/foundations/financial-time-series-foundations/resampling-aggregation-and-time-alignment/index.d.ts",
+      "import": "./dist/foundations/financial-time-series-foundations/resampling-aggregation-and-time-alignment/index.js",
+      "require": "./dist/foundations/financial-time-series-foundations/resampling-aggregation-and-time-alignment/index.js"
+    },
+    "./foundations/financial-time-series-foundations/trend-seasonality-cycles-and-remainder": {
+      "types": "./dist/foundations/financial-time-series-foundations/trend-seasonality-cycles-and-remainder/index.d.ts",
+      "import": "./dist/foundations/financial-time-series-foundations/trend-seasonality-cycles-and-remainder/index.js",
+      "require": "./dist/foundations/financial-time-series-foundations/trend-seasonality-cycles-and-remainder/index.js"
+    },
+    "./foundations/financial-time-series-foundations/autocovariance-and-autocorrelation": {
+      "types": "./dist/foundations/financial-time-series-foundations/autocovariance-and-autocorrelation/index.d.ts",
+      "import": "./dist/foundations/financial-time-series-foundations/autocovariance-and-autocorrelation/index.js",
+      "require": "./dist/foundations/financial-time-series-foundations/autocovariance-and-autocorrelation/index.js"
+    },
+    "./foundations/financial-time-series-foundations/stationarity-and-differencing-intuition": {
+      "types": "./dist/foundations/financial-time-series-foundations/stationarity-and-differencing-intuition/index.d.ts",
+      "import": "./dist/foundations/financial-time-series-foundations/stationarity-and-differencing-intuition/index.js",
+      "require": "./dist/foundations/financial-time-series-foundations/stationarity-and-differencing-intuition/index.js"
+    },
+    "./foundations/financial-time-series-foundations/smoothing-baselines-and-naive-forecasts": {
+      "types": "./dist/foundations/financial-time-series-foundations/smoothing-baselines-and-naive-forecasts/index.d.ts",
+      "import": "./dist/foundations/financial-time-series-foundations/smoothing-baselines-and-naive-forecasts/index.js",
+      "require": "./dist/foundations/financial-time-series-foundations/smoothing-baselines-and-naive-forecasts/index.js"
+    },
+    "./foundations/financial-time-series-foundations/look-ahead-leakage-and-time-aware-data-splits": {
+      "types": "./dist/foundations/financial-time-series-foundations/look-ahead-leakage-and-time-aware-data-splits/index.d.ts",
+      "import": "./dist/foundations/financial-time-series-foundations/look-ahead-leakage-and-time-aware-data-splits/index.js",
+      "require": "./dist/foundations/financial-time-series-foundations/look-ahead-leakage-and-time-aware-data-splits/index.js"
+    },
+    "./foundations/financial-risk-and-performance-statistics/volatility-and-annualized-volatility": {
+      "types": "./dist/foundations/financial-risk-and-performance-statistics/volatility-and-annualized-volatility/index.d.ts",
+      "import": "./dist/foundations/financial-risk-and-performance-statistics/volatility-and-annualized-volatility/index.js",
+      "require": "./dist/foundations/financial-risk-and-performance-statistics/volatility-and-annualized-volatility/index.js"
+    },
+    "./foundations/financial-risk-and-performance-statistics/downside-deviation-and-target-shortfall": {
+      "types": "./dist/foundations/financial-risk-and-performance-statistics/downside-deviation-and-target-shortfall/index.d.ts",
+      "import": "./dist/foundations/financial-risk-and-performance-statistics/downside-deviation-and-target-shortfall/index.js",
+      "require": "./dist/foundations/financial-risk-and-performance-statistics/downside-deviation-and-target-shortfall/index.js"
+    },
+    "./foundations/financial-risk-and-performance-statistics/drawdown-and-maximum-drawdown": {
+      "types": "./dist/foundations/financial-risk-and-performance-statistics/drawdown-and-maximum-drawdown/index.d.ts",
+      "import": "./dist/foundations/financial-risk-and-performance-statistics/drawdown-and-maximum-drawdown/index.js",
+      "require": "./dist/foundations/financial-risk-and-performance-statistics/drawdown-and-maximum-drawdown/index.js"
+    },
+    "./foundations/financial-risk-and-performance-statistics/loss-distributions-and-loss-quantiles": {
+      "types": "./dist/foundations/financial-risk-and-performance-statistics/loss-distributions-and-loss-quantiles/index.d.ts",
+      "import": "./dist/foundations/financial-risk-and-performance-statistics/loss-distributions-and-loss-quantiles/index.js",
+      "require": "./dist/foundations/financial-risk-and-performance-statistics/loss-distributions-and-loss-quantiles/index.js"
+    },
+    "./foundations/financial-risk-and-performance-statistics/value-at-risk-intuition": {
+      "types": "./dist/foundations/financial-risk-and-performance-statistics/value-at-risk-intuition/index.d.ts",
+      "import": "./dist/foundations/financial-risk-and-performance-statistics/value-at-risk-intuition/index.js",
+      "require": "./dist/foundations/financial-risk-and-performance-statistics/value-at-risk-intuition/index.js"
+    },
+    "./foundations/financial-risk-and-performance-statistics/expected-shortfall-intuition": {
+      "types": "./dist/foundations/financial-risk-and-performance-statistics/expected-shortfall-intuition/index.d.ts",
+      "import": "./dist/foundations/financial-risk-and-performance-statistics/expected-shortfall-intuition/index.js",
+      "require": "./dist/foundations/financial-risk-and-performance-statistics/expected-shortfall-intuition/index.js"
+    },
+    "./foundations/financial-risk-and-performance-statistics/beta-and-market-relative-risk": {
+      "types": "./dist/foundations/financial-risk-and-performance-statistics/beta-and-market-relative-risk/index.d.ts",
+      "import": "./dist/foundations/financial-risk-and-performance-statistics/beta-and-market-relative-risk/index.js",
+      "require": "./dist/foundations/financial-risk-and-performance-statistics/beta-and-market-relative-risk/index.js"
+    },
+    "./foundations/financial-risk-and-performance-statistics/sharpe-sortino-and-information-ratio-intuition": {
+      "types": "./dist/foundations/financial-risk-and-performance-statistics/sharpe-sortino-and-information-ratio-intuition/index.d.ts",
+      "import": "./dist/foundations/financial-risk-and-performance-statistics/sharpe-sortino-and-information-ratio-intuition/index.js",
+      "require": "./dist/foundations/financial-risk-and-performance-statistics/sharpe-sortino-and-information-ratio-intuition/index.js"
+    },
+    "./foundations/financial-risk-and-performance-statistics/active-return-and-tracking-error": {
+      "types": "./dist/foundations/financial-risk-and-performance-statistics/active-return-and-tracking-error/index.d.ts",
+      "import": "./dist/foundations/financial-risk-and-performance-statistics/active-return-and-tracking-error/index.js",
+      "require": "./dist/foundations/financial-risk-and-performance-statistics/active-return-and-tracking-error/index.js"
+    },
+    "./foundations/financial-risk-and-performance-statistics/covariance-matrices-portfolio-variance-and-diversification": {
+      "types": "./dist/foundations/financial-risk-and-performance-statistics/covariance-matrices-portfolio-variance-and-diversification/index.d.ts",
+      "import": "./dist/foundations/financial-risk-and-performance-statistics/covariance-matrices-portfolio-variance-and-diversification/index.js",
+      "require": "./dist/foundations/financial-risk-and-performance-statistics/covariance-matrices-portfolio-variance-and-diversification/index.js"
+    },
+    "./foundations/statistical-computing-and-reproducibility/floating-point-representation-overflow-and-underflow": {
+      "types": "./dist/foundations/statistical-computing-and-reproducibility/floating-point-representation-overflow-and-underflow/index.d.ts",
+      "import": "./dist/foundations/statistical-computing-and-reproducibility/floating-point-representation-overflow-and-underflow/index.js",
+      "require": "./dist/foundations/statistical-computing-and-reproducibility/floating-point-representation-overflow-and-underflow/index.js"
+    },
+    "./foundations/statistical-computing-and-reproducibility/stable-summation-and-mean-calculation": {
+      "types": "./dist/foundations/statistical-computing-and-reproducibility/stable-summation-and-mean-calculation/index.d.ts",
+      "import": "./dist/foundations/statistical-computing-and-reproducibility/stable-summation-and-mean-calculation/index.js",
+      "require": "./dist/foundations/statistical-computing-and-reproducibility/stable-summation-and-mean-calculation/index.js"
+    },
+    "./foundations/statistical-computing-and-reproducibility/stable-online-variance-and-welford-s-algorithm": {
+      "types": "./dist/foundations/statistical-computing-and-reproducibility/stable-online-variance-and-welford-s-algorithm/index.d.ts",
+      "import": "./dist/foundations/statistical-computing-and-reproducibility/stable-online-variance-and-welford-s-algorithm/index.js",
+      "require": "./dist/foundations/statistical-computing-and-reproducibility/stable-online-variance-and-welford-s-algorithm/index.js"
+    },
+    "./foundations/statistical-computing-and-reproducibility/batch-rolling-and-streaming-statistic-equivalence": {
+      "types": "./dist/foundations/statistical-computing-and-reproducibility/batch-rolling-and-streaming-statistic-equivalence/index.d.ts",
+      "import": "./dist/foundations/statistical-computing-and-reproducibility/batch-rolling-and-streaming-statistic-equivalence/index.js",
+      "require": "./dist/foundations/statistical-computing-and-reproducibility/batch-rolling-and-streaming-statistic-equivalence/index.js"
+    },
+    "./foundations/statistical-computing-and-reproducibility/missing-infinite-invalid-and-unsupported-state-policies": {
+      "types": "./dist/foundations/statistical-computing-and-reproducibility/missing-infinite-invalid-and-unsupported-state-policies/index.d.ts",
+      "import": "./dist/foundations/statistical-computing-and-reproducibility/missing-infinite-invalid-and-unsupported-state-policies/index.js",
+      "require": "./dist/foundations/statistical-computing-and-reproducibility/missing-infinite-invalid-and-unsupported-state-policies/index.js"
+    },
+    "./foundations/statistical-computing-and-reproducibility/pseudorandom-numbers-seeds-and-reproducibility": {
+      "types": "./dist/foundations/statistical-computing-and-reproducibility/pseudorandom-numbers-seeds-and-reproducibility/index.d.ts",
+      "import": "./dist/foundations/statistical-computing-and-reproducibility/pseudorandom-numbers-seeds-and-reproducibility/index.js",
+      "require": "./dist/foundations/statistical-computing-and-reproducibility/pseudorandom-numbers-seeds-and-reproducibility/index.js"
+    },
+    "./foundations/statistical-computing-and-reproducibility/vectorization-index-alignment-and-shape-safety": {
+      "types": "./dist/foundations/statistical-computing-and-reproducibility/vectorization-index-alignment-and-shape-safety/index.d.ts",
+      "import": "./dist/foundations/statistical-computing-and-reproducibility/vectorization-index-alignment-and-shape-safety/index.js",
+      "require": "./dist/foundations/statistical-computing-and-reproducibility/vectorization-index-alignment-and-shape-safety/index.js"
+    },
+    "./foundations/statistical-computing-and-reproducibility/leakage-free-fitting-scaling-and-preprocessing": {
+      "types": "./dist/foundations/statistical-computing-and-reproducibility/leakage-free-fitting-scaling-and-preprocessing/index.d.ts",
+      "import": "./dist/foundations/statistical-computing-and-reproducibility/leakage-free-fitting-scaling-and-preprocessing/index.js",
+      "require": "./dist/foundations/statistical-computing-and-reproducibility/leakage-free-fitting-scaling-and-preprocessing/index.js"
+    },
+    "./foundations/statistical-computing-and-reproducibility/fixtures-numerical-tolerances-and-property-tests": {
+      "types": "./dist/foundations/statistical-computing-and-reproducibility/fixtures-numerical-tolerances-and-property-tests/index.d.ts",
+      "import": "./dist/foundations/statistical-computing-and-reproducibility/fixtures-numerical-tolerances-and-property-tests/index.js",
+      "require": "./dist/foundations/statistical-computing-and-reproducibility/fixtures-numerical-tolerances-and-property-tests/index.js"
+    },
+    "./foundations/statistical-computing-and-reproducibility/reproducible-analysis-metadata-and-audit-trails": {
+      "types": "./dist/foundations/statistical-computing-and-reproducibility/reproducible-analysis-metadata-and-audit-trails/index.d.ts",
+      "import": "./dist/foundations/statistical-computing-and-reproducibility/reproducible-analysis-metadata-and-audit-trails/index.js",
+      "require": "./dist/foundations/statistical-computing-and-reproducibility/reproducible-analysis-metadata-and-audit-trails/index.js"
     },
     "./market-data-engineering/bar-construction/time-bars": {
       "types": "./dist/market-data-engineering/bar-construction/time-bars/index.d.ts",

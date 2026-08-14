@@ -632,8 +632,15 @@ for (const found of discoverTopics()) {
     continue;
   }
 
-  const domainSlug = kebab(meta.domain ?? found.domainDir);
-  const familySlug = kebab(meta.family ?? found.familyDir);
+  // A display name and a URL want different things. `domain:` is a heading —
+  // "Financial Mathematics, Statistics, and Data Foundations" is the right thing
+  // to read above an article. Kebab-cased it is 52 characters in every import
+  // path, every docs URL and every file on disk, which is how one domain pushed
+  // the longest path in the package to 174 characters and put Windows consumers
+  // within 47 characters of MAX_PATH. `domain_slug:` lets a domain keep the
+  // descriptive title and still be short where length is a cost.
+  const domainSlug = kebab(meta.domain_slug ?? meta.domain ?? found.domainDir);
+  const familySlug = kebab(meta.family_slug ?? meta.family ?? found.familyDir);
   const topicSlug = meta.slug ?? found.topicDir.replace(TOPIC_DIR_RE, "");
   const modulePath = `${domainSlug}/${familySlug}/${topicSlug}`;
 
