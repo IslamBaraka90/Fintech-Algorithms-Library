@@ -2343,7 +2343,8 @@
       "convention": "none",
       "entryParams": [
         "left",
-        "right"
+        "right",
+        "evaluatedAt"
       ],
       "fixtureKeys": []
     },
@@ -2407,7 +2408,8 @@
       "convention": "none",
       "entryParams": [
         "records",
-        "knowledgeTime"
+        "knowledgeTime",
+        "validTime"
       ],
       "fixtureKeys": []
     },
@@ -5601,7 +5603,8 @@
         "kind",
         "toleranceBps",
         "minInliers",
-        "maxPoints"
+        "maxPoints",
+        "projectionIndex"
       ],
       "fixtureKeys": [
         "topicId",
@@ -5702,7 +5705,10 @@
       "archetype": "row-classify",
       "fixture": "D08-F03-A01.json",
       "convention": "none",
-      "entryParams": [],
+      "entryParams": [
+        "close",
+        "parameters"
+      ],
       "fixtureKeys": [
         "topic_id",
         "source",
@@ -5717,7 +5723,10 @@
       "archetype": "row-classify",
       "fixture": "D08-F03-A02.json",
       "convention": "none",
-      "entryParams": [],
+      "entryParams": [
+        "close",
+        "parameters"
+      ],
       "fixtureKeys": [
         "topic_id",
         "source",
@@ -5732,7 +5741,10 @@
       "archetype": "row-classify",
       "fixture": "D08-F03-A03.json",
       "convention": "none",
-      "entryParams": [],
+      "entryParams": [
+        "close",
+        "parameters"
+      ],
       "fixtureKeys": [
         "topic_id",
         "source",
@@ -5747,7 +5759,10 @@
       "archetype": "row-classify",
       "fixture": "D08-F03-A04.json",
       "convention": "none",
-      "entryParams": [],
+      "entryParams": [
+        "close",
+        "parameters"
+      ],
       "fixtureKeys": [
         "topic_id",
         "source",
@@ -5762,7 +5777,10 @@
       "archetype": "row-classify",
       "fixture": "D08-F03-A05.json",
       "convention": "none",
-      "entryParams": [],
+      "entryParams": [
+        "close",
+        "parameters"
+      ],
       "fixtureKeys": [
         "topic_id",
         "source",
@@ -5777,7 +5795,10 @@
       "archetype": "row-classify",
       "fixture": "D08-F03-A06.json",
       "convention": "none",
-      "entryParams": [],
+      "entryParams": [
+        "close",
+        "parameters"
+      ],
       "fixtureKeys": [
         "topic_id",
         "source",
@@ -5792,7 +5813,10 @@
       "archetype": "record-transform",
       "fixture": "D08-F04-A01.json",
       "convention": "none",
-      "entryParams": [],
+      "entryParams": [
+        "series",
+        "template"
+      ],
       "fixtureKeys": [
         "topic_id",
         "kind",
@@ -5808,7 +5832,12 @@
       "archetype": "record-transform",
       "fixture": "D08-F04-A02.json",
       "convention": "none",
-      "entryParams": [],
+      "entryParams": [
+        "query",
+        "candidate",
+        "radius",
+        "normalize"
+      ],
       "fixtureKeys": [
         "topic_id",
         "kind",
@@ -5825,7 +5854,11 @@
       "archetype": "record-transform",
       "fixture": "D08-F04-A03.json",
       "convention": "none",
-      "entryParams": [],
+      "entryParams": [
+        "series",
+        "window",
+        "exclusionZone"
+      ],
       "fixtureKeys": [
         "topic_id",
         "kind",
@@ -5841,7 +5874,12 @@
       "archetype": "row-classify",
       "fixture": "D08-F04-A04.json",
       "convention": "none",
-      "entryParams": [],
+      "entryParams": [
+        "series",
+        "shapelet",
+        "threshold",
+        "belowLabel"
+      ],
       "fixtureKeys": [
         "topic_id",
         "kind",
@@ -6370,7 +6408,8 @@
       "convention": "none",
       "entryParams": [
         "coefficients",
-        "horizon"
+        "horizon",
+        "impactMatrix"
       ],
       "fixtureKeys": []
     },
@@ -6384,7 +6423,8 @@
       "entryParams": [
         "coefficients",
         "sigmaU",
-        "horizon"
+        "horizon",
+        "impactMatrix"
       ],
       "fixtureKeys": []
     },

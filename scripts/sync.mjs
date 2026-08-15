@@ -209,7 +209,19 @@ const EXPORTED_ANY_RE = /^export\s+(?:declare\s+)?(?:async\s+)?(?:function|const
  * price series plus its own default for `p`.
  */
 function signatureParams(source, fnName) {
-  const match = source.match(new RegExp(`export\\s+(?:async\\s+)?function\\s+${fnName}\\s*\\(([\\s\\S]*?)\\)\\s*[:{]`));
+  // Two declaration forms reach this. Only the first was ever matched, so every
+  // topic whose entry is an arrow — the D08 continuation and matching families —
+  // recorded an empty parameter list and published a signature that reads as a
+  // zero-argument function. An empty list also satisfies the api: contract
+  // check, so the documentation would have agreed with itself and both would
+  // have been wrong.
+  const match =
+    source.match(new RegExp(`export\\s+(?:async\\s+)?function\\s+${fnName}\\s*\\(([\\s\\S]*?)\\)\\s*[:{]`)) ??
+    source.match(
+      new RegExp(
+        `export\\s+const\\s+${fnName}\\s*(?::[^=]+?)?=\\s*(?:async\\s+)?(?:<[^>]*>\\s*)?\\(([\\s\\S]*?)\\)\\s*(?::[^=]+?)?=>`,
+      ),
+    );
   if (!match) return [];
   const raw = match[1];
   if (!raw.trim()) return [];
@@ -227,7 +239,12 @@ function signatureParams(source, fnName) {
   }
   if (current.trim()) parts.push(current);
   return parts
-    .map((part) => part.trim().split(/[:=]/)[0].trim())
+    // `radius?: number` splits to `radius?`, which is not a valid identifier and
+    // used to be filtered out — silently deleting an optional parameter from the
+    // MIDDLE of the list and shifting every later one left. The published
+    // signature then told a caller to pass the fourth argument in third
+    // position. Strip the marker instead of losing the parameter.
+    .map((part) => part.trim().split(/[:=]/)[0].trim().replace(/\?$/, ""))
     .filter((name) => /^[A-Za-z_$][\w$]*$/.test(name));
 }
 
