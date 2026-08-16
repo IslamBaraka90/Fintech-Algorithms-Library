@@ -1,0 +1,40 @@
+{
+ "input": {
+  "side": "buy",
+  "limit_price_atoms": 1015000,
+  "reference_price_atoms": 1000000,
+  "quantity": 4000,
+  "max_quantity": 5000,
+  "max_notional_atoms": 5000000000,
+  "max_aggressive_deviation_bps": 200
+ },
+ "expected": {
+  "side": "buy",
+  "limit_price_atoms": 1015000,
+  "reference_price_atoms": 1000000,
+  "quantity": 4000,
+  "order_notional_atoms": 4060000000,
+  "aggressive_deviation_bps": 150,
+  "checks": {
+   "quantity": {
+    "value": 4000,
+    "limit": 5000,
+    "passed": true
+   },
+   "notional": {
+    "value": 4060000000,
+    "limit": 5000000000,
+    "passed": true
+   },
+   "aggressive_deviation_bps": {
+    "value": 150,
+    "limit": 200,
+    "passed": true
+   }
+  },
+  "violations": [],
+  "valid": true,
+  "reason": "within-configured-limits",
+  "state": "accepted"
+ }
+}

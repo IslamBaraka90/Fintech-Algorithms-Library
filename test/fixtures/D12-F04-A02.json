@@ -1,0 +1,33 @@
+{
+ "input": {
+  "original": {
+   "order_id": "O-1",
+   "order_type": "displayed-limit",
+   "price": 100,
+   "remaining_quantity": 1000,
+   "priority_sequence": 42
+  },
+  "replacement": {
+   "order_id": "O-2",
+   "price": 100,
+   "remaining_quantity": 600,
+   "replace_sequence": 80
+  }
+ },
+ "expected": {
+  "model": "nasdaq-style-displayed-limit-priority-rule",
+  "original_order_id": "O-1",
+  "replacement_order_id": "O-2",
+  "original_price": 100,
+  "replacement_price": 100,
+  "original_remaining_quantity": 1000,
+  "replacement_remaining_quantity": 600,
+  "same_price": true,
+  "decrease_only": true,
+  "priority_preserved": true,
+  "original_priority_sequence": 42,
+  "effective_priority_sequence": 42,
+  "reason": "same-price quantity decrease preserves canonical displayed-order priority",
+  "state": "priority-preserved"
+ }
+}

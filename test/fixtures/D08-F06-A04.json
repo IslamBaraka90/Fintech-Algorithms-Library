@@ -1,0 +1,135 @@
+{
+ "input": {
+  "current_price": 103.4,
+  "lower_bound": 95,
+  "upper_bound": 110,
+  "tick_size": 0.1,
+  "base_unit": 1
+ },
+ "expected": {
+  "state": "calculated",
+  "base_unit": 1,
+  "level_count": 16,
+  "closest_level": {
+   "price": 103,
+   "class": "minor",
+   "salience_weight": 0.5,
+   "distance": 0.4,
+   "distance_bps": 38.684719535784
+  },
+  "levels": [
+   {
+    "price": 95,
+    "class": "half",
+    "salience_weight": 0.75,
+    "distance": 8.4,
+    "distance_bps": 812.379110251451
+   },
+   {
+    "price": 96,
+    "class": "minor",
+    "salience_weight": 0.5,
+    "distance": 7.4,
+    "distance_bps": 715.667311411993
+   },
+   {
+    "price": 97,
+    "class": "minor",
+    "salience_weight": 0.5,
+    "distance": 6.4,
+    "distance_bps": 618.955512572534
+   },
+   {
+    "price": 98,
+    "class": "minor",
+    "salience_weight": 0.5,
+    "distance": 5.4,
+    "distance_bps": 522.243713733076
+   },
+   {
+    "price": 99,
+    "class": "minor",
+    "salience_weight": 0.5,
+    "distance": 4.4,
+    "distance_bps": 425.531914893618
+   },
+   {
+    "price": 100,
+    "class": "major",
+    "salience_weight": 1,
+    "distance": 3.4,
+    "distance_bps": 328.820116054159
+   },
+   {
+    "price": 101,
+    "class": "minor",
+    "salience_weight": 0.5,
+    "distance": 2.4,
+    "distance_bps": 232.108317214701
+   },
+   {
+    "price": 102,
+    "class": "minor",
+    "salience_weight": 0.5,
+    "distance": 1.4,
+    "distance_bps": 135.396518375242
+   },
+   {
+    "price": 103,
+    "class": "minor",
+    "salience_weight": 0.5,
+    "distance": 0.4,
+    "distance_bps": 38.684719535784
+   },
+   {
+    "price": 104,
+    "class": "minor",
+    "salience_weight": 0.5,
+    "distance": 0.6,
+    "distance_bps": 58.027079303674
+   },
+   {
+    "price": 105,
+    "class": "half",
+    "salience_weight": 0.75,
+    "distance": 1.6,
+    "distance_bps": 154.738878143133
+   },
+   {
+    "price": 106,
+    "class": "minor",
+    "salience_weight": 0.5,
+    "distance": 2.6,
+    "distance_bps": 251.450676982591
+   },
+   {
+    "price": 107,
+    "class": "minor",
+    "salience_weight": 0.5,
+    "distance": 3.6,
+    "distance_bps": 348.16247582205
+   },
+   {
+    "price": 108,
+    "class": "minor",
+    "salience_weight": 0.5,
+    "distance": 4.6,
+    "distance_bps": 444.874274661508
+   },
+   {
+    "price": 109,
+    "class": "minor",
+    "salience_weight": 0.5,
+    "distance": 5.6,
+    "distance_bps": 541.586073500966
+   },
+   {
+    "price": 110,
+    "class": "major",
+    "salience_weight": 1,
+    "distance": 6.6,
+    "distance_bps": 638.297872340425
+   }
+  ]
+ }
+}

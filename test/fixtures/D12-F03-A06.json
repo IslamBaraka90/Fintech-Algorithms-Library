@@ -1,0 +1,30 @@
+{
+ "input": {
+  "reference_close_atoms": 4000000,
+  "current_index_atoms": 3480000,
+  "level_thresholds_bps": [
+   700,
+   1300,
+   2000
+  ],
+  "previously_triggered_level": 1
+ },
+ "expected": {
+  "reference_close_atoms": 4000000,
+  "current_index_atoms": 3480000,
+  "decline_bps": 1300,
+  "level_thresholds_bps": [
+   700,
+   1300,
+   2000
+  ],
+  "previously_triggered_level": 1,
+  "reached_level": 2,
+  "newly_triggered_level": 2,
+  "newly_triggered": true,
+  "action": "level-2-halt",
+  "next_threshold_bps": 2000,
+  "distance_to_next_threshold_bps": 700,
+  "state": "triggered"
+ }
+}

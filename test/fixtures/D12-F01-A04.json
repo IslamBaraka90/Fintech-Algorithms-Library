@@ -1,0 +1,73 @@
+{
+ "input": {
+  "incoming_quantity": 600,
+  "price": 100,
+  "lot_size": 1,
+  "fifo_fraction": 0.4,
+  "resting_orders": [
+   {
+    "order_id": "H-1",
+    "side": "sell",
+    "price": 100,
+    "remaining_quantity": 500,
+    "arrival_sequence": 10
+   },
+   {
+    "order_id": "H-2",
+    "side": "sell",
+    "price": 100,
+    "remaining_quantity": 300,
+    "arrival_sequence": 20
+   },
+   {
+    "order_id": "H-3",
+    "side": "sell",
+    "price": 100,
+    "remaining_quantity": 200,
+    "arrival_sequence": 30
+   }
+  ]
+ },
+ "expected": {
+  "model": "single-price-fifo-pro-rata-split",
+  "price": 100,
+  "lot_size": 1,
+  "fifo_fraction": 0.4,
+  "incoming_quantity": 600,
+  "executable_quantity": 600,
+  "fifo_target_quantity": 240,
+  "pro_rata_target_quantity": 360,
+  "allocated_quantity": 600,
+  "unfilled_quantity": 0,
+  "allocations": [
+   {
+    "order_id": "H-1",
+    "resting_quantity": 500,
+    "fifo_quantity": 240,
+    "pro_rata_quantity": 123,
+    "allocated_quantity": 363,
+    "remaining_quantity": 137,
+    "arrival_sequence": 10
+   },
+   {
+    "order_id": "H-2",
+    "resting_quantity": 300,
+    "fifo_quantity": 0,
+    "pro_rata_quantity": 142,
+    "allocated_quantity": 142,
+    "remaining_quantity": 158,
+    "arrival_sequence": 20
+   },
+   {
+    "order_id": "H-3",
+    "resting_quantity": 200,
+    "fifo_quantity": 0,
+    "pro_rata_quantity": 95,
+    "allocated_quantity": 95,
+    "remaining_quantity": 105,
+    "arrival_sequence": 30
+   }
+  ],
+  "state": "fully-allocated"
+ }
+}

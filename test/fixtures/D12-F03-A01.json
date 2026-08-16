@@ -1,0 +1,22 @@
+{
+ "input": {
+  "price_atoms": 1000500,
+  "tick_size_atoms": 100,
+  "price_scale": 10000,
+  "effective_policy_id": "SYN-US-EQ-2026-A"
+ },
+ "expected": {
+  "effective_policy_id": "SYN-US-EQ-2026-A",
+  "price_atoms": 1000500,
+  "tick_size_atoms": 100,
+  "price_scale": 10000,
+  "valid": true,
+  "remainder_atoms": 0,
+  "lower_valid_price_atoms": 1000500,
+  "upper_valid_price_atoms": 1000500,
+  "distance_to_lower_atoms": 0,
+  "distance_to_upper_atoms": 0,
+  "reason": "on-grid",
+  "state": "accepted"
+ }
+}

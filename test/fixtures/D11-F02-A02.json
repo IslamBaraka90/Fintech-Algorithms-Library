@@ -1,0 +1,27 @@
+{
+ "input": {
+  "bid": 100,
+  "ask": 100.08,
+  "trade_price": 100.07,
+  "side": "buy"
+ },
+ "expected": {
+  "model": "effective-spread",
+  "bid": 100,
+  "ask": 100.08,
+  "midpoint": 100.03999999999999,
+  "quoted_spread": 0.0799999999999983,
+  "quoted_spread_relative": 0.0007996801279488034,
+  "quoted_spread_bps": 7.996801279488034,
+  "state": "inside-quote",
+  "trade_price": 100.07,
+  "side": "buy",
+  "direction": 1,
+  "effective_spread": 0.060000000000002274,
+  "effective_spread_relative": 0.0005997600959616381,
+  "effective_spread_bps": 5.997600959616381,
+  "quote_side_price": 100.08,
+  "price_improvement_per_share": 0.010000000000005116,
+  "round_trip_spread_reduction": 0.01999999999999602
+ }
+}

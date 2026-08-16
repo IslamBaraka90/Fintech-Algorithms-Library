@@ -1,0 +1,152 @@
+{
+ "input": {
+  "tick_size": 0.25,
+  "bin_size_ticks": 2,
+  "window_end": "2026-08-03T10:30:00Z",
+  "trades": [
+   {
+    "trade_id": "T01",
+    "timestamp": "2026-08-03T10:00:00Z",
+    "price": 99,
+    "volume": 10,
+    "final": true
+   },
+   {
+    "trade_id": "T02",
+    "timestamp": "2026-08-03T10:02:00Z",
+    "price": 99.25,
+    "volume": 15,
+    "final": true
+   },
+   {
+    "trade_id": "T03",
+    "timestamp": "2026-08-03T10:04:00Z",
+    "price": 99.5,
+    "volume": 25,
+    "final": true
+   },
+   {
+    "trade_id": "T04",
+    "timestamp": "2026-08-03T10:06:00Z",
+    "price": 99.75,
+    "volume": 20,
+    "final": true
+   },
+   {
+    "trade_id": "T05",
+    "timestamp": "2026-08-03T10:08:00Z",
+    "price": 100,
+    "volume": 50,
+    "final": true
+   },
+   {
+    "trade_id": "T06",
+    "timestamp": "2026-08-03T10:10:00Z",
+    "price": 100.25,
+    "volume": 80,
+    "final": true
+   },
+   {
+    "trade_id": "T07",
+    "timestamp": "2026-08-03T10:12:00Z",
+    "price": 100.5,
+    "volume": 40,
+    "final": true
+   },
+   {
+    "trade_id": "T08",
+    "timestamp": "2026-08-03T10:14:00Z",
+    "price": 100.75,
+    "volume": 35,
+    "final": true
+   },
+   {
+    "trade_id": "T09",
+    "timestamp": "2026-08-03T10:16:00Z",
+    "price": 101,
+    "volume": 20,
+    "final": true
+   },
+   {
+    "trade_id": "T10",
+    "timestamp": "2026-08-03T10:18:00Z",
+    "price": 101.25,
+    "volume": 15,
+    "final": true
+   },
+   {
+    "trade_id": "T11",
+    "timestamp": "2026-08-03T10:20:00Z",
+    "price": 101.5,
+    "volume": 8,
+    "final": true
+   },
+   {
+    "trade_id": "T12",
+    "timestamp": "2026-08-03T10:22:00Z",
+    "price": 100.25,
+    "volume": 22,
+    "final": true
+   }
+  ]
+ },
+ "expected": {
+  "state": "calculated",
+  "tick_size": 0.25,
+  "bin_size_ticks": 2,
+  "bin_width": 0.5,
+  "total_volume": 340,
+  "trade_count": 12,
+  "eligible_trade_count": 12,
+  "rows": [
+   {
+    "bin_index": 198,
+    "lower": 99,
+    "upper": 99.5,
+    "midpoint": 99.25,
+    "volume": 25,
+    "share": 0.073529411765
+   },
+   {
+    "bin_index": 199,
+    "lower": 99.5,
+    "upper": 100,
+    "midpoint": 99.75,
+    "volume": 45,
+    "share": 0.132352941176
+   },
+   {
+    "bin_index": 200,
+    "lower": 100,
+    "upper": 100.5,
+    "midpoint": 100.25,
+    "volume": 152,
+    "share": 0.447058823529
+   },
+   {
+    "bin_index": 201,
+    "lower": 100.5,
+    "upper": 101,
+    "midpoint": 100.75,
+    "volume": 75,
+    "share": 0.220588235294
+   },
+   {
+    "bin_index": 202,
+    "lower": 101,
+    "upper": 101.5,
+    "midpoint": 101.25,
+    "volume": 35,
+    "share": 0.102941176471
+   },
+   {
+    "bin_index": 203,
+    "lower": 101.5,
+    "upper": 102,
+    "midpoint": 101.75,
+    "volume": 8,
+    "share": 0.023529411765
+   }
+  ]
+ }
+}

@@ -1,0 +1,37 @@
+{
+ "input": {
+  "prior_closes": [
+   100,
+   99,
+   98,
+   97,
+   96,
+   95,
+   94,
+   93
+  ],
+  "prior_ranges": [
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2,
+   2
+  ],
+  "lookback": 8,
+  "minimum_efficiency": 0.6,
+  "minimum_move_scale": 2
+ },
+ "expected": {
+  "state": "ready",
+  "trend_context": "downtrend",
+  "history_count": 8,
+  "net_move": -7,
+  "path_move": 7,
+  "efficiency": 1,
+  "range_scale": 2,
+  "normalized_move": -3.5
+ }
+}

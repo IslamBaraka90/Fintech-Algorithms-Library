@@ -1,0 +1,76 @@
+{
+ "input": {
+  "start_price": 100,
+  "end_price": 120,
+  "retracement_end_price": 112,
+  "tick_size": 0.1,
+  "retracement_ratios": [
+   0.236,
+   0.382,
+   0.5,
+   0.618,
+   0.786
+  ],
+  "extension_ratios": [
+   1,
+   1.272,
+   1.618,
+   2
+  ]
+ },
+ "expected": {
+  "state": "calculated",
+  "direction": "up",
+  "leg_size": 20,
+  "retracement_levels": [
+   {
+    "ratio": 0.236,
+    "raw_price": 115.28,
+    "price": 115.3
+   },
+   {
+    "ratio": 0.382,
+    "raw_price": 112.36,
+    "price": 112.4
+   },
+   {
+    "ratio": 0.5,
+    "raw_price": 110,
+    "price": 110
+   },
+   {
+    "ratio": 0.618,
+    "raw_price": 107.64,
+    "price": 107.6
+   },
+   {
+    "ratio": 0.786,
+    "raw_price": 104.28,
+    "price": 104.3
+   }
+  ],
+  "extension_levels": [
+   {
+    "ratio": 1,
+    "raw_price": 132,
+    "price": 132
+   },
+   {
+    "ratio": 1.272,
+    "raw_price": 137.44,
+    "price": 137.4
+   },
+   {
+    "ratio": 1.618,
+    "raw_price": 144.36,
+    "price": 144.4
+   },
+   {
+    "ratio": 2,
+    "raw_price": 152,
+    "price": 152
+   }
+  ],
+  "rounding": "nearest tick, half away from zero"
+ }
+}

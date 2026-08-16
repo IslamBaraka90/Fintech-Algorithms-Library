@@ -1,0 +1,72 @@
+{
+ "input": {
+  "zone_lower": 99.5,
+  "zone_upper": 100.5,
+  "break_buffer": 0.2,
+  "retest_tolerance": 0.15,
+  "breakout_closes": 2,
+  "max_retest_bars": 5,
+  "direction": "up",
+  "bars": [
+   {
+    "high": 100.5,
+    "low": 99.8,
+    "close": 100.2
+   },
+   {
+    "high": 101,
+    "low": 100.3,
+    "close": 100.8
+   },
+   {
+    "high": 101.3,
+    "low": 100.7,
+    "close": 101
+   },
+   {
+    "high": 101.2,
+    "low": 100.4,
+    "close": 100.7
+   },
+   {
+    "high": 101.4,
+    "low": 100.6,
+    "close": 101.1
+   }
+  ]
+ },
+ "expected": {
+  "state": "confirmed",
+  "confirmed": true,
+  "direction": "up",
+  "breakout_index": 2,
+  "retest_index": 3,
+  "confirmation_index": 4,
+  "transitions": [
+   {
+    "index": 1,
+    "from": "searching",
+    "to": "breakout-pending",
+    "close": 100.8
+   },
+   {
+    "index": 2,
+    "from": "breakout-pending",
+    "to": "awaiting-retest",
+    "close": 101
+   },
+   {
+    "index": 3,
+    "from": "awaiting-retest",
+    "to": "retest-contact",
+    "close": 100.7
+   },
+   {
+    "index": 4,
+    "from": "retest-contact",
+    "to": "confirmed",
+    "close": 101.1
+   }
+  ]
+ }
+}

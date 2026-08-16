@@ -1,0 +1,119 @@
+{
+ "input": {
+  "candles": [
+   {
+    "open": 105,
+    "high": 105.4,
+    "low": 100.6,
+    "close": 101
+   },
+   {
+    "open": 102,
+    "high": 103.2,
+    "low": 101.8,
+    "close": 103
+   },
+   {
+    "open": 102.8,
+    "high": 105.5,
+    "low": 102.6,
+    "close": 105.3
+   }
+  ],
+  "trend_context": "downtrend",
+  "prior_bodies": [
+   2,
+   2.1,
+   1.9,
+   2.2,
+   2,
+   2.1,
+   1.8,
+   2,
+   2.2,
+   1.9
+  ],
+  "prior_ranges": [
+   3,
+   3.2,
+   2.9,
+   3.1,
+   3,
+   3.3,
+   2.8,
+   3,
+   3.2,
+   2.9
+  ],
+  "tick_size": 0.1,
+  "penetration_fraction": 0.5
+ },
+ "expected": {
+  "topic_id": "D06-F04-A05",
+  "pattern": "Three Inside Up/Down",
+  "matched": true,
+  "state": "matched",
+  "direction": "bullish",
+  "trend_context": "downtrend",
+  "required_context": "downtrend",
+  "history_count": 10,
+  "body_scale": 2,
+  "range_scale": 3,
+  "geometry_score": 1,
+  "checks": {
+   "opposite_first_pair": true,
+   "first_long": true,
+   "second_short": true,
+   "second_body_inside": true,
+   "third_confirms_past_first_open": true
+  },
+  "failed_checks": [],
+  "reason": "all declared checks pass",
+  "thresholds": {
+   "long_body_floor": 2.4,
+   "short_body_ceiling": 1.2,
+   "confirmation_step": 0.1
+  },
+  "candles": [
+   {
+    "open": 105,
+    "high": 105.4,
+    "low": 100.6,
+    "close": 101,
+    "body_high": 105,
+    "body_low": 101,
+    "body": 4,
+    "upper_shadow": 0.4,
+    "lower_shadow": 0.4,
+    "range": 4.8,
+    "direction": "bearish"
+   },
+   {
+    "open": 102,
+    "high": 103.2,
+    "low": 101.8,
+    "close": 103,
+    "body_high": 103,
+    "body_low": 102,
+    "body": 1,
+    "upper_shadow": 0.2,
+    "lower_shadow": 0.2,
+    "range": 1.4,
+    "direction": "bullish"
+   },
+   {
+    "open": 102.8,
+    "high": 105.5,
+    "low": 102.6,
+    "close": 105.3,
+    "body_high": 105.3,
+    "body_low": 102.8,
+    "body": 2.5,
+    "upper_shadow": 0.2,
+    "lower_shadow": 0.2,
+    "range": 2.9,
+    "direction": "bullish"
+   }
+  ]
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "input": {
+  "remaining_quantity": 8000,
+  "side": "buy",
+  "arrival_price_atoms": 1000000,
+  "current_price_atoms": 1000500,
+  "tolerance_bps": 8,
+  "observed_market_volume": 50000,
+  "base_participation_bps": 1000,
+  "defensive_participation_bps": 300,
+  "max_participation_bps": 2000,
+  "intervals_remaining": 10,
+  "deadline_threshold_intervals": 2,
+  "max_child_quantity": 1500,
+  "lot_size": 100
+ },
+ "expected": {
+  "side": "buy",
+  "arrival_price_atoms": 1000000,
+  "current_price_atoms": 1000500,
+  "signed_move_bps": 5,
+  "tolerance_bps": 8,
+  "price_state": "inside-band",
+  "chosen_participation_bps": 1000,
+  "observed_market_volume": 50000,
+  "target_from_volume_quantity": 5000,
+  "child_quantity": 1500,
+  "remaining_quantity": 6500,
+  "state": "inside-band"
+ }
+}

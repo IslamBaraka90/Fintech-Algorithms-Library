@@ -1,0 +1,28 @@
+{
+ "input": {
+  "candle": {
+   "open": 100,
+   "high": 105,
+   "low": 97,
+   "close": 102
+  },
+  "tick_size": 0.1
+ },
+ "expected": {
+  "state": "calculated",
+  "body": 2,
+  "upper_shadow": 3,
+  "lower_shadow": 3,
+  "range": 8,
+  "tick_size": 0.1,
+  "effective_body": 2,
+  "upper_to_body": 1.5,
+  "lower_to_body": 1.5,
+  "upper_to_effective_body": 1.5,
+  "lower_to_effective_body": 1.5,
+  "upper_to_range": 0.375,
+  "lower_to_range": 0.375,
+  "dominant_shadow": "balanced",
+  "dominant_shadow_ratio": 1.5
+ }
+}

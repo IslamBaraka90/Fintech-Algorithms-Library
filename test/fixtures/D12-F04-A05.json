@@ -1,0 +1,121 @@
+{
+ "input": {
+  "total_quantity": 1000,
+  "initial_display_quantity": 200,
+  "display_size": 200,
+  "fills": [
+   100,
+   200,
+   250,
+   300
+  ],
+  "starting_priority_sequence": 10
+ },
+ "expected": {
+  "model": "zero-displayed-tranche-replenishment",
+  "total_quantity": 1000,
+  "display_size": 200,
+  "executed_quantity": 850,
+  "displayed_remaining": 150,
+  "reserve_remaining": 0,
+  "total_remaining": 150,
+  "replenishment_count": 4,
+  "current_priority_sequence": 14,
+  "unfilled_requested_quantity": 0,
+  "events": [
+   {
+    "type": "fill",
+    "fill_request_index": 0,
+    "quantity": 100,
+    "displayed_remaining": 100,
+    "reserve_remaining": 800,
+    "priority_sequence": 10
+   },
+   {
+    "type": "fill",
+    "fill_request_index": 1,
+    "quantity": 100,
+    "displayed_remaining": 0,
+    "reserve_remaining": 800,
+    "priority_sequence": 10
+   },
+   {
+    "type": "replenish",
+    "quantity": 200,
+    "new_priority_sequence": 11,
+    "displayed_remaining": 200,
+    "reserve_remaining": 600
+   },
+   {
+    "type": "fill",
+    "fill_request_index": 1,
+    "quantity": 100,
+    "displayed_remaining": 100,
+    "reserve_remaining": 600,
+    "priority_sequence": 11
+   },
+   {
+    "type": "fill",
+    "fill_request_index": 2,
+    "quantity": 100,
+    "displayed_remaining": 0,
+    "reserve_remaining": 600,
+    "priority_sequence": 11
+   },
+   {
+    "type": "replenish",
+    "quantity": 200,
+    "new_priority_sequence": 12,
+    "displayed_remaining": 200,
+    "reserve_remaining": 400
+   },
+   {
+    "type": "fill",
+    "fill_request_index": 2,
+    "quantity": 150,
+    "displayed_remaining": 50,
+    "reserve_remaining": 400,
+    "priority_sequence": 12
+   },
+   {
+    "type": "fill",
+    "fill_request_index": 3,
+    "quantity": 50,
+    "displayed_remaining": 0,
+    "reserve_remaining": 400,
+    "priority_sequence": 12
+   },
+   {
+    "type": "replenish",
+    "quantity": 200,
+    "new_priority_sequence": 13,
+    "displayed_remaining": 200,
+    "reserve_remaining": 200
+   },
+   {
+    "type": "fill",
+    "fill_request_index": 3,
+    "quantity": 200,
+    "displayed_remaining": 0,
+    "reserve_remaining": 200,
+    "priority_sequence": 13
+   },
+   {
+    "type": "replenish",
+    "quantity": 200,
+    "new_priority_sequence": 14,
+    "displayed_remaining": 200,
+    "reserve_remaining": 0
+   },
+   {
+    "type": "fill",
+    "fill_request_index": 3,
+    "quantity": 50,
+    "displayed_remaining": 150,
+    "reserve_remaining": 0,
+    "priority_sequence": 14
+   }
+  ],
+  "state": "displayed-only"
+ }
+}

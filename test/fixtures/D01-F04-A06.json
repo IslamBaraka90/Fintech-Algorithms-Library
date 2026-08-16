@@ -1,0 +1,111 @@
+{
+ "input": {
+  "provider": "synthetic-provider",
+  "dataset": "daily-equity-bars",
+  "instrument_id": "SYNTH-ABC",
+  "price_field": "close",
+  "basis_id": "split-adjusted-v1",
+  "baseline_observed_at": "2026-06-12T20:00:00Z",
+  "candidate_observed_at": "2026-06-16T20:00:00Z",
+  "tolerance_bps": 1,
+  "baseline_rows": [
+   {
+    "date": "2026-06-10",
+    "raw_price": 100,
+    "adjusted_price": 100
+   },
+   {
+    "date": "2026-06-11",
+    "raw_price": 102,
+    "adjusted_price": 102
+   },
+   {
+    "date": "2026-06-12",
+    "raw_price": 104,
+    "adjusted_price": 104
+   }
+  ],
+  "candidate_rows": [
+   {
+    "date": "2026-06-10",
+    "raw_price": 100,
+    "adjusted_price": 50
+   },
+   {
+    "date": "2026-06-11",
+    "raw_price": 102,
+    "adjusted_price": 51
+   },
+   {
+    "date": "2026-06-12",
+    "raw_price": 104,
+    "adjusted_price": 52.26
+   }
+  ],
+  "actions": [
+   {
+    "event_id": "SPLIT-2FOR1",
+    "effective_date": "2026-06-15",
+    "available_at": "2026-06-13T12:00:00Z",
+    "status": "confirmed",
+    "adjustment_multiplier": 0.5
+   }
+  ]
+ },
+ "expected": {
+  "provider": "synthetic-provider",
+  "dataset": "daily-equity-bars",
+  "instrument_id": "SYNTH-ABC",
+  "price_field": "close",
+  "basis_id": "split-adjusted-v1",
+  "baseline_observed_at": "2026-06-12T20:00:00Z",
+  "candidate_observed_at": "2026-06-16T20:00:00Z",
+  "tolerance_bps": 1,
+  "state": "basis-drift",
+  "overlap_count": 3,
+  "stable_count": 0,
+  "expected_restatement_count": 2,
+  "drift_count": 1,
+  "max_residual_bps": 49.875415,
+  "unmatched_baseline_dates": [],
+  "unmatched_candidate_dates": [],
+  "rows": [
+   {
+    "date": "2026-06-10",
+    "old_factor": 1,
+    "new_factor": 0.5,
+    "observed_multiplier": 0.5,
+    "expected_multiplier": 0.5,
+    "residual_bps": 0,
+    "state": "expected-restatement",
+    "action_ids": [
+     "SPLIT-2FOR1"
+    ]
+   },
+   {
+    "date": "2026-06-11",
+    "old_factor": 1,
+    "new_factor": 0.5,
+    "observed_multiplier": 0.5,
+    "expected_multiplier": 0.5,
+    "residual_bps": 0,
+    "state": "expected-restatement",
+    "action_ids": [
+     "SPLIT-2FOR1"
+    ]
+   },
+   {
+    "date": "2026-06-12",
+    "old_factor": 1,
+    "new_factor": 0.5025,
+    "observed_multiplier": 0.5025,
+    "expected_multiplier": 0.5,
+    "residual_bps": 49.875415,
+    "state": "basis-drift",
+    "action_ids": [
+     "SPLIT-2FOR1"
+    ]
+   }
+  ]
+ }
+}

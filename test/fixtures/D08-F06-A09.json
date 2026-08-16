@@ -1,0 +1,520 @@
+{
+ "input": {
+  "as_of": "2026-08-03T12:00:00Z",
+  "max_distance_bps": 40,
+  "freshness_half_life_hours": 12,
+  "instruments": [
+   {
+    "instrument_id": "SYN01",
+    "current_price": 79.76,
+    "zone_lower": 79.82,
+    "zone_upper": 80.18,
+    "zone_strength": 55,
+    "observed_at": "2026-08-03T12:00:00Z"
+   },
+   {
+    "instrument_id": "SYN02",
+    "current_price": 83.84,
+    "zone_lower": 83.82,
+    "zone_upper": 84.18,
+    "zone_strength": 62,
+    "observed_at": "2026-08-03T11:00:00Z"
+   },
+   {
+    "instrument_id": "SYN03",
+    "current_price": 87.92,
+    "zone_lower": 87.82,
+    "zone_upper": 88.18,
+    "zone_strength": 69,
+    "observed_at": "2026-08-03T10:00:00Z"
+   },
+   {
+    "instrument_id": "SYN04",
+    "current_price": 92,
+    "zone_lower": 91.82,
+    "zone_upper": 92.18,
+    "zone_strength": 76,
+    "observed_at": "2026-08-03T09:00:00Z"
+   },
+   {
+    "instrument_id": "SYN05",
+    "current_price": 96.08,
+    "zone_lower": 95.82,
+    "zone_upper": 96.18,
+    "zone_strength": 83,
+    "observed_at": "2026-08-03T08:00:00Z"
+   },
+   {
+    "instrument_id": "SYN06",
+    "current_price": 100.16,
+    "zone_lower": 99.82,
+    "zone_upper": 100.18,
+    "zone_strength": 90,
+    "observed_at": "2026-08-03T07:00:00Z"
+   },
+   {
+    "instrument_id": "SYN07",
+    "current_price": 104.24,
+    "zone_lower": 103.82,
+    "zone_upper": 104.18,
+    "zone_strength": 56,
+    "observed_at": "2026-08-03T12:00:00Z"
+   },
+   {
+    "instrument_id": "SYN08",
+    "current_price": 107.76,
+    "zone_lower": 107.82,
+    "zone_upper": 108.18,
+    "zone_strength": 63,
+    "observed_at": "2026-08-03T11:00:00Z"
+   },
+   {
+    "instrument_id": "SYN09",
+    "current_price": 111.84,
+    "zone_lower": 111.82,
+    "zone_upper": 112.18,
+    "zone_strength": 70,
+    "observed_at": "2026-08-03T10:00:00Z"
+   },
+   {
+    "instrument_id": "SYN10",
+    "current_price": 115.92,
+    "zone_lower": 115.82,
+    "zone_upper": 116.18,
+    "zone_strength": 77,
+    "observed_at": "2026-08-03T09:00:00Z"
+   },
+   {
+    "instrument_id": "SYN11",
+    "current_price": 120,
+    "zone_lower": 119.82,
+    "zone_upper": 120.18,
+    "zone_strength": 84,
+    "observed_at": "2026-08-03T08:00:00Z"
+   },
+   {
+    "instrument_id": "SYN12",
+    "current_price": 124.08,
+    "zone_lower": 123.82,
+    "zone_upper": 124.18,
+    "zone_strength": 91,
+    "observed_at": "2026-08-03T07:00:00Z"
+   },
+   {
+    "instrument_id": "SYN13",
+    "current_price": 128.16,
+    "zone_lower": 127.82,
+    "zone_upper": 128.18,
+    "zone_strength": 57,
+    "observed_at": "2026-08-03T12:00:00Z"
+   },
+   {
+    "instrument_id": "SYN14",
+    "current_price": 132.24,
+    "zone_lower": 131.82,
+    "zone_upper": 132.18,
+    "zone_strength": 64,
+    "observed_at": "2026-08-03T11:00:00Z"
+   },
+   {
+    "instrument_id": "SYN15",
+    "current_price": 135.76,
+    "zone_lower": 135.82,
+    "zone_upper": 136.18,
+    "zone_strength": 71,
+    "observed_at": "2026-08-03T10:00:00Z"
+   },
+   {
+    "instrument_id": "SYN16",
+    "current_price": 139.84,
+    "zone_lower": 139.82,
+    "zone_upper": 140.18,
+    "zone_strength": 78,
+    "observed_at": "2026-08-03T09:00:00Z"
+   },
+   {
+    "instrument_id": "SYN17",
+    "current_price": 143.92,
+    "zone_lower": 143.82,
+    "zone_upper": 144.18,
+    "zone_strength": 85,
+    "observed_at": "2026-08-03T08:00:00Z"
+   },
+   {
+    "instrument_id": "SYN18",
+    "current_price": 148,
+    "zone_lower": 147.82,
+    "zone_upper": 148.18,
+    "zone_strength": 92,
+    "observed_at": "2026-08-03T07:00:00Z"
+   },
+   {
+    "instrument_id": "SYN19",
+    "current_price": 152.08,
+    "zone_lower": 151.82,
+    "zone_upper": 152.18,
+    "zone_strength": 58,
+    "observed_at": "2026-08-03T12:00:00Z"
+   },
+   {
+    "instrument_id": "SYN20",
+    "current_price": 156.16,
+    "zone_lower": 155.82,
+    "zone_upper": 156.18,
+    "zone_strength": 65,
+    "observed_at": "2026-08-03T11:00:00Z"
+   },
+   {
+    "instrument_id": "SYN21",
+    "current_price": 160.24,
+    "zone_lower": 159.82,
+    "zone_upper": 160.18,
+    "zone_strength": 72,
+    "observed_at": "2026-08-03T10:00:00Z"
+   },
+   {
+    "instrument_id": "SYN22",
+    "current_price": 163.76,
+    "zone_lower": 163.82,
+    "zone_upper": 164.18,
+    "zone_strength": 79,
+    "observed_at": "2026-08-03T09:00:00Z"
+   },
+   {
+    "instrument_id": "SYN23",
+    "current_price": 167.84,
+    "zone_lower": 167.82,
+    "zone_upper": 168.18,
+    "zone_strength": 86,
+    "observed_at": "2026-08-03T08:00:00Z"
+   },
+   {
+    "instrument_id": "SYN24",
+    "current_price": 171.92,
+    "zone_lower": 171.82,
+    "zone_upper": 172.18,
+    "zone_strength": 93,
+    "observed_at": "2026-08-03T07:00:00Z"
+   }
+  ]
+ },
+ "expected": {
+  "state": "calculated",
+  "as_of": "2026-08-03T12:00:00Z",
+  "eligible_count": 24,
+  "ranked": [
+   {
+    "instrument_id": "SYN24",
+    "current_price": 171.92,
+    "zone_lower": 171.82,
+    "zone_upper": 172.18,
+    "inside_zone": true,
+    "distance": 0,
+    "distance_bps": 0,
+    "strength": 93,
+    "freshness": 0.749153538438,
+    "rank_score": 94.137303076575,
+    "rank": 1
+   },
+   {
+    "instrument_id": "SYN18",
+    "current_price": 148,
+    "zone_lower": 147.82,
+    "zone_upper": 148.18,
+    "inside_zone": true,
+    "distance": 0,
+    "distance_bps": 0,
+    "strength": 92,
+    "freshness": 0.749153538438,
+    "rank_score": 93.837303076575,
+    "rank": 2
+   },
+   {
+    "instrument_id": "SYN12",
+    "current_price": 124.08,
+    "zone_lower": 123.82,
+    "zone_upper": 124.18,
+    "inside_zone": true,
+    "distance": 0,
+    "distance_bps": 0,
+    "strength": 91,
+    "freshness": 0.749153538438,
+    "rank_score": 93.537303076575,
+    "rank": 3
+   },
+   {
+    "instrument_id": "SYN06",
+    "current_price": 100.16,
+    "zone_lower": 99.82,
+    "zone_upper": 100.18,
+    "inside_zone": true,
+    "distance": 0,
+    "distance_bps": 0,
+    "strength": 90,
+    "freshness": 0.749153538438,
+    "rank_score": 93.237303076575,
+    "rank": 4
+   },
+   {
+    "instrument_id": "SYN23",
+    "current_price": 167.84,
+    "zone_lower": 167.82,
+    "zone_upper": 168.18,
+    "inside_zone": true,
+    "distance": 0,
+    "distance_bps": 0,
+    "strength": 86,
+    "freshness": 0.793700525984,
+    "rank_score": 92.705507889762,
+    "rank": 5
+   },
+   {
+    "instrument_id": "SYN17",
+    "current_price": 143.92,
+    "zone_lower": 143.82,
+    "zone_upper": 144.18,
+    "inside_zone": true,
+    "distance": 0,
+    "distance_bps": 0,
+    "strength": 85,
+    "freshness": 0.793700525984,
+    "rank_score": 92.405507889761,
+    "rank": 6
+   },
+   {
+    "instrument_id": "SYN11",
+    "current_price": 120,
+    "zone_lower": 119.82,
+    "zone_upper": 120.18,
+    "inside_zone": true,
+    "distance": 0,
+    "distance_bps": 0,
+    "strength": 84,
+    "freshness": 0.793700525984,
+    "rank_score": 92.105507889762,
+    "rank": 7
+   },
+   {
+    "instrument_id": "SYN05",
+    "current_price": 96.08,
+    "zone_lower": 95.82,
+    "zone_upper": 96.18,
+    "inside_zone": true,
+    "distance": 0,
+    "distance_bps": 0,
+    "strength": 83,
+    "freshness": 0.793700525984,
+    "rank_score": 91.805507889762,
+    "rank": 8
+   },
+   {
+    "instrument_id": "SYN16",
+    "current_price": 139.84,
+    "zone_lower": 139.82,
+    "zone_upper": 140.18,
+    "inside_zone": true,
+    "distance": 0,
+    "distance_bps": 0,
+    "strength": 78,
+    "freshness": 0.840896415254,
+    "rank_score": 91.013446228806,
+    "rank": 9
+   },
+   {
+    "instrument_id": "SYN10",
+    "current_price": 115.92,
+    "zone_lower": 115.82,
+    "zone_upper": 116.18,
+    "inside_zone": true,
+    "distance": 0,
+    "distance_bps": 0,
+    "strength": 77,
+    "freshness": 0.840896415254,
+    "rank_score": 90.713446228806,
+    "rank": 10
+   },
+   {
+    "instrument_id": "SYN04",
+    "current_price": 92,
+    "zone_lower": 91.82,
+    "zone_upper": 92.18,
+    "inside_zone": true,
+    "distance": 0,
+    "distance_bps": 0,
+    "strength": 76,
+    "freshness": 0.840896415254,
+    "rank_score": 90.413446228806,
+    "rank": 11
+   },
+   {
+    "instrument_id": "SYN09",
+    "current_price": 111.84,
+    "zone_lower": 111.82,
+    "zone_upper": 112.18,
+    "inside_zone": true,
+    "distance": 0,
+    "distance_bps": 0,
+    "strength": 70,
+    "freshness": 0.89089871814,
+    "rank_score": 89.363480772105,
+    "rank": 12
+   },
+   {
+    "instrument_id": "SYN03",
+    "current_price": 87.92,
+    "zone_lower": 87.82,
+    "zone_upper": 88.18,
+    "inside_zone": true,
+    "distance": 0,
+    "distance_bps": 0,
+    "strength": 69,
+    "freshness": 0.89089871814,
+    "rank_score": 89.063480772105,
+    "rank": 13
+   },
+   {
+    "instrument_id": "SYN20",
+    "current_price": 156.16,
+    "zone_lower": 155.82,
+    "zone_upper": 156.18,
+    "inside_zone": true,
+    "distance": 0,
+    "distance_bps": 0,
+    "strength": 65,
+    "freshness": 0.943874312682,
+    "rank_score": 88.658114690225,
+    "rank": 14
+   },
+   {
+    "instrument_id": "SYN02",
+    "current_price": 83.84,
+    "zone_lower": 83.82,
+    "zone_upper": 84.18,
+    "inside_zone": true,
+    "distance": 0,
+    "distance_bps": 0,
+    "strength": 62,
+    "freshness": 0.943874312682,
+    "rank_score": 87.758114690225,
+    "rank": 15
+   },
+   {
+    "instrument_id": "SYN19",
+    "current_price": 152.08,
+    "zone_lower": 151.82,
+    "zone_upper": 152.18,
+    "inside_zone": true,
+    "distance": 0,
+    "distance_bps": 0,
+    "strength": 58,
+    "freshness": 1,
+    "rank_score": 87.4,
+    "rank": 16
+   },
+   {
+    "instrument_id": "SYN13",
+    "current_price": 128.16,
+    "zone_lower": 127.82,
+    "zone_upper": 128.18,
+    "inside_zone": true,
+    "distance": 0,
+    "distance_bps": 0,
+    "strength": 57,
+    "freshness": 1,
+    "rank_score": 87.1,
+    "rank": 17
+   },
+   {
+    "instrument_id": "SYN22",
+    "current_price": 163.76,
+    "zone_lower": 163.82,
+    "zone_upper": 164.18,
+    "inside_zone": false,
+    "distance": 0.06,
+    "distance_bps": 3.663898387885,
+    "strength": 79,
+    "freshness": 0.840896415254,
+    "rank_score": 86.275585945464,
+    "rank": 18
+   },
+   {
+    "instrument_id": "SYN21",
+    "current_price": 160.24,
+    "zone_lower": 159.82,
+    "zone_upper": 160.18,
+    "inside_zone": false,
+    "distance": 0.06,
+    "distance_bps": 3.744383424863,
+    "strength": 72,
+    "freshness": 0.89089871814,
+    "rank_score": 84.814953562919,
+    "rank": 19
+   },
+   {
+    "instrument_id": "SYN15",
+    "current_price": 135.76,
+    "zone_lower": 135.82,
+    "zone_upper": 136.18,
+    "inside_zone": false,
+    "distance": 0.06,
+    "distance_bps": 4.419563936358,
+    "strength": 71,
+    "freshness": 0.89089871814,
+    "rank_score": 83.586580359612,
+    "rank": 20
+   },
+   {
+    "instrument_id": "SYN14",
+    "current_price": 132.24,
+    "zone_lower": 131.82,
+    "zone_upper": 132.18,
+    "inside_zone": false,
+    "distance": 0.06,
+    "distance_bps": 4.53720508167,
+    "strength": 64,
+    "freshness": 0.943874312682,
+    "rank_score": 82.119457702929,
+    "rank": 21
+   },
+   {
+    "instrument_id": "SYN08",
+    "current_price": 107.76,
+    "zone_lower": 107.82,
+    "zone_upper": 108.18,
+    "inside_zone": false,
+    "distance": 0.06,
+    "distance_bps": 5.567928730511,
+    "strength": 63,
+    "freshness": 0.943874312682,
+    "rank_score": 80.402212685773,
+    "rank": 22
+   },
+   {
+    "instrument_id": "SYN07",
+    "current_price": 104.24,
+    "zone_lower": 103.82,
+    "zone_upper": 104.18,
+    "inside_zone": false,
+    "distance": 0.06,
+    "distance_bps": 5.755947812739,
+    "strength": 56,
+    "freshness": 1,
+    "rank_score": 78.885571757484,
+    "rank": 23
+   },
+   {
+    "instrument_id": "SYN01",
+    "current_price": 79.76,
+    "zone_lower": 79.82,
+    "zone_upper": 80.18,
+    "inside_zone": false,
+    "distance": 0.06,
+    "distance_bps": 7.522567703108,
+    "strength": 55,
+    "freshness": 1,
+    "rank_score": 76.156469408227,
+    "rank": 24
+   }
+  ]
+ }
+}

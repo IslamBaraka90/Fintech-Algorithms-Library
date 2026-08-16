@@ -1,0 +1,196 @@
+{
+ "input": {
+  "total_quantity": 6000,
+  "lot_size": 100,
+  "maximum_dark_fraction_bps": 6000,
+  "minimum_firm_probability_bps": 7500,
+  "minimum_price_improvement_atoms": 30,
+  "minimum_execution_quantity": 300,
+  "max_exposure_per_window": 1000,
+  "fallback_window": 8,
+  "dark_opportunities": [
+   {
+    "opportunity_id": "DK-01",
+    "window": 1,
+    "indicated_quantity": 500,
+    "firm_probability_bps": 8200,
+    "price_improvement_atoms": 50
+   },
+   {
+    "opportunity_id": "DK-02",
+    "window": 2,
+    "indicated_quantity": 900,
+    "firm_probability_bps": 7600,
+    "price_improvement_atoms": 40
+   },
+   {
+    "opportunity_id": "DK-03",
+    "window": 3,
+    "indicated_quantity": 300,
+    "firm_probability_bps": 9100,
+    "price_improvement_atoms": 60
+   },
+   {
+    "opportunity_id": "DK-04",
+    "window": 4,
+    "indicated_quantity": 1200,
+    "firm_probability_bps": 8800,
+    "price_improvement_atoms": 20
+   },
+   {
+    "opportunity_id": "DK-05",
+    "window": 5,
+    "indicated_quantity": 700,
+    "firm_probability_bps": 6900,
+    "price_improvement_atoms": 70
+   },
+   {
+    "opportunity_id": "DK-06",
+    "window": 6,
+    "indicated_quantity": 1000,
+    "firm_probability_bps": 9400,
+    "price_improvement_atoms": 80
+   },
+   {
+    "opportunity_id": "DK-07",
+    "window": 7,
+    "indicated_quantity": 600,
+    "firm_probability_bps": 8600,
+    "price_improvement_atoms": 50
+   },
+   {
+    "opportunity_id": "DK-08",
+    "window": 8,
+    "indicated_quantity": 1400,
+    "firm_probability_bps": 9000,
+    "price_improvement_atoms": 90
+   },
+   {
+    "opportunity_id": "DK-09",
+    "window": 9,
+    "indicated_quantity": 800,
+    "firm_probability_bps": 8300,
+    "price_improvement_atoms": 50
+   },
+   {
+    "opportunity_id": "DK-10",
+    "window": 10,
+    "indicated_quantity": 1000,
+    "firm_probability_bps": 9200,
+    "price_improvement_atoms": 100
+   }
+  ]
+ },
+ "expected": {
+  "total_quantity": 6000,
+  "maximum_dark_fraction_bps": 6000,
+  "dark_quantity_cap": 3600,
+  "planned_dark_exposure_quantity": 3300,
+  "lit_fallback_quantity": 2700,
+  "dark_opportunity_count": 10,
+  "accepted_dark_window_count": 5,
+  "opportunities": [
+   {
+    "opportunity_id": "DK-01",
+    "window": 1,
+    "indicated_quantity": 500,
+    "firm_probability_bps": 8200,
+    "price_improvement_atoms": 50,
+    "planned_dark_exposure_quantity": 500,
+    "reason": "expose-dark",
+    "dark_cap_remaining_quantity": 3100
+   },
+   {
+    "opportunity_id": "DK-02",
+    "window": 2,
+    "indicated_quantity": 900,
+    "firm_probability_bps": 7600,
+    "price_improvement_atoms": 40,
+    "planned_dark_exposure_quantity": 900,
+    "reason": "expose-dark",
+    "dark_cap_remaining_quantity": 2200
+   },
+   {
+    "opportunity_id": "DK-03",
+    "window": 3,
+    "indicated_quantity": 300,
+    "firm_probability_bps": 9100,
+    "price_improvement_atoms": 60,
+    "planned_dark_exposure_quantity": 300,
+    "reason": "expose-dark",
+    "dark_cap_remaining_quantity": 1900
+   },
+   {
+    "opportunity_id": "DK-04",
+    "window": 4,
+    "indicated_quantity": 1200,
+    "firm_probability_bps": 8800,
+    "price_improvement_atoms": 20,
+    "planned_dark_exposure_quantity": 0,
+    "reason": "price-improvement-below-threshold",
+    "dark_cap_remaining_quantity": 1900
+   },
+   {
+    "opportunity_id": "DK-05",
+    "window": 5,
+    "indicated_quantity": 700,
+    "firm_probability_bps": 6900,
+    "price_improvement_atoms": 70,
+    "planned_dark_exposure_quantity": 0,
+    "reason": "firm-probability-below-threshold",
+    "dark_cap_remaining_quantity": 1900
+   },
+   {
+    "opportunity_id": "DK-06",
+    "window": 6,
+    "indicated_quantity": 1000,
+    "firm_probability_bps": 9400,
+    "price_improvement_atoms": 80,
+    "planned_dark_exposure_quantity": 1000,
+    "reason": "expose-dark",
+    "dark_cap_remaining_quantity": 900
+   },
+   {
+    "opportunity_id": "DK-07",
+    "window": 7,
+    "indicated_quantity": 600,
+    "firm_probability_bps": 8600,
+    "price_improvement_atoms": 50,
+    "planned_dark_exposure_quantity": 600,
+    "reason": "expose-dark",
+    "dark_cap_remaining_quantity": 300
+   },
+   {
+    "opportunity_id": "DK-08",
+    "window": 8,
+    "indicated_quantity": 1400,
+    "firm_probability_bps": 9000,
+    "price_improvement_atoms": 90,
+    "planned_dark_exposure_quantity": 0,
+    "reason": "fallback-active",
+    "dark_cap_remaining_quantity": 300
+   },
+   {
+    "opportunity_id": "DK-09",
+    "window": 9,
+    "indicated_quantity": 800,
+    "firm_probability_bps": 8300,
+    "price_improvement_atoms": 50,
+    "planned_dark_exposure_quantity": 0,
+    "reason": "fallback-active",
+    "dark_cap_remaining_quantity": 300
+   },
+   {
+    "opportunity_id": "DK-10",
+    "window": 10,
+    "indicated_quantity": 1000,
+    "firm_probability_bps": 9200,
+    "price_improvement_atoms": 100,
+    "planned_dark_exposure_quantity": 0,
+    "reason": "fallback-active",
+    "dark_cap_remaining_quantity": 300
+   }
+  ],
+  "state": "lit-fallback-required"
+ }
+}

@@ -1,0 +1,56 @@
+{
+ "input": {
+  "bid_prices": [
+   99.5,
+   99,
+   98.5
+  ],
+  "bid_sizes": [
+   400,
+   600,
+   1000
+  ],
+  "ask_prices": [
+   100.5,
+   101,
+   101.5
+  ],
+  "ask_sizes": [
+   300,
+   700,
+   1000
+  ]
+ },
+ "expected": {
+  "model": "naes-skjeltorp-snapshot-slope",
+  "level_count": 3,
+  "bid_level_count": 3,
+  "ask_level_count": 3,
+  "midpoint": 100,
+  "bid_cumulative_depth": [
+   400,
+   1000,
+   2000
+  ],
+  "ask_cumulative_depth": [
+   300,
+   1000,
+   2000
+  ],
+  "bid_local_slopes": [
+   1198.292909421595,
+   30.433603371812,
+   19.867979713823
+  ],
+  "ask_local_slopes": [
+   1140.756494931265,
+   42.427728396864,
+   20.269353041375
+  ],
+  "bid_slope": 416.198164169077,
+  "ask_slope": 401.151192123168,
+  "order_book_slope": 408.674678146122,
+  "slope_tolerance": 4.16e-10,
+  "state": "steeper-bid"
+ }
+}

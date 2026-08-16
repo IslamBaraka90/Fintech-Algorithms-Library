@@ -1,0 +1,82 @@
+{
+ "input": {
+  "first": {
+   "open": 102,
+   "high": 102.2,
+   "low": 99,
+   "close": 100
+  },
+  "second": {
+   "open": 99.9,
+   "high": 101.7,
+   "low": 99.1,
+   "close": 101.5
+  },
+  "prior_bodies": [
+   2,
+   2.2,
+   1.8,
+   2.1,
+   1.9,
+   2,
+   2.3,
+   1.7,
+   2.1,
+   1.9
+  ],
+  "prior_ranges": [
+   5,
+   5,
+   5,
+   5,
+   5,
+   5,
+   5,
+   5,
+   5,
+   5
+  ],
+  "trend_context": "downtrend",
+  "tick_size": 0.1,
+  "price_tolerance_ticks": 2
+ },
+ "expected": {
+  "topic_id": "D06-F03-A08",
+  "pattern": "Tweezer Bottom",
+  "matched": true,
+  "state": "matched",
+  "direction": "bullish",
+  "trend_context": "downtrend",
+  "required_context": "downtrend",
+  "body": 1.6,
+  "upper_shadow": 0.2,
+  "lower_shadow": 0.8,
+  "range": 2.6,
+  "body_scale": 2,
+  "range_scale": 5,
+  "history_count": 10,
+  "geometry_score": 0.5,
+  "checks": {
+   "first_bearish": true,
+   "second_bullish": true,
+   "lows_within_tolerance": true,
+   "first_lower_rejection": true,
+   "second_lower_rejection": true
+  },
+  "failed_checks": [],
+  "first_direction": "bearish",
+  "second_direction": "bullish",
+  "first_body": 2,
+  "second_body": 1.6,
+  "first_body_low": 100,
+  "first_body_high": 102,
+  "second_body_low": 99.9,
+  "second_body_high": 101.5,
+  "first_high": 102.2,
+  "second_high": 101.7,
+  "first_low": 99,
+  "second_low": 99.1,
+  "midpoint": 101,
+  "price_tolerance": 0.2
+ }
+}

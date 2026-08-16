@@ -1,0 +1,187 @@
+{
+ "input": {
+  "total_quantity": 12000,
+  "start_time_ms": 0,
+  "end_time_ms": 1440000,
+  "bucket_count": 24,
+  "lot_size": 100
+ },
+ "expected": {
+  "total_quantity": 12000,
+  "lot_size": 100,
+  "bucket_count": 24,
+  "scheduled_quantity": 12000,
+  "remaining_quantity": 0,
+  "schedule": [
+   {
+    "bucket": 1,
+    "start_time_ms": 0,
+    "end_time_ms": 60000,
+    "target_quantity": 500,
+    "target_cumulative_quantity": 500
+   },
+   {
+    "bucket": 2,
+    "start_time_ms": 60000,
+    "end_time_ms": 120000,
+    "target_quantity": 500,
+    "target_cumulative_quantity": 1000
+   },
+   {
+    "bucket": 3,
+    "start_time_ms": 120000,
+    "end_time_ms": 180000,
+    "target_quantity": 500,
+    "target_cumulative_quantity": 1500
+   },
+   {
+    "bucket": 4,
+    "start_time_ms": 180000,
+    "end_time_ms": 240000,
+    "target_quantity": 500,
+    "target_cumulative_quantity": 2000
+   },
+   {
+    "bucket": 5,
+    "start_time_ms": 240000,
+    "end_time_ms": 300000,
+    "target_quantity": 500,
+    "target_cumulative_quantity": 2500
+   },
+   {
+    "bucket": 6,
+    "start_time_ms": 300000,
+    "end_time_ms": 360000,
+    "target_quantity": 500,
+    "target_cumulative_quantity": 3000
+   },
+   {
+    "bucket": 7,
+    "start_time_ms": 360000,
+    "end_time_ms": 420000,
+    "target_quantity": 500,
+    "target_cumulative_quantity": 3500
+   },
+   {
+    "bucket": 8,
+    "start_time_ms": 420000,
+    "end_time_ms": 480000,
+    "target_quantity": 500,
+    "target_cumulative_quantity": 4000
+   },
+   {
+    "bucket": 9,
+    "start_time_ms": 480000,
+    "end_time_ms": 540000,
+    "target_quantity": 500,
+    "target_cumulative_quantity": 4500
+   },
+   {
+    "bucket": 10,
+    "start_time_ms": 540000,
+    "end_time_ms": 600000,
+    "target_quantity": 500,
+    "target_cumulative_quantity": 5000
+   },
+   {
+    "bucket": 11,
+    "start_time_ms": 600000,
+    "end_time_ms": 660000,
+    "target_quantity": 500,
+    "target_cumulative_quantity": 5500
+   },
+   {
+    "bucket": 12,
+    "start_time_ms": 660000,
+    "end_time_ms": 720000,
+    "target_quantity": 500,
+    "target_cumulative_quantity": 6000
+   },
+   {
+    "bucket": 13,
+    "start_time_ms": 720000,
+    "end_time_ms": 780000,
+    "target_quantity": 500,
+    "target_cumulative_quantity": 6500
+   },
+   {
+    "bucket": 14,
+    "start_time_ms": 780000,
+    "end_time_ms": 840000,
+    "target_quantity": 500,
+    "target_cumulative_quantity": 7000
+   },
+   {
+    "bucket": 15,
+    "start_time_ms": 840000,
+    "end_time_ms": 900000,
+    "target_quantity": 500,
+    "target_cumulative_quantity": 7500
+   },
+   {
+    "bucket": 16,
+    "start_time_ms": 900000,
+    "end_time_ms": 960000,
+    "target_quantity": 500,
+    "target_cumulative_quantity": 8000
+   },
+   {
+    "bucket": 17,
+    "start_time_ms": 960000,
+    "end_time_ms": 1020000,
+    "target_quantity": 500,
+    "target_cumulative_quantity": 8500
+   },
+   {
+    "bucket": 18,
+    "start_time_ms": 1020000,
+    "end_time_ms": 1080000,
+    "target_quantity": 500,
+    "target_cumulative_quantity": 9000
+   },
+   {
+    "bucket": 19,
+    "start_time_ms": 1080000,
+    "end_time_ms": 1140000,
+    "target_quantity": 500,
+    "target_cumulative_quantity": 9500
+   },
+   {
+    "bucket": 20,
+    "start_time_ms": 1140000,
+    "end_time_ms": 1200000,
+    "target_quantity": 500,
+    "target_cumulative_quantity": 10000
+   },
+   {
+    "bucket": 21,
+    "start_time_ms": 1200000,
+    "end_time_ms": 1260000,
+    "target_quantity": 500,
+    "target_cumulative_quantity": 10500
+   },
+   {
+    "bucket": 22,
+    "start_time_ms": 1260000,
+    "end_time_ms": 1320000,
+    "target_quantity": 500,
+    "target_cumulative_quantity": 11000
+   },
+   {
+    "bucket": 23,
+    "start_time_ms": 1320000,
+    "end_time_ms": 1380000,
+    "target_quantity": 500,
+    "target_cumulative_quantity": 11500
+   },
+   {
+    "bucket": 24,
+    "start_time_ms": 1380000,
+    "end_time_ms": 1440000,
+    "target_quantity": 500,
+    "target_cumulative_quantity": 12000
+   }
+  ],
+  "state": "complete-schedule"
+ }
+}

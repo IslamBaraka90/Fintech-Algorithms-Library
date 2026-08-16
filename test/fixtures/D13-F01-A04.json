@@ -1,0 +1,287 @@
+{
+ "input": {
+  "total_quantity": 10000,
+  "participation_rate_bps": 1000,
+  "market_volume_buckets": [
+   5200,
+   4600,
+   4100,
+   3800,
+   3500,
+   3300,
+   3200,
+   3100,
+   3000,
+   3000,
+   3100,
+   3200,
+   3400,
+   3600,
+   3900,
+   4300,
+   4800,
+   5400,
+   6100,
+   6900,
+   7800,
+   9000,
+   10400,
+   12200
+  ],
+  "lot_size": 100,
+  "max_child_quantity": 700
+ },
+ "expected": {
+  "total_quantity": 10000,
+  "participation_rate_bps": 1000,
+  "lot_size": 100,
+  "max_child_quantity": 700,
+  "observed_market_volume": 120900,
+  "released_quantity": 10000,
+  "remaining_quantity": 0,
+  "achieved_participation_bps": 827.129859,
+  "schedule": [
+   {
+    "bucket": 1,
+    "market_volume": 5200,
+    "cumulative_market_volume": 5200,
+    "target_cumulative_quantity": 500,
+    "child_quantity": 500,
+    "released_cumulative_quantity": 500,
+    "remaining_quantity": 9500,
+    "achieved_participation_bps": 961.538462
+   },
+   {
+    "bucket": 2,
+    "market_volume": 4600,
+    "cumulative_market_volume": 9800,
+    "target_cumulative_quantity": 900,
+    "child_quantity": 400,
+    "released_cumulative_quantity": 900,
+    "remaining_quantity": 9100,
+    "achieved_participation_bps": 918.367347
+   },
+   {
+    "bucket": 3,
+    "market_volume": 4100,
+    "cumulative_market_volume": 13900,
+    "target_cumulative_quantity": 1300,
+    "child_quantity": 400,
+    "released_cumulative_quantity": 1300,
+    "remaining_quantity": 8700,
+    "achieved_participation_bps": 935.251799
+   },
+   {
+    "bucket": 4,
+    "market_volume": 3800,
+    "cumulative_market_volume": 17700,
+    "target_cumulative_quantity": 1700,
+    "child_quantity": 400,
+    "released_cumulative_quantity": 1700,
+    "remaining_quantity": 8300,
+    "achieved_participation_bps": 960.451977
+   },
+   {
+    "bucket": 5,
+    "market_volume": 3500,
+    "cumulative_market_volume": 21200,
+    "target_cumulative_quantity": 2100,
+    "child_quantity": 400,
+    "released_cumulative_quantity": 2100,
+    "remaining_quantity": 7900,
+    "achieved_participation_bps": 990.566038
+   },
+   {
+    "bucket": 6,
+    "market_volume": 3300,
+    "cumulative_market_volume": 24500,
+    "target_cumulative_quantity": 2400,
+    "child_quantity": 300,
+    "released_cumulative_quantity": 2400,
+    "remaining_quantity": 7600,
+    "achieved_participation_bps": 979.591837
+   },
+   {
+    "bucket": 7,
+    "market_volume": 3200,
+    "cumulative_market_volume": 27700,
+    "target_cumulative_quantity": 2700,
+    "child_quantity": 300,
+    "released_cumulative_quantity": 2700,
+    "remaining_quantity": 7300,
+    "achieved_participation_bps": 974.729242
+   },
+   {
+    "bucket": 8,
+    "market_volume": 3100,
+    "cumulative_market_volume": 30800,
+    "target_cumulative_quantity": 3000,
+    "child_quantity": 300,
+    "released_cumulative_quantity": 3000,
+    "remaining_quantity": 7000,
+    "achieved_participation_bps": 974.025974
+   },
+   {
+    "bucket": 9,
+    "market_volume": 3000,
+    "cumulative_market_volume": 33800,
+    "target_cumulative_quantity": 3300,
+    "child_quantity": 300,
+    "released_cumulative_quantity": 3300,
+    "remaining_quantity": 6700,
+    "achieved_participation_bps": 976.331361
+   },
+   {
+    "bucket": 10,
+    "market_volume": 3000,
+    "cumulative_market_volume": 36800,
+    "target_cumulative_quantity": 3600,
+    "child_quantity": 300,
+    "released_cumulative_quantity": 3600,
+    "remaining_quantity": 6400,
+    "achieved_participation_bps": 978.26087
+   },
+   {
+    "bucket": 11,
+    "market_volume": 3100,
+    "cumulative_market_volume": 39900,
+    "target_cumulative_quantity": 3900,
+    "child_quantity": 300,
+    "released_cumulative_quantity": 3900,
+    "remaining_quantity": 6100,
+    "achieved_participation_bps": 977.443609
+   },
+   {
+    "bucket": 12,
+    "market_volume": 3200,
+    "cumulative_market_volume": 43100,
+    "target_cumulative_quantity": 4300,
+    "child_quantity": 400,
+    "released_cumulative_quantity": 4300,
+    "remaining_quantity": 5700,
+    "achieved_participation_bps": 997.679814
+   },
+   {
+    "bucket": 13,
+    "market_volume": 3400,
+    "cumulative_market_volume": 46500,
+    "target_cumulative_quantity": 4600,
+    "child_quantity": 300,
+    "released_cumulative_quantity": 4600,
+    "remaining_quantity": 5400,
+    "achieved_participation_bps": 989.247312
+   },
+   {
+    "bucket": 14,
+    "market_volume": 3600,
+    "cumulative_market_volume": 50100,
+    "target_cumulative_quantity": 5000,
+    "child_quantity": 400,
+    "released_cumulative_quantity": 5000,
+    "remaining_quantity": 5000,
+    "achieved_participation_bps": 998.003992
+   },
+   {
+    "bucket": 15,
+    "market_volume": 3900,
+    "cumulative_market_volume": 54000,
+    "target_cumulative_quantity": 5400,
+    "child_quantity": 400,
+    "released_cumulative_quantity": 5400,
+    "remaining_quantity": 4600,
+    "achieved_participation_bps": 1000
+   },
+   {
+    "bucket": 16,
+    "market_volume": 4300,
+    "cumulative_market_volume": 58300,
+    "target_cumulative_quantity": 5800,
+    "child_quantity": 400,
+    "released_cumulative_quantity": 5800,
+    "remaining_quantity": 4200,
+    "achieved_participation_bps": 994.854202
+   },
+   {
+    "bucket": 17,
+    "market_volume": 4800,
+    "cumulative_market_volume": 63100,
+    "target_cumulative_quantity": 6300,
+    "child_quantity": 500,
+    "released_cumulative_quantity": 6300,
+    "remaining_quantity": 3700,
+    "achieved_participation_bps": 998.415214
+   },
+   {
+    "bucket": 18,
+    "market_volume": 5400,
+    "cumulative_market_volume": 68500,
+    "target_cumulative_quantity": 6800,
+    "child_quantity": 500,
+    "released_cumulative_quantity": 6800,
+    "remaining_quantity": 3200,
+    "achieved_participation_bps": 992.70073
+   },
+   {
+    "bucket": 19,
+    "market_volume": 6100,
+    "cumulative_market_volume": 74600,
+    "target_cumulative_quantity": 7400,
+    "child_quantity": 600,
+    "released_cumulative_quantity": 7400,
+    "remaining_quantity": 2600,
+    "achieved_participation_bps": 991.957105
+   },
+   {
+    "bucket": 20,
+    "market_volume": 6900,
+    "cumulative_market_volume": 81500,
+    "target_cumulative_quantity": 8100,
+    "child_quantity": 700,
+    "released_cumulative_quantity": 8100,
+    "remaining_quantity": 1900,
+    "achieved_participation_bps": 993.865031
+   },
+   {
+    "bucket": 21,
+    "market_volume": 7800,
+    "cumulative_market_volume": 89300,
+    "target_cumulative_quantity": 8900,
+    "child_quantity": 700,
+    "released_cumulative_quantity": 8800,
+    "remaining_quantity": 1200,
+    "achieved_participation_bps": 985.442329
+   },
+   {
+    "bucket": 22,
+    "market_volume": 9000,
+    "cumulative_market_volume": 98300,
+    "target_cumulative_quantity": 9800,
+    "child_quantity": 700,
+    "released_cumulative_quantity": 9500,
+    "remaining_quantity": 500,
+    "achieved_participation_bps": 966.429298
+   },
+   {
+    "bucket": 23,
+    "market_volume": 10400,
+    "cumulative_market_volume": 108700,
+    "target_cumulative_quantity": 10000,
+    "child_quantity": 500,
+    "released_cumulative_quantity": 10000,
+    "remaining_quantity": 0,
+    "achieved_participation_bps": 919.963201
+   },
+   {
+    "bucket": 24,
+    "market_volume": 12200,
+    "cumulative_market_volume": 120900,
+    "target_cumulative_quantity": 10000,
+    "child_quantity": 0,
+    "released_cumulative_quantity": 10000,
+    "remaining_quantity": 0,
+    "achieved_participation_bps": 827.129859
+   }
+  ],
+  "state": "parent-complete"
+ }
+}

@@ -1,0 +1,20 @@
+{
+ "input": {
+  "high_day_1": 101,
+  "low_day_1": 99,
+  "high_day_2": 101.5,
+  "low_day_2": 99.5,
+  "clip_negative": true
+ },
+ "expected": {
+  "model": "corwin-schultz-spread",
+  "beta": 0.0007960826118720654,
+  "gamma": 0.0006219511446669105,
+  "alpha_raw": 0.007908933752463966,
+  "alpha_used": 0.007908933752463966,
+  "spread_estimate_relative": 0.007908892526591878,
+  "spread_estimate_bps": 79.08892526591879,
+  "clip_negative": true,
+  "state": "estimated"
+ }
+}

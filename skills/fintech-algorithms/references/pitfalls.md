@@ -188,9 +188,11 @@ are wrong rather than absent.
 
 ## 13. State the verification tier
 
-295 topics are `verified` (worked example replayed and asserted on every build);
-166 are `contract` (signature and shape checked against the compiled code, the
-numbers not attested by an independent published figure).
+397 topics are `verified`: the arithmetic is replayed and asserted on every build
+against values the catalog computed with a Python implementation written
+alongside the TypeScript — cross-language parity, not an independent third-party
+figure. 74 are `contract`: signature and shape are checked against the compiled
+code, but nothing asserts the numbers.
 
 Both guarantee the signature. Only `verified` guarantees the arithmetic against
 a published figure.

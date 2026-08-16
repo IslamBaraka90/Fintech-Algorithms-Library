@@ -1,0 +1,120 @@
+{
+ "input": {
+  "candles": [
+   {
+    "open": 105,
+    "high": 105.2,
+    "low": 102.8,
+    "close": 103
+   },
+   {
+    "open": 103.5,
+    "high": 103.7,
+    "low": 101.3,
+    "close": 101.5
+   },
+   {
+    "open": 102,
+    "high": 102.2,
+    "low": 99.8,
+    "close": 100
+   }
+  ],
+  "trend_context": "uptrend",
+  "prior_bodies": [
+   2,
+   2.1,
+   1.9,
+   2.2,
+   2,
+   2.1,
+   1.8,
+   2,
+   2.2,
+   1.9
+  ],
+  "prior_ranges": [
+   3,
+   3.2,
+   2.9,
+   3.1,
+   3,
+   3.3,
+   2.8,
+   3,
+   3.2,
+   2.9
+  ],
+  "tick_size": 0.1,
+  "penetration_fraction": 0.5
+ },
+ "expected": {
+  "topic_id": "D06-F04-A04",
+  "pattern": "Three Black Crows",
+  "matched": true,
+  "state": "matched",
+  "direction": "bearish",
+  "trend_context": "uptrend",
+  "required_context": "uptrend",
+  "history_count": 10,
+  "body_scale": 2,
+  "range_scale": 3,
+  "geometry_score": 1,
+  "checks": {
+   "three_bearish": true,
+   "material_bodies": true,
+   "falling_closes": true,
+   "second_opens_in_prior_body": true,
+   "third_opens_in_prior_body": true,
+   "short_lower_shadows": true
+  },
+  "failed_checks": [],
+  "reason": "all declared checks pass",
+  "thresholds": {
+   "body_floor": 1.5,
+   "shadow_ceiling": 0.6,
+   "minimum_close_step": 0.1
+  },
+  "candles": [
+   {
+    "open": 105,
+    "high": 105.2,
+    "low": 102.8,
+    "close": 103,
+    "body_high": 105,
+    "body_low": 103,
+    "body": 2,
+    "upper_shadow": 0.2,
+    "lower_shadow": 0.2,
+    "range": 2.4,
+    "direction": "bearish"
+   },
+   {
+    "open": 103.5,
+    "high": 103.7,
+    "low": 101.3,
+    "close": 101.5,
+    "body_high": 103.5,
+    "body_low": 101.5,
+    "body": 2,
+    "upper_shadow": 0.2,
+    "lower_shadow": 0.2,
+    "range": 2.4,
+    "direction": "bearish"
+   },
+   {
+    "open": 102,
+    "high": 102.2,
+    "low": 99.8,
+    "close": 100,
+    "body_high": 102,
+    "body_low": 100,
+    "body": 2,
+    "upper_shadow": 0.2,
+    "lower_shadow": 0.2,
+    "range": 2.4,
+    "direction": "bearish"
+   }
+  ]
+ }
+}

@@ -1,0 +1,120 @@
+{
+ "input": {
+  "candles": [
+   {
+    "open": 100,
+    "high": 102.2,
+    "low": 99.8,
+    "close": 102
+   },
+   {
+    "open": 101.5,
+    "high": 103.7,
+    "low": 101.3,
+    "close": 103.5
+   },
+   {
+    "open": 103,
+    "high": 105.2,
+    "low": 102.8,
+    "close": 105
+   }
+  ],
+  "trend_context": "downtrend",
+  "prior_bodies": [
+   2,
+   2.1,
+   1.9,
+   2.2,
+   2,
+   2.1,
+   1.8,
+   2,
+   2.2,
+   1.9
+  ],
+  "prior_ranges": [
+   3,
+   3.2,
+   2.9,
+   3.1,
+   3,
+   3.3,
+   2.8,
+   3,
+   3.2,
+   2.9
+  ],
+  "tick_size": 0.1,
+  "penetration_fraction": 0.5
+ },
+ "expected": {
+  "topic_id": "D06-F04-A03",
+  "pattern": "Three White Soldiers",
+  "matched": true,
+  "state": "matched",
+  "direction": "bullish",
+  "trend_context": "downtrend",
+  "required_context": "downtrend",
+  "history_count": 10,
+  "body_scale": 2,
+  "range_scale": 3,
+  "geometry_score": 1,
+  "checks": {
+   "three_bullish": true,
+   "material_bodies": true,
+   "rising_closes": true,
+   "second_opens_in_prior_body": true,
+   "third_opens_in_prior_body": true,
+   "short_upper_shadows": true
+  },
+  "failed_checks": [],
+  "reason": "all declared checks pass",
+  "thresholds": {
+   "body_floor": 1.5,
+   "shadow_ceiling": 0.6,
+   "minimum_close_step": 0.1
+  },
+  "candles": [
+   {
+    "open": 100,
+    "high": 102.2,
+    "low": 99.8,
+    "close": 102,
+    "body_high": 102,
+    "body_low": 100,
+    "body": 2,
+    "upper_shadow": 0.2,
+    "lower_shadow": 0.2,
+    "range": 2.4,
+    "direction": "bullish"
+   },
+   {
+    "open": 101.5,
+    "high": 103.7,
+    "low": 101.3,
+    "close": 103.5,
+    "body_high": 103.5,
+    "body_low": 101.5,
+    "body": 2,
+    "upper_shadow": 0.2,
+    "lower_shadow": 0.2,
+    "range": 2.4,
+    "direction": "bullish"
+   },
+   {
+    "open": 103,
+    "high": 105.2,
+    "low": 102.8,
+    "close": 105,
+    "body_high": 105,
+    "body_low": 103,
+    "body": 2,
+    "upper_shadow": 0.2,
+    "lower_shadow": 0.2,
+    "range": 2.4,
+    "direction": "bullish"
+   }
+  ]
+ }
+}

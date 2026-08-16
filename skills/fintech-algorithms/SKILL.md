@@ -25,10 +25,12 @@ Four rules. Breaking any one produces output that looks right and is wrong.
    across the library: `bollingerBands` returns `percent_b`, `macd` rows return
    `fastEma`. Read the captured example output for that topic. See
    `references/pitfalls.md`.
-3. **State the verification tier** on any numeric claim. `verified` (295 topics)
-   means the arithmetic is replayed and asserted on every build. `contract`
-   (176 topics) means the signature and shape are checked but the numbers are
-   not attested by an independent published figure.
+3. **State the verification tier** on any numeric claim. `verified` (397 topics)
+   means the arithmetic is replayed and asserted on every build against expected
+   values the catalog computed with a Python implementation written alongside
+   the TypeScript — cross-language parity, not an independent third-party
+   figure. Say it that way if asked. `contract` (74 topics) means the signature
+   and shape are checked but nothing asserts the numbers.
 4. **Analysis, not advice.** These functions compute quantities. An indicator
    crossing is an observation about a series — not a prediction, not a signal,
    and never a recommendation for a specific person's money. Report what was

@@ -1,0 +1,83 @@
+{
+ "input": {
+  "first": {
+   "open": 102,
+   "high": 105.5,
+   "low": 101.5,
+   "close": 105
+  },
+  "second": {
+   "open": 105.6,
+   "high": 105.8,
+   "low": 103,
+   "close": 103.4
+  },
+  "prior_bodies": [
+   2,
+   2.2,
+   1.8,
+   2.1,
+   1.9,
+   2,
+   2.3,
+   1.7,
+   2.1,
+   1.9
+  ],
+  "prior_ranges": [
+   5,
+   5,
+   5,
+   5,
+   5,
+   5,
+   5,
+   5,
+   5,
+   5
+  ],
+  "trend_context": "uptrend",
+  "tick_size": 0.1,
+  "price_tolerance_ticks": 2
+ },
+ "expected": {
+  "topic_id": "D06-F03-A06",
+  "pattern": "Dark Cloud Cover",
+  "matched": true,
+  "state": "matched",
+  "direction": "bearish",
+  "trend_context": "uptrend",
+  "required_context": "uptrend",
+  "body": 2.2,
+  "upper_shadow": 0.2,
+  "lower_shadow": 0.4,
+  "range": 2.8,
+  "body_scale": 2,
+  "range_scale": 5,
+  "history_count": 10,
+  "geometry_score": 0.033333333333,
+  "checks": {
+   "first_bullish": true,
+   "long_first": true,
+   "second_bearish": true,
+   "gap_above_first_high": true,
+   "close_below_midpoint": true,
+   "close_above_first_open": true
+  },
+  "failed_checks": [],
+  "first_direction": "bullish",
+  "second_direction": "bearish",
+  "first_body": 3,
+  "second_body": 2.2,
+  "first_body_low": 102,
+  "first_body_high": 105,
+  "second_body_low": 103.4,
+  "second_body_high": 105.6,
+  "first_high": 105.5,
+  "second_high": 105.8,
+  "first_low": 101.5,
+  "second_low": 103,
+  "midpoint": 103.5,
+  "price_tolerance": 0.2
+ }
+}

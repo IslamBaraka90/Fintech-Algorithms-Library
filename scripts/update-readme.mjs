@@ -108,11 +108,20 @@ const shapesBlock = [
 ].join("\n");
 
 const coverageBlock = [
-  `**${verified} of ${documented.length} topics** are verified against the catalog's own published numbers`,
-  `(${conventions.A ?? 0} via \`{ input, expected }\`, ${conventions.B ?? 0} via row fixtures, ${conventions.C ?? 0} via bar/checkpoint fixtures).`,
-  `The remaining ${conventions.none ?? 0} are proven to load and expose a callable entry point, but their`,
-  `arithmetic is not asserted here — those topics ship no machine-readable expected`,
-  `values in the catalog.`,
+  `**${verified} of ${documented.length} topics** have their arithmetic replayed and asserted on every build`,
+  `(${conventions.A ?? 0} via \`{ input, expected }\`, ${conventions.D ?? 0} via a separate input and expected-output`,
+  `pair, ${conventions.B ?? 0} via row fixtures, ${conventions.C ?? 0} via bar/checkpoint fixtures).`,
+  ``,
+  `Worth being precise about what that proves. The expected values come from the`,
+  `catalog, computed by a Python implementation written alongside the TypeScript`,
+  `rather than derived from it — so this is a cross-language parity check, not an`,
+  `independent third-party figure. It catches transcription and generation errors,`,
+  `which is the failure mode that has actually occurred here. It would not catch`,
+  `both implementations sharing a misreading of the source material.`,
+  ``,
+  `The remaining ${conventions.none ?? 0} load and expose a callable entry point, but ship no machine-readable`,
+  `expected values, so nothing asserts their numbers. That gap is stated per topic`,
+  `rather than averaged away.`,
 ].join("\n");
 
 /** Base URL of the reference site. */

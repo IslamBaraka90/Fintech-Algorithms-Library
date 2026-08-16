@@ -1,0 +1,821 @@
+{
+ "input": {
+  "topic_id": "D08-F05-A05",
+  "data_class": "synthetic-teaching",
+  "as_of": "2026-01-08T13:30:00Z",
+  "bars": [
+   {
+    "timestamp": "2026-01-05T14:30:00Z",
+    "open": 105.75,
+    "high": 107,
+    "low": 105,
+    "close": 106,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-05T15:30:00Z",
+    "open": 106.112,
+    "high": 107.362,
+    "low": 105.362,
+    "close": 106.362,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-05T16:30:00Z",
+    "open": 106.4614,
+    "high": 107.7114,
+    "low": 105.7114,
+    "close": 106.7114,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-05T17:30:00Z",
+    "open": 106.7858,
+    "high": 108.0358,
+    "low": 106.0358,
+    "close": 107.0358,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-05T18:30:00Z",
+    "open": 107.074,
+    "high": 108.324,
+    "low": 106.324,
+    "close": 107.324,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-05T19:30:00Z",
+    "open": 107.3161,
+    "high": 108.5661,
+    "low": 106.5661,
+    "close": 107.5661,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-05T20:30:00Z",
+    "open": 107.5038,
+    "high": 108.7538,
+    "low": 106.7538,
+    "close": 107.7538,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-05T21:30:00Z",
+    "open": 107.6308,
+    "high": 108.8808,
+    "low": 106.8808,
+    "close": 107.8808,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-05T22:30:00Z",
+    "open": 107.6931,
+    "high": 108.9431,
+    "low": 106.9431,
+    "close": 107.9431,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-05T23:30:00Z",
+    "open": 107.689,
+    "high": 108.939,
+    "low": 106.939,
+    "close": 107.939,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-06T00:30:00Z",
+    "open": 107.6195,
+    "high": 108.8695,
+    "low": 106.8695,
+    "close": 107.8695,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-06T01:30:00Z",
+    "open": 107.4876,
+    "high": 108.7376,
+    "low": 106.7376,
+    "close": 107.7376,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-06T02:30:00Z",
+    "open": 107.299,
+    "high": 108.549,
+    "low": 106.549,
+    "close": 107.549,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-06T03:30:00Z",
+    "open": 107.0612,
+    "high": 108.3112,
+    "low": 106.3112,
+    "close": 107.3112,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-06T04:30:00Z",
+    "open": 106.7838,
+    "high": 108.0338,
+    "low": 106.0338,
+    "close": 107.0338,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-06T05:30:00Z",
+    "open": 106.4775,
+    "high": 107.7275,
+    "low": 105.7275,
+    "close": 106.7275,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-06T06:30:00Z",
+    "open": 106.1543,
+    "high": 107.4043,
+    "low": 105.4043,
+    "close": 106.4043,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-06T07:30:00Z",
+    "open": 105.8269,
+    "high": 107.0769,
+    "low": 105.0769,
+    "close": 106.0769,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-06T08:30:00Z",
+    "open": 99.6,
+    "high": 101,
+    "low": 98,
+    "close": 100,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-06T09:30:00Z",
+    "open": 105.2097,
+    "high": 106.4597,
+    "low": 104.4597,
+    "close": 105.4597,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-06T10:30:00Z",
+    "open": 104.9441,
+    "high": 106.1941,
+    "low": 104.1941,
+    "close": 105.1941,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-06T11:30:00Z",
+    "open": 104.7215,
+    "high": 105.9715,
+    "low": 103.9715,
+    "close": 104.9715,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-06T12:30:00Z",
+    "open": 104.5508,
+    "high": 105.8008,
+    "low": 103.8008,
+    "close": 104.8008,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-06T13:30:00Z",
+    "open": 104.4388,
+    "high": 105.6888,
+    "low": 103.6888,
+    "close": 104.6888,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-06T14:30:00Z",
+    "open": 104.3905,
+    "high": 105.6405,
+    "low": 103.6405,
+    "close": 104.6405,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-06T15:30:00Z",
+    "open": 104.4082,
+    "high": 105.6582,
+    "low": 103.6582,
+    "close": 104.6582,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-06T16:30:00Z",
+    "open": 104.4919,
+    "high": 105.7419,
+    "low": 103.7419,
+    "close": 104.7419,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-06T17:30:00Z",
+    "open": 104.6393,
+    "high": 105.8893,
+    "low": 103.8893,
+    "close": 104.8893,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-06T18:30:00Z",
+    "open": 104.8456,
+    "high": 106.0956,
+    "low": 104.0956,
+    "close": 105.0956,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-06T19:30:00Z",
+    "open": 105.1038,
+    "high": 106.3538,
+    "low": 104.3538,
+    "close": 105.3538,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-06T20:30:00Z",
+    "open": 105.4051,
+    "high": 106.6551,
+    "low": 104.6551,
+    "close": 105.6551,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-06T21:30:00Z",
+    "open": 105.739,
+    "high": 106.989,
+    "low": 104.989,
+    "close": 105.989,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-06T22:30:00Z",
+    "open": 106.0938,
+    "high": 107.3438,
+    "low": 105.3438,
+    "close": 106.3438,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-06T23:30:00Z",
+    "open": 106.4573,
+    "high": 107.7073,
+    "low": 105.7073,
+    "close": 106.7073,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-07T00:30:00Z",
+    "open": 106.8165,
+    "high": 108.0665,
+    "low": 106.0665,
+    "close": 107.0665,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-07T01:30:00Z",
+    "open": 107.159,
+    "high": 108.409,
+    "low": 106.409,
+    "close": 107.409,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-07T02:30:00Z",
+    "open": 107.4728,
+    "high": 108.7228,
+    "low": 106.7228,
+    "close": 107.7228,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-07T03:30:00Z",
+    "open": 107.7469,
+    "high": 108.9969,
+    "low": 106.9969,
+    "close": 107.9969,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-07T04:30:00Z",
+    "open": 107.972,
+    "high": 109.222,
+    "low": 107.222,
+    "close": 108.222,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-07T05:30:00Z",
+    "open": 108.1404,
+    "high": 109.3904,
+    "low": 107.3904,
+    "close": 108.3904,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-07T06:30:00Z",
+    "open": 108.2465,
+    "high": 109.4965,
+    "low": 107.4965,
+    "close": 108.4965,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-07T07:30:00Z",
+    "open": 108.2872,
+    "high": 109.5372,
+    "low": 107.5372,
+    "close": 108.5372,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-07T08:30:00Z",
+    "open": 95.6,
+    "high": 98,
+    "low": 94,
+    "close": 96,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-07T09:30:00Z",
+    "open": 108.171,
+    "high": 109.421,
+    "low": 107.421,
+    "close": 108.421,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-07T10:30:00Z",
+    "open": 108.0199,
+    "high": 109.2699,
+    "low": 107.2699,
+    "close": 108.2699,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-07T11:30:00Z",
+    "open": 98.6,
+    "high": 100,
+    "low": 97,
+    "close": 99,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-07T12:30:00Z",
+    "open": 102.6,
+    "high": 104,
+    "low": 101,
+    "close": 103,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-07T13:30:00Z",
+    "open": 111.6,
+    "high": 113,
+    "low": 109,
+    "close": 112,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-07T14:30:00Z",
+    "open": 106.961,
+    "high": 108.211,
+    "low": 106.211,
+    "close": 107.211,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-07T15:30:00Z",
+    "open": 106.6351,
+    "high": 107.8851,
+    "low": 105.8851,
+    "close": 106.8851,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-07T16:30:00Z",
+    "open": 106.309,
+    "high": 107.559,
+    "low": 105.559,
+    "close": 106.559,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-07T17:30:00Z",
+    "open": 105.9955,
+    "high": 107.2455,
+    "low": 105.2455,
+    "close": 106.2455,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-07T18:30:00Z",
+    "open": 105.7068,
+    "high": 106.9568,
+    "low": 104.9568,
+    "close": 105.9568,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-07T19:30:00Z",
+    "open": 105.4542,
+    "high": 106.7042,
+    "low": 104.7042,
+    "close": 105.7042,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-07T20:30:00Z",
+    "open": 105.2476,
+    "high": 106.4976,
+    "low": 104.4976,
+    "close": 105.4976,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-07T21:30:00Z",
+    "open": 105.0955,
+    "high": 106.3455,
+    "low": 104.3455,
+    "close": 105.3455,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-07T22:30:00Z",
+    "open": 105.0039,
+    "high": 106.2539,
+    "low": 104.2539,
+    "close": 105.2539,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-07T23:30:00Z",
+    "open": 104.977,
+    "high": 106.227,
+    "low": 104.227,
+    "close": 105.227,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-08T00:30:00Z",
+    "open": 105.0165,
+    "high": 106.2665,
+    "low": 104.2665,
+    "close": 105.2665,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-08T01:30:00Z",
+    "open": 105.1215,
+    "high": 106.3715,
+    "low": 104.3715,
+    "close": 105.3715,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-08T02:30:00Z",
+    "open": 105.2888,
+    "high": 106.5388,
+    "low": 104.5388,
+    "close": 105.5388,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-08T03:30:00Z",
+    "open": 105.5129,
+    "high": 106.7629,
+    "low": 104.7629,
+    "close": 105.7629,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-08T04:30:00Z",
+    "open": 105.7863,
+    "high": 107.0363,
+    "low": 105.0363,
+    "close": 106.0363,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-08T05:30:00Z",
+    "open": 106.0995,
+    "high": 107.3495,
+    "low": 105.3495,
+    "close": 106.3495,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-08T06:30:00Z",
+    "open": 106.4416,
+    "high": 107.6916,
+    "low": 105.6916,
+    "close": 106.6916,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-08T07:30:00Z",
+    "open": 106.8006,
+    "high": 108.0506,
+    "low": 106.0506,
+    "close": 107.0506,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-08T08:30:00Z",
+    "open": 107.1641,
+    "high": 108.4141,
+    "low": 106.4141,
+    "close": 107.4141,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-08T09:30:00Z",
+    "open": 107.5192,
+    "high": 108.7692,
+    "low": 106.7692,
+    "close": 107.7692,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-08T10:30:00Z",
+    "open": 107.8536,
+    "high": 109.1036,
+    "low": 107.1036,
+    "close": 108.1036,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-08T11:30:00Z",
+    "open": 108.1555,
+    "high": 109.4055,
+    "low": 107.4055,
+    "close": 108.4055,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-08T12:30:00Z",
+    "open": 108.4146,
+    "high": 109.6646,
+    "low": 107.6646,
+    "close": 108.6646,
+    "finalized": true
+   },
+   {
+    "timestamp": "2026-01-08T13:30:00Z",
+    "open": 108.6218,
+    "high": 109.8718,
+    "low": 107.8718,
+    "close": 108.8718,
+    "finalized": true
+   }
+  ],
+  "price_pivots": [
+   {
+    "kind": "low",
+    "event_index": 18,
+    "confirmation_index": 21,
+    "price": 98,
+    "prominence": 0.72
+   },
+   {
+    "kind": "low",
+    "event_index": 42,
+    "confirmation_index": 45,
+    "price": 94,
+    "prominence": 0.84
+   }
+  ],
+  "indicators": [
+   {
+    "name": "RSI",
+    "family": "bounded-momentum",
+    "polarity": 1,
+    "scale": 100,
+    "pivots": [
+     {
+      "kind": "low",
+      "event_index": 19,
+      "confirmation_index": 22,
+      "value": 28,
+      "prominence": 0.76
+     },
+     {
+      "kind": "low",
+      "event_index": 41,
+      "confirmation_index": 44,
+      "value": 36,
+      "prominence": 0.86
+     }
+    ]
+   },
+   {
+    "name": "MACD-Histogram",
+    "family": "moving-average-momentum",
+    "polarity": 1,
+    "scale": 5,
+    "pivots": [
+     {
+      "kind": "low",
+      "event_index": 18,
+      "confirmation_index": 21,
+      "value": -2.2,
+      "prominence": 0.7
+     },
+     {
+      "kind": "low",
+      "event_index": 42,
+      "confirmation_index": 45,
+      "value": -1,
+      "prominence": 0.81
+     }
+    ]
+   },
+   {
+    "name": "Stochastic-K",
+    "family": "range-momentum",
+    "polarity": 1,
+    "scale": 100,
+    "pivots": [
+     {
+      "kind": "low",
+      "event_index": 17,
+      "confirmation_index": 20,
+      "value": 18,
+      "prominence": 0.68
+     },
+     {
+      "kind": "low",
+      "event_index": 43,
+      "confirmation_index": 46,
+      "value": 29,
+      "prominence": 0.78
+     }
+    ]
+   }
+  ],
+  "parameters": {
+   "max_lag": 3,
+   "min_separation": 5,
+   "max_separation": 40,
+   "min_price_fraction": 0.005,
+   "min_indicator_delta": 0.05,
+   "confirmation_horizon": 12,
+   "invalidation_buffer": 0.005,
+   "minimum_indicators": 2
+  },
+  "weights": {
+   "RSI": 0.4,
+   "MACD-Histogram": 0.35,
+   "Stochastic-K": 0.25
+  },
+  "as_of_index": 71,
+  "universe": [
+   {
+    "symbol": "SYNTH-A",
+    "state": "confirmed",
+    "divergence_type": "regular-bullish",
+    "confluence_score": 86,
+    "freshness": 92,
+    "liquidity": 80,
+    "data_quality": 98,
+    "available_index": 47,
+    "eligible": true
+   },
+   {
+    "symbol": "SYNTH-B",
+    "state": "candidate",
+    "divergence_type": "regular-bearish",
+    "confluence_score": 91,
+    "freshness": 98,
+    "liquidity": 72,
+    "data_quality": 94,
+    "available_index": 54,
+    "eligible": true
+   },
+   {
+    "symbol": "SYNTH-C",
+    "state": "confirmed",
+    "divergence_type": "hidden-bullish",
+    "confluence_score": 74,
+    "freshness": 70,
+    "liquidity": 96,
+    "data_quality": 90,
+    "available_index": 39,
+    "eligible": true
+   },
+   {
+    "symbol": "SYNTH-D",
+    "state": "candidate",
+    "divergence_type": "hidden-bearish",
+    "confluence_score": 69,
+    "freshness": 88,
+    "liquidity": 55,
+    "data_quality": 82,
+    "available_index": 60,
+    "eligible": true
+   },
+   {
+    "symbol": "SYNTH-X",
+    "state": "confirmed",
+    "divergence_type": "regular-bullish",
+    "confluence_score": 99,
+    "freshness": 99,
+    "liquidity": 99,
+    "data_quality": 30,
+    "available_index": 30,
+    "eligible": false
+   }
+  ]
+ },
+ "expected": {
+  "topic_id": "D08-F05-A05",
+  "state": "scored",
+  "event": {
+   "type": "regular-bullish",
+   "direction": "bullish",
+   "kind": "low",
+   "indicator": "MACD-Histogram",
+   "indicator_family": "moving-average-momentum",
+   "price_pair": [
+    18,
+    42
+   ],
+   "indicator_pair": [
+    18,
+    42
+   ],
+   "price_values": [
+    98,
+    94
+   ],
+   "indicator_values": [
+    -0.44000000000000006,
+    -0.2
+   ],
+   "price_delta_fraction": -0.04081632653061224,
+   "indicator_delta": 0.24000000000000005,
+   "separation": 24,
+   "max_alignment_lag": 0,
+   "prominence": 0.7675,
+   "candidate_knowledge_index": 45,
+   "alignment": [
+    {
+     "kind": "low",
+     "price_event_index": 18,
+     "price_confirmation_index": 21,
+     "price": 98,
+     "price_prominence": 0.72,
+     "indicator_event_index": 18,
+     "indicator_confirmation_index": 21,
+     "indicator_value": -0.44000000000000006,
+     "indicator_raw_value": -2.2,
+     "indicator_prominence": 0.7,
+     "lag": 0,
+     "knowledge_index": 21,
+     "indicator": "MACD-Histogram",
+     "indicator_family": "moving-average-momentum"
+    },
+    {
+     "kind": "low",
+     "price_event_index": 42,
+     "price_confirmation_index": 45,
+     "price": 94,
+     "price_prominence": 0.84,
+     "indicator_event_index": 42,
+     "indicator_confirmation_index": 45,
+     "indicator_value": -0.2,
+     "indicator_raw_value": -1,
+     "indicator_prominence": 0.81,
+     "lag": 0,
+     "knowledge_index": 45,
+     "indicator": "MACD-Histogram",
+     "indicator_family": "moving-average-momentum"
+    }
+   ]
+  },
+  "score": {
+   "score": 95.815,
+   "quality": "exceptional",
+   "components": {
+    "price_geometry": 1,
+    "indicator_geometry": 1,
+    "prominence": 0.7675,
+    "alignment": 1,
+    "separation": 1
+   },
+   "interpretation": "definition-strength score; not probability or expected return"
+  }
+ }
+}

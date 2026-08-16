@@ -1,0 +1,290 @@
+{
+ "input": {
+  "snapshot_sequence": 500,
+  "snapshot": {
+   "bids": [
+    {
+     "price_ticks": 10000,
+     "quantity": 20
+    },
+    {
+     "price_ticks": 9999,
+     "quantity": 25
+    },
+    {
+     "price_ticks": 9998,
+     "quantity": 30
+    },
+    {
+     "price_ticks": 9997,
+     "quantity": 35
+    },
+    {
+     "price_ticks": 9996,
+     "quantity": 40
+    }
+   ],
+   "asks": [
+    {
+     "price_ticks": 10002,
+     "quantity": 18
+    },
+    {
+     "price_ticks": 10003,
+     "quantity": 22
+    },
+    {
+     "price_ticks": 10004,
+     "quantity": 26
+    },
+    {
+     "price_ticks": 10005,
+     "quantity": 30
+    },
+    {
+     "price_ticks": 10006,
+     "quantity": 34
+    }
+   ]
+  },
+  "deltas": [
+   {
+    "sequence": 501,
+    "side": "bid",
+    "price_ticks": 10000,
+    "quantity": 12
+   },
+   {
+    "sequence": 502,
+    "side": "ask",
+    "price_ticks": 10002,
+    "quantity": 19
+   },
+   {
+    "sequence": 503,
+    "side": "bid",
+    "price_ticks": 9999,
+    "quantity": 26
+   },
+   {
+    "sequence": 504,
+    "side": "ask",
+    "price_ticks": 10003,
+    "quantity": 33
+   },
+   {
+    "sequence": 505,
+    "side": "bid",
+    "price_ticks": 9998,
+    "quantity": 40
+   },
+   {
+    "sequence": 506,
+    "side": "ask",
+    "price_ticks": 10004,
+    "quantity": 16
+   },
+   {
+    "sequence": 507,
+    "side": "bid",
+    "price_ticks": 9997,
+    "quantity": 23
+   },
+   {
+    "sequence": 508,
+    "side": "ask",
+    "price_ticks": 10005,
+    "quantity": 30
+   },
+   {
+    "sequence": 509,
+    "side": "bid",
+    "price_ticks": 9996,
+    "quantity": 37
+   },
+   {
+    "sequence": 510,
+    "side": "ask",
+    "price_ticks": 10006,
+    "quantity": 0
+   },
+   {
+    "sequence": 511,
+    "side": "bid",
+    "price_ticks": 9995,
+    "quantity": 20
+   },
+   {
+    "sequence": 512,
+    "side": "ask",
+    "price_ticks": 10007,
+    "quantity": 27
+   },
+   {
+    "sequence": 513,
+    "side": "bid",
+    "price_ticks": 9994,
+    "quantity": 34
+   },
+   {
+    "sequence": 514,
+    "side": "ask",
+    "price_ticks": 10008,
+    "quantity": 41
+   },
+   {
+    "sequence": 515,
+    "side": "bid",
+    "price_ticks": 10000,
+    "quantity": 17
+   },
+   {
+    "sequence": 516,
+    "side": "ask",
+    "price_ticks": 10002,
+    "quantity": 24
+   },
+   {
+    "sequence": 517,
+    "side": "bid",
+    "price_ticks": 9999,
+    "quantity": 0
+   },
+   {
+    "sequence": 518,
+    "side": "ask",
+    "price_ticks": 10003,
+    "quantity": 38
+   },
+   {
+    "sequence": 519,
+    "side": "bid",
+    "price_ticks": 9998,
+    "quantity": 14
+   },
+   {
+    "sequence": 520,
+    "side": "ask",
+    "price_ticks": 10004,
+    "quantity": 21
+   },
+   {
+    "sequence": 521,
+    "side": "bid",
+    "price_ticks": 9997,
+    "quantity": 28
+   },
+   {
+    "sequence": 522,
+    "side": "ask",
+    "price_ticks": 10005,
+    "quantity": 35
+   },
+   {
+    "sequence": 523,
+    "side": "bid",
+    "price_ticks": 9996,
+    "quantity": 42
+   },
+   {
+    "sequence": 524,
+    "side": "ask",
+    "price_ticks": 10006,
+    "quantity": 18
+   }
+  ]
+ },
+ "expected": {
+  "quantity_semantics": "absolute-replacement",
+  "snapshot_sequence": 500,
+  "last_sequence": 524,
+  "applied_sequences": [
+   501,
+   502,
+   503,
+   504,
+   505,
+   506,
+   507,
+   508,
+   509,
+   510,
+   511,
+   512,
+   513,
+   514,
+   515,
+   516,
+   517,
+   518,
+   519,
+   520,
+   521,
+   522,
+   523,
+   524
+  ],
+  "applied_count": 24,
+  "discarded_sequences": [],
+  "discarded_count": 0,
+  "bids": [
+   {
+    "price_ticks": 10000,
+    "quantity": 17
+   },
+   {
+    "price_ticks": 9998,
+    "quantity": 14
+   },
+   {
+    "price_ticks": 9997,
+    "quantity": 28
+   },
+   {
+    "price_ticks": 9996,
+    "quantity": 42
+   },
+   {
+    "price_ticks": 9995,
+    "quantity": 20
+   },
+   {
+    "price_ticks": 9994,
+    "quantity": 34
+   }
+  ],
+  "asks": [
+   {
+    "price_ticks": 10002,
+    "quantity": 24
+   },
+   {
+    "price_ticks": 10003,
+    "quantity": 38
+   },
+   {
+    "price_ticks": 10004,
+    "quantity": 21
+   },
+   {
+    "price_ticks": 10005,
+    "quantity": 35
+   },
+   {
+    "price_ticks": 10006,
+    "quantity": 18
+   },
+   {
+    "price_ticks": 10007,
+    "quantity": 27
+   },
+   {
+    "price_ticks": 10008,
+    "quantity": 41
+   }
+  ],
+  "best_bid_ticks": 10000,
+  "best_ask_ticks": 10002,
+  "state": "current"
+ }
+}

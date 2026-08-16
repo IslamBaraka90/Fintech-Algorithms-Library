@@ -1,0 +1,59 @@
+{
+ "input": {
+  "order_quantity": 1200,
+  "fills": [
+   {
+    "execution_id": "E-1",
+    "quantity": 300,
+    "price": 100
+   },
+   {
+    "execution_id": "E-2",
+    "quantity": 450,
+    "price": 100.01
+   },
+   {
+    "execution_id": "E-3",
+    "quantity": 250,
+    "price": 100.02
+   }
+  ]
+ },
+ "expected": {
+  "model": "partial-fill-residual-accounting",
+  "order_quantity": 1200,
+  "cumulative_quantity": 1000,
+  "leaves_quantity": 200,
+  "fill_notional": 100009.5,
+  "average_fill_price": 100.0095,
+  "execution_count": 3,
+  "fill_states": [
+   {
+    "execution_id": "E-1",
+    "last_quantity": 300,
+    "last_price": 100,
+    "cumulative_quantity": 300,
+    "leaves_quantity": 900,
+    "status": "partially-filled"
+   },
+   {
+    "execution_id": "E-2",
+    "last_quantity": 450,
+    "last_price": 100.01,
+    "cumulative_quantity": 750,
+    "leaves_quantity": 450,
+    "status": "partially-filled"
+   },
+   {
+    "execution_id": "E-3",
+    "last_quantity": 250,
+    "last_price": 100.02,
+    "cumulative_quantity": 1000,
+    "leaves_quantity": 200,
+    "status": "partially-filled"
+   }
+  ],
+  "status": "partially-filled",
+  "state": "partially-filled"
+ }
+}

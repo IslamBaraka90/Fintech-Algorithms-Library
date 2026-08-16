@@ -331,6 +331,11 @@ const ENTRY_OVERRIDES = {
   "D01-F04-A05": "asOfSnapshot",
   // guardSurvivorship is the guard; compareEqualWeightedReturns illustrates the bias.
   "D02-F04-A02": "guardSurvivorship",
+  // The family exports a function per topic, but this slug carries a trailing
+  // `matching` the export does not, and `matching` is not a generic suffix worth
+  // trimming globally. Without this the topic fell through to the family's
+  // `calculate(topicId, …)` dispatcher and published it as its public entry.
+  "D12-F01-A04": "hybridProRataTime",
   // The trade-classification family shares one body exporting tickTest, quoteTest
   // and leeReady side by side. `leeReady` is this topic's algorithm; the stem
   // matcher cannot reach it because the slug carries two extra words
@@ -841,6 +846,31 @@ for (const found of discoverTopics()) {
         break;
       }
     }
+    // Convention D — a separate input and expected-output pair.
+    //
+    // Deliberately checked last, so a topic that already classified as A, B or C
+    // keeps the convention it had and nothing that is verified today can change
+    // meaning. This only rescues topics that were otherwise landing at "none",
+    // where nothing asserts the arithmetic at all.
+    //
+    // What these expected values are, precisely: the catalog computes them from
+    // the Python `family_core.py` while the shipped TypeScript comes from a
+    // separately authored template. So this is a cross-language parity check —
+    // not an independent third-party figure, and not a snapshot of the code
+    // under test either. It catches transcription and sync-transformation
+    // errors, which is the failure mode that has actually bitten here.
+    if (!fixture) {
+      const input = readJson(join(datasetDir, "canonical-input.json"));
+      const expected = readJson(join(datasetDir, "expected-output.json"));
+      if (input && expected) {
+        fixture = { file: `${meta.id}.json`, convention: "D", keys: Object.keys(input.parsed ?? {}) };
+        emit(
+          `test/fixtures/${meta.id}.json`,
+          JSON.stringify({ input: input.parsed, expected: expected.parsed }, null, 1) + "\n",
+        );
+      }
+    }
+
     // Nothing runnable, but keep the worked example around for reference.
     if (!fixture && worked) {
       fixture = { file: `${meta.id}.json`, convention: "none", keys: Object.keys(worked.parsed) };
@@ -1322,7 +1352,7 @@ console.log(`  files written: ${outputs.size}`);
 if (overridden) {
   console.log(`  overridden   : ${overridden} topic(s) ship an implementation from optimised/`);
 }
-console.log(`  fixtures     : ${withFixture}/${topics.length} runnable  (A ${byConvention.A ?? 0} · B ${byConvention.B ?? 0} · C ${byConvention.C ?? 0} · none ${byConvention.none ?? 0})`);
+console.log(`  fixtures     : ${withFixture}/${topics.length} runnable  (A ${byConvention.A ?? 0} · B ${byConvention.B ?? 0} · C ${byConvention.C ?? 0} · D ${byConvention.D ?? 0} · none ${byConvention.none ?? 0})`);
 console.log(`\n  by shape:`);
 for (const [shape, count] of Object.entries(byArchetype).sort((a, b) => b[1] - a[1])) {
   console.log(`    ${shape.padEnd(20)} ${count}`);

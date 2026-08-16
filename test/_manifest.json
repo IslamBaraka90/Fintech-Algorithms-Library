@@ -2418,96 +2418,134 @@
       "path": "market-data-engineering/data-quality/provider-adjustment-basis-drift-detector",
       "entry": "detectAdjustmentBasisDrift",
       "archetype": "row-classify",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D01-F04-A06.json",
+      "convention": "D",
       "entryParams": [
         "input"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "provider",
+        "dataset",
+        "instrument_id",
+        "price_field",
+        "basis_id",
+        "baseline_observed_at",
+        "candidate_observed_at",
+        "tolerance_bps",
+        "baseline_rows",
+        "candidate_rows",
+        "actions"
+      ]
     },
     {
       "id": "D01-F05-A01",
       "path": "market-data-engineering/order-book-feed-engineering/trade-and-quote-event-normalization",
       "entry": "normalizeEvents",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D01-F05-A01.json",
+      "convention": "D",
       "entryParams": [
         "events"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "events"
+      ]
     },
     {
       "id": "D01-F05-A02",
       "path": "market-data-engineering/order-book-feed-engineering/level-2-snapshot-and-delta-reconstruction",
       "entry": "reconstructL2",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D01-F05-A02.json",
+      "convention": "D",
       "entryParams": [
         "snapshot"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "snapshot_sequence",
+        "snapshot",
+        "deltas"
+      ]
     },
     {
       "id": "D01-F05-A03",
       "path": "market-data-engineering/order-book-feed-engineering/level-3-order-by-order-reconstruction",
       "entry": "reconstructL3",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D01-F05-A03.json",
+      "convention": "D",
       "entryParams": [
         "snapshot_orders"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "snapshot_sequence",
+        "snapshot_orders",
+        "events"
+      ]
     },
     {
       "id": "D01-F05-A04",
       "path": "market-data-engineering/order-book-feed-engineering/sequence-gap-detection-and-recovery",
       "entry": "recoverSequenceStream",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D01-F05-A04.json",
+      "convention": "D",
       "entryParams": [
         "arrivals"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "start_sequence",
+        "arrivals"
+      ]
     },
     {
       "id": "D01-F05-A05",
       "path": "market-data-engineering/order-book-feed-engineering/price-level-quantity-aggregation",
       "entry": "aggregatePriceLevels",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D01-F05-A05.json",
+      "convention": "D",
       "entryParams": [
         "orders"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "depth_limit",
+        "orders"
+      ]
     },
     {
       "id": "D01-F05-A06",
       "path": "market-data-engineering/order-book-feed-engineering/snapshot-incremental-feed-reconciliation",
       "entry": "reconcileSnapshotIncrementals",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D01-F05-A06.json",
+      "convention": "D",
       "entryParams": [
         "snapshot"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "snapshot_sequence",
+        "snapshot",
+        "incrementals",
+        "checkpoint_sequence",
+        "checkpoint"
+      ]
     },
     {
       "id": "D01-F05-A07",
       "path": "market-data-engineering/order-book-feed-engineering/multi-venue-best-quote-and-book-consolidation",
       "entry": "consolidateVenues",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D01-F05-A07.json",
+      "convention": "D",
       "entryParams": [
         "quotes"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "as_of_receive_time_ns",
+        "max_staleness_ns",
+        "quotes"
+      ]
     },
     {
       "id": "D02-F01-A01",
@@ -2930,12 +2968,18 @@
       "path": "corporate-actions-and-security-master-data/point-in-time-universe/corporate-action-status-and-effective-date-reconciliation",
       "entry": "reconcileCorporateAction",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D02-F04-A05.json",
+      "convention": "D",
       "entryParams": [
         "input"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "event_reference",
+        "security_id",
+        "event_type",
+        "as_of",
+        "records"
+      ]
     },
     {
       "id": "D03-F01-A01",
@@ -4182,324 +4226,505 @@
       "path": "price-action-and-candlesticks/candle-foundations/shadow-to-body-ratio",
       "entry": "shadowToBodyRatio",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D06-F01-A03.json",
+      "convention": "D",
       "entryParams": [
         "inputs"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "candle",
+        "tick_size"
+      ]
     },
     {
       "id": "D06-F01-A04",
       "path": "price-action-and-candlesticks/candle-foundations/gap-classification",
       "entry": "gapClassification",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D06-F01-A04.json",
+      "convention": "D",
       "entryParams": [
         "inputs"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "previous",
+        "current",
+        "tick_size",
+        "minimum_gap_ticks"
+      ]
     },
     {
       "id": "D06-F01-A05",
       "path": "price-action-and-candlesticks/candle-foundations/trend-context-filter",
       "entry": "trendContextFilter",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D06-F01-A05.json",
+      "convention": "D",
       "entryParams": [
         "inputs"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "prior_closes",
+        "prior_ranges",
+        "lookback",
+        "minimum_efficiency",
+        "minimum_move_scale"
+      ]
     },
     {
       "id": "D06-F02-A01",
       "path": "price-action-and-candlesticks/single-candle-patterns/doji",
       "entry": "doji",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D06-F02-A01.json",
+      "convention": "D",
       "entryParams": [
         "inputs"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "current",
+        "prior_bodies",
+        "prior_ranges",
+        "trend_context",
+        "tick_size"
+      ]
     },
     {
       "id": "D06-F02-A02",
       "path": "price-action-and-candlesticks/single-candle-patterns/dragonfly-doji",
       "entry": "dragonflyDoji",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D06-F02-A02.json",
+      "convention": "D",
       "entryParams": [
         "inputs"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "current",
+        "prior_bodies",
+        "prior_ranges",
+        "trend_context",
+        "tick_size"
+      ]
     },
     {
       "id": "D06-F02-A03",
       "path": "price-action-and-candlesticks/single-candle-patterns/gravestone-doji",
       "entry": "gravestoneDoji",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D06-F02-A03.json",
+      "convention": "D",
       "entryParams": [
         "inputs"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "current",
+        "prior_bodies",
+        "prior_ranges",
+        "trend_context",
+        "tick_size"
+      ]
     },
     {
       "id": "D06-F02-A04",
       "path": "price-action-and-candlesticks/single-candle-patterns/marubozu",
       "entry": "marubozu",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D06-F02-A04.json",
+      "convention": "D",
       "entryParams": [
         "inputs"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "current",
+        "prior_bodies",
+        "prior_ranges",
+        "trend_context",
+        "tick_size"
+      ]
     },
     {
       "id": "D06-F02-A05",
       "path": "price-action-and-candlesticks/single-candle-patterns/spinning-top",
       "entry": "spinningTop",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D06-F02-A05.json",
+      "convention": "D",
       "entryParams": [
         "inputs"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "current",
+        "prior_bodies",
+        "prior_ranges",
+        "trend_context",
+        "tick_size"
+      ]
     },
     {
       "id": "D06-F02-A06",
       "path": "price-action-and-candlesticks/single-candle-patterns/hammer",
       "entry": "hammer",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D06-F02-A06.json",
+      "convention": "D",
       "entryParams": [
         "inputs"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "current",
+        "prior_bodies",
+        "prior_ranges",
+        "trend_context",
+        "tick_size"
+      ]
     },
     {
       "id": "D06-F02-A07",
       "path": "price-action-and-candlesticks/single-candle-patterns/hanging-man",
       "entry": "hangingMan",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D06-F02-A07.json",
+      "convention": "D",
       "entryParams": [
         "inputs"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "current",
+        "prior_bodies",
+        "prior_ranges",
+        "trend_context",
+        "tick_size"
+      ]
     },
     {
       "id": "D06-F02-A08",
       "path": "price-action-and-candlesticks/single-candle-patterns/inverted-hammer",
       "entry": "invertedHammer",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D06-F02-A08.json",
+      "convention": "D",
       "entryParams": [
         "inputs"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "current",
+        "prior_bodies",
+        "prior_ranges",
+        "trend_context",
+        "tick_size"
+      ]
     },
     {
       "id": "D06-F02-A09",
       "path": "price-action-and-candlesticks/single-candle-patterns/shooting-star",
       "entry": "shootingStar",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D06-F02-A09.json",
+      "convention": "D",
       "entryParams": [
         "inputs"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "current",
+        "prior_bodies",
+        "prior_ranges",
+        "trend_context",
+        "tick_size"
+      ]
     },
     {
       "id": "D06-F03-A01",
       "path": "price-action-and-candlesticks/two-candle-patterns/bullish-engulfing",
       "entry": "bullishEngulfing",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D06-F03-A01.json",
+      "convention": "D",
       "entryParams": [
         "inputs"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "first",
+        "second",
+        "prior_bodies",
+        "prior_ranges",
+        "trend_context",
+        "tick_size",
+        "price_tolerance_ticks"
+      ]
     },
     {
       "id": "D06-F03-A02",
       "path": "price-action-and-candlesticks/two-candle-patterns/bearish-engulfing",
       "entry": "bearishEngulfing",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D06-F03-A02.json",
+      "convention": "D",
       "entryParams": [
         "inputs"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "first",
+        "second",
+        "prior_bodies",
+        "prior_ranges",
+        "trend_context",
+        "tick_size",
+        "price_tolerance_ticks"
+      ]
     },
     {
       "id": "D06-F03-A03",
       "path": "price-action-and-candlesticks/two-candle-patterns/bullish-harami",
       "entry": "bullishHarami",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D06-F03-A03.json",
+      "convention": "D",
       "entryParams": [
         "inputs"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "first",
+        "second",
+        "prior_bodies",
+        "prior_ranges",
+        "trend_context",
+        "tick_size",
+        "price_tolerance_ticks"
+      ]
     },
     {
       "id": "D06-F03-A04",
       "path": "price-action-and-candlesticks/two-candle-patterns/bearish-harami",
       "entry": "bearishHarami",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D06-F03-A04.json",
+      "convention": "D",
       "entryParams": [
         "inputs"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "first",
+        "second",
+        "prior_bodies",
+        "prior_ranges",
+        "trend_context",
+        "tick_size",
+        "price_tolerance_ticks"
+      ]
     },
     {
       "id": "D06-F03-A05",
       "path": "price-action-and-candlesticks/two-candle-patterns/piercing-line",
       "entry": "piercingLine",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D06-F03-A05.json",
+      "convention": "D",
       "entryParams": [
         "inputs"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "first",
+        "second",
+        "prior_bodies",
+        "prior_ranges",
+        "trend_context",
+        "tick_size",
+        "price_tolerance_ticks"
+      ]
     },
     {
       "id": "D06-F03-A06",
       "path": "price-action-and-candlesticks/two-candle-patterns/dark-cloud-cover",
       "entry": "darkCloudCover",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D06-F03-A06.json",
+      "convention": "D",
       "entryParams": [
         "inputs"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "first",
+        "second",
+        "prior_bodies",
+        "prior_ranges",
+        "trend_context",
+        "tick_size",
+        "price_tolerance_ticks"
+      ]
     },
     {
       "id": "D06-F03-A07",
       "path": "price-action-and-candlesticks/two-candle-patterns/tweezer-top",
       "entry": "tweezerTop",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D06-F03-A07.json",
+      "convention": "D",
       "entryParams": [
         "inputs"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "first",
+        "second",
+        "prior_bodies",
+        "prior_ranges",
+        "trend_context",
+        "tick_size",
+        "price_tolerance_ticks"
+      ]
     },
     {
       "id": "D06-F03-A08",
       "path": "price-action-and-candlesticks/two-candle-patterns/tweezer-bottom",
       "entry": "tweezerBottom",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D06-F03-A08.json",
+      "convention": "D",
       "entryParams": [
         "inputs"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "first",
+        "second",
+        "prior_bodies",
+        "prior_ranges",
+        "trend_context",
+        "tick_size",
+        "price_tolerance_ticks"
+      ]
     },
     {
       "id": "D06-F04-A01",
       "path": "price-action-and-candlesticks/multi-candle-patterns/morning-star",
       "entry": "morningStar",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D06-F04-A01.json",
+      "convention": "D",
       "entryParams": [
         "inputs"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "candles",
+        "trend_context",
+        "prior_bodies",
+        "prior_ranges",
+        "tick_size",
+        "penetration_fraction"
+      ]
     },
     {
       "id": "D06-F04-A02",
       "path": "price-action-and-candlesticks/multi-candle-patterns/evening-star",
       "entry": "eveningStar",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D06-F04-A02.json",
+      "convention": "D",
       "entryParams": [
         "inputs"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "candles",
+        "trend_context",
+        "prior_bodies",
+        "prior_ranges",
+        "tick_size",
+        "penetration_fraction"
+      ]
     },
     {
       "id": "D06-F04-A03",
       "path": "price-action-and-candlesticks/multi-candle-patterns/three-white-soldiers",
       "entry": "threeWhiteSoldiers",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D06-F04-A03.json",
+      "convention": "D",
       "entryParams": [
         "inputs"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "candles",
+        "trend_context",
+        "prior_bodies",
+        "prior_ranges",
+        "tick_size",
+        "penetration_fraction"
+      ]
     },
     {
       "id": "D06-F04-A04",
       "path": "price-action-and-candlesticks/multi-candle-patterns/three-black-crows",
       "entry": "threeBlackCrows",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D06-F04-A04.json",
+      "convention": "D",
       "entryParams": [
         "inputs"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "candles",
+        "trend_context",
+        "prior_bodies",
+        "prior_ranges",
+        "tick_size",
+        "penetration_fraction"
+      ]
     },
     {
       "id": "D06-F04-A05",
       "path": "price-action-and-candlesticks/multi-candle-patterns/three-inside-up-down",
       "entry": "threeInsideUpDown",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D06-F04-A05.json",
+      "convention": "D",
       "entryParams": [
         "inputs"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "candles",
+        "trend_context",
+        "prior_bodies",
+        "prior_ranges",
+        "tick_size",
+        "penetration_fraction"
+      ]
     },
     {
       "id": "D06-F04-A06",
       "path": "price-action-and-candlesticks/multi-candle-patterns/three-outside-up-down",
       "entry": "threeOutsideUpDown",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D06-F04-A06.json",
+      "convention": "D",
       "entryParams": [
         "inputs"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "candles",
+        "trend_context",
+        "prior_bodies",
+        "prior_ranges",
+        "tick_size",
+        "penetration_fraction"
+      ]
     },
     {
       "id": "D06-F04-A07",
       "path": "price-action-and-candlesticks/multi-candle-patterns/abandoned-baby",
       "entry": "abandonedBaby",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D06-F04-A07.json",
+      "convention": "D",
       "entryParams": [
         "inputs"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "candles",
+        "trend_context",
+        "prior_bodies",
+        "prior_ranges",
+        "tick_size",
+        "penetration_fraction"
+      ]
     },
     {
       "id": "D06-F05-A01",
@@ -5896,204 +6121,347 @@
       "path": "geometric-chart-patterns/indicator-divergence-detection/price-indicator-pivot-alignment",
       "entry": "priceIndicatorPivotAlignment",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D08-F05-A01.json",
+      "convention": "D",
       "entryParams": [
         "payload"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "topic_id",
+        "data_class",
+        "as_of",
+        "bars",
+        "price_pivots",
+        "indicators",
+        "parameters",
+        "weights",
+        "as_of_index",
+        "universe"
+      ]
     },
     {
       "id": "D08-F05-A02",
       "path": "geometric-chart-patterns/indicator-divergence-detection/regular-bullish-bearish-divergence-detection",
       "entry": "regularBullishBearishDivergenceDetection",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D08-F05-A02.json",
+      "convention": "D",
       "entryParams": [
         "payload"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "topic_id",
+        "data_class",
+        "as_of",
+        "bars",
+        "price_pivots",
+        "indicators",
+        "parameters",
+        "weights",
+        "as_of_index",
+        "universe"
+      ]
     },
     {
       "id": "D08-F05-A03",
       "path": "geometric-chart-patterns/indicator-divergence-detection/hidden-bullish-bearish-divergence-detection",
       "entry": "hiddenBullishBearishDivergenceDetection",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D08-F05-A03.json",
+      "convention": "D",
       "entryParams": [
         "payload"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "topic_id",
+        "data_class",
+        "as_of",
+        "bars",
+        "price_pivots",
+        "indicators",
+        "parameters",
+        "weights",
+        "as_of_index",
+        "universe"
+      ]
     },
     {
       "id": "D08-F05-A04",
       "path": "geometric-chart-patterns/indicator-divergence-detection/multi-indicator-divergence-adapters",
       "entry": "multiIndicatorDivergenceAdapters",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D08-F05-A04.json",
+      "convention": "D",
       "entryParams": [
         "payload"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "topic_id",
+        "data_class",
+        "as_of",
+        "bars",
+        "price_pivots",
+        "indicators",
+        "parameters",
+        "weights",
+        "as_of_index",
+        "universe"
+      ]
     },
     {
       "id": "D08-F05-A05",
       "path": "geometric-chart-patterns/indicator-divergence-detection/divergence-strength-and-quality-scoring",
       "entry": "divergenceStrengthAndQualityScoring",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D08-F05-A05.json",
+      "convention": "D",
       "entryParams": [
         "payload"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "topic_id",
+        "data_class",
+        "as_of",
+        "bars",
+        "price_pivots",
+        "indicators",
+        "parameters",
+        "weights",
+        "as_of_index",
+        "universe"
+      ]
     },
     {
       "id": "D08-F05-A06",
       "path": "geometric-chart-patterns/indicator-divergence-detection/divergence-confirmation-and-invalidation-state-machine",
       "entry": "divergenceConfirmationAndInvalidationStateMachine",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D08-F05-A06.json",
+      "convention": "D",
       "entryParams": [
         "payload"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "topic_id",
+        "data_class",
+        "as_of",
+        "bars",
+        "price_pivots",
+        "indicators",
+        "parameters",
+        "weights",
+        "as_of_index",
+        "universe"
+      ]
     },
     {
       "id": "D08-F05-A07",
       "path": "geometric-chart-patterns/indicator-divergence-detection/multi-indicator-divergence-confluence",
       "entry": "multiIndicatorDivergenceConfluence",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D08-F05-A07.json",
+      "convention": "D",
       "entryParams": [
         "payload"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "topic_id",
+        "data_class",
+        "as_of",
+        "bars",
+        "price_pivots",
+        "indicators",
+        "parameters",
+        "weights",
+        "as_of_index",
+        "universe"
+      ]
     },
     {
       "id": "D08-F05-A08",
       "path": "geometric-chart-patterns/indicator-divergence-detection/market-wide-divergence-scanner-and-ranking",
       "entry": "marketWideDivergenceScannerAndRanking",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D08-F05-A08.json",
+      "convention": "D",
       "entryParams": [
         "payload"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "topic_id",
+        "data_class",
+        "as_of",
+        "bars",
+        "price_pivots",
+        "indicators",
+        "parameters",
+        "weights",
+        "as_of_index",
+        "universe"
+      ]
     },
     {
       "id": "D08-F06-A01",
       "path": "geometric-chart-patterns/level-confluence-and-zone-scoring/price-by-volume-profile-construction",
       "entry": "priceByVolumeProfileConstruction",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D08-F06-A01.json",
+      "convention": "D",
       "entryParams": [
         "input"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "tick_size",
+        "bin_size_ticks",
+        "window_end",
+        "trades"
+      ]
     },
     {
       "id": "D08-F06-A02",
       "path": "geometric-chart-patterns/level-confluence-and-zone-scoring/poc-value-area-hvn-lvn-detection",
       "entry": "pocValueAreaHvnLvnDetection",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D08-F06-A02.json",
+      "convention": "D",
       "entryParams": [
         "input"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "profile_rows",
+        "value_area_fraction",
+        "hvn_median_ratio",
+        "lvn_median_ratio"
+      ]
     },
     {
       "id": "D08-F06-A03",
       "path": "geometric-chart-patterns/level-confluence-and-zone-scoring/fibonacci-retracement-extension-projection",
       "entry": "fibonacciRetracementExtensionProjection",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D08-F06-A03.json",
+      "convention": "D",
       "entryParams": [
         "input"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "start_price",
+        "end_price",
+        "retracement_end_price",
+        "tick_size",
+        "retracement_ratios",
+        "extension_ratios"
+      ]
     },
     {
       "id": "D08-F06-A04",
       "path": "geometric-chart-patterns/level-confluence-and-zone-scoring/psychological-round-number-level-generation",
       "entry": "psychologicalRoundNumberLevelGeneration",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D08-F06-A04.json",
+      "convention": "D",
       "entryParams": [
         "input"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "current_price",
+        "lower_bound",
+        "upper_bound",
+        "tick_size",
+        "base_unit"
+      ]
     },
     {
       "id": "D08-F06-A05",
       "path": "geometric-chart-patterns/level-confluence-and-zone-scoring/multi-source-support-resistance-zone-fusion",
       "entry": "multiSourceSupportResistanceZoneFusion",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D08-F06-A05.json",
+      "convention": "D",
       "entryParams": [
         "input"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "fusion_tolerance",
+        "minimum_sources",
+        "levels"
+      ]
     },
     {
       "id": "D08-F06-A06",
       "path": "geometric-chart-patterns/level-confluence-and-zone-scoring/support-resistance-zone-strength-decay-scoring",
       "entry": "supportResistanceZoneStrengthDecayScoring",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D08-F06-A06.json",
+      "convention": "D",
       "entryParams": [
         "input"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "source_confluence",
+        "zone_age_bars",
+        "half_life_bars",
+        "break_count",
+        "rejection_target_atr",
+        "touches"
+      ]
     },
     {
       "id": "D08-F06-A07",
       "path": "geometric-chart-patterns/level-confluence-and-zone-scoring/support-resistance-role-reversal-state-machine",
       "entry": "supportResistanceRoleReversalStateMachine",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D08-F06-A07.json",
+      "convention": "D",
       "entryParams": [
         "input"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "zone_lower",
+        "zone_upper",
+        "break_buffer",
+        "confirmation_closes",
+        "initial_role",
+        "closes"
+      ]
     },
     {
       "id": "D08-F06-A08",
       "path": "geometric-chart-patterns/level-confluence-and-zone-scoring/breakout-and-retest-detection",
       "entry": "breakoutAndRetestDetection",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D08-F06-A08.json",
+      "convention": "D",
       "entryParams": [
         "input"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "zone_lower",
+        "zone_upper",
+        "break_buffer",
+        "retest_tolerance",
+        "breakout_closes",
+        "max_retest_bars",
+        "direction",
+        "bars"
+      ]
     },
     {
       "id": "D08-F06-A09",
       "path": "geometric-chart-patterns/level-confluence-and-zone-scoring/market-wide-zone-proximity-scanner-ranking",
       "entry": "marketWideZoneProximityScannerRanking",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D08-F06-A09.json",
+      "convention": "D",
       "entryParams": [
         "input"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "as_of",
+        "max_distance_bps",
+        "freshness_half_life_hours",
+        "instruments"
+      ]
     },
     {
       "id": "D09-F01-A01",
@@ -6704,36 +7072,44 @@
       "path": "market-microstructure/liquidity-and-spreads/quoted-spread",
       "entry": "quotedSpread",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D11-F02-A01.json",
+      "convention": "D",
       "entryParams": [
         "bid",
         "ask"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "bid",
+        "ask"
+      ]
     },
     {
       "id": "D11-F02-A02",
       "path": "market-microstructure/liquidity-and-spreads/effective-spread",
       "entry": "effectiveSpread",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D11-F02-A02.json",
+      "convention": "D",
       "entryParams": [
         "bid",
         "ask",
         "tradePrice",
         "side"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "bid",
+        "ask",
+        "trade_price",
+        "side"
+      ]
     },
     {
       "id": "D11-F02-A03",
       "path": "market-microstructure/liquidity-and-spreads/realized-spread",
       "entry": "realizedSpread",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D11-F02-A03.json",
+      "convention": "D",
       "entryParams": [
         "bidAtTrade",
         "askAtTrade",
@@ -6743,41 +7119,55 @@
         "askAfter",
         "horizonSeconds"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "bid_at_trade",
+        "ask_at_trade",
+        "trade_price",
+        "side",
+        "bid_after",
+        "ask_after",
+        "horizon_seconds"
+      ]
     },
     {
       "id": "D11-F02-A04",
       "path": "market-microstructure/liquidity-and-spreads/roll-spread-estimator",
       "entry": "rollSpread",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D11-F02-A04.json",
+      "convention": "D",
       "entryParams": [
         "prices"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "prices"
+      ]
     },
     {
       "id": "D11-F02-A05",
       "path": "market-microstructure/liquidity-and-spreads/amihud-illiquidity-ratio",
       "entry": "amihudIlliquidity",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D11-F02-A05.json",
+      "convention": "D",
       "entryParams": [
         "closes",
         "dollarVolumes",
         "scale"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "closes",
+        "dollar_volumes",
+        "scale"
+      ]
     },
     {
       "id": "D11-F02-A06",
       "path": "market-microstructure/liquidity-and-spreads/corwin-schultz-spread-estimator",
       "entry": "corwinSchultzSpread",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D11-F02-A06.json",
+      "convention": "D",
       "entryParams": [
         "highDay1",
         "lowDay1",
@@ -6785,7 +7175,13 @@
         "lowDay2",
         "clipNegative"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "high_day_1",
+        "low_day_1",
+        "high_day_2",
+        "low_day_2",
+        "clip_negative"
+      ]
     },
     {
       "id": "D11-F03-A01",
@@ -6877,67 +7273,86 @@
       "path": "market-microstructure/order-book-dynamics/order-book-slope",
       "entry": "orderBookSlope",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D11-F04-A01.json",
+      "convention": "D",
       "entryParams": [
         "bidPrices",
         "bidSizes",
         "askPrices",
         "askSizes"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "bid_prices",
+        "bid_sizes",
+        "ask_prices",
+        "ask_sizes"
+      ]
     },
     {
       "id": "D11-F04-A02",
       "path": "market-microstructure/order-book-dynamics/depth-weighted-midprice",
       "entry": "depthWeightedMidprice",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D11-F04-A02.json",
+      "convention": "D",
       "entryParams": [
         "bidPrices",
         "bidSizes",
         "askPrices",
         "askSizes"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "bid_prices",
+        "bid_sizes",
+        "ask_prices",
+        "ask_sizes"
+      ]
     },
     {
       "id": "D11-F04-A03",
       "path": "market-microstructure/order-book-dynamics/microprice",
       "entry": "microprice",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D11-F04-A03.json",
+      "convention": "D",
       "entryParams": [
         "bid",
         "bidSize",
         "ask",
         "askSize"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "bid",
+        "bid_size",
+        "ask",
+        "ask_size"
+      ]
     },
     {
       "id": "D11-F04-A04",
       "path": "market-microstructure/order-book-dynamics/order-book-resiliency",
       "entry": "orderBookResiliency",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D11-F04-A04.json",
+      "convention": "D",
       "entryParams": [
         "timesSeconds",
         "displacementBps",
         "forecastSeconds"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "times_seconds",
+        "displacement_bps",
+        "forecast_seconds"
+      ]
     },
     {
       "id": "D11-F04-A05",
       "path": "market-microstructure/order-book-dynamics/hawkes-order-arrival-model",
       "entry": "hawkesOrderArrival",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D11-F04-A05.json",
+      "convention": "D",
       "entryParams": [
         "eventTimesSeconds",
         "baselineIntensity",
@@ -6946,59 +7361,80 @@
         "evaluationTimeSeconds",
         "horizonSeconds"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "event_times_seconds",
+        "baseline_intensity",
+        "excitation_jump",
+        "decay_rate",
+        "evaluation_time_seconds",
+        "horizon_seconds"
+      ]
     },
     {
       "id": "D11-F05-A01",
       "path": "market-microstructure/market-depth-analytics/cumulative-bid-ask-depth",
       "entry": "cumulativeDepth",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D11-F05-A01.json",
+      "convention": "D",
       "entryParams": [
         "bidsRaw",
         "asksRaw",
         "tickRaw"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "bids",
+        "asks",
+        "tick_size"
+      ]
     },
     {
       "id": "D11-F05-A02",
       "path": "market-microstructure/market-depth-analytics/top-n-depth-imbalance",
       "entry": "topNDepthImbalance",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D11-F05-A02.json",
+      "convention": "D",
       "entryParams": [
         "bidsRaw",
         "asksRaw",
         "nRaw",
         "thresholdRaw"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "bids",
+        "asks",
+        "n",
+        "threshold"
+      ]
     },
     {
       "id": "D11-F05-A03",
       "path": "market-microstructure/market-depth-analytics/depth-at-distance-profile",
       "entry": "depthAtDistanceProfile",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D11-F05-A03.json",
+      "convention": "D",
       "entryParams": [
         "bidsRaw",
         "asksRaw",
         "tickRaw",
         "maxRaw"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "bids",
+        "asks",
+        "tick_size",
+        "max_distance_ticks"
+      ]
     },
     {
       "id": "D11-F05-A04",
       "path": "market-microstructure/market-depth-analytics/expected-market-order-fill-price",
       "entry": "expectedFillPrice",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D11-F05-A04.json",
+      "convention": "D",
       "entryParams": [
         "bids",
         "asks",
@@ -7006,15 +7442,21 @@
         "quantity",
         "limitPrice"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "bids",
+        "asks",
+        "side",
+        "quantity",
+        "limit_price"
+      ]
     },
     {
       "id": "D11-F05-A05",
       "path": "market-microstructure/market-depth-analytics/multi-level-sweep-cost-and-slippage",
       "entry": "sweepCostAndSlippage",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D11-F05-A05.json",
+      "convention": "D",
       "entryParams": [
         "bids",
         "asks",
@@ -7024,141 +7466,191 @@
         "benchmarkPriceRaw",
         "limitPrice"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "bids",
+        "asks",
+        "side",
+        "quantity",
+        "benchmark",
+        "benchmark_price",
+        "limit_price"
+      ]
     },
     {
       "id": "D11-F05-A06",
       "path": "market-microstructure/market-depth-analytics/liquidity-wall-and-concentration-detection",
       "entry": "liquidityWallConcentration",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D11-F05-A06.json",
+      "convention": "D",
       "entryParams": [
         "levelsRaw",
         "multipleRaw",
         "minShareRaw",
         "thresholdRaw"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "levels",
+        "wall_multiple",
+        "minimum_share",
+        "concentration_threshold"
+      ]
     },
     {
       "id": "D11-F05-A07",
       "path": "market-microstructure/market-depth-analytics/depth-depletion-and-replenishment",
       "entry": "depthDepletionReplenishment",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D11-F05-A07.json",
+      "convention": "D",
       "entryParams": [
         "seriesRaw"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "series"
+      ]
     },
     {
       "id": "D11-F05-A08",
       "path": "market-microstructure/market-depth-analytics/market-depth-heatmap-aggregation",
       "entry": "marketDepthHeatmap",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D11-F05-A08.json",
+      "convention": "D",
       "entryParams": [
         "snapshotsRaw",
         "tickRaw",
         "binRaw",
         "maxRaw"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "snapshots",
+        "tick_size",
+        "time_bin_seconds",
+        "max_distance_ticks"
+      ]
     },
     {
       "id": "D12-F01-A01",
       "path": "matching-engines-and-venue-logic/continuous-matching/price-time-priority",
       "entry": "priceTimePriority",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D12-F01-A01.json",
+      "convention": "D",
       "entryParams": [
         "incomingRaw",
         "restingRaw"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "incoming_order",
+        "resting_orders"
+      ]
     },
     {
       "id": "D12-F01-A02",
       "path": "matching-engines-and-venue-logic/continuous-matching/pro-rata-matching",
       "entry": "proRataMatching",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D12-F01-A02.json",
+      "convention": "D",
       "entryParams": [
         "incomingRaw",
         "priceRaw",
         "lotRaw",
         "restingRaw"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "incoming_quantity",
+        "price",
+        "lot_size",
+        "resting_orders"
+      ]
     },
     {
       "id": "D12-F01-A03",
       "path": "matching-engines-and-venue-logic/continuous-matching/size-time-priority",
       "entry": "sizeTimePriority",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D12-F01-A03.json",
+      "convention": "D",
       "entryParams": [
         "incomingRaw",
         "priceRaw",
         "lotRaw",
         "restingRaw"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "incoming_quantity",
+        "price",
+        "lot_size",
+        "resting_orders"
+      ]
     },
     {
       "id": "D12-F01-A04",
       "path": "matching-engines-and-venue-logic/continuous-matching/hybrid-pro-rata-time-matching",
-      "entry": "calculate",
+      "entry": "hybridProRataTime",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D12-F01-A04.json",
+      "convention": "D",
       "entryParams": [
-        "topicId",
-        "inputs"
+        "incomingRaw",
+        "priceRaw",
+        "lotRaw",
+        "fractionRaw",
+        "restingRaw"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "incoming_quantity",
+        "price",
+        "lot_size",
+        "fifo_fraction",
+        "resting_orders"
+      ]
     },
     {
       "id": "D12-F02-A01",
       "path": "matching-engines-and-venue-logic/auctions/maximum-executable-volume-auction",
       "entry": "maximumExecutableVolumeAuction",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D12-F02-A01.json",
+      "convention": "D",
       "entryParams": [
         "ordersRaw",
         "referenceRaw",
         "tickRaw"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "reference_price",
+        "tick_size",
+        "orders"
+      ]
     },
     {
       "id": "D12-F02-A02",
       "path": "matching-engines-and-venue-logic/auctions/minimum-imbalance-tie-break",
       "entry": "minimumImbalanceTieBreak",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D12-F02-A02.json",
+      "convention": "D",
       "entryParams": [
         "ordersRaw",
         "referenceRaw",
         "tickRaw"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "reference_price",
+        "tick_size",
+        "orders"
+      ]
     },
     {
       "id": "D12-F02-A03",
       "path": "matching-engines-and-venue-logic/auctions/opening-cross-price",
       "entry": "openingCrossPrice",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D12-F02-A03.json",
+      "convention": "D",
       "entryParams": [
         "orders",
         "previousClose",
@@ -7166,15 +7658,21 @@
         "low",
         "high"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "previous_close",
+        "tick_size",
+        "collar_low",
+        "collar_high",
+        "orders"
+      ]
     },
     {
       "id": "D12-F02-A04",
       "path": "matching-engines-and-venue-logic/auctions/closing-cross-price",
       "entry": "closingCrossPrice",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D12-F02-A04.json",
+      "convention": "D",
       "entryParams": [
         "orders",
         "reference",
@@ -7182,42 +7680,63 @@
         "low",
         "high"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "closing_reference",
+        "tick_size",
+        "collar_low",
+        "collar_high",
+        "orders"
+      ]
     },
     {
       "id": "D12-F02-A05",
       "path": "matching-engines-and-venue-logic/auctions/volatility-auction-reopening",
       "entry": "volatilityAuctionReopening",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D12-F02-A05.json",
+      "convention": "D",
       "entryParams": [
         "inputs"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "reference_price",
+        "dynamic_reference",
+        "dynamic_band_pct",
+        "static_reference",
+        "static_band_pct",
+        "potential_continuous_price",
+        "indicative_auction_price",
+        "extended_band_multiplier",
+        "executable_quantity"
+      ]
     },
     {
       "id": "D12-F03-A01",
       "path": "matching-engines-and-venue-logic/order-controls/tick-size-validation",
       "entry": "tickSizeValidation",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D12-F03-A01.json",
+      "convention": "D",
       "entryParams": [
         "price_atoms",
         "tick_size_atoms",
         "price_scale",
         "effective_policy_id"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "price_atoms",
+        "tick_size_atoms",
+        "price_scale",
+        "effective_policy_id"
+      ]
     },
     {
       "id": "D12-F03-A02",
       "path": "matching-engines-and-venue-logic/order-controls/price-band-validation",
       "entry": "priceBandValidation",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D12-F03-A02.json",
+      "convention": "D",
       "entryParams": [
         "side",
         "limit_price_atoms",
@@ -7226,29 +7745,40 @@
         "band_as_of_ns",
         "inclusive"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "side",
+        "limit_price_atoms",
+        "lower_band_atoms",
+        "upper_band_atoms",
+        "band_as_of_ns",
+        "inclusive"
+      ]
     },
     {
       "id": "D12-F03-A03",
       "path": "matching-engines-and-venue-logic/order-controls/self-trade-prevention",
       "entry": "selfTradePrevention",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D12-F03-A03.json",
+      "convention": "D",
       "entryParams": [
         "incoming_order",
         "resting_orders",
         "mode"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "incoming_order",
+        "resting_orders",
+        "mode"
+      ]
     },
     {
       "id": "D12-F03-A04",
       "path": "matching-engines-and-venue-logic/order-controls/cancel-on-disconnect",
       "entry": "cancelOnDisconnect",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D12-F03-A04.json",
+      "convention": "D",
       "entryParams": [
         "disconnected_session_id",
         "disconnect_type",
@@ -7256,15 +7786,21 @@
         "policy",
         "orders"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "disconnected_session_id",
+        "disconnect_type",
+        "trigger_disconnect_types",
+        "policy",
+        "orders"
+      ]
     },
     {
       "id": "D12-F03-A05",
       "path": "matching-engines-and-venue-logic/order-controls/fat-finger-limit",
       "entry": "fatFingerLimit",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D12-F03-A05.json",
+      "convention": "D",
       "entryParams": [
         "side",
         "limit_price_atoms",
@@ -7274,83 +7810,109 @@
         "max_notional_atoms",
         "max_aggressive_deviation_bps"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "side",
+        "limit_price_atoms",
+        "reference_price_atoms",
+        "quantity",
+        "max_quantity",
+        "max_notional_atoms",
+        "max_aggressive_deviation_bps"
+      ]
     },
     {
       "id": "D12-F03-A06",
       "path": "matching-engines-and-venue-logic/order-controls/circuit-breaker-trigger",
       "entry": "circuitBreakerTrigger",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D12-F03-A06.json",
+      "convention": "D",
       "entryParams": [
         "reference_close_atoms",
         "current_index_atoms",
         "level_thresholds_bps",
         "previously_triggered_level"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "reference_close_atoms",
+        "current_index_atoms",
+        "level_thresholds_bps",
+        "previously_triggered_level"
+      ]
     },
     {
       "id": "D12-F04-A01",
       "path": "matching-engines-and-venue-logic/order-lifecycle-and-queue-state/limit-order-lifecycle-state-machine",
       "entry": "limitOrderLifecycle",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D12-F04-A01.json",
+      "convention": "D",
       "entryParams": [
         "orderIdRaw",
         "orderQuantityRaw",
         "eventsRaw"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "order_id",
+        "order_quantity",
+        "events"
+      ]
     },
     {
       "id": "D12-F04-A02",
       "path": "matching-engines-and-venue-logic/order-lifecycle-and-queue-state/cancel-replace-priority-rule",
       "entry": "cancelReplacePriority",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D12-F04-A02.json",
+      "convention": "D",
       "entryParams": [
         "originalRaw",
         "replacementRaw"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "original",
+        "replacement"
+      ]
     },
     {
       "id": "D12-F04-A03",
       "path": "matching-engines-and-venue-logic/order-lifecycle-and-queue-state/partial-fill-and-residual-quantity-processing",
       "entry": "partialFillResidual",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D12-F04-A03.json",
+      "convention": "D",
       "entryParams": [
         "orderQuantityRaw",
         "fillsRaw"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "order_quantity",
+        "fills"
+      ]
     },
     {
       "id": "D12-F04-A04",
       "path": "matching-engines-and-venue-logic/order-lifecycle-and-queue-state/queue-position-and-ahead-volume-calculation",
       "entry": "queuePositionAheadVolume",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D12-F04-A04.json",
+      "convention": "D",
       "entryParams": [
         "ordersRaw",
         "targetIdRaw"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "orders",
+        "target_order_id"
+      ]
     },
     {
       "id": "D12-F04-A05",
       "path": "matching-engines-and-venue-logic/order-lifecycle-and-queue-state/iceberg-reserve-order-replenishment",
       "entry": "icebergReplenishment",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D12-F04-A05.json",
+      "convention": "D",
       "entryParams": [
         "totalRaw",
         "initialRaw",
@@ -7358,28 +7920,37 @@
         "fillsRaw",
         "priorityRaw"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "total_quantity",
+        "initial_display_quantity",
+        "display_size",
+        "fills",
+        "starting_priority_sequence"
+      ]
     },
     {
       "id": "D12-F04-A06",
       "path": "matching-engines-and-venue-logic/order-lifecycle-and-queue-state/marketable-order-multi-level-sweep",
       "entry": "marketableOrderSweep",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D12-F04-A06.json",
+      "convention": "D",
       "entryParams": [
         "incomingRaw",
         "restingRaw"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "incoming_order",
+        "resting_orders"
+      ]
     },
     {
       "id": "D13-F01-A01",
       "path": "execution-and-transaction-cost-analysis/schedule-based-execution/twap-execution",
       "entry": "twapExecution",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D13-F01-A01.json",
+      "convention": "D",
       "entryParams": [
         "total_quantity",
         "start_time_ms",
@@ -7387,30 +7958,41 @@
         "bucket_count",
         "lot_size"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "total_quantity",
+        "start_time_ms",
+        "end_time_ms",
+        "bucket_count",
+        "lot_size"
+      ]
     },
     {
       "id": "D13-F01-A02",
       "path": "execution-and-transaction-cost-analysis/schedule-based-execution/historical-vwap-execution",
       "entry": "historicalVwapExecution",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D13-F01-A02.json",
+      "convention": "D",
       "entryParams": [
         "total_quantity",
         "historical_bucket_volumes",
         "lot_size",
         "profile_id"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "total_quantity",
+        "historical_bucket_volumes",
+        "lot_size",
+        "profile_id"
+      ]
     },
     {
       "id": "D13-F01-A03",
       "path": "execution-and-transaction-cost-analysis/schedule-based-execution/adaptive-vwap-execution",
       "entry": "adaptiveVwapExecution",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D13-F01-A03.json",
+      "convention": "D",
       "entryParams": [
         "total_quantity",
         "realized_market_volumes",
@@ -7419,15 +8001,22 @@
         "lot_size",
         "forecast_version"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "total_quantity",
+        "realized_market_volumes",
+        "remaining_forecast_volumes",
+        "executed_quantity",
+        "lot_size",
+        "forecast_version"
+      ]
     },
     {
       "id": "D13-F01-A04",
       "path": "execution-and-transaction-cost-analysis/schedule-based-execution/percentage-of-volume-execution",
       "entry": "percentageOfVolumeExecution",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D13-F01-A04.json",
+      "convention": "D",
       "entryParams": [
         "total_quantity",
         "participation_rate_bps",
@@ -7435,67 +8024,127 @@
         "lot_size",
         "max_child_quantity"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "total_quantity",
+        "participation_rate_bps",
+        "market_volume_buckets",
+        "lot_size",
+        "max_child_quantity"
+      ]
     },
     {
       "id": "D13-F02-A01",
       "path": "execution-and-transaction-cost-analysis/cost-risk-optimization/almgren-chriss-optimal-execution",
       "entry": "almgrenChrissOptimalExecution",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D13-F02-A01.json",
+      "convention": "D",
       "entryParams": [
         "input"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "total_quantity",
+        "interval_count",
+        "lot_size",
+        "temporary_impact_weight",
+        "inventory_risk_weight"
+      ]
     },
     {
       "id": "D13-F02-A02",
       "path": "execution-and-transaction-cost-analysis/cost-risk-optimization/implementation-shortfall-execution",
       "entry": "implementationShortfallExecution",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D13-F02-A02.json",
+      "convention": "D",
       "entryParams": [
         "input"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "remaining_quantity",
+        "side",
+        "decision_price_atoms",
+        "current_price_atoms",
+        "spread_bps",
+        "impact_coefficient_bps",
+        "average_daily_volume",
+        "volatility_bps",
+        "risk_aversion",
+        "urgency_bps",
+        "intervals_remaining",
+        "max_child_quantity",
+        "candidate_step_quantity",
+        "lot_size"
+      ]
     },
     {
       "id": "D13-F02-A03",
       "path": "execution-and-transaction-cost-analysis/cost-risk-optimization/arrival-price-execution",
       "entry": "arrivalPriceExecution",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D13-F02-A03.json",
+      "convention": "D",
       "entryParams": [
         "input"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "remaining_quantity",
+        "side",
+        "arrival_price_atoms",
+        "current_price_atoms",
+        "tolerance_bps",
+        "observed_market_volume",
+        "base_participation_bps",
+        "defensive_participation_bps",
+        "max_participation_bps",
+        "intervals_remaining",
+        "deadline_threshold_intervals",
+        "max_child_quantity",
+        "lot_size"
+      ]
     },
     {
       "id": "D13-F02-A04",
       "path": "execution-and-transaction-cost-analysis/cost-risk-optimization/liquidity-seeking-execution",
       "entry": "liquiditySeekingExecution",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D13-F02-A04.json",
+      "convention": "D",
       "entryParams": [
         "input"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "total_quantity",
+        "side",
+        "limit_price_atoms",
+        "minimum_confidence_bps",
+        "maximum_age_ms",
+        "max_take_per_event",
+        "lot_size",
+        "liquidity_events"
+      ]
     },
     {
       "id": "D13-F02-A05",
       "path": "execution-and-transaction-cost-analysis/cost-risk-optimization/opportunistic-dark-pool-execution",
       "entry": "opportunisticDarkPoolExecution",
       "archetype": "record-transform",
-      "fixture": null,
-      "convention": "none",
+      "fixture": "D13-F02-A05.json",
+      "convention": "D",
       "entryParams": [
         "input"
       ],
-      "fixtureKeys": []
+      "fixtureKeys": [
+        "total_quantity",
+        "lot_size",
+        "maximum_dark_fraction_bps",
+        "minimum_firm_probability_bps",
+        "minimum_price_improvement_atoms",
+        "minimum_execution_quantity",
+        "max_exposure_per_window",
+        "fallback_window",
+        "dark_opportunities"
+      ]
     },
     {
       "id": "D21-F01-A01",

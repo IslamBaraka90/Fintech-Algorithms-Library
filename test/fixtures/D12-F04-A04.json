@@ -1,0 +1,72 @@
+{
+ "input": {
+  "orders": [
+   {
+    "order_id": "Q-1",
+    "side": "buy",
+    "price": 100,
+    "remaining_quantity": 300,
+    "arrival_sequence": 1,
+    "displayed": true
+   },
+   {
+    "order_id": "H-1",
+    "side": "buy",
+    "price": 100,
+    "remaining_quantity": 1000,
+    "arrival_sequence": 2,
+    "displayed": false
+   },
+   {
+    "order_id": "Q-2",
+    "side": "buy",
+    "price": 100,
+    "remaining_quantity": 450,
+    "arrival_sequence": 3,
+    "displayed": true
+   },
+   {
+    "order_id": "TARGET",
+    "side": "buy",
+    "price": 100,
+    "remaining_quantity": 500,
+    "arrival_sequence": 4,
+    "displayed": true
+   },
+   {
+    "order_id": "Q-3",
+    "side": "buy",
+    "price": 100,
+    "remaining_quantity": 250,
+    "arrival_sequence": 5,
+    "displayed": true
+   },
+   {
+    "order_id": "Q-OTHER",
+    "side": "buy",
+    "price": 99.99,
+    "remaining_quantity": 900,
+    "arrival_sequence": 6,
+    "displayed": true
+   }
+  ],
+  "target_order_id": "TARGET"
+ },
+ "expected": {
+  "model": "displayed-price-time-fifo-ahead-volume",
+  "target_order_id": "TARGET",
+  "side": "buy",
+  "price": 100,
+  "ahead_order_count": 2,
+  "ahead_volume": 750,
+  "displayed_queue_rank": 3,
+  "behind_order_count": 1,
+  "behind_volume": 250,
+  "hidden_same_price_quantity_excluded": 1000,
+  "ahead_order_ids": [
+   "Q-1",
+   "Q-2"
+  ],
+  "state": "queued-behind-displayed-volume"
+ }
+}

@@ -1,0 +1,59 @@
+{
+ "input": {
+  "current": {
+   "open": 100,
+   "high": 102.6,
+   "low": 99.8,
+   "close": 102.4
+  },
+  "prior_bodies": [
+   2,
+   2.2,
+   1.8,
+   2.1,
+   1.9,
+   2,
+   2.3,
+   1.7,
+   2.1,
+   1.9
+  ],
+  "prior_ranges": [
+   5,
+   5,
+   5,
+   5,
+   5,
+   5,
+   5,
+   5,
+   5,
+   5
+  ],
+  "trend_context": "sideways",
+  "tick_size": 0.1
+ },
+ "expected": {
+  "topic_id": "D06-F02-A04",
+  "pattern": "Marubozu",
+  "matched": true,
+  "state": "matched",
+  "direction": "bullish",
+  "trend_context": "sideways",
+  "required_context": null,
+  "body": 2.4,
+  "upper_shadow": 0.2,
+  "lower_shadow": 0.2,
+  "range": 2.8,
+  "body_scale": 2,
+  "range_scale": 5,
+  "history_count": 10,
+  "geometry_score": 1.2,
+  "checks": {
+   "long_body": true,
+   "short_upper_shadow": true,
+   "short_lower_shadow": true
+  },
+  "failed_checks": []
+ }
+}

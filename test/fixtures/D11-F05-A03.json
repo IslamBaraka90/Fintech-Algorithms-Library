@@ -1,0 +1,122 @@
+{
+ "input": {
+  "bids": [
+   {
+    "price": 99.99,
+    "quantity": 500
+   },
+   {
+    "price": 99.98,
+    "quantity": 800
+   },
+   {
+    "price": 99.97,
+    "quantity": 1200
+   },
+   {
+    "price": 99.96,
+    "quantity": 700
+   },
+   {
+    "price": 99.95,
+    "quantity": 400
+   }
+  ],
+  "asks": [
+   {
+    "price": 100.01,
+    "quantity": 300
+   },
+   {
+    "price": 100.02,
+    "quantity": 600
+   },
+   {
+    "price": 100.03,
+    "quantity": 1000
+   },
+   {
+    "price": 100.04,
+    "quantity": 900
+   },
+   {
+    "price": 100.05,
+    "quantity": 500
+   }
+  ],
+  "tick_size": 0.01,
+  "max_distance_ticks": 4
+ },
+ "expected": {
+  "model": "same-side-best-tick-distance-profile",
+  "tick_size": 0.01,
+  "max_distance_ticks": 4,
+  "bid_profile": [
+   {
+    "distance_ticks": 0,
+    "quantity": 500,
+    "cumulative_quantity": 500,
+    "depth_share": 0.138888888889
+   },
+   {
+    "distance_ticks": 1,
+    "quantity": 800,
+    "cumulative_quantity": 1300,
+    "depth_share": 0.222222222222
+   },
+   {
+    "distance_ticks": 2,
+    "quantity": 1200,
+    "cumulative_quantity": 2500,
+    "depth_share": 0.333333333333
+   },
+   {
+    "distance_ticks": 3,
+    "quantity": 700,
+    "cumulative_quantity": 3200,
+    "depth_share": 0.194444444444
+   },
+   {
+    "distance_ticks": 4,
+    "quantity": 400,
+    "cumulative_quantity": 3600,
+    "depth_share": 0.111111111111
+   }
+  ],
+  "ask_profile": [
+   {
+    "distance_ticks": 0,
+    "quantity": 300,
+    "cumulative_quantity": 300,
+    "depth_share": 0.090909090909
+   },
+   {
+    "distance_ticks": 1,
+    "quantity": 600,
+    "cumulative_quantity": 900,
+    "depth_share": 0.181818181818
+   },
+   {
+    "distance_ticks": 2,
+    "quantity": 1000,
+    "cumulative_quantity": 1900,
+    "depth_share": 0.30303030303
+   },
+   {
+    "distance_ticks": 3,
+    "quantity": 900,
+    "cumulative_quantity": 2800,
+    "depth_share": 0.272727272727
+   },
+   {
+    "distance_ticks": 4,
+    "quantity": 500,
+    "cumulative_quantity": 3300,
+    "depth_share": 0.151515151515
+   }
+  ],
+  "included_bid_depth": 3600,
+  "included_ask_depth": 3300,
+  "state": "bid-profile-heavier"
+ }
+}

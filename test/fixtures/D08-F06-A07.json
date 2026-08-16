@@ -1,0 +1,40 @@
+{
+ "input": {
+  "zone_lower": 99.5,
+  "zone_upper": 100.5,
+  "break_buffer": 0.2,
+  "confirmation_closes": 2,
+  "initial_role": "support",
+  "closes": [
+   101,
+   100.2,
+   99.2,
+   99.1,
+   99.8,
+   99.1
+  ]
+ },
+ "expected": {
+  "state": "confirmed-resistance",
+  "final_role": "resistance",
+  "confirmed": true,
+  "retest_seen": true,
+  "transitions": [
+   {
+    "index": 3,
+    "close": 99.1,
+    "from": "active-support",
+    "to": "awaiting-resistance-retest",
+    "side": "below"
+   },
+   {
+    "index": 5,
+    "close": 99.1,
+    "from": "awaiting-resistance-retest",
+    "to": "confirmed-resistance",
+    "side": "below"
+   }
+  ],
+  "observations": 6
+ }
+}

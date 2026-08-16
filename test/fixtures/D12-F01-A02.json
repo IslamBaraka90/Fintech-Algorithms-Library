@@ -1,0 +1,63 @@
+{
+ "input": {
+  "incoming_quantity": 600,
+  "price": 100,
+  "lot_size": 10,
+  "resting_orders": [
+   {
+    "order_id": "R-1",
+    "side": "sell",
+    "price": 100,
+    "remaining_quantity": 500,
+    "arrival_sequence": 10
+   },
+   {
+    "order_id": "R-2",
+    "side": "sell",
+    "price": 100,
+    "remaining_quantity": 300,
+    "arrival_sequence": 20
+   },
+   {
+    "order_id": "R-3",
+    "side": "sell",
+    "price": 100,
+    "remaining_quantity": 200,
+    "arrival_sequence": 30
+   }
+  ]
+ },
+ "expected": {
+  "model": "single-price-lot-aware-pro-rata",
+  "price": 100,
+  "lot_size": 10,
+  "incoming_quantity": 600,
+  "executable_quantity": 600,
+  "allocated_quantity": 600,
+  "unfilled_quantity": 0,
+  "allocations": [
+   {
+    "order_id": "R-1",
+    "resting_quantity": 500,
+    "allocated_quantity": 300,
+    "remaining_quantity": 200,
+    "arrival_sequence": 10
+   },
+   {
+    "order_id": "R-2",
+    "resting_quantity": 300,
+    "allocated_quantity": 180,
+    "remaining_quantity": 120,
+    "arrival_sequence": 20
+   },
+   {
+    "order_id": "R-3",
+    "resting_quantity": 200,
+    "allocated_quantity": 120,
+    "remaining_quantity": 80,
+    "arrival_sequence": 30
+   }
+  ],
+  "state": "fully-allocated"
+ }
+}

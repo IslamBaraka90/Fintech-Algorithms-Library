@@ -1,0 +1,23 @@
+{
+ "input": {
+  "bid": 99.99,
+  "bid_size": 800,
+  "ask": 100.01,
+  "ask_size": 200
+ },
+ "expected": {
+  "model": "top-of-book-imbalance-weighted-quote",
+  "bid": 99.99,
+  "ask": 100.01,
+  "bid_size": 800,
+  "ask_size": 200,
+  "midpoint": 100,
+  "spread": 0.02,
+  "queue_imbalance": 0.6,
+  "microprice": 100.006,
+  "shift": 0.006,
+  "shift_bps": 0.6,
+  "identity_error": 0,
+  "state": "bid-pressure"
+ }
+}

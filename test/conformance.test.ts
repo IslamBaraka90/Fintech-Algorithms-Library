@@ -33,7 +33,7 @@ interface ManifestTopic {
   entry: string;
   archetype: string;
   fixture: string | null;
-  convention: "A" | "B" | "C" | "none";
+  convention: "A" | "B" | "C" | "D" | "none";
   entryParams: string[];
   fixtureKeys: string[];
 }
@@ -130,6 +130,117 @@ function conventionAArgs(topic: ManifestTopic, input: unknown): unknown[] {
   return args;
 }
 
+/**
+ * Bind Convention D's input object to its entry.
+ *
+ * D differs from A in one case that matters. A single-parameter entry is often
+ * handed a wrapper object holding exactly one key — `normalizeEvents(events)`
+ * against `{ "events": [...] }` — where A would pass the wrapper itself. When
+ * there is one parameter and one key, the key is the argument.
+ *
+ * The unwrap deliberately does NOT require the key to match the parameter name.
+ * Plenty of entries name a parameter for what it is locally (`seriesRaw`) while
+ * the fixture names it for what it holds, and a name check would silently pass
+ * the wrapper instead — which fails as a confusing type error rather than as a
+ * binding problem.
+ */
+/**
+ * Reviewed bindings for topics whose parameter names and fixture keys share no
+ * derivable relationship.
+ *
+ * Every one of these was checked against the implementation by hand. They are
+ * here rather than in a cleverer matcher on purpose: `tickRaw` against keys
+ * holding both `tick_size` and `max_distance_ticks` has two plausible answers,
+ * and a matcher that picks one is guessing. A wrong argument does not announce
+ * itself — it surfaces later as an implementation that looks broken.
+ *
+ * Keep this list short. If it grows, the naming convention in the catalog is the
+ * thing to fix, not this map.
+ */
+const REVIEWED_BINDINGS: Record<string, readonly string[]> = {
+  // `multipleRaw` → wall_multiple, `thresholdRaw` → concentration_threshold:
+  // the fixture qualifies each name, the parameter does not.
+  "D11-F05-A06": ["levels", "wall_multiple", "minimum_share", "concentration_threshold"],
+  // `tickRaw` would also match max_distance_ticks; `binRaw` sits inside
+  // time_bin_seconds. Both ambiguous, both fixed here.
+  "D11-F05-A08": ["snapshots", "tick_size", "time_bin_seconds", "max_distance_ticks"],
+  // The collar bounds are `low`/`high` in the signature and `collar_*` in the
+  // fixture, and `orders` arrives first in the signature but last in the object.
+  "D12-F02-A03": ["orders", "previous_close", "tick_size", "collar_low", "collar_high"],
+  "D12-F02-A04": ["orders", "closing_reference", "tick_size", "collar_low", "collar_high"],
+  // `targetIdRaw` → target_order_id.
+  "D12-F04-A04": ["orders", "target_order_id"],
+  // Taken from the family dispatcher's own call, which is the authoritative
+  // statement of this argument order.
+  "D12-F01-A04": ["incoming_quantity", "price", "lot_size", "fifo_fraction", "resting_orders"],
+  // `initialRaw` → initial_display_quantity and `displaySizeRaw` → display_size
+  // are each a prefix of the other's key; order is the only thing that separates them.
+  "D12-F04-A05": [
+    "total_quantity",
+    "initial_display_quantity",
+    "display_size",
+    "fills",
+    "starting_priority_sequence",
+  ],
+};
+
+function conventionDArgs(topic: ManifestTopic, input: unknown): unknown[] {
+  if (input === null || typeof input !== "object" || Array.isArray(input)) return [structuredClone(input)];
+  const named = structuredClone(input) as Record<string, unknown>;
+  const keys = Object.keys(named);
+
+  const reviewed = REVIEWED_BINDINGS[topic.id];
+  if (reviewed) return reviewed.map((key) => named[key]);
+
+  if (topic.entryParams.length === 1) {
+    const only = topic.entryParams[0];
+    // One parameter, one key: the key is the argument.
+    if (keys.length === 1) return [named[keys[0]]];
+    /*
+     * One recorded parameter, but the fixture supplies that parameter's key
+     * alongside others. That is the signature `fn(thing, { options })` — the
+     * generator records only `thing`, because a destructured parameter has no
+     * name to record. Bind the named key, then hand the whole object over as the
+     * options bag: it holds every destructured key, and the extras are ignored.
+     */
+    if (Object.hasOwn(named, only)) return [named[only], named];
+    // The parameter is not one of the keys, so the object itself is the argument.
+    return [named];
+  }
+
+  /*
+   * Several families name a parameter for the fact that it is unvalidated —
+   * `bidsRaw`, `tickRaw`, `incomingRaw` — while the fixture names the same thing
+   * for what it holds: `bids`, `tick_size`, `incoming_order`. Neither is wrong,
+   * and an exact-name matcher binds none of them.
+   *
+   * So: drop a trailing `Raw`, flatten case and separators, then accept an exact
+   * match or one name being a prefix of the other. `tickRaw` finds `tick_size`
+   * and `incomingRaw` finds `incoming_order` without either side renaming.
+   */
+  const stem = (name: string) => name.replace(/Raw$/, "").toLowerCase().replace(/[-_]/g, "");
+  const matches = (param: string, key: string) => {
+    const p = stem(param);
+    const k = stem(key);
+    return p === k || k.startsWith(p) || p.startsWith(k);
+  };
+
+  const args = topic.entryParams.map((param) => {
+    if (Object.hasOwn(named, param)) return named[param];
+    const exact = keys.find((key) => stem(key) === stem(param));
+    if (exact) return named[exact];
+    const loose = keys.filter((key) => matches(param, key));
+    // Only bind on a prefix when it is unambiguous — two candidates means the
+    // guess would be a coin flip, and a wrong argument reads as a broken
+    // implementation rather than a binding problem.
+    return loose.length === 1 ? named[loose[0]] : undefined;
+  });
+
+  if (args.every((value) => value === undefined)) return [named];
+  while (args.length && args.at(-1) === undefined) args.pop();
+  return args;
+}
+
 describe("conformance: catalog worked examples", () => {
   test("the catalog still ships fixtures to check", () => {
     assert.ok(runnable.length > 0, "no runnable fixtures found — did scripts/sync.mjs run?");
@@ -150,6 +261,33 @@ describe("conformance: catalog worked examples", () => {
   });
 
   // --- Convention B --------------------------------------------------------
+
+  // --- Convention D --------------------------------------------------------
+
+  /**
+   * A separate `canonical-input.json` and `expected-output.json` in the topic's
+   * datasets, combined by the generator into the same `{ input, expected }`
+   * shape A uses.
+   *
+   * These expected values are computed in the catalog from the Python
+   * `family_core.py`, while the TypeScript being tested here comes from a
+   * separately authored template. That makes this a cross-language parity check
+   * rather than an independent published figure — worth stating plainly, because
+   * it bounds what a green run proves: two implementations of one understanding
+   * agree. It catches transcription and generator-transformation errors, which
+   * is what has actually gone wrong here, and it would not catch both languages
+   * sharing a misreading of the source material.
+   */
+  describe("D · { canonical-input, expected-output }", () => {
+    for (const topic of runnable.filter((t) => t.convention === "D")) {
+      test(`${topic.id} — ${topic.path}`, async () => {
+        const fixture = loadFixture(topic) as { input: unknown; expected: unknown };
+        const run = await loadEntry(topic);
+        const actual = run(...conventionDArgs(topic, fixture.input));
+        expectedSubset(actual, fixture.expected, topic.id);
+      });
+    }
+  });
 
   /**
    * Row-based fixtures. Some topics consume the whole series, others only the

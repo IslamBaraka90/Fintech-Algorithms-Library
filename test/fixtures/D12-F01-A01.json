@@ -1,0 +1,87 @@
+{
+ "input": {
+  "incoming_order": {
+   "order_id": "B-IN",
+   "side": "buy",
+   "order_type": "limit",
+   "quantity": 650,
+   "limit_price": 100.1
+  },
+  "resting_orders": [
+   {
+    "order_id": "S-1",
+    "side": "sell",
+    "price": 100,
+    "remaining_quantity": 200,
+    "arrival_sequence": 10
+   },
+   {
+    "order_id": "S-2",
+    "side": "sell",
+    "price": 100,
+    "remaining_quantity": 300,
+    "arrival_sequence": 20
+   },
+   {
+    "order_id": "S-3",
+    "side": "sell",
+    "price": 100.05,
+    "remaining_quantity": 400,
+    "arrival_sequence": 30
+   },
+   {
+    "order_id": "S-4",
+    "side": "sell",
+    "price": 100.1,
+    "remaining_quantity": 500,
+    "arrival_sequence": 40
+   }
+  ]
+ },
+ "expected": {
+  "model": "single-venue-price-time-priority",
+  "incoming_order_id": "B-IN",
+  "requested_quantity": 650,
+  "filled_quantity": 650,
+  "residual_quantity": 0,
+  "average_fill_price": 100.011538461538,
+  "fill_count": 3,
+  "fills": [
+   {
+    "resting_order_id": "S-1",
+    "price": 100,
+    "quantity": 200,
+    "arrival_sequence": 10
+   },
+   {
+    "resting_order_id": "S-2",
+    "price": 100,
+    "quantity": 300,
+    "arrival_sequence": 20
+   },
+   {
+    "resting_order_id": "S-3",
+    "price": 100.05,
+    "quantity": 150,
+    "arrival_sequence": 30
+   }
+  ],
+  "final_resting_orders": [
+   {
+    "order_id": "S-3",
+    "side": "sell",
+    "price": 100.05,
+    "remaining_quantity": 250,
+    "arrival_sequence": 30
+   },
+   {
+    "order_id": "S-4",
+    "side": "sell",
+    "price": 100.1,
+    "remaining_quantity": 500,
+    "arrival_sequence": 40
+   }
+  ],
+  "state": "filled"
+ }
+}

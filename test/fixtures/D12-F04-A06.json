@@ -1,0 +1,106 @@
+{
+ "input": {
+  "incoming_order": {
+   "order_id": "IN-1",
+   "side": "buy",
+   "order_type": "limit",
+   "quantity": 900,
+   "limit_price": 100.02,
+   "time_in_force": "GTC",
+   "arrival_sequence": 100
+  },
+  "resting_orders": [
+   {
+    "order_id": "B-1",
+    "side": "buy",
+    "price": 99.99,
+    "remaining_quantity": 500,
+    "priority_sequence": 1
+   },
+   {
+    "order_id": "S-1",
+    "side": "sell",
+    "price": 100.01,
+    "remaining_quantity": 300,
+    "priority_sequence": 2
+   },
+   {
+    "order_id": "S-2",
+    "side": "sell",
+    "price": 100.01,
+    "remaining_quantity": 400,
+    "priority_sequence": 3
+   },
+   {
+    "order_id": "S-3",
+    "side": "sell",
+    "price": 100.02,
+    "remaining_quantity": 500,
+    "priority_sequence": 4
+   },
+   {
+    "order_id": "S-4",
+    "side": "sell",
+    "price": 100.03,
+    "remaining_quantity": 600,
+    "priority_sequence": 5
+   }
+  ]
+ },
+ "expected": {
+  "model": "single-venue-price-time-marketable-sweep",
+  "incoming_order_id": "IN-1",
+  "incoming_side": "buy",
+  "requested_quantity": 900,
+  "filled_quantity": 900,
+  "residual_quantity": 0,
+  "fill_notional": 90011,
+  "average_fill_price": 100.012222222222,
+  "fills": [
+   {
+    "resting_order_id": "S-1",
+    "price": 100.01,
+    "quantity": 300,
+    "resting_remaining_quantity": 0
+   },
+   {
+    "resting_order_id": "S-2",
+    "price": 100.01,
+    "quantity": 400,
+    "resting_remaining_quantity": 0
+   },
+   {
+    "resting_order_id": "S-3",
+    "price": 100.02,
+    "quantity": 200,
+    "resting_remaining_quantity": 300
+   }
+  ],
+  "residual_action": "none",
+  "final_book": [
+   {
+    "order_id": "B-1",
+    "side": "buy",
+    "price": 99.99,
+    "remaining_quantity": 500,
+    "priority_sequence": 1
+   },
+   {
+    "order_id": "S-3",
+    "side": "sell",
+    "price": 100.02,
+    "remaining_quantity": 300,
+    "priority_sequence": 4
+   },
+   {
+    "order_id": "S-4",
+    "side": "sell",
+    "price": 100.03,
+    "remaining_quantity": 600,
+    "priority_sequence": 5
+   }
+  ],
+  "status": "filled",
+  "state": "filled"
+ }
+}

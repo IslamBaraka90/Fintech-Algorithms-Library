@@ -1,0 +1,599 @@
+{
+ "input": {
+  "snapshots": [
+   {
+    "timestamp_seconds": 0,
+    "bids": [
+     {
+      "price": 99.99,
+      "quantity": 500
+     },
+     {
+      "price": 99.98,
+      "quantity": 700
+     },
+     {
+      "price": 99.97,
+      "quantity": 420
+     }
+    ],
+    "asks": [
+     {
+      "price": 100.01,
+      "quantity": 360
+     },
+     {
+      "price": 100.02,
+      "quantity": 620
+     },
+     {
+      "price": 100.03,
+      "quantity": 460
+     }
+    ]
+   },
+   {
+    "timestamp_seconds": 10,
+    "bids": [
+     {
+      "price": 99.99,
+      "quantity": 520
+     },
+     {
+      "price": 99.98,
+      "quantity": 715
+     },
+     {
+      "price": 99.97,
+      "quantity": 430
+     }
+    ],
+    "asks": [
+     {
+      "price": 100.01,
+      "quantity": 375
+     },
+     {
+      "price": 100.02,
+      "quantity": 630
+     },
+     {
+      "price": 100.03,
+      "quantity": 468
+     }
+    ]
+   },
+   {
+    "timestamp_seconds": 20,
+    "bids": [
+     {
+      "price": 99.99,
+      "quantity": 540
+     },
+     {
+      "price": 99.98,
+      "quantity": 730
+     },
+     {
+      "price": 99.97,
+      "quantity": 440
+     }
+    ],
+    "asks": [
+     {
+      "price": 100.01,
+      "quantity": 390
+     },
+     {
+      "price": 100.02,
+      "quantity": 640
+     },
+     {
+      "price": 100.03,
+      "quantity": 476
+     }
+    ]
+   },
+   {
+    "timestamp_seconds": 30,
+    "bids": [
+     {
+      "price": 99.99,
+      "quantity": 560
+     },
+     {
+      "price": 99.98,
+      "quantity": 745
+     },
+     {
+      "price": 99.97,
+      "quantity": 450
+     }
+    ],
+    "asks": [
+     {
+      "price": 100.01,
+      "quantity": 405
+     },
+     {
+      "price": 100.02,
+      "quantity": 650
+     },
+     {
+      "price": 100.03,
+      "quantity": 484
+     }
+    ]
+   },
+   {
+    "timestamp_seconds": 40,
+    "bids": [
+     {
+      "price": 99.99,
+      "quantity": 580
+     },
+     {
+      "price": 99.98,
+      "quantity": 760
+     },
+     {
+      "price": 99.97,
+      "quantity": 460
+     }
+    ],
+    "asks": [
+     {
+      "price": 100.01,
+      "quantity": 420
+     },
+     {
+      "price": 100.02,
+      "quantity": 660
+     },
+     {
+      "price": 100.03,
+      "quantity": 492
+     }
+    ]
+   },
+   {
+    "timestamp_seconds": 50,
+    "bids": [
+     {
+      "price": 99.99,
+      "quantity": 600
+     },
+     {
+      "price": 99.98,
+      "quantity": 775
+     },
+     {
+      "price": 99.97,
+      "quantity": 470
+     }
+    ],
+    "asks": [
+     {
+      "price": 100.01,
+      "quantity": 435
+     },
+     {
+      "price": 100.02,
+      "quantity": 670
+     },
+     {
+      "price": 100.03,
+      "quantity": 500
+     }
+    ]
+   },
+   {
+    "timestamp_seconds": 60,
+    "bids": [
+     {
+      "price": 100,
+      "quantity": 620
+     },
+     {
+      "price": 99.99,
+      "quantity": 790
+     },
+     {
+      "price": 99.98,
+      "quantity": 480
+     }
+    ],
+    "asks": [
+     {
+      "price": 100.02,
+      "quantity": 450
+     },
+     {
+      "price": 100.03,
+      "quantity": 680
+     },
+     {
+      "price": 100.04,
+      "quantity": 508
+     }
+    ]
+   },
+   {
+    "timestamp_seconds": 70,
+    "bids": [
+     {
+      "price": 100,
+      "quantity": 640
+     },
+     {
+      "price": 99.99,
+      "quantity": 805
+     },
+     {
+      "price": 99.98,
+      "quantity": 490
+     }
+    ],
+    "asks": [
+     {
+      "price": 100.02,
+      "quantity": 465
+     },
+     {
+      "price": 100.03,
+      "quantity": 690
+     },
+     {
+      "price": 100.04,
+      "quantity": 516
+     }
+    ]
+   },
+   {
+    "timestamp_seconds": 80,
+    "bids": [
+     {
+      "price": 100,
+      "quantity": 660
+     },
+     {
+      "price": 99.99,
+      "quantity": 820
+     },
+     {
+      "price": 99.98,
+      "quantity": 500
+     }
+    ],
+    "asks": [
+     {
+      "price": 100.02,
+      "quantity": 480
+     },
+     {
+      "price": 100.03,
+      "quantity": 700
+     },
+     {
+      "price": 100.04,
+      "quantity": 524
+     }
+    ]
+   },
+   {
+    "timestamp_seconds": 90,
+    "bids": [
+     {
+      "price": 100,
+      "quantity": 680
+     },
+     {
+      "price": 99.99,
+      "quantity": 835
+     },
+     {
+      "price": 99.98,
+      "quantity": 510
+     }
+    ],
+    "asks": [
+     {
+      "price": 100.02,
+      "quantity": 495
+     },
+     {
+      "price": 100.03,
+      "quantity": 710
+     },
+     {
+      "price": 100.04,
+      "quantity": 532
+     }
+    ]
+   },
+   {
+    "timestamp_seconds": 100,
+    "bids": [
+     {
+      "price": 100,
+      "quantity": 700
+     },
+     {
+      "price": 99.99,
+      "quantity": 850
+     },
+     {
+      "price": 99.98,
+      "quantity": 520
+     }
+    ],
+    "asks": [
+     {
+      "price": 100.02,
+      "quantity": 510
+     },
+     {
+      "price": 100.03,
+      "quantity": 720
+     },
+     {
+      "price": 100.04,
+      "quantity": 540
+     }
+    ]
+   },
+   {
+    "timestamp_seconds": 110,
+    "bids": [
+     {
+      "price": 100,
+      "quantity": 720
+     },
+     {
+      "price": 99.99,
+      "quantity": 865
+     },
+     {
+      "price": 99.98,
+      "quantity": 530
+     }
+    ],
+    "asks": [
+     {
+      "price": 100.02,
+      "quantity": 525
+     },
+     {
+      "price": 100.03,
+      "quantity": 730
+     },
+     {
+      "price": 100.04,
+      "quantity": 548
+     }
+    ]
+   }
+  ],
+  "tick_size": 0.01,
+  "time_bin_seconds": 30,
+  "max_distance_ticks": 2
+ },
+ "expected": {
+  "model": "regular-snapshot-inside-relative-depth-heatmap",
+  "snapshot_interval_seconds": 10,
+  "time_bin_seconds": 30,
+  "max_distance_ticks": 2,
+  "time_bin_count": 4,
+  "book_coordinates": [
+   -3,
+   -2,
+   -1,
+   1,
+   2,
+   3
+  ],
+  "cells": [
+   {
+    "time_bin_index": 0,
+    "time_bin_start_seconds": 0,
+    "book_coordinate": -3,
+    "mean_quantity": 430,
+    "max_quantity": 440,
+    "observation_count": 3
+   },
+   {
+    "time_bin_index": 0,
+    "time_bin_start_seconds": 0,
+    "book_coordinate": -2,
+    "mean_quantity": 715,
+    "max_quantity": 730,
+    "observation_count": 3
+   },
+   {
+    "time_bin_index": 0,
+    "time_bin_start_seconds": 0,
+    "book_coordinate": -1,
+    "mean_quantity": 520,
+    "max_quantity": 540,
+    "observation_count": 3
+   },
+   {
+    "time_bin_index": 0,
+    "time_bin_start_seconds": 0,
+    "book_coordinate": 1,
+    "mean_quantity": 375,
+    "max_quantity": 390,
+    "observation_count": 3
+   },
+   {
+    "time_bin_index": 0,
+    "time_bin_start_seconds": 0,
+    "book_coordinate": 2,
+    "mean_quantity": 630,
+    "max_quantity": 640,
+    "observation_count": 3
+   },
+   {
+    "time_bin_index": 0,
+    "time_bin_start_seconds": 0,
+    "book_coordinate": 3,
+    "mean_quantity": 468,
+    "max_quantity": 476,
+    "observation_count": 3
+   },
+   {
+    "time_bin_index": 1,
+    "time_bin_start_seconds": 30,
+    "book_coordinate": -3,
+    "mean_quantity": 460,
+    "max_quantity": 470,
+    "observation_count": 3
+   },
+   {
+    "time_bin_index": 1,
+    "time_bin_start_seconds": 30,
+    "book_coordinate": -2,
+    "mean_quantity": 760,
+    "max_quantity": 775,
+    "observation_count": 3
+   },
+   {
+    "time_bin_index": 1,
+    "time_bin_start_seconds": 30,
+    "book_coordinate": -1,
+    "mean_quantity": 580,
+    "max_quantity": 600,
+    "observation_count": 3
+   },
+   {
+    "time_bin_index": 1,
+    "time_bin_start_seconds": 30,
+    "book_coordinate": 1,
+    "mean_quantity": 420,
+    "max_quantity": 435,
+    "observation_count": 3
+   },
+   {
+    "time_bin_index": 1,
+    "time_bin_start_seconds": 30,
+    "book_coordinate": 2,
+    "mean_quantity": 660,
+    "max_quantity": 670,
+    "observation_count": 3
+   },
+   {
+    "time_bin_index": 1,
+    "time_bin_start_seconds": 30,
+    "book_coordinate": 3,
+    "mean_quantity": 492,
+    "max_quantity": 500,
+    "observation_count": 3
+   },
+   {
+    "time_bin_index": 2,
+    "time_bin_start_seconds": 60,
+    "book_coordinate": -3,
+    "mean_quantity": 490,
+    "max_quantity": 500,
+    "observation_count": 3
+   },
+   {
+    "time_bin_index": 2,
+    "time_bin_start_seconds": 60,
+    "book_coordinate": -2,
+    "mean_quantity": 805,
+    "max_quantity": 820,
+    "observation_count": 3
+   },
+   {
+    "time_bin_index": 2,
+    "time_bin_start_seconds": 60,
+    "book_coordinate": -1,
+    "mean_quantity": 640,
+    "max_quantity": 660,
+    "observation_count": 3
+   },
+   {
+    "time_bin_index": 2,
+    "time_bin_start_seconds": 60,
+    "book_coordinate": 1,
+    "mean_quantity": 465,
+    "max_quantity": 480,
+    "observation_count": 3
+   },
+   {
+    "time_bin_index": 2,
+    "time_bin_start_seconds": 60,
+    "book_coordinate": 2,
+    "mean_quantity": 690,
+    "max_quantity": 700,
+    "observation_count": 3
+   },
+   {
+    "time_bin_index": 2,
+    "time_bin_start_seconds": 60,
+    "book_coordinate": 3,
+    "mean_quantity": 516,
+    "max_quantity": 524,
+    "observation_count": 3
+   },
+   {
+    "time_bin_index": 3,
+    "time_bin_start_seconds": 90,
+    "book_coordinate": -3,
+    "mean_quantity": 520,
+    "max_quantity": 530,
+    "observation_count": 3
+   },
+   {
+    "time_bin_index": 3,
+    "time_bin_start_seconds": 90,
+    "book_coordinate": -2,
+    "mean_quantity": 850,
+    "max_quantity": 865,
+    "observation_count": 3
+   },
+   {
+    "time_bin_index": 3,
+    "time_bin_start_seconds": 90,
+    "book_coordinate": -1,
+    "mean_quantity": 700,
+    "max_quantity": 720,
+    "observation_count": 3
+   },
+   {
+    "time_bin_index": 3,
+    "time_bin_start_seconds": 90,
+    "book_coordinate": 1,
+    "mean_quantity": 510,
+    "max_quantity": 525,
+    "observation_count": 3
+   },
+   {
+    "time_bin_index": 3,
+    "time_bin_start_seconds": 90,
+    "book_coordinate": 2,
+    "mean_quantity": 720,
+    "max_quantity": 730,
+    "observation_count": 3
+   },
+   {
+    "time_bin_index": 3,
+    "time_bin_start_seconds": 90,
+    "book_coordinate": 3,
+    "mean_quantity": 540,
+    "max_quantity": 548,
+    "observation_count": 3
+   }
+  ],
+  "peak_cell": {
+   "time_bin_index": 3,
+   "time_bin_start_seconds": 90,
+   "book_coordinate": -2,
+   "mean_quantity": 850,
+   "max_quantity": 865,
+   "observation_count": 3
+  },
+  "state": "bid-peak"
+ }
+}

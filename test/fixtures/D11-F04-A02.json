@@ -1,0 +1,39 @@
+{
+ "input": {
+  "bid_prices": [
+   99.99,
+   99.98,
+   99.97
+  ],
+  "bid_sizes": [
+   500,
+   1000,
+   1500
+  ],
+  "ask_prices": [
+   100.01,
+   100.02,
+   100.03
+  ],
+  "ask_sizes": [
+   300,
+   700,
+   2000
+  ]
+ },
+ "expected": {
+  "model": "same-side-depth-weighted-midpoint",
+  "level_count": 3,
+  "bid_level_count": 3,
+  "ask_level_count": 3,
+  "top_midpoint": 100,
+  "depth_weighted_bid": 99.976666666667,
+  "depth_weighted_ask": 100.025666666667,
+  "depth_weighted_midprice": 100.001166666667,
+  "shift": 0.001166666667,
+  "shift_bps": 0.116666666668,
+  "bid_total_depth": 3000,
+  "ask_total_depth": 3000,
+  "state": "above-top-mid"
+ }
+}

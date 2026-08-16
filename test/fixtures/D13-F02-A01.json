@@ -1,0 +1,109 @@
+{
+ "input": {
+  "total_quantity": 12000,
+  "interval_count": 12,
+  "lot_size": 100,
+  "temporary_impact_weight": 100,
+  "inventory_risk_weight": 1
+ },
+ "expected": {
+  "total_quantity": 12000,
+  "interval_count": 12,
+  "lot_size": 100,
+  "temporary_impact_weight": 100,
+  "inventory_risk_weight": 1,
+  "kappa": 0.099958380139,
+  "scheduled_quantity": 12000,
+  "remaining_quantity": 0,
+  "temporary_impact_score": 1248000000,
+  "inventory_risk_score": 410470000,
+  "objective_score": 1658470000,
+  "schedule": [
+   {
+    "interval": 1,
+    "target_quantity": 1400,
+    "target_remaining_quantity": 10600,
+    "temporary_impact_score": 196000000,
+    "inventory_risk_score": 112360000
+   },
+   {
+    "interval": 2,
+    "target_quantity": 1300,
+    "target_remaining_quantity": 9300,
+    "temporary_impact_score": 169000000,
+    "inventory_risk_score": 86490000
+   },
+   {
+    "interval": 3,
+    "target_quantity": 1200,
+    "target_remaining_quantity": 8100,
+    "temporary_impact_score": 144000000,
+    "inventory_risk_score": 65610000
+   },
+   {
+    "interval": 4,
+    "target_quantity": 1100,
+    "target_remaining_quantity": 7000,
+    "temporary_impact_score": 121000000,
+    "inventory_risk_score": 49000000
+   },
+   {
+    "interval": 5,
+    "target_quantity": 1000,
+    "target_remaining_quantity": 6000,
+    "temporary_impact_score": 100000000,
+    "inventory_risk_score": 36000000
+   },
+   {
+    "interval": 6,
+    "target_quantity": 1000,
+    "target_remaining_quantity": 5000,
+    "temporary_impact_score": 100000000,
+    "inventory_risk_score": 25000000
+   },
+   {
+    "interval": 7,
+    "target_quantity": 900,
+    "target_remaining_quantity": 4100,
+    "temporary_impact_score": 81000000,
+    "inventory_risk_score": 16810000
+   },
+   {
+    "interval": 8,
+    "target_quantity": 900,
+    "target_remaining_quantity": 3200,
+    "temporary_impact_score": 81000000,
+    "inventory_risk_score": 10240000
+   },
+   {
+    "interval": 9,
+    "target_quantity": 800,
+    "target_remaining_quantity": 2400,
+    "temporary_impact_score": 64000000,
+    "inventory_risk_score": 5760000
+   },
+   {
+    "interval": 10,
+    "target_quantity": 800,
+    "target_remaining_quantity": 1600,
+    "temporary_impact_score": 64000000,
+    "inventory_risk_score": 2560000
+   },
+   {
+    "interval": 11,
+    "target_quantity": 800,
+    "target_remaining_quantity": 800,
+    "temporary_impact_score": 64000000,
+    "inventory_risk_score": 640000
+   },
+   {
+    "interval": 12,
+    "target_quantity": 800,
+    "target_remaining_quantity": 0,
+    "temporary_impact_score": 64000000,
+    "inventory_risk_score": 0
+   }
+  ],
+  "state": "risk-adjusted"
+ }
+}

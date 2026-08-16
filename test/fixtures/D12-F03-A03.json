@@ -1,0 +1,88 @@
+{
+ "input": {
+  "incoming_order": {
+   "order_id": "IN-1",
+   "side": "buy",
+   "price_atoms": 1000200,
+   "quantity": 600,
+   "participant_id": "P-1",
+   "stp_group": "G-1"
+  },
+  "resting_orders": [
+   {
+    "order_id": "R-EXT-1",
+    "side": "sell",
+    "price_atoms": 1000000,
+    "quantity": 150,
+    "participant_id": "P-EXT",
+    "stp_group": "G-X",
+    "sequence": 1
+   },
+   {
+    "order_id": "R-SELF",
+    "side": "sell",
+    "price_atoms": 1000100,
+    "quantity": 220,
+    "participant_id": "P-1",
+    "stp_group": "G-1",
+    "sequence": 2
+   },
+   {
+    "order_id": "R-EXT-2",
+    "side": "sell",
+    "price_atoms": 1000200,
+    "quantity": 300,
+    "participant_id": "P-EXT",
+    "stp_group": "G-X",
+    "sequence": 3
+   }
+  ],
+  "mode": "cancel_newest"
+ },
+ "expected": {
+  "mode": "cancel_newest",
+  "incoming_order_id": "IN-1",
+  "original_incoming_quantity": 600,
+  "external_executed_quantity": 150,
+  "prevented_self_quantity": 220,
+  "canceled_incoming_quantity": 450,
+  "canceled_resting_quantity": 0,
+  "remaining_incoming_quantity": 0,
+  "events": [
+   {
+    "action": "execute-external",
+    "incoming_order_id": "IN-1",
+    "resting_order_id": "R-EXT-1",
+    "quantity": 150,
+    "price_atoms": 1000000
+   },
+   {
+    "action": "cancel-incoming",
+    "incoming_order_id": "IN-1",
+    "resting_order_id": "R-SELF",
+    "prevented_quantity": 220
+   }
+  ],
+  "resting_orders": [
+   {
+    "order_id": "R-SELF",
+    "side": "sell",
+    "price_atoms": 1000100,
+    "quantity": 220,
+    "participant_id": "P-1",
+    "stp_group": "G-1",
+    "sequence": 2
+   },
+   {
+    "order_id": "R-EXT-2",
+    "side": "sell",
+    "price_atoms": 1000200,
+    "quantity": 300,
+    "participant_id": "P-EXT",
+    "stp_group": "G-X",
+    "sequence": 3
+   }
+  ],
+  "state": "self-trade-prevented"
+ }
+}

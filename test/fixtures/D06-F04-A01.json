@@ -1,0 +1,122 @@
+{
+ "input": {
+  "candles": [
+   {
+    "open": 105,
+    "high": 105.5,
+    "low": 100.5,
+    "close": 101
+   },
+   {
+    "open": 100.4,
+    "high": 101.2,
+    "low": 99.8,
+    "close": 100.8
+   },
+   {
+    "open": 100.7,
+    "high": 104.2,
+    "low": 100.6,
+    "close": 103.5
+   }
+  ],
+  "trend_context": "downtrend",
+  "prior_bodies": [
+   2,
+   2.1,
+   1.9,
+   2.2,
+   2,
+   2.1,
+   1.8,
+   2,
+   2.2,
+   1.9
+  ],
+  "prior_ranges": [
+   3,
+   3.2,
+   2.9,
+   3.1,
+   3,
+   3.3,
+   2.8,
+   3,
+   3.2,
+   2.9
+  ],
+  "tick_size": 0.1,
+  "penetration_fraction": 0.5
+ },
+ "expected": {
+  "topic_id": "D06-F04-A01",
+  "pattern": "Morning Star",
+  "matched": true,
+  "state": "matched",
+  "direction": "bullish",
+  "trend_context": "downtrend",
+  "required_context": "downtrend",
+  "history_count": 10,
+  "body_scale": 2,
+  "range_scale": 3,
+  "geometry_score": 1,
+  "checks": {
+   "first_bearish": true,
+   "first_long": true,
+   "second_short": true,
+   "body_gap_down": true,
+   "third_bullish": true,
+   "third_penetrates": true
+  },
+  "failed_checks": [],
+  "reason": "all declared checks pass",
+  "thresholds": {
+   "long_body_floor": 2.4,
+   "short_body_ceiling": 1.2,
+   "penetration_price": 103,
+   "minimum_gap": 0.1,
+   "penetration_fraction": 0.5
+  },
+  "candles": [
+   {
+    "open": 105,
+    "high": 105.5,
+    "low": 100.5,
+    "close": 101,
+    "body_high": 105,
+    "body_low": 101,
+    "body": 4,
+    "upper_shadow": 0.5,
+    "lower_shadow": 0.5,
+    "range": 5,
+    "direction": "bearish"
+   },
+   {
+    "open": 100.4,
+    "high": 101.2,
+    "low": 99.8,
+    "close": 100.8,
+    "body_high": 100.8,
+    "body_low": 100.4,
+    "body": 0.4,
+    "upper_shadow": 0.4,
+    "lower_shadow": 0.6,
+    "range": 1.4,
+    "direction": "bullish"
+   },
+   {
+    "open": 100.7,
+    "high": 104.2,
+    "low": 100.6,
+    "close": 103.5,
+    "body_high": 103.5,
+    "body_low": 100.7,
+    "body": 2.8,
+    "upper_shadow": 0.7,
+    "lower_shadow": 0.1,
+    "range": 3.6,
+    "direction": "bullish"
+   }
+  ]
+ }
+}

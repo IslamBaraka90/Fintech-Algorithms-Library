@@ -1,0 +1,388 @@
+{
+ "input": {
+  "as_of_receive_time_ns": 1000000,
+  "max_staleness_ns": 100000,
+  "quotes": [
+   {
+    "venue": "X1",
+    "receive_time_ns": 950000,
+    "eligible": true,
+    "status": "open",
+    "bids": [
+     {
+      "price_ticks": 10000,
+      "quantity": 10
+     },
+     {
+      "price_ticks": 9999,
+      "quantity": 16
+     },
+     {
+      "price_ticks": 9998,
+      "quantity": 22
+     },
+     {
+      "price_ticks": 9997,
+      "quantity": 28
+     }
+    ],
+    "asks": [
+     {
+      "price_ticks": 10003,
+      "quantity": 9
+     },
+     {
+      "price_ticks": 10004,
+      "quantity": 15
+     },
+     {
+      "price_ticks": 10005,
+      "quantity": 21
+     },
+     {
+      "price_ticks": 10006,
+      "quantity": 27
+     }
+    ]
+   },
+   {
+    "venue": "X2",
+    "receive_time_ns": 980000,
+    "eligible": true,
+    "status": "open",
+    "bids": [
+     {
+      "price_ticks": 10001,
+      "quantity": 6
+     },
+     {
+      "price_ticks": 10000,
+      "quantity": 12
+     },
+     {
+      "price_ticks": 9999,
+      "quantity": 18
+     },
+     {
+      "price_ticks": 9998,
+      "quantity": 24
+     }
+    ],
+    "asks": [
+     {
+      "price_ticks": 10002,
+      "quantity": 7
+     },
+     {
+      "price_ticks": 10003,
+      "quantity": 11
+     },
+     {
+      "price_ticks": 10004,
+      "quantity": 17
+     },
+     {
+      "price_ticks": 10005,
+      "quantity": 23
+     }
+    ]
+   },
+   {
+    "venue": "X3",
+    "receive_time_ns": 850000,
+    "eligible": true,
+    "status": "open",
+    "bids": [
+     {
+      "price_ticks": 10001,
+      "quantity": 20
+     },
+     {
+      "price_ticks": 10000,
+      "quantity": 20
+     }
+    ],
+    "asks": [
+     {
+      "price_ticks": 10003,
+      "quantity": 20
+     },
+     {
+      "price_ticks": 10004,
+      "quantity": 20
+     }
+    ]
+   },
+   {
+    "venue": "X4",
+    "receive_time_ns": 990000,
+    "eligible": true,
+    "status": "halted",
+    "bids": [
+     {
+      "price_ticks": 10002,
+      "quantity": 50
+     },
+     {
+      "price_ticks": 10001,
+      "quantity": 50
+     }
+    ],
+    "asks": [
+     {
+      "price_ticks": 10003,
+      "quantity": 50
+     },
+     {
+      "price_ticks": 10004,
+      "quantity": 50
+     }
+    ]
+   },
+   {
+    "venue": "X5",
+    "receive_time_ns": 970000,
+    "eligible": true,
+    "status": "open",
+    "bids": [
+     {
+      "price_ticks": 10001,
+      "quantity": 4
+     },
+     {
+      "price_ticks": 10000,
+      "quantity": 9
+     },
+     {
+      "price_ticks": 9999,
+      "quantity": 14
+     }
+    ],
+    "asks": [
+     {
+      "price_ticks": 10002,
+      "quantity": 5
+     },
+     {
+      "price_ticks": 10003,
+      "quantity": 10
+     },
+     {
+      "price_ticks": 10004,
+      "quantity": 15
+     }
+    ]
+   }
+  ]
+ },
+ "expected": {
+  "as_of_receive_time_ns": 1000000,
+  "max_staleness_ns": 100000,
+  "eligible_venue_count": 3,
+  "excluded": [
+   {
+    "venue": "X3",
+    "reason": "stale"
+   },
+   {
+    "venue": "X4",
+    "reason": "not-open"
+   }
+  ],
+  "best_bid_ticks": 10001,
+  "best_bid_quantity": 10,
+  "best_bid_venues": [
+   "X2",
+   "X5"
+  ],
+  "best_ask_ticks": 10002,
+  "best_ask_quantity": 12,
+  "best_ask_venues": [
+   "X2",
+   "X5"
+  ],
+  "consolidated_book": {
+   "bids": [
+    {
+     "price_ticks": 10001,
+     "quantity": 10,
+     "venues": [
+      "X2",
+      "X5"
+     ]
+    },
+    {
+     "price_ticks": 10000,
+     "quantity": 31,
+     "venues": [
+      "X1",
+      "X2",
+      "X5"
+     ]
+    },
+    {
+     "price_ticks": 9999,
+     "quantity": 48,
+     "venues": [
+      "X1",
+      "X2",
+      "X5"
+     ]
+    },
+    {
+     "price_ticks": 9998,
+     "quantity": 46,
+     "venues": [
+      "X1",
+      "X2"
+     ]
+    },
+    {
+     "price_ticks": 9997,
+     "quantity": 28,
+     "venues": [
+      "X1"
+     ]
+    }
+   ],
+   "asks": [
+    {
+     "price_ticks": 10002,
+     "quantity": 12,
+     "venues": [
+      "X2",
+      "X5"
+     ]
+    },
+    {
+     "price_ticks": 10003,
+     "quantity": 30,
+     "venues": [
+      "X1",
+      "X2",
+      "X5"
+     ]
+    },
+    {
+     "price_ticks": 10004,
+     "quantity": 47,
+     "venues": [
+      "X1",
+      "X2",
+      "X5"
+     ]
+    },
+    {
+     "price_ticks": 10005,
+     "quantity": 44,
+     "venues": [
+      "X1",
+      "X2"
+     ]
+    },
+    {
+     "price_ticks": 10006,
+     "quantity": 27,
+     "venues": [
+      "X1"
+     ]
+    }
+   ]
+  },
+  "consolidated_levels": [
+   {
+    "side": "bid",
+    "price_ticks": 10001,
+    "quantity": 10,
+    "venues": [
+     "X2",
+     "X5"
+    ]
+   },
+   {
+    "side": "bid",
+    "price_ticks": 10000,
+    "quantity": 31,
+    "venues": [
+     "X1",
+     "X2",
+     "X5"
+    ]
+   },
+   {
+    "side": "bid",
+    "price_ticks": 9999,
+    "quantity": 48,
+    "venues": [
+     "X1",
+     "X2",
+     "X5"
+    ]
+   },
+   {
+    "side": "bid",
+    "price_ticks": 9998,
+    "quantity": 46,
+    "venues": [
+     "X1",
+     "X2"
+    ]
+   },
+   {
+    "side": "bid",
+    "price_ticks": 9997,
+    "quantity": 28,
+    "venues": [
+     "X1"
+    ]
+   },
+   {
+    "side": "ask",
+    "price_ticks": 10002,
+    "quantity": 12,
+    "venues": [
+     "X2",
+     "X5"
+    ]
+   },
+   {
+    "side": "ask",
+    "price_ticks": 10003,
+    "quantity": 30,
+    "venues": [
+     "X1",
+     "X2",
+     "X5"
+    ]
+   },
+   {
+    "side": "ask",
+    "price_ticks": 10004,
+    "quantity": 47,
+    "venues": [
+     "X1",
+     "X2",
+     "X5"
+    ]
+   },
+   {
+    "side": "ask",
+    "price_ticks": 10005,
+    "quantity": 44,
+    "venues": [
+     "X1",
+     "X2"
+    ]
+   },
+   {
+    "side": "ask",
+    "price_ticks": 10006,
+    "quantity": 27,
+    "venues": [
+     "X1"
+    ]
+   }
+  ],
+  "state": "normal"
+ }
+}

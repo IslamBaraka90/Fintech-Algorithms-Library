@@ -1,0 +1,103 @@
+{
+ "input": {
+  "profile_rows": [
+   {
+    "lower": 99,
+    "upper": 99.5,
+    "volume": 10
+   },
+   {
+    "lower": 99.5,
+    "upper": 100,
+    "volume": 18
+   },
+   {
+    "lower": 100,
+    "upper": 100.5,
+    "volume": 35
+   },
+   {
+    "lower": 100.5,
+    "upper": 101,
+    "volume": 70
+   },
+   {
+    "lower": 101,
+    "upper": 101.5,
+    "volume": 120
+   },
+   {
+    "lower": 101.5,
+    "upper": 102,
+    "volume": 80
+   },
+   {
+    "lower": 102,
+    "upper": 102.5,
+    "volume": 45
+   },
+   {
+    "lower": 102.5,
+    "upper": 103,
+    "volume": 20
+   },
+   {
+    "lower": 103,
+    "upper": 103.5,
+    "volume": 50
+   },
+   {
+    "lower": 103.5,
+    "upper": 104,
+    "volume": 15
+   }
+  ],
+  "value_area_fraction": 0.7,
+  "hvn_median_ratio": 1.2,
+  "lvn_median_ratio": 0.65
+ },
+ "expected": {
+  "state": "calculated",
+  "poc_index": 4,
+  "poc_price": 101.25,
+  "poc_volume": 120,
+  "value_area_low": 100,
+  "value_area_high": 102.5,
+  "value_area_volume": 350,
+  "value_area_share": 0.755939524838,
+  "target_share": 0.7,
+  "included_indices": [
+   2,
+   3,
+   4,
+   5,
+   6
+  ],
+  "expansion_trace": [
+   4,
+   5,
+   3,
+   6,
+   2
+  ],
+  "hvn": [
+   {
+    "price": 101.25,
+    "volume": 120,
+    "median_ratio": 3
+   },
+   {
+    "price": 103.25,
+    "volume": 50,
+    "median_ratio": 1.25
+   }
+  ],
+  "lvn": [
+   {
+    "price": 102.75,
+    "volume": 20,
+    "median_ratio": 0.5
+   }
+  ]
+ }
+}

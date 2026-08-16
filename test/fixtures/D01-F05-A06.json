@@ -1,0 +1,375 @@
+{
+ "input": {
+  "snapshot_sequence": 200,
+  "snapshot": {
+   "bids": [
+    {
+     "price_ticks": 10000,
+     "quantity": 20
+    },
+    {
+     "price_ticks": 9999,
+     "quantity": 25
+    },
+    {
+     "price_ticks": 9998,
+     "quantity": 30
+    },
+    {
+     "price_ticks": 9997,
+     "quantity": 35
+    },
+    {
+     "price_ticks": 9996,
+     "quantity": 40
+    }
+   ],
+   "asks": [
+    {
+     "price_ticks": 10002,
+     "quantity": 18
+    },
+    {
+     "price_ticks": 10003,
+     "quantity": 22
+    },
+    {
+     "price_ticks": 10004,
+     "quantity": 26
+    },
+    {
+     "price_ticks": 10005,
+     "quantity": 30
+    },
+    {
+     "price_ticks": 10006,
+     "quantity": 34
+    }
+   ]
+  },
+  "incrementals": [
+   {
+    "sequence": 201,
+    "side": "bid",
+    "price_ticks": 10000,
+    "quantity": 10
+   },
+   {
+    "sequence": 202,
+    "side": "ask",
+    "price_ticks": 10002,
+    "quantity": 13
+   },
+   {
+    "sequence": 203,
+    "side": "bid",
+    "price_ticks": 9999,
+    "quantity": 16
+   },
+   {
+    "sequence": 204,
+    "side": "ask",
+    "price_ticks": 10003,
+    "quantity": 19
+   },
+   {
+    "sequence": 205,
+    "side": "bid",
+    "price_ticks": 9998,
+    "quantity": 22
+   },
+   {
+    "sequence": 206,
+    "side": "ask",
+    "price_ticks": 10004,
+    "quantity": 25
+   },
+   {
+    "sequence": 207,
+    "side": "bid",
+    "price_ticks": 9997,
+    "quantity": 28
+   },
+   {
+    "sequence": 208,
+    "side": "ask",
+    "price_ticks": 10005,
+    "quantity": 31
+   },
+   {
+    "sequence": 209,
+    "side": "bid",
+    "price_ticks": 9996,
+    "quantity": 34
+   },
+   {
+    "sequence": 210,
+    "side": "ask",
+    "price_ticks": 10006,
+    "quantity": 37
+   },
+   {
+    "sequence": 211,
+    "side": "bid",
+    "price_ticks": 9995,
+    "quantity": 0
+   },
+   {
+    "sequence": 212,
+    "side": "ask",
+    "price_ticks": 10007,
+    "quantity": 14
+   },
+   {
+    "sequence": 213,
+    "side": "bid",
+    "price_ticks": 9994,
+    "quantity": 17
+   },
+   {
+    "sequence": 214,
+    "side": "ask",
+    "price_ticks": 10008,
+    "quantity": 20
+   },
+   {
+    "sequence": 215,
+    "side": "bid",
+    "price_ticks": 10000,
+    "quantity": 23
+   },
+   {
+    "sequence": 216,
+    "side": "ask",
+    "price_ticks": 10002,
+    "quantity": 26
+   },
+   {
+    "sequence": 217,
+    "side": "bid",
+    "price_ticks": 9999,
+    "quantity": 29
+   },
+   {
+    "sequence": 218,
+    "side": "ask",
+    "price_ticks": 10003,
+    "quantity": 0
+   },
+   {
+    "sequence": 219,
+    "side": "bid",
+    "price_ticks": 9998,
+    "quantity": 35
+   },
+   {
+    "sequence": 220,
+    "side": "ask",
+    "price_ticks": 10004,
+    "quantity": 38
+   },
+   {
+    "sequence": 221,
+    "side": "bid",
+    "price_ticks": 9997,
+    "quantity": 12
+   },
+   {
+    "sequence": 222,
+    "side": "ask",
+    "price_ticks": 10005,
+    "quantity": 15
+   },
+   {
+    "sequence": 223,
+    "side": "bid",
+    "price_ticks": 9996,
+    "quantity": 18
+   },
+   {
+    "sequence": 224,
+    "side": "ask",
+    "price_ticks": 10006,
+    "quantity": 21
+   }
+  ],
+  "checkpoint_sequence": 224,
+  "checkpoint": {
+   "bids": [
+    {
+     "price_ticks": 10000,
+     "quantity": 23
+    },
+    {
+     "price_ticks": 9999,
+     "quantity": 29
+    },
+    {
+     "price_ticks": 9998,
+     "quantity": 35
+    },
+    {
+     "price_ticks": 9997,
+     "quantity": 12
+    },
+    {
+     "price_ticks": 9996,
+     "quantity": 18
+    },
+    {
+     "price_ticks": 9994,
+     "quantity": 17
+    }
+   ],
+   "asks": [
+    {
+     "price_ticks": 10002,
+     "quantity": 26
+    },
+    {
+     "price_ticks": 10004,
+     "quantity": 38
+    },
+    {
+     "price_ticks": 10005,
+     "quantity": 15
+    },
+    {
+     "price_ticks": 10006,
+     "quantity": 21
+    },
+    {
+     "price_ticks": 10007,
+     "quantity": 14
+    },
+    {
+     "price_ticks": 10008,
+     "quantity": 20
+    }
+   ]
+  }
+ },
+ "expected": {
+  "snapshot_sequence": 200,
+  "checkpoint_sequence": 224,
+  "compared_level_count": 12,
+  "difference_count": 0,
+  "mismatch_counts": {
+   "quantity-mismatch": 0,
+   "missing-reconstructed-level": 0,
+   "missing-checkpoint-level": 0
+  },
+  "replayed_incremental_count": 24,
+  "pending_after_checkpoint_count": 0,
+  "differences": [],
+  "reconstructed": {
+   "bids": [
+    {
+     "price_ticks": 10000,
+     "quantity": 23
+    },
+    {
+     "price_ticks": 9999,
+     "quantity": 29
+    },
+    {
+     "price_ticks": 9998,
+     "quantity": 35
+    },
+    {
+     "price_ticks": 9997,
+     "quantity": 12
+    },
+    {
+     "price_ticks": 9996,
+     "quantity": 18
+    },
+    {
+     "price_ticks": 9994,
+     "quantity": 17
+    }
+   ],
+   "asks": [
+    {
+     "price_ticks": 10002,
+     "quantity": 26
+    },
+    {
+     "price_ticks": 10004,
+     "quantity": 38
+    },
+    {
+     "price_ticks": 10005,
+     "quantity": 15
+    },
+    {
+     "price_ticks": 10006,
+     "quantity": 21
+    },
+    {
+     "price_ticks": 10007,
+     "quantity": 14
+    },
+    {
+     "price_ticks": 10008,
+     "quantity": 20
+    }
+   ]
+  },
+  "checkpoint": {
+   "bids": [
+    {
+     "price_ticks": 10000,
+     "quantity": 23
+    },
+    {
+     "price_ticks": 9999,
+     "quantity": 29
+    },
+    {
+     "price_ticks": 9998,
+     "quantity": 35
+    },
+    {
+     "price_ticks": 9997,
+     "quantity": 12
+    },
+    {
+     "price_ticks": 9996,
+     "quantity": 18
+    },
+    {
+     "price_ticks": 9994,
+     "quantity": 17
+    }
+   ],
+   "asks": [
+    {
+     "price_ticks": 10002,
+     "quantity": 26
+    },
+    {
+     "price_ticks": 10004,
+     "quantity": 38
+    },
+    {
+     "price_ticks": 10005,
+     "quantity": 15
+    },
+    {
+     "price_ticks": 10006,
+     "quantity": 21
+    },
+    {
+     "price_ticks": 10007,
+     "quantity": 14
+    },
+    {
+     "price_ticks": 10008,
+     "quantity": 20
+    }
+   ]
+  },
+  "state": "reconciled"
+ }
+}

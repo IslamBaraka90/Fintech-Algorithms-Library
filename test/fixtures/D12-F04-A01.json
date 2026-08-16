@@ -1,0 +1,72 @@
+{
+ "input": {
+  "order_id": "L-100",
+  "order_quantity": 1000,
+  "events": [
+   {
+    "type": "accept"
+   },
+   {
+    "type": "fill",
+    "quantity": 300,
+    "price": 100
+   },
+   {
+    "type": "fill",
+    "quantity": 500,
+    "price": 100.01
+   },
+   {
+    "type": "fill",
+    "quantity": 200,
+    "price": 100.02
+   }
+  ]
+ },
+ "expected": {
+  "model": "accepted-order-lifecycle-state-machine",
+  "order_id": "L-100",
+  "order_quantity": 1000,
+  "cumulative_quantity": 1000,
+  "leaves_quantity": 0,
+  "average_fill_price": 100.009,
+  "execution_count": 3,
+  "status": "filled",
+  "terminal": true,
+  "transitions": [
+   {
+    "event_index": 0,
+    "event_type": "accept",
+    "before_status": "pending-new",
+    "after_status": "new",
+    "cumulative_quantity": 0,
+    "leaves_quantity": 1000
+   },
+   {
+    "event_index": 1,
+    "event_type": "fill",
+    "before_status": "new",
+    "after_status": "partially-filled",
+    "cumulative_quantity": 300,
+    "leaves_quantity": 700
+   },
+   {
+    "event_index": 2,
+    "event_type": "fill",
+    "before_status": "partially-filled",
+    "after_status": "partially-filled",
+    "cumulative_quantity": 800,
+    "leaves_quantity": 200
+   },
+   {
+    "event_index": 3,
+    "event_type": "fill",
+    "before_status": "partially-filled",
+    "after_status": "filled",
+    "cumulative_quantity": 1000,
+    "leaves_quantity": 0
+   }
+  ],
+  "state": "filled"
+ }
+}

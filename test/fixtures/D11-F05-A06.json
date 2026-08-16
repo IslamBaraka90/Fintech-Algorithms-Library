@@ -1,0 +1,52 @@
+{
+ "input": {
+  "levels": [
+   {
+    "price": 100.01,
+    "quantity": 100
+   },
+   {
+    "price": 100.02,
+    "quantity": 110
+   },
+   {
+    "price": 100.03,
+    "quantity": 450
+   },
+   {
+    "price": 100.04,
+    "quantity": 120
+   },
+   {
+    "price": 100.05,
+    "quantity": 120
+   }
+  ],
+  "wall_multiple": 2.5,
+  "minimum_share": 0.3,
+  "concentration_threshold": 0.3
+ },
+ "expected": {
+  "model": "level-share-concentration-and-wall-screen",
+  "level_count": 5,
+  "total_depth": 900,
+  "median_level_quantity": 120,
+  "hhi_fraction": 0.312839506173,
+  "effective_level_count": 3.196527229676,
+  "largest_level_index": 2,
+  "largest_level_share": 0.5,
+  "walls": [
+   {
+    "level_index": 2,
+    "price": 100.03,
+    "quantity": 450,
+    "depth_share": 0.5,
+    "median_multiple": 3.75
+   }
+  ],
+  "wall_multiple": 2.5,
+  "minimum_share": 0.3,
+  "concentration_threshold": 0.3,
+  "state": "wall-detected"
+ }
+}

@@ -1,0 +1,100 @@
+{
+ "input": {
+  "bids": [
+   {
+    "price": 99.99,
+    "quantity": 500
+   },
+   {
+    "price": 99.98,
+    "quantity": 800
+   },
+   {
+    "price": 99.97,
+    "quantity": 1200
+   },
+   {
+    "price": 99.96,
+    "quantity": 700
+   },
+   {
+    "price": 99.95,
+    "quantity": 400
+   }
+  ],
+  "asks": [
+   {
+    "price": 100.01,
+    "quantity": 300
+   },
+   {
+    "price": 100.02,
+    "quantity": 600
+   },
+   {
+    "price": 100.03,
+    "quantity": 1000
+   },
+   {
+    "price": 100.04,
+    "quantity": 900
+   },
+   {
+    "price": 100.05,
+    "quantity": 500
+   }
+  ],
+  "side": "buy",
+  "quantity": 2600,
+  "benchmark": "midpoint",
+  "benchmark_price": null,
+  "limit_price": null
+ },
+ "expected": {
+  "model": "visible-book-sweep-cost",
+  "side": "buy",
+  "requested_quantity": 2600,
+  "filled_quantity": 2600,
+  "unfilled_quantity": 0,
+  "full_fill": true,
+  "fills": [
+   {
+    "level_index": 0,
+    "price": 100.01,
+    "quantity": 300,
+    "notional": 30003
+   },
+   {
+    "level_index": 1,
+    "price": 100.02,
+    "quantity": 600,
+    "notional": 60012
+   },
+   {
+    "level_index": 2,
+    "price": 100.03,
+    "quantity": 1000,
+    "notional": 100030
+   },
+   {
+    "level_index": 3,
+    "price": 100.04,
+    "quantity": 700,
+    "notional": 70028
+   }
+  ],
+  "fill_notional": 260073,
+  "partial_vwap": 100.028076923077,
+  "worst_fill_price": 100.04,
+  "best_bid": 99.99,
+  "best_ask": 100.01,
+  "midpoint": 100,
+  "benchmark": "midpoint",
+  "benchmark_price": 100,
+  "sweep_vwap": 100.028076923077,
+  "signed_slippage_price": 0.028076923077,
+  "signed_slippage_bps": 2.807692307692,
+  "total_slippage_cost": 73.000000000002,
+  "state": "full-sweep"
+ }
+}

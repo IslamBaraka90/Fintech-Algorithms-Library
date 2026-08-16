@@ -1,0 +1,78 @@
+{
+ "input": {
+  "series": [
+   {
+    "timestamp_seconds": 0,
+    "quantity": 500
+   },
+   {
+    "timestamp_seconds": 1,
+    "quantity": 380
+   },
+   {
+    "timestamp_seconds": 2,
+    "quantity": 440
+   },
+   {
+    "timestamp_seconds": 3,
+    "quantity": 300
+   },
+   {
+    "timestamp_seconds": 4,
+    "quantity": 460
+   },
+   {
+    "timestamp_seconds": 5,
+    "quantity": 420
+   }
+  ]
+ },
+ "expected": {
+  "model": "snapshot-visible-depth-change-decomposition",
+  "snapshot_count": 6,
+  "start_quantity": 500,
+  "end_quantity": 420,
+  "gross_depletion": 300,
+  "gross_replenishment": 220,
+  "net_depth_change": -80,
+  "replenishment_to_depletion": 0.733333333333,
+  "changes": [
+   {
+    "timestamp_seconds": 1,
+    "previous_quantity": 500,
+    "quantity": 380,
+    "delta_quantity": -120,
+    "classification": "depletion"
+   },
+   {
+    "timestamp_seconds": 2,
+    "previous_quantity": 380,
+    "quantity": 440,
+    "delta_quantity": 60,
+    "classification": "replenishment"
+   },
+   {
+    "timestamp_seconds": 3,
+    "previous_quantity": 440,
+    "quantity": 300,
+    "delta_quantity": -140,
+    "classification": "depletion"
+   },
+   {
+    "timestamp_seconds": 4,
+    "previous_quantity": 300,
+    "quantity": 460,
+    "delta_quantity": 160,
+    "classification": "replenishment"
+   },
+   {
+    "timestamp_seconds": 5,
+    "previous_quantity": 460,
+    "quantity": 420,
+    "delta_quantity": -40,
+    "classification": "depletion"
+   }
+  ],
+  "state": "net-depleting"
+ }
+}

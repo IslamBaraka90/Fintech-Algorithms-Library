@@ -1,0 +1,122 @@
+{
+ "input": {
+  "candles": [
+   {
+    "open": 100,
+    "high": 104.5,
+    "low": 99.5,
+    "close": 104
+   },
+   {
+    "open": 104.6,
+    "high": 105.1,
+    "low": 103.9,
+    "close": 104.2
+   },
+   {
+    "open": 104.3,
+    "high": 104.4,
+    "low": 101.1,
+    "close": 101.5
+   }
+  ],
+  "trend_context": "uptrend",
+  "prior_bodies": [
+   2,
+   2.1,
+   1.9,
+   2.2,
+   2,
+   2.1,
+   1.8,
+   2,
+   2.2,
+   1.9
+  ],
+  "prior_ranges": [
+   3,
+   3.2,
+   2.9,
+   3.1,
+   3,
+   3.3,
+   2.8,
+   3,
+   3.2,
+   2.9
+  ],
+  "tick_size": 0.1,
+  "penetration_fraction": 0.5
+ },
+ "expected": {
+  "topic_id": "D06-F04-A02",
+  "pattern": "Evening Star",
+  "matched": true,
+  "state": "matched",
+  "direction": "bearish",
+  "trend_context": "uptrend",
+  "required_context": "uptrend",
+  "history_count": 10,
+  "body_scale": 2,
+  "range_scale": 3,
+  "geometry_score": 1,
+  "checks": {
+   "first_bullish": true,
+   "first_long": true,
+   "second_short": true,
+   "body_gap_up": true,
+   "third_bearish": true,
+   "third_penetrates": true
+  },
+  "failed_checks": [],
+  "reason": "all declared checks pass",
+  "thresholds": {
+   "long_body_floor": 2.4,
+   "short_body_ceiling": 1.2,
+   "penetration_price": 102,
+   "minimum_gap": 0.1,
+   "penetration_fraction": 0.5
+  },
+  "candles": [
+   {
+    "open": 100,
+    "high": 104.5,
+    "low": 99.5,
+    "close": 104,
+    "body_high": 104,
+    "body_low": 100,
+    "body": 4,
+    "upper_shadow": 0.5,
+    "lower_shadow": 0.5,
+    "range": 5,
+    "direction": "bullish"
+   },
+   {
+    "open": 104.6,
+    "high": 105.1,
+    "low": 103.9,
+    "close": 104.2,
+    "body_high": 104.6,
+    "body_low": 104.2,
+    "body": 0.4,
+    "upper_shadow": 0.5,
+    "lower_shadow": 0.3,
+    "range": 1.2,
+    "direction": "bearish"
+   },
+   {
+    "open": 104.3,
+    "high": 104.4,
+    "low": 101.1,
+    "close": 101.5,
+    "body_high": 104.3,
+    "body_low": 101.5,
+    "body": 2.8,
+    "upper_shadow": 0.1,
+    "lower_shadow": 0.4,
+    "range": 3.3,
+    "direction": "bearish"
+   }
+  ]
+ }
+}

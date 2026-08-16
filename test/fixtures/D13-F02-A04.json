@@ -1,0 +1,229 @@
+{
+ "input": {
+  "total_quantity": 4000,
+  "side": "buy",
+  "limit_price_atoms": 1000200,
+  "minimum_confidence_bps": 7500,
+  "maximum_age_ms": 50,
+  "max_take_per_event": 700,
+  "lot_size": 100,
+  "liquidity_events": [
+   {
+    "event_id": "LQ-01",
+    "price_atoms": 1000000,
+    "available_quantity": 500,
+    "age_ms": 12,
+    "confidence_bps": 8500
+   },
+   {
+    "event_id": "LQ-02",
+    "price_atoms": 1000100,
+    "available_quantity": 900,
+    "age_ms": 18,
+    "confidence_bps": 7800
+   },
+   {
+    "event_id": "LQ-03",
+    "price_atoms": 1000300,
+    "available_quantity": 700,
+    "age_ms": 8,
+    "confidence_bps": 9200
+   },
+   {
+    "event_id": "LQ-04",
+    "price_atoms": 999900,
+    "available_quantity": 300,
+    "age_ms": 90,
+    "confidence_bps": 9000
+   },
+   {
+    "event_id": "LQ-05",
+    "price_atoms": 1000200,
+    "available_quantity": 1200,
+    "age_ms": 22,
+    "confidence_bps": 8800
+   },
+   {
+    "event_id": "LQ-06",
+    "price_atoms": 1000150,
+    "available_quantity": 400,
+    "age_ms": 16,
+    "confidence_bps": 6400
+   },
+   {
+    "event_id": "LQ-07",
+    "price_atoms": 1000050,
+    "available_quantity": 800,
+    "age_ms": 30,
+    "confidence_bps": 8100
+   },
+   {
+    "event_id": "LQ-08",
+    "price_atoms": 1000400,
+    "available_quantity": 1000,
+    "age_ms": 5,
+    "confidence_bps": 9500
+   },
+   {
+    "event_id": "LQ-09",
+    "price_atoms": 999950,
+    "available_quantity": 600,
+    "age_ms": 14,
+    "confidence_bps": 8700
+   },
+   {
+    "event_id": "LQ-10",
+    "price_atoms": 1000250,
+    "available_quantity": 500,
+    "age_ms": 40,
+    "confidence_bps": 8300
+   },
+   {
+    "event_id": "LQ-11",
+    "price_atoms": 1000100,
+    "available_quantity": 700,
+    "age_ms": 24,
+    "confidence_bps": 7600
+   },
+   {
+    "event_id": "LQ-12",
+    "price_atoms": 1000000,
+    "available_quantity": 900,
+    "age_ms": 10,
+    "confidence_bps": 9100
+   }
+  ]
+ },
+ "expected": {
+  "side": "buy",
+  "limit_price_atoms": 1000200,
+  "total_quantity": 4000,
+  "accepted_quantity": 4000,
+  "remaining_quantity": 0,
+  "accepted_event_count": 7,
+  "rejected_event_count": 5,
+  "events": [
+   {
+    "event_id": "LQ-01",
+    "price_atoms": 1000000,
+    "available_quantity": 500,
+    "age_ms": 12,
+    "confidence_bps": 8500,
+    "planned_take_quantity": 500,
+    "reason": "accepted",
+    "remaining_quantity": 3500
+   },
+   {
+    "event_id": "LQ-02",
+    "price_atoms": 1000100,
+    "available_quantity": 900,
+    "age_ms": 18,
+    "confidence_bps": 7800,
+    "planned_take_quantity": 700,
+    "reason": "accepted",
+    "remaining_quantity": 2800
+   },
+   {
+    "event_id": "LQ-03",
+    "price_atoms": 1000300,
+    "available_quantity": 700,
+    "age_ms": 8,
+    "confidence_bps": 9200,
+    "planned_take_quantity": 0,
+    "reason": "outside-limit",
+    "remaining_quantity": 2800
+   },
+   {
+    "event_id": "LQ-04",
+    "price_atoms": 999900,
+    "available_quantity": 300,
+    "age_ms": 90,
+    "confidence_bps": 9000,
+    "planned_take_quantity": 0,
+    "reason": "stale",
+    "remaining_quantity": 2800
+   },
+   {
+    "event_id": "LQ-05",
+    "price_atoms": 1000200,
+    "available_quantity": 1200,
+    "age_ms": 22,
+    "confidence_bps": 8800,
+    "planned_take_quantity": 700,
+    "reason": "accepted",
+    "remaining_quantity": 2100
+   },
+   {
+    "event_id": "LQ-06",
+    "price_atoms": 1000150,
+    "available_quantity": 400,
+    "age_ms": 16,
+    "confidence_bps": 6400,
+    "planned_take_quantity": 0,
+    "reason": "confidence-below-threshold",
+    "remaining_quantity": 2100
+   },
+   {
+    "event_id": "LQ-07",
+    "price_atoms": 1000050,
+    "available_quantity": 800,
+    "age_ms": 30,
+    "confidence_bps": 8100,
+    "planned_take_quantity": 700,
+    "reason": "accepted",
+    "remaining_quantity": 1400
+   },
+   {
+    "event_id": "LQ-08",
+    "price_atoms": 1000400,
+    "available_quantity": 1000,
+    "age_ms": 5,
+    "confidence_bps": 9500,
+    "planned_take_quantity": 0,
+    "reason": "outside-limit",
+    "remaining_quantity": 1400
+   },
+   {
+    "event_id": "LQ-09",
+    "price_atoms": 999950,
+    "available_quantity": 600,
+    "age_ms": 14,
+    "confidence_bps": 8700,
+    "planned_take_quantity": 600,
+    "reason": "accepted",
+    "remaining_quantity": 800
+   },
+   {
+    "event_id": "LQ-10",
+    "price_atoms": 1000250,
+    "available_quantity": 500,
+    "age_ms": 40,
+    "confidence_bps": 8300,
+    "planned_take_quantity": 0,
+    "reason": "outside-limit",
+    "remaining_quantity": 800
+   },
+   {
+    "event_id": "LQ-11",
+    "price_atoms": 1000100,
+    "available_quantity": 700,
+    "age_ms": 24,
+    "confidence_bps": 7600,
+    "planned_take_quantity": 700,
+    "reason": "accepted",
+    "remaining_quantity": 100
+   },
+   {
+    "event_id": "LQ-12",
+    "price_atoms": 1000000,
+    "available_quantity": 900,
+    "age_ms": 10,
+    "confidence_bps": 9100,
+    "planned_take_quantity": 100,
+    "reason": "accepted",
+    "remaining_quantity": 0
+   }
+  ],
+  "state": "parent-complete"
+ }
+}

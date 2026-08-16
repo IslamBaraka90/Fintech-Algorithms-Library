@@ -1,0 +1,61 @@
+{
+ "input": {
+  "bids": [
+   {
+    "price": 99.99,
+    "quantity": 500
+   },
+   {
+    "price": 99.98,
+    "quantity": 800
+   },
+   {
+    "price": 99.97,
+    "quantity": 1200
+   },
+   {
+    "price": 99.96,
+    "quantity": 700
+   },
+   {
+    "price": 99.95,
+    "quantity": 400
+   }
+  ],
+  "asks": [
+   {
+    "price": 100.01,
+    "quantity": 300
+   },
+   {
+    "price": 100.02,
+    "quantity": 600
+   },
+   {
+    "price": 100.03,
+    "quantity": 1000
+   },
+   {
+    "price": 100.04,
+    "quantity": 900
+   },
+   {
+    "price": 100.05,
+    "quantity": 500
+   }
+  ],
+  "n": 3,
+  "threshold": 0.1
+ },
+ "expected": {
+  "model": "top-n-visible-depth-imbalance",
+  "n": 3,
+  "bid_depth": 2500,
+  "ask_depth": 1900,
+  "total_depth": 4400,
+  "imbalance": 0.136363636364,
+  "threshold": 0.1,
+  "state": "bid-heavy",
+  "complete_window": true
+ }
+}

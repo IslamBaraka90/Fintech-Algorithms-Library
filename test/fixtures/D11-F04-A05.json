@@ -1,0 +1,37 @@
+{
+ "input": {
+  "event_times_seconds": [
+   0.2,
+   0.9,
+   1.4,
+   2.7
+  ],
+  "baseline_intensity": 0.5,
+  "excitation_jump": 0.8,
+  "decay_rate": 1.6,
+  "evaluation_time_seconds": 3,
+  "horizon_seconds": 3.5
+ },
+ "expected": {
+  "model": "univariate-exponential-hawkes",
+  "event_count": 4,
+  "baseline_intensity": 0.5,
+  "excitation_jump": 0.8,
+  "decay_rate": 1.6,
+  "branching_ratio": 0.5,
+  "stationary": true,
+  "expected_cluster_multiplier": 2,
+  "evaluation_time_seconds": 3,
+  "intensity_at_evaluation": 1.093725443479,
+  "event_intensities": [
+   0.5,
+   0.761023835698,
+   0.976748740998,
+   0.659504491137
+  ],
+  "horizon_seconds": 3.5,
+  "compensator": 3.583263725945,
+  "log_likelihood": -4.989293837521,
+  "state": "stationary"
+ }
+}

@@ -1,0 +1,295 @@
+{
+ "input": {
+  "start_sequence": 100,
+  "arrivals": [
+   {
+    "sequence": 100,
+    "source": "live"
+   },
+   {
+    "sequence": 102,
+    "source": "live"
+   },
+   {
+    "sequence": 103,
+    "source": "live"
+   },
+   {
+    "sequence": 101,
+    "source": "replay"
+   },
+   {
+    "sequence": 105,
+    "source": "live"
+   },
+   {
+    "sequence": 107,
+    "source": "live"
+   },
+   {
+    "sequence": 104,
+    "source": "replay"
+   },
+   {
+    "sequence": 106,
+    "source": "replay"
+   },
+   {
+    "sequence": 107,
+    "source": "replay"
+   },
+   {
+    "sequence": 108,
+    "source": "live"
+   },
+   {
+    "sequence": 110,
+    "source": "live"
+   },
+   {
+    "sequence": 111,
+    "source": "live"
+   },
+   {
+    "sequence": 109,
+    "source": "replay"
+   },
+   {
+    "sequence": 112,
+    "source": "live"
+   },
+   {
+    "sequence": 114,
+    "source": "live"
+   },
+   {
+    "sequence": 113,
+    "source": "replay"
+   },
+   {
+    "sequence": 115,
+    "source": "live"
+   },
+   {
+    "sequence": 116,
+    "source": "live"
+   }
+  ]
+ },
+ "expected": {
+  "start_sequence": 100,
+  "applied_sequences": [
+   100,
+   101,
+   102,
+   103,
+   104,
+   105,
+   106,
+   107,
+   108,
+   109,
+   110,
+   111,
+   112,
+   113,
+   114,
+   115,
+   116
+  ],
+  "next_expected": 117,
+  "missing_sequences": [],
+  "buffered_sequences": [],
+  "duplicate_sequences": [
+   107
+  ],
+  "recovery_requests": [
+   {
+    "from_sequence": 101,
+    "to_sequence": 101
+   },
+   {
+    "from_sequence": 104,
+    "to_sequence": 104
+   },
+   {
+    "from_sequence": 106,
+    "to_sequence": 106
+   },
+   {
+    "from_sequence": 109,
+    "to_sequence": 109
+   },
+   {
+    "from_sequence": 113,
+    "to_sequence": 113
+   }
+  ],
+  "recovery_request_count": 5,
+  "replay_arrival_count": 6,
+  "trace": [
+   {
+    "arrival_sequence": 100,
+    "source": "live",
+    "next_expected": 101,
+    "missing": [],
+    "buffered": []
+   },
+   {
+    "arrival_sequence": 102,
+    "source": "live",
+    "next_expected": 101,
+    "missing": [
+     101
+    ],
+    "buffered": [
+     102
+    ]
+   },
+   {
+    "arrival_sequence": 103,
+    "source": "live",
+    "next_expected": 101,
+    "missing": [
+     101
+    ],
+    "buffered": [
+     102,
+     103
+    ]
+   },
+   {
+    "arrival_sequence": 101,
+    "source": "replay",
+    "next_expected": 104,
+    "missing": [],
+    "buffered": []
+   },
+   {
+    "arrival_sequence": 105,
+    "source": "live",
+    "next_expected": 104,
+    "missing": [
+     104
+    ],
+    "buffered": [
+     105
+    ]
+   },
+   {
+    "arrival_sequence": 107,
+    "source": "live",
+    "next_expected": 104,
+    "missing": [
+     104
+    ],
+    "buffered": [
+     105,
+     107
+    ]
+   },
+   {
+    "arrival_sequence": 104,
+    "source": "replay",
+    "next_expected": 106,
+    "missing": [
+     106
+    ],
+    "buffered": [
+     107
+    ]
+   },
+   {
+    "arrival_sequence": 106,
+    "source": "replay",
+    "next_expected": 108,
+    "missing": [],
+    "buffered": []
+   },
+   {
+    "arrival_sequence": 107,
+    "source": "replay",
+    "next_expected": 108,
+    "missing": [],
+    "buffered": []
+   },
+   {
+    "arrival_sequence": 108,
+    "source": "live",
+    "next_expected": 109,
+    "missing": [],
+    "buffered": []
+   },
+   {
+    "arrival_sequence": 110,
+    "source": "live",
+    "next_expected": 109,
+    "missing": [
+     109
+    ],
+    "buffered": [
+     110
+    ]
+   },
+   {
+    "arrival_sequence": 111,
+    "source": "live",
+    "next_expected": 109,
+    "missing": [
+     109
+    ],
+    "buffered": [
+     110,
+     111
+    ]
+   },
+   {
+    "arrival_sequence": 109,
+    "source": "replay",
+    "next_expected": 112,
+    "missing": [],
+    "buffered": []
+   },
+   {
+    "arrival_sequence": 112,
+    "source": "live",
+    "next_expected": 113,
+    "missing": [],
+    "buffered": []
+   },
+   {
+    "arrival_sequence": 114,
+    "source": "live",
+    "next_expected": 113,
+    "missing": [
+     113
+    ],
+    "buffered": [
+     114
+    ]
+   },
+   {
+    "arrival_sequence": 113,
+    "source": "replay",
+    "next_expected": 115,
+    "missing": [],
+    "buffered": []
+   },
+   {
+    "arrival_sequence": 115,
+    "source": "live",
+    "next_expected": 116,
+    "missing": [],
+    "buffered": []
+   },
+   {
+    "arrival_sequence": 116,
+    "source": "live",
+    "next_expected": 117,
+    "missing": [],
+    "buffered": []
+   }
+  ],
+  "state": "current"
+ }
+}

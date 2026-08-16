@@ -1,0 +1,213 @@
+{
+ "input": {
+  "total_quantity": 24000,
+  "historical_bucket_volumes": [
+   2400,
+   2000,
+   1700,
+   1500,
+   1300,
+   1200,
+   1100,
+   1000,
+   950,
+   900,
+   900,
+   950,
+   1000,
+   1050,
+   1100,
+   1200,
+   1300,
+   1450,
+   1650,
+   1900,
+   2200,
+   2600,
+   3100,
+   3800
+  ],
+  "lot_size": 100,
+  "profile_id": "SYN-24B-U-2026-07"
+ },
+ "expected": {
+  "profile_id": "SYN-24B-U-2026-07",
+  "total_quantity": 24000,
+  "lot_size": 100,
+  "bucket_count": 24,
+  "historical_volume_total": 38250,
+  "scheduled_quantity": 24000,
+  "remaining_quantity": 0,
+  "schedule": [
+   {
+    "bucket": 1,
+    "historical_volume": 2400,
+    "historical_weight": 0.062745098039,
+    "target_quantity": 1500,
+    "target_cumulative_quantity": 1500
+   },
+   {
+    "bucket": 2,
+    "historical_volume": 2000,
+    "historical_weight": 0.052287581699,
+    "target_quantity": 1300,
+    "target_cumulative_quantity": 2800
+   },
+   {
+    "bucket": 3,
+    "historical_volume": 1700,
+    "historical_weight": 0.044444444444,
+    "target_quantity": 1100,
+    "target_cumulative_quantity": 3900
+   },
+   {
+    "bucket": 4,
+    "historical_volume": 1500,
+    "historical_weight": 0.039215686275,
+    "target_quantity": 900,
+    "target_cumulative_quantity": 4800
+   },
+   {
+    "bucket": 5,
+    "historical_volume": 1300,
+    "historical_weight": 0.033986928105,
+    "target_quantity": 800,
+    "target_cumulative_quantity": 5600
+   },
+   {
+    "bucket": 6,
+    "historical_volume": 1200,
+    "historical_weight": 0.03137254902,
+    "target_quantity": 800,
+    "target_cumulative_quantity": 6400
+   },
+   {
+    "bucket": 7,
+    "historical_volume": 1100,
+    "historical_weight": 0.028758169935,
+    "target_quantity": 700,
+    "target_cumulative_quantity": 7100
+   },
+   {
+    "bucket": 8,
+    "historical_volume": 1000,
+    "historical_weight": 0.02614379085,
+    "target_quantity": 600,
+    "target_cumulative_quantity": 7700
+   },
+   {
+    "bucket": 9,
+    "historical_volume": 950,
+    "historical_weight": 0.024836601307,
+    "target_quantity": 600,
+    "target_cumulative_quantity": 8300
+   },
+   {
+    "bucket": 10,
+    "historical_volume": 900,
+    "historical_weight": 0.023529411765,
+    "target_quantity": 600,
+    "target_cumulative_quantity": 8900
+   },
+   {
+    "bucket": 11,
+    "historical_volume": 900,
+    "historical_weight": 0.023529411765,
+    "target_quantity": 600,
+    "target_cumulative_quantity": 9500
+   },
+   {
+    "bucket": 12,
+    "historical_volume": 950,
+    "historical_weight": 0.024836601307,
+    "target_quantity": 600,
+    "target_cumulative_quantity": 10100
+   },
+   {
+    "bucket": 13,
+    "historical_volume": 1000,
+    "historical_weight": 0.02614379085,
+    "target_quantity": 600,
+    "target_cumulative_quantity": 10700
+   },
+   {
+    "bucket": 14,
+    "historical_volume": 1050,
+    "historical_weight": 0.027450980392,
+    "target_quantity": 700,
+    "target_cumulative_quantity": 11400
+   },
+   {
+    "bucket": 15,
+    "historical_volume": 1100,
+    "historical_weight": 0.028758169935,
+    "target_quantity": 700,
+    "target_cumulative_quantity": 12100
+   },
+   {
+    "bucket": 16,
+    "historical_volume": 1200,
+    "historical_weight": 0.03137254902,
+    "target_quantity": 700,
+    "target_cumulative_quantity": 12800
+   },
+   {
+    "bucket": 17,
+    "historical_volume": 1300,
+    "historical_weight": 0.033986928105,
+    "target_quantity": 800,
+    "target_cumulative_quantity": 13600
+   },
+   {
+    "bucket": 18,
+    "historical_volume": 1450,
+    "historical_weight": 0.037908496732,
+    "target_quantity": 900,
+    "target_cumulative_quantity": 14500
+   },
+   {
+    "bucket": 19,
+    "historical_volume": 1650,
+    "historical_weight": 0.043137254902,
+    "target_quantity": 1000,
+    "target_cumulative_quantity": 15500
+   },
+   {
+    "bucket": 20,
+    "historical_volume": 1900,
+    "historical_weight": 0.049673202614,
+    "target_quantity": 1200,
+    "target_cumulative_quantity": 16700
+   },
+   {
+    "bucket": 21,
+    "historical_volume": 2200,
+    "historical_weight": 0.057516339869,
+    "target_quantity": 1400,
+    "target_cumulative_quantity": 18100
+   },
+   {
+    "bucket": 22,
+    "historical_volume": 2600,
+    "historical_weight": 0.067973856209,
+    "target_quantity": 1600,
+    "target_cumulative_quantity": 19700
+   },
+   {
+    "bucket": 23,
+    "historical_volume": 3100,
+    "historical_weight": 0.081045751634,
+    "target_quantity": 1900,
+    "target_cumulative_quantity": 21600
+   },
+   {
+    "bucket": 24,
+    "historical_volume": 3800,
+    "historical_weight": 0.099346405229,
+    "target_quantity": 2400,
+    "target_cumulative_quantity": 24000
+   }
+  ],
+  "state": "complete-schedule"
+ }
+}

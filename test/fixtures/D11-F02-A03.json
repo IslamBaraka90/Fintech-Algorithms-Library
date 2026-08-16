@@ -1,0 +1,31 @@
+{
+ "input": {
+  "bid_at_trade": 100,
+  "ask_at_trade": 100.08,
+  "trade_price": 100.07,
+  "side": "buy",
+  "bid_after": 100.11,
+  "ask_after": 100.19,
+  "horizon_seconds": 300
+ },
+ "expected": {
+  "model": "realized-spread",
+  "side": "buy",
+  "direction": 1,
+  "trade_price": 100.07,
+  "midpoint_at_trade": 100.03999999999999,
+  "midpoint_after": 100.15,
+  "bid_after": 100.11,
+  "ask_after": 100.19,
+  "horizon_seconds": 300,
+  "effective_spread": 0.060000000000002274,
+  "realized_spread": -0.160000000000025,
+  "realized_spread_relative": -0.0015993602558978912,
+  "realized_spread_bps": -15.993602558978912,
+  "price_impact": 0.22000000000002728,
+  "price_impact_relative": 0.002199120351859529,
+  "price_impact_bps": 21.99120351859529,
+  "decomposition_error": 0,
+  "state": "negative-realized"
+ }
+}

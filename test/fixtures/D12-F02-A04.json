@@ -1,0 +1,115 @@
+{
+ "input": {
+  "closing_reference": 100,
+  "tick_size": 1,
+  "collar_low": 95,
+  "collar_high": 105,
+  "orders": [
+   {
+    "order_id": "MOC-B",
+    "side": "buy",
+    "order_type": "MOC",
+    "price": null,
+    "quantity": 300,
+    "arrival_sequence": 10
+   },
+   {
+    "order_id": "LOC-B101",
+    "side": "buy",
+    "order_type": "LOC",
+    "price": 101,
+    "quantity": 350,
+    "arrival_sequence": 20
+   },
+   {
+    "order_id": "DAY-B100",
+    "side": "buy",
+    "order_type": "DAY",
+    "price": 100,
+    "quantity": 250,
+    "arrival_sequence": 30
+   },
+   {
+    "order_id": "MOC-S",
+    "side": "sell",
+    "order_type": "MOC",
+    "price": null,
+    "quantity": 150,
+    "arrival_sequence": 40
+   },
+   {
+    "order_id": "LOC-S099",
+    "side": "sell",
+    "order_type": "LOC",
+    "price": 99,
+    "quantity": 250,
+    "arrival_sequence": 50
+   },
+   {
+    "order_id": "LOC-S100",
+    "side": "sell",
+    "order_type": "LOC",
+    "price": 100,
+    "quantity": 300,
+    "arrival_sequence": 60
+   },
+   {
+    "order_id": "DAY-S101",
+    "side": "sell",
+    "order_type": "DAY",
+    "price": 101,
+    "quantity": 450,
+    "arrival_sequence": 70
+   }
+  ]
+ },
+ "expected": {
+  "model": "declared-closing-cross",
+  "session": "closing",
+  "reference_price": 100,
+  "collar_low": 95,
+  "collar_high": 105,
+  "eligible_order_count": 7,
+  "selected_price": 100,
+  "executed_quantity": 700,
+  "buy_quantity": 900,
+  "sell_quantity": 700,
+  "imbalance_quantity": 200,
+  "imbalance_side": "buy",
+  "selection_trace": [
+   "maximize executable quantity at 700",
+   "minimize absolute imbalance at 200",
+   "the objective hierarchy leaves one price"
+  ],
+  "candidate_evaluations": [
+   {
+    "price": 99,
+    "buy_quantity": 900,
+    "sell_quantity": 400,
+    "executable_quantity": 400,
+    "imbalance_quantity": 500,
+    "absolute_imbalance": 500,
+    "imbalance_side": "buy"
+   },
+   {
+    "price": 100,
+    "buy_quantity": 900,
+    "sell_quantity": 700,
+    "executable_quantity": 700,
+    "imbalance_quantity": 200,
+    "absolute_imbalance": 200,
+    "imbalance_side": "buy"
+   },
+   {
+    "price": 101,
+    "buy_quantity": 650,
+    "sell_quantity": 1150,
+    "executable_quantity": 650,
+    "imbalance_quantity": -500,
+    "absolute_imbalance": 500,
+    "imbalance_side": "sell"
+   }
+  ],
+  "state": "crossed"
+ }
+}

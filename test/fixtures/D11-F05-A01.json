@@ -1,0 +1,123 @@
+{
+ "input": {
+  "bids": [
+   {
+    "price": 99.99,
+    "quantity": 500
+   },
+   {
+    "price": 99.98,
+    "quantity": 800
+   },
+   {
+    "price": 99.97,
+    "quantity": 1200
+   },
+   {
+    "price": 99.96,
+    "quantity": 700
+   },
+   {
+    "price": 99.95,
+    "quantity": 400
+   }
+  ],
+  "asks": [
+   {
+    "price": 100.01,
+    "quantity": 300
+   },
+   {
+    "price": 100.02,
+    "quantity": 600
+   },
+   {
+    "price": 100.03,
+    "quantity": 1000
+   },
+   {
+    "price": 100.04,
+    "quantity": 900
+   },
+   {
+    "price": 100.05,
+    "quantity": 500
+   }
+  ],
+  "tick_size": 0.01
+ },
+ "expected": {
+  "model": "visible-cumulative-depth",
+  "best_bid": 99.99,
+  "best_ask": 100.01,
+  "tick_size": 0.01,
+  "spread_ticks": 2,
+  "bid_levels": [
+   {
+    "price": 99.99,
+    "quantity": 500,
+    "distance_ticks": 0,
+    "cumulative_quantity": 500
+   },
+   {
+    "price": 99.98,
+    "quantity": 800,
+    "distance_ticks": 1,
+    "cumulative_quantity": 1300
+   },
+   {
+    "price": 99.97,
+    "quantity": 1200,
+    "distance_ticks": 2,
+    "cumulative_quantity": 2500
+   },
+   {
+    "price": 99.96,
+    "quantity": 700,
+    "distance_ticks": 3,
+    "cumulative_quantity": 3200
+   },
+   {
+    "price": 99.95,
+    "quantity": 400,
+    "distance_ticks": 4,
+    "cumulative_quantity": 3600
+   }
+  ],
+  "ask_levels": [
+   {
+    "price": 100.01,
+    "quantity": 300,
+    "distance_ticks": 0,
+    "cumulative_quantity": 300
+   },
+   {
+    "price": 100.02,
+    "quantity": 600,
+    "distance_ticks": 1,
+    "cumulative_quantity": 900
+   },
+   {
+    "price": 100.03,
+    "quantity": 1000,
+    "distance_ticks": 2,
+    "cumulative_quantity": 1900
+   },
+   {
+    "price": 100.04,
+    "quantity": 900,
+    "distance_ticks": 3,
+    "cumulative_quantity": 2800
+   },
+   {
+    "price": 100.05,
+    "quantity": 500,
+    "distance_ticks": 4,
+    "cumulative_quantity": 3300
+   }
+  ],
+  "total_bid_depth": 3600,
+  "total_ask_depth": 3300,
+  "state": "bid-deeper"
+ }
+}

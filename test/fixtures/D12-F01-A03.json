@@ -1,0 +1,70 @@
+{
+ "input": {
+  "incoming_quantity": 650,
+  "price": 50,
+  "lot_size": 10,
+  "resting_orders": [
+   {
+    "order_id": "ST-1",
+    "side": "buy",
+    "price": 50,
+    "remaining_quantity": 300,
+    "arrival_sequence": 10
+   },
+   {
+    "order_id": "ST-2",
+    "side": "buy",
+    "price": 50,
+    "remaining_quantity": 500,
+    "arrival_sequence": 30
+   },
+   {
+    "order_id": "ST-3",
+    "side": "buy",
+    "price": 50,
+    "remaining_quantity": 500,
+    "arrival_sequence": 20
+   },
+   {
+    "order_id": "ST-4",
+    "side": "buy",
+    "price": 50,
+    "remaining_quantity": 200,
+    "arrival_sequence": 40
+   }
+  ]
+ },
+ "expected": {
+  "model": "single-price-size-then-time-priority",
+  "price": 50,
+  "lot_size": 10,
+  "incoming_quantity": 650,
+  "allocated_quantity": 650,
+  "unfilled_quantity": 0,
+  "ranked_order_ids": [
+   "ST-3",
+   "ST-2",
+   "ST-1",
+   "ST-4"
+  ],
+  "allocations": [
+   {
+    "rank": 1,
+    "order_id": "ST-3",
+    "resting_quantity": 500,
+    "allocated_quantity": 500,
+    "remaining_quantity": 0,
+    "arrival_sequence": 20
+   },
+   {
+    "rank": 2,
+    "order_id": "ST-2",
+    "resting_quantity": 500,
+    "allocated_quantity": 150,
+    "remaining_quantity": 350,
+    "arrival_sequence": 30
+   }
+  ],
+  "state": "fully-allocated"
+ }
+}

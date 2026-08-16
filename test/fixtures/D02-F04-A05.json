@@ -1,0 +1,95 @@
+{
+ "input": {
+  "event_reference": "CA-77",
+  "security_id": "SYNTH-XYZ",
+  "event_type": "stock-split",
+  "as_of": "2026-07-05T12:00:00Z",
+  "records": [
+   {
+    "message_id": "P-1",
+    "event_reference": "CA-77",
+    "security_id": "SYNTH-XYZ",
+    "event_type": "stock-split",
+    "source": "provider-feed",
+    "source_rank": 1,
+    "version": 1,
+    "available_at": "2026-07-01T09:00:00Z",
+    "announcement_date": "2026-07-01",
+    "effective_date": "2026-07-15",
+    "status": "preliminary",
+    "function": "new",
+    "supersedes": null
+   },
+   {
+    "message_id": "E-1",
+    "event_reference": "CA-77",
+    "security_id": "SYNTH-XYZ",
+    "event_type": "stock-split",
+    "source": "exchange-notice",
+    "source_rank": 2,
+    "version": 1,
+    "available_at": "2026-07-03T11:00:00Z",
+    "announcement_date": "2026-07-01",
+    "effective_date": "2026-07-16",
+    "status": "confirmed",
+    "function": "new",
+    "supersedes": null
+   },
+   {
+    "message_id": "I-2",
+    "event_reference": "CA-77",
+    "security_id": "SYNTH-XYZ",
+    "event_type": "stock-split",
+    "source": "issuer-notice",
+    "source_rank": 3,
+    "version": 2,
+    "available_at": "2026-07-04T09:00:00Z",
+    "announcement_date": "2026-07-01",
+    "effective_date": "2026-07-16",
+    "status": "confirmed",
+    "function": "replacement",
+    "supersedes": "I-1"
+   }
+  ]
+ },
+ "expected": {
+  "event_reference": "CA-77",
+  "security_id": "SYNTH-XYZ",
+  "event_type": "stock-split",
+  "as_of": "2026-07-05T12:00:00Z",
+  "state": "reconciled-with-conflicts",
+  "selected": {
+   "message_id": "I-2",
+   "source": "issuer-notice",
+   "source_rank": 3,
+   "version": 2,
+   "available_at": "2026-07-04T09:00:00Z",
+   "announcement_date": "2026-07-01",
+   "effective_date": "2026-07-16",
+   "status": "confirmed",
+   "function": "replacement",
+   "supersedes": "I-1"
+  },
+  "applicable": false,
+  "conflicts": [
+   {
+    "type": "status-conflict",
+    "selected": "confirmed",
+    "other": "preliminary",
+    "other_source": "provider-feed"
+   },
+   {
+    "type": "effective-date-conflict",
+    "selected": "2026-07-16",
+    "other": "2026-07-15",
+    "other_source": "provider-feed"
+   }
+  ],
+  "eligible_message_ids": [
+   "E-1",
+   "I-2",
+   "P-1"
+  ],
+  "future_message_ids": []
+ }
+}

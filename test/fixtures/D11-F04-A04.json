@@ -1,0 +1,44 @@
+{
+ "input": {
+  "times_seconds": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6
+  ],
+  "displacement_bps": [
+   8,
+   5.637504,
+   3.972682,
+   2.7995,
+   1.972776,
+   1.390191,
+   0.979651
+  ],
+  "forecast_seconds": 5
+ },
+ "expected": {
+  "model": "exponential-displacement-recovery",
+  "observation_count": 7,
+  "initial_displacement_bps": 8,
+  "recovery_rate_per_second": 0.350000071137,
+  "half_life_seconds": 1.980420113369,
+  "forecast_seconds": 5,
+  "forecast_displacement_bps": 1.390191053135,
+  "recovered_fraction": 0.826226118358,
+  "fitted_displacement_bps": [
+   8,
+   5.637504316716,
+   3.972681865123,
+   2.799501395446,
+   1.972775150185,
+   1.390191053135,
+   0.979651007888
+  ],
+  "rmse_bps": 6.3142e-7,
+  "state": "estimated"
+ }
+}

@@ -1,0 +1,165 @@
+{
+ "input": {
+  "total_quantity": 24000,
+  "realized_market_volumes": [
+   2600,
+   2100,
+   1800,
+   1600,
+   1450,
+   1300,
+   1250,
+   1150
+  ],
+  "remaining_forecast_volumes": [
+   950,
+   900,
+   900,
+   950,
+   1000,
+   1050,
+   1100,
+   1200,
+   1300,
+   1450,
+   1650,
+   1900,
+   2200,
+   2600,
+   3100,
+   3800
+  ],
+  "executed_quantity": 5200,
+  "lot_size": 100,
+  "forecast_version": "SYN-LIVE-2026-07-30T14:00Z"
+ },
+ "expected": {
+  "forecast_version": "SYN-LIVE-2026-07-30T14:00Z",
+  "total_quantity": 24000,
+  "executed_quantity": 5200,
+  "remaining_quantity_before_schedule": 18800,
+  "realized_market_volume": 13250,
+  "remaining_forecast_market_volume": 26050,
+  "projected_market_volume": 39300,
+  "target_completed_quantity": 8000,
+  "pacing_error_quantity": -2800,
+  "pacing_state": "behind",
+  "immediate_catch_up_quantity": 2800,
+  "scheduled_future_quantity": 18800,
+  "schedule": [
+   {
+    "future_bucket": 1,
+    "forecast_market_volume": 950,
+    "target_quantity": 3400,
+    "target_cumulative_quantity": 8600,
+    "includes_catch_up_quantity": 2800
+   },
+   {
+    "future_bucket": 2,
+    "forecast_market_volume": 900,
+    "target_quantity": 600,
+    "target_cumulative_quantity": 9200,
+    "includes_catch_up_quantity": 0
+   },
+   {
+    "future_bucket": 3,
+    "forecast_market_volume": 900,
+    "target_quantity": 600,
+    "target_cumulative_quantity": 9800,
+    "includes_catch_up_quantity": 0
+   },
+   {
+    "future_bucket": 4,
+    "forecast_market_volume": 950,
+    "target_quantity": 600,
+    "target_cumulative_quantity": 10400,
+    "includes_catch_up_quantity": 0
+   },
+   {
+    "future_bucket": 5,
+    "forecast_market_volume": 1000,
+    "target_quantity": 600,
+    "target_cumulative_quantity": 11000,
+    "includes_catch_up_quantity": 0
+   },
+   {
+    "future_bucket": 6,
+    "forecast_market_volume": 1050,
+    "target_quantity": 600,
+    "target_cumulative_quantity": 11600,
+    "includes_catch_up_quantity": 0
+   },
+   {
+    "future_bucket": 7,
+    "forecast_market_volume": 1100,
+    "target_quantity": 700,
+    "target_cumulative_quantity": 12300,
+    "includes_catch_up_quantity": 0
+   },
+   {
+    "future_bucket": 8,
+    "forecast_market_volume": 1200,
+    "target_quantity": 700,
+    "target_cumulative_quantity": 13000,
+    "includes_catch_up_quantity": 0
+   },
+   {
+    "future_bucket": 9,
+    "forecast_market_volume": 1300,
+    "target_quantity": 800,
+    "target_cumulative_quantity": 13800,
+    "includes_catch_up_quantity": 0
+   },
+   {
+    "future_bucket": 10,
+    "forecast_market_volume": 1450,
+    "target_quantity": 900,
+    "target_cumulative_quantity": 14700,
+    "includes_catch_up_quantity": 0
+   },
+   {
+    "future_bucket": 11,
+    "forecast_market_volume": 1650,
+    "target_quantity": 1000,
+    "target_cumulative_quantity": 15700,
+    "includes_catch_up_quantity": 0
+   },
+   {
+    "future_bucket": 12,
+    "forecast_market_volume": 1900,
+    "target_quantity": 1200,
+    "target_cumulative_quantity": 16900,
+    "includes_catch_up_quantity": 0
+   },
+   {
+    "future_bucket": 13,
+    "forecast_market_volume": 2200,
+    "target_quantity": 1300,
+    "target_cumulative_quantity": 18200,
+    "includes_catch_up_quantity": 0
+   },
+   {
+    "future_bucket": 14,
+    "forecast_market_volume": 2600,
+    "target_quantity": 1600,
+    "target_cumulative_quantity": 19800,
+    "includes_catch_up_quantity": 0
+   },
+   {
+    "future_bucket": 15,
+    "forecast_market_volume": 3100,
+    "target_quantity": 1900,
+    "target_cumulative_quantity": 21700,
+    "includes_catch_up_quantity": 0
+   },
+   {
+    "future_bucket": 16,
+    "forecast_market_volume": 3800,
+    "target_quantity": 2300,
+    "target_cumulative_quantity": 24000,
+    "includes_catch_up_quantity": 0
+   }
+  ],
+  "state": "adaptive-schedule"
+ }
+}

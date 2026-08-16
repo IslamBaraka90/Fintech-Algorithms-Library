@@ -1,0 +1,24 @@
+{
+ "input": {
+  "side": "buy",
+  "limit_price_atoms": 1020000,
+  "lower_band_atoms": 950000,
+  "upper_band_atoms": 1050000,
+  "band_as_of_ns": 1200000000,
+  "inclusive": true
+ },
+ "expected": {
+  "side": "buy",
+  "limit_price_atoms": 1020000,
+  "lower_band_atoms": 950000,
+  "upper_band_atoms": 1050000,
+  "band_as_of_ns": 1200000000,
+  "inclusive": true,
+  "valid": true,
+  "distance_from_lower_atoms": 70000,
+  "distance_to_upper_atoms": 30000,
+  "violation_atoms": 0,
+  "reason": "inside-band",
+  "state": "accepted"
+ }
+}

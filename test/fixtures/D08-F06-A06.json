@@ -1,0 +1,37 @@
+{
+ "input": {
+  "source_confluence": 0.8,
+  "zone_age_bars": 10,
+  "half_life_bars": 20,
+  "break_count": 0,
+  "rejection_target_atr": 1,
+  "touches": [
+   {
+    "age_bars": 2,
+    "rejection_atr": 0.8
+   },
+   {
+    "age_bars": 8,
+    "rejection_atr": 1.4
+   },
+   {
+    "age_bars": 20,
+    "rejection_atr": 0.4
+   }
+  ]
+ },
+ "expected": {
+  "state": "calculated",
+  "score": 81.604861183733,
+  "grade": "strong",
+  "components": {
+   "source": 24,
+   "touch": 31.086403443236,
+   "rejection": 19.447389928631,
+   "durability": 7.071067811865,
+   "break_penalty": 0
+  },
+  "decayed_touch_evidence": 2.190891274792,
+  "touch_count": 3
+ }
+}

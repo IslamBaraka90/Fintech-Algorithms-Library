@@ -1,0 +1,65 @@
+{
+ "input": {
+  "disconnected_session_id": "S-1",
+  "disconnect_type": "hard",
+  "trigger_disconnect_types": [
+   "hard",
+   "graceful",
+   "server"
+  ],
+  "policy": "cancel_continuous",
+  "orders": [
+   {
+    "order_id": "O-1",
+    "session_id": "S-1",
+    "book": "continuous",
+    "time_in_force": "DAY",
+    "quantity": 100
+   },
+   {
+    "order_id": "O-2",
+    "session_id": "S-1",
+    "book": "continuous",
+    "time_in_force": "GTC",
+    "quantity": 200
+   },
+   {
+    "order_id": "O-3",
+    "session_id": "S-1",
+    "book": "auction",
+    "time_in_force": "DAY",
+    "quantity": 300
+   },
+   {
+    "order_id": "O-4",
+    "session_id": "S-2",
+    "book": "continuous",
+    "time_in_force": "DAY",
+    "quantity": 400
+   }
+  ]
+ },
+ "expected": {
+  "disconnected_session_id": "S-1",
+  "disconnect_type": "hard",
+  "triggered": true,
+  "policy": "cancel_continuous",
+  "canceled_order_ids": [
+   "O-1",
+   "O-2"
+  ],
+  "retained_orders": [
+   {
+    "order_id": "O-3",
+    "reason": "auction-order-retained"
+   },
+   {
+    "order_id": "O-4",
+    "reason": "different-session"
+   }
+  ],
+  "canceled_count": 2,
+  "retained_count": 2,
+  "state": "purge-applied"
+ }
+}

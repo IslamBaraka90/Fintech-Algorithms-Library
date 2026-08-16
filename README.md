@@ -158,11 +158,20 @@ and `require(esm)` is unflagged from 22.12 onward.
 ## Verified against published worked examples
 
 <!-- coverage:start -->
-**175 of 351 topics** are verified against the catalog's own published numbers
-(134 via `{ input, expected }`, 11 via row fixtures, 30 via bar/checkpoint fixtures).
-The remaining 176 are proven to load and expose a callable entry point, but their
-arithmetic is not asserted here — those topics ship no machine-readable expected
-values in the catalog.
+**277 of 351 topics** have their arithmetic replayed and asserted on every build
+(134 via `{ input, expected }`, 102 via a separate input and expected-output
+pair, 11 via row fixtures, 30 via bar/checkpoint fixtures).
+
+Worth being precise about what that proves. The expected values come from the
+catalog, computed by a Python implementation written alongside the TypeScript
+rather than derived from it — so this is a cross-language parity check, not an
+independent third-party figure. It catches transcription and generation errors,
+which is the failure mode that has actually occurred here. It would not catch
+both implementations sharing a misreading of the source material.
+
+The remaining 74 load and expose a callable entry point, but ship no machine-readable
+expected values, so nothing asserts their numbers. That gap is stated per topic
+rather than averaged away.
 <!-- coverage:end -->
 
 Every algorithm accompanies a published article that walks through a worked

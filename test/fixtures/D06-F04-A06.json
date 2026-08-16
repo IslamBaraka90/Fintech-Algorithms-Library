@@ -1,0 +1,115 @@
+{
+ "input": {
+  "candles": [
+   {
+    "open": 103,
+    "high": 103.3,
+    "low": 100.7,
+    "close": 101
+   },
+   {
+    "open": 100.5,
+    "high": 103.8,
+    "low": 100.3,
+    "close": 103.5
+   },
+   {
+    "open": 103,
+    "high": 104.7,
+    "low": 102.8,
+    "close": 104.5
+   }
+  ],
+  "trend_context": "downtrend",
+  "prior_bodies": [
+   2,
+   2.1,
+   1.9,
+   2.2,
+   2,
+   2.1,
+   1.8,
+   2,
+   2.2,
+   1.9
+  ],
+  "prior_ranges": [
+   3,
+   3.2,
+   2.9,
+   3.1,
+   3,
+   3.3,
+   2.8,
+   3,
+   3.2,
+   2.9
+  ],
+  "tick_size": 0.1,
+  "penetration_fraction": 0.5
+ },
+ "expected": {
+  "topic_id": "D06-F04-A06",
+  "pattern": "Three Outside Up/Down",
+  "matched": true,
+  "state": "matched",
+  "direction": "bullish",
+  "trend_context": "downtrend",
+  "required_context": "downtrend",
+  "history_count": 10,
+  "body_scale": 2,
+  "range_scale": 3,
+  "geometry_score": 1,
+  "checks": {
+   "opposite_first_pair": true,
+   "second_body_engulfs": true,
+   "third_confirms_beyond_second_close": true
+  },
+  "failed_checks": [],
+  "reason": "all declared checks pass",
+  "thresholds": {
+   "confirmation_step": 0.1
+  },
+  "candles": [
+   {
+    "open": 103,
+    "high": 103.3,
+    "low": 100.7,
+    "close": 101,
+    "body_high": 103,
+    "body_low": 101,
+    "body": 2,
+    "upper_shadow": 0.3,
+    "lower_shadow": 0.3,
+    "range": 2.6,
+    "direction": "bearish"
+   },
+   {
+    "open": 100.5,
+    "high": 103.8,
+    "low": 100.3,
+    "close": 103.5,
+    "body_high": 103.5,
+    "body_low": 100.5,
+    "body": 3,
+    "upper_shadow": 0.3,
+    "lower_shadow": 0.2,
+    "range": 3.5,
+    "direction": "bullish"
+   },
+   {
+    "open": 103,
+    "high": 104.7,
+    "low": 102.8,
+    "close": 104.5,
+    "body_high": 104.5,
+    "body_low": 103,
+    "body": 1.5,
+    "upper_shadow": 0.2,
+    "lower_shadow": 0.2,
+    "range": 1.9,
+    "direction": "bullish"
+   }
+  ]
+ }
+}

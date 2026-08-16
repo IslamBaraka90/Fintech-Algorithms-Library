@@ -1,0 +1,44 @@
+{
+ "input": {
+  "reference_price": 100,
+  "dynamic_reference": 100,
+  "dynamic_band_pct": 0.02,
+  "static_reference": 98,
+  "static_band_pct": 0.05,
+  "potential_continuous_price": 103,
+  "indicative_auction_price": 101.5,
+  "extended_band_multiplier": 2,
+  "executable_quantity": 500
+ },
+ "expected": {
+  "model": "dual-corridor-volatility-auction-reopening",
+  "reference_price": 100,
+  "potential_continuous_price": 103,
+  "dynamic_corridor": [
+   98,
+   102
+  ],
+  "static_corridor": [
+   93.1,
+   102.9
+  ],
+  "dynamic_breach": true,
+  "static_breach": true,
+  "triggered": true,
+  "indicative_auction_price": 101.5,
+  "executable_quantity": 500,
+  "expanded_dynamic_corridor": [
+   96,
+   104
+  ],
+  "expanded_static_corridor": [
+   88.2,
+   107.8
+  ],
+  "inside_reopening_corridor": true,
+  "reopened": true,
+  "reopen_price": 101.5,
+  "reason": "indicative auction price is executable and inside both expanded corridors",
+  "state": "reopened"
+ }
+}

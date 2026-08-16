@@ -1,0 +1,89 @@
+{
+ "input": {
+  "reference_price": 100,
+  "tick_size": 1,
+  "orders": [
+   {
+    "order_id": "B-101",
+    "side": "buy",
+    "order_type": "limit",
+    "price": 101,
+    "quantity": 300,
+    "arrival_sequence": 10
+   },
+   {
+    "order_id": "B-100",
+    "side": "buy",
+    "order_type": "limit",
+    "price": 100,
+    "quantity": 500,
+    "arrival_sequence": 20
+   },
+   {
+    "order_id": "S-099",
+    "side": "sell",
+    "order_type": "limit",
+    "price": 99,
+    "quantity": 200,
+    "arrival_sequence": 30
+   },
+   {
+    "order_id": "S-100",
+    "side": "sell",
+    "order_type": "limit",
+    "price": 100,
+    "quantity": 400,
+    "arrival_sequence": 40
+   },
+   {
+    "order_id": "S-101",
+    "side": "sell",
+    "order_type": "limit",
+    "price": 101,
+    "quantity": 500,
+    "arrival_sequence": 50
+   }
+  ]
+ },
+ "expected": {
+  "model": "maximum-executable-volume-candidate-set",
+  "reference_price": 100,
+  "tick_size": 1,
+  "order_count": 5,
+  "maximum_executable_quantity": 600,
+  "maximum_volume_prices": [
+   100
+  ],
+  "unique_price": 100,
+  "candidate_evaluations": [
+   {
+    "price": 99,
+    "buy_quantity": 800,
+    "sell_quantity": 200,
+    "executable_quantity": 200,
+    "imbalance_quantity": 600,
+    "absolute_imbalance": 600,
+    "imbalance_side": "buy"
+   },
+   {
+    "price": 100,
+    "buy_quantity": 800,
+    "sell_quantity": 600,
+    "executable_quantity": 600,
+    "imbalance_quantity": 200,
+    "absolute_imbalance": 200,
+    "imbalance_side": "buy"
+   },
+   {
+    "price": 101,
+    "buy_quantity": 300,
+    "sell_quantity": 1100,
+    "executable_quantity": 300,
+    "imbalance_quantity": -800,
+    "absolute_imbalance": 800,
+    "imbalance_side": "sell"
+   }
+  ],
+  "state": "unique-maximum"
+ }
+}

@@ -1,0 +1,82 @@
+{
+ "input": {
+  "fusion_tolerance": 0.25,
+  "minimum_sources": 2,
+  "levels": [
+   {
+    "level_id": "PIV-1",
+    "source": "pivot",
+    "price": 99.8,
+    "weight": 0.9
+   },
+   {
+    "level_id": "FIB-1",
+    "source": "fibonacci",
+    "price": 100.1,
+    "weight": 0.7
+   },
+   {
+    "level_id": "RND-1",
+    "source": "round-number",
+    "price": 100,
+    "weight": 0.8
+   },
+   {
+    "level_id": "VOL-1",
+    "source": "volume-profile",
+    "price": 100.2,
+    "weight": 1
+   },
+   {
+    "level_id": "PIV-2",
+    "source": "pivot",
+    "price": 105,
+    "weight": 0.6
+   }
+  ]
+ },
+ "expected": {
+  "state": "calculated",
+  "zones": [
+   {
+    "zone_id": "Z01",
+    "lower": 99.55,
+    "upper": 100.45,
+    "center": 100.026470588235,
+    "source_count": 4,
+    "sources": [
+     "fibonacci",
+     "pivot",
+     "round-number",
+     "volume-profile"
+    ],
+    "weight_sum": 3.4,
+    "member_ids": [
+     "PIV-1",
+     "RND-1",
+     "FIB-1",
+     "VOL-1"
+    ]
+   }
+  ],
+  "rejected_clusters": [
+   {
+    "zone_id": "Z02",
+    "lower": 104.75,
+    "upper": 105.25,
+    "center": 105,
+    "source_count": 1,
+    "sources": [
+     "pivot"
+    ],
+    "weight_sum": 0.6,
+    "member_ids": [
+     "PIV-2"
+    ],
+    "reason": "insufficient-distinct-sources"
+   }
+  ],
+  "fusion_tolerance": 0.25,
+  "minimum_sources": 2
+ }
+}

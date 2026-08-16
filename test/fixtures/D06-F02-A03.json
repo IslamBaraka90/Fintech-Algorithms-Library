@@ -1,0 +1,59 @@
+{
+ "input": {
+  "current": {
+   "open": 100,
+   "high": 103.2,
+   "low": 100,
+   "close": 100.2
+  },
+  "prior_bodies": [
+   2,
+   2.2,
+   1.8,
+   2.1,
+   1.9,
+   2,
+   2.3,
+   1.7,
+   2.1,
+   1.9
+  ],
+  "prior_ranges": [
+   5,
+   5,
+   5,
+   5,
+   5,
+   5,
+   5,
+   5,
+   5,
+   5
+  ],
+  "trend_context": "sideways",
+  "tick_size": 0.1
+ },
+ "expected": {
+  "topic_id": "D06-F02-A03",
+  "pattern": "Gravestone Doji",
+  "matched": true,
+  "state": "matched",
+  "direction": "bullish",
+  "trend_context": "sideways",
+  "required_context": null,
+  "body": 0.2,
+  "upper_shadow": 3,
+  "lower_shadow": 0,
+  "range": 3.2,
+  "body_scale": 2,
+  "range_scale": 5,
+  "history_count": 10,
+  "geometry_score": 0.6,
+  "checks": {
+   "doji_body": true,
+   "long_upper_shadow": true,
+   "short_lower_shadow": true
+  },
+  "failed_checks": []
+ }
+}

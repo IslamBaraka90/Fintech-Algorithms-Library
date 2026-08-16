@@ -43,7 +43,7 @@
     "topics": 471,
     "domains": 16,
     "families": 70,
-    "verified": 295,
+    "verified": 397,
     "withExample": 471,
     "withDiagram": 471,
     "withApiContract": 471
@@ -28191,8 +28191,8 @@
         "outputShape": "object with 17 fields: provider, dataset, instrument_id, price_field, basis_id, baseline_observed_at, candidate_observed_at, tolerance_bps, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -28431,8 +28431,8 @@
         "outputShape": "object with 8 fields: schema_version, event_count, trade_count, quote_count, venue_count, max_latency_ns, events, state"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -28710,8 +28710,8 @@
         "outputShape": "object with 12 fields: quantity_semantics, snapshot_sequence, last_sequence, applied_sequences, applied_count, discarded_sequences, discarded_count, bids, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -29009,8 +29009,8 @@
         "outputShape": "object with 9 fields: snapshot_sequence, last_sequence, order_count, event_count, action_counts, orders, bids, asks, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -29275,8 +29275,8 @@
         "outputShape": "object with 11 fields: start_sequence, applied_sequences, next_expected, missing_sequences, buffered_sequences, duplicate_sequences, recovery_requests, recovery_request_count, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -29528,8 +29528,8 @@
         "outputShape": "object with 13 fields: order_count, full_bid_level_count, full_ask_level_count, depth_limit, bids, asks, visible_bid_quantity, visible_ask_quantity, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -29866,8 +29866,8 @@
         "outputShape": "object with 11 fields: snapshot_sequence, checkpoint_sequence, compared_level_count, difference_count, mismatch_counts, replayed_incremental_count, pending_after_checkpoint_count, differences, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -30266,8 +30266,8 @@
         "outputShape": "object with 13 fields: as_of_receive_time_ns, max_staleness_ns, eligible_venue_count, excluded, best_bid_ticks, best_bid_quantity, best_bid_venues, best_ask_ticks, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -35437,8 +35437,8 @@
         "outputShape": "object with 10 fields: event_reference, security_id, event_type, as_of, state, selected, applicable, conflicts, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -50311,8 +50311,8 @@
         "outputShape": "object with 15 fields: state, body, upper_shadow, lower_shadow, range, tick_size, effective_body, upper_to_body, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -50480,8 +50480,8 @@
         "outputShape": "object with 14 fields: state, gap_direction, gap_type, gap_distance, threshold_distance, open_gap_up, open_gap_down, body_gap_up, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -50652,8 +50652,8 @@
         "outputShape": "object with 8 fields: state, trend_context, history_count, net_move, path_move, efficiency, range_scale, normalized_move"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -50842,8 +50842,8 @@
         "outputShape": "object with 17 fields: topic_id, pattern, matched, state, direction, trend_context, required_context, body, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -51032,8 +51032,8 @@
         "outputShape": "object with 17 fields: topic_id, pattern, matched, state, direction, trend_context, required_context, body, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -51222,8 +51222,8 @@
         "outputShape": "object with 17 fields: topic_id, pattern, matched, state, direction, trend_context, required_context, body, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -51412,8 +51412,8 @@
         "outputShape": "object with 17 fields: topic_id, pattern, matched, state, direction, trend_context, required_context, body, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -51602,8 +51602,8 @@
         "outputShape": "object with 17 fields: topic_id, pattern, matched, state, direction, trend_context, required_context, body, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -51792,8 +51792,8 @@
         "outputShape": "object with 17 fields: topic_id, pattern, matched, state, direction, trend_context, required_context, body, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -51982,8 +51982,8 @@
         "outputShape": "object with 17 fields: topic_id, pattern, matched, state, direction, trend_context, required_context, body, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -52172,8 +52172,8 @@
         "outputShape": "object with 17 fields: topic_id, pattern, matched, state, direction, trend_context, required_context, body, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -52362,8 +52362,8 @@
         "outputShape": "object with 17 fields: topic_id, pattern, matched, state, direction, trend_context, required_context, body, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -52559,8 +52559,8 @@
         "outputShape": "object with 31 fields: topic_id, pattern, matched, state, direction, trend_context, required_context, body, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -52756,8 +52756,8 @@
         "outputShape": "object with 31 fields: topic_id, pattern, matched, state, direction, trend_context, required_context, body, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -52953,8 +52953,8 @@
         "outputShape": "object with 31 fields: topic_id, pattern, matched, state, direction, trend_context, required_context, body, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -53150,8 +53150,8 @@
         "outputShape": "object with 31 fields: topic_id, pattern, matched, state, direction, trend_context, required_context, body, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -53347,8 +53347,8 @@
         "outputShape": "object with 31 fields: topic_id, pattern, matched, state, direction, trend_context, required_context, body, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -53544,8 +53544,8 @@
         "outputShape": "object with 31 fields: topic_id, pattern, matched, state, direction, trend_context, required_context, body, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -53741,8 +53741,8 @@
         "outputShape": "object with 31 fields: topic_id, pattern, matched, state, direction, trend_context, required_context, body, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -53938,8 +53938,8 @@
         "outputShape": "object with 31 fields: topic_id, pattern, matched, state, direction, trend_context, required_context, body, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -54137,8 +54137,8 @@
         "outputShape": "object with 16 fields: topic_id, pattern, matched, state, direction, trend_context, required_context, history_count, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -54336,8 +54336,8 @@
         "outputShape": "object with 16 fields: topic_id, pattern, matched, state, direction, trend_context, required_context, history_count, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -54535,8 +54535,8 @@
         "outputShape": "object with 16 fields: topic_id, pattern, matched, state, direction, trend_context, required_context, history_count, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -54734,8 +54734,8 @@
         "outputShape": "object with 16 fields: topic_id, pattern, matched, state, direction, trend_context, required_context, history_count, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -54932,8 +54932,8 @@
         "outputShape": "object with 16 fields: topic_id, pattern, matched, state, direction, trend_context, required_context, history_count, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -55128,8 +55128,8 @@
         "outputShape": "object with 16 fields: topic_id, pattern, matched, state, direction, trend_context, required_context, history_count, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -55326,8 +55326,8 @@
         "outputShape": "object with 16 fields: topic_id, pattern, matched, state, direction, trend_context, required_context, history_count, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -71610,8 +71610,8 @@
         "outputShape": "object with 5 fields: topic_id, state, alignments, alignment_count, reason"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -72044,8 +72044,8 @@
         "outputShape": "object with 4 fields: topic_id, state, events, event_count"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -72478,8 +72478,8 @@
         "outputShape": "object with 4 fields: topic_id, state, events, event_count"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -72904,8 +72904,8 @@
         "outputShape": "object with 4 fields: topic_id, state, adapters, adapter_count"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -73291,8 +73291,8 @@
         "outputShape": "object with 4 fields: topic_id, state, event, score"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -73691,8 +73691,8 @@
         "outputShape": "object with 4 fields: topic_id, state, event, lifecycle"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -74061,8 +74061,8 @@
         "outputShape": "object with 4 fields: topic_id, state, groups, group_count"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -74456,8 +74456,8 @@
         "outputShape": "object with 4 fields: topic_id, state, ranking, eligible_count"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -74690,8 +74690,8 @@
         "outputShape": "object with 8 fields: state, tick_size, bin_size_ticks, bin_width, total_volume, trade_count, eligible_trade_count, rows"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -74883,8 +74883,8 @@
         "outputShape": "object with 13 fields: state, poc_index, poc_price, poc_volume, value_area_low, value_area_high, value_area_volume, value_area_share, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -75065,8 +75065,8 @@
         "outputShape": "object with 6 fields: state, direction, leg_size, retracement_levels, extension_levels, rounding"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -75230,8 +75230,8 @@
         "outputShape": "object with 5 fields: state, base_unit, level_count, closest_level, levels"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -75415,8 +75415,8 @@
         "outputShape": "object with 5 fields: state, zones, rejected_clusters, fusion_tolerance, minimum_sources"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -75579,8 +75579,8 @@
         "outputShape": "object with 6 fields: state, score, grade, components, decayed_touch_evidence, touch_count"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -75740,8 +75740,8 @@
         "outputShape": "object with 6 fields: state, final_role, confirmed, retest_seen, transitions, observations"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -75921,8 +75921,8 @@
         "outputShape": "object with 7 fields: state, confirmed, direction, breakout_index, retest_index, confirmation_index, transitions"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -76121,8 +76121,8 @@
         "outputShape": "object with 4 fields: state, as_of, eligible_count, ranked"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -83840,8 +83840,8 @@
         "outputShape": "object with 8 fields: model, bid, ask, midpoint, quoted_spread, quoted_spread_relative, quoted_spread_bps, state"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -84048,8 +84048,8 @@
         "outputShape": "object with 17 fields: model, bid, ask, midpoint, quoted_spread, quoted_spread_relative, quoted_spread_bps, state, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -84300,8 +84300,8 @@
         "outputShape": "object with 18 fields: model, side, direction, trade_price, midpoint_at_trade, midpoint_after, bid_after, ask_after, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -84460,8 +84460,8 @@
         "outputShape": "object with 11 fields: model, observation_count, change_count, covariance_pair_count, lag1_price_change_covariance, covariance_tolerance, mean_price, spread_estimate, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -84655,8 +84655,8 @@
         "outputShape": "object with 9 fields: model, observation_count, return_count, returns, daily_illiquidity, illiquidity_per_currency_unit, scale, illiquidity_per_scaled_volume, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -84850,8 +84850,8 @@
         "outputShape": "object with 9 fields: model, beta, gamma, alpha_raw, alpha_used, spread_estimate_relative, spread_estimate_bps, clip_negative, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -86506,8 +86506,8 @@
         "outputShape": "object with 14 fields: model, level_count, bid_level_count, ask_level_count, midpoint, bid_cumulative_depth, ask_cumulative_depth, bid_local_slopes, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -86696,8 +86696,8 @@
         "outputShape": "object with 13 fields: model, level_count, bid_level_count, ask_level_count, top_midpoint, depth_weighted_bid, depth_weighted_ask, depth_weighted_midprice, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -86874,8 +86874,8 @@
         "outputShape": "object with 13 fields: model, bid, ask, bid_size, ask_size, midpoint, spread, queue_imbalance, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -87063,8 +87063,8 @@
         "outputShape": "object with 11 fields: model, observation_count, initial_displacement_bps, recovery_rate_per_second, half_life_seconds, forecast_seconds, forecast_displacement_bps, recovered_fraction, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -87290,8 +87290,8 @@
         "outputShape": "object with 15 fields: model, event_count, baseline_intensity, excitation_jump, decay_rate, branching_ratio, stationary, expected_cluster_multiplier, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -87530,8 +87530,8 @@
         "outputShape": "object with 10 fields: model, best_bid, best_ask, tick_size, spread_ticks, bid_levels, ask_levels, total_bid_depth, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -87742,8 +87742,8 @@
         "outputShape": "object with 9 fields: model, n, bid_depth, ask_depth, total_depth, imbalance, threshold, state, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -88002,8 +88002,8 @@
         "outputShape": "object with 8 fields: model, tick_size, max_distance_ticks, bid_profile, ask_profile, included_bid_depth, included_ask_depth, state"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -88253,8 +88253,8 @@
         "outputShape": "object with 15 fields: model, side, requested_quantity, filled_quantity, unfilled_quantity, full_fill, fills, fill_notional, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -88532,8 +88532,8 @@
         "outputShape": "object with 20 fields: model, side, requested_quantity, filled_quantity, unfilled_quantity, full_fill, fills, fill_notional, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -88741,8 +88741,8 @@
         "outputShape": "object with 13 fields: model, level_count, total_depth, median_level_quantity, hhi_fraction, effective_level_count, largest_level_index, largest_level_share, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -88918,8 +88918,8 @@
         "outputShape": "object with 10 fields: model, snapshot_count, start_quantity, end_quantity, gross_depletion, gross_replenishment, net_depth_change, replenishment_to_depletion, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -89240,8 +89240,8 @@
         "outputShape": "object with 9 fields: model, snapshot_interval_seconds, time_bin_seconds, max_distance_ticks, time_bin_count, book_coordinates, cells, peak_cell, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -89448,8 +89448,8 @@
         "outputShape": "object with 10 fields: model, incoming_order_id, requested_quantity, filled_quantity, residual_quantity, average_fill_price, fill_count, fills, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -89664,8 +89664,8 @@
         "outputShape": "object with 9 fields: model, price, lot_size, incoming_quantity, executable_quantity, allocated_quantity, unfilled_quantity, allocations, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -89884,8 +89884,8 @@
         "outputShape": "object with 9 fields: model, price, lot_size, incoming_quantity, allocated_quantity, unfilled_quantity, ranked_order_ids, allocations, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -89948,10 +89948,13 @@
       },
       "import": {
         "subpath": "fintech-algorithms/matching-engines-and-venue-logic/continuous-matching/hybrid-pro-rata-time-matching",
-        "entry": "calculate",
+        "entry": "hybridProRataTime",
         "params": [
-          "topicId",
-          "inputs"
+          "incomingRaw",
+          "priceRaw",
+          "lotRaw",
+          "fractionRaw",
+          "restingRaw"
         ],
         "exports": [
           "priceTimePriority",
@@ -89961,51 +89964,81 @@
           "calculate"
         ],
         "archetype": "record-transform",
-        "signature": "calculate(topicId, inputs)"
+        "signature": "hybridProRataTime(incomingRaw, priceRaw, lotRaw, fractionRaw, restingRaw)"
       },
       "api": {
         "summary": "Splits an incoming order between a time-priority portion and a pro-rata portion — the compromise most futures venues actually run, because pure pro-rata invites size inflation and pure price-time invites a latency race.",
         "params": [
           {
-            "name": "topicId",
-            "type": "string",
+            "name": "incomingRaw",
+            "type": "number",
             "required": true,
-            "description": "Topic identifier selecting the matching variant.",
+            "description": "Quantity of the aggressing order. Only the part the resting book can fill is allocated; the rest comes back as `unfilled_quantity`.",
             "constraints": null,
             "nulls": null,
             "default": null
           },
           {
-            "name": "inputs",
-            "type": "MatchingInput",
+            "name": "priceRaw",
+            "type": "number",
             "required": true,
-            "description": "The aggressing order, the resting book, and the split between the time-priority and pro-rata portions.",
+            "description": "The single price this match happens at. Echoed back as `price`.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "lotRaw",
+            "type": "number",
+            "required": true,
+            "description": "Lot size. Allocation is computed in whole lots, so both portions are shared out in units of this rather than in raw quantity.",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "fractionRaw",
+            "type": "number",
+            "required": true,
+            "description": "Share of the executable quantity allocated by arrival order before the remainder goes pro rata. Zero is pure pro-rata; one is pure time priority.",
+            "constraints": {
+              "min": 0,
+              "max": 1
+            },
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "restingRaw",
+            "type": "RestingOrder[]",
+            "required": true,
+            "description": "The resting book at this price, each order carrying `order_id`, `remaining_quantity` and `arrival_sequence`.",
             "constraints": null,
             "nulls": null,
             "default": null
           }
         ],
         "returns": {
-          "type": "{ fills, allocations, residual, split, … }",
-          "description": "Fills from both portions with the split applied."
+          "type": "{ model, price, lot_size, fifo_fraction, incoming_quantity, executable_quantity, fifo_target_quantity, pro_rata_target_quantity, allocated_quantity, unfilled_quantity, allocations, state }",
+          "description": "Both target quantities, and `allocations` ordered by arrival with each order's fill split into `fifo_quantity` and `pro_rata_quantity`. `state` is `fully-allocated` or `partially-allocated`."
         },
         "warmup": null,
         "errors": [
           {
-            "when": "the split fractions do not sum to 1",
-            "behaviour": "throws"
+            "when": "`fractionRaw` is below zero or above one",
+            "behaviour": "throws RangeError"
           }
         ],
         "complexity": {
           "time": "O(resting log resting)",
-          "space": "O(fills)"
+          "space": "O(resting)"
         }
       },
       "example": {
         "origin": "executed",
         "verified": false,
         "source": "executed against the catalog's own test input",
-        "call": "calculate(\"D12-F01-A04\", {\"incoming_quantity\":600,\"price\":100,\"lot_size\":1,\"fifo_fraction\":0.4,\"resting_orders\":[{\"order_id\":\"H-1\",\"side\":\"sell\",\"price\":100,\"remaining_quantity\":500,\"arrival_sequence\":10},{\"order_id\":\"H-2\",\"side\":\"sell\",\"price\":100,\"remaining_quantity\":300,\"arrival_sequence\":20},{\"order_id\":\"H-3\",\"side\":\"sell\",\"price\":100,\"remaining_quantity\":200,\"arrival_sequence\":30}]})",
+        "call": "hybridProRataTime(\"D12-F01-A04\", {\"incoming_quantity\":600,\"price\":100,\"lot_size\":1,\"fifo_fraction\":0.4,\"resting_orders\":[{\"order_id\":\"H-1\",\"side\":\"sell\",\"price\":100,\"remaining_quantity\":500,\"arrival_sequence\":10},{\"order_id\":\"H-2\",\"side\":\"sell\",\"price\":100,\"remaining_quantity\":300,\"arrival_sequence\":20},{\"order_id\":\"H-3\",\"side\":\"sell\",\"price\":100,\"remaining_quantity\":200,\"arrival_sequence\":30}]})",
         "args": [
           {
             "value": "D12-F01-A04",
@@ -90090,8 +90123,8 @@
         "outputShape": "object with 12 fields: model, price, lot_size, fifo_fraction, incoming_quantity, executable_quantity, fifo_target_quantity, pro_rata_target_quantity, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -90314,8 +90347,8 @@
         "outputShape": "object with 9 fields: model, reference_price, tick_size, order_count, maximum_executable_quantity, maximum_volume_prices, unique_price, candidate_evaluations, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -90549,8 +90582,8 @@
         "outputShape": "object with 11 fields: model, reference_price, tick_size, order_count, maximum_executable_quantity, minimum_absolute_imbalance, volume_winner_prices, minimum_imbalance_prices, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -90818,8 +90851,8 @@
         "outputShape": "object with 15 fields: model, session, reference_price, collar_low, collar_high, eligible_order_count, selected_price, executed_quantity, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -91093,8 +91126,8 @@
         "outputShape": "object with 15 fields: model, session, reference_price, collar_low, collar_high, eligible_order_count, selected_price, executed_quantity, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -91270,8 +91303,8 @@
         "outputShape": "object with 17 fields: model, reference_price, potential_continuous_price, dynamic_corridor, static_corridor, dynamic_breach, static_breach, triggered, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -91465,8 +91498,8 @@
         "outputShape": "object with 12 fields: effective_policy_id, price_atoms, tick_size_atoms, price_scale, valid, remainder_atoms, lower_valid_price_atoms, upper_valid_price_atoms, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -91670,8 +91703,8 @@
         "outputShape": "object with 12 fields: side, limit_price_atoms, lower_band_atoms, upper_band_atoms, band_as_of_ns, inclusive, valid, distance_from_lower_atoms, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -91891,8 +91924,8 @@
         "outputShape": "object with 11 fields: mode, incoming_order_id, original_incoming_quantity, external_executed_quantity, prevented_self_quantity, canceled_incoming_quantity, canceled_resting_quantity, remaining_incoming_quantity, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -92118,8 +92151,8 @@
         "outputShape": "object with 9 fields: disconnected_session_id, disconnect_type, triggered, policy, canceled_order_ids, retained_orders, canceled_count, retained_count, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -92367,8 +92400,8 @@
         "outputShape": "object with 11 fields: side, limit_price_atoms, reference_price_atoms, quantity, order_notional_atoms, aggressive_deviation_bps, checks, violations, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -92561,8 +92594,8 @@
         "outputShape": "object with 12 fields: reference_close_atoms, current_index_atoms, decline_bps, level_thresholds_bps, previously_triggered_level, reached_level, newly_triggered_level, newly_triggered, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -92766,8 +92799,8 @@
         "outputShape": "object with 11 fields: model, order_id, order_quantity, cumulative_quantity, leaves_quantity, average_fill_price, execution_count, status, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -92931,8 +92964,8 @@
         "outputShape": "object with 14 fields: model, original_order_id, replacement_order_id, original_price, replacement_price, original_remaining_quantity, replacement_remaining_quantity, same_price, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -93125,8 +93158,8 @@
         "outputShape": "object with 10 fields: model, order_quantity, cumulative_quantity, leaves_quantity, fill_notional, average_fill_price, execution_count, fill_states, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -93309,8 +93342,8 @@
         "outputShape": "object with 12 fields: model, target_order_id, side, price, ahead_order_count, ahead_volume, displayed_queue_rank, behind_order_count, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -93541,8 +93574,8 @@
         "outputShape": "object with 12 fields: model, total_quantity, display_size, executed_quantity, displayed_remaining, reserve_remaining, total_remaining, replenishment_count, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -93769,8 +93802,8 @@
         "outputShape": "object with 13 fields: model, incoming_order_id, incoming_side, requested_quantity, filled_quantity, residual_quantity, fill_notional, average_fill_price, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -93987,8 +94020,8 @@
         "outputShape": "object with 7 fields: total_quantity, lot_size, bucket_count, scheduled_quantity, remaining_quantity, schedule, state"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -94195,8 +94228,8 @@
         "outputShape": "object with 9 fields: profile_id, total_quantity, lot_size, bucket_count, historical_volume_total, scheduled_quantity, remaining_quantity, schedule, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -94456,8 +94489,8 @@
         "outputShape": "object with 14 fields: forecast_version, total_quantity, executed_quantity, remaining_quantity_before_schedule, realized_market_volume, remaining_forecast_market_volume, projected_market_volume, target_completed_quantity, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -94699,8 +94732,8 @@
         "outputShape": "object with 10 fields: total_quantity, participation_rate_bps, lot_size, max_child_quantity, observed_market_volume, released_quantity, remaining_quantity, achieved_participation_bps, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -94865,8 +94898,8 @@
         "outputShape": "object with 13 fields: total_quantity, interval_count, lot_size, temporary_impact_weight, inventory_risk_weight, kappa, scheduled_quantity, remaining_quantity, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -95044,8 +95077,8 @@
         "outputShape": "object with 14 fields: side, decision_price_atoms, current_price_atoms, signed_move_bps, adverse_move_bps, remaining_quantity, selected_child_quantity, post_child_quantity, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -95201,8 +95234,8 @@
         "outputShape": "object with 12 fields: side, arrival_price_atoms, current_price_atoms, signed_move_bps, tolerance_bps, price_state, chosen_participation_bps, observed_market_volume, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -95397,8 +95430,8 @@
         "outputShape": "object with 9 fields: side, limit_price_atoms, total_quantity, accepted_quantity, remaining_quantity, accepted_event_count, rejected_event_count, events, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [
@@ -95594,8 +95627,8 @@
         "outputShape": "object with 9 fields: total_quantity, maximum_dark_fraction_bps, dark_quantity_cap, planned_dark_exposure_quantity, lit_fallback_quantity, dark_opportunity_count, accepted_dark_window_count, opportunities, …"
       },
       "verification": {
-        "tier": "contract",
-        "via": null
+        "tier": "verified",
+        "via": "D"
       },
       "assets": {
         "diagrams": [

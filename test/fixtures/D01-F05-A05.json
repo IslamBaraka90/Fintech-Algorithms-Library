@@ -1,0 +1,266 @@
+{
+ "input": {
+  "depth_limit": 5,
+  "orders": [
+   {
+    "order_id": "B00",
+    "side": "bid",
+    "price_ticks": 10000,
+    "quantity": 4
+   },
+   {
+    "order_id": "A01",
+    "side": "ask",
+    "price_ticks": 10002,
+    "quantity": 9
+   },
+   {
+    "order_id": "B02",
+    "side": "bid",
+    "price_ticks": 9999,
+    "quantity": 14
+   },
+   {
+    "order_id": "A03",
+    "side": "ask",
+    "price_ticks": 10003,
+    "quantity": 19
+   },
+   {
+    "order_id": "B04",
+    "side": "bid",
+    "price_ticks": 9998,
+    "quantity": 5
+   },
+   {
+    "order_id": "A05",
+    "side": "ask",
+    "price_ticks": 10004,
+    "quantity": 10
+   },
+   {
+    "order_id": "B06",
+    "side": "bid",
+    "price_ticks": 9997,
+    "quantity": 15
+   },
+   {
+    "order_id": "A07",
+    "side": "ask",
+    "price_ticks": 10005,
+    "quantity": 20
+   },
+   {
+    "order_id": "B08",
+    "side": "bid",
+    "price_ticks": 9996,
+    "quantity": 6
+   },
+   {
+    "order_id": "A09",
+    "side": "ask",
+    "price_ticks": 10006,
+    "quantity": 11
+   },
+   {
+    "order_id": "B10",
+    "side": "bid",
+    "price_ticks": 9995,
+    "quantity": 16
+   },
+   {
+    "order_id": "A11",
+    "side": "ask",
+    "price_ticks": 10007,
+    "quantity": 21
+   },
+   {
+    "order_id": "B12",
+    "side": "bid",
+    "price_ticks": 9994,
+    "quantity": 7
+   },
+   {
+    "order_id": "A13",
+    "side": "ask",
+    "price_ticks": 10008,
+    "quantity": 12
+   },
+   {
+    "order_id": "B14",
+    "side": "bid",
+    "price_ticks": 9993,
+    "quantity": 17
+   },
+   {
+    "order_id": "A15",
+    "side": "ask",
+    "price_ticks": 10009,
+    "quantity": 22
+   },
+   {
+    "order_id": "B16",
+    "side": "bid",
+    "price_ticks": 10000,
+    "quantity": 8
+   },
+   {
+    "order_id": "A17",
+    "side": "ask",
+    "price_ticks": 10002,
+    "quantity": 13
+   },
+   {
+    "order_id": "B18",
+    "side": "bid",
+    "price_ticks": 9999,
+    "quantity": 18
+   },
+   {
+    "order_id": "A19",
+    "side": "ask",
+    "price_ticks": 10003,
+    "quantity": 4
+   },
+   {
+    "order_id": "B20",
+    "side": "bid",
+    "price_ticks": 9998,
+    "quantity": 9
+   },
+   {
+    "order_id": "A21",
+    "side": "ask",
+    "price_ticks": 10004,
+    "quantity": 14
+   },
+   {
+    "order_id": "B22",
+    "side": "bid",
+    "price_ticks": 9997,
+    "quantity": 19
+   },
+   {
+    "order_id": "A23",
+    "side": "ask",
+    "price_ticks": 10005,
+    "quantity": 5
+   },
+   {
+    "order_id": "B24",
+    "side": "bid",
+    "price_ticks": 9996,
+    "quantity": 10
+   },
+   {
+    "order_id": "A25",
+    "side": "ask",
+    "price_ticks": 10006,
+    "quantity": 15
+   },
+   {
+    "order_id": "B26",
+    "side": "bid",
+    "price_ticks": 9995,
+    "quantity": 20
+   },
+   {
+    "order_id": "A27",
+    "side": "ask",
+    "price_ticks": 10007,
+    "quantity": 6
+   },
+   {
+    "order_id": "B28",
+    "side": "bid",
+    "price_ticks": 9994,
+    "quantity": 11
+   },
+   {
+    "order_id": "A29",
+    "side": "ask",
+    "price_ticks": 10008,
+    "quantity": 16
+   },
+   {
+    "order_id": "B30",
+    "side": "bid",
+    "price_ticks": 9993,
+    "quantity": 21
+   },
+   {
+    "order_id": "A31",
+    "side": "ask",
+    "price_ticks": 10009,
+    "quantity": 7
+   }
+  ]
+ },
+ "expected": {
+  "order_count": 32,
+  "full_bid_level_count": 8,
+  "full_ask_level_count": 8,
+  "depth_limit": 5,
+  "bids": [
+   {
+    "price_ticks": 10000,
+    "quantity": 12,
+    "order_count": 2
+   },
+   {
+    "price_ticks": 9999,
+    "quantity": 32,
+    "order_count": 2
+   },
+   {
+    "price_ticks": 9998,
+    "quantity": 14,
+    "order_count": 2
+   },
+   {
+    "price_ticks": 9997,
+    "quantity": 34,
+    "order_count": 2
+   },
+   {
+    "price_ticks": 9996,
+    "quantity": 16,
+    "order_count": 2
+   }
+  ],
+  "asks": [
+   {
+    "price_ticks": 10002,
+    "quantity": 22,
+    "order_count": 2
+   },
+   {
+    "price_ticks": 10003,
+    "quantity": 23,
+    "order_count": 2
+   },
+   {
+    "price_ticks": 10004,
+    "quantity": 24,
+    "order_count": 2
+   },
+   {
+    "price_ticks": 10005,
+    "quantity": 25,
+    "order_count": 2
+   },
+   {
+    "price_ticks": 10006,
+    "quantity": 26,
+    "order_count": 2
+   }
+  ],
+  "visible_bid_quantity": 108,
+  "visible_ask_quantity": 120,
+  "full_bid_quantity": 200,
+  "full_ask_quantity": 204,
+  "hidden_by_depth_limit_bid_quantity": 92,
+  "hidden_by_depth_limit_ask_quantity": 84,
+  "state": "aggregated"
+ }
+}

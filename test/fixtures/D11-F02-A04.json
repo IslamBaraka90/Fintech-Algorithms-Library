@@ -1,0 +1,25 @@
+{
+ "input": {
+  "prices": [
+   100,
+   100.05,
+   100.01,
+   100.06,
+   100.02,
+   100.07
+  ]
+ },
+ "expected": {
+  "model": "roll-spread",
+  "observation_count": 6,
+  "change_count": 5,
+  "covariance_pair_count": 4,
+  "lag1_price_change_covariance": -0.0026999999999997785,
+  "covariance_tolerance": 1e-15,
+  "mean_price": 100.03500000000001,
+  "spread_estimate": 0.10392304845412838,
+  "spread_estimate_relative": 0.0010388668811328872,
+  "spread_estimate_bps": 10.388668811328872,
+  "state": "estimated"
+ }
+}

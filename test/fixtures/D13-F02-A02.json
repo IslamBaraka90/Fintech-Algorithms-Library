@@ -1,0 +1,91 @@
+{
+ "input": {
+  "remaining_quantity": 10000,
+  "side": "buy",
+  "decision_price_atoms": 1000000,
+  "current_price_atoms": 1001000,
+  "spread_bps": 4,
+  "impact_coefficient_bps": 35,
+  "average_daily_volume": 1000000,
+  "volatility_bps": 18,
+  "risk_aversion": 0.8,
+  "urgency_bps": 12,
+  "intervals_remaining": 8,
+  "max_child_quantity": 3000,
+  "candidate_step_quantity": 500,
+  "lot_size": 100
+ },
+ "expected": {
+  "side": "buy",
+  "decision_price_atoms": 1000000,
+  "current_price_atoms": 1001000,
+  "signed_move_bps": 10,
+  "adverse_move_bps": 10,
+  "remaining_quantity": 10000,
+  "selected_child_quantity": 3000,
+  "post_child_quantity": 7000,
+  "selected_total_score": 122453.181772,
+  "selected_immediate_cost_score": 6315,
+  "selected_opportunity_cost_score": 80500,
+  "selected_inventory_risk_score": 35638.181772,
+  "candidates": [
+   {
+    "child_quantity": 0,
+    "residual_quantity": 10000,
+    "immediate_cost_score": 0,
+    "opportunity_cost_score": 115000,
+    "inventory_risk_score": 50911.688245,
+    "total_score": 165911.688245
+   },
+   {
+    "child_quantity": 500,
+    "residual_quantity": 9500,
+    "immediate_cost_score": 1008.75,
+    "opportunity_cost_score": 109250,
+    "inventory_risk_score": 48366.103833,
+    "total_score": 158624.853833
+   },
+   {
+    "child_quantity": 1000,
+    "residual_quantity": 9000,
+    "immediate_cost_score": 2035,
+    "opportunity_cost_score": 103500,
+    "inventory_risk_score": 45820.519421,
+    "total_score": 151355.519421
+   },
+   {
+    "child_quantity": 1500,
+    "residual_quantity": 8500,
+    "immediate_cost_score": 3078.75,
+    "opportunity_cost_score": 97750,
+    "inventory_risk_score": 43274.935009,
+    "total_score": 144103.685009
+   },
+   {
+    "child_quantity": 2000,
+    "residual_quantity": 8000,
+    "immediate_cost_score": 4140,
+    "opportunity_cost_score": 92000,
+    "inventory_risk_score": 40729.350596,
+    "total_score": 136869.350596
+   },
+   {
+    "child_quantity": 2500,
+    "residual_quantity": 7500,
+    "immediate_cost_score": 5218.75,
+    "opportunity_cost_score": 86250,
+    "inventory_risk_score": 38183.766184,
+    "total_score": 129652.516184
+   },
+   {
+    "child_quantity": 3000,
+    "residual_quantity": 7000,
+    "immediate_cost_score": 6315,
+    "opportunity_cost_score": 80500,
+    "inventory_risk_score": 35638.181772,
+    "total_score": 122453.181772
+   }
+  ],
+  "state": "execute-now"
+ }
+}
