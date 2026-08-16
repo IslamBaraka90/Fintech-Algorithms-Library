@@ -1,0 +1,97 @@
+name: Propose a new algorithm
+description: Suggest an algorithm the library does not cover yet
+title: "[algorithm] "
+labels: ["new-algorithm"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for proposing something. One thing to know before you fill this in,
+        because it decides how the work splits.
+
+        A topic in this library is a **lesson**, not just a function: it has an
+        article, fixtures, a Python sibling and a place in a curriculum. Deciding
+        where it belongs and giving it an id is the one part that has to stay with
+        the maintainer — those ids drive the URLs, the ordering and the
+        prerequisite graph.
+
+        Everything else is yours if you want it. Once the id is assigned you can
+        open a normal pull request with the implementation, its tests and its
+        fixtures, and it can ship to npm **before** the article exists.
+
+        You do not need to write the article.
+
+  - type: input
+    id: name
+    attributes:
+      label: What is it called
+      description: The name a practitioner would recognise, not a description.
+      placeholder: Chande Kroll Stop
+    validations:
+      required: true
+
+  - type: textarea
+    id: what
+    attributes:
+      label: What does it compute, and when would someone reach for it
+      description: Two or three sentences. What goes in, what comes out, what question it answers.
+    validations:
+      required: true
+
+  - type: input
+    id: family
+    attributes:
+      label: Where do you think it belongs
+      description: >
+        A domain and family from the index in the README — for example
+        "Technical Indicators / Range and Volatility". A guess is fine; getting
+        this wrong costs nothing.
+      placeholder: Technical Indicators / Range and Volatility
+    validations:
+      required: true
+
+  - type: textarea
+    id: references
+    attributes:
+      label: References
+      description: >
+        Where the definition comes from — a paper, a book with a page number, an
+        exchange specification, a vendor's published formula. This matters more
+        than it looks: the library's claim is that its numbers are checkable, and
+        an algorithm nobody can point at cannot be checked.
+    validations:
+      required: true
+
+  - type: textarea
+    id: numbers
+    attributes:
+      label: A worked example, if you have one
+      description: >
+        An input and the output it should produce, ideally from the reference
+        above rather than from your own code. This becomes the fixture, and a
+        fixture is what lets the topic ship as `verified` rather than `contract`.
+      render: json
+
+  - type: dropdown
+    id: offering
+    attributes:
+      label: What are you offering to do
+      options:
+        - Just the idea — someone else implements it
+        - I will write the implementation and its tests
+        - I have already written it
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before you submit
+      options:
+        - label: I searched the index in the README and this algorithm is not already there
+          required: true
+        - label: >
+            I understand the implementation must be pure TypeScript — no
+            dependencies, no `node:` builtins — because the package has to run in
+            browsers and edge runtimes
+          required: true

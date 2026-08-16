@@ -26,6 +26,47 @@ back-office arithmetic is the reason this one exists.
 npm install fintech-algorithms
 ```
 
+## How the pieces fit together
+
+Five things carry this library's name, and it is worth knowing which one answers
+which question before you go looking.
+
+```mermaid
+flowchart TD
+  CAT[("private catalog<br/><i>the single source of truth</i><br/>article · implementation · tests · fixtures")]
+
+  CAT -->|"scripts/sync.mjs"| REPO["<b>this repository</b><br/>src/ generated · optimised/ hand-written<br/>github.com/IslamBaraka90/Fintech-Algorithms-Library"]
+  CAT -->|"article build"| SITE["<b>thefintechbuilder.com</b><br/>the lesson — why the algorithm<br/>exists and how to read it"]
+
+  REPO -->|"push a v* tag<br/>CI publishes with provenance"| NPM["<b>npm: fintech-algorithms</b><br/>what you install<br/>zero dependencies"]
+  REPO -->|"docs.json on main<br/>rebuilds the site"| DOCS["<b>docs.thefintechbuilder.com</b><br/>the reference — signature, contract,<br/>worked example, verification tier"]
+  REPO -->|"ships inside the package"| SKILL["<b>the agent skill</b><br/>skills/fintech-algorithms/<br/>lookup instead of guessing"]
+
+  NPM -.->|"node_modules/…/docs.json"| SKILL
+  DOCS -.->|"same subpath, same URL"| NPM
+
+  style CAT stroke-dasharray: 4 3
+```
+
+|   | Answers | Updated by |
+|---|---|---|
+| **npm** | *Give me the function.* | A `v*` tag — CI publishes, never a laptop |
+| **docs.thefintechbuilder.com** | *What are the arguments, what comes back, is the arithmetic verified?* | Every push to `main` — no release needed |
+| **thefintechbuilder.com** | *What is this algorithm and why would I use it?* | The article, on its own schedule |
+| **this repository** | *How is it built, and how do I contribute?* | Pull requests — see [CONTRIBUTING.md](CONTRIBUTING.md) |
+| **the agent skill** | *Which import path and which field name?* | Ships inside the package |
+
+Two of those links are worth spelling out, because they are the ones people
+assume and get wrong:
+
+- **A documentation URL and an import path are the same string.** Swap
+  `https://docs.thefintechbuilder.com/` for `fintech-algorithms/` and you have the
+  import. That is enforced by a test, not a convention.
+- **Docs do not wait for a release.** The site builds from `docs.json` on `main`,
+  so a corrected sentence ships immediately while the version on npm stays put.
+  Check the two agree with
+  [`version.json`](https://docs.thefintechbuilder.com/version.json).
+
 ## Writing this code with an agent? Install the skill first
 
 ```bash
@@ -33,10 +74,10 @@ npx skills add IslamBaraka90/Fintech-Algorithms-Library
 ```
 
 **This is the single highest-value thing you can do before asking an agent to
-use this library.** 324 algorithms is more API than any model has read, and the
-failure mode is not refusal — it is a plausible import path, a plausible
-parameter and a plausible field name on the result, none of which exist. The
-skill replaces every one of those guesses with a lookup.
+use this library.** Several hundred algorithms is more API than any model has
+read, and the failure mode is not refusal — it is a plausible import path, a
+plausible parameter and a plausible field name on the result, none of which
+exist. The skill replaces every one of those guesses with a lookup.
 
 It ships in the [Agent Skills](https://agentskills.io) format, so Claude Code,
 Codex, Cursor and some seventy other agents load it on demand. It carries the

@@ -52,7 +52,9 @@
     "test:conformance": "node --experimental-strip-types --test test/conformance.test.ts",
     "verify": "npm run build && npm test",
     "version": "node scripts/gen-docs.mjs && git add docs.json",
-    "prepack": "npm run build"
+    "prepack": "npm run build",
+    "bench": "node bench/run.mjs",
+    "coverage": "node --experimental-strip-types --experimental-test-coverage --test test/*.test.ts"
   },
   "devDependencies": {
     "@types/node": "^22.10.2",

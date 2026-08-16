@@ -46,6 +46,34 @@ adapter → validate → compute → report.** Only the middle two steps are thi
 library. Load `references/ingestion.md` for the adapter pattern and the
 canonical `Trade` / `Bar` shapes.
 
+## Which surface answers which question
+
+Five things carry this library's name. Sending a question to the wrong one is the
+most common way to end up guessing.
+
+| Surface | Answers | Do not use it for |
+|---|---|---|
+| `node_modules/fintech-algorithms/docs.json` | signature, contract, worked example, verification tier | — **prefer this for everything** |
+| `docs.thefintechbuilder.com` | the same reference, over the network | prose about why an algorithm exists |
+| `thefintechbuilder.com` | the article — what the algorithm is and when to reach for it | signatures or field names; it teaches, it does not specify |
+| the npm package | the code you import | discovering what exists — the registry does that |
+| this skill | how to look any of it up | as a substitute for looking it up |
+
+Two relationships matter and are enforced, not conventional:
+
+- **A docs URL and an import path are the same string.** Swap
+  `https://docs.thefintechbuilder.com/` for `fintech-algorithms/`, drop the
+  trailing slash. A test fails if that ever stops being true.
+- **The docs can be ahead of npm.** The site rebuilds from `main` without a
+  release. If a documented topic will not import, the installed version is older
+  than the page — check `https://docs.thefintechbuilder.com/version.json` before
+  concluding anything is broken.
+
+A topic may ship a hand-written implementation from the repository's
+`optimised/` tree instead of the catalog's. It is asserted to return identical
+values and throw identical errors, so it changes nothing you report — but the
+code in the article and the code in the package can legitimately differ.
+
 ## Resolution order
 
 Stop at the first step that answers the question.
