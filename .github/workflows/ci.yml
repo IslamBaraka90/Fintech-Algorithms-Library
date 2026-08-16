@@ -26,6 +26,16 @@ jobs:
       - name: Build
         run: npm run build
 
+      # An override in optimised/ is a second implementation to maintain, and it
+      # is only worth that if it is still faster. This compares each one against
+      # the reference it replaces and fails if it has lost most of its advantage.
+      #
+      # Safe on a shared runner because only the RATIO is checked, and both
+      # implementations are measured alternately in the same process — noise moves
+      # them together. Absolute throughput is never recorded or asserted.
+      - name: Benchmark overrides against their references
+        run: npm run bench -- --check
+
       # Contract coverage is invisible to the drift guard: a topic that never had
       # an `api:` block round-trips perfectly, which is how a complete 271/271
       # quietly became 280/324. This reads the committed payload, so it runs on

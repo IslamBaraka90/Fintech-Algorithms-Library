@@ -100,8 +100,20 @@ Two things are checked, and neither is a matter of opinion:
   the same class and the same message.
 - **`npm run bench`** prints the ratio against the reference. An override is a
   second implementation to maintain forever; under roughly 1.2x it rarely pays
-  for itself. Quote the ratio, never the raw ops/sec — those mean nothing across
-  machines.
+  for itself.
+
+Record the number with `npm run bench -- --save`, which writes
+[`bench/results.json`](bench/results.json), and commit it with the override. CI
+then runs `npm run bench -- --check` on every push and fails if a recorded ratio
+has lost more than a quarter of its advantage — either the optimisation stopped
+working or the reference caught up, and both are worth knowing.
+
+Only ratios are stored. Absolute throughput describes the machine that produced
+it, so quoting it anywhere else is meaningless. The ratio survives a noisy shared
+runner because both implementations are measured alternately in the same process,
+five short rounds with the median taken — measuring one fully and then the other
+gave the same code anything from 2.7x to 5.0x, because whichever ran second met a
+different JIT state.
 
 An override may not import a `node:` builtin and may not change the entry point.
 Both are refused by the generator with the reason named.
@@ -121,8 +133,10 @@ two products built from one catalog; only the website waits on the writing.
 
 ## Local development
 
-Node ≥ 22 is required — the tests run TypeScript directly via
-`--experimental-strip-types`, so there is no build step in the inner loop.
+Node ≥ 22.12 is required. The tests run TypeScript directly via
+`--experimental-strip-types`, so there is no build step in the inner loop, and
+the floor is 22.12 rather than 22 because the package's `require` condition
+resolves to the same ES module — `require(esm)` is only unflagged from 22.12.
 
 ```bash
 npm install

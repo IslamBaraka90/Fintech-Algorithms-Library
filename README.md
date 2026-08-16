@@ -152,7 +152,8 @@ const toTrades = (payload: ProviderResponse): Trade[] =>
 
 When a vendor changes their API you edit one adapter; the algorithms never move.
 
-Requires Node ≥ 22.
+Requires Node ≥ 22.12 — the `require` condition resolves to the same ES module,
+and `require(esm)` is unflagged from 22.12 onward.
 
 ## Verified against published worked examples
 

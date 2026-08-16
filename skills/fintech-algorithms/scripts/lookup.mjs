@@ -20,6 +20,7 @@
 
 import { readFileSync, existsSync, writeFileSync, mkdirSync } from "node:fs";
 import { join, dirname, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 import { tmpdir } from "node:os";
 
 const PAYLOAD_URL = "https://docs.thefintechbuilder.com/reference/payload.json";
@@ -49,6 +50,16 @@ async function loadPayload() {
   const installed = findInstalled(process.cwd());
   if (installed) {
     return { payload: JSON.parse(readFileSync(installed, "utf8")), source: "installed package" };
+  }
+
+  // This script ships inside the package, so the payload it describes is three
+  // directories up from it. Without this, running the CLI from anywhere that is
+  // not a dependent project skipped straight past its own docs.json and answered
+  // from the network — quietly serving a different version of the library than
+  // the one it is sitting in.
+  const sibling = fileURLToPath(new URL("../../../docs.json", import.meta.url));
+  if (existsSync(sibling)) {
+    return { payload: JSON.parse(readFileSync(sibling, "utf8")), source: "the package this script ships in" };
   }
 
   // Cached network copy. Stale-by-a-day is fine for a reference that only
