@@ -8,7 +8,7 @@ on:
     tags: ["v*"]
 
 permissions:
-  contents: read
+  contents: write # to create the GitHub Release that carries the changelog
   id-token: write # required for provenance; also how trusted publishing authenticates
 
 jobs:
@@ -75,3 +75,31 @@ jobs:
       # Provenance is generated automatically as a result.
       - name: Publish to npm
         run: npm publish --provenance --access public
+
+      # Until now the changelog was only visible to someone who opened
+      # CHANGELOG.md in this repository. npm renders the README and not the
+      # changelog, and no GitHub Release had ever been created, so a consumer who
+      # hit a behaviour change had nowhere obvious to look. Every release is
+      # already tag-driven, so the notes may as well travel with the tag.
+      - name: Publish the release notes
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          VERSION="${TAG#v}"
+          # The section for this version: from its heading to the next one.
+          awk -v v="## $VERSION " '
+            index($0, v) == 1 { inside = 1; next }
+            inside && /^## / { exit }
+            inside { print }
+          ' CHANGELOG.md > release-notes.md
+
+          if [ ! -s release-notes.md ]; then
+            echo "No CHANGELOG.md section found for $VERSION — refusing to publish empty notes." >&2
+            exit 1
+          fi
+
+          gh release create "$TAG" \
+            --title "$TAG" \
+            --notes-file release-notes.md \
+            --verify-tag

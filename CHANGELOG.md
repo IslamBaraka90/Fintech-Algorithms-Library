@@ -6,6 +6,112 @@ The package is pre-1.0. Breaking changes go in the minor version, additive and
 corrective changes in the patch — so `0.11.0 → 0.12.0` can break you and
 `0.12.0 → 0.12.1` cannot.
 
+## 0.13.0 — 2026-08-17
+
+Four domains arrive and the library goes from 324 topics to 523. Nothing is
+removed: every subpath published in `0.12.0` still resolves.
+
+| | `0.12.0` | `0.13.0` |
+|---|--:|--:|
+| Topics | 324 | **523** |
+| Domains | 13 | **17** |
+| Topics whose arithmetic is asserted on every build | 158 | **449** |
+| Topics with a validated `api` contract | 324 / 324 | **523 / 523** |
+| Topics with an executed worked example | 324 | **523** |
+
+### One thing that can break you
+
+`matching-engines-and-venue-logic/continuous-matching/hybrid-pro-rata-time-matching`
+was publishing its family's `calculate(topicId, inputs)` dispatcher as its entry
+point, because its slug carries a trailing word its function does not. It now
+publishes `hybridProRataTime(incoming, price, lot, fraction, resting)`.
+
+`calculate` is still exported from that subpath, so an import of it keeps
+working. What changed is `run`, which now aliases the topic's own function.
+If you called `run("D12-F01-A04", inputs)` there, call `calculate` instead — or
+better, the named function.
+
+### New
+
+- **Financial Mathematics, Statistics, and Data Foundations** — 120 topics, from
+  means and percentiles through distributions, inference, regression, and risk
+  and performance statistics. This is the base layer the rest of the library is
+  meant to build on, so it lives at the short subpath `foundations/…`. It is
+  deliberately absent from the README's algorithm index, which catalogues the
+  market-facing topics; it ships, it is documented, and it is in the agent skill.
+- **Fundamental Analysis and Valuation** — 52 topics. Discounted cash flow,
+  dividend discount and Gordon growth, residual income, economic value added,
+  relative valuation, and the distress and earnings-quality models: Altman Z,
+  Piotroski F, Beneish M, Ohlson O, Dechow-Dichev, modified Jones. Plus
+  integrated and sector-specific equity scoring.
+- **Model Validation and Backtesting** — 10 topics. ROC and PR curves, Brier
+  score, log loss, calibration and expected calibration error, gains and lift,
+  cost-sensitive thresholds, score migration, slice validation, rare-event bounds.
+- **Credit Risk and Default** — 7 topics. Logistic and probit PD models,
+  through-the-cycle and point-in-time PD, Merton and Bharath-Shumway distance to
+  default, Campbell-Hilscher-Szilagyi distress probability.
+- **Geometric chart patterns** gains its continuation structures and pattern
+  matching families — triangles, flags, pennants, wedges, DTW and matrix profile.
+
+### Verification
+
+The count nearly triples, and the description of it changes with it. These
+expected values are computed in the catalog by a Python implementation written
+alongside the TypeScript rather than derived from it, which makes the check
+**cross-language parity, not an independent third-party figure**. It catches
+transcription and generation errors — the failure mode that has actually
+occurred here — and it would not catch both implementations sharing a misreading
+of the source. The README and the agent skill now say so in those words.
+
+The jump comes from reading a fixture shape the generator did not recognise: 119
+topics already carried a separate input and expected-output pair on disk, and
+102 of them were shipping with nothing asserting their numbers. No expected value
+was authored to close that gap.
+
+### Contributing
+
+`src/` is still generated and still overwritten on every sync, but there are now
+two routes for work that used to have none.
+
+- **`optimised/`** — a topic can ship a hand-written implementation from the
+  repository instead of the catalog's. The catalog version is emitted beside it
+  and a differential test asserts the two return identical values and throw
+  identical errors, so an optimisation is reviewable by machine. `npm run bench`
+  reports the ratio and CI fails if a recorded one regresses. The first is a
+  3.5x rewrite of `calculateSma`.
+- **A proposal route for new algorithms.** Assigning a topic its id stays with
+  the maintainer; everything after that is a normal pull request, and it can ship
+  before the article exists.
+
+See [CONTRIBUTING.md](CONTRIBUTING.md).
+
+### Fixed
+
+- Ninety foundations topics would have published truncated subpaths —
+  `count-sum-minimu`, `look-ahead-leaka` — because their folder names were capped
+  at 28 characters and no slug was declared.
+- Optional parameters were being dropped from the *middle* of published
+  signatures, so a caller reading `match(query, candidate, normalize)` and
+  passing three arguments was setting `radius`. Seven topics were affected.
+- Arrow-form entry points recorded no parameters at all, publishing ten topics as
+  zero-argument functions.
+- `engines.node` is now `>=22.12`. The `require` condition resolves to an ES
+  module and `require(esm)` is only unflagged from 22.12, so anyone on 22.0–22.11
+  was inside the declared range and getting a hard failure.
+- The bundled lookup CLI reads the `docs.json` beside it before reaching for the
+  network, instead of answering from a different version of the library.
+
+### Internal
+
+- A purity gate refuses any implementation that reaches a `node:` builtin,
+  directly or through a shared module. 152 catalog topics currently delegate to a
+  Python reference process and are held back by it rather than shipped.
+- `gen-docs.mjs` counts registry entries independently of the regex that parses
+  them. Three times a topic had failed to match on one malformed field and
+  vanished from the payload with no symptom.
+- Relative imports that climb out of a topic directory are vendored into
+  `src/_shared/` generically, replacing a hardcoded case per engine.
+
 ## 0.12.0 — 2026-08-06
 
 The library gains no algorithms in this release and loses none: 324 topics

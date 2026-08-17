@@ -238,6 +238,14 @@ repo URL.
 
 ## Coverage
 
+The table below counts the market-facing algorithms — the ones you came here
+looking for. The package also ships a **foundations** layer of 120 statistics and
+financial-mathematics topics (`fintech-algorithms/foundations/…`): one
+implementation each of a mean, a percentile, a z-score, a log return, a
+volatility, a drawdown. It is the base the rest of the library is built on rather
+than something to browse, so it is documented and exported but deliberately not
+listed here. `topics.length` counts everything.
+
 <!-- stats:start -->
 **403 topics** · 16 domains · 64 families
 
