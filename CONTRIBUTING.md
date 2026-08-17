@@ -230,6 +230,22 @@ re-runs the full verification, installs the packed tarball into a clean consumer
 and publishes with a provenance attestation — a signed, verifiable link between
 the tarball on npm and the commit that produced it.
 
+It then puts the notes where they can be found. The workflow cuts this version's
+section out of `CHANGELOG.md` and creates a **GitHub Release** from it, because
+npm renders the README and not the changelog — before this, the only reader was
+someone who opened the file in this repository. A tag whose version has no
+changelog section fails the step rather than publishing empty notes, so writing
+the entry is part of releasing, not an afterthought.
+
+Last, it asks the reference site to rebuild. That site tracks `main` rather than
+a published version, which is what lets a documentation fix ship without burning
+a version number, and it refreshes on a daily schedule. After a release that lag
+is worth closing, so the workflow dispatches the rebuild when a
+`DOCS_DISPATCH_TOKEN` secret is present and otherwise prints the one command that
+does it by hand. It never fails the release either way — by that point the
+package is already on npm, and a site that is a few hours behind is not worth a
+red build.
+
 ### What deserves a release
 
 A version number is permanent: npm never allows one to be reused. Six releases

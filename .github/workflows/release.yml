@@ -103,3 +103,36 @@ jobs:
             --title "$TAG" \
             --notes-file release-notes.md \
             --verify-tag
+
+      # The reference site rebuilds from `docs.json` on this repository's main
+      # branch rather than from a published release, which is what lets a
+      # documentation fix ship without burning a version number. It picks changes
+      # up on a daily schedule, so after a release the site can lag the package
+      # by up to a day — harmless for prose, confusing when 199 subpaths appear
+      # on npm and the reference does not list them yet.
+      #
+      # The docs repository deliberately has no cross-repository trigger, because
+      # that needs a personal access token and everything else here is
+      # credential-free. So this asks rather than requires: with a token present
+      # the site rebuilds immediately, and without one the run prints the single
+      # command that does it by hand. Never fatal — the package is already
+      # published by this point, and a lagging site is not worth a red release.
+      - name: Refresh the reference site
+        if: always()
+        env:
+          DOCS_TOKEN: ${{ secrets.DOCS_DISPATCH_TOKEN }}
+        run: |
+          if [ -z "$DOCS_TOKEN" ]; then
+            echo "::notice::No DOCS_DISPATCH_TOKEN secret is set, so the reference site was not rebuilt."
+            echo "::notice::It will pick this release up on its next scheduled run (06:00 UTC)."
+            echo "::notice::To rebuild now: gh workflow run deploy.yml --repo IslamBaraka90/fintech-algorithms-docs"
+            exit 0
+          fi
+          if GH_TOKEN="$DOCS_TOKEN" gh workflow run deploy.yml \
+               --repo IslamBaraka90/fintech-algorithms-docs \
+               --ref main; then
+            echo "::notice::Reference site rebuild dispatched."
+          else
+            echo "::warning::Could not dispatch the docs rebuild — check DOCS_DISPATCH_TOKEN."
+            echo "::warning::Run by hand: gh workflow run deploy.yml --repo IslamBaraka90/fintech-algorithms-docs"
+          fi
