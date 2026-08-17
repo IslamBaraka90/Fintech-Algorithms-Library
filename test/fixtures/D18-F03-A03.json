@@ -1,0 +1,83 @@
+{
+  "synthetic": true,
+  "input": {
+    "target": {
+      "book_value_per_share": 24.0,
+      "current_price": 40.0
+    },
+    "peers": [
+      {
+        "id": "B1",
+        "price": 24.0,
+        "book_value_per_share": 20.0
+      },
+      {
+        "id": "B2",
+        "price": 30.0,
+        "book_value_per_share": 20.0
+      },
+      {
+        "id": "B3",
+        "price": 36.0,
+        "book_value_per_share": 20.0
+      },
+      {
+        "id": "B4",
+        "price": 42.0,
+        "book_value_per_share": 20.0
+      },
+      {
+        "id": "B5",
+        "price": 48.0,
+        "book_value_per_share": 20.0
+      }
+    ]
+  },
+  "expected": {
+    "model": "median-positive-book-value-peer-pb",
+    "peer_count": 5,
+    "peer_multiples": [
+      {
+        "id": "B1",
+        "price": 24.0,
+        "book_value_per_share": 20.0,
+        "price_to_book": 1.2
+      },
+      {
+        "id": "B2",
+        "price": 30.0,
+        "book_value_per_share": 20.0,
+        "price_to_book": 1.5
+      },
+      {
+        "id": "B3",
+        "price": 36.0,
+        "book_value_per_share": 20.0,
+        "price_to_book": 1.8
+      },
+      {
+        "id": "B4",
+        "price": 42.0,
+        "book_value_per_share": 20.0,
+        "price_to_book": 2.1
+      },
+      {
+        "id": "B5",
+        "price": 48.0,
+        "book_value_per_share": 20.0,
+        "price_to_book": 2.4
+      }
+    ],
+    "multiple_summary": {
+      "minimum": 1.2,
+      "median": 1.8,
+      "maximum": 2.4,
+      "range": 1.2
+    },
+    "selected_multiple": 1.8,
+    "target_book_value_per_share": 24.0,
+    "implied_price": 43.2,
+    "premium_discount_to_current": 0.08000000000000007,
+    "state": "valuation-complete"
+  }
+}

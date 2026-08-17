@@ -1,0 +1,108 @@
+{
+ "input": {
+  "framework": "holding-company-lookthrough-teaching-v1",
+  "holdings": [
+   {
+    "id": "listed-bank",
+    "ownership_ratio": 0.62,
+    "equity_value": 920,
+    "debt": 540,
+    "dividends_to_parent": 32,
+    "listed": true,
+    "stale": false
+   },
+   {
+    "id": "private-logistics",
+    "ownership_ratio": 0.8,
+    "equity_value": 410,
+    "debt": 180,
+    "dividends_to_parent": 18,
+    "listed": false,
+    "stale": false
+   },
+   {
+    "id": "listed-utility",
+    "ownership_ratio": 0.35,
+    "equity_value": 680,
+    "debt": 390,
+    "dividends_to_parent": 21,
+    "listed": true,
+    "stale": true
+   }
+  ],
+  "parent_cash": 95,
+  "parent_debt": 260,
+  "other_parent_liabilities": 45,
+  "parent_interest_expense": 24,
+  "parent_market_cap": 760,
+  "weights": {
+   "nav_buffer": 0.22,
+   "lookthrough_leverage": 0.22,
+   "parent_coverage": 0.18,
+   "diversification": 0.14,
+   "freshness": 0.12,
+   "listed_coverage": 0.12
+  }
+ },
+ "expected": {
+  "state": "mixed-review-band",
+  "method": "holding-company-lookthrough-score-v1",
+  "holding_ledger": [
+   {
+    "id": "listed-bank",
+    "ownership_ratio": 0.62,
+    "attributable_equity_value": 570.4,
+    "attributable_debt": 334.8,
+    "attributable_dividends": 19.84,
+    "listed": true,
+    "stale": false
+   },
+   {
+    "id": "private-logistics",
+    "ownership_ratio": 0.8,
+    "attributable_equity_value": 328,
+    "attributable_debt": 144,
+    "attributable_dividends": 14.4,
+    "listed": false,
+    "stale": false
+   },
+   {
+    "id": "listed-utility",
+    "ownership_ratio": 0.35,
+    "attributable_equity_value": 238,
+    "attributable_debt": 136.5,
+    "attributable_dividends": 7.35,
+    "listed": true,
+    "stale": true
+   }
+  ],
+  "gross_asset_value": 1231.4,
+  "net_asset_value": 926.4,
+  "attributable_subsidiary_debt": 615.3,
+  "lookthrough_leverage": 0.473980614068,
+  "parent_interest_coverage": 1.732916666667,
+  "concentration_hhi": 0.379109710094,
+  "fresh_value_coverage": 0.790566701866,
+  "listed_value_coverage": 0.711369236184,
+  "discount_to_nav": 0.179620034542,
+  "component_scores": {
+   "nav_buffer": 92.052406475015,
+   "lookthrough_leverage": 39.115419095925,
+   "parent_coverage": 24.430555555556,
+   "diversification": 71.308953312368,
+   "freshness": 47.641675466385,
+   "listed_coverage": 58.767033740635
+  },
+  "weights": {
+   "nav_buffer": 0.22,
+   "lookthrough_leverage": 0.22,
+   "parent_coverage": 0.18,
+   "diversification": 0.14,
+   "freshness": 0.12,
+   "listed_coverage": 0.12
+  },
+  "look_through_score": 56.006720194181,
+  "coverage_ratio": 1,
+  "reason": "attributable-stakes-with-parent-bridge"
+ }
+}

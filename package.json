@@ -2261,6 +2261,266 @@
       "import": "./dist/execution-and-transaction-cost-analysis/cost-risk-optimization/opportunistic-dark-pool-execution/index.js",
       "require": "./dist/execution-and-transaction-cost-analysis/cost-risk-optimization/opportunistic-dark-pool-execution/index.js"
     },
+    "./fundamental-analysis-and-valuation/statement-ratios/dupont-decomposition": {
+      "types": "./dist/fundamental-analysis-and-valuation/statement-ratios/dupont-decomposition/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/statement-ratios/dupont-decomposition/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/statement-ratios/dupont-decomposition/index.js"
+    },
+    "./fundamental-analysis-and-valuation/statement-ratios/roic-calculation": {
+      "types": "./dist/fundamental-analysis-and-valuation/statement-ratios/roic-calculation/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/statement-ratios/roic-calculation/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/statement-ratios/roic-calculation/index.js"
+    },
+    "./fundamental-analysis-and-valuation/statement-ratios/cash-conversion-cycle": {
+      "types": "./dist/fundamental-analysis-and-valuation/statement-ratios/cash-conversion-cycle/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/statement-ratios/cash-conversion-cycle/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/statement-ratios/cash-conversion-cycle/index.js"
+    },
+    "./fundamental-analysis-and-valuation/statement-ratios/interest-coverage-ratio": {
+      "types": "./dist/fundamental-analysis-and-valuation/statement-ratios/interest-coverage-ratio/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/statement-ratios/interest-coverage-ratio/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/statement-ratios/interest-coverage-ratio/index.js"
+    },
+    "./fundamental-analysis-and-valuation/statement-ratios/net-debt-ebitda": {
+      "types": "./dist/fundamental-analysis-and-valuation/statement-ratios/net-debt-ebitda/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/statement-ratios/net-debt-ebitda/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/statement-ratios/net-debt-ebitda/index.js"
+    },
+    "./fundamental-analysis-and-valuation/statement-ratios/common-size-statements": {
+      "types": "./dist/fundamental-analysis-and-valuation/statement-ratios/common-size-statements/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/statement-ratios/common-size-statements/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/statement-ratios/common-size-statements/index.js"
+    },
+    "./fundamental-analysis-and-valuation/intrinsic-valuation/free-cash-flow-dcf": {
+      "types": "./dist/fundamental-analysis-and-valuation/intrinsic-valuation/free-cash-flow-dcf/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/intrinsic-valuation/free-cash-flow-dcf/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/intrinsic-valuation/free-cash-flow-dcf/index.js"
+    },
+    "./fundamental-analysis-and-valuation/intrinsic-valuation/dividend-discount-model": {
+      "types": "./dist/fundamental-analysis-and-valuation/intrinsic-valuation/dividend-discount-model/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/intrinsic-valuation/dividend-discount-model/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/intrinsic-valuation/dividend-discount-model/index.js"
+    },
+    "./fundamental-analysis-and-valuation/intrinsic-valuation/gordon-growth-model": {
+      "types": "./dist/fundamental-analysis-and-valuation/intrinsic-valuation/gordon-growth-model/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/intrinsic-valuation/gordon-growth-model/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/intrinsic-valuation/gordon-growth-model/index.js"
+    },
+    "./fundamental-analysis-and-valuation/intrinsic-valuation/residual-income-model": {
+      "types": "./dist/fundamental-analysis-and-valuation/intrinsic-valuation/residual-income-model/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/intrinsic-valuation/residual-income-model/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/intrinsic-valuation/residual-income-model/index.js"
+    },
+    "./fundamental-analysis-and-valuation/intrinsic-valuation/economic-value-added": {
+      "types": "./dist/fundamental-analysis-and-valuation/intrinsic-valuation/economic-value-added/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/intrinsic-valuation/economic-value-added/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/intrinsic-valuation/economic-value-added/index.js"
+    },
+    "./fundamental-analysis-and-valuation/relative-valuation/p-e-comparable-valuation": {
+      "types": "./dist/fundamental-analysis-and-valuation/relative-valuation/p-e-comparable-valuation/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/relative-valuation/p-e-comparable-valuation/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/relative-valuation/p-e-comparable-valuation/index.js"
+    },
+    "./fundamental-analysis-and-valuation/relative-valuation/ev-ebitda-comparable-valuation": {
+      "types": "./dist/fundamental-analysis-and-valuation/relative-valuation/ev-ebitda-comparable-valuation/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/relative-valuation/ev-ebitda-comparable-valuation/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/relative-valuation/ev-ebitda-comparable-valuation/index.js"
+    },
+    "./fundamental-analysis-and-valuation/relative-valuation/price-to-book-valuation": {
+      "types": "./dist/fundamental-analysis-and-valuation/relative-valuation/price-to-book-valuation/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/relative-valuation/price-to-book-valuation/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/relative-valuation/price-to-book-valuation/index.js"
+    },
+    "./fundamental-analysis-and-valuation/relative-valuation/peg-ratio": {
+      "types": "./dist/fundamental-analysis-and-valuation/relative-valuation/peg-ratio/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/relative-valuation/peg-ratio/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/relative-valuation/peg-ratio/index.js"
+    },
+    "./fundamental-analysis-and-valuation/relative-valuation/peer-multiple-regression": {
+      "types": "./dist/fundamental-analysis-and-valuation/relative-valuation/peer-multiple-regression/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/relative-valuation/peer-multiple-regression/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/relative-valuation/peer-multiple-regression/index.js"
+    },
+    "./fundamental-analysis-and-valuation/quality-and-distress/altman-z-score": {
+      "types": "./dist/fundamental-analysis-and-valuation/quality-and-distress/altman-z-score/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/quality-and-distress/altman-z-score/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/quality-and-distress/altman-z-score/index.js"
+    },
+    "./fundamental-analysis-and-valuation/quality-and-distress/piotroski-f-score": {
+      "types": "./dist/fundamental-analysis-and-valuation/quality-and-distress/piotroski-f-score/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/quality-and-distress/piotroski-f-score/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/quality-and-distress/piotroski-f-score/index.js"
+    },
+    "./fundamental-analysis-and-valuation/quality-and-distress/beneish-m-score": {
+      "types": "./dist/fundamental-analysis-and-valuation/quality-and-distress/beneish-m-score/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/quality-and-distress/beneish-m-score/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/quality-and-distress/beneish-m-score/index.js"
+    },
+    "./fundamental-analysis-and-valuation/quality-and-distress/sloan-accrual-measure": {
+      "types": "./dist/fundamental-analysis-and-valuation/quality-and-distress/sloan-accrual-measure/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/quality-and-distress/sloan-accrual-measure/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/quality-and-distress/sloan-accrual-measure/index.js"
+    },
+    "./fundamental-analysis-and-valuation/quality-and-distress/ohlson-o-score": {
+      "types": "./dist/fundamental-analysis-and-valuation/quality-and-distress/ohlson-o-score/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/quality-and-distress/ohlson-o-score/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/quality-and-distress/ohlson-o-score/index.js"
+    },
+    "./fundamental-analysis-and-valuation/quality-and-distress/zmijewski-x-score": {
+      "types": "./dist/fundamental-analysis-and-valuation/quality-and-distress/zmijewski-x-score/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/quality-and-distress/zmijewski-x-score/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/quality-and-distress/zmijewski-x-score/index.js"
+    },
+    "./fundamental-analysis-and-valuation/quality-and-distress/springate-s-score": {
+      "types": "./dist/fundamental-analysis-and-valuation/quality-and-distress/springate-s-score/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/quality-and-distress/springate-s-score/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/quality-and-distress/springate-s-score/index.js"
+    },
+    "./fundamental-analysis-and-valuation/quality-and-distress/taffler-z-score": {
+      "types": "./dist/fundamental-analysis-and-valuation/quality-and-distress/taffler-z-score/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/quality-and-distress/taffler-z-score/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/quality-and-distress/taffler-z-score/index.js"
+    },
+    "./fundamental-analysis-and-valuation/quality-and-distress/fulmer-h-score": {
+      "types": "./dist/fundamental-analysis-and-valuation/quality-and-distress/fulmer-h-score/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/quality-and-distress/fulmer-h-score/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/quality-and-distress/fulmer-h-score/index.js"
+    },
+    "./fundamental-analysis-and-valuation/quality-and-distress/grover-g-score": {
+      "types": "./dist/fundamental-analysis-and-valuation/quality-and-distress/grover-g-score/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/quality-and-distress/grover-g-score/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/quality-and-distress/grover-g-score/index.js"
+    },
+    "./fundamental-analysis-and-valuation/quality-and-distress/dechow-f-score-for-misstatement-risk": {
+      "types": "./dist/fundamental-analysis-and-valuation/quality-and-distress/dechow-f-score-for-misstatement-risk/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/quality-and-distress/dechow-f-score-for-misstatement-risk/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/quality-and-distress/dechow-f-score-for-misstatement-risk/index.js"
+    },
+    "./fundamental-analysis-and-valuation/quality-and-distress/dechow-dichev-accrual-quality": {
+      "types": "./dist/fundamental-analysis-and-valuation/quality-and-distress/dechow-dichev-accrual-quality/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/quality-and-distress/dechow-dichev-accrual-quality/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/quality-and-distress/dechow-dichev-accrual-quality/index.js"
+    },
+    "./fundamental-analysis-and-valuation/quality-and-distress/modified-jones-discretionary-accrual-model": {
+      "types": "./dist/fundamental-analysis-and-valuation/quality-and-distress/modified-jones-discretionary-accrual-model/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/quality-and-distress/modified-jones-discretionary-accrual-model/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/quality-and-distress/modified-jones-discretionary-accrual-model/index.js"
+    },
+    "./fundamental-analysis-and-valuation/integrated-equity-scoring/point-in-time-stock-scoring-input-assembly": {
+      "types": "./dist/fundamental-analysis-and-valuation/integrated-equity-scoring/point-in-time-stock-scoring-input-assembly/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/integrated-equity-scoring/point-in-time-stock-scoring-input-assembly/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/integrated-equity-scoring/point-in-time-stock-scoring-input-assembly/index.js"
+    },
+    "./fundamental-analysis-and-valuation/integrated-equity-scoring/stock-scoring-peer-cohort-resolver": {
+      "types": "./dist/fundamental-analysis-and-valuation/integrated-equity-scoring/stock-scoring-peer-cohort-resolver/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/integrated-equity-scoring/stock-scoring-peer-cohort-resolver/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/integrated-equity-scoring/stock-scoring-peer-cohort-resolver/index.js"
+    },
+    "./fundamental-analysis-and-valuation/integrated-equity-scoring/fundamental-metric-direction-and-peer-normalization": {
+      "types": "./dist/fundamental-analysis-and-valuation/integrated-equity-scoring/fundamental-metric-direction-and-peer-normalization/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/integrated-equity-scoring/fundamental-metric-direction-and-peer-normalization/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/integrated-equity-scoring/fundamental-metric-direction-and-peer-normalization/index.js"
+    },
+    "./fundamental-analysis-and-valuation/integrated-equity-scoring/model-applicability-and-variant-router": {
+      "types": "./dist/fundamental-analysis-and-valuation/integrated-equity-scoring/model-applicability-and-variant-router/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/integrated-equity-scoring/model-applicability-and-variant-router/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/integrated-equity-scoring/model-applicability-and-variant-router/index.js"
+    },
+    "./fundamental-analysis-and-valuation/integrated-equity-scoring/accounting-financial-health-composite": {
+      "types": "./dist/fundamental-analysis-and-valuation/integrated-equity-scoring/accounting-financial-health-composite/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/integrated-equity-scoring/accounting-financial-health-composite/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/integrated-equity-scoring/accounting-financial-health-composite/index.js"
+    },
+    "./fundamental-analysis-and-valuation/integrated-equity-scoring/earnings-quality-composite": {
+      "types": "./dist/fundamental-analysis-and-valuation/integrated-equity-scoring/earnings-quality-composite/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/integrated-equity-scoring/earnings-quality-composite/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/integrated-equity-scoring/earnings-quality-composite/index.js"
+    },
+    "./fundamental-analysis-and-valuation/integrated-equity-scoring/dividend-safety-score": {
+      "types": "./dist/fundamental-analysis-and-valuation/integrated-equity-scoring/dividend-safety-score/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/integrated-equity-scoring/dividend-safety-score/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/integrated-equity-scoring/dividend-safety-score/index.js"
+    },
+    "./fundamental-analysis-and-valuation/integrated-equity-scoring/balance-sheet-resilience-score": {
+      "types": "./dist/fundamental-analysis-and-valuation/integrated-equity-scoring/balance-sheet-resilience-score/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/integrated-equity-scoring/balance-sheet-resilience-score/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/integrated-equity-scoring/balance-sheet-resilience-score/index.js"
+    },
+    "./fundamental-analysis-and-valuation/integrated-equity-scoring/distress-model-ensemble": {
+      "types": "./dist/fundamental-analysis-and-valuation/integrated-equity-scoring/distress-model-ensemble/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/integrated-equity-scoring/distress-model-ensemble/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/integrated-equity-scoring/distress-model-ensemble/index.js"
+    },
+    "./fundamental-analysis-and-valuation/integrated-equity-scoring/cross-model-conflict-and-double-counting-resolver": {
+      "types": "./dist/fundamental-analysis-and-valuation/integrated-equity-scoring/cross-model-conflict-and-double-counting-resolver/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/integrated-equity-scoring/cross-model-conflict-and-double-counting-resolver/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/integrated-equity-scoring/cross-model-conflict-and-double-counting-resolver/index.js"
+    },
+    "./fundamental-analysis-and-valuation/integrated-equity-scoring/overall-explainable-stock-score": {
+      "types": "./dist/fundamental-analysis-and-valuation/integrated-equity-scoring/overall-explainable-stock-score/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/integrated-equity-scoring/overall-explainable-stock-score/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/integrated-equity-scoring/overall-explainable-stock-score/index.js"
+    },
+    "./fundamental-analysis-and-valuation/integrated-equity-scoring/score-confidence-missing-data-penalty-and-abstention": {
+      "types": "./dist/fundamental-analysis-and-valuation/integrated-equity-scoring/score-confidence-missing-data-penalty-and-abstention/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/integrated-equity-scoring/score-confidence-missing-data-penalty-and-abstention/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/integrated-equity-scoring/score-confidence-missing-data-penalty-and-abstention/index.js"
+    },
+    "./fundamental-analysis-and-valuation/integrated-equity-scoring/market-wide-stock-screening-and-ranking": {
+      "types": "./dist/fundamental-analysis-and-valuation/integrated-equity-scoring/market-wide-stock-screening-and-ranking/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/integrated-equity-scoring/market-wide-stock-screening-and-ranking/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/integrated-equity-scoring/market-wide-stock-screening-and-ranking/index.js"
+    },
+    "./fundamental-analysis-and-valuation/integrated-equity-scoring/stock-score-history-migration-and-change-attribution": {
+      "types": "./dist/fundamental-analysis-and-valuation/integrated-equity-scoring/stock-score-history-migration-and-change-attribution/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/integrated-equity-scoring/stock-score-history-migration-and-change-attribution/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/integrated-equity-scoring/stock-score-history-migration-and-change-attribution/index.js"
+    },
+    "./fundamental-analysis-and-valuation/sector-specific-equity-scoring/bank-fundamental-score": {
+      "types": "./dist/fundamental-analysis-and-valuation/sector-specific-equity-scoring/bank-fundamental-score/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/sector-specific-equity-scoring/bank-fundamental-score/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/sector-specific-equity-scoring/bank-fundamental-score/index.js"
+    },
+    "./fundamental-analysis-and-valuation/sector-specific-equity-scoring/insurance-fundamental-score": {
+      "types": "./dist/fundamental-analysis-and-valuation/sector-specific-equity-scoring/insurance-fundamental-score/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/sector-specific-equity-scoring/insurance-fundamental-score/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/sector-specific-equity-scoring/insurance-fundamental-score/index.js"
+    },
+    "./fundamental-analysis-and-valuation/sector-specific-equity-scoring/reit-fundamental-score": {
+      "types": "./dist/fundamental-analysis-and-valuation/sector-specific-equity-scoring/reit-fundamental-score/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/sector-specific-equity-scoring/reit-fundamental-score/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/sector-specific-equity-scoring/reit-fundamental-score/index.js"
+    },
+    "./fundamental-analysis-and-valuation/sector-specific-equity-scoring/utility-fundamental-score": {
+      "types": "./dist/fundamental-analysis-and-valuation/sector-specific-equity-scoring/utility-fundamental-score/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/sector-specific-equity-scoring/utility-fundamental-score/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/sector-specific-equity-scoring/utility-fundamental-score/index.js"
+    },
+    "./fundamental-analysis-and-valuation/sector-specific-equity-scoring/early-stage-liquidity-and-runway-score": {
+      "types": "./dist/fundamental-analysis-and-valuation/sector-specific-equity-scoring/early-stage-liquidity-and-runway-score/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/sector-specific-equity-scoring/early-stage-liquidity-and-runway-score/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/sector-specific-equity-scoring/early-stage-liquidity-and-runway-score/index.js"
+    },
+    "./fundamental-analysis-and-valuation/sector-specific-equity-scoring/cyclical-and-commodity-cycle-normalization": {
+      "types": "./dist/fundamental-analysis-and-valuation/sector-specific-equity-scoring/cyclical-and-commodity-cycle-normalization/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/sector-specific-equity-scoring/cyclical-and-commodity-cycle-normalization/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/sector-specific-equity-scoring/cyclical-and-commodity-cycle-normalization/index.js"
+    },
+    "./fundamental-analysis-and-valuation/sector-specific-equity-scoring/holding-company-look-through-score": {
+      "types": "./dist/fundamental-analysis-and-valuation/sector-specific-equity-scoring/holding-company-look-through-score/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/sector-specific-equity-scoring/holding-company-look-through-score/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/sector-specific-equity-scoring/holding-company-look-through-score/index.js"
+    },
+    "./fundamental-analysis-and-valuation/sector-specific-equity-scoring/sector-specific-weight-calibration": {
+      "types": "./dist/fundamental-analysis-and-valuation/sector-specific-equity-scoring/sector-specific-weight-calibration/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/sector-specific-equity-scoring/sector-specific-weight-calibration/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/sector-specific-equity-scoring/sector-specific-weight-calibration/index.js"
+    },
+    "./fundamental-analysis-and-valuation/sector-specific-equity-scoring/unsupported-scope-and-coverage-decision": {
+      "types": "./dist/fundamental-analysis-and-valuation/sector-specific-equity-scoring/unsupported-scope-and-coverage-decision/index.d.ts",
+      "import": "./dist/fundamental-analysis-and-valuation/sector-specific-equity-scoring/unsupported-scope-and-coverage-decision/index.js",
+      "require": "./dist/fundamental-analysis-and-valuation/sector-specific-equity-scoring/unsupported-scope-and-coverage-decision/index.js"
+    },
     "./credit-risk-and-default/probability-of-default/logistic-pd-model": {
       "types": "./dist/credit-risk-and-default/probability-of-default/logistic-pd-model/index.d.ts",
       "import": "./dist/credit-risk-and-default/probability-of-default/logistic-pd-model/index.js",

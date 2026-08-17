@@ -1,0 +1,32 @@
+{
+ "input": {
+  "working_capital": 200,
+  "retained_earnings": 300,
+  "ebit": 160,
+  "market_value_equity": 700,
+  "total_liabilities": 500,
+  "sales": 1200,
+  "total_assets": 1000
+ },
+ "expected": {
+  "state": "calculated",
+  "method": "altman-1968-public-manufacturer",
+  "ratios": {
+   "working_capital_to_assets": 0.2,
+   "retained_earnings_to_assets": 0.3,
+   "ebit_to_assets": 0.16,
+   "market_equity_to_liabilities": 1.4,
+   "sales_to_assets": 1.2
+  },
+  "contributions": {
+   "working_capital": 0.24,
+   "retained_earnings": 0.42,
+   "ebit": 0.528,
+   "market_equity": 0.84,
+   "sales": 1.2
+  },
+  "z_score": 3.228,
+  "zone": "safe-zone",
+  "threshold_policy": "distress<1.81; grey=1.81..2.99; safe>2.99"
+ }
+}

@@ -1,0 +1,24 @@
+{
+ "input": {
+  "current_liabilities": 250,
+  "total_liabilities": 550,
+  "total_assets": 1000,
+  "profit_before_tax": 140,
+  "current_assets": 450,
+  "quick_assets": 320,
+  "daily_operating_expenses": 3
+ },
+ "expected": {
+  "state": "calculated",
+  "method": "taffler-1983-uk-industrial-transformed",
+  "ratios": {
+   "pbt_to_current_liabilities": 0.56,
+   "current_assets_to_total_liabilities": 0.818181818182,
+   "current_liabilities_to_total_assets": 0.25,
+   "no_credit_interval_days": 23.333333333333
+  },
+  "z_score": 10.070587878788,
+  "screen": "non-distress-side",
+  "index_cutoff": 0
+ }
+}

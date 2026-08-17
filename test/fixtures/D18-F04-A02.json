@@ -1,0 +1,38 @@
+{
+ "input": {
+  "net_income": 80,
+  "prior_net_income": 50,
+  "operating_cash_flow": 110,
+  "beginning_total_assets": 900,
+  "prior_beginning_total_assets": 850,
+  "long_term_debt": 260,
+  "prior_long_term_debt": 300,
+  "current_assets": 500,
+  "current_liabilities": 250,
+  "prior_current_assets": 430,
+  "prior_current_liabilities": 250,
+  "equity_issued": 0,
+  "gross_profit": 480,
+  "prior_gross_profit": 390,
+  "sales": 1200,
+  "prior_sales": 1050
+ },
+ "expected": {
+  "state": "calculated",
+  "method": "piotroski-2000-nine-signal",
+  "signals": {
+   "positive_roa": 1,
+   "positive_cfo": 1,
+   "improving_roa": 1,
+   "cash_exceeds_income": 1,
+   "lower_leverage": 1,
+   "higher_current_ratio": 1,
+   "no_equity_issue": 1,
+   "higher_gross_margin": 1,
+   "higher_asset_turnover": 1
+  },
+  "f_score": 9,
+  "band": "strong-signals",
+  "signal_count": 9
+ }
+}

@@ -1,0 +1,62 @@
+{
+ "input": {
+  "current": {
+   "total_assets": 1000,
+   "cash": 100,
+   "net_ppe": 400,
+   "investments_and_advances": 20,
+   "investments_at_equity": 0,
+   "total_liabilities": 550,
+   "preferred_stock": 0,
+   "receivables": 150,
+   "inventory": 180,
+   "sales": 1200,
+   "net_income": 80
+  },
+  "prior": {
+   "total_assets": 900,
+   "cash": 90,
+   "net_ppe": 380,
+   "investments_and_advances": 20,
+   "investments_at_equity": 0,
+   "total_liabilities": 500,
+   "preferred_stock": 0,
+   "receivables": 120,
+   "inventory": 160,
+   "sales": 1050,
+   "net_income": 60
+  },
+  "prior2": {
+   "total_assets": 820,
+   "cash": 80,
+   "net_ppe": 350,
+   "investments_and_advances": 18,
+   "investments_at_equity": 0,
+   "total_liabilities": 450,
+   "preferred_stock": 0,
+   "receivables": 105,
+   "inventory": 145,
+   "sales": 950,
+   "net_income": 50
+  },
+  "issued_equity_or_long_term_debt": false
+ },
+ "expected": {
+  "state": "calculated",
+  "method": "dechow-et-al-2011-model-1",
+  "variables": {
+   "rsst_accruals": 0.042105263158,
+   "change_receivables": 0.031578947368,
+   "change_inventory": 0.021052631579,
+   "soft_assets": 0.5,
+   "change_cash_sales": 0.130434782609,
+   "change_roa": 0.014443084455,
+   "actual_issuance": 0
+  },
+  "logit": -6.756803975307,
+  "misstatement_probability": 0.001161589167,
+  "f_score": 0.313943018179,
+  "band": "at-or-below-baseline",
+  "unconditional_probability": 0.0037
+ }
+}

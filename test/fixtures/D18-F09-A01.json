@@ -1,0 +1,73 @@
+{
+ "input": {
+  "knowledge_cutoff": "2025-03-31",
+  "period_end": "2024-12-31",
+  "currency": "USD",
+  "scale": "millions",
+  "required_fields": [
+   "revenue",
+   "total_assets",
+   "net_income",
+   "operating_cash_flow"
+  ],
+  "facts": [
+   {
+    "field": "revenue",
+    "value": 1200,
+    "period_end": "2024-12-31",
+    "available_at": "2025-02-15",
+    "revision": "original",
+    "currency": "USD",
+    "scale": "millions"
+   },
+   {
+    "field": "total_assets",
+    "value": 1000,
+    "period_end": "2024-12-31",
+    "available_at": "2025-02-15",
+    "revision": "original",
+    "currency": "USD",
+    "scale": "millions"
+   },
+   {
+    "field": "net_income",
+    "value": 90,
+    "period_end": "2024-12-31",
+    "available_at": "2025-02-15",
+    "revision": "original",
+    "currency": "USD",
+    "scale": "millions"
+   },
+   {
+    "field": "operating_cash_flow",
+    "value": 120,
+    "period_end": "2024-12-31",
+    "available_at": "2025-02-15",
+    "revision": "original",
+    "currency": "USD",
+    "scale": "millions"
+   }
+  ]
+ },
+ "expected": {
+  "state": "ready",
+  "method": "point-in-time-filing-fact-assembly",
+  "as_of": "2025-03-31",
+  "accepted_fields": [
+   "net_income",
+   "operating_cash_flow",
+   "revenue",
+   "total_assets"
+  ],
+  "selected_values": {
+   "revenue": 1200,
+   "total_assets": 1000,
+   "net_income": 90,
+   "operating_cash_flow": 120
+  },
+  "rejected_fields": [],
+  "completeness": 1,
+  "ready": true,
+  "clock_policy": "availability_at <= knowledge_cutoff; original revision; exact period/currency/scale"
+ }
+}

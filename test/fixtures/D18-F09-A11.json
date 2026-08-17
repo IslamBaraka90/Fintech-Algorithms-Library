@@ -1,0 +1,41 @@
+{
+ "input": {
+  "financial_health_score": 78,
+  "earnings_quality_score": 73,
+  "dividend_safety_score": 87,
+  "balance_sheet_resilience_score": 75,
+  "distress_safety_score": 77,
+  "valuation_score": 64
+ },
+ "expected": {
+  "state": "calculated",
+  "method": "explainable-six-pillar-stock-score",
+  "components": {
+   "financial_health_score": 78,
+   "earnings_quality_score": 73,
+   "dividend_safety_score": 87,
+   "balance_sheet_resilience_score": 75,
+   "distress_safety_score": 77,
+   "valuation_score": 64
+  },
+  "weights": {
+   "financial_health_score": 0.24,
+   "earnings_quality_score": 0.18,
+   "dividend_safety_score": 0.14,
+   "balance_sheet_resilience_score": 0.18,
+   "distress_safety_score": 0.16,
+   "valuation_score": 0.1
+  },
+  "contributions": {
+   "financial_health_score": 18.72,
+   "earnings_quality_score": 13.14,
+   "dividend_safety_score": 12.18,
+   "balance_sheet_resilience_score": 13.5,
+   "distress_safety_score": 12.32,
+   "valuation_score": 6.4
+  },
+  "overall_stock_score": 76.26,
+  "band": "strong",
+  "coverage": 1
+ }
+}

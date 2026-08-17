@@ -125,6 +125,38 @@ if (topicsFromRegistry.length === 0) {
   process.exit(1);
 }
 
+/*
+ * The regex above matches a fixed field order, so a single malformed value makes
+ * a topic fail to match and vanish from the payload with no error — the docs
+ * simply come out one topic shorter than the package. That has now happened
+ * three times, always from the same cause: `difficulty` written as a word, which
+ * `Number()` turns into NaN and `(\d+)` will not match. Ninety D00 topics went
+ * missing that way, then five in D18.
+ *
+ * Counting the entries independently of the parse turns a silent drop into a
+ * build failure that names the topics.
+ */
+const registryIds = [...registrySrc.matchAll(/\{ id: "([^"]+)"/g)].map((m) => m[1]);
+const parsedIds = new Set(topicsFromRegistry.map((t) => t.id));
+const unparsed = registryIds.filter((id) => !parsedIds.has(id));
+if (unparsed.length > 0) {
+  console.error(
+    `\ngen-docs: ${unparsed.length} topic(s) are in src/_registry.ts but did not parse, so they would\n` +
+      `be missing from docs.json without any other symptom:\n`,
+  );
+  for (const id of unparsed.slice(0, 20)) {
+    const entry = registrySrc.match(new RegExp(`\\{ id: "${id}"[^\\n]*`))?.[0] ?? "";
+    const bad = entry.match(/(\w+): (NaN|undefined|null)/);
+    console.error(`    ${id}${bad ? `  —  ${bad[1]} is ${bad[2]}` : ""}`);
+  }
+  if (unparsed.length > 20) console.error(`    … and ${unparsed.length - 20} more`);
+  console.error(
+    `\n  Almost always a metadata field of the wrong type. Fix it in the catalog and\n` +
+      `  re-run \`npm run sync\`.\n`,
+  );
+  process.exit(1);
+}
+
 const manifestById = new Map(manifest.topics.map((t) => [t.id, t]));
 
 // ------------------------------------------------------- catalog lookup

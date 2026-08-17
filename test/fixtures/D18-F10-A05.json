@@ -1,0 +1,59 @@
+{
+ "input": {
+  "framework": "early-stage-liquidity-teaching-v1",
+  "unrestricted_cash": 48,
+  "liquid_investments": 12,
+  "unconditionally_committed_facility": 10,
+  "near_term_obligations": 8,
+  "minimum_operating_cash": 6,
+  "monthly_net_cash_flows": [
+   -3.8,
+   -3.7,
+   -3.5,
+   -3.2,
+   -3,
+   -2.8
+  ],
+  "monthly_revenue": [
+   1.8,
+   2,
+   2.2,
+   2.5,
+   2.8,
+   3.1
+  ],
+  "weights": {
+   "runway": 0.42,
+   "burn_trend": 0.22,
+   "obligation_cover": 0.18,
+   "revenue_cover": 0.18
+  }
+ },
+ "expected": {
+  "state": "strong-review-band",
+  "method": "early-stage-runway-score-v1",
+  "available_liquidity": 56,
+  "monthly_burn": 3.333333333333,
+  "prior_three_month_burn": 3.666666666667,
+  "latest_three_month_burn": 3,
+  "burn_ratio": 0.818181818182,
+  "runway_months": 16.8,
+  "obligation_coverage": 8.75,
+  "revenue_to_burn": 0.933333333333,
+  "component_scores": {
+   "runway": 60,
+   "burn_trend": 86.363636363636,
+   "obligation_cover": 100,
+   "revenue_cover": 93.333333333333
+  },
+  "weights": {
+   "runway": 0.42,
+   "burn_trend": 0.22,
+   "obligation_cover": 0.18,
+   "revenue_cover": 0.18
+  },
+  "runway_score": 79,
+  "coverage_ratio": 1,
+  "reason": "historical-burn-sensitivity-not-management-forecast"
+ }
+}

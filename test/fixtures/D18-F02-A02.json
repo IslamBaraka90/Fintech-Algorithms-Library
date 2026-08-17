@@ -1,0 +1,58 @@
+{
+ "input": {
+  "valuation_date": "2026-08-04",
+  "currency": "USD",
+  "dividends": [
+   2,
+   2.2,
+   2.42,
+   2.6,
+   2.75
+  ],
+  "cost_of_equity": 0.1,
+  "terminal_growth": 0.04
+ },
+ "expected": {
+  "state": "valued",
+  "method": "multi-stage-dividend-discount",
+  "schedule": [
+   {
+    "period": 1,
+    "dividend": 2,
+    "discount_factor": 0.909090909091,
+    "present_value": 1.818181818182
+   },
+   {
+    "period": 2,
+    "dividend": 2.2,
+    "discount_factor": 0.826446280992,
+    "present_value": 1.818181818182
+   },
+   {
+    "period": 3,
+    "dividend": 2.42,
+    "discount_factor": 0.751314800902,
+    "present_value": 1.818181818182
+   },
+   {
+    "period": 4,
+    "dividend": 2.6,
+    "discount_factor": 0.683013455365,
+    "present_value": 1.775834983949
+   },
+   {
+    "period": 5,
+    "dividend": 2.75,
+    "discount_factor": 0.620921323059,
+    "present_value": 1.707533638413
+   }
+  ],
+  "pv_explicit_dividends": 8.937914076907,
+  "terminal_dividend": 2.86,
+  "terminal_value": 47.666666666667,
+  "terminal_discount_factor": 0.620921323059,
+  "pv_terminal_value": 29.597249732486,
+  "terminal_value_share": 0.76805823063,
+  "intrinsic_value_per_share": 38.535163809394
+ }
+}

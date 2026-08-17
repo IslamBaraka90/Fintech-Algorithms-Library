@@ -1,0 +1,56 @@
+{
+ "input": {
+  "sales": 1200,
+  "prior_sales": 1000,
+  "receivables": 180,
+  "prior_receivables": 100,
+  "cost_of_goods_sold": 720,
+  "prior_cost_of_goods_sold": 650,
+  "current_assets": 500,
+  "prior_current_assets": 430,
+  "net_ppe": 400,
+  "prior_net_ppe": 390,
+  "securities": 10,
+  "prior_securities": 10,
+  "total_assets": 1000,
+  "prior_total_assets": 900,
+  "depreciation": 60,
+  "prior_depreciation": 55,
+  "sga_expense": 190,
+  "prior_sga_expense": 160,
+  "current_liabilities": 250,
+  "prior_current_liabilities": 240,
+  "long_term_debt": 300,
+  "prior_long_term_debt": 280,
+  "income_from_continuing_operations": 100,
+  "operating_cash_flow": 65
+ },
+ "expected": {
+  "state": "calculated",
+  "method": "beneish-1999-eight-variable",
+  "indices": {
+   "dsri": 1.5,
+   "gmi": 0.875,
+   "aqi": 1.157142857143,
+   "sgi": 1.2,
+   "depi": 0.947565543071,
+   "sgai": 0.989583333333,
+   "lvgi": 0.951923076923,
+   "tata": 0.035
+  },
+  "contributions": {
+   "intercept": -4.84,
+   "dsri": 1.38,
+   "gmi": 0.462,
+   "aqi": 0.467485714286,
+   "sgi": 1.0704,
+   "depi": 0.108970037453,
+   "sgai": -0.170208333333,
+   "tata": 0.163765,
+   "lvgi": -0.311278846154
+  },
+  "m_score": -1.668866427748,
+  "screen": "above-screening-cutoff",
+  "cutoff": -1.78
+ }
+}

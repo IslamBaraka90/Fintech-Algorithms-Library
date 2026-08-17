@@ -1,0 +1,24 @@
+{
+  "classification": "synthetic teaching input with author-derived calculations",
+  "input": {
+    "net_income": 96,
+    "revenue": 1200,
+    "beginning_assets": 900,
+    "ending_assets": 1100,
+    "beginning_equity": 380,
+    "ending_equity": 420
+  },
+  "expected": {
+    "net_profit_margin": 0.08,
+    "asset_turnover": 1.2,
+    "equity_multiplier": 2.5,
+    "dupont_roe": 0.24,
+    "direct_roe": 0.24,
+    "identity_gap": 0.0,
+    "average_assets": 1000.0,
+    "average_equity": 400.0,
+    "state": "calculated",
+    "reason": "three-factor-identity-reconciles"
+  },
+  "independent_check": "Synthetic NI 96, revenue 1,200, average assets 1,000, and average equity 400 produce 8% margin × 1.2× turnover × 2.5× multiplier = 24% ROE, exactly matching 96/400."
+}

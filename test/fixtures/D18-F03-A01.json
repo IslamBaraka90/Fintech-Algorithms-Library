@@ -1,0 +1,83 @@
+{
+  "synthetic": true,
+  "input": {
+    "target": {
+      "earnings_per_share": 2.4,
+      "current_price": 40.0
+    },
+    "peers": [
+      {
+        "id": "P1",
+        "price": 28.0,
+        "earnings_per_share": 2.0
+      },
+      {
+        "id": "P2",
+        "price": 48.0,
+        "earnings_per_share": 3.0
+      },
+      {
+        "id": "P3",
+        "price": 63.0,
+        "earnings_per_share": 3.5
+      },
+      {
+        "id": "P4",
+        "price": 50.0,
+        "earnings_per_share": 2.5
+      },
+      {
+        "id": "P5",
+        "price": 44.0,
+        "earnings_per_share": 2.0
+      }
+    ]
+  },
+  "expected": {
+    "model": "median-positive-eps-peer-pe",
+    "peer_count": 5,
+    "peer_multiples": [
+      {
+        "id": "P1",
+        "price": 28.0,
+        "earnings_per_share": 2.0,
+        "pe_ratio": 14.0
+      },
+      {
+        "id": "P2",
+        "price": 48.0,
+        "earnings_per_share": 3.0,
+        "pe_ratio": 16.0
+      },
+      {
+        "id": "P3",
+        "price": 63.0,
+        "earnings_per_share": 3.5,
+        "pe_ratio": 18.0
+      },
+      {
+        "id": "P4",
+        "price": 50.0,
+        "earnings_per_share": 2.5,
+        "pe_ratio": 20.0
+      },
+      {
+        "id": "P5",
+        "price": 44.0,
+        "earnings_per_share": 2.0,
+        "pe_ratio": 22.0
+      }
+    ],
+    "multiple_summary": {
+      "minimum": 14.0,
+      "median": 18.0,
+      "maximum": 22.0,
+      "range": 8.0
+    },
+    "selected_multiple": 18.0,
+    "target_earnings_per_share": 2.4,
+    "implied_price": 43.199999999999996,
+    "premium_discount_to_current": 0.07999999999999985,
+    "state": "valuation-complete"
+  }
+}

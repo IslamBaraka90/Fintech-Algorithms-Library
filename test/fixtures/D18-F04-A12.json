@@ -1,0 +1,99 @@
+{
+ "input": {
+  "observations": [
+   {
+    "period": "Y1",
+    "cfo_scaled": 0.082,
+    "working_capital_accrual_scaled": 0.011
+   },
+   {
+    "period": "Y2",
+    "cfo_scaled": 0.064,
+    "working_capital_accrual_scaled": 0.018
+   },
+   {
+    "period": "Y3",
+    "cfo_scaled": 0.091,
+    "working_capital_accrual_scaled": -0.006
+   },
+   {
+    "period": "Y4",
+    "cfo_scaled": 0.047,
+    "working_capital_accrual_scaled": 0.021
+   },
+   {
+    "period": "Y5",
+    "cfo_scaled": 0.105,
+    "working_capital_accrual_scaled": -0.012
+   },
+   {
+    "period": "Y6",
+    "cfo_scaled": 0.071,
+    "working_capital_accrual_scaled": 0.009
+   },
+   {
+    "period": "Y7",
+    "cfo_scaled": 0.088,
+    "working_capital_accrual_scaled": -0.003
+   },
+   {
+    "period": "Y8",
+    "cfo_scaled": 0.053,
+    "working_capital_accrual_scaled": 0.017
+   },
+   {
+    "period": "Y9",
+    "cfo_scaled": 0.097,
+    "working_capital_accrual_scaled": -0.008
+   },
+   {
+    "period": "Y10",
+    "cfo_scaled": 0.076,
+    "working_capital_accrual_scaled": 0.006
+   }
+  ]
+ },
+ "expected": {
+  "state": "calculated",
+  "method": "dechow-dichev-2002-firm-specific",
+  "coefficients": {
+   "intercept": 0.036445298211,
+   "cfo_t_minus_1": 0.041495032367,
+   "cfo_t": -0.524759085881,
+   "cfo_t_plus_1": 0.068074357908
+  },
+  "estimation_periods": [
+   "Y2",
+   "Y3",
+   "Y4",
+   "Y5",
+   "Y6",
+   "Y7",
+   "Y8",
+   "Y9"
+  ],
+  "fitted_accruals": [
+   0.012458075938,
+   -0.005452601712,
+   0.0227054767,
+   -0.011870859874,
+   0.009534925007,
+   -0.00317941308,
+   0.018887842224,
+   -0.007083445203
+  ],
+  "residuals": [
+   0.005541924062,
+   -0.000547398288,
+   -0.0017054767,
+   -0.000129140126,
+   -0.000534925007,
+   0.00017941308,
+   -0.001887842224,
+   -0.000916554797
+  ],
+  "accrual_quality": 0.00310886836,
+  "interpretation": "higher residual dispersion means lower accrual quality",
+  "available_after_period": "Y10"
+ }
+}

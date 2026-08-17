@@ -1,0 +1,54 @@
+{
+ "input": {
+  "framework": "ferc-regulated-electric-teaching-v1",
+  "allowed_roe": 0.095,
+  "earned_roe": 0.091,
+  "funds_from_operations": 980,
+  "total_debt": 6200,
+  "debt_to_capital": 0.54,
+  "ebit": 1250,
+  "interest_expense": 360,
+  "cash_from_operations": 1550,
+  "capital_expenditure": 2300,
+  "regulatory_lag_months": 8,
+  "rate_base_growth": 0.055,
+  "weights": {
+   "earned_return": 0.18,
+   "cash_debt": 0.18,
+   "capital_structure": 0.14,
+   "interest_coverage": 0.14,
+   "capex_funding": 0.12,
+   "regulatory_lag": 0.12,
+   "rate_base_growth": 0.12
+  }
+ },
+ "expected": {
+  "state": "mixed-review-band",
+  "method": "utility-sector-score-v1",
+  "earned_allowed_roe_gap": -0.004,
+  "ffo_to_debt": 0.158064516129,
+  "interest_coverage": 3.472222222222,
+  "capex_funding_ratio": 0.673913043478,
+  "component_scores": {
+   "earned_return": 100,
+   "cash_debt": 55.760368663594,
+   "capital_structure": 44,
+   "interest_coverage": 56.349206349206,
+   "capex_funding": 45.652173913043,
+   "regulatory_lag": 66.666666666667,
+   "rate_base_growth": 100
+  },
+  "weights": {
+   "earned_return": 0.18,
+   "cash_debt": 0.18,
+   "capital_structure": 0.14,
+   "interest_coverage": 0.14,
+   "capex_funding": 0.12,
+   "regulatory_lag": 0.12,
+   "rate_base_growth": 0.12
+  },
+  "fundamental_score": 67.564016117901,
+  "coverage_ratio": 1,
+  "reason": "ferc-tagged-package-bands"
+ }
+}

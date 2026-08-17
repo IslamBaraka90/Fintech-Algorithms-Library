@@ -1,0 +1,58 @@
+{
+ "input": {
+  "models": [
+   {
+    "name": "altman",
+    "distress_probability": 0.18,
+    "weight": 1,
+    "eligible": true
+   },
+   {
+    "name": "ohlson",
+    "distress_probability": 0.24,
+    "weight": 1,
+    "eligible": true
+   },
+   {
+    "name": "zmijewski",
+    "distress_probability": 0.3,
+    "weight": 0.5,
+    "eligible": true
+   },
+   {
+    "name": "sector-reroute",
+    "distress_probability": 0.8,
+    "weight": 1,
+    "eligible": false
+   }
+  ]
+ },
+ "expected": {
+  "state": "calculated",
+  "method": "weighted-distress-probability-ensemble",
+  "eligible_models": [
+   {
+    "name": "altman",
+    "probability": 0.18,
+    "weight": 1
+   },
+   {
+    "name": "ohlson",
+    "probability": 0.24,
+    "weight": 1
+   },
+   {
+    "name": "zmijewski",
+    "probability": 0.3,
+    "weight": 0.5
+   }
+  ],
+  "model_count": 3,
+  "distress_probability": 0.228,
+  "weighted_stddev": 0.044899888641,
+  "disagreement_range": 0.12,
+  "agreement": 0.88,
+  "band": "lower-review",
+  "calibration_boundary": "weighted aggregation preserves supplied probabilities; it does not recalibrate them"
+ }
+}

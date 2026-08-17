@@ -1,0 +1,32 @@
+{
+ "input": {
+  "total_assets": 1000,
+  "price_level_index": 1,
+  "total_liabilities": 550,
+  "current_assets": 450,
+  "current_liabilities": 250,
+  "working_capital": 200,
+  "net_income": 80,
+  "prior_net_income": 50,
+  "funds_from_operations": 110
+ },
+ "expected": {
+  "state": "calculated",
+  "method": "ohlson-1980-model-1",
+  "variables": {
+   "size": 6.907755278982,
+   "tlta": 0.55,
+   "wcta": 0.2,
+   "clca": 0.555555555556,
+   "oeneg": 0,
+   "nita": 0.08,
+   "futl": 0.2,
+   "intwo": 0,
+   "chin": 0.230769230769
+  },
+  "o_score": -1.734731612221,
+  "logistic_probability": 0.149983354764,
+  "screen": "above-original-cutoff",
+  "cutoff_probability": 0.038
+ }
+}

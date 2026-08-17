@@ -1,0 +1,59 @@
+{
+ "input": {
+  "framework": "basel-iii-teaching-v1",
+  "cet1_ratio": 0.12,
+  "leverage_ratio": 0.05,
+  "lcr": 1.25,
+  "nsfr": 1.15,
+  "npl_ratio": 0.025,
+  "provision_coverage_ratio": 1.1,
+  "net_interest_margin": 0.032,
+  "cost_income_ratio": 0.48,
+  "minimums": {
+   "cet1_ratio": 0.045,
+   "leverage_ratio": 0.03,
+   "lcr": 1,
+   "nsfr": 1
+  },
+  "weights": {
+   "capital": 0.2,
+   "leverage": 0.1,
+   "short_liquidity": 0.1,
+   "stable_funding": 0.1,
+   "asset_quality": 0.15,
+   "coverage": 0.1,
+   "margin": 0.15,
+   "efficiency": 0.1
+  }
+ },
+ "expected": {
+  "state": "mixed-review-band",
+  "method": "bank-sector-score-v1",
+  "component_scores": {
+   "capital": 71.428571428571,
+   "leverage": 66.666666666667,
+   "short_liquidity": 62.5,
+   "stable_funding": 50,
+   "asset_quality": 91.666666666667,
+   "coverage": 83.333333333333,
+   "margin": 73.333333333333,
+   "efficiency": 73.333333333333
+  },
+  "weights": {
+   "capital": 0.2,
+   "leverage": 0.1,
+   "short_liquidity": 0.1,
+   "stable_funding": 0.1,
+   "asset_quality": 0.15,
+   "coverage": 0.1,
+   "margin": 0.15,
+   "efficiency": 0.1
+  },
+  "base_score": 72.619047619048,
+  "floor_breaches": [],
+  "penalty": 0,
+  "fundamental_score": 72.619047619048,
+  "coverage_ratio": 1,
+  "reason": "package-bands-with-declared-prudential-minimums"
+ }
+}

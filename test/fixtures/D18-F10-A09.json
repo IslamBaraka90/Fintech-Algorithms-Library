@@ -1,0 +1,84 @@
+{
+ "input": {
+  "framework": "coverage-router-teaching-v1",
+  "sector": "bank",
+  "candidate_framework": "basel-iii-teaching-v1",
+  "as_of": "2026-04-15",
+  "minimum_coverage": 0.75,
+  "max_age_days": 550,
+  "facts": [
+   {
+    "name": "cet1_ratio",
+    "value_present": true,
+    "knowledge_date": "2026-03-20",
+    "period_end": "2025-12-31"
+   },
+   {
+    "name": "leverage_ratio",
+    "value_present": true,
+    "knowledge_date": "2026-03-20",
+    "period_end": "2025-12-31"
+   },
+   {
+    "name": "lcr",
+    "value_present": true,
+    "knowledge_date": "2026-03-20",
+    "period_end": "2025-12-31"
+   },
+   {
+    "name": "nsfr",
+    "value_present": true,
+    "knowledge_date": "2026-03-20",
+    "period_end": "2025-12-31"
+   },
+   {
+    "name": "npl_ratio",
+    "value_present": true,
+    "knowledge_date": "2026-03-20",
+    "period_end": "2025-12-31"
+   },
+   {
+    "name": "provision_coverage_ratio",
+    "value_present": true,
+    "knowledge_date": "2026-03-20",
+    "period_end": "2025-12-31"
+   },
+   {
+    "name": "net_interest_margin",
+    "value_present": true,
+    "knowledge_date": "2026-03-20",
+    "period_end": "2025-12-31"
+   },
+   {
+    "name": "cost_income_ratio",
+    "value_present": true,
+    "knowledge_date": "2026-03-20",
+    "period_end": "2025-12-31"
+   }
+  ]
+ },
+ "expected": {
+  "state": "supported",
+  "method": "sector-coverage-router-v1",
+  "selected_model": "D18-F10-A01",
+  "coverage_ratio": 1,
+  "available_fields": [
+   "cet1_ratio",
+   "leverage_ratio",
+   "lcr",
+   "nsfr",
+   "npl_ratio",
+   "provision_coverage_ratio",
+   "net_interest_margin",
+   "cost_income_ratio"
+  ],
+  "missing_fields": [],
+  "stale_fields": [],
+  "future_fields": [],
+  "required_field_count": 8,
+  "reasons": [
+   "complete-current-coverage"
+  ],
+  "reason": "complete-current-coverage"
+ }
+}

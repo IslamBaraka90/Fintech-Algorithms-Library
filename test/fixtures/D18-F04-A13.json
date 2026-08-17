@@ -1,0 +1,96 @@
+{
+ "input": {
+  "target_id": "TARGET",
+  "industry_year_sample": [
+   {
+    "entity_id": "TARGET",
+    "prior_total_assets": 900,
+    "total_accruals": 48,
+    "revenue_change": 130,
+    "receivables_change": 35,
+    "net_ppe": 390
+   },
+   {
+    "entity_id": "P1",
+    "prior_total_assets": 700,
+    "total_accruals": 25,
+    "revenue_change": 80,
+    "receivables_change": 12,
+    "net_ppe": 260
+   },
+   {
+    "entity_id": "P2",
+    "prior_total_assets": 820,
+    "total_accruals": 34,
+    "revenue_change": 110,
+    "receivables_change": 18,
+    "net_ppe": 330
+   },
+   {
+    "entity_id": "P3",
+    "prior_total_assets": 950,
+    "total_accruals": 29,
+    "revenue_change": 70,
+    "receivables_change": 10,
+    "net_ppe": 410
+   },
+   {
+    "entity_id": "P4",
+    "prior_total_assets": 620,
+    "total_accruals": 21,
+    "revenue_change": 95,
+    "receivables_change": 24,
+    "net_ppe": 190
+   },
+   {
+    "entity_id": "P5",
+    "prior_total_assets": 1100,
+    "total_accruals": 44,
+    "revenue_change": 160,
+    "receivables_change": 30,
+    "net_ppe": 520
+   },
+   {
+    "entity_id": "P6",
+    "prior_total_assets": 760,
+    "total_accruals": 18,
+    "revenue_change": 55,
+    "receivables_change": 8,
+    "net_ppe": 300
+   },
+   {
+    "entity_id": "P7",
+    "prior_total_assets": 980,
+    "total_accruals": 38,
+    "revenue_change": 125,
+    "receivables_change": 20,
+    "net_ppe": 450
+   }
+  ]
+ },
+ "expected": {
+  "state": "calculated",
+  "method": "modified-jones-1995-peer-estimation",
+  "target_id": "TARGET",
+  "estimation_count": 7,
+  "coefficients": {
+   "inverse_assets": -0.587474755783,
+   "revenue_less_receivables": 0.226673067676,
+   "net_ppe": 0.033894017127
+  },
+  "peer_residuals": [
+   0.001944659573,
+   0.003107959607,
+   0.002200572287,
+   -0.001526090812,
+   -0.002277193589,
+   -0.002939953373,
+   -0.000475005161
+  ],
+  "scaled_total_accruals": 0.053333333333,
+  "nondiscretionary_accruals": 0.037961259281,
+  "discretionary_accruals": 0.015372074052,
+  "absolute_discretionary_accruals": 0.015372074052,
+  "interpretation": "signed residual; no universal manipulation cutoff"
+ }
+}

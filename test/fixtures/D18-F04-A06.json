@@ -1,0 +1,22 @@
+{
+ "input": {
+  "total_assets": 1000,
+  "total_liabilities": 550,
+  "current_assets": 450,
+  "current_liabilities": 250,
+  "net_income": 80
+ },
+ "expected": {
+  "state": "calculated",
+  "method": "zmijewski-1984-probit",
+  "variables": {
+   "roa": 0.08,
+   "leverage": 0.55,
+   "current_ratio": 1.8
+  },
+  "x_score": -1.56639,
+  "probit_probability": 0.058628681203,
+  "screen": "non-distress-side",
+  "index_cutoff": 0
+ }
+}

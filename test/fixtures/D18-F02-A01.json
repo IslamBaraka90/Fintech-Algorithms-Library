@@ -1,0 +1,67 @@
+{
+ "input": {
+  "valuation_date": "2026-08-04",
+  "currency": "USD",
+  "unit_scale": "millions except per-share",
+  "fcff": [
+   90,
+   100,
+   112,
+   124,
+   136
+  ],
+  "wacc": 0.09,
+  "terminal_growth": 0.03,
+  "cash_and_non_operating_assets": 120,
+  "debt": 450,
+  "preferred_equity": 20,
+  "noncontrolling_interest": 10,
+  "diluted_shares": 100
+ },
+ "expected": {
+  "state": "valued",
+  "method": "fcff-enterprise-dcf",
+  "schedule": [
+   {
+    "period": 1,
+    "fcff": 90,
+    "discount_factor": 0.917431192661,
+    "present_value": 82.56880733945
+   },
+   {
+    "period": 2,
+    "fcff": 100,
+    "discount_factor": 0.841679993267,
+    "present_value": 84.167999326656
+   },
+   {
+    "period": 3,
+    "fcff": 112,
+    "discount_factor": 0.772183480061,
+    "present_value": 86.484549766839
+   },
+   {
+    "period": 4,
+    "fcff": 124,
+    "discount_factor": 0.708425211065,
+    "present_value": 87.844726172084
+   },
+   {
+    "period": 5,
+    "fcff": 136,
+    "discount_factor": 0.649931386298,
+    "present_value": 88.390668536575
+   }
+  ],
+  "pv_explicit_fcff": 429.456751141604,
+  "terminal_fcff": 140.08,
+  "terminal_value": 2334.666666666667,
+  "terminal_discount_factor": 0.649931386298,
+  "pv_terminal_value": 1517.373143211204,
+  "terminal_value_share": 0.77940715191,
+  "enterprise_value": 1946.829894352808,
+  "net_equity_bridge": -360,
+  "equity_value": 1586.829894352808,
+  "intrinsic_value_per_share": 15.868298943528
+ }
+}

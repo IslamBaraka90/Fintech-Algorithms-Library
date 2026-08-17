@@ -1,0 +1,24 @@
+{
+  "classification": "synthetic teaching input with author-derived calculations",
+  "input": {
+    "net_income": 120,
+    "interest_expense": 45,
+    "income_tax_expense": 35,
+    "depreciation_and_amortization": 80,
+    "current_borrowings": 60,
+    "noncurrent_borrowings": 600,
+    "lease_liabilities": 90,
+    "cash_and_cash_equivalents": 150,
+    "include_lease_liabilities": true
+  },
+  "expected": {
+    "ebitda": 280.0,
+    "gross_debt": 750.0,
+    "net_debt": 600.0,
+    "net_debt_to_ebitda": 2.142857142857,
+    "lease_policy": "included",
+    "state": "net-debt",
+    "reason": "net-debt-divided-by-ebitda"
+  },
+  "independent_check": "Synthetic net income 120 + interest 45 + tax 35 + D&A 80 gives EBITDA 280. Debt 60 + 600 + leases 90 − cash 150 gives net debt 600, so net debt/EBITDA is 2.142857×."
+}

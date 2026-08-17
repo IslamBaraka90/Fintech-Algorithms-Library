@@ -1,0 +1,26 @@
+{
+  "classification": "synthetic teaching input with author-derived calculations",
+  "input": {
+    "revenue": 2400,
+    "cost_of_goods_sold": 1440,
+    "beginning_receivables": 280,
+    "ending_receivables": 320,
+    "beginning_inventory": 340,
+    "ending_inventory": 380,
+    "beginning_trade_payables": 200,
+    "ending_trade_payables": 240,
+    "day_count": 365
+  },
+  "expected": {
+    "average_receivables": 300.0,
+    "average_inventory": 360.0,
+    "average_trade_payables": 220.0,
+    "days_sales_outstanding": 45.625,
+    "days_inventory_outstanding": 91.25,
+    "days_payables_outstanding": 55.763888888889,
+    "cash_conversion_cycle_days": 81.111111111111,
+    "state": "calculated",
+    "reason": "dio-plus-dso-minus-dpo"
+  },
+  "independent_check": "Synthetic averages are AR 300, inventory 360, and trade AP 220 against revenue 2,400 and COGS 1,440 over 365 days. DSO 45.625 + DIO 91.25 − DPO 55.7639 = CCC 81.1111 days."
+}

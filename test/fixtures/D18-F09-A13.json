@@ -1,0 +1,126 @@
+{
+ "input": {
+  "screen_floor": 70,
+  "min_confidence": 0.75,
+  "min_liquidity": 50,
+  "universe": [
+   {
+    "id": "AAA",
+    "score": 82,
+    "confidence": 0.96,
+    "liquidity": 100,
+    "eligible": true,
+    "sector": "industrial"
+   },
+   {
+    "id": "BBB",
+    "score": 82,
+    "confidence": 0.88,
+    "liquidity": 80,
+    "eligible": true,
+    "sector": "software"
+   },
+   {
+    "id": "CCC",
+    "score": 76,
+    "confidence": 0.81,
+    "liquidity": 60,
+    "eligible": true,
+    "sector": "software"
+   },
+   {
+    "id": "DDD",
+    "score": 74,
+    "confidence": 0.62,
+    "liquidity": 90,
+    "eligible": true,
+    "sector": "bank"
+   },
+   {
+    "id": "EEE",
+    "score": 68,
+    "confidence": 0.95,
+    "liquidity": 110,
+    "eligible": true,
+    "sector": "industrial"
+   },
+   {
+    "id": "FFF",
+    "score": 90,
+    "confidence": 0.99,
+    "liquidity": 100,
+    "eligible": false,
+    "sector": "industrial"
+   }
+  ]
+ },
+ "expected": {
+  "state": "ranked",
+  "method": "eligibility-confidence-score-floor-ranking",
+  "ranked": [
+   {
+    "rank": 1,
+    "id": "AAA",
+    "score": 82,
+    "confidence": 0.96,
+    "liquidity": 100,
+    "sector": "industrial"
+   },
+   {
+    "rank": 2,
+    "id": "BBB",
+    "score": 82,
+    "confidence": 0.88,
+    "liquidity": 80,
+    "sector": "software"
+   },
+   {
+    "rank": 3,
+    "id": "CCC",
+    "score": 76,
+    "confidence": 0.81,
+    "liquidity": 60,
+    "sector": "software"
+   }
+  ],
+  "screened_count": 3,
+  "universe_count": 6,
+  "coverage": 0.5,
+  "score_floor": 70,
+  "confidence_floor": 0.75,
+  "liquidity_floor": 50,
+  "excluded": [
+   {
+    "id": "DDD",
+    "score": 74,
+    "confidence": 0.62,
+    "liquidity": 90,
+    "sector": "bank",
+    "reasons": [
+     "below confidence floor"
+    ]
+   },
+   {
+    "id": "EEE",
+    "score": 68,
+    "confidence": 0.95,
+    "liquidity": 110,
+    "sector": "industrial",
+    "reasons": [
+     "below score floor"
+    ]
+   },
+   {
+    "id": "FFF",
+    "score": 90,
+    "confidence": 0.99,
+    "liquidity": 100,
+    "sector": "industrial",
+    "reasons": [
+     "not eligible"
+    ]
+   }
+  ],
+  "tie_break": "score descending, confidence descending, stable id ascending"
+ }
+}

@@ -1,6 +1,6 @@
 {
   "generatedFrom": "scripts/sync.mjs",
-  "topicCount": 471,
+  "topicCount": 523,
   "topics": [
     {
       "id": "D00-F01-A01",
@@ -8144,6 +8144,1017 @@
         "max_exposure_per_window",
         "fallback_window",
         "dark_opportunities"
+      ]
+    },
+    {
+      "id": "D18-F01-A01",
+      "path": "fundamental-analysis-and-valuation/statement-ratios/dupont-decomposition",
+      "entry": "dupontDecomposition",
+      "archetype": "record-transform",
+      "fixture": "D18-F01-A01.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "classification",
+        "input",
+        "expected",
+        "independent_check"
+      ]
+    },
+    {
+      "id": "D18-F01-A02",
+      "path": "fundamental-analysis-and-valuation/statement-ratios/roic-calculation",
+      "entry": "roicCalculation",
+      "archetype": "record-transform",
+      "fixture": "D18-F01-A02.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "classification",
+        "input",
+        "expected",
+        "independent_check"
+      ]
+    },
+    {
+      "id": "D18-F01-A03",
+      "path": "fundamental-analysis-and-valuation/statement-ratios/cash-conversion-cycle",
+      "entry": "cashConversionCycle",
+      "archetype": "record-transform",
+      "fixture": "D18-F01-A03.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "classification",
+        "input",
+        "expected",
+        "independent_check"
+      ]
+    },
+    {
+      "id": "D18-F01-A04",
+      "path": "fundamental-analysis-and-valuation/statement-ratios/interest-coverage-ratio",
+      "entry": "interestCoverageRatio",
+      "archetype": "record-transform",
+      "fixture": "D18-F01-A04.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "classification",
+        "input",
+        "expected",
+        "independent_check"
+      ]
+    },
+    {
+      "id": "D18-F01-A05",
+      "path": "fundamental-analysis-and-valuation/statement-ratios/net-debt-ebitda",
+      "entry": "netDebtToEbitda",
+      "archetype": "record-transform",
+      "fixture": "D18-F01-A05.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "classification",
+        "input",
+        "expected",
+        "independent_check"
+      ]
+    },
+    {
+      "id": "D18-F01-A06",
+      "path": "fundamental-analysis-and-valuation/statement-ratios/common-size-statements",
+      "entry": "commonSizeStatements",
+      "archetype": "record-transform",
+      "fixture": "D18-F01-A06.json",
+      "convention": "A",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "classification",
+        "input",
+        "expected",
+        "independent_check"
+      ]
+    },
+    {
+      "id": "D18-F02-A01",
+      "path": "fundamental-analysis-and-valuation/intrinsic-valuation/free-cash-flow-dcf",
+      "entry": "freeCashFlowDcf",
+      "archetype": "record-transform",
+      "fixture": "D18-F02-A01.json",
+      "convention": "D",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "valuation_date",
+        "currency",
+        "unit_scale",
+        "fcff",
+        "wacc",
+        "terminal_growth",
+        "cash_and_non_operating_assets",
+        "debt",
+        "preferred_equity",
+        "noncontrolling_interest",
+        "diluted_shares"
+      ]
+    },
+    {
+      "id": "D18-F02-A02",
+      "path": "fundamental-analysis-and-valuation/intrinsic-valuation/dividend-discount-model",
+      "entry": "dividendDiscountModel",
+      "archetype": "record-transform",
+      "fixture": "D18-F02-A02.json",
+      "convention": "D",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "valuation_date",
+        "currency",
+        "dividends",
+        "cost_of_equity",
+        "terminal_growth"
+      ]
+    },
+    {
+      "id": "D18-F02-A03",
+      "path": "fundamental-analysis-and-valuation/intrinsic-valuation/gordon-growth-model",
+      "entry": "gordonGrowthModel",
+      "archetype": "record-transform",
+      "fixture": "D18-F02-A03.json",
+      "convention": "D",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "valuation_date",
+        "currency",
+        "dividend_next",
+        "cost_of_equity",
+        "perpetual_growth"
+      ]
+    },
+    {
+      "id": "D18-F02-A04",
+      "path": "fundamental-analysis-and-valuation/intrinsic-valuation/residual-income-model",
+      "entry": "residualIncomeModel",
+      "archetype": "record-transform",
+      "fixture": "D18-F02-A04.json",
+      "convention": "D",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "valuation_date",
+        "currency",
+        "opening_book_value_per_share",
+        "earnings_per_share",
+        "dividends_per_share",
+        "nonowner_equity_adjustments_per_share",
+        "cost_of_equity",
+        "terminal_residual_income_growth"
+      ]
+    },
+    {
+      "id": "D18-F02-A05",
+      "path": "fundamental-analysis-and-valuation/intrinsic-valuation/economic-value-added",
+      "entry": "economicValueAdded",
+      "archetype": "record-transform",
+      "fixture": "D18-F02-A05.json",
+      "convention": "D",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "valuation_date",
+        "currency",
+        "unit_scale",
+        "opening_invested_capital",
+        "nopat",
+        "net_investment",
+        "wacc",
+        "terminal_eva_growth",
+        "adjustment_basis"
+      ]
+    },
+    {
+      "id": "D18-F03-A01",
+      "path": "fundamental-analysis-and-valuation/relative-valuation/p-e-comparable-valuation",
+      "entry": "pEComparableValuation",
+      "archetype": "record-transform",
+      "fixture": "D18-F03-A01.json",
+      "convention": "A",
+      "entryParams": [
+        "rawInputs"
+      ],
+      "fixtureKeys": [
+        "synthetic",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D18-F03-A02",
+      "path": "fundamental-analysis-and-valuation/relative-valuation/ev-ebitda-comparable-valuation",
+      "entry": "evEbitdaComparableValuation",
+      "archetype": "record-transform",
+      "fixture": "D18-F03-A02.json",
+      "convention": "A",
+      "entryParams": [
+        "rawInputs"
+      ],
+      "fixtureKeys": [
+        "synthetic",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D18-F03-A03",
+      "path": "fundamental-analysis-and-valuation/relative-valuation/price-to-book-valuation",
+      "entry": "priceToBookValuation",
+      "archetype": "record-transform",
+      "fixture": "D18-F03-A03.json",
+      "convention": "A",
+      "entryParams": [
+        "rawInputs"
+      ],
+      "fixtureKeys": [
+        "synthetic",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D18-F03-A04",
+      "path": "fundamental-analysis-and-valuation/relative-valuation/peg-ratio",
+      "entry": "pegRatio",
+      "archetype": "record-transform",
+      "fixture": "D18-F03-A04.json",
+      "convention": "A",
+      "entryParams": [
+        "rawInputs"
+      ],
+      "fixtureKeys": [
+        "synthetic",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D18-F03-A05",
+      "path": "fundamental-analysis-and-valuation/relative-valuation/peer-multiple-regression",
+      "entry": "peerMultipleRegression",
+      "archetype": "record-transform",
+      "fixture": "D18-F03-A05.json",
+      "convention": "A",
+      "entryParams": [
+        "rawInputs"
+      ],
+      "fixtureKeys": [
+        "synthetic",
+        "input",
+        "expected"
+      ]
+    },
+    {
+      "id": "D18-F04-A01",
+      "path": "fundamental-analysis-and-valuation/quality-and-distress/altman-z-score",
+      "entry": "altmanZScore",
+      "archetype": "record-transform",
+      "fixture": "D18-F04-A01.json",
+      "convention": "D",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "working_capital",
+        "retained_earnings",
+        "ebit",
+        "market_value_equity",
+        "total_liabilities",
+        "sales",
+        "total_assets"
+      ]
+    },
+    {
+      "id": "D18-F04-A02",
+      "path": "fundamental-analysis-and-valuation/quality-and-distress/piotroski-f-score",
+      "entry": "piotroskiFScore",
+      "archetype": "record-transform",
+      "fixture": "D18-F04-A02.json",
+      "convention": "D",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "net_income",
+        "prior_net_income",
+        "operating_cash_flow",
+        "beginning_total_assets",
+        "prior_beginning_total_assets",
+        "long_term_debt",
+        "prior_long_term_debt",
+        "current_assets",
+        "current_liabilities",
+        "prior_current_assets",
+        "prior_current_liabilities",
+        "equity_issued",
+        "gross_profit",
+        "prior_gross_profit",
+        "sales",
+        "prior_sales"
+      ]
+    },
+    {
+      "id": "D18-F04-A03",
+      "path": "fundamental-analysis-and-valuation/quality-and-distress/beneish-m-score",
+      "entry": "beneishMScore",
+      "archetype": "record-transform",
+      "fixture": "D18-F04-A03.json",
+      "convention": "D",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "sales",
+        "prior_sales",
+        "receivables",
+        "prior_receivables",
+        "cost_of_goods_sold",
+        "prior_cost_of_goods_sold",
+        "current_assets",
+        "prior_current_assets",
+        "net_ppe",
+        "prior_net_ppe",
+        "securities",
+        "prior_securities",
+        "total_assets",
+        "prior_total_assets",
+        "depreciation",
+        "prior_depreciation",
+        "sga_expense",
+        "prior_sga_expense",
+        "current_liabilities",
+        "prior_current_liabilities",
+        "long_term_debt",
+        "prior_long_term_debt",
+        "income_from_continuing_operations",
+        "operating_cash_flow"
+      ]
+    },
+    {
+      "id": "D18-F04-A04",
+      "path": "fundamental-analysis-and-valuation/quality-and-distress/sloan-accrual-measure",
+      "entry": "sloanAccrualMeasure",
+      "archetype": "record-transform",
+      "fixture": "D18-F04-A04.json",
+      "convention": "D",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "current_assets",
+        "prior_current_assets",
+        "cash",
+        "prior_cash",
+        "current_liabilities",
+        "prior_current_liabilities",
+        "short_term_debt",
+        "prior_short_term_debt",
+        "taxes_payable",
+        "prior_taxes_payable",
+        "depreciation_and_amortization",
+        "average_total_assets"
+      ]
+    },
+    {
+      "id": "D18-F04-A05",
+      "path": "fundamental-analysis-and-valuation/quality-and-distress/ohlson-o-score",
+      "entry": "ohlsonOScore",
+      "archetype": "record-transform",
+      "fixture": "D18-F04-A05.json",
+      "convention": "D",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "total_assets",
+        "price_level_index",
+        "total_liabilities",
+        "current_assets",
+        "current_liabilities",
+        "working_capital",
+        "net_income",
+        "prior_net_income",
+        "funds_from_operations"
+      ]
+    },
+    {
+      "id": "D18-F04-A06",
+      "path": "fundamental-analysis-and-valuation/quality-and-distress/zmijewski-x-score",
+      "entry": "zmijewskiXScore",
+      "archetype": "record-transform",
+      "fixture": "D18-F04-A06.json",
+      "convention": "D",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "total_assets",
+        "total_liabilities",
+        "current_assets",
+        "current_liabilities",
+        "net_income"
+      ]
+    },
+    {
+      "id": "D18-F04-A07",
+      "path": "fundamental-analysis-and-valuation/quality-and-distress/springate-s-score",
+      "entry": "springateSScore",
+      "archetype": "record-transform",
+      "fixture": "D18-F04-A07.json",
+      "convention": "D",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "total_assets",
+        "current_liabilities",
+        "working_capital",
+        "ebit",
+        "ebt",
+        "sales"
+      ]
+    },
+    {
+      "id": "D18-F04-A08",
+      "path": "fundamental-analysis-and-valuation/quality-and-distress/taffler-z-score",
+      "entry": "tafflerZScore",
+      "archetype": "record-transform",
+      "fixture": "D18-F04-A08.json",
+      "convention": "D",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "current_liabilities",
+        "total_liabilities",
+        "total_assets",
+        "profit_before_tax",
+        "current_assets",
+        "quick_assets",
+        "daily_operating_expenses"
+      ]
+    },
+    {
+      "id": "D18-F04-A09",
+      "path": "fundamental-analysis-and-valuation/quality-and-distress/fulmer-h-score",
+      "entry": "fulmerHScore",
+      "archetype": "record-transform",
+      "fixture": "D18-F04-A09.json",
+      "convention": "D",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "total_assets",
+        "total_debt",
+        "equity",
+        "interest_expense",
+        "tangible_assets_usd_thousands",
+        "ebit",
+        "retained_earnings",
+        "sales",
+        "ebt",
+        "operating_cash_flow",
+        "current_liabilities",
+        "working_capital"
+      ]
+    },
+    {
+      "id": "D18-F04-A10",
+      "path": "fundamental-analysis-and-valuation/quality-and-distress/grover-g-score",
+      "entry": "groverGScore",
+      "archetype": "record-transform",
+      "fixture": "D18-F04-A10.json",
+      "convention": "D",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "total_assets",
+        "working_capital",
+        "ebit",
+        "net_income"
+      ]
+    },
+    {
+      "id": "D18-F04-A11",
+      "path": "fundamental-analysis-and-valuation/quality-and-distress/dechow-f-score-for-misstatement-risk",
+      "entry": "dechowFScoreForMisstatementRisk",
+      "archetype": "record-transform",
+      "fixture": "D18-F04-A11.json",
+      "convention": "D",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "current",
+        "prior",
+        "prior2",
+        "issued_equity_or_long_term_debt"
+      ]
+    },
+    {
+      "id": "D18-F04-A12",
+      "path": "fundamental-analysis-and-valuation/quality-and-distress/dechow-dichev-accrual-quality",
+      "entry": "dechowDichevAccrualQuality",
+      "archetype": "record-transform",
+      "fixture": "D18-F04-A12.json",
+      "convention": "D",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "observations"
+      ]
+    },
+    {
+      "id": "D18-F04-A13",
+      "path": "fundamental-analysis-and-valuation/quality-and-distress/modified-jones-discretionary-accrual-model",
+      "entry": "modifiedJonesDiscretionaryAccrualModel",
+      "archetype": "record-transform",
+      "fixture": "D18-F04-A13.json",
+      "convention": "D",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "target_id",
+        "industry_year_sample"
+      ]
+    },
+    {
+      "id": "D18-F09-A01",
+      "path": "fundamental-analysis-and-valuation/integrated-equity-scoring/point-in-time-stock-scoring-input-assembly",
+      "entry": "pointInTimeStockScoringInputAssembly",
+      "archetype": "record-transform",
+      "fixture": "D18-F09-A01.json",
+      "convention": "D",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "knowledge_cutoff",
+        "period_end",
+        "currency",
+        "scale",
+        "required_fields",
+        "facts"
+      ]
+    },
+    {
+      "id": "D18-F09-A02",
+      "path": "fundamental-analysis-and-valuation/integrated-equity-scoring/stock-scoring-peer-cohort-resolver",
+      "entry": "stockScoringPeerCohortResolver",
+      "archetype": "record-transform",
+      "fixture": "D18-F09-A02.json",
+      "convention": "D",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "as_of",
+        "target_id",
+        "target_sector",
+        "target_country",
+        "min_market_cap",
+        "min_peers",
+        "universe"
+      ]
+    },
+    {
+      "id": "D18-F09-A03",
+      "path": "fundamental-analysis-and-valuation/integrated-equity-scoring/fundamental-metric-direction-and-peer-normalization",
+      "entry": "fundamentalMetricDirectionAndPeerNormalization",
+      "archetype": "record-transform",
+      "fixture": "D18-F09-A03.json",
+      "convention": "D",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "min_peers",
+        "metrics"
+      ]
+    },
+    {
+      "id": "D18-F09-A04",
+      "path": "fundamental-analysis-and-valuation/integrated-equity-scoring/model-applicability-and-variant-router",
+      "entry": "modelApplicabilityAndVariantRouter",
+      "archetype": "record-transform",
+      "fixture": "D18-F09-A04.json",
+      "convention": "D",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "target",
+        "requested_models"
+      ]
+    },
+    {
+      "id": "D18-F09-A05",
+      "path": "fundamental-analysis-and-valuation/integrated-equity-scoring/accounting-financial-health-composite",
+      "entry": "accountingFinancialHealthComposite",
+      "archetype": "record-transform",
+      "fixture": "D18-F09-A05.json",
+      "convention": "D",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "profitability_score",
+        "cash_flow_score",
+        "liquidity_score",
+        "leverage_score"
+      ]
+    },
+    {
+      "id": "D18-F09-A06",
+      "path": "fundamental-analysis-and-valuation/integrated-equity-scoring/earnings-quality-composite",
+      "entry": "earningsQualityComposite",
+      "archetype": "record-transform",
+      "fixture": "D18-F09-A06.json",
+      "convention": "D",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "accrual_quality_score",
+        "cash_conversion_score",
+        "revenue_quality_score",
+        "manipulation_safety_score"
+      ]
+    },
+    {
+      "id": "D18-F09-A07",
+      "path": "fundamental-analysis-and-valuation/integrated-equity-scoring/dividend-safety-score",
+      "entry": "dividendSafetyScore",
+      "archetype": "record-transform",
+      "fixture": "D18-F09-A07.json",
+      "convention": "D",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "free_cash_flow",
+        "dividends_paid",
+        "net_income",
+        "interest_coverage",
+        "cash_and_equivalents"
+      ]
+    },
+    {
+      "id": "D18-F09-A08",
+      "path": "fundamental-analysis-and-valuation/integrated-equity-scoring/balance-sheet-resilience-score",
+      "entry": "balanceSheetResilienceScore",
+      "archetype": "record-transform",
+      "fixture": "D18-F09-A08.json",
+      "convention": "D",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "current_assets",
+        "current_liabilities",
+        "total_debt",
+        "ebitda",
+        "interest_expense",
+        "cash_and_equivalents",
+        "debt_due_12m"
+      ]
+    },
+    {
+      "id": "D18-F09-A09",
+      "path": "fundamental-analysis-and-valuation/integrated-equity-scoring/distress-model-ensemble",
+      "entry": "distressModelEnsemble",
+      "archetype": "record-transform",
+      "fixture": "D18-F09-A09.json",
+      "convention": "D",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "models"
+      ]
+    },
+    {
+      "id": "D18-F09-A10",
+      "path": "fundamental-analysis-and-valuation/integrated-equity-scoring/cross-model-conflict-and-double-counting-resolver",
+      "entry": "crossModelConflictAndDoubleCountingResolver",
+      "archetype": "record-transform",
+      "fixture": "D18-F09-A10.json",
+      "convention": "D",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "group_cap",
+        "conflict_threshold",
+        "components"
+      ]
+    },
+    {
+      "id": "D18-F09-A11",
+      "path": "fundamental-analysis-and-valuation/integrated-equity-scoring/overall-explainable-stock-score",
+      "entry": "overallExplainableStockScore",
+      "archetype": "record-transform",
+      "fixture": "D18-F09-A11.json",
+      "convention": "D",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "financial_health_score",
+        "earnings_quality_score",
+        "dividend_safety_score",
+        "balance_sheet_resilience_score",
+        "distress_safety_score",
+        "valuation_score"
+      ]
+    },
+    {
+      "id": "D18-F09-A12",
+      "path": "fundamental-analysis-and-valuation/integrated-equity-scoring/score-confidence-missing-data-penalty-and-abstention",
+      "entry": "scoreConfidenceMissingDataPenaltyAndAbstention",
+      "archetype": "record-transform",
+      "fixture": "D18-F09-A12.json",
+      "convention": "D",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "base_score",
+        "required_components",
+        "available_components",
+        "stale_days",
+        "conflict_count",
+        "max_conflicts",
+        "minimum_components"
+      ]
+    },
+    {
+      "id": "D18-F09-A13",
+      "path": "fundamental-analysis-and-valuation/integrated-equity-scoring/market-wide-stock-screening-and-ranking",
+      "entry": "marketWideStockScreeningAndRanking",
+      "archetype": "record-transform",
+      "fixture": "D18-F09-A13.json",
+      "convention": "D",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "screen_floor",
+        "min_confidence",
+        "min_liquidity",
+        "universe"
+      ]
+    },
+    {
+      "id": "D18-F09-A14",
+      "path": "fundamental-analysis-and-valuation/integrated-equity-scoring/stock-score-history-migration-and-change-attribution",
+      "entry": "stockScoreHistoryMigrationAndChangeAttribution",
+      "archetype": "record-transform",
+      "fixture": "D18-F09-A14.json",
+      "convention": "D",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "history"
+      ]
+    },
+    {
+      "id": "D18-F10-A01",
+      "path": "fundamental-analysis-and-valuation/sector-specific-equity-scoring/bank-fundamental-score",
+      "entry": "bankFundamentalScore",
+      "archetype": "record-transform",
+      "fixture": "D18-F10-A01.json",
+      "convention": "D",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "framework",
+        "cet1_ratio",
+        "leverage_ratio",
+        "lcr",
+        "nsfr",
+        "npl_ratio",
+        "provision_coverage_ratio",
+        "net_interest_margin",
+        "cost_income_ratio",
+        "minimums",
+        "weights"
+      ]
+    },
+    {
+      "id": "D18-F10-A02",
+      "path": "fundamental-analysis-and-valuation/sector-specific-equity-scoring/insurance-fundamental-score",
+      "entry": "insuranceFundamentalScore",
+      "archetype": "record-transform",
+      "fixture": "D18-F10-A02.json",
+      "convention": "D",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "framework",
+        "scr_coverage_ratio",
+        "mcr_coverage_ratio",
+        "combined_ratio",
+        "adverse_reserve_development_ratio",
+        "tier1_own_funds_share",
+        "investment_concentration_ratio",
+        "return_on_equity",
+        "weights"
+      ]
+    },
+    {
+      "id": "D18-F10-A03",
+      "path": "fundamental-analysis-and-valuation/sector-specific-equity-scoring/reit-fundamental-score",
+      "entry": "reitFundamentalScore",
+      "archetype": "record-transform",
+      "fixture": "D18-F10-A03.json",
+      "convention": "D",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "framework",
+        "nareit_ffo",
+        "recurring_capex",
+        "straight_line_rent_adjustment",
+        "common_dividends",
+        "net_debt",
+        "ebitda_re",
+        "interest_expense",
+        "occupancy_ratio",
+        "same_store_noi_growth",
+        "available_liquidity",
+        "near_term_debt_maturities",
+        "weights"
+      ]
+    },
+    {
+      "id": "D18-F10-A04",
+      "path": "fundamental-analysis-and-valuation/sector-specific-equity-scoring/utility-fundamental-score",
+      "entry": "utilityFundamentalScore",
+      "archetype": "record-transform",
+      "fixture": "D18-F10-A04.json",
+      "convention": "D",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "framework",
+        "allowed_roe",
+        "earned_roe",
+        "funds_from_operations",
+        "total_debt",
+        "debt_to_capital",
+        "ebit",
+        "interest_expense",
+        "cash_from_operations",
+        "capital_expenditure",
+        "regulatory_lag_months",
+        "rate_base_growth",
+        "weights"
+      ]
+    },
+    {
+      "id": "D18-F10-A05",
+      "path": "fundamental-analysis-and-valuation/sector-specific-equity-scoring/early-stage-liquidity-and-runway-score",
+      "entry": "earlyStageLiquidityAndRunwayScore",
+      "archetype": "record-transform",
+      "fixture": "D18-F10-A05.json",
+      "convention": "D",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "framework",
+        "unrestricted_cash",
+        "liquid_investments",
+        "unconditionally_committed_facility",
+        "near_term_obligations",
+        "minimum_operating_cash",
+        "monthly_net_cash_flows",
+        "monthly_revenue",
+        "weights"
+      ]
+    },
+    {
+      "id": "D18-F10-A06",
+      "path": "fundamental-analysis-and-valuation/sector-specific-equity-scoring/cyclical-and-commodity-cycle-normalization",
+      "entry": "cyclicalAndCommodityCycleNormalization",
+      "archetype": "record-transform",
+      "fixture": "D18-F10-A06.json",
+      "convention": "D",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "framework",
+        "realized_price_history",
+        "unit_cost_history",
+        "volume_history",
+        "free_cash_flow_history",
+        "fixed_costs",
+        "net_debt",
+        "current_realized_price",
+        "weights"
+      ]
+    },
+    {
+      "id": "D18-F10-A07",
+      "path": "fundamental-analysis-and-valuation/sector-specific-equity-scoring/holding-company-look-through-score",
+      "entry": "holdingCompanyLookThroughScore",
+      "archetype": "record-transform",
+      "fixture": "D18-F10-A07.json",
+      "convention": "D",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "framework",
+        "holdings",
+        "parent_cash",
+        "parent_debt",
+        "other_parent_liabilities",
+        "parent_interest_expense",
+        "parent_market_cap",
+        "weights"
+      ]
+    },
+    {
+      "id": "D18-F10-A08",
+      "path": "fundamental-analysis-and-valuation/sector-specific-equity-scoring/sector-specific-weight-calibration",
+      "entry": "sectorSpecificWeightCalibration",
+      "archetype": "record-transform",
+      "fixture": "D18-F10-A08.json",
+      "convention": "D",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "framework",
+        "component_names",
+        "base_weights",
+        "feature_rows",
+        "labels",
+        "observation_dates",
+        "train_end_index",
+        "learning_rate",
+        "ridge_penalty",
+        "logit_slope",
+        "iterations"
+      ]
+    },
+    {
+      "id": "D18-F10-A09",
+      "path": "fundamental-analysis-and-valuation/sector-specific-equity-scoring/unsupported-scope-and-coverage-decision",
+      "entry": "unsupportedScopeAndCoverageDecision",
+      "archetype": "record-transform",
+      "fixture": "D18-F10-A09.json",
+      "convention": "D",
+      "entryParams": [
+        "data"
+      ],
+      "fixtureKeys": [
+        "framework",
+        "sector",
+        "candidate_framework",
+        "as_of",
+        "minimum_coverage",
+        "max_age_days",
+        "facts"
       ]
     },
     {

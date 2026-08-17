@@ -1,0 +1,35 @@
+{
+ "input": {
+  "current_assets": 500,
+  "current_liabilities": 250,
+  "total_debt": 400,
+  "ebitda": 160,
+  "interest_expense": 32,
+  "cash_and_equivalents": 120,
+  "debt_due_12m": 80
+ },
+ "expected": {
+  "state": "calculated",
+  "method": "liquidity-leverage-coverage-maturity-resilience",
+  "components": {
+   "liquidity": 100,
+   "net_leverage": 56.25,
+   "interest_coverage": 50,
+   "maturity_headroom": 80
+  },
+  "weights": {
+   "liquidity": 0.3,
+   "net_leverage": 0.3,
+   "interest_coverage": 0.25,
+   "maturity_headroom": 0.15
+  },
+  "contributions": {
+   "liquidity": 30,
+   "net_leverage": 16.875,
+   "interest_coverage": 12.5,
+   "maturity_headroom": 12
+  },
+  "balance_sheet_resilience_score": 71.375,
+  "band": "watch"
+ }
+}

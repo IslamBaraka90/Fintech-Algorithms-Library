@@ -1,0 +1,16 @@
+{
+  "classification": "synthetic teaching input with author-derived calculations",
+  "input": {
+    "ebit": 150,
+    "gross_interest_expense": 50
+  },
+  "expected": {
+    "ebit": 150.0,
+    "gross_interest_expense": 50.0,
+    "interest_coverage_ratio": 3.0,
+    "coverage_shortfall": 0.0,
+    "state": "covered",
+    "reason": "ebit-divided-by-gross-interest-expense"
+  },
+  "independent_check": "Synthetic EBIT 150 divided by positive gross interest expense 50 gives 3.0× coverage and zero arithmetic shortfall."
+}

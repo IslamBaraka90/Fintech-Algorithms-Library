@@ -1,0 +1,508 @@
+{
+  "classification": "synthetic teaching input with author-derived calculations",
+  "input": {
+    "statement_type": "income",
+    "base_label": "Revenue",
+    "focus_label": "Net income",
+    "periods": [
+      {
+        "period": "FY2023",
+        "items": [
+          {
+            "label": "Revenue",
+            "value": 1200
+          },
+          {
+            "label": "Cost of goods sold",
+            "value": -720
+          },
+          {
+            "label": "Gross profit",
+            "value": 480
+          },
+          {
+            "label": "Research and development",
+            "value": -90
+          },
+          {
+            "label": "Selling and administration",
+            "value": -210
+          },
+          {
+            "label": "Operating profit",
+            "value": 180
+          },
+          {
+            "label": "Interest expense",
+            "value": -35
+          },
+          {
+            "label": "Tax expense",
+            "value": -32
+          },
+          {
+            "label": "Net income",
+            "value": 113
+          },
+          {
+            "label": "Depreciation and amortization",
+            "value": -55
+          },
+          {
+            "label": "Capital expenditure",
+            "value": -70
+          },
+          {
+            "label": "Operating cash flow",
+            "value": 155
+          }
+        ]
+      },
+      {
+        "period": "FY2024",
+        "items": [
+          {
+            "label": "Revenue",
+            "value": 1320
+          },
+          {
+            "label": "Cost of goods sold",
+            "value": -805
+          },
+          {
+            "label": "Gross profit",
+            "value": 515
+          },
+          {
+            "label": "Research and development",
+            "value": -105
+          },
+          {
+            "label": "Selling and administration",
+            "value": -224
+          },
+          {
+            "label": "Operating profit",
+            "value": 186
+          },
+          {
+            "label": "Interest expense",
+            "value": -39
+          },
+          {
+            "label": "Tax expense",
+            "value": -31
+          },
+          {
+            "label": "Net income",
+            "value": 116
+          },
+          {
+            "label": "Depreciation and amortization",
+            "value": -61
+          },
+          {
+            "label": "Capital expenditure",
+            "value": -82
+          },
+          {
+            "label": "Operating cash flow",
+            "value": 171
+          }
+        ]
+      },
+      {
+        "period": "FY2025",
+        "items": [
+          {
+            "label": "Revenue",
+            "value": 1450
+          },
+          {
+            "label": "Cost of goods sold",
+            "value": -899
+          },
+          {
+            "label": "Gross profit",
+            "value": 551
+          },
+          {
+            "label": "Research and development",
+            "value": -122
+          },
+          {
+            "label": "Selling and administration",
+            "value": -239
+          },
+          {
+            "label": "Operating profit",
+            "value": 190
+          },
+          {
+            "label": "Interest expense",
+            "value": -44
+          },
+          {
+            "label": "Tax expense",
+            "value": -28
+          },
+          {
+            "label": "Net income",
+            "value": 118
+          },
+          {
+            "label": "Depreciation and amortization",
+            "value": -68
+          },
+          {
+            "label": "Capital expenditure",
+            "value": -95
+          },
+          {
+            "label": "Operating cash flow",
+            "value": 184
+          }
+        ]
+      },
+      {
+        "period": "FY2026",
+        "items": [
+          {
+            "label": "Revenue",
+            "value": 1600
+          },
+          {
+            "label": "Cost of goods sold",
+            "value": -976
+          },
+          {
+            "label": "Gross profit",
+            "value": 624
+          },
+          {
+            "label": "Research and development",
+            "value": -144
+          },
+          {
+            "label": "Selling and administration",
+            "value": -256
+          },
+          {
+            "label": "Operating profit",
+            "value": 224
+          },
+          {
+            "label": "Interest expense",
+            "value": -48
+          },
+          {
+            "label": "Tax expense",
+            "value": -35
+          },
+          {
+            "label": "Net income",
+            "value": 141
+          },
+          {
+            "label": "Depreciation and amortization",
+            "value": -76
+          },
+          {
+            "label": "Capital expenditure",
+            "value": -112
+          },
+          {
+            "label": "Operating cash flow",
+            "value": 218
+          }
+        ]
+      }
+    ]
+  },
+  "expected": {
+    "statement_type": "income",
+    "base_label": "Revenue",
+    "focus_label": "Net income",
+    "period_count": 4,
+    "line_item_count": 12,
+    "focus_percentage": 8.8125,
+    "focus_change_pp": 0.674568965517,
+    "periods": [
+      {
+        "period": "FY2023",
+        "base_value": 1200.0,
+        "focus_percentage": 9.416666666667,
+        "focus_change_pp": null,
+        "items": [
+          {
+            "label": "Revenue",
+            "value": 1200.0,
+            "common_size_pct": 100.0
+          },
+          {
+            "label": "Cost of goods sold",
+            "value": -720.0,
+            "common_size_pct": -60.0
+          },
+          {
+            "label": "Gross profit",
+            "value": 480.0,
+            "common_size_pct": 40.0
+          },
+          {
+            "label": "Research and development",
+            "value": -90.0,
+            "common_size_pct": -7.5
+          },
+          {
+            "label": "Selling and administration",
+            "value": -210.0,
+            "common_size_pct": -17.5
+          },
+          {
+            "label": "Operating profit",
+            "value": 180.0,
+            "common_size_pct": 15.0
+          },
+          {
+            "label": "Interest expense",
+            "value": -35.0,
+            "common_size_pct": -2.916666666667
+          },
+          {
+            "label": "Tax expense",
+            "value": -32.0,
+            "common_size_pct": -2.666666666667
+          },
+          {
+            "label": "Net income",
+            "value": 113.0,
+            "common_size_pct": 9.416666666667
+          },
+          {
+            "label": "Depreciation and amortization",
+            "value": -55.0,
+            "common_size_pct": -4.583333333333
+          },
+          {
+            "label": "Capital expenditure",
+            "value": -70.0,
+            "common_size_pct": -5.833333333333
+          },
+          {
+            "label": "Operating cash flow",
+            "value": 155.0,
+            "common_size_pct": 12.916666666667
+          }
+        ]
+      },
+      {
+        "period": "FY2024",
+        "base_value": 1320.0,
+        "focus_percentage": 8.787878787879,
+        "focus_change_pp": -0.628787878788,
+        "items": [
+          {
+            "label": "Revenue",
+            "value": 1320.0,
+            "common_size_pct": 100.0
+          },
+          {
+            "label": "Cost of goods sold",
+            "value": -805.0,
+            "common_size_pct": -60.984848484848
+          },
+          {
+            "label": "Gross profit",
+            "value": 515.0,
+            "common_size_pct": 39.015151515152
+          },
+          {
+            "label": "Research and development",
+            "value": -105.0,
+            "common_size_pct": -7.954545454545
+          },
+          {
+            "label": "Selling and administration",
+            "value": -224.0,
+            "common_size_pct": -16.969696969697
+          },
+          {
+            "label": "Operating profit",
+            "value": 186.0,
+            "common_size_pct": 14.090909090909
+          },
+          {
+            "label": "Interest expense",
+            "value": -39.0,
+            "common_size_pct": -2.954545454545
+          },
+          {
+            "label": "Tax expense",
+            "value": -31.0,
+            "common_size_pct": -2.348484848485
+          },
+          {
+            "label": "Net income",
+            "value": 116.0,
+            "common_size_pct": 8.787878787879
+          },
+          {
+            "label": "Depreciation and amortization",
+            "value": -61.0,
+            "common_size_pct": -4.621212121212
+          },
+          {
+            "label": "Capital expenditure",
+            "value": -82.0,
+            "common_size_pct": -6.212121212121
+          },
+          {
+            "label": "Operating cash flow",
+            "value": 171.0,
+            "common_size_pct": 12.954545454545
+          }
+        ]
+      },
+      {
+        "period": "FY2025",
+        "base_value": 1450.0,
+        "focus_percentage": 8.137931034483,
+        "focus_change_pp": -0.649947753396,
+        "items": [
+          {
+            "label": "Revenue",
+            "value": 1450.0,
+            "common_size_pct": 100.0
+          },
+          {
+            "label": "Cost of goods sold",
+            "value": -899.0,
+            "common_size_pct": -62.0
+          },
+          {
+            "label": "Gross profit",
+            "value": 551.0,
+            "common_size_pct": 38.0
+          },
+          {
+            "label": "Research and development",
+            "value": -122.0,
+            "common_size_pct": -8.413793103448
+          },
+          {
+            "label": "Selling and administration",
+            "value": -239.0,
+            "common_size_pct": -16.48275862069
+          },
+          {
+            "label": "Operating profit",
+            "value": 190.0,
+            "common_size_pct": 13.103448275862
+          },
+          {
+            "label": "Interest expense",
+            "value": -44.0,
+            "common_size_pct": -3.034482758621
+          },
+          {
+            "label": "Tax expense",
+            "value": -28.0,
+            "common_size_pct": -1.931034482759
+          },
+          {
+            "label": "Net income",
+            "value": 118.0,
+            "common_size_pct": 8.137931034483
+          },
+          {
+            "label": "Depreciation and amortization",
+            "value": -68.0,
+            "common_size_pct": -4.689655172414
+          },
+          {
+            "label": "Capital expenditure",
+            "value": -95.0,
+            "common_size_pct": -6.551724137931
+          },
+          {
+            "label": "Operating cash flow",
+            "value": 184.0,
+            "common_size_pct": 12.689655172414
+          }
+        ]
+      },
+      {
+        "period": "FY2026",
+        "base_value": 1600.0,
+        "focus_percentage": 8.8125,
+        "focus_change_pp": 0.674568965517,
+        "items": [
+          {
+            "label": "Revenue",
+            "value": 1600.0,
+            "common_size_pct": 100.0
+          },
+          {
+            "label": "Cost of goods sold",
+            "value": -976.0,
+            "common_size_pct": -61.0
+          },
+          {
+            "label": "Gross profit",
+            "value": 624.0,
+            "common_size_pct": 39.0
+          },
+          {
+            "label": "Research and development",
+            "value": -144.0,
+            "common_size_pct": -9.0
+          },
+          {
+            "label": "Selling and administration",
+            "value": -256.0,
+            "common_size_pct": -16.0
+          },
+          {
+            "label": "Operating profit",
+            "value": 224.0,
+            "common_size_pct": 14.0
+          },
+          {
+            "label": "Interest expense",
+            "value": -48.0,
+            "common_size_pct": -3.0
+          },
+          {
+            "label": "Tax expense",
+            "value": -35.0,
+            "common_size_pct": -2.1875
+          },
+          {
+            "label": "Net income",
+            "value": 141.0,
+            "common_size_pct": 8.8125
+          },
+          {
+            "label": "Depreciation and amortization",
+            "value": -76.0,
+            "common_size_pct": -4.75
+          },
+          {
+            "label": "Capital expenditure",
+            "value": -112.0,
+            "common_size_pct": -7.0
+          },
+          {
+            "label": "Operating cash flow",
+            "value": 218.0,
+            "common_size_pct": 13.625
+          }
+        ]
+      }
+    ],
+    "state": "calculated",
+    "reason": "signed-line-items-divided-by-period-base"
+  },
+  "independent_check": "The synthetic four-year income statement contains 12 rows per year (48 observations). FY2026 net income is 141/1,600 = 8.8125% of revenue, up 0.6746 percentage points from FY2025's 118/1,450 = 8.1379%."
+}

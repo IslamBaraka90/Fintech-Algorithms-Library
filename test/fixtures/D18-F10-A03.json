@@ -1,0 +1,53 @@
+{
+ "input": {
+  "framework": "nareit-equity-reit-teaching-v1",
+  "nareit_ffo": 420,
+  "recurring_capex": 82,
+  "straight_line_rent_adjustment": 18,
+  "common_dividends": 260,
+  "net_debt": 1850,
+  "ebitda_re": 475,
+  "interest_expense": 105,
+  "occupancy_ratio": 0.945,
+  "same_store_noi_growth": 0.041,
+  "available_liquidity": 780,
+  "near_term_debt_maturities": 420,
+  "weights": {
+   "distribution": 0.22,
+   "leverage": 0.2,
+   "coverage": 0.16,
+   "occupancy": 0.14,
+   "same_store_growth": 0.14,
+   "liquidity": 0.14
+  }
+ },
+ "expected": {
+  "state": "strong-review-band",
+  "method": "reit-sector-score-v1",
+  "nareit_ffo": 420,
+  "affo_proxy": 320,
+  "distribution_coverage": 1.230769230769,
+  "net_debt_to_ebitda_re": 3.894736842105,
+  "interest_coverage": 4.52380952381,
+  "liquidity_coverage": 1.857142857143,
+  "component_scores": {
+   "distribution": 71.794871794872,
+   "leverage": 91.228070175439,
+   "coverage": 86.394557823129,
+   "occupancy": 85.294117647059,
+   "same_store_growth": 70,
+   "liquidity": 88.571428571429
+  },
+  "weights": {
+   "distribution": 0.22,
+   "leverage": 0.2,
+   "coverage": 0.16,
+   "occupancy": 0.14,
+   "same_store_growth": 0.14,
+   "liquidity": 0.14
+  },
+  "fundamental_score": 82.004791552248,
+  "coverage_ratio": 1,
+  "reason": "nareit-ffo-plus-explicit-package-affo-proxy"
+ }
+}

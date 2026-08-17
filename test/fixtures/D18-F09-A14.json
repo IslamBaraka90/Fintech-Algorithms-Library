@@ -1,0 +1,56 @@
+{
+ "input": {
+  "history": [
+   {
+    "as_of": "2024-12-31",
+    "overall_score": 62,
+    "band": "watch",
+    "components": {
+     "health": 60,
+     "quality": 64,
+     "resilience": 62
+    }
+   },
+   {
+    "as_of": "2025-03-31",
+    "overall_score": 70,
+    "band": "eligible",
+    "components": {
+     "health": 72,
+     "quality": 64,
+     "resilience": 68
+    }
+   },
+   {
+    "as_of": "2025-06-30",
+    "overall_score": 78,
+    "band": "strong",
+    "components": {
+     "health": 80,
+     "quality": 70,
+     "resilience": 74
+    }
+   }
+  ]
+ },
+ "expected": {
+  "state": "improved",
+  "method": "point-in-time-score-history-change-attribution",
+  "previous_as_of": "2025-03-31",
+  "latest_as_of": "2025-06-30",
+  "previous_score": 70,
+  "latest_score": 78,
+  "score_change": 8,
+  "prior_band": "eligible",
+  "latest_band": "strong",
+  "migration": "eligible -> strong",
+  "migration_direction": 1,
+  "component_deltas": {
+   "health": 8,
+   "quality": 6,
+   "resilience": 6
+  },
+  "top_driver": "health",
+  "clock_policy": "only knowledge-available snapshots are comparable"
+ }
+}

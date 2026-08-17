@@ -1,0 +1,105 @@
+{
+ "input": {
+  "valuation_date": "2026-08-04",
+  "currency": "USD",
+  "unit_scale": "millions",
+  "opening_invested_capital": 800,
+  "nopat": [
+   92,
+   100,
+   110,
+   121,
+   132
+  ],
+  "net_investment": [
+   50,
+   50,
+   55,
+   60,
+   60
+  ],
+  "wacc": 0.09,
+  "terminal_eva_growth": 0.03,
+  "adjustment_basis": "already-adjusted synthetic NOPAT and invested capital"
+ },
+ "expected": {
+  "state": "valued",
+  "method": "economic-value-added",
+  "schedule": [
+   {
+    "period": 1,
+    "opening_invested_capital": 800,
+    "nopat": 92,
+    "net_investment": 50,
+    "capital_charge": 72,
+    "roic": 0.115,
+    "roic_wacc_spread": 0.025,
+    "eva": 20,
+    "discount_factor": 0.917431192661,
+    "present_value": 18.348623853211,
+    "closing_invested_capital": 850
+   },
+   {
+    "period": 2,
+    "opening_invested_capital": 850,
+    "nopat": 100,
+    "net_investment": 50,
+    "capital_charge": 76.5,
+    "roic": 0.117647058824,
+    "roic_wacc_spread": 0.027647058824,
+    "eva": 23.5,
+    "discount_factor": 0.841679993267,
+    "present_value": 19.779479841764,
+    "closing_invested_capital": 900
+   },
+   {
+    "period": 3,
+    "opening_invested_capital": 900,
+    "nopat": 110,
+    "net_investment": 55,
+    "capital_charge": 81,
+    "roic": 0.122222222222,
+    "roic_wacc_spread": 0.032222222222,
+    "eva": 29,
+    "discount_factor": 0.772183480061,
+    "present_value": 22.393320921771,
+    "closing_invested_capital": 955
+   },
+   {
+    "period": 4,
+    "opening_invested_capital": 955,
+    "nopat": 121,
+    "net_investment": 60,
+    "capital_charge": 85.95,
+    "roic": 0.126701570681,
+    "roic_wacc_spread": 0.036701570681,
+    "eva": 35.05,
+    "discount_factor": 0.708425211065,
+    "present_value": 24.830303647835,
+    "closing_invested_capital": 1015
+   },
+   {
+    "period": 5,
+    "opening_invested_capital": 1015,
+    "nopat": 132,
+    "net_investment": 60,
+    "capital_charge": 91.35,
+    "roic": 0.130049261084,
+    "roic_wacc_spread": 0.040049261084,
+    "eva": 40.65,
+    "discount_factor": 0.649931386298,
+    "present_value": 26.419710853028,
+    "closing_invested_capital": 1075
+   }
+  ],
+  "pv_explicit_eva": 111.771439117609,
+  "terminal_eva": 41.8695,
+  "continuing_value": 697.825,
+  "terminal_discount_factor": 0.649931386298,
+  "pv_continuing_value": 453.538369643643,
+  "market_value_added": 565.309808761252,
+  "continuing_value_share": 0.332187146634,
+  "closing_invested_capital": 1075,
+  "enterprise_value": 1365.309808761252
+ }
+}

@@ -1,0 +1,73 @@
+{
+ "input": {
+  "min_peers": 3,
+  "metrics": [
+   {
+    "name": "roic",
+    "target": 0.12,
+    "peers": [
+     0.08,
+     0.1,
+     0.14,
+     0.16
+    ],
+    "higher_is_better": true
+   },
+   {
+    "name": "net_debt_to_ebitda",
+    "target": 1.5,
+    "peers": [
+     0.8,
+     1.2,
+     2,
+     3
+    ],
+    "higher_is_better": false
+   },
+   {
+    "name": "fcf_margin",
+    "target": 0.1,
+    "peers": [
+     0.04,
+     0.08,
+     0.12,
+     0.16
+    ],
+    "higher_is_better": true
+   }
+  ]
+ },
+ "expected": {
+  "state": "calculated",
+  "method": "midrank-empirical-percentile-with-direction",
+  "metrics": [
+   {
+    "name": "roic",
+    "target": 0.12,
+    "peer_count": 4,
+    "percentile": 50,
+    "higher_is_better": true,
+    "normalized_score": 50
+   },
+   {
+    "name": "net_debt_to_ebitda",
+    "target": 1.5,
+    "peer_count": 4,
+    "percentile": 50,
+    "higher_is_better": false,
+    "normalized_score": 50
+   },
+   {
+    "name": "fcf_margin",
+    "target": 0.1,
+    "peer_count": 4,
+    "percentile": 50,
+    "higher_is_better": true,
+    "normalized_score": 50
+   }
+  ],
+  "aggregate_score": 50,
+  "metric_count": 3,
+  "invariant": "higher-is-better reverses the percentile only; peer values are not z-scored"
+ }
+}

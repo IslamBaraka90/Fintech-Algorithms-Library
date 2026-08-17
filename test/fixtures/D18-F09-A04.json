@@ -1,0 +1,73 @@
+{
+ "input": {
+  "target": {
+   "id": "TGT",
+   "sector": "industrial",
+   "is_public": true,
+   "annual_periods": 3,
+   "framework": "US-GAAP",
+   "total_assets": 1000,
+   "market_cap": 2000,
+   "dividends_known": true
+  },
+  "requested_models": [
+   "altman_z_original",
+   "piotroski_f",
+   "beneish_m",
+   "ohlson_o",
+   "dividend_safety",
+   "balance_sheet_resilience"
+  ]
+ },
+ "expected": {
+  "state": "routed",
+  "method": "explicit-model-applicability-router",
+  "routes": [
+   {
+    "model": "altman_z_original",
+    "status": "eligible",
+    "variant": "Use D18-F04-A01 original public-manufacturer coefficients",
+    "population": "public industrial manufacturer",
+    "reason": "all required scope facts pass"
+   },
+   {
+    "model": "piotroski_f",
+    "status": "eligible",
+    "variant": "Use D18-F04-A02 nine-signal contract",
+    "population": "non-financial issuer with two annual periods",
+    "reason": "all required scope facts pass"
+   },
+   {
+    "model": "beneish_m",
+    "status": "eligible",
+    "variant": "Use D18-F04-A03 eight-index contract",
+    "population": "non-financial issuer with two annual periods",
+    "reason": "all required scope facts pass"
+   },
+   {
+    "model": "ohlson_o",
+    "status": "eligible",
+    "variant": "Use D18-F04-A05 Model 1 convention",
+    "population": "industrial public research screen",
+    "reason": "all required scope facts pass"
+   },
+   {
+    "model": "dividend_safety",
+    "status": "eligible",
+    "variant": "Use D18-F09-A07 payout contract",
+    "population": "issuer with declared dividend and cash-flow facts",
+    "reason": "all required scope facts pass"
+   },
+   {
+    "model": "balance_sheet_resilience",
+    "status": "eligible",
+    "variant": "Use D18-F09-A08 resilience contract",
+    "population": "issuer with aligned balance-sheet and coverage facts",
+    "reason": "all required scope facts pass"
+   }
+  ],
+  "eligible_count": 6,
+  "requested_count": 6,
+  "coverage": 1
+ }
+}

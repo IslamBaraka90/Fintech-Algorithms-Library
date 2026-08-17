@@ -1,0 +1,17 @@
+{
+ "input": {
+  "valuation_date": "2026-08-04",
+  "currency": "USD",
+  "dividend_next": 3.12,
+  "cost_of_equity": 0.1,
+  "perpetual_growth": 0.04
+ },
+ "expected": {
+  "state": "valued",
+  "method": "gordon-growth",
+  "dividend_timing": "D1-next-period",
+  "discount_growth_spread": 0.06,
+  "capitalization_multiple": 16.666666666667,
+  "intrinsic_value_per_share": 52
+ }
+}

@@ -1,0 +1,97 @@
+{
+  "synthetic": true,
+  "input": {
+    "target": {
+      "ebitda": 150.0,
+      "net_debt": 300.0,
+      "preferred_equity": 20.0,
+      "noncontrolling_interest": 30.0,
+      "nonoperating_assets": 50.0,
+      "shares_outstanding": 100.0,
+      "current_price": 9.5
+    },
+    "peers": [
+      {
+        "id": "E1",
+        "enterprise_value": 600.0,
+        "ebitda": 100.0
+      },
+      {
+        "id": "E2",
+        "enterprise_value": 700.0,
+        "ebitda": 100.0
+      },
+      {
+        "id": "E3",
+        "enterprise_value": 800.0,
+        "ebitda": 100.0
+      },
+      {
+        "id": "E4",
+        "enterprise_value": 900.0,
+        "ebitda": 100.0
+      },
+      {
+        "id": "E5",
+        "enterprise_value": 1000.0,
+        "ebitda": 100.0
+      }
+    ]
+  },
+  "expected": {
+    "model": "median-positive-ebitda-peer-ev-ebitda",
+    "peer_count": 5,
+    "peer_multiples": [
+      {
+        "id": "E1",
+        "enterprise_value": 600.0,
+        "ebitda": 100.0,
+        "ev_ebitda": 6.0
+      },
+      {
+        "id": "E2",
+        "enterprise_value": 700.0,
+        "ebitda": 100.0,
+        "ev_ebitda": 7.0
+      },
+      {
+        "id": "E3",
+        "enterprise_value": 800.0,
+        "ebitda": 100.0,
+        "ev_ebitda": 8.0
+      },
+      {
+        "id": "E4",
+        "enterprise_value": 900.0,
+        "ebitda": 100.0,
+        "ev_ebitda": 9.0
+      },
+      {
+        "id": "E5",
+        "enterprise_value": 1000.0,
+        "ebitda": 100.0,
+        "ev_ebitda": 10.0
+      }
+    ],
+    "multiple_summary": {
+      "minimum": 6.0,
+      "median": 8.0,
+      "maximum": 10.0,
+      "range": 4.0
+    },
+    "selected_multiple": 8.0,
+    "target_ebitda": 150.0,
+    "implied_enterprise_value": 1200.0,
+    "equity_bridge": {
+      "net_debt": 300.0,
+      "preferred_equity": 20.0,
+      "noncontrolling_interest": 30.0,
+      "nonoperating_assets": 50.0
+    },
+    "implied_equity_value": 900.0,
+    "shares_outstanding": 100.0,
+    "implied_price": 9.0,
+    "premium_discount_to_current": -0.052631578947368474,
+    "state": "valuation-complete"
+  }
+}

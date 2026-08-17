@@ -1,0 +1,91 @@
+{
+  "synthetic": true,
+  "input": {
+    "target": {
+      "forward_pe": 24.0,
+      "expected_eps_growth_percent": 12.0,
+      "forward_earnings_per_share": 2.5,
+      "current_price": 60.0
+    },
+    "peers": [
+      {
+        "id": "G1",
+        "forward_pe": 18,
+        "expected_eps_growth_percent": 15.0
+      },
+      {
+        "id": "G2",
+        "forward_pe": 21,
+        "expected_eps_growth_percent": 15.0
+      },
+      {
+        "id": "G3",
+        "forward_pe": 24,
+        "expected_eps_growth_percent": 15.0
+      },
+      {
+        "id": "G4",
+        "forward_pe": 27,
+        "expected_eps_growth_percent": 15.0
+      },
+      {
+        "id": "G5",
+        "forward_pe": 30,
+        "expected_eps_growth_percent": 15.0
+      }
+    ]
+  },
+  "expected": {
+    "model": "forward-pe-divided-by-growth-percentage-points",
+    "growth_unit": "percentage-points",
+    "peer_count": 5,
+    "peer_ratios": [
+      {
+        "id": "G1",
+        "forward_pe": 18.0,
+        "expected_eps_growth_percent": 15.0,
+        "peg_ratio": 1.2
+      },
+      {
+        "id": "G2",
+        "forward_pe": 21.0,
+        "expected_eps_growth_percent": 15.0,
+        "peg_ratio": 1.4
+      },
+      {
+        "id": "G3",
+        "forward_pe": 24.0,
+        "expected_eps_growth_percent": 15.0,
+        "peg_ratio": 1.6
+      },
+      {
+        "id": "G4",
+        "forward_pe": 27.0,
+        "expected_eps_growth_percent": 15.0,
+        "peg_ratio": 1.8
+      },
+      {
+        "id": "G5",
+        "forward_pe": 30.0,
+        "expected_eps_growth_percent": 15.0,
+        "peg_ratio": 2.0
+      }
+    ],
+    "peg_summary": {
+      "minimum": 1.2,
+      "median": 1.6,
+      "maximum": 2.0,
+      "range": 0.8
+    },
+    "target_forward_pe": 24.0,
+    "target_growth_percent": 12.0,
+    "target_peg_ratio": 2.0,
+    "selected_peer_peg": 1.6,
+    "relative_peg": 1.25,
+    "implied_forward_pe": 19.200000000000003,
+    "forward_earnings_per_share": 2.5,
+    "implied_price": 48.00000000000001,
+    "premium_discount_to_current": -0.19999999999999984,
+    "state": "valuation-complete"
+  }
+}

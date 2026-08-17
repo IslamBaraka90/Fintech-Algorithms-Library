@@ -1,0 +1,75 @@
+{
+ "input": {
+  "group_cap": 0.4,
+  "conflict_threshold": 30,
+  "components": [
+   {
+    "name": "altman_liquidity",
+    "score": 82,
+    "weight": 0.3,
+    "evidence_group": "liquidity"
+   },
+   {
+    "name": "current_ratio",
+    "score": 76,
+    "weight": 0.2,
+    "evidence_group": "liquidity"
+   },
+   {
+    "name": "piotroski_quality",
+    "score": 70,
+    "weight": 0.25,
+    "evidence_group": "quality"
+   },
+   {
+    "name": "beneish_safety",
+    "score": 45,
+    "weight": 0.25,
+    "evidence_group": "quality"
+   },
+   {
+    "name": "maturity_buffer",
+    "score": 74,
+    "weight": 0.2,
+    "evidence_group": "resilience"
+   }
+  ]
+ },
+ "expected": {
+  "state": "resolved",
+  "method": "evidence-group-cap-and-conflict-resolver",
+  "raw_score": 69.458333333333,
+  "resolved_score": 69.64,
+  "double_counting_adjustment": 0.181666666667,
+  "groups": [
+   {
+    "group": "liquidity",
+    "raw_weight": 0.5,
+    "capped_weight": 0.4,
+    "mean_score": 79.6,
+    "range": 6,
+    "conflict": false
+   },
+   {
+    "group": "quality",
+    "raw_weight": 0.5,
+    "capped_weight": 0.4,
+    "mean_score": 57.5,
+    "range": 25,
+    "conflict": false
+   },
+   {
+    "group": "resilience",
+    "raw_weight": 0.2,
+    "capped_weight": 0.2,
+    "mean_score": 74,
+    "range": 0,
+    "conflict": false
+   }
+  ],
+  "conflict_groups": [],
+  "conflict_count": 0,
+  "group_cap": 0.4,
+  "conflict_threshold": 30
+ }
+}

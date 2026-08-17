@@ -134,12 +134,9 @@ const TOPIC_DIR_RE = /^D\d{2}-F\d{2}-A\d{2}-/;
  * is printed in the run summary so this never silently swallows work.
  */
 const DOMAINS_NOT_READY = {
-  // All 52 articles are written and every topic has a TypeScript test, but five
-  // families still route every topic through one `calculate(topicId, …)`
-  // dispatcher, so 46 of the 52 resolve to the same entry point. Publishing that
-  // would give 46 valuation subpaths the same function. Give each topic its own
-  // slug-named export, as D40-F05 and D21-F01 did, and delete this line.
-  D18: "46 of 52 topics still share one calculate() dispatcher",
+  // Empty, and that is the intended state. A domain lands here only while a
+  // publishing decision is outstanding; D18 sat here until its five families
+  // stopped routing 46 topics through one calculate() dispatcher.
 };
 
 function listDirs(dir) {
@@ -320,6 +317,17 @@ const REVIEWED_SHARED_SURFACES = new Set([
   "D12-F04-A01,D12-F04-A02,D12-F04-A03,D12-F04-A04,D12-F04-A05,D12-F04-A06",
   "D13-F01-A01,D13-F01-A02,D13-F01-A03,D13-F01-A04",
   "D13-F02-A01,D13-F02-A02,D13-F02-A03,D13-F02-A04,D13-F02-A05",
+  // Each D18 family ships one implementation whose per-topic entries are all
+  // visible through every sibling subpath. Reviewed together when the domain was
+  // released: the entries are narrow wrappers binding one topic id each, so the
+  // extra surface exposes no behaviour a caller could not already reach through
+  // the sibling's own subpath.
+  "D18-F01-A01,D18-F01-A02,D18-F01-A03,D18-F01-A04,D18-F01-A05,D18-F01-A06",
+  "D18-F02-A01,D18-F02-A02,D18-F02-A03,D18-F02-A04,D18-F02-A05",
+  "D18-F03-A01,D18-F03-A02,D18-F03-A03,D18-F03-A04,D18-F03-A05",
+  "D18-F04-A01,D18-F04-A02,D18-F04-A03,D18-F04-A04,D18-F04-A05,D18-F04-A06,D18-F04-A07,D18-F04-A08,D18-F04-A09,D18-F04-A10,D18-F04-A11,D18-F04-A12,D18-F04-A13",
+  "D18-F09-A01,D18-F09-A02,D18-F09-A03,D18-F09-A04,D18-F09-A05,D18-F09-A06,D18-F09-A07,D18-F09-A08,D18-F09-A09,D18-F09-A10,D18-F09-A11,D18-F09-A12,D18-F09-A13,D18-F09-A14",
+  "D18-F10-A01,D18-F10-A02,D18-F10-A03,D18-F10-A04,D18-F10-A05,D18-F10-A06,D18-F10-A07,D18-F10-A08,D18-F10-A09",
   "D21-F01-A01,D21-F01-A02,D21-F01-A03,D21-F01-A04,D21-F01-A05,D21-F01-A06,D21-F01-A07",
   "D25-F01-A01,D25-F01-A02,D25-F01-A03,D25-F01-A04,D25-F01-A05",
   "D25-F02-A01,D25-F02-A02,D25-F02-A03,D25-F02-A04,D25-F02-A05",
@@ -336,6 +344,10 @@ const ENTRY_OVERRIDES = {
   // trimming globally. Without this the topic fell through to the family's
   // `calculate(topicId, …)` dispatcher and published it as its public entry.
   "D12-F01-A04": "hybridProRataTime",
+  // The slug reads `net-debt-ebitda`, the function `netDebtToEbitda`. One word
+  // apart, and no rule should invent a preposition — without this the topic
+  // resolved to the family's `calculate(topicId, …)` dispatcher.
+  "D18-F01-A05": "netDebtToEbitda",
   // The trade-classification family shares one body exporting tickTest, quoteTest
   // and leeReady side by side. `leeReady` is this topic's algorithm; the stem
   // matcher cannot reach it because the slug carries two extra words

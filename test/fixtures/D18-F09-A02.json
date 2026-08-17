@@ -1,0 +1,108 @@
+{
+ "input": {
+  "as_of": "2025-03-31",
+  "target_id": "TGT",
+  "target_sector": "software",
+  "target_country": "US",
+  "min_market_cap": 500,
+  "min_peers": 3,
+  "universe": [
+   {
+    "id": "TGT",
+    "sector": "software",
+    "country": "US",
+    "market_cap": 2000,
+    "available_at": "2025-03-31",
+    "listed": true
+   },
+   {
+    "id": "P01",
+    "sector": "software",
+    "country": "US",
+    "market_cap": 1800,
+    "available_at": "2025-03-20",
+    "listed": true
+   },
+   {
+    "id": "P02",
+    "sector": "software",
+    "country": "US",
+    "market_cap": 1500,
+    "available_at": "2025-03-20",
+    "listed": true
+   },
+   {
+    "id": "P03",
+    "sector": "software",
+    "country": "US",
+    "market_cap": 700,
+    "available_at": "2025-03-20",
+    "listed": true
+   },
+   {
+    "id": "P04",
+    "sector": "software",
+    "country": "US",
+    "market_cap": 300,
+    "available_at": "2025-03-20",
+    "listed": true
+   },
+   {
+    "id": "P05",
+    "sector": "software",
+    "country": "GB",
+    "market_cap": 1600,
+    "available_at": "2025-03-20",
+    "listed": true
+   },
+   {
+    "id": "P06",
+    "sector": "software",
+    "country": "US",
+    "market_cap": 900,
+    "available_at": "2025-04-02",
+    "listed": true
+   },
+   {
+    "id": "P07",
+    "sector": "bank",
+    "country": "US",
+    "market_cap": 1900,
+    "available_at": "2025-03-20",
+    "listed": true
+   }
+  ]
+ },
+ "expected": {
+  "state": "resolved",
+  "method": "point-in-time-sector-country-market-cap-cohort",
+  "as_of": "2025-03-31",
+  "eligible_ids": [
+   "P01",
+   "P02",
+   "P03"
+  ],
+  "cohort_count": 3,
+  "minimum_required": 3,
+  "coverage": 1,
+  "exclusions": [
+   {
+    "id": "P04",
+    "reason": "below market-cap floor"
+   },
+   {
+    "id": "P05",
+    "reason": "country mismatch"
+   },
+   {
+    "id": "P06",
+    "reason": "not available at as-of date"
+   },
+   {
+    "id": "P07",
+    "reason": "sector mismatch"
+   }
+  ],
+  "tie_break": "absolute market-cap distance, then stable entity id"
+ }
+}

@@ -1,0 +1,49 @@
+{
+ "input": {
+  "framework": "solvency-ii-nonlife-teaching-v1",
+  "scr_coverage_ratio": 1.72,
+  "mcr_coverage_ratio": 3.25,
+  "combined_ratio": 0.94,
+  "adverse_reserve_development_ratio": 0.01,
+  "tier1_own_funds_share": 0.78,
+  "investment_concentration_ratio": 0.18,
+  "return_on_equity": 0.11,
+  "weights": {
+   "solvency": 0.22,
+   "minimum_capital": 0.1,
+   "underwriting": 0.22,
+   "reserve_quality": 0.14,
+   "own_fund_quality": 0.12,
+   "concentration": 0.08,
+   "profitability": 0.12
+  }
+ },
+ "expected": {
+  "state": "mixed-review-band",
+  "method": "insurance-sector-score-v1",
+  "component_scores": {
+   "solvency": 72,
+   "minimum_capital": 100,
+   "underwriting": 70,
+   "reserve_quality": 70,
+   "own_fund_quality": 70,
+   "concentration": 73.333333333333,
+   "profitability": 69.230769230769
+  },
+  "weights": {
+   "solvency": 0.22,
+   "minimum_capital": 0.1,
+   "underwriting": 0.22,
+   "reserve_quality": 0.14,
+   "own_fund_quality": 0.12,
+   "concentration": 0.08,
+   "profitability": 0.12
+  },
+  "base_score": 73.614358974359,
+  "floor_breaches": [],
+  "penalty": 0,
+  "fundamental_score": 73.614358974359,
+  "coverage_ratio": 1,
+  "reason": "solvency-ii-tagged-nonlife-package-bands"
+ }
+}

@@ -1,0 +1,21 @@
+{
+  "classification": "synthetic teaching input with author-derived calculations",
+  "input": {
+    "operating_profit": 180,
+    "normalized_tax_rate": 0.25,
+    "beginning_operating_assets": 900,
+    "ending_operating_assets": 1000,
+    "beginning_operating_liabilities": 250,
+    "ending_operating_liabilities": 270
+  },
+  "expected": {
+    "nopat": 135.0,
+    "beginning_invested_capital": 650.0,
+    "ending_invested_capital": 730.0,
+    "average_invested_capital": 690.0,
+    "roic": 0.195652173913,
+    "state": "calculated",
+    "reason": "package-operating-capital-definition"
+  },
+  "independent_check": "Synthetic operating profit 180 at a 25% normalized tax rate gives NOPAT 135. Operating capital moves from 650 to 730, so average capital is 690 and ROIC is 19.5652%."
+}

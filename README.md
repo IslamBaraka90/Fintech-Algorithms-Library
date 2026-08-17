@@ -158,8 +158,8 @@ and `require(esm)` is unflagged from 22.12 onward.
 ## Verified against published worked examples
 
 <!-- coverage:start -->
-**277 of 351 topics** have their arithmetic replayed and asserted on every build
-(134 via `{ input, expected }`, 102 via a separate input and expected-output
+**329 of 403 topics** have their arithmetic replayed and asserted on every build
+(145 via `{ input, expected }`, 143 via a separate input and expected-output
 pair, 11 via row fixtures, 30 via bar/checkpoint fixtures).
 
 Worth being precise about what that proves. The expected values come from the
@@ -204,7 +204,7 @@ Every topic is an instance of one of five archetypes:
 <!-- shapes:start -->
 | Archetype | Signature | Count | Example |
 |---|---|--:|---|
-| `record-transform` | `(input) → output` | 277 | backward-split-adjustment |
+| `record-transform` | `(input) → output` | 329 | backward-split-adjustment |
 | `series-transform` | `(values, ...params) → (number\|null)[]` | 37 | ema, rsi, macd |
 | `row-classify` | `(rows, config?) → verdict[]` | 24 | ohlc-consistency-validator |
 | `tape-aggregate` | `(trades, config) → bar[]` | 7 | time-bars, volume-bars |
@@ -239,7 +239,7 @@ repo URL.
 ## Coverage
 
 <!-- stats:start -->
-**351 topics** · 15 domains · 58 families
+**403 topics** · 16 domains · 64 families
 
 | Domain | Topics | Families | Name |
 |---|--:|--:|---|
@@ -254,6 +254,7 @@ repo URL.
 | D11 | 29 | 5 | Market Microstructure |
 | D12 | 21 | 4 | Matching Engines and Venue Logic |
 | D13 | 9 | 2 | Execution and Transaction Cost Analysis |
+| D18 | 52 | 6 | Fundamental Analysis and Valuation |
 | D21 | 7 | 1 | Credit Risk and Default |
 | D25 | 10 | 2 | Digital Assets and On-Chain Finance |
 | D40 | 10 | 1 | Model Validation and Backtesting |
@@ -403,6 +404,21 @@ tier, diagrams and source.
 **Schedule-Based Execution** — [TWAP Execution](https://docs.thefintechbuilder.com/execution-and-transaction-cost-analysis/schedule-based-execution/twap-execution/) · [Historical VWAP Execution](https://docs.thefintechbuilder.com/execution-and-transaction-cost-analysis/schedule-based-execution/historical-vwap-execution/) · [Adaptive VWAP Execution](https://docs.thefintechbuilder.com/execution-and-transaction-cost-analysis/schedule-based-execution/adaptive-vwap-execution/) · [Percentage-of-Volume Execution](https://docs.thefintechbuilder.com/execution-and-transaction-cost-analysis/schedule-based-execution/percentage-of-volume-execution/)
 
 **Cost/Risk Optimization** — [Almgren-Chriss Optimal Execution](https://docs.thefintechbuilder.com/execution-and-transaction-cost-analysis/cost-risk-optimization/almgren-chriss-optimal-execution/) · [Implementation-Shortfall Execution](https://docs.thefintechbuilder.com/execution-and-transaction-cost-analysis/cost-risk-optimization/implementation-shortfall-execution/) · [Arrival-Price Execution](https://docs.thefintechbuilder.com/execution-and-transaction-cost-analysis/cost-risk-optimization/arrival-price-execution/) · [Liquidity-Seeking Execution](https://docs.thefintechbuilder.com/execution-and-transaction-cost-analysis/cost-risk-optimization/liquidity-seeking-execution/) · [Opportunistic Dark-Pool Execution](https://docs.thefintechbuilder.com/execution-and-transaction-cost-analysis/cost-risk-optimization/opportunistic-dark-pool-execution/)
+
+
+### D18 — Fundamental Analysis and Valuation · 52 topics
+
+**Statement Ratios** — [DuPont Decomposition](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/statement-ratios/dupont-decomposition/) · [ROIC Calculation](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/statement-ratios/roic-calculation/) · [Cash Conversion Cycle](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/statement-ratios/cash-conversion-cycle/) · [Interest-Coverage Ratio](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/statement-ratios/interest-coverage-ratio/) · [Net-Debt/EBITDA](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/statement-ratios/net-debt-ebitda/) · [Common-Size Statements](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/statement-ratios/common-size-statements/)
+
+**Intrinsic Valuation** — [Free-Cash-Flow DCF](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/intrinsic-valuation/free-cash-flow-dcf/) · [Dividend Discount Model](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/intrinsic-valuation/dividend-discount-model/) · [Gordon Growth Model](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/intrinsic-valuation/gordon-growth-model/) · [Residual-Income Model](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/intrinsic-valuation/residual-income-model/) · [Economic Value Added](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/intrinsic-valuation/economic-value-added/)
+
+**Relative Valuation** — [P/E Comparable Valuation](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/relative-valuation/p-e-comparable-valuation/) · [EV/EBITDA Comparable Valuation](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/relative-valuation/ev-ebitda-comparable-valuation/) · [Price-to-Book Valuation](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/relative-valuation/price-to-book-valuation/) · [PEG Ratio](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/relative-valuation/peg-ratio/) · [Peer-Multiple Regression](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/relative-valuation/peer-multiple-regression/)
+
+**Quality and Distress** — [Altman Z-Score](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/quality-and-distress/altman-z-score/) · [Piotroski F-Score](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/quality-and-distress/piotroski-f-score/) · [Beneish M-Score](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/quality-and-distress/beneish-m-score/) · [Sloan Accrual Measure](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/quality-and-distress/sloan-accrual-measure/) · [Ohlson O-Score](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/quality-and-distress/ohlson-o-score/) · [Zmijewski X-Score](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/quality-and-distress/zmijewski-x-score/) · [Springate S-Score](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/quality-and-distress/springate-s-score/) · [Taffler Z-Score](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/quality-and-distress/taffler-z-score/) · [Fulmer H-Score](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/quality-and-distress/fulmer-h-score/) · [Grover G-Score](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/quality-and-distress/grover-g-score/) · [Dechow F-Score for Misstatement Risk](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/quality-and-distress/dechow-f-score-for-misstatement-risk/) · [Dechow-Dichev Accrual Quality](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/quality-and-distress/dechow-dichev-accrual-quality/) · [Modified Jones Discretionary Accrual Model](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/quality-and-distress/modified-jones-discretionary-accrual-model/)
+
+**Integrated Equity Scoring** — [Point-in-Time Stock-Scoring Input Assembly](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/integrated-equity-scoring/point-in-time-stock-scoring-input-assembly/) · [Stock-Scoring Peer Cohort Resolver](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/integrated-equity-scoring/stock-scoring-peer-cohort-resolver/) · [Fundamental Metric Direction and Peer Normalization](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/integrated-equity-scoring/fundamental-metric-direction-and-peer-normalization/) · [Model Applicability and Variant Router](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/integrated-equity-scoring/model-applicability-and-variant-router/) · [Accounting Financial-Health Composite](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/integrated-equity-scoring/accounting-financial-health-composite/) · [Earnings-Quality Composite](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/integrated-equity-scoring/earnings-quality-composite/) · [Dividend Safety Score](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/integrated-equity-scoring/dividend-safety-score/) · [Balance-Sheet Resilience Score](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/integrated-equity-scoring/balance-sheet-resilience-score/) · [Distress-Model Ensemble](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/integrated-equity-scoring/distress-model-ensemble/) · [Cross-Model Conflict and Double-Counting Resolver](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/integrated-equity-scoring/cross-model-conflict-and-double-counting-resolver/) · [Overall Explainable Stock Score](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/integrated-equity-scoring/overall-explainable-stock-score/) · [Score Confidence, Missing-Data Penalty, and Abstention](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/integrated-equity-scoring/score-confidence-missing-data-penalty-and-abstention/) · [Market-Wide Stock Screening and Ranking](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/integrated-equity-scoring/market-wide-stock-screening-and-ranking/) · [Stock Score History, Migration, and Change Attribution](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/integrated-equity-scoring/stock-score-history-migration-and-change-attribution/)
+
+**Sector-Specific Equity Scoring** — [Bank Fundamental Score](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/sector-specific-equity-scoring/bank-fundamental-score/) · [Insurance Fundamental Score](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/sector-specific-equity-scoring/insurance-fundamental-score/) · [REIT Fundamental Score](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/sector-specific-equity-scoring/reit-fundamental-score/) · [Utility Fundamental Score](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/sector-specific-equity-scoring/utility-fundamental-score/) · [Early-Stage Liquidity and Runway Score](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/sector-specific-equity-scoring/early-stage-liquidity-and-runway-score/) · [Cyclical and Commodity-Cycle Normalization](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/sector-specific-equity-scoring/cyclical-and-commodity-cycle-normalization/) · [Holding-Company Look-Through Score](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/sector-specific-equity-scoring/holding-company-look-through-score/) · [Sector-Specific Weight Calibration](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/sector-specific-equity-scoring/sector-specific-weight-calibration/) · [Unsupported-Scope and Coverage Decision](https://docs.thefintechbuilder.com/fundamental-analysis-and-valuation/sector-specific-equity-scoring/unsupported-scope-and-coverage-decision/)
 
 
 ### D21 — Credit Risk and Default · 7 topics

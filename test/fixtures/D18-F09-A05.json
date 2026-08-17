@@ -1,0 +1,33 @@
+{
+ "input": {
+  "profitability_score": 82,
+  "cash_flow_score": 76,
+  "liquidity_score": 68,
+  "leverage_score": 72
+ },
+ "expected": {
+  "state": "calculated",
+  "method": "accounting-financial-health-weighted-composite",
+  "components": {
+   "profitability_score": 82,
+   "cash_flow_score": 76,
+   "liquidity_score": 68,
+   "leverage_score": 72
+  },
+  "weights": {
+   "profitability_score": 0.3,
+   "cash_flow_score": 0.3,
+   "liquidity_score": 0.2,
+   "leverage_score": 0.2
+  },
+  "contributions": {
+   "profitability_score": 24.6,
+   "cash_flow_score": 22.8,
+   "liquidity_score": 13.6,
+   "leverage_score": 14.4
+  },
+  "financial_health_score": 75.4,
+  "band": "strong",
+  "coverage": 1
+ }
+}

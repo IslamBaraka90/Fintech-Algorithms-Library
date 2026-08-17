@@ -1,0 +1,35 @@
+{
+ "input": {
+  "total_assets": 1000,
+  "total_debt": 550,
+  "equity": 450,
+  "interest_expense": 40,
+  "tangible_assets_usd_thousands": 800000,
+  "ebit": 160,
+  "retained_earnings": 300,
+  "sales": 1200,
+  "ebt": 140,
+  "operating_cash_flow": 110,
+  "current_liabilities": 250,
+  "working_capital": 200
+ },
+ "expected": {
+  "state": "calculated",
+  "method": "fulmer-1984-small-firm-nine-factor",
+  "variables": {
+   "retained_earnings_to_assets": 0.3,
+   "sales_to_assets": 1.2,
+   "ebt_to_equity": 0.311111111111,
+   "operating_cash_flow_to_debt": 0.2,
+   "debt_to_assets": 0.55,
+   "current_liabilities_to_assets": 0.25,
+   "log10_tangible_assets_usd_thousands": 5.903089986992,
+   "working_capital_to_debt": 0.363636363636,
+   "log10_ebit_interest": 0.602059991328
+  },
+  "h_score": 0.958597667697,
+  "screen": "non-distress-side",
+  "index_cutoff": 0,
+  "scale_policy": "tangible assets expressed in USD thousands before log10"
+ }
+}

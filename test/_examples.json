@@ -149905,36 +149905,33 @@
  },
  "D12-F01-A04": {
   "args": [
-   "D12-F01-A04",
-   {
-    "incoming_quantity": 600,
-    "price": 100,
-    "lot_size": 1,
-    "fifo_fraction": 0.4,
-    "resting_orders": [
-     {
-      "order_id": "H-1",
-      "side": "sell",
-      "price": 100,
-      "remaining_quantity": 500,
-      "arrival_sequence": 10
-     },
-     {
-      "order_id": "H-2",
-      "side": "sell",
-      "price": 100,
-      "remaining_quantity": 300,
-      "arrival_sequence": 20
-     },
-     {
-      "order_id": "H-3",
-      "side": "sell",
-      "price": 100,
-      "remaining_quantity": 200,
-      "arrival_sequence": 30
-     }
-    ]
-   }
+   600,
+   100,
+   1,
+   0.4,
+   [
+    {
+     "order_id": "H-1",
+     "side": "sell",
+     "price": 100,
+     "remaining_quantity": 500,
+     "arrival_sequence": 10
+    },
+    {
+     "order_id": "H-2",
+     "side": "sell",
+     "price": 100,
+     "remaining_quantity": 300,
+     "arrival_sequence": 20
+    },
+    {
+     "order_id": "H-3",
+     "side": "sell",
+     "price": 100,
+     "remaining_quantity": 200,
+     "arrival_sequence": 30
+    }
+   ]
   ],
   "value": {
    "model": "single-price-fifo-pro-rata-split",
@@ -152686,6 +152683,3698 @@
     }
    ],
    "state": "lit-fallback-required"
+  }
+ },
+ "D18-F01-A01": {
+  "args": [
+   {
+    "net_income": 96,
+    "revenue": 1200,
+    "beginning_assets": 900,
+    "ending_assets": 1100,
+    "beginning_equity": 380,
+    "ending_equity": 420
+   }
+  ],
+  "value": {
+   "net_profit_margin": 0.08,
+   "asset_turnover": 1.2,
+   "equity_multiplier": 2.5,
+   "dupont_roe": 0.24,
+   "direct_roe": 0.24,
+   "identity_gap": 0,
+   "average_assets": 1000,
+   "average_equity": 400,
+   "state": "calculated",
+   "reason": "three-factor-identity-reconciles"
+  }
+ },
+ "D18-F01-A02": {
+  "args": [
+   {
+    "operating_profit": 180,
+    "normalized_tax_rate": 0.25,
+    "beginning_operating_assets": 900,
+    "ending_operating_assets": 1000,
+    "beginning_operating_liabilities": 250,
+    "ending_operating_liabilities": 270
+   }
+  ],
+  "value": {
+   "nopat": 135,
+   "beginning_invested_capital": 650,
+   "ending_invested_capital": 730,
+   "average_invested_capital": 690,
+   "roic": 0.195652173913,
+   "state": "calculated",
+   "reason": "package-operating-capital-definition"
+  }
+ },
+ "D18-F01-A03": {
+  "args": [
+   {
+    "revenue": 2400,
+    "cost_of_goods_sold": 1440,
+    "beginning_receivables": 280,
+    "ending_receivables": 320,
+    "beginning_inventory": 340,
+    "ending_inventory": 380,
+    "beginning_trade_payables": 200,
+    "ending_trade_payables": 240,
+    "day_count": 365
+   }
+  ],
+  "value": {
+   "average_receivables": 300,
+   "average_inventory": 360,
+   "average_trade_payables": 220,
+   "days_sales_outstanding": 45.625,
+   "days_inventory_outstanding": 91.25,
+   "days_payables_outstanding": 55.763888888889,
+   "cash_conversion_cycle_days": 81.111111111111,
+   "state": "calculated",
+   "reason": "dio-plus-dso-minus-dpo"
+  }
+ },
+ "D18-F01-A04": {
+  "args": [
+   {
+    "ebit": 150,
+    "gross_interest_expense": 50
+   }
+  ],
+  "value": {
+   "ebit": 150,
+   "gross_interest_expense": 50,
+   "interest_coverage_ratio": 3,
+   "coverage_shortfall": 0,
+   "state": "covered",
+   "reason": "ebit-divided-by-gross-interest-expense"
+  }
+ },
+ "D18-F01-A05": {
+  "args": [
+   {
+    "net_income": 120,
+    "interest_expense": 45,
+    "income_tax_expense": 35,
+    "depreciation_and_amortization": 80,
+    "current_borrowings": 60,
+    "noncurrent_borrowings": 600,
+    "lease_liabilities": 90,
+    "cash_and_cash_equivalents": 150,
+    "include_lease_liabilities": true
+   }
+  ],
+  "value": {
+   "ebitda": 280,
+   "gross_debt": 750,
+   "net_debt": 600,
+   "net_debt_to_ebitda": 2.142857142857,
+   "lease_policy": "included",
+   "state": "net-debt",
+   "reason": "net-debt-divided-by-ebitda"
+  }
+ },
+ "D18-F01-A06": {
+  "args": [
+   {
+    "statement_type": "income",
+    "base_label": "Revenue",
+    "focus_label": "Net income",
+    "periods": [
+     {
+      "period": "FY2023",
+      "items": [
+       {
+        "label": "Revenue",
+        "value": 1200
+       },
+       {
+        "label": "Cost of goods sold",
+        "value": -720
+       },
+       {
+        "label": "Gross profit",
+        "value": 480
+       },
+       {
+        "label": "Research and development",
+        "value": -90
+       },
+       {
+        "label": "Selling and administration",
+        "value": -210
+       },
+       {
+        "label": "Operating profit",
+        "value": 180
+       },
+       {
+        "label": "Interest expense",
+        "value": -35
+       },
+       {
+        "label": "Tax expense",
+        "value": -32
+       },
+       {
+        "label": "Net income",
+        "value": 113
+       },
+       {
+        "label": "Depreciation and amortization",
+        "value": -55
+       },
+       {
+        "label": "Capital expenditure",
+        "value": -70
+       },
+       {
+        "label": "Operating cash flow",
+        "value": 155
+       }
+      ]
+     },
+     {
+      "period": "FY2024",
+      "items": [
+       {
+        "label": "Revenue",
+        "value": 1320
+       },
+       {
+        "label": "Cost of goods sold",
+        "value": -805
+       },
+       {
+        "label": "Gross profit",
+        "value": 515
+       },
+       {
+        "label": "Research and development",
+        "value": -105
+       },
+       {
+        "label": "Selling and administration",
+        "value": -224
+       },
+       {
+        "label": "Operating profit",
+        "value": 186
+       },
+       {
+        "label": "Interest expense",
+        "value": -39
+       },
+       {
+        "label": "Tax expense",
+        "value": -31
+       },
+       {
+        "label": "Net income",
+        "value": 116
+       },
+       {
+        "label": "Depreciation and amortization",
+        "value": -61
+       },
+       {
+        "label": "Capital expenditure",
+        "value": -82
+       },
+       {
+        "label": "Operating cash flow",
+        "value": 171
+       }
+      ]
+     },
+     {
+      "period": "FY2025",
+      "items": [
+       {
+        "label": "Revenue",
+        "value": 1450
+       },
+       {
+        "label": "Cost of goods sold",
+        "value": -899
+       },
+       {
+        "label": "Gross profit",
+        "value": 551
+       },
+       {
+        "label": "Research and development",
+        "value": -122
+       },
+       {
+        "label": "Selling and administration",
+        "value": -239
+       },
+       {
+        "label": "Operating profit",
+        "value": 190
+       },
+       {
+        "label": "Interest expense",
+        "value": -44
+       },
+       {
+        "label": "Tax expense",
+        "value": -28
+       },
+       {
+        "label": "Net income",
+        "value": 118
+       },
+       {
+        "label": "Depreciation and amortization",
+        "value": -68
+       },
+       {
+        "label": "Capital expenditure",
+        "value": -95
+       },
+       {
+        "label": "Operating cash flow",
+        "value": 184
+       }
+      ]
+     },
+     {
+      "period": "FY2026",
+      "items": [
+       {
+        "label": "Revenue",
+        "value": 1600
+       },
+       {
+        "label": "Cost of goods sold",
+        "value": -976
+       },
+       {
+        "label": "Gross profit",
+        "value": 624
+       },
+       {
+        "label": "Research and development",
+        "value": -144
+       },
+       {
+        "label": "Selling and administration",
+        "value": -256
+       },
+       {
+        "label": "Operating profit",
+        "value": 224
+       },
+       {
+        "label": "Interest expense",
+        "value": -48
+       },
+       {
+        "label": "Tax expense",
+        "value": -35
+       },
+       {
+        "label": "Net income",
+        "value": 141
+       },
+       {
+        "label": "Depreciation and amortization",
+        "value": -76
+       },
+       {
+        "label": "Capital expenditure",
+        "value": -112
+       },
+       {
+        "label": "Operating cash flow",
+        "value": 218
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "value": {
+   "statement_type": "income",
+   "base_label": "Revenue",
+   "focus_label": "Net income",
+   "period_count": 4,
+   "line_item_count": 12,
+   "focus_percentage": 8.8125,
+   "focus_change_pp": 0.674568965517,
+   "periods": [
+    {
+     "period": "FY2023",
+     "base_value": 1200,
+     "focus_percentage": 9.416666666667,
+     "focus_change_pp": null,
+     "items": [
+      {
+       "label": "Revenue",
+       "value": 1200,
+       "common_size_pct": 100
+      },
+      {
+       "label": "Cost of goods sold",
+       "value": -720,
+       "common_size_pct": -60
+      },
+      {
+       "label": "Gross profit",
+       "value": 480,
+       "common_size_pct": 40
+      },
+      {
+       "label": "Research and development",
+       "value": -90,
+       "common_size_pct": -7.5
+      },
+      {
+       "label": "Selling and administration",
+       "value": -210,
+       "common_size_pct": -17.5
+      },
+      {
+       "label": "Operating profit",
+       "value": 180,
+       "common_size_pct": 15
+      },
+      {
+       "label": "Interest expense",
+       "value": -35,
+       "common_size_pct": -2.916666666667
+      },
+      {
+       "label": "Tax expense",
+       "value": -32,
+       "common_size_pct": -2.666666666667
+      },
+      {
+       "label": "Net income",
+       "value": 113,
+       "common_size_pct": 9.416666666667
+      },
+      {
+       "label": "Depreciation and amortization",
+       "value": -55,
+       "common_size_pct": -4.583333333333
+      },
+      {
+       "label": "Capital expenditure",
+       "value": -70,
+       "common_size_pct": -5.833333333333
+      },
+      {
+       "label": "Operating cash flow",
+       "value": 155,
+       "common_size_pct": 12.916666666667
+      }
+     ]
+    },
+    {
+     "period": "FY2024",
+     "base_value": 1320,
+     "focus_percentage": 8.787878787879,
+     "focus_change_pp": -0.628787878788,
+     "items": [
+      {
+       "label": "Revenue",
+       "value": 1320,
+       "common_size_pct": 100
+      },
+      {
+       "label": "Cost of goods sold",
+       "value": -805,
+       "common_size_pct": -60.984848484848
+      },
+      {
+       "label": "Gross profit",
+       "value": 515,
+       "common_size_pct": 39.015151515152
+      },
+      {
+       "label": "Research and development",
+       "value": -105,
+       "common_size_pct": -7.954545454545
+      },
+      {
+       "label": "Selling and administration",
+       "value": -224,
+       "common_size_pct": -16.969696969697
+      },
+      {
+       "label": "Operating profit",
+       "value": 186,
+       "common_size_pct": 14.090909090909
+      },
+      {
+       "label": "Interest expense",
+       "value": -39,
+       "common_size_pct": -2.954545454545
+      },
+      {
+       "label": "Tax expense",
+       "value": -31,
+       "common_size_pct": -2.348484848485
+      },
+      {
+       "label": "Net income",
+       "value": 116,
+       "common_size_pct": 8.787878787879
+      },
+      {
+       "label": "Depreciation and amortization",
+       "value": -61,
+       "common_size_pct": -4.621212121212
+      },
+      {
+       "label": "Capital expenditure",
+       "value": -82,
+       "common_size_pct": -6.212121212121
+      },
+      {
+       "label": "Operating cash flow",
+       "value": 171,
+       "common_size_pct": 12.954545454545
+      }
+     ]
+    },
+    {
+     "period": "FY2025",
+     "base_value": 1450,
+     "focus_percentage": 8.137931034483,
+     "focus_change_pp": -0.649947753396,
+     "items": [
+      {
+       "label": "Revenue",
+       "value": 1450,
+       "common_size_pct": 100
+      },
+      {
+       "label": "Cost of goods sold",
+       "value": -899,
+       "common_size_pct": -62
+      },
+      {
+       "label": "Gross profit",
+       "value": 551,
+       "common_size_pct": 38
+      },
+      {
+       "label": "Research and development",
+       "value": -122,
+       "common_size_pct": -8.413793103448
+      },
+      {
+       "label": "Selling and administration",
+       "value": -239,
+       "common_size_pct": -16.48275862069
+      },
+      {
+       "label": "Operating profit",
+       "value": 190,
+       "common_size_pct": 13.103448275862
+      },
+      {
+       "label": "Interest expense",
+       "value": -44,
+       "common_size_pct": -3.034482758621
+      },
+      {
+       "label": "Tax expense",
+       "value": -28,
+       "common_size_pct": -1.931034482759
+      },
+      {
+       "label": "Net income",
+       "value": 118,
+       "common_size_pct": 8.137931034483
+      },
+      {
+       "label": "Depreciation and amortization",
+       "value": -68,
+       "common_size_pct": -4.689655172414
+      },
+      {
+       "label": "Capital expenditure",
+       "value": -95,
+       "common_size_pct": -6.551724137931
+      },
+      {
+       "label": "Operating cash flow",
+       "value": 184,
+       "common_size_pct": 12.689655172414
+      }
+     ]
+    },
+    {
+     "period": "FY2026",
+     "base_value": 1600,
+     "focus_percentage": 8.8125,
+     "focus_change_pp": 0.674568965517,
+     "items": [
+      {
+       "label": "Revenue",
+       "value": 1600,
+       "common_size_pct": 100
+      },
+      {
+       "label": "Cost of goods sold",
+       "value": -976,
+       "common_size_pct": -61
+      },
+      {
+       "label": "Gross profit",
+       "value": 624,
+       "common_size_pct": 39
+      },
+      {
+       "label": "Research and development",
+       "value": -144,
+       "common_size_pct": -9
+      },
+      {
+       "label": "Selling and administration",
+       "value": -256,
+       "common_size_pct": -16
+      },
+      {
+       "label": "Operating profit",
+       "value": 224,
+       "common_size_pct": 14
+      },
+      {
+       "label": "Interest expense",
+       "value": -48,
+       "common_size_pct": -3
+      },
+      {
+       "label": "Tax expense",
+       "value": -35,
+       "common_size_pct": -2.1875
+      },
+      {
+       "label": "Net income",
+       "value": 141,
+       "common_size_pct": 8.8125
+      },
+      {
+       "label": "Depreciation and amortization",
+       "value": -76,
+       "common_size_pct": -4.75
+      },
+      {
+       "label": "Capital expenditure",
+       "value": -112,
+       "common_size_pct": -7
+      },
+      {
+       "label": "Operating cash flow",
+       "value": 218,
+       "common_size_pct": 13.625
+      }
+     ]
+    }
+   ],
+   "state": "calculated",
+   "reason": "signed-line-items-divided-by-period-base"
+  }
+ },
+ "D18-F02-A01": {
+  "args": [
+   {
+    "valuation_date": "2026-08-04",
+    "currency": "USD",
+    "unit_scale": "millions except per-share",
+    "fcff": [
+     90,
+     100,
+     112,
+     124,
+     136
+    ],
+    "wacc": 0.09,
+    "terminal_growth": 0.03,
+    "cash_and_non_operating_assets": 120,
+    "debt": 450,
+    "preferred_equity": 20,
+    "noncontrolling_interest": 10,
+    "diluted_shares": 100
+   }
+  ],
+  "value": {
+   "state": "valued",
+   "method": "fcff-enterprise-dcf",
+   "schedule": [
+    {
+     "period": 1,
+     "fcff": 90,
+     "discount_factor": 0.9174311926605504,
+     "present_value": 82.56880733944953
+    },
+    {
+     "period": 2,
+     "fcff": 100,
+     "discount_factor": 0.84167999326656,
+     "present_value": 84.167999326656
+    },
+    {
+     "period": 3,
+     "fcff": 112,
+     "discount_factor": 0.772183480061064,
+     "present_value": 86.48454976683917
+    },
+    {
+     "period": 4,
+     "fcff": 124,
+     "discount_factor": 0.7084252110651963,
+     "present_value": 87.84472617208434
+    },
+    {
+     "period": 5,
+     "fcff": 136,
+     "discount_factor": 0.6499313862983452,
+     "present_value": 88.39066853657495
+    }
+   ],
+   "pv_explicit_fcff": 429.45675114160395,
+   "terminal_fcff": 140.08,
+   "terminal_value": 2334.666666666667,
+   "terminal_discount_factor": 0.6499313862983452,
+   "pv_terminal_value": 1517.3731432112036,
+   "terminal_value_share": 0.7794071519102238,
+   "enterprise_value": 1946.8298943528075,
+   "net_equity_bridge": -360,
+   "equity_value": 1586.8298943528075,
+   "intrinsic_value_per_share": 15.868298943528075
+  }
+ },
+ "D18-F02-A02": {
+  "args": [
+   {
+    "valuation_date": "2026-08-04",
+    "currency": "USD",
+    "dividends": [
+     2,
+     2.2,
+     2.42,
+     2.6,
+     2.75
+    ],
+    "cost_of_equity": 0.1,
+    "terminal_growth": 0.04
+   }
+  ],
+  "value": {
+   "state": "valued",
+   "method": "multi-stage-dividend-discount",
+   "schedule": [
+    {
+     "period": 1,
+     "dividend": 2,
+     "discount_factor": 0.9090909090909091,
+     "present_value": 1.8181818181818181
+    },
+    {
+     "period": 2,
+     "dividend": 2.2,
+     "discount_factor": 0.8264462809917354,
+     "present_value": 1.8181818181818181
+    },
+    {
+     "period": 3,
+     "dividend": 2.42,
+     "discount_factor": 0.7513148009015775,
+     "present_value": 1.8181818181818177
+    },
+    {
+     "period": 4,
+     "dividend": 2.6,
+     "discount_factor": 0.6830134553650704,
+     "present_value": 1.7758349839491832
+    },
+    {
+     "period": 5,
+     "dividend": 2.75,
+     "discount_factor": 0.6209213230591549,
+     "present_value": 1.707533638412676
+    }
+   ],
+   "pv_explicit_dividends": 8.937914076907314,
+   "terminal_dividend": 2.8600000000000003,
+   "terminal_value": 47.66666666666667,
+   "terminal_discount_factor": 0.6209213230591549,
+   "pv_terminal_value": 29.59724973248639,
+   "terminal_value_share": 0.7680582306301622,
+   "intrinsic_value_per_share": 38.5351638093937
+  }
+ },
+ "D18-F02-A03": {
+  "args": [
+   {
+    "valuation_date": "2026-08-04",
+    "currency": "USD",
+    "dividend_next": 3.12,
+    "cost_of_equity": 0.1,
+    "perpetual_growth": 0.04
+   }
+  ],
+  "value": {
+   "state": "valued",
+   "method": "gordon-growth",
+   "dividend_timing": "D1-next-period",
+   "discount_growth_spread": 0.060000000000000005,
+   "capitalization_multiple": 16.666666666666664,
+   "intrinsic_value_per_share": 52
+  }
+ },
+ "D18-F02-A04": {
+  "args": [
+   {
+    "valuation_date": "2026-08-04",
+    "currency": "USD",
+    "opening_book_value_per_share": 30,
+    "earnings_per_share": [
+     3.6,
+     4,
+     4.35,
+     4.65,
+     4.9
+    ],
+    "dividends_per_share": [
+     1.2,
+     1.35,
+     1.5,
+     1.65,
+     1.8
+    ],
+    "nonowner_equity_adjustments_per_share": [
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "cost_of_equity": 0.1,
+    "terminal_residual_income_growth": 0.03
+   }
+  ],
+  "value": {
+   "state": "valued",
+   "method": "residual-income",
+   "schedule": [
+    {
+     "period": 1,
+     "opening_book_value_per_share": 30,
+     "earnings_per_share": 3.6,
+     "dividends_per_share": 1.2,
+     "nonowner_equity_adjustment_per_share": 0,
+     "equity_charge_per_share": 3,
+     "residual_income_per_share": 0.6000000000000001,
+     "discount_factor": 0.9090909090909091,
+     "present_value": 0.5454545454545455,
+     "closing_book_value_per_share": 32.4
+    },
+    {
+     "period": 2,
+     "opening_book_value_per_share": 32.4,
+     "earnings_per_share": 4,
+     "dividends_per_share": 1.35,
+     "nonowner_equity_adjustment_per_share": 0,
+     "equity_charge_per_share": 3.24,
+     "residual_income_per_share": 0.7599999999999998,
+     "discount_factor": 0.8264462809917354,
+     "present_value": 0.6280991735537188,
+     "closing_book_value_per_share": 35.05
+    },
+    {
+     "period": 3,
+     "opening_book_value_per_share": 35.05,
+     "earnings_per_share": 4.35,
+     "dividends_per_share": 1.5,
+     "nonowner_equity_adjustment_per_share": 0,
+     "equity_charge_per_share": 3.505,
+     "residual_income_per_share": 0.8449999999999998,
+     "discount_factor": 0.7513148009015775,
+     "present_value": 0.6348610067618329,
+     "closing_book_value_per_share": 37.9
+    },
+    {
+     "period": 4,
+     "opening_book_value_per_share": 37.9,
+     "earnings_per_share": 4.65,
+     "dividends_per_share": 1.65,
+     "nonowner_equity_adjustment_per_share": 0,
+     "equity_charge_per_share": 3.79,
+     "residual_income_per_share": 0.8600000000000003,
+     "discount_factor": 0.6830134553650704,
+     "present_value": 0.5873915716139607,
+     "closing_book_value_per_share": 40.9
+    },
+    {
+     "period": 5,
+     "opening_book_value_per_share": 40.9,
+     "earnings_per_share": 4.9,
+     "dividends_per_share": 1.8,
+     "nonowner_equity_adjustment_per_share": 0,
+     "equity_charge_per_share": 4.09,
+     "residual_income_per_share": 0.8100000000000005,
+     "discount_factor": 0.6209213230591549,
+     "present_value": 0.5029462716779158,
+     "closing_book_value_per_share": 44
+    }
+   ],
+   "pv_explicit_residual_income": 2.898752569061974,
+   "terminal_residual_income_per_share": 0.8343000000000005,
+   "continuing_value": 11.918571428571434,
+   "terminal_discount_factor": 0.6209213230591549,
+   "pv_continuing_value": 7.400495140403617,
+   "continuing_value_share": 0.18363854317472458,
+   "closing_book_value_per_share": 44,
+   "intrinsic_value_per_share": 40.29924770946559
+  }
+ },
+ "D18-F02-A05": {
+  "args": [
+   {
+    "valuation_date": "2026-08-04",
+    "currency": "USD",
+    "unit_scale": "millions",
+    "opening_invested_capital": 800,
+    "nopat": [
+     92,
+     100,
+     110,
+     121,
+     132
+    ],
+    "net_investment": [
+     50,
+     50,
+     55,
+     60,
+     60
+    ],
+    "wacc": 0.09,
+    "terminal_eva_growth": 0.03,
+    "adjustment_basis": "already-adjusted synthetic NOPAT and invested capital"
+   }
+  ],
+  "value": {
+   "state": "valued",
+   "method": "economic-value-added",
+   "schedule": [
+    {
+     "period": 1,
+     "opening_invested_capital": 800,
+     "nopat": 92,
+     "net_investment": 50,
+     "capital_charge": 72,
+     "roic": 0.115,
+     "roic_wacc_spread": 0.02500000000000001,
+     "eva": 20,
+     "discount_factor": 0.9174311926605504,
+     "present_value": 18.34862385321101,
+     "closing_invested_capital": 850
+    },
+    {
+     "period": 2,
+     "opening_invested_capital": 850,
+     "nopat": 100,
+     "net_investment": 50,
+     "capital_charge": 76.5,
+     "roic": 0.11764705882352941,
+     "roic_wacc_spread": 0.027647058823529413,
+     "eva": 23.5,
+     "discount_factor": 0.84167999326656,
+     "present_value": 19.779479841764157,
+     "closing_invested_capital": 900
+    },
+    {
+     "period": 3,
+     "opening_invested_capital": 900,
+     "nopat": 110,
+     "net_investment": 55,
+     "capital_charge": 81,
+     "roic": 0.12222222222222222,
+     "roic_wacc_spread": 0.03222222222222222,
+     "eva": 29,
+     "discount_factor": 0.772183480061064,
+     "present_value": 22.393320921770854,
+     "closing_invested_capital": 955
+    },
+    {
+     "period": 4,
+     "opening_invested_capital": 955,
+     "nopat": 121,
+     "net_investment": 60,
+     "capital_charge": 85.95,
+     "roic": 0.12670157068062826,
+     "roic_wacc_spread": 0.036701570680628265,
+     "eva": 35.05,
+     "discount_factor": 0.7084252110651963,
+     "present_value": 24.830303647835127,
+     "closing_invested_capital": 1015
+    },
+    {
+     "period": 5,
+     "opening_invested_capital": 1015,
+     "nopat": 132,
+     "net_investment": 60,
+     "capital_charge": 91.35,
+     "roic": 0.13004926108374384,
+     "roic_wacc_spread": 0.04004926108374385,
+     "eva": 40.650000000000006,
+     "discount_factor": 0.6499313862983452,
+     "present_value": 26.419710853027738,
+     "closing_invested_capital": 1075
+    }
+   ],
+   "pv_explicit_eva": 111.77143911760888,
+   "terminal_eva": 41.86950000000001,
+   "continuing_value": 697.8250000000002,
+   "terminal_discount_factor": 0.6499313862983452,
+   "pv_continuing_value": 453.53836964364285,
+   "market_value_added": 565.3098087612517,
+   "continuing_value_share": 0.33218714663387583,
+   "closing_invested_capital": 1075,
+   "enterprise_value": 1365.3098087612516
+  }
+ },
+ "D18-F03-A01": {
+  "args": [
+   {
+    "target": {
+     "earnings_per_share": 2.4,
+     "current_price": 40
+    },
+    "peers": [
+     {
+      "id": "P1",
+      "price": 28,
+      "earnings_per_share": 2
+     },
+     {
+      "id": "P2",
+      "price": 48,
+      "earnings_per_share": 3
+     },
+     {
+      "id": "P3",
+      "price": 63,
+      "earnings_per_share": 3.5
+     },
+     {
+      "id": "P4",
+      "price": 50,
+      "earnings_per_share": 2.5
+     },
+     {
+      "id": "P5",
+      "price": 44,
+      "earnings_per_share": 2
+     }
+    ]
+   }
+  ],
+  "value": {
+   "model": "median-positive-eps-peer-pe",
+   "peer_count": 5,
+   "peer_multiples": [
+    {
+     "id": "P1",
+     "price": 28,
+     "earnings_per_share": 2,
+     "pe_ratio": 14
+    },
+    {
+     "id": "P2",
+     "price": 48,
+     "earnings_per_share": 3,
+     "pe_ratio": 16
+    },
+    {
+     "id": "P3",
+     "price": 63,
+     "earnings_per_share": 3.5,
+     "pe_ratio": 18
+    },
+    {
+     "id": "P4",
+     "price": 50,
+     "earnings_per_share": 2.5,
+     "pe_ratio": 20
+    },
+    {
+     "id": "P5",
+     "price": 44,
+     "earnings_per_share": 2,
+     "pe_ratio": 22
+    }
+   ],
+   "multiple_summary": {
+    "minimum": 14,
+    "median": 18,
+    "maximum": 22,
+    "range": 8
+   },
+   "selected_multiple": 18,
+   "target_earnings_per_share": 2.4,
+   "implied_price": 43.199999999999996,
+   "premium_discount_to_current": 0.07999999999999985,
+   "state": "valuation-complete"
+  }
+ },
+ "D18-F03-A02": {
+  "args": [
+   {
+    "target": {
+     "ebitda": 150,
+     "net_debt": 300,
+     "preferred_equity": 20,
+     "noncontrolling_interest": 30,
+     "nonoperating_assets": 50,
+     "shares_outstanding": 100,
+     "current_price": 9.5
+    },
+    "peers": [
+     {
+      "id": "E1",
+      "enterprise_value": 600,
+      "ebitda": 100
+     },
+     {
+      "id": "E2",
+      "enterprise_value": 700,
+      "ebitda": 100
+     },
+     {
+      "id": "E3",
+      "enterprise_value": 800,
+      "ebitda": 100
+     },
+     {
+      "id": "E4",
+      "enterprise_value": 900,
+      "ebitda": 100
+     },
+     {
+      "id": "E5",
+      "enterprise_value": 1000,
+      "ebitda": 100
+     }
+    ]
+   }
+  ],
+  "value": {
+   "model": "median-positive-ebitda-peer-ev-ebitda",
+   "peer_count": 5,
+   "peer_multiples": [
+    {
+     "id": "E1",
+     "enterprise_value": 600,
+     "ebitda": 100,
+     "ev_ebitda": 6
+    },
+    {
+     "id": "E2",
+     "enterprise_value": 700,
+     "ebitda": 100,
+     "ev_ebitda": 7
+    },
+    {
+     "id": "E3",
+     "enterprise_value": 800,
+     "ebitda": 100,
+     "ev_ebitda": 8
+    },
+    {
+     "id": "E4",
+     "enterprise_value": 900,
+     "ebitda": 100,
+     "ev_ebitda": 9
+    },
+    {
+     "id": "E5",
+     "enterprise_value": 1000,
+     "ebitda": 100,
+     "ev_ebitda": 10
+    }
+   ],
+   "multiple_summary": {
+    "minimum": 6,
+    "median": 8,
+    "maximum": 10,
+    "range": 4
+   },
+   "selected_multiple": 8,
+   "target_ebitda": 150,
+   "implied_enterprise_value": 1200,
+   "equity_bridge": {
+    "net_debt": 300,
+    "preferred_equity": 20,
+    "noncontrolling_interest": 30,
+    "nonoperating_assets": 50
+   },
+   "implied_equity_value": 900,
+   "shares_outstanding": 100,
+   "implied_price": 9,
+   "premium_discount_to_current": -0.052631578947368474,
+   "state": "valuation-complete"
+  }
+ },
+ "D18-F03-A03": {
+  "args": [
+   {
+    "target": {
+     "book_value_per_share": 24,
+     "current_price": 40
+    },
+    "peers": [
+     {
+      "id": "B1",
+      "price": 24,
+      "book_value_per_share": 20
+     },
+     {
+      "id": "B2",
+      "price": 30,
+      "book_value_per_share": 20
+     },
+     {
+      "id": "B3",
+      "price": 36,
+      "book_value_per_share": 20
+     },
+     {
+      "id": "B4",
+      "price": 42,
+      "book_value_per_share": 20
+     },
+     {
+      "id": "B5",
+      "price": 48,
+      "book_value_per_share": 20
+     }
+    ]
+   }
+  ],
+  "value": {
+   "model": "median-positive-book-value-peer-pb",
+   "peer_count": 5,
+   "peer_multiples": [
+    {
+     "id": "B1",
+     "price": 24,
+     "book_value_per_share": 20,
+     "price_to_book": 1.2
+    },
+    {
+     "id": "B2",
+     "price": 30,
+     "book_value_per_share": 20,
+     "price_to_book": 1.5
+    },
+    {
+     "id": "B3",
+     "price": 36,
+     "book_value_per_share": 20,
+     "price_to_book": 1.8
+    },
+    {
+     "id": "B4",
+     "price": 42,
+     "book_value_per_share": 20,
+     "price_to_book": 2.1
+    },
+    {
+     "id": "B5",
+     "price": 48,
+     "book_value_per_share": 20,
+     "price_to_book": 2.4
+    }
+   ],
+   "multiple_summary": {
+    "minimum": 1.2,
+    "median": 1.8,
+    "maximum": 2.4,
+    "range": 1.2
+   },
+   "selected_multiple": 1.8,
+   "target_book_value_per_share": 24,
+   "implied_price": 43.2,
+   "premium_discount_to_current": 0.08000000000000007,
+   "state": "valuation-complete"
+  }
+ },
+ "D18-F03-A04": {
+  "args": [
+   {
+    "target": {
+     "forward_pe": 24,
+     "expected_eps_growth_percent": 12,
+     "forward_earnings_per_share": 2.5,
+     "current_price": 60
+    },
+    "peers": [
+     {
+      "id": "G1",
+      "forward_pe": 18,
+      "expected_eps_growth_percent": 15
+     },
+     {
+      "id": "G2",
+      "forward_pe": 21,
+      "expected_eps_growth_percent": 15
+     },
+     {
+      "id": "G3",
+      "forward_pe": 24,
+      "expected_eps_growth_percent": 15
+     },
+     {
+      "id": "G4",
+      "forward_pe": 27,
+      "expected_eps_growth_percent": 15
+     },
+     {
+      "id": "G5",
+      "forward_pe": 30,
+      "expected_eps_growth_percent": 15
+     }
+    ]
+   }
+  ],
+  "value": {
+   "model": "forward-pe-divided-by-growth-percentage-points",
+   "growth_unit": "percentage-points",
+   "peer_count": 5,
+   "peer_ratios": [
+    {
+     "id": "G1",
+     "forward_pe": 18,
+     "expected_eps_growth_percent": 15,
+     "peg_ratio": 1.2
+    },
+    {
+     "id": "G2",
+     "forward_pe": 21,
+     "expected_eps_growth_percent": 15,
+     "peg_ratio": 1.4
+    },
+    {
+     "id": "G3",
+     "forward_pe": 24,
+     "expected_eps_growth_percent": 15,
+     "peg_ratio": 1.6
+    },
+    {
+     "id": "G4",
+     "forward_pe": 27,
+     "expected_eps_growth_percent": 15,
+     "peg_ratio": 1.8
+    },
+    {
+     "id": "G5",
+     "forward_pe": 30,
+     "expected_eps_growth_percent": 15,
+     "peg_ratio": 2
+    }
+   ],
+   "peg_summary": {
+    "minimum": 1.2,
+    "median": 1.6,
+    "maximum": 2,
+    "range": 0.8
+   },
+   "target_forward_pe": 24,
+   "target_growth_percent": 12,
+   "target_peg_ratio": 2,
+   "selected_peer_peg": 1.6,
+   "relative_peg": 1.25,
+   "implied_forward_pe": 19.200000000000003,
+   "forward_earnings_per_share": 2.5,
+   "implied_price": 48.00000000000001,
+   "premium_discount_to_current": -0.19999999999999984,
+   "state": "valuation-complete"
+  }
+ },
+ "D18-F03-A05": {
+  "args": [
+   {
+    "target": {
+     "expected_growth_percent": 11,
+     "return_on_equity_percent": 15,
+     "net_debt_to_ebitda": 1,
+     "valuation_metric": 5,
+     "current_value": 35
+    },
+    "peers": [
+     {
+      "id": "R1",
+      "multiple": 3.6692966676192453,
+      "expected_growth_percent": 4,
+      "return_on_equity_percent": 8,
+      "net_debt_to_ebitda": 3
+     },
+     {
+      "id": "R2",
+      "multiple": 4.6043430528623635,
+      "expected_growth_percent": 6,
+      "return_on_equity_percent": 11,
+      "net_debt_to_ebitda": 2.4
+     },
+     {
+      "id": "R3",
+      "multiple": 5.124331102904436,
+      "expected_growth_percent": 8,
+      "return_on_equity_percent": 14,
+      "net_debt_to_ebitda": 1.8
+     },
+     {
+      "id": "R4",
+      "multiple": 6.178033395291563,
+      "expected_growth_percent": 10,
+      "return_on_equity_percent": 17,
+      "net_debt_to_ebitda": 1.2
+     },
+     {
+      "id": "R5",
+      "multiple": 6.546954632989411,
+      "expected_growth_percent": 12,
+      "return_on_equity_percent": 13,
+      "net_debt_to_ebitda": 0.8
+     },
+     {
+      "id": "R6",
+      "multiple": 7.403848999097714,
+      "expected_growth_percent": 14,
+      "return_on_equity_percent": 20,
+      "net_debt_to_ebitda": 0.4
+     },
+     {
+      "id": "R7",
+      "multiple": 5.989452466383113,
+      "expected_growth_percent": 9,
+      "return_on_equity_percent": 22,
+      "net_debt_to_ebitda": 2
+     },
+     {
+      "id": "R8",
+      "multiple": 7.9565858935218765,
+      "expected_growth_percent": 16,
+      "return_on_equity_percent": 16,
+      "net_debt_to_ebitda": -0.2
+     }
+    ]
+   }
+  ],
+  "value": {
+   "model": "ols-log-multiple-on-growth-roe-and-leverage",
+   "peer_count": 8,
+   "feature_order": [
+    "intercept",
+    "expected_growth_decimal",
+    "return_on_equity_decimal",
+    "net_debt_to_ebitda"
+   ],
+   "coefficients": {
+    "intercept": 1.5364545140362829,
+    "expected_growth_decimal": 1.6438862781409074,
+    "return_on_equity_decimal": 1.6061067701607943,
+    "net_debt_to_ebitda": -0.13216626876457388
+   },
+   "r_squared_log_space": 0.9870676723439116,
+   "fitted_peers": [
+    {
+     "id": "R1",
+     "observed_multiple": 3.6692966676192453,
+     "fitted_multiple": 3.7969560280762247,
+     "log_residual": -0.0341997004810608
+    },
+    {
+     "id": "R2",
+     "observed_multiple": 4.6043430528623635,
+     "fitted_multiple": 4.457376616557734,
+     "log_residual": 0.032439609592552765
+    },
+    {
+     "id": "R3",
+     "observed_multiple": 5.124331102904436,
+     "fitted_multiple": 5.232666945553792,
+     "log_residual": -0.020921080333833775
+    },
+    {
+     "id": "R4",
+     "observed_multiple": 6.178033395291563,
+     "fitted_multiple": 6.1428067938841595,
+     "log_residual": 0.005718229739780423
+    },
+    {
+     "id": "R5",
+     "observed_multiple": 6.546954632989411,
+     "fitted_multiple": 6.276306889164772,
+     "log_residual": 0.042218267477564186
+    },
+    {
+     "id": "R6",
+     "observed_multiple": 7.403848999097714,
+     "fitted_multiple": 7.6518958411059055,
+     "log_residual": -0.03295343950233898
+    },
+    {
+     "id": "R7",
+     "observed_multiple": 5.989452466383113,
+     "fitted_multiple": 5.890937958881057,
+     "log_residual": 0.016584769024808432
+    },
+    {
+     "id": "R8",
+     "observed_multiple": 7.9565858935218765,
+     "fitted_multiple": 8.027608440504677,
+     "log_residual": -0.008886655517469588
+    }
+   ],
+   "target_predicted_log_multiple": 1.8260317513913278,
+   "implied_multiple": 6.209198064103231,
+   "target_valuation_metric": 5,
+   "implied_value": 31.045990320516154,
+   "premium_discount_to_current": -0.11297170512810994,
+   "smearing_correction": "not-applied",
+   "state": "valuation-complete"
+  }
+ },
+ "D18-F04-A01": {
+  "args": [
+   {
+    "working_capital": 200,
+    "retained_earnings": 300,
+    "ebit": 160,
+    "market_value_equity": 700,
+    "total_liabilities": 500,
+    "sales": 1200,
+    "total_assets": 1000
+   }
+  ],
+  "value": {
+   "state": "calculated",
+   "method": "altman-1968-public-manufacturer",
+   "ratios": {
+    "working_capital_to_assets": 0.2,
+    "retained_earnings_to_assets": 0.3,
+    "ebit_to_assets": 0.16,
+    "market_equity_to_liabilities": 1.4,
+    "sales_to_assets": 1.2
+   },
+   "contributions": {
+    "working_capital": 0.24,
+    "retained_earnings": 0.42,
+    "ebit": 0.528,
+    "market_equity": 0.84,
+    "sales": 1.2
+   },
+   "z_score": 3.2279999999999998,
+   "zone": "safe-zone",
+   "threshold_policy": "distress<1.81; grey=1.81..2.99; safe>2.99"
+  }
+ },
+ "D18-F04-A02": {
+  "args": [
+   {
+    "net_income": 80,
+    "prior_net_income": 50,
+    "operating_cash_flow": 110,
+    "beginning_total_assets": 900,
+    "prior_beginning_total_assets": 850,
+    "long_term_debt": 260,
+    "prior_long_term_debt": 300,
+    "current_assets": 500,
+    "current_liabilities": 250,
+    "prior_current_assets": 430,
+    "prior_current_liabilities": 250,
+    "equity_issued": 0,
+    "gross_profit": 480,
+    "prior_gross_profit": 390,
+    "sales": 1200,
+    "prior_sales": 1050
+   }
+  ],
+  "value": {
+   "state": "calculated",
+   "method": "piotroski-2000-nine-signal",
+   "signals": {
+    "positive_roa": 1,
+    "positive_cfo": 1,
+    "improving_roa": 1,
+    "cash_exceeds_income": 1,
+    "lower_leverage": 1,
+    "higher_current_ratio": 1,
+    "no_equity_issue": 1,
+    "higher_gross_margin": 1,
+    "higher_asset_turnover": 1
+   },
+   "f_score": 9,
+   "band": "strong-signals",
+   "signal_count": 9
+  }
+ },
+ "D18-F04-A03": {
+  "args": [
+   {
+    "sales": 1200,
+    "prior_sales": 1000,
+    "receivables": 180,
+    "prior_receivables": 100,
+    "cost_of_goods_sold": 720,
+    "prior_cost_of_goods_sold": 650,
+    "current_assets": 500,
+    "prior_current_assets": 430,
+    "net_ppe": 400,
+    "prior_net_ppe": 390,
+    "securities": 10,
+    "prior_securities": 10,
+    "total_assets": 1000,
+    "prior_total_assets": 900,
+    "depreciation": 60,
+    "prior_depreciation": 55,
+    "sga_expense": 190,
+    "prior_sga_expense": 160,
+    "current_liabilities": 250,
+    "prior_current_liabilities": 240,
+    "long_term_debt": 300,
+    "prior_long_term_debt": 280,
+    "income_from_continuing_operations": 100,
+    "operating_cash_flow": 65
+   }
+  ],
+  "value": {
+   "state": "calculated",
+   "method": "beneish-1999-eight-variable",
+   "indices": {
+    "dsri": 1.4999999999999998,
+    "gmi": 0.8749999999999999,
+    "aqi": 1.1571428571428575,
+    "sgi": 1.2,
+    "depi": 0.947565543071161,
+    "sgai": 0.9895833333333333,
+    "lvgi": 0.9519230769230771,
+    "tata": 0.035
+   },
+   "contributions": {
+    "intercept": -4.84,
+    "dsri": 1.38,
+    "gmi": 0.46199999999999997,
+    "aqi": 0.46748571428571445,
+    "sgi": 1.0704,
+    "depi": 0.10897003745318352,
+    "sgai": -0.1702083333333333,
+    "tata": 0.16376500000000002,
+    "lvgi": -0.3112788461538462
+   },
+   "m_score": -1.6688664277482819,
+   "screen": "above-screening-cutoff",
+   "cutoff": -1.78
+  }
+ },
+ "D18-F04-A04": {
+  "args": [
+   {
+    "current_assets": 500,
+    "prior_current_assets": 450,
+    "cash": 100,
+    "prior_cash": 90,
+    "current_liabilities": 260,
+    "prior_current_liabilities": 240,
+    "short_term_debt": 70,
+    "prior_short_term_debt": 60,
+    "taxes_payable": 20,
+    "prior_taxes_payable": 18,
+    "depreciation_and_amortization": 60,
+    "average_total_assets": 950
+   }
+  ],
+  "value": {
+   "state": "calculated",
+   "method": "sloan-1996-balance-sheet-accrual",
+   "delta_current_assets": 50,
+   "delta_cash": 10,
+   "delta_current_liabilities": 20,
+   "delta_short_term_debt": 10,
+   "delta_taxes_payable": 2,
+   "depreciation_and_amortization": 60,
+   "accrual_amount": -28,
+   "accrual_measure": -0.029473684210526315,
+   "absolute_accrual_measure": 0.029473684210526315,
+   "interpretation": "income-decreasing-accrual"
+  }
+ },
+ "D18-F04-A05": {
+  "args": [
+   {
+    "total_assets": 1000,
+    "price_level_index": 1,
+    "total_liabilities": 550,
+    "current_assets": 450,
+    "current_liabilities": 250,
+    "working_capital": 200,
+    "net_income": 80,
+    "prior_net_income": 50,
+    "funds_from_operations": 110
+   }
+  ],
+  "value": {
+   "state": "calculated",
+   "method": "ohlson-1980-model-1",
+   "variables": {
+    "size": 6.907755278982137,
+    "tlta": 0.55,
+    "wcta": 0.2,
+    "clca": 0.5555555555555556,
+    "oeneg": 0,
+    "nita": 0.08,
+    "futl": 0.2,
+    "intwo": 0,
+    "chin": 0.23076923076923078
+   },
+   "o_score": -1.734731612220943,
+   "logistic_probability": 0.14998335476443922,
+   "screen": "above-original-cutoff",
+   "cutoff_probability": 0.038
+  }
+ },
+ "D18-F04-A06": {
+  "args": [
+   {
+    "total_assets": 1000,
+    "total_liabilities": 550,
+    "current_assets": 450,
+    "current_liabilities": 250,
+    "net_income": 80
+   }
+  ],
+  "value": {
+   "state": "calculated",
+   "method": "zmijewski-1984-probit",
+   "variables": {
+    "roa": 0.08,
+    "leverage": 0.55,
+    "current_ratio": 1.8
+   },
+   "x_score": -1.5663899999999997,
+   "probit_probability": 0.0586286812026503,
+   "screen": "non-distress-side",
+   "index_cutoff": 0
+  }
+ },
+ "D18-F04-A07": {
+  "args": [
+   {
+    "total_assets": 1000,
+    "current_liabilities": 250,
+    "working_capital": 200,
+    "ebit": 160,
+    "ebt": 140,
+    "sales": 1200
+   }
+  ],
+  "value": {
+   "state": "calculated",
+   "method": "springate-1978-four-ratio",
+   "ratios": {
+    "working_capital_to_assets": 0.2,
+    "ebit_to_assets": 0.16,
+    "ebt_to_current_liabilities": 0.56,
+    "sales_to_assets": 1.2
+   },
+   "s_score": 1.5468000000000002,
+   "screen": "non-distress-side",
+   "cutoff": 0.862
+  }
+ },
+ "D18-F04-A08": {
+  "args": [
+   {
+    "current_liabilities": 250,
+    "total_liabilities": 550,
+    "total_assets": 1000,
+    "profit_before_tax": 140,
+    "current_assets": 450,
+    "quick_assets": 320,
+    "daily_operating_expenses": 3
+   }
+  ],
+  "value": {
+   "state": "calculated",
+   "method": "taffler-1983-uk-industrial-transformed",
+   "ratios": {
+    "pbt_to_current_liabilities": 0.56,
+    "current_assets_to_total_liabilities": 0.8181818181818182,
+    "current_liabilities_to_total_assets": 0.25,
+    "no_credit_interval_days": 23.333333333333332
+   },
+   "z_score": 10.07058787878788,
+   "screen": "non-distress-side",
+   "index_cutoff": 0
+  }
+ },
+ "D18-F04-A09": {
+  "args": [
+   {
+    "total_assets": 1000,
+    "total_debt": 550,
+    "equity": 450,
+    "interest_expense": 40,
+    "tangible_assets_usd_thousands": 800000,
+    "ebit": 160,
+    "retained_earnings": 300,
+    "sales": 1200,
+    "ebt": 140,
+    "operating_cash_flow": 110,
+    "current_liabilities": 250,
+    "working_capital": 200
+   }
+  ],
+  "value": {
+   "state": "calculated",
+   "method": "fulmer-1984-small-firm-nine-factor",
+   "variables": {
+    "retained_earnings_to_assets": 0.3,
+    "sales_to_assets": 1.2,
+    "ebt_to_equity": 0.3111111111111111,
+    "operating_cash_flow_to_debt": 0.2,
+    "debt_to_assets": 0.55,
+    "current_liabilities_to_assets": 0.25,
+    "log10_tangible_assets_usd_thousands": 5.903089986991944,
+    "working_capital_to_debt": 0.36363636363636365,
+    "log10_ebit_interest": 0.6020599913279624
+   },
+   "h_score": 0.958597667696858,
+   "screen": "non-distress-side",
+   "index_cutoff": 0,
+   "scale_policy": "tangible assets expressed in USD thousands before log10"
+  }
+ },
+ "D18-F04-A10": {
+  "args": [
+   {
+    "total_assets": 1000,
+    "working_capital": 200,
+    "ebit": 160,
+    "net_income": 80
+   }
+  ],
+  "value": {
+   "state": "calculated",
+   "method": "grover-2001-reported-reestimation",
+   "variables": {
+    "working_capital_to_assets": 0.2,
+    "ebit_to_assets": 0.16,
+    "roa": 0.08
+   },
+   "g_score": 0.9303600000000002,
+   "zone": "non-distress-zone",
+   "threshold_policy": "distress<=-0.02; grey=(-0.02,0.01); non-distress>=0.01"
+  }
+ },
+ "D18-F04-A11": {
+  "args": [
+   {
+    "current": {
+     "total_assets": 1000,
+     "cash": 100,
+     "net_ppe": 400,
+     "investments_and_advances": 20,
+     "investments_at_equity": 0,
+     "total_liabilities": 550,
+     "preferred_stock": 0,
+     "receivables": 150,
+     "inventory": 180,
+     "sales": 1200,
+     "net_income": 80
+    },
+    "prior": {
+     "total_assets": 900,
+     "cash": 90,
+     "net_ppe": 380,
+     "investments_and_advances": 20,
+     "investments_at_equity": 0,
+     "total_liabilities": 500,
+     "preferred_stock": 0,
+     "receivables": 120,
+     "inventory": 160,
+     "sales": 1050,
+     "net_income": 60
+    },
+    "prior2": {
+     "total_assets": 820,
+     "cash": 80,
+     "net_ppe": 350,
+     "investments_and_advances": 18,
+     "investments_at_equity": 0,
+     "total_liabilities": 450,
+     "preferred_stock": 0,
+     "receivables": 105,
+     "inventory": 145,
+     "sales": 950,
+     "net_income": 50
+    },
+    "issued_equity_or_long_term_debt": false
+   }
+  ],
+  "value": {
+   "state": "calculated",
+   "method": "dechow-et-al-2011-model-1",
+   "variables": {
+    "rsst_accruals": 0.042105263157894736,
+    "change_receivables": 0.031578947368421054,
+    "change_inventory": 0.021052631578947368,
+    "soft_assets": 0.5,
+    "change_cash_sales": 0.13043478260869557,
+    "change_roa": 0.014443084455324356,
+    "actual_issuance": 0
+   },
+   "logit": -6.756803975307326,
+   "misstatement_probability": 0.001161589167261127,
+   "f_score": 0.313943018178683,
+   "band": "at-or-below-baseline",
+   "unconditional_probability": 0.0037
+  }
+ },
+ "D18-F04-A12": {
+  "args": [
+   {
+    "observations": [
+     {
+      "period": "Y1",
+      "cfo_scaled": 0.082,
+      "working_capital_accrual_scaled": 0.011
+     },
+     {
+      "period": "Y2",
+      "cfo_scaled": 0.064,
+      "working_capital_accrual_scaled": 0.018
+     },
+     {
+      "period": "Y3",
+      "cfo_scaled": 0.091,
+      "working_capital_accrual_scaled": -0.006
+     },
+     {
+      "period": "Y4",
+      "cfo_scaled": 0.047,
+      "working_capital_accrual_scaled": 0.021
+     },
+     {
+      "period": "Y5",
+      "cfo_scaled": 0.105,
+      "working_capital_accrual_scaled": -0.012
+     },
+     {
+      "period": "Y6",
+      "cfo_scaled": 0.071,
+      "working_capital_accrual_scaled": 0.009
+     },
+     {
+      "period": "Y7",
+      "cfo_scaled": 0.088,
+      "working_capital_accrual_scaled": -0.003
+     },
+     {
+      "period": "Y8",
+      "cfo_scaled": 0.053,
+      "working_capital_accrual_scaled": 0.017
+     },
+     {
+      "period": "Y9",
+      "cfo_scaled": 0.097,
+      "working_capital_accrual_scaled": -0.008
+     },
+     {
+      "period": "Y10",
+      "cfo_scaled": 0.076,
+      "working_capital_accrual_scaled": 0.006
+     }
+    ]
+   }
+  ],
+  "value": {
+   "state": "calculated",
+   "method": "dechow-dichev-2002-firm-specific",
+   "coefficients": {
+    "intercept": 0.03644529821051595,
+    "cfo_t_minus_1": 0.04149503236651636,
+    "cfo_t": -0.5247590858810153,
+    "cfo_t_plus_1": 0.06807435790812336
+   },
+   "estimation_periods": [
+    "Y2",
+    "Y3",
+    "Y4",
+    "Y5",
+    "Y6",
+    "Y7",
+    "Y8",
+    "Y9"
+   ],
+   "fitted_accruals": [
+    0.012458075937824543,
+    -0.0054526017115175875,
+    0.022705476699814174,
+    -0.011870859874287619,
+    0.00953492500736294,
+    -0.0031794130798601925,
+    0.018887842224163547,
+    -0.00708344520349979
+   ],
+   "residuals": [
+    0.005541924062175456,
+    -0.0005473982884824126,
+    -0.0017054766998141728,
+    -0.0001291401257123813,
+    -0.0005349250073629404,
+    0.00017941307986019247,
+    -0.001887842224163546,
+    -0.0009165547965002104
+   ],
+   "accrual_quality": 0.003108868359945476,
+   "interpretation": "higher residual dispersion means lower accrual quality",
+   "available_after_period": "Y10"
+  }
+ },
+ "D18-F04-A13": {
+  "args": [
+   {
+    "target_id": "TARGET",
+    "industry_year_sample": [
+     {
+      "entity_id": "TARGET",
+      "prior_total_assets": 900,
+      "total_accruals": 48,
+      "revenue_change": 130,
+      "receivables_change": 35,
+      "net_ppe": 390
+     },
+     {
+      "entity_id": "P1",
+      "prior_total_assets": 700,
+      "total_accruals": 25,
+      "revenue_change": 80,
+      "receivables_change": 12,
+      "net_ppe": 260
+     },
+     {
+      "entity_id": "P2",
+      "prior_total_assets": 820,
+      "total_accruals": 34,
+      "revenue_change": 110,
+      "receivables_change": 18,
+      "net_ppe": 330
+     },
+     {
+      "entity_id": "P3",
+      "prior_total_assets": 950,
+      "total_accruals": 29,
+      "revenue_change": 70,
+      "receivables_change": 10,
+      "net_ppe": 410
+     },
+     {
+      "entity_id": "P4",
+      "prior_total_assets": 620,
+      "total_accruals": 21,
+      "revenue_change": 95,
+      "receivables_change": 24,
+      "net_ppe": 190
+     },
+     {
+      "entity_id": "P5",
+      "prior_total_assets": 1100,
+      "total_accruals": 44,
+      "revenue_change": 160,
+      "receivables_change": 30,
+      "net_ppe": 520
+     },
+     {
+      "entity_id": "P6",
+      "prior_total_assets": 760,
+      "total_accruals": 18,
+      "revenue_change": 55,
+      "receivables_change": 8,
+      "net_ppe": 300
+     },
+     {
+      "entity_id": "P7",
+      "prior_total_assets": 980,
+      "total_accruals": 38,
+      "revenue_change": 125,
+      "receivables_change": 20,
+      "net_ppe": 450
+     }
+    ]
+   }
+  ],
+  "value": {
+   "state": "calculated",
+   "method": "modified-jones-1995-peer-estimation",
+   "target_id": "TARGET",
+   "estimation_count": 7,
+   "coefficients": {
+    "inverse_assets": -0.5874747557833828,
+    "revenue_less_receivables": 0.22667306767603043,
+    "net_ppe": 0.033894017127085604
+   },
+   "peer_residuals": [
+    0.0019446595725300733,
+    0.0031079596068906493,
+    0.002200572287491008,
+    -0.0015260908118726463,
+    -0.002277193589259173,
+    -0.0029399533725206935,
+    -0.00047500516060033915
+   ],
+   "scaled_total_accruals": 0.05333333333333334,
+   "nondiscretionary_accruals": 0.03796125928111433,
+   "discretionary_accruals": 0.015372074052219006,
+   "absolute_discretionary_accruals": 0.015372074052219006,
+   "interpretation": "signed residual; no universal manipulation cutoff"
+  }
+ },
+ "D18-F09-A01": {
+  "args": [
+   {
+    "knowledge_cutoff": "2025-03-31",
+    "period_end": "2024-12-31",
+    "currency": "USD",
+    "scale": "millions",
+    "required_fields": [
+     "revenue",
+     "total_assets",
+     "net_income",
+     "operating_cash_flow"
+    ],
+    "facts": [
+     {
+      "field": "revenue",
+      "value": 1200,
+      "period_end": "2024-12-31",
+      "available_at": "2025-02-15",
+      "revision": "original",
+      "currency": "USD",
+      "scale": "millions"
+     },
+     {
+      "field": "total_assets",
+      "value": 1000,
+      "period_end": "2024-12-31",
+      "available_at": "2025-02-15",
+      "revision": "original",
+      "currency": "USD",
+      "scale": "millions"
+     },
+     {
+      "field": "net_income",
+      "value": 90,
+      "period_end": "2024-12-31",
+      "available_at": "2025-02-15",
+      "revision": "original",
+      "currency": "USD",
+      "scale": "millions"
+     },
+     {
+      "field": "operating_cash_flow",
+      "value": 120,
+      "period_end": "2024-12-31",
+      "available_at": "2025-02-15",
+      "revision": "original",
+      "currency": "USD",
+      "scale": "millions"
+     }
+    ]
+   }
+  ],
+  "value": {
+   "state": "ready",
+   "method": "point-in-time-filing-fact-assembly",
+   "as_of": "2025-03-31",
+   "accepted_fields": [
+    "net_income",
+    "operating_cash_flow",
+    "revenue",
+    "total_assets"
+   ],
+   "selected_values": {
+    "revenue": 1200,
+    "total_assets": 1000,
+    "net_income": 90,
+    "operating_cash_flow": 120
+   },
+   "rejected_fields": [],
+   "completeness": 1,
+   "ready": true,
+   "clock_policy": "availability_at <= knowledge_cutoff; original revision; exact period/currency/scale"
+  }
+ },
+ "D18-F09-A02": {
+  "args": [
+   {
+    "as_of": "2025-03-31",
+    "target_id": "TGT",
+    "target_sector": "software",
+    "target_country": "US",
+    "min_market_cap": 500,
+    "min_peers": 3,
+    "universe": [
+     {
+      "id": "TGT",
+      "sector": "software",
+      "country": "US",
+      "market_cap": 2000,
+      "available_at": "2025-03-31",
+      "listed": true
+     },
+     {
+      "id": "P01",
+      "sector": "software",
+      "country": "US",
+      "market_cap": 1800,
+      "available_at": "2025-03-20",
+      "listed": true
+     },
+     {
+      "id": "P02",
+      "sector": "software",
+      "country": "US",
+      "market_cap": 1500,
+      "available_at": "2025-03-20",
+      "listed": true
+     },
+     {
+      "id": "P03",
+      "sector": "software",
+      "country": "US",
+      "market_cap": 700,
+      "available_at": "2025-03-20",
+      "listed": true
+     },
+     {
+      "id": "P04",
+      "sector": "software",
+      "country": "US",
+      "market_cap": 300,
+      "available_at": "2025-03-20",
+      "listed": true
+     },
+     {
+      "id": "P05",
+      "sector": "software",
+      "country": "GB",
+      "market_cap": 1600,
+      "available_at": "2025-03-20",
+      "listed": true
+     },
+     {
+      "id": "P06",
+      "sector": "software",
+      "country": "US",
+      "market_cap": 900,
+      "available_at": "2025-04-02",
+      "listed": true
+     },
+     {
+      "id": "P07",
+      "sector": "bank",
+      "country": "US",
+      "market_cap": 1900,
+      "available_at": "2025-03-20",
+      "listed": true
+     }
+    ]
+   }
+  ],
+  "value": {
+   "state": "resolved",
+   "method": "point-in-time-sector-country-market-cap-cohort",
+   "as_of": "2025-03-31",
+   "eligible_ids": [
+    "P01",
+    "P02",
+    "P03"
+   ],
+   "cohort_count": 3,
+   "minimum_required": 3,
+   "coverage": 1,
+   "exclusions": [
+    {
+     "id": "P04",
+     "reason": "below market-cap floor"
+    },
+    {
+     "id": "P05",
+     "reason": "country mismatch"
+    },
+    {
+     "id": "P06",
+     "reason": "not available at as-of date"
+    },
+    {
+     "id": "P07",
+     "reason": "sector mismatch"
+    }
+   ],
+   "tie_break": "absolute market-cap distance, then stable entity id"
+  }
+ },
+ "D18-F09-A03": {
+  "args": [
+   {
+    "min_peers": 3,
+    "metrics": [
+     {
+      "name": "roic",
+      "target": 0.12,
+      "peers": [
+       0.08,
+       0.1,
+       0.14,
+       0.16
+      ],
+      "higher_is_better": true
+     },
+     {
+      "name": "net_debt_to_ebitda",
+      "target": 1.5,
+      "peers": [
+       0.8,
+       1.2,
+       2,
+       3
+      ],
+      "higher_is_better": false
+     },
+     {
+      "name": "fcf_margin",
+      "target": 0.1,
+      "peers": [
+       0.04,
+       0.08,
+       0.12,
+       0.16
+      ],
+      "higher_is_better": true
+     }
+    ]
+   }
+  ],
+  "value": {
+   "state": "calculated",
+   "method": "midrank-empirical-percentile-with-direction",
+   "metrics": [
+    {
+     "name": "roic",
+     "target": 0.12,
+     "peer_count": 4,
+     "percentile": 50,
+     "higher_is_better": true,
+     "normalized_score": 50
+    },
+    {
+     "name": "net_debt_to_ebitda",
+     "target": 1.5,
+     "peer_count": 4,
+     "percentile": 50,
+     "higher_is_better": false,
+     "normalized_score": 50
+    },
+    {
+     "name": "fcf_margin",
+     "target": 0.1,
+     "peer_count": 4,
+     "percentile": 50,
+     "higher_is_better": true,
+     "normalized_score": 50
+    }
+   ],
+   "aggregate_score": 50,
+   "metric_count": 3,
+   "invariant": "higher-is-better reverses the percentile only; peer values are not z-scored"
+  }
+ },
+ "D18-F09-A04": {
+  "args": [
+   {
+    "target": {
+     "id": "TGT",
+     "sector": "industrial",
+     "is_public": true,
+     "annual_periods": 3,
+     "framework": "US-GAAP",
+     "total_assets": 1000,
+     "market_cap": 2000,
+     "dividends_known": true
+    },
+    "requested_models": [
+     "altman_z_original",
+     "piotroski_f",
+     "beneish_m",
+     "ohlson_o",
+     "dividend_safety",
+     "balance_sheet_resilience"
+    ]
+   }
+  ],
+  "value": {
+   "state": "routed",
+   "method": "explicit-model-applicability-router",
+   "routes": [
+    {
+     "model": "altman_z_original",
+     "status": "eligible",
+     "variant": "Use D18-F04-A01 original public-manufacturer coefficients",
+     "population": "public industrial manufacturer",
+     "reason": "all required scope facts pass"
+    },
+    {
+     "model": "piotroski_f",
+     "status": "eligible",
+     "variant": "Use D18-F04-A02 nine-signal contract",
+     "population": "non-financial issuer with two annual periods",
+     "reason": "all required scope facts pass"
+    },
+    {
+     "model": "beneish_m",
+     "status": "eligible",
+     "variant": "Use D18-F04-A03 eight-index contract",
+     "population": "non-financial issuer with two annual periods",
+     "reason": "all required scope facts pass"
+    },
+    {
+     "model": "ohlson_o",
+     "status": "eligible",
+     "variant": "Use D18-F04-A05 Model 1 convention",
+     "population": "industrial public research screen",
+     "reason": "all required scope facts pass"
+    },
+    {
+     "model": "dividend_safety",
+     "status": "eligible",
+     "variant": "Use D18-F09-A07 payout contract",
+     "population": "issuer with declared dividend and cash-flow facts",
+     "reason": "all required scope facts pass"
+    },
+    {
+     "model": "balance_sheet_resilience",
+     "status": "eligible",
+     "variant": "Use D18-F09-A08 resilience contract",
+     "population": "issuer with aligned balance-sheet and coverage facts",
+     "reason": "all required scope facts pass"
+    }
+   ],
+   "eligible_count": 6,
+   "requested_count": 6,
+   "coverage": 1
+  }
+ },
+ "D18-F09-A05": {
+  "args": [
+   {
+    "profitability_score": 82,
+    "cash_flow_score": 76,
+    "liquidity_score": 68,
+    "leverage_score": 72
+   }
+  ],
+  "value": {
+   "state": "calculated",
+   "method": "accounting-financial-health-weighted-composite",
+   "components": {
+    "profitability_score": 82,
+    "cash_flow_score": 76,
+    "liquidity_score": 68,
+    "leverage_score": 72
+   },
+   "weights": {
+    "profitability_score": 0.3,
+    "cash_flow_score": 0.3,
+    "liquidity_score": 0.2,
+    "leverage_score": 0.2
+   },
+   "contributions": {
+    "profitability_score": 24.599999999999998,
+    "cash_flow_score": 22.8,
+    "liquidity_score": 13.600000000000001,
+    "leverage_score": 14.4
+   },
+   "financial_health_score": 75.4,
+   "band": "strong",
+   "coverage": 1
+  }
+ },
+ "D18-F09-A06": {
+  "args": [
+   {
+    "accrual_quality_score": 70,
+    "cash_conversion_score": 82,
+    "revenue_quality_score": 74,
+    "manipulation_safety_score": 66
+   }
+  ],
+  "value": {
+   "state": "calculated",
+   "method": "earnings-quality-weighted-composite",
+   "components": {
+    "accrual_quality_score": 70,
+    "cash_conversion_score": 82,
+    "revenue_quality_score": 74,
+    "manipulation_safety_score": 66
+   },
+   "weights": {
+    "accrual_quality_score": 0.3,
+    "cash_conversion_score": 0.25,
+    "revenue_quality_score": 0.25,
+    "manipulation_safety_score": 0.2
+   },
+   "contributions": {
+    "accrual_quality_score": 21,
+    "cash_conversion_score": 20.5,
+    "revenue_quality_score": 18.5,
+    "manipulation_safety_score": 13.200000000000001
+   },
+   "earnings_quality_score": 73.2,
+   "band": "watch",
+   "coverage": 1
+  }
+ },
+ "D18-F09-A07": {
+  "args": [
+   {
+    "free_cash_flow": 180,
+    "dividends_paid": 60,
+    "net_income": 150,
+    "interest_coverage": 6,
+    "cash_and_equivalents": 180
+   }
+  ],
+  "value": {
+   "state": "calculated",
+   "method": "coverage-and-liquidity-dividend-safety",
+   "components": {
+    "free_cash_flow_coverage": 100,
+    "earnings_coverage": 100,
+    "interest_coverage": 60,
+    "cash_buffer": 75
+   },
+   "weights": {
+    "free_cash_flow_coverage": 0.35,
+    "earnings_coverage": 0.25,
+    "interest_coverage": 0.2,
+    "cash_buffer": 0.2
+   },
+   "contributions": {
+    "free_cash_flow_coverage": 35,
+    "earnings_coverage": 25,
+    "interest_coverage": 12,
+    "cash_buffer": 15
+   },
+   "dividend_safety_score": 87,
+   "band": "strong",
+   "coverage_policy": "coverage is capped at two times and cash buffer at four times"
+  }
+ },
+ "D18-F09-A08": {
+  "args": [
+   {
+    "current_assets": 500,
+    "current_liabilities": 250,
+    "total_debt": 400,
+    "ebitda": 160,
+    "interest_expense": 32,
+    "cash_and_equivalents": 120,
+    "debt_due_12m": 80
+   }
+  ],
+  "value": {
+   "state": "calculated",
+   "method": "liquidity-leverage-coverage-maturity-resilience",
+   "components": {
+    "liquidity": 100,
+    "net_leverage": 56.25,
+    "interest_coverage": 50,
+    "maturity_headroom": 80
+   },
+   "weights": {
+    "liquidity": 0.3,
+    "net_leverage": 0.3,
+    "interest_coverage": 0.25,
+    "maturity_headroom": 0.15
+   },
+   "contributions": {
+    "liquidity": 30,
+    "net_leverage": 16.875,
+    "interest_coverage": 12.5,
+    "maturity_headroom": 12
+   },
+   "balance_sheet_resilience_score": 71.375,
+   "band": "watch"
+  }
+ },
+ "D18-F09-A09": {
+  "args": [
+   {
+    "models": [
+     {
+      "name": "altman",
+      "distress_probability": 0.18,
+      "weight": 1,
+      "eligible": true
+     },
+     {
+      "name": "ohlson",
+      "distress_probability": 0.24,
+      "weight": 1,
+      "eligible": true
+     },
+     {
+      "name": "zmijewski",
+      "distress_probability": 0.3,
+      "weight": 0.5,
+      "eligible": true
+     },
+     {
+      "name": "sector-reroute",
+      "distress_probability": 0.8,
+      "weight": 1,
+      "eligible": false
+     }
+    ]
+   }
+  ],
+  "value": {
+   "state": "calculated",
+   "method": "weighted-distress-probability-ensemble",
+   "eligible_models": [
+    {
+     "name": "altman",
+     "probability": 0.18,
+     "weight": 1
+    },
+    {
+     "name": "ohlson",
+     "probability": 0.24,
+     "weight": 1
+    },
+    {
+     "name": "zmijewski",
+     "probability": 0.3,
+     "weight": 0.5
+    }
+   ],
+   "model_count": 3,
+   "distress_probability": 0.22799999999999998,
+   "weighted_stddev": 0.04489988864128729,
+   "disagreement_range": 0.12,
+   "agreement": 0.88,
+   "band": "lower-review",
+   "calibration_boundary": "weighted aggregation preserves supplied probabilities; it does not recalibrate them"
+  }
+ },
+ "D18-F09-A10": {
+  "args": [
+   {
+    "group_cap": 0.4,
+    "conflict_threshold": 30,
+    "components": [
+     {
+      "name": "altman_liquidity",
+      "score": 82,
+      "weight": 0.3,
+      "evidence_group": "liquidity"
+     },
+     {
+      "name": "current_ratio",
+      "score": 76,
+      "weight": 0.2,
+      "evidence_group": "liquidity"
+     },
+     {
+      "name": "piotroski_quality",
+      "score": 70,
+      "weight": 0.25,
+      "evidence_group": "quality"
+     },
+     {
+      "name": "beneish_safety",
+      "score": 45,
+      "weight": 0.25,
+      "evidence_group": "quality"
+     },
+     {
+      "name": "maturity_buffer",
+      "score": 74,
+      "weight": 0.2,
+      "evidence_group": "resilience"
+     }
+    ]
+   }
+  ],
+  "value": {
+   "state": "resolved",
+   "method": "evidence-group-cap-and-conflict-resolver",
+   "raw_score": 69.45833333333333,
+   "resolved_score": 69.64,
+   "double_counting_adjustment": 0.18166666666667197,
+   "groups": [
+    {
+     "group": "liquidity",
+     "raw_weight": 0.5,
+     "capped_weight": 0.4,
+     "mean_score": 79.6,
+     "range": 6,
+     "conflict": false
+    },
+    {
+     "group": "quality",
+     "raw_weight": 0.5,
+     "capped_weight": 0.4,
+     "mean_score": 57.5,
+     "range": 25,
+     "conflict": false
+    },
+    {
+     "group": "resilience",
+     "raw_weight": 0.2,
+     "capped_weight": 0.2,
+     "mean_score": 74,
+     "range": 0,
+     "conflict": false
+    }
+   ],
+   "conflict_groups": [],
+   "conflict_count": 0,
+   "group_cap": 0.4,
+   "conflict_threshold": 30
+  }
+ },
+ "D18-F09-A11": {
+  "args": [
+   {
+    "financial_health_score": 78,
+    "earnings_quality_score": 73,
+    "dividend_safety_score": 87,
+    "balance_sheet_resilience_score": 75,
+    "distress_safety_score": 77,
+    "valuation_score": 64
+   }
+  ],
+  "value": {
+   "state": "calculated",
+   "method": "explainable-six-pillar-stock-score",
+   "components": {
+    "financial_health_score": 78,
+    "earnings_quality_score": 73,
+    "dividend_safety_score": 87,
+    "balance_sheet_resilience_score": 75,
+    "distress_safety_score": 77,
+    "valuation_score": 64
+   },
+   "weights": {
+    "financial_health_score": 0.24,
+    "earnings_quality_score": 0.18,
+    "dividend_safety_score": 0.14,
+    "balance_sheet_resilience_score": 0.18,
+    "distress_safety_score": 0.16,
+    "valuation_score": 0.1
+   },
+   "contributions": {
+    "financial_health_score": 18.72,
+    "earnings_quality_score": 13.139999999999999,
+    "dividend_safety_score": 12.180000000000001,
+    "balance_sheet_resilience_score": 13.5,
+    "distress_safety_score": 12.32,
+    "valuation_score": 6.4
+   },
+   "overall_stock_score": 76.26,
+   "band": "strong",
+   "coverage": 1
+  }
+ },
+ "D18-F09-A12": {
+  "args": [
+   {
+    "base_score": 76.26,
+    "required_components": 6,
+    "available_components": 6,
+    "stale_days": 20,
+    "conflict_count": 1,
+    "max_conflicts": 4,
+    "minimum_components": 4
+   }
+  ],
+  "value": {
+   "state": "usable-with-confidence",
+   "method": "coverage-staleness-conflict-confidence-gate",
+   "base_score": 76.26,
+   "coverage": 1,
+   "missing_penalty": 0,
+   "staleness_penalty": 0.010958904109589041,
+   "conflict_penalty": 0.05,
+   "confidence": 0.9395890410958904,
+   "adjusted_score": 75.76,
+   "abstain": false,
+   "reason": "coverage and confidence gates passed"
+  }
+ },
+ "D18-F09-A13": {
+  "args": [
+   {
+    "screen_floor": 70,
+    "min_confidence": 0.75,
+    "min_liquidity": 50,
+    "universe": [
+     {
+      "id": "AAA",
+      "score": 82,
+      "confidence": 0.96,
+      "liquidity": 100,
+      "eligible": true,
+      "sector": "industrial"
+     },
+     {
+      "id": "BBB",
+      "score": 82,
+      "confidence": 0.88,
+      "liquidity": 80,
+      "eligible": true,
+      "sector": "software"
+     },
+     {
+      "id": "CCC",
+      "score": 76,
+      "confidence": 0.81,
+      "liquidity": 60,
+      "eligible": true,
+      "sector": "software"
+     },
+     {
+      "id": "DDD",
+      "score": 74,
+      "confidence": 0.62,
+      "liquidity": 90,
+      "eligible": true,
+      "sector": "bank"
+     },
+     {
+      "id": "EEE",
+      "score": 68,
+      "confidence": 0.95,
+      "liquidity": 110,
+      "eligible": true,
+      "sector": "industrial"
+     },
+     {
+      "id": "FFF",
+      "score": 90,
+      "confidence": 0.99,
+      "liquidity": 100,
+      "eligible": false,
+      "sector": "industrial"
+     }
+    ]
+   }
+  ],
+  "value": {
+   "state": "ranked",
+   "method": "eligibility-confidence-score-floor-ranking",
+   "ranked": [
+    {
+     "rank": 1,
+     "id": "AAA",
+     "score": 82,
+     "confidence": 0.96,
+     "liquidity": 100,
+     "sector": "industrial"
+    },
+    {
+     "rank": 2,
+     "id": "BBB",
+     "score": 82,
+     "confidence": 0.88,
+     "liquidity": 80,
+     "sector": "software"
+    },
+    {
+     "rank": 3,
+     "id": "CCC",
+     "score": 76,
+     "confidence": 0.81,
+     "liquidity": 60,
+     "sector": "software"
+    }
+   ],
+   "screened_count": 3,
+   "universe_count": 6,
+   "coverage": 0.5,
+   "score_floor": 70,
+   "confidence_floor": 0.75,
+   "liquidity_floor": 50,
+   "excluded": [
+    {
+     "id": "DDD",
+     "score": 74,
+     "confidence": 0.62,
+     "liquidity": 90,
+     "sector": "bank",
+     "reasons": [
+      "below confidence floor"
+     ]
+    },
+    {
+     "id": "EEE",
+     "score": 68,
+     "confidence": 0.95,
+     "liquidity": 110,
+     "sector": "industrial",
+     "reasons": [
+      "below score floor"
+     ]
+    },
+    {
+     "id": "FFF",
+     "score": 90,
+     "confidence": 0.99,
+     "liquidity": 100,
+     "sector": "industrial",
+     "reasons": [
+      "not eligible"
+     ]
+    }
+   ],
+   "tie_break": "score descending, confidence descending, stable id ascending"
+  }
+ },
+ "D18-F09-A14": {
+  "args": [
+   {
+    "history": [
+     {
+      "as_of": "2024-12-31",
+      "overall_score": 62,
+      "band": "watch",
+      "components": {
+       "health": 60,
+       "quality": 64,
+       "resilience": 62
+      }
+     },
+     {
+      "as_of": "2025-03-31",
+      "overall_score": 70,
+      "band": "eligible",
+      "components": {
+       "health": 72,
+       "quality": 64,
+       "resilience": 68
+      }
+     },
+     {
+      "as_of": "2025-06-30",
+      "overall_score": 78,
+      "band": "strong",
+      "components": {
+       "health": 80,
+       "quality": 70,
+       "resilience": 74
+      }
+     }
+    ]
+   }
+  ],
+  "value": {
+   "state": "improved",
+   "method": "point-in-time-score-history-change-attribution",
+   "previous_as_of": "2025-03-31",
+   "latest_as_of": "2025-06-30",
+   "previous_score": 70,
+   "latest_score": 78,
+   "score_change": 8,
+   "prior_band": "eligible",
+   "latest_band": "strong",
+   "migration": "eligible -> strong",
+   "migration_direction": 1,
+   "component_deltas": {
+    "health": 8,
+    "quality": 6,
+    "resilience": 6
+   },
+   "top_driver": "health",
+   "clock_policy": "only knowledge-available snapshots are comparable"
+  }
+ },
+ "D18-F10-A01": {
+  "args": [
+   {
+    "framework": "basel-iii-teaching-v1",
+    "cet1_ratio": 0.12,
+    "leverage_ratio": 0.05,
+    "lcr": 1.25,
+    "nsfr": 1.15,
+    "npl_ratio": 0.025,
+    "provision_coverage_ratio": 1.1,
+    "net_interest_margin": 0.032,
+    "cost_income_ratio": 0.48,
+    "minimums": {
+     "cet1_ratio": 0.045,
+     "leverage_ratio": 0.03,
+     "lcr": 1,
+     "nsfr": 1
+    },
+    "weights": {
+     "capital": 0.2,
+     "leverage": 0.1,
+     "short_liquidity": 0.1,
+     "stable_funding": 0.1,
+     "asset_quality": 0.15,
+     "coverage": 0.1,
+     "margin": 0.15,
+     "efficiency": 0.1
+    }
+   }
+  ],
+  "value": {
+   "state": "mixed-review-band",
+   "method": "bank-sector-score-v1",
+   "component_scores": {
+    "capital": 71.4285714285714,
+    "leverage": 66.66666666666669,
+    "short_liquidity": 62.500000000000014,
+    "stable_funding": 49.999999999999964,
+    "asset_quality": 91.66666666666667,
+    "coverage": 83.33333333333336,
+    "margin": 73.33333333333333,
+    "efficiency": 73.33333333333334
+   },
+   "weights": {
+    "capital": 0.2,
+    "leverage": 0.1,
+    "short_liquidity": 0.1,
+    "stable_funding": 0.1,
+    "asset_quality": 0.15,
+    "coverage": 0.1,
+    "margin": 0.15,
+    "efficiency": 0.1
+   },
+   "base_score": 72.6190476190476,
+   "floor_breaches": [],
+   "penalty": 0,
+   "fundamental_score": 72.6190476190476,
+   "coverage_ratio": 1,
+   "reason": "package-bands-with-declared-prudential-minimums"
+  }
+ },
+ "D18-F10-A02": {
+  "args": [
+   {
+    "framework": "solvency-ii-nonlife-teaching-v1",
+    "scr_coverage_ratio": 1.72,
+    "mcr_coverage_ratio": 3.25,
+    "combined_ratio": 0.94,
+    "adverse_reserve_development_ratio": 0.01,
+    "tier1_own_funds_share": 0.78,
+    "investment_concentration_ratio": 0.18,
+    "return_on_equity": 0.11,
+    "weights": {
+     "solvency": 0.22,
+     "minimum_capital": 0.1,
+     "underwriting": 0.22,
+     "reserve_quality": 0.14,
+     "own_fund_quality": 0.12,
+     "concentration": 0.08,
+     "profitability": 0.12
+    }
+   }
+  ],
+  "value": {
+   "state": "mixed-review-band",
+   "method": "insurance-sector-score-v1",
+   "component_scores": {
+    "solvency": 72,
+    "minimum_capital": 100,
+    "underwriting": 70.00000000000004,
+    "reserve_quality": 70,
+    "own_fund_quality": 70,
+    "concentration": 73.33333333333333,
+    "profitability": 69.23076923076923
+   },
+   "weights": {
+    "solvency": 0.22,
+    "minimum_capital": 0.1,
+    "underwriting": 0.22,
+    "reserve_quality": 0.14,
+    "own_fund_quality": 0.12,
+    "concentration": 0.08,
+    "profitability": 0.12
+   },
+   "base_score": 73.61435897435898,
+   "floor_breaches": [],
+   "penalty": 0,
+   "fundamental_score": 73.61435897435898,
+   "coverage_ratio": 1,
+   "reason": "solvency-ii-tagged-nonlife-package-bands"
+  }
+ },
+ "D18-F10-A03": {
+  "args": [
+   {
+    "framework": "nareit-equity-reit-teaching-v1",
+    "nareit_ffo": 420,
+    "recurring_capex": 82,
+    "straight_line_rent_adjustment": 18,
+    "common_dividends": 260,
+    "net_debt": 1850,
+    "ebitda_re": 475,
+    "interest_expense": 105,
+    "occupancy_ratio": 0.945,
+    "same_store_noi_growth": 0.041,
+    "available_liquidity": 780,
+    "near_term_debt_maturities": 420,
+    "weights": {
+     "distribution": 0.22,
+     "leverage": 0.2,
+     "coverage": 0.16,
+     "occupancy": 0.14,
+     "same_store_growth": 0.14,
+     "liquidity": 0.14
+    }
+   }
+  ],
+  "value": {
+   "state": "strong-review-band",
+   "method": "reit-sector-score-v1",
+   "nareit_ffo": 420,
+   "affo_proxy": 320,
+   "distribution_coverage": 1.2307692307692308,
+   "net_debt_to_ebitda_re": 3.8947368421052633,
+   "interest_coverage": 4.523809523809524,
+   "liquidity_coverage": 1.8571428571428572,
+   "component_scores": {
+    "distribution": 71.79487179487181,
+    "leverage": 91.22807017543859,
+    "coverage": 86.39455782312925,
+    "occupancy": 85.29411764705881,
+    "same_store_growth": 70,
+    "liquidity": 88.57142857142858
+   },
+   "weights": {
+    "distribution": 0.22,
+    "leverage": 0.2,
+    "coverage": 0.16,
+    "occupancy": 0.14,
+    "same_store_growth": 0.14,
+    "liquidity": 0.14
+   },
+   "fundamental_score": 82.00479155224843,
+   "coverage_ratio": 1,
+   "reason": "nareit-ffo-plus-explicit-package-affo-proxy"
+  }
+ },
+ "D18-F10-A04": {
+  "args": [
+   {
+    "framework": "ferc-regulated-electric-teaching-v1",
+    "allowed_roe": 0.095,
+    "earned_roe": 0.091,
+    "funds_from_operations": 980,
+    "total_debt": 6200,
+    "debt_to_capital": 0.54,
+    "ebit": 1250,
+    "interest_expense": 360,
+    "cash_from_operations": 1550,
+    "capital_expenditure": 2300,
+    "regulatory_lag_months": 8,
+    "rate_base_growth": 0.055,
+    "weights": {
+     "earned_return": 0.18,
+     "cash_debt": 0.18,
+     "capital_structure": 0.14,
+     "interest_coverage": 0.14,
+     "capex_funding": 0.12,
+     "regulatory_lag": 0.12,
+     "rate_base_growth": 0.12
+    }
+   }
+  ],
+  "value": {
+   "state": "mixed-review-band",
+   "method": "utility-sector-score-v1",
+   "earned_allowed_roe_gap": -0.0040000000000000036,
+   "ffo_to_debt": 0.15806451612903225,
+   "interest_coverage": 3.4722222222222223,
+   "capex_funding_ratio": 0.6739130434782609,
+   "component_scores": {
+    "earned_return": 100,
+    "cash_debt": 55.760368663594456,
+    "capital_structure": 43.99999999999999,
+    "interest_coverage": 56.34920634920635,
+    "capex_funding": 45.65217391304348,
+    "regulatory_lag": 66.66666666666667,
+    "rate_base_growth": 100
+   },
+   "weights": {
+    "earned_return": 0.18,
+    "cash_debt": 0.18,
+    "capital_structure": 0.14,
+    "interest_coverage": 0.14,
+    "capex_funding": 0.12,
+    "regulatory_lag": 0.12,
+    "rate_base_growth": 0.12
+   },
+   "fundamental_score": 67.5640161179011,
+   "coverage_ratio": 1,
+   "reason": "ferc-tagged-package-bands"
+  }
+ },
+ "D18-F10-A05": {
+  "args": [
+   {
+    "framework": "early-stage-liquidity-teaching-v1",
+    "unrestricted_cash": 48,
+    "liquid_investments": 12,
+    "unconditionally_committed_facility": 10,
+    "near_term_obligations": 8,
+    "minimum_operating_cash": 6,
+    "monthly_net_cash_flows": [
+     -3.8,
+     -3.7,
+     -3.5,
+     -3.2,
+     -3,
+     -2.8
+    ],
+    "monthly_revenue": [
+     1.8,
+     2,
+     2.2,
+     2.5,
+     2.8,
+     3.1
+    ],
+    "weights": {
+     "runway": 0.42,
+     "burn_trend": 0.22,
+     "obligation_cover": 0.18,
+     "revenue_cover": 0.18
+    }
+   }
+  ],
+  "value": {
+   "state": "strong-review-band",
+   "method": "early-stage-runway-score-v1",
+   "available_liquidity": 56,
+   "monthly_burn": 3.3333333333333335,
+   "prior_three_month_burn": 3.6666666666666665,
+   "latest_three_month_burn": 3,
+   "burn_ratio": 0.8181818181818182,
+   "runway_months": 16.8,
+   "obligation_coverage": 8.75,
+   "revenue_to_burn": 0.9333333333333335,
+   "component_scores": {
+    "runway": 60,
+    "burn_trend": 86.36363636363636,
+    "obligation_cover": 100,
+    "revenue_cover": 93.33333333333334
+   },
+   "weights": {
+    "runway": 0.42,
+    "burn_trend": 0.22,
+    "obligation_cover": 0.18,
+    "revenue_cover": 0.18
+   },
+   "runway_score": 79,
+   "coverage_ratio": 1,
+   "reason": "historical-burn-sensitivity-not-management-forecast"
+  }
+ },
+ "D18-F10-A06": {
+  "args": [
+   {
+    "framework": "cyclical-midcycle-teaching-v1",
+    "realized_price_history": [
+     72,
+     64,
+     58,
+     83,
+     91,
+     77,
+     69,
+     61,
+     74
+    ],
+    "unit_cost_history": [
+     43,
+     44,
+     45,
+     47,
+     49,
+     46,
+     45,
+     44,
+     46
+    ],
+    "volume_history": [
+     9.2,
+     9.4,
+     9,
+     9.7,
+     9.8,
+     9.6,
+     9.3,
+     9.1,
+     9.5
+    ],
+    "free_cash_flow_history": [
+     52,
+     18,
+     -8,
+     74,
+     96,
+     61,
+     22,
+     -3,
+     47
+    ],
+    "fixed_costs": 105,
+    "net_debt": 690,
+    "current_realized_price": 74,
+    "weights": {
+     "normalized_margin": 0.32,
+     "normalized_leverage": 0.28,
+     "cash_consistency": 0.22,
+     "cycle_balance": 0.18
+    }
+   }
+  ],
+  "value": {
+   "state": "mixed-review-band",
+   "method": "cyclical-midcycle-normalization-v1",
+   "normalized_price": 72,
+   "normalized_unit_cost": 45,
+   "normalized_volume": 9.4,
+   "normalized_revenue": 676.8000000000001,
+   "normalized_ebitda": 148.8,
+   "normalized_margin": 0.21985815602836878,
+   "normalized_net_leverage": 4.637096774193548,
+   "positive_fcf_ratio": 0.7777777777777778,
+   "cycle_percentile": 0.6666666666666666,
+   "component_scores": {
+    "normalized_margin": 73.28605200945627,
+    "normalized_leverage": 0,
+    "cash_consistency": 79.62962962962962,
+    "cycle_balance": 83.33333333333333
+   },
+   "weights": {
+    "normalized_margin": 0.32,
+    "normalized_leverage": 0.28,
+    "cash_consistency": 0.22,
+    "cycle_balance": 0.18
+   },
+   "normalized_score": 55.97005516154452,
+   "coverage_ratio": 1,
+   "reason": "point-in-time-median-cycle-window"
+  }
+ },
+ "D18-F10-A07": {
+  "args": [
+   {
+    "framework": "holding-company-lookthrough-teaching-v1",
+    "holdings": [
+     {
+      "id": "listed-bank",
+      "ownership_ratio": 0.62,
+      "equity_value": 920,
+      "debt": 540,
+      "dividends_to_parent": 32,
+      "listed": true,
+      "stale": false
+     },
+     {
+      "id": "private-logistics",
+      "ownership_ratio": 0.8,
+      "equity_value": 410,
+      "debt": 180,
+      "dividends_to_parent": 18,
+      "listed": false,
+      "stale": false
+     },
+     {
+      "id": "listed-utility",
+      "ownership_ratio": 0.35,
+      "equity_value": 680,
+      "debt": 390,
+      "dividends_to_parent": 21,
+      "listed": true,
+      "stale": true
+     }
+    ],
+    "parent_cash": 95,
+    "parent_debt": 260,
+    "other_parent_liabilities": 45,
+    "parent_interest_expense": 24,
+    "parent_market_cap": 760,
+    "weights": {
+     "nav_buffer": 0.22,
+     "lookthrough_leverage": 0.22,
+     "parent_coverage": 0.18,
+     "diversification": 0.14,
+     "freshness": 0.12,
+     "listed_coverage": 0.12
+    }
+   }
+  ],
+  "value": {
+   "state": "mixed-review-band",
+   "method": "holding-company-lookthrough-score-v1",
+   "holding_ledger": [
+    {
+     "id": "listed-bank",
+     "ownership_ratio": 0.62,
+     "attributable_equity_value": 570.4,
+     "attributable_debt": 334.8,
+     "attributable_dividends": 19.84,
+     "listed": true,
+     "stale": false
+    },
+    {
+     "id": "private-logistics",
+     "ownership_ratio": 0.8,
+     "attributable_equity_value": 328,
+     "attributable_debt": 144,
+     "attributable_dividends": 14.4,
+     "listed": false,
+     "stale": false
+    },
+    {
+     "id": "listed-utility",
+     "ownership_ratio": 0.35,
+     "attributable_equity_value": 237.99999999999997,
+     "attributable_debt": 136.5,
+     "attributable_dividends": 7.35,
+     "listed": true,
+     "stale": true
+    }
+   ],
+   "gross_asset_value": 1231.3999999999999,
+   "net_asset_value": 926.3999999999999,
+   "attributable_subsidiary_debt": 615.3,
+   "lookthrough_leverage": 0.47398061406833814,
+   "parent_interest_coverage": 1.7329166666666669,
+   "concentration_hhi": 0.3791097100943457,
+   "fresh_value_coverage": 0.7905667018655403,
+   "listed_value_coverage": 0.7113692361844421,
+   "discount_to_nav": 0.17962003454231423,
+   "component_scores": {
+    "nav_buffer": 92.05240647501488,
+    "lookthrough_leverage": 39.115419095924864,
+    "parent_coverage": 24.43055555555556,
+    "diversification": 71.30895331236762,
+    "freshness": 47.64167546638509,
+    "listed_coverage": 58.767033740634595
+   },
+   "weights": {
+    "nav_buffer": 0.22,
+    "lookthrough_leverage": 0.22,
+    "parent_coverage": 0.18,
+    "diversification": 0.14,
+    "freshness": 0.12,
+    "listed_coverage": 0.12
+   },
+   "look_through_score": 56.00672019418056,
+   "coverage_ratio": 1,
+   "reason": "attributable-stakes-with-parent-bridge"
+  }
+ },
+ "D18-F10-A08": {
+  "args": [
+   {
+    "framework": "sector-weight-calibration-teaching-v1",
+    "component_names": [
+     "quality",
+     "resilience",
+     "cash_conversion"
+    ],
+    "base_weights": {
+     "quality": 0.4,
+     "resilience": 0.35,
+     "cash_conversion": 0.25
+    },
+    "feature_rows": [
+     [
+      82,
+      65,
+      78
+     ],
+     [
+      74,
+      60,
+      70
+     ],
+     [
+      45,
+      72,
+      55
+     ],
+     [
+      88,
+      80,
+      76
+     ],
+     [
+      35,
+      48,
+      42
+     ],
+     [
+      68,
+      62,
+      66
+     ],
+     [
+      92,
+      75,
+      84
+     ],
+     [
+      51,
+      58,
+      49
+     ],
+     [
+      77,
+      69,
+      73
+     ],
+     [
+      40,
+      52,
+      46
+     ],
+     [
+      85,
+      78,
+      81
+     ],
+     [
+      56,
+      64,
+      60
+     ],
+     [
+      79,
+      71,
+      75
+     ],
+     [
+      43,
+      55,
+      48
+     ],
+     [
+      90,
+      82,
+      86
+     ],
+     [
+      62,
+      67,
+      64
+     ]
+    ],
+    "labels": [
+     1,
+     1,
+     0,
+     1,
+     0,
+     1,
+     1,
+     0,
+     1,
+     0,
+     1,
+     0,
+     1,
+     0,
+     1,
+     1
+    ],
+    "observation_dates": [
+     "2024-01-01",
+     "2024-02-01",
+     "2024-03-01",
+     "2024-04-01",
+     "2024-05-01",
+     "2024-06-01",
+     "2024-07-01",
+     "2024-08-01",
+     "2024-09-01",
+     "2024-10-01",
+     "2024-11-01",
+     "2024-12-01",
+     "2025-01-01",
+     "2025-02-01",
+     "2025-03-01",
+     "2025-04-01"
+    ],
+    "train_end_index": 12,
+    "learning_rate": 0.08,
+    "ridge_penalty": 0.2,
+    "logit_slope": 5,
+    "iterations": 600
+   }
+  ],
+  "value": {
+   "state": "retain-base-weights",
+   "method": "nonnegative-simplex-logloss-v1",
+   "component_names": [
+    "quality",
+    "resilience",
+    "cash_conversion"
+   ],
+   "base_weights": {
+    "quality": 0.4,
+    "resilience": 0.35,
+    "cash_conversion": 0.25
+   },
+   "candidate_weights": {
+    "quality": 0.7551696860135335,
+    "resilience": 0,
+    "cash_conversion": 0.24483031398646643
+   },
+   "selected_weights": {
+    "quality": 0.4,
+    "resilience": 0.35,
+    "cash_conversion": 0.25
+   },
+   "candidate_intercept": -0.40266157235699845,
+   "selected_intercept": 0,
+   "base_train_brier": 0.14500903499442555,
+   "base_validation_brier": 0.10197248987791843,
+   "candidate_train_brier": 0.10051624085395794,
+   "candidate_validation_brier": 0.10310568321068389,
+   "selected_validation_brier": 0.10197248987791843,
+   "weight_shift_l1": 0.710339372027067,
+   "train_rows": 12,
+   "validation_rows": 4,
+   "coverage_ratio": 1,
+   "reason": "temporal-holdout-governs-selection"
+  }
+ },
+ "D18-F10-A09": {
+  "args": [
+   {
+    "framework": "coverage-router-teaching-v1",
+    "sector": "bank",
+    "candidate_framework": "basel-iii-teaching-v1",
+    "as_of": "2026-04-15",
+    "minimum_coverage": 0.75,
+    "max_age_days": 550,
+    "facts": [
+     {
+      "name": "cet1_ratio",
+      "value_present": true,
+      "knowledge_date": "2026-03-20",
+      "period_end": "2025-12-31"
+     },
+     {
+      "name": "leverage_ratio",
+      "value_present": true,
+      "knowledge_date": "2026-03-20",
+      "period_end": "2025-12-31"
+     },
+     {
+      "name": "lcr",
+      "value_present": true,
+      "knowledge_date": "2026-03-20",
+      "period_end": "2025-12-31"
+     },
+     {
+      "name": "nsfr",
+      "value_present": true,
+      "knowledge_date": "2026-03-20",
+      "period_end": "2025-12-31"
+     },
+     {
+      "name": "npl_ratio",
+      "value_present": true,
+      "knowledge_date": "2026-03-20",
+      "period_end": "2025-12-31"
+     },
+     {
+      "name": "provision_coverage_ratio",
+      "value_present": true,
+      "knowledge_date": "2026-03-20",
+      "period_end": "2025-12-31"
+     },
+     {
+      "name": "net_interest_margin",
+      "value_present": true,
+      "knowledge_date": "2026-03-20",
+      "period_end": "2025-12-31"
+     },
+     {
+      "name": "cost_income_ratio",
+      "value_present": true,
+      "knowledge_date": "2026-03-20",
+      "period_end": "2025-12-31"
+     }
+    ]
+   }
+  ],
+  "value": {
+   "state": "supported",
+   "method": "sector-coverage-router-v1",
+   "selected_model": "D18-F10-A01",
+   "coverage_ratio": 1,
+   "available_fields": [
+    "cet1_ratio",
+    "leverage_ratio",
+    "lcr",
+    "nsfr",
+    "npl_ratio",
+    "provision_coverage_ratio",
+    "net_interest_margin",
+    "cost_income_ratio"
+   ],
+   "missing_fields": [],
+   "stale_fields": [],
+   "future_fields": [],
+   "required_field_count": 8,
+   "reasons": [
+    "complete-current-coverage"
+   ],
+   "reason": "complete-current-coverage"
   }
  },
  "D21-F01-A01": {

@@ -1,0 +1,144 @@
+{
+  "synthetic": true,
+  "input": {
+    "target": {
+      "expected_growth_percent": 11.0,
+      "return_on_equity_percent": 15.0,
+      "net_debt_to_ebitda": 1.0,
+      "valuation_metric": 5.0,
+      "current_value": 35.0
+    },
+    "peers": [
+      {
+        "id": "R1",
+        "multiple": 3.6692966676192453,
+        "expected_growth_percent": 4,
+        "return_on_equity_percent": 8,
+        "net_debt_to_ebitda": 3.0
+      },
+      {
+        "id": "R2",
+        "multiple": 4.6043430528623635,
+        "expected_growth_percent": 6,
+        "return_on_equity_percent": 11,
+        "net_debt_to_ebitda": 2.4
+      },
+      {
+        "id": "R3",
+        "multiple": 5.124331102904436,
+        "expected_growth_percent": 8,
+        "return_on_equity_percent": 14,
+        "net_debt_to_ebitda": 1.8
+      },
+      {
+        "id": "R4",
+        "multiple": 6.178033395291563,
+        "expected_growth_percent": 10,
+        "return_on_equity_percent": 17,
+        "net_debt_to_ebitda": 1.2
+      },
+      {
+        "id": "R5",
+        "multiple": 6.546954632989411,
+        "expected_growth_percent": 12,
+        "return_on_equity_percent": 13,
+        "net_debt_to_ebitda": 0.8
+      },
+      {
+        "id": "R6",
+        "multiple": 7.403848999097714,
+        "expected_growth_percent": 14,
+        "return_on_equity_percent": 20,
+        "net_debt_to_ebitda": 0.4
+      },
+      {
+        "id": "R7",
+        "multiple": 5.989452466383113,
+        "expected_growth_percent": 9,
+        "return_on_equity_percent": 22,
+        "net_debt_to_ebitda": 2.0
+      },
+      {
+        "id": "R8",
+        "multiple": 7.9565858935218765,
+        "expected_growth_percent": 16,
+        "return_on_equity_percent": 16,
+        "net_debt_to_ebitda": -0.2
+      }
+    ]
+  },
+  "expected": {
+    "model": "ols-log-multiple-on-growth-roe-and-leverage",
+    "peer_count": 8,
+    "feature_order": [
+      "intercept",
+      "expected_growth_decimal",
+      "return_on_equity_decimal",
+      "net_debt_to_ebitda"
+    ],
+    "coefficients": {
+      "intercept": 1.5364545140362829,
+      "expected_growth_decimal": 1.6438862781409074,
+      "return_on_equity_decimal": 1.6061067701607943,
+      "net_debt_to_ebitda": -0.13216626876457388
+    },
+    "r_squared_log_space": 0.9870676723439116,
+    "fitted_peers": [
+      {
+        "id": "R1",
+        "observed_multiple": 3.6692966676192453,
+        "fitted_multiple": 3.7969560280762247,
+        "log_residual": -0.0341997004810608
+      },
+      {
+        "id": "R2",
+        "observed_multiple": 4.6043430528623635,
+        "fitted_multiple": 4.457376616557734,
+        "log_residual": 0.032439609592552765
+      },
+      {
+        "id": "R3",
+        "observed_multiple": 5.124331102904436,
+        "fitted_multiple": 5.232666945553791,
+        "log_residual": -0.020921080333833775
+      },
+      {
+        "id": "R4",
+        "observed_multiple": 6.178033395291563,
+        "fitted_multiple": 6.1428067938841595,
+        "log_residual": 0.005718229739780423
+      },
+      {
+        "id": "R5",
+        "observed_multiple": 6.546954632989411,
+        "fitted_multiple": 6.276306889164772,
+        "log_residual": 0.042218267477564186
+      },
+      {
+        "id": "R6",
+        "observed_multiple": 7.403848999097714,
+        "fitted_multiple": 7.6518958411059055,
+        "log_residual": -0.03295343950233898
+      },
+      {
+        "id": "R7",
+        "observed_multiple": 5.989452466383113,
+        "fitted_multiple": 5.890937958881057,
+        "log_residual": 0.016584769024808432
+      },
+      {
+        "id": "R8",
+        "observed_multiple": 7.9565858935218765,
+        "fitted_multiple": 8.027608440504677,
+        "log_residual": -0.008886655517469588
+      }
+    ],
+    "target_predicted_log_multiple": 1.8260317513913278,
+    "implied_multiple": 6.209198064103231,
+    "target_valuation_metric": 5.0,
+    "implied_value": 31.045990320516154,
+    "premium_discount_to_current": -0.11297170512810994,
+    "smearing_correction": "not-applied",
+    "state": "valuation-complete"
+  }
+}

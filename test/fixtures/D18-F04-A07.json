@@ -1,0 +1,23 @@
+{
+ "input": {
+  "total_assets": 1000,
+  "current_liabilities": 250,
+  "working_capital": 200,
+  "ebit": 160,
+  "ebt": 140,
+  "sales": 1200
+ },
+ "expected": {
+  "state": "calculated",
+  "method": "springate-1978-four-ratio",
+  "ratios": {
+   "working_capital_to_assets": 0.2,
+   "ebit_to_assets": 0.16,
+   "ebt_to_current_liabilities": 0.56,
+   "sales_to_assets": 1.2
+  },
+  "s_score": 1.5468,
+  "screen": "non-distress-side",
+  "cutoff": 0.862
+ }
+}

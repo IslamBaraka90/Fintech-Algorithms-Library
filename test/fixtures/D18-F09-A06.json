@@ -1,0 +1,33 @@
+{
+ "input": {
+  "accrual_quality_score": 70,
+  "cash_conversion_score": 82,
+  "revenue_quality_score": 74,
+  "manipulation_safety_score": 66
+ },
+ "expected": {
+  "state": "calculated",
+  "method": "earnings-quality-weighted-composite",
+  "components": {
+   "accrual_quality_score": 70,
+   "cash_conversion_score": 82,
+   "revenue_quality_score": 74,
+   "manipulation_safety_score": 66
+  },
+  "weights": {
+   "accrual_quality_score": 0.3,
+   "cash_conversion_score": 0.25,
+   "revenue_quality_score": 0.25,
+   "manipulation_safety_score": 0.2
+  },
+  "contributions": {
+   "accrual_quality_score": 21,
+   "cash_conversion_score": 20.5,
+   "revenue_quality_score": 18.5,
+   "manipulation_safety_score": 13.2
+  },
+  "earnings_quality_score": 73.2,
+  "band": "watch",
+  "coverage": 1
+ }
+}

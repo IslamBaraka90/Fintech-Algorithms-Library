@@ -1,0 +1,104 @@
+{
+ "input": {
+  "valuation_date": "2026-08-04",
+  "currency": "USD",
+  "opening_book_value_per_share": 30,
+  "earnings_per_share": [
+   3.6,
+   4,
+   4.35,
+   4.65,
+   4.9
+  ],
+  "dividends_per_share": [
+   1.2,
+   1.35,
+   1.5,
+   1.65,
+   1.8
+  ],
+  "nonowner_equity_adjustments_per_share": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "cost_of_equity": 0.1,
+  "terminal_residual_income_growth": 0.03
+ },
+ "expected": {
+  "state": "valued",
+  "method": "residual-income",
+  "schedule": [
+   {
+    "period": 1,
+    "opening_book_value_per_share": 30,
+    "earnings_per_share": 3.6,
+    "dividends_per_share": 1.2,
+    "nonowner_equity_adjustment_per_share": 0,
+    "equity_charge_per_share": 3,
+    "residual_income_per_share": 0.6,
+    "discount_factor": 0.909090909091,
+    "present_value": 0.545454545455,
+    "closing_book_value_per_share": 32.4
+   },
+   {
+    "period": 2,
+    "opening_book_value_per_share": 32.4,
+    "earnings_per_share": 4,
+    "dividends_per_share": 1.35,
+    "nonowner_equity_adjustment_per_share": 0,
+    "equity_charge_per_share": 3.24,
+    "residual_income_per_share": 0.76,
+    "discount_factor": 0.826446280992,
+    "present_value": 0.628099173554,
+    "closing_book_value_per_share": 35.05
+   },
+   {
+    "period": 3,
+    "opening_book_value_per_share": 35.05,
+    "earnings_per_share": 4.35,
+    "dividends_per_share": 1.5,
+    "nonowner_equity_adjustment_per_share": 0,
+    "equity_charge_per_share": 3.505,
+    "residual_income_per_share": 0.845,
+    "discount_factor": 0.751314800902,
+    "present_value": 0.634861006762,
+    "closing_book_value_per_share": 37.9
+   },
+   {
+    "period": 4,
+    "opening_book_value_per_share": 37.9,
+    "earnings_per_share": 4.65,
+    "dividends_per_share": 1.65,
+    "nonowner_equity_adjustment_per_share": 0,
+    "equity_charge_per_share": 3.79,
+    "residual_income_per_share": 0.86,
+    "discount_factor": 0.683013455365,
+    "present_value": 0.587391571614,
+    "closing_book_value_per_share": 40.9
+   },
+   {
+    "period": 5,
+    "opening_book_value_per_share": 40.9,
+    "earnings_per_share": 4.9,
+    "dividends_per_share": 1.8,
+    "nonowner_equity_adjustment_per_share": 0,
+    "equity_charge_per_share": 4.09,
+    "residual_income_per_share": 0.81,
+    "discount_factor": 0.620921323059,
+    "present_value": 0.502946271678,
+    "closing_book_value_per_share": 44
+   }
+  ],
+  "pv_explicit_residual_income": 2.898752569062,
+  "terminal_residual_income_per_share": 0.8343,
+  "continuing_value": 11.918571428571,
+  "terminal_discount_factor": 0.620921323059,
+  "pv_continuing_value": 7.400495140404,
+  "continuing_value_share": 0.183638543175,
+  "closing_book_value_per_share": 44,
+  "intrinsic_value_per_share": 40.299247709466
+ }
+}

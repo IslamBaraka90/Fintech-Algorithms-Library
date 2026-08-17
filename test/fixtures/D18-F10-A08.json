@@ -1,0 +1,174 @@
+{
+ "input": {
+  "framework": "sector-weight-calibration-teaching-v1",
+  "component_names": [
+   "quality",
+   "resilience",
+   "cash_conversion"
+  ],
+  "base_weights": {
+   "quality": 0.4,
+   "resilience": 0.35,
+   "cash_conversion": 0.25
+  },
+  "feature_rows": [
+   [
+    82,
+    65,
+    78
+   ],
+   [
+    74,
+    60,
+    70
+   ],
+   [
+    45,
+    72,
+    55
+   ],
+   [
+    88,
+    80,
+    76
+   ],
+   [
+    35,
+    48,
+    42
+   ],
+   [
+    68,
+    62,
+    66
+   ],
+   [
+    92,
+    75,
+    84
+   ],
+   [
+    51,
+    58,
+    49
+   ],
+   [
+    77,
+    69,
+    73
+   ],
+   [
+    40,
+    52,
+    46
+   ],
+   [
+    85,
+    78,
+    81
+   ],
+   [
+    56,
+    64,
+    60
+   ],
+   [
+    79,
+    71,
+    75
+   ],
+   [
+    43,
+    55,
+    48
+   ],
+   [
+    90,
+    82,
+    86
+   ],
+   [
+    62,
+    67,
+    64
+   ]
+  ],
+  "labels": [
+   1,
+   1,
+   0,
+   1,
+   0,
+   1,
+   1,
+   0,
+   1,
+   0,
+   1,
+   0,
+   1,
+   0,
+   1,
+   1
+  ],
+  "observation_dates": [
+   "2024-01-01",
+   "2024-02-01",
+   "2024-03-01",
+   "2024-04-01",
+   "2024-05-01",
+   "2024-06-01",
+   "2024-07-01",
+   "2024-08-01",
+   "2024-09-01",
+   "2024-10-01",
+   "2024-11-01",
+   "2024-12-01",
+   "2025-01-01",
+   "2025-02-01",
+   "2025-03-01",
+   "2025-04-01"
+  ],
+  "train_end_index": 12,
+  "learning_rate": 0.08,
+  "ridge_penalty": 0.2,
+  "logit_slope": 5,
+  "iterations": 600
+ },
+ "expected": {
+  "state": "retain-base-weights",
+  "method": "nonnegative-simplex-logloss-v1",
+  "component_names": [
+   "quality",
+   "resilience",
+   "cash_conversion"
+  ],
+  "base_weights": {
+   "quality": 0.4,
+   "resilience": 0.35,
+   "cash_conversion": 0.25
+  },
+  "candidate_weights": {
+   "quality": 0.755169686014,
+   "resilience": 0,
+   "cash_conversion": 0.244830313986
+  },
+  "selected_weights": {
+   "quality": 0.4,
+   "resilience": 0.35,
+   "cash_conversion": 0.25
+  },
+  "candidate_intercept": -0.402661572357,
+  "selected_intercept": 0,
+  "base_train_brier": 0.145009034994,
+  "base_validation_brier": 0.101972489878,
+  "candidate_train_brier": 0.100516240854,
+  "candidate_validation_brier": 0.103105683211,
+  "selected_validation_brier": 0.101972489878,
+  "weight_shift_l1": 0.710339372027,
+  "train_rows": 12,
+  "validation_rows": 4,
+  "coverage_ratio": 1,
+  "reason": "temporal-holdout-governs-selection"
+ }
+}

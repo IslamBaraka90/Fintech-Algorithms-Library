@@ -184,6 +184,14 @@ const REVIEWED_BINDINGS: Record<string, readonly string[]> = {
   ],
 };
 
+/**
+ * Marks a binding the fixture cannot disambiguate. The runner tries each
+ * candidate and keeps the one whose output matches; if none does, it reports the
+ * first failure, so an unbindable topic is still a red test rather than a
+ * silently skipped one.
+ */
+const AMBIGUOUS = (...candidates: unknown[][]) => Object.assign(candidates[0], { alternatives: candidates.slice(1) });
+
 function conventionDArgs(topic: ManifestTopic, input: unknown): unknown[] {
   if (input === null || typeof input !== "object" || Array.isArray(input)) return [structuredClone(input)];
   const named = structuredClone(input) as Record<string, unknown>;
@@ -194,8 +202,13 @@ function conventionDArgs(topic: ManifestTopic, input: unknown): unknown[] {
 
   if (topic.entryParams.length === 1) {
     const only = topic.entryParams[0];
-    // One parameter, one key: the key is the argument.
-    if (keys.length === 1) return [named[keys[0]]];
+    // One parameter, one key: genuinely ambiguous. `normalizeEvents` wants the
+    // array inside `{ events: [...] }`, while `dechowDichevAccrualQuality` wants
+    // the whole `{ observations: [...] }` record. Nothing in the signature or
+    // the fixture distinguishes them, so both are offered as candidates and the
+    // caller keeps whichever reproduces the expected output. A wrong choice
+    // cannot pass quietly — the assertion still has to hold.
+    if (keys.length === 1) return AMBIGUOUS([named[keys[0]]], [named]);
     /*
      * One recorded parameter, but the fixture supplies that parameter's key
      * alongside others. That is the signature `fn(thing, { options })` — the
@@ -283,8 +296,19 @@ describe("conformance: catalog worked examples", () => {
       test(`${topic.id} — ${topic.path}`, async () => {
         const fixture = loadFixture(topic) as { input: unknown; expected: unknown };
         const run = await loadEntry(topic);
-        const actual = run(...conventionDArgs(topic, fixture.input));
-        expectedSubset(actual, fixture.expected, topic.id);
+        const primary = conventionDArgs(topic, fixture.input);
+        const candidates = [primary, ...((primary as { alternatives?: unknown[][] }).alternatives ?? [])];
+
+        let firstFailure: unknown = null;
+        for (const args of candidates) {
+          try {
+            expectedSubset(run(...args), fixture.expected, topic.id);
+            return; // this binding reproduces the fixture
+          } catch (error) {
+            firstFailure ??= error;
+          }
+        }
+        throw firstFailure;
       });
     }
   });

@@ -1,0 +1,30 @@
+{
+ "input": {
+  "current_assets": 500,
+  "prior_current_assets": 450,
+  "cash": 100,
+  "prior_cash": 90,
+  "current_liabilities": 260,
+  "prior_current_liabilities": 240,
+  "short_term_debt": 70,
+  "prior_short_term_debt": 60,
+  "taxes_payable": 20,
+  "prior_taxes_payable": 18,
+  "depreciation_and_amortization": 60,
+  "average_total_assets": 950
+ },
+ "expected": {
+  "state": "calculated",
+  "method": "sloan-1996-balance-sheet-accrual",
+  "delta_current_assets": 50,
+  "delta_cash": 10,
+  "delta_current_liabilities": 20,
+  "delta_short_term_debt": 10,
+  "delta_taxes_payable": 2,
+  "depreciation_and_amortization": 60,
+  "accrual_amount": -28,
+  "accrual_measure": -0.029473684211,
+  "absolute_accrual_measure": 0.029473684211,
+  "interpretation": "income-decreasing-accrual"
+ }
+}
