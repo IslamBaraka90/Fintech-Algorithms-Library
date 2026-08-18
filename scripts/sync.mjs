@@ -574,6 +574,23 @@ function resolveSpecifier(fromDir, spec) {
   return candidates.find((c) => existsSync(c)) ?? null;
 }
 
+/** Return the first transitive Node-builtin violation in a shared module graph. */
+function dependencyImpurity(absPath, seen = new Set()) {
+  if (seen.has(absPath)) return null;
+  seen.add(absPath);
+  const source = readFileSync(absPath, "utf8");
+  const builtins = nodeBuiltinsIn(source);
+  if (builtins.length) return `${basename(absPath)} imports ${builtins.join(", ")}`;
+  for (const match of source.matchAll(RELATIVE_SPECIFIER_RE)) {
+    const dependency = resolveSpecifier(dirname(absPath), match[3]);
+    if (!dependency) continue;
+    const violation = dependencyImpurity(dependency, seen);
+    if (violation) return violation;
+  }
+  return null;
+}
+
+/** Vendor one pure module and recursively rewrite every resolvable dependency. */
 function vendor(absPath) {
   const existing = vendoredModules.get(absPath);
   if (existing) return existing;
@@ -582,8 +599,17 @@ function vendor(absPath) {
   let n = 2;
   while (vendoredNames.has(name)) name = `${base}${n++}`;
   vendoredNames.add(name);
-  const record = { name, path: absPath, source: readFileSync(absPath, "utf8") };
+
+  // Register before descending so a legitimate import cycle terminates and both
+  // sides can already refer to the other's stable generated name.
+  const record = { name, path: absPath, source: "" };
   vendoredModules.set(absPath, record);
+  const source = readFileSync(absPath, "utf8");
+  record.source = source.replace(RELATIVE_SPECIFIER_RE, (whole, keyword, quote, spec) => {
+    const dependency = resolveSpecifier(dirname(absPath), spec);
+    if (!dependency) return whole;
+    return `${keyword}${quote}./${vendor(dependency).name}.ts${quote}`;
+  });
   return record;
 }
 
@@ -612,10 +638,9 @@ function resolveSharedImports(source, implFile, topicDir, topicId) {
     if (!abs) return whole;
     if (!relativeEscapes(topicDir, abs)) return whole;
 
-    const shared = readFileSync(abs, "utf8");
-    const builtins = nodeBuiltinsIn(shared);
-    if (builtins.length) {
-      impure ??= `depends on ${basename(abs)}, which imports ${builtins.join(", ")} — the package is runtime-agnostic`;
+    const violation = dependencyImpurity(abs);
+    if (violation) {
+      impure ??= `depends on ${violation} — the package is runtime-agnostic`;
       return whole;
     }
     pending.push(abs);
@@ -805,6 +830,8 @@ for (const found of discoverTopics()) {
   //   A  examples/worked-example.json   { input, expected }
   //   B  datasets/canonical-fixture.json { rows, expected: { status, value } }
   //   C  datasets/<slug>-fixtures.json   { bars, checkpoints: [{ index, ...}] }
+  //   E  datasets/implementation-fixtures.json — the frozen native-port
+  //      contract ({ canonical, flat_boundary } or { canonical_input, expected })
   const readJson = (path) => {
     if (!existsSync(path)) return null;
     const raw = readFileSync(path, "utf8");
@@ -854,6 +881,21 @@ for (const found of discoverTopics()) {
       }
       if (Array.isArray(parsed.rows) && parsed.expected && typeof parsed.expected === "object") {
         fixture = { file: `${meta.id}.json`, convention: "B", keys: Object.keys(parsed) };
+        emit(`test/fixtures/${meta.id}.json`, data.raw);
+        break;
+      }
+      const nativePortSeries =
+        parsed.canonical?.input &&
+        Object.hasOwn(parsed.canonical, "expected_ready_at") &&
+        parsed.canonical.expected_latest &&
+        Number.isInteger(parsed.canonical.prefix_cut) &&
+        parsed.flat_boundary?.input;
+      const nativePortExact =
+        parsed.canonical_input && Object.hasOwn(parsed, "expected") && parsed.invalid_input;
+      if (nativePortSeries || nativePortExact) {
+        fixture = { file: `${meta.id}.json`, convention: "E", keys: Object.keys(parsed) };
+        // Copy the authored fixture byte-for-byte. Convention E exists so the
+        // release test can consume this shape without rewriting its numbers.
         emit(`test/fixtures/${meta.id}.json`, data.raw);
         break;
       }
@@ -1364,7 +1406,7 @@ console.log(`  files written: ${outputs.size}`);
 if (overridden) {
   console.log(`  overridden   : ${overridden} topic(s) ship an implementation from optimised/`);
 }
-console.log(`  fixtures     : ${withFixture}/${topics.length} runnable  (A ${byConvention.A ?? 0} · B ${byConvention.B ?? 0} · C ${byConvention.C ?? 0} · D ${byConvention.D ?? 0} · none ${byConvention.none ?? 0})`);
+console.log(`  fixtures     : ${withFixture}/${topics.length} runnable  (A ${byConvention.A ?? 0} · B ${byConvention.B ?? 0} · C ${byConvention.C ?? 0} · D ${byConvention.D ?? 0} · E ${byConvention.E ?? 0} · none ${byConvention.none ?? 0})`);
 console.log(`\n  by shape:`);
 for (const [shape, count] of Object.entries(byArchetype).sort((a, b) => b[1] - a[1])) {
   console.log(`    ${shape.padEnd(20)} ${count}`);

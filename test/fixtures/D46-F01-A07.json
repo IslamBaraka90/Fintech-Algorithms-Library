@@ -1,0 +1,101 @@
+{
+  "schema_version": "1.0",
+  "topic_id": "D46-F01-A07",
+  "title": "Rights-Issue Bonus-Factor Adjustment",
+  "provenance": {
+    "kind": "synthetic",
+    "warning": "Teaching fixture only; not issuer data."
+  },
+  "canonical_input": {
+    "events": [
+      {
+        "event_id": "SYN-RIGHTS-1",
+        "effective_or_exercise_date": "2025-06-01",
+        "existing_shares_per_block": "4",
+        "new_shares_per_block": "1",
+        "cum_rights_fair_value_per_share": "12.50",
+        "subscription_price_per_share": "8.00",
+        "offered_to_all_existing_shareholders": true,
+        "event_is_effective": true
+      }
+    ],
+    "periods": [
+      {
+        "period_id": "SYN-2024",
+        "basis_date": "2024-12-31",
+        "basis_is_uniform": true,
+        "earnings_available_to_ordinary_shareholders": "18000000",
+        "weighted_average_ordinary_shares": "9000000"
+      },
+      {
+        "period_id": "SYN-CURRENT",
+        "basis_date": "2025-06-01",
+        "basis_is_uniform": true,
+        "earnings_available_to_ordinary_shareholders": "9500000",
+        "weighted_average_ordinary_shares": "9700000"
+      }
+    ]
+  },
+  "expected": {
+    "topic_id": "D46-F01-A07",
+    "state": "calculated",
+    "events": [
+      {
+        "event_id": "SYN-RIGHTS-1",
+        "terp": "11.6",
+        "factor_numerator": "125",
+        "factor_denominator": "116"
+      }
+    ],
+    "periods": [
+      {
+        "period_id": "SYN-2024",
+        "applied_event_ids": [
+          "SYN-RIGHTS-1"
+        ],
+        "factor_numerator": "125",
+        "factor_denominator": "116",
+        "restated_shares": "9698275.8620689655172413793103448275862068965517241",
+        "restated_basic_eps": "1.856"
+      },
+      {
+        "period_id": "SYN-CURRENT",
+        "applied_event_ids": [],
+        "factor_numerator": "1",
+        "factor_denominator": "1",
+        "restated_shares": "9700000",
+        "restated_basic_eps": "0.97938144329896907216494845360824742268041237113402"
+      }
+    ]
+  },
+  "invalid_input": {
+    "events": [
+      {
+        "event_id": "SYN-RIGHTS-1",
+        "effective_or_exercise_date": "2025-06-01",
+        "existing_shares_per_block": "4",
+        "new_shares_per_block": "1",
+        "cum_rights_fair_value_per_share": "12.50",
+        "subscription_price_per_share": "13.00",
+        "offered_to_all_existing_shareholders": true,
+        "event_is_effective": true
+      }
+    ],
+    "periods": [
+      {
+        "period_id": "SYN-2024",
+        "basis_date": "2024-12-31",
+        "basis_is_uniform": true,
+        "earnings_available_to_ordinary_shareholders": "18000000",
+        "weighted_average_ordinary_shares": "9000000"
+      },
+      {
+        "period_id": "SYN-CURRENT",
+        "basis_date": "2025-06-01",
+        "basis_is_uniform": true,
+        "earnings_available_to_ordinary_shareholders": "9500000",
+        "weighted_average_ordinary_shares": "9700000"
+      }
+    ]
+  }
+}

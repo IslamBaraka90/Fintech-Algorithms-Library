@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.0",
+  "topic_id": "D46-F02-A01",
+  "title": "If-Converted Convertible-Debt Dilution",
+  "provenance": {
+    "kind": "synthetic",
+    "warning": "Teaching fixture only; not issuer data."
+  },
+  "canonical_input": {
+    "period_start": "2025-01-01",
+    "period_end": "2025-12-31",
+    "continuing_operations_control_numerator": "30000000",
+    "basic_weighted_average_shares": "10000000",
+    "basic_components_complete": true,
+    "share_basis_restatement_complete": true,
+    "instrument": {
+      "instrument_id": "SYN-CONV-1",
+      "issue_date": "2025-04-01",
+      "actual_conversion_date": null,
+      "lapse_redemption_or_extinguishment_date": null,
+      "fixed_ordinary_shares_on_conversion": "2000000",
+      "holder_advantageous_terms_selected": true,
+      "expense_period_aligned": true,
+      "terms_restatement_complete": true,
+      "numerator_adjustment_components": [
+        {
+          "component_id": "effective-interest-avoided",
+          "amount": "1800000"
+        },
+        {
+          "component_id": "related-tax-effect",
+          "amount": "-450000"
+        },
+        {
+          "component_id": "consequential-change",
+          "amount": "-50000"
+        }
+      ],
+      "is_final": true
+    }
+  },
+  "expected": {
+    "topic_id": "D46-F02-A01",
+    "state": "calculated",
+    "basic_eps": "3",
+    "numerator_adjustment": "1300000",
+    "incremental_shares": "1506849.3150684931506849315068493150684931506849315",
+    "incremental_eps": "0.86272727272727272727272727272727272727272727272728",
+    "candidate_diluted_eps": "2.7201190476190476190476190476190476190476190476189",
+    "classification": "dilutive",
+    "included": true,
+    "active_days": 275,
+    "period_days": 365,
+    "is_final": true
+  },
+  "invalid_input": {
+    "period_start": "2025-01-01",
+    "period_end": "2025-12-31",
+    "continuing_operations_control_numerator": "30000000",
+    "basic_weighted_average_shares": "0",
+    "basic_components_complete": true,
+    "share_basis_restatement_complete": true,
+    "instrument": {
+      "instrument_id": "SYN-CONV-1",
+      "issue_date": "2025-04-01",
+      "actual_conversion_date": null,
+      "lapse_redemption_or_extinguishment_date": null,
+      "fixed_ordinary_shares_on_conversion": "2000000",
+      "holder_advantageous_terms_selected": true,
+      "expense_period_aligned": true,
+      "terms_restatement_complete": true,
+      "numerator_adjustment_components": [
+        {
+          "component_id": "effective-interest-avoided",
+          "amount": "1800000"
+        },
+        {
+          "component_id": "related-tax-effect",
+          "amount": "-450000"
+        },
+        {
+          "component_id": "consequential-change",
+          "amount": "-50000"
+        }
+      ],
+      "is_final": true
+    }
+  }
+}

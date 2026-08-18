@@ -1,0 +1,1470 @@
+{
+  "schema_version": "1.0",
+  "topic_id": "D07-F02-A15",
+  "title": "Vertical Horizontal Filter",
+  "provenance": {
+    "kind": "synthetic",
+    "generator": "algorithms/tools/build_missing_152_implementations.py",
+    "warning": "Teaching fixture only; not observed market data and not performance evidence."
+  },
+  "canonical": {
+    "input": {
+      "bars": [
+        {
+          "timestamp": "2024-01-02",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 101.45,
+          "low": 98.695,
+          "close": 100.0,
+          "volume": 750000,
+          "benchmark": 200.0
+        },
+        {
+          "timestamp": "2024-01-03",
+          "basis": "synthetic-unadjusted",
+          "open": 101.49111452,
+          "high": 103.38381693,
+          "low": 100.05480022,
+          "close": 101.78791214,
+          "volume": 795117,
+          "benchmark": 200.56326135
+        },
+        {
+          "timestamp": "2024-01-04",
+          "basis": "synthetic-unadjusted",
+          "open": 102.45519048,
+          "high": 104.6701838,
+          "low": 100.91147007,
+          "close": 102.9549389,
+          "volume": 840234,
+          "benchmark": 201.11020913
+        },
+        {
+          "timestamp": "2024-01-05",
+          "basis": "synthetic-unadjusted",
+          "open": 102.68760294,
+          "high": 105.01857496,
+          "low": 101.0799399,
+          "close": 103.23228269,
+          "volume": 885351,
+          "benchmark": 201.62511692
+        },
+        {
+          "timestamp": "2024-01-06",
+          "basis": "synthetic-unadjusted",
+          "open": 102.41391574,
+          "high": 104.62741155,
+          "low": 100.79741547,
+          "close": 102.83130013,
+          "volume": 930468,
+          "benchmark": 202.09341147
+        },
+        {
+          "timestamp": "2024-01-07",
+          "basis": "synthetic-unadjusted",
+          "open": 102.11061307,
+          "high": 104.01164055,
+          "low": 100.54198995,
+          "close": 102.26872597,
+          "volume": 975585,
+          "benchmark": 202.50219721
+        },
+        {
+          "timestamp": "2024-01-08",
+          "basis": "synthetic-unadjusted",
+          "open": 102.15741578,
+          "high": 103.79380299,
+          "low": 100.53351371,
+          "close": 102.00626221,
+          "volume": 1020702,
+          "benchmark": 202.84072039
+        },
+        {
+          "timestamp": "2024-01-09",
+          "basis": "synthetic-unadjusted",
+          "open": 102.55384127,
+          "high": 104.04976588,
+          "low": 100.79488353,
+          "close": 102.14121569,
+          "volume": 1065819,
+          "benchmark": 203.10075611
+        },
+        {
+          "timestamp": "2024-01-10",
+          "basis": "synthetic-unadjusted",
+          "open": 102.89384428,
+          "high": 104.24094487,
+          "low": 101.13782756,
+          "close": 102.35021809,
+          "volume": 1110936,
+          "benchmark": 203.27690435
+        },
+        {
+          "timestamp": "2024-01-11",
+          "basis": "synthetic-unadjusted",
+          "open": 102.6246908,
+          "high": 103.84170211,
+          "low": 101.02664737,
+          "close": 102.12195754,
+          "volume": 778053,
+          "benchmark": 203.36678433
+        },
+        {
+          "timestamp": "2024-01-12",
+          "basis": "synthetic-unadjusted",
+          "open": 101.42832419,
+          "high": 102.55766611,
+          "low": 100.10903941,
+          "close": 101.12544714,
+          "volume": 823170,
+          "benchmark": 203.37112021
+        },
+        {
+          "timestamp": "2024-01-13",
+          "basis": "synthetic-unadjusted",
+          "open": 99.47820418,
+          "high": 100.57825845,
+          "low": 98.48090362,
+          "close": 99.47095247,
+          "volume": 868287,
+          "benchmark": 203.293715
+        },
+        {
+          "timestamp": "2024-01-14",
+          "basis": "synthetic-unadjusted",
+          "open": 97.3988868,
+          "high": 98.82403413,
+          "low": 96.37785415,
+          "close": 97.68955341,
+          "volume": 913404,
+          "benchmark": 203.1413137
+        },
+        {
+          "timestamp": "2024-01-15",
+          "basis": "synthetic-unadjusted",
+          "open": 95.94306634,
+          "high": 97.66609633,
+          "low": 94.83934838,
+          "close": 96.43974304,
+          "volume": 958521,
+          "benchmark": 202.92336053
+        },
+        {
+          "timestamp": "2024-01-16",
+          "basis": "synthetic-unadjusted",
+          "open": 95.58125796,
+          "high": 97.48584144,
+          "low": 94.35820757,
+          "close": 96.12689656,
+          "volume": 1003638,
+          "benchmark": 202.65165904
+        },
+        {
+          "timestamp": "2024-01-17",
+          "basis": "synthetic-unadjusted",
+          "open": 96.2564362,
+          "high": 98.18662158,
+          "low": 94.89913294,
+          "close": 96.67850684,
+          "volume": 1048755,
+          "benchmark": 202.33994723
+        },
+        {
+          "timestamp": "2024-01-18",
+          "basis": "synthetic-unadjusted",
+          "open": 97.45259305,
+          "high": 99.26434154,
+          "low": 95.97055969,
+          "close": 97.61763781,
+          "volume": 1093872,
+          "benchmark": 202.00340317
+        },
+        {
+          "timestamp": "2024-01-19",
+          "basis": "synthetic-unadjusted",
+          "open": 98.52849266,
+          "high": 100.27797184,
+          "low": 96.80979345,
+          "close": 98.38432471,
+          "volume": 1138989,
+          "benchmark": 201.65809865
+        },
+        {
+          "timestamp": "2024-01-20",
+          "basis": "synthetic-unadjusted",
+          "open": 99.10265165,
+          "high": 100.90038054,
+          "low": 97.07690061,
+          "close": 98.69485661,
+          "volume": 806106,
+          "benchmark": 201.32042079
+        },
+        {
+          "timestamp": "2024-01-21",
+          "basis": "synthetic-unadjusted",
+          "open": 99.24825716,
+          "high": 101.03092529,
+          "low": 97.10137772,
+          "close": 98.70577903,
+          "volume": 851223,
+          "benchmark": 201.00648219
+        },
+        {
+          "timestamp": "2024-01-22",
+          "basis": "synthetic-unadjusted",
+          "open": 99.38355731,
+          "high": 101.0905963,
+          "low": 97.34159154,
+          "close": 98.87792662,
+          "volume": 896340,
+          "benchmark": 200.73154106
+        },
+        {
+          "timestamp": "2024-01-23",
+          "basis": "synthetic-unadjusted",
+          "open": 99.94106019,
+          "high": 101.52567133,
+          "low": 98.20600636,
+          "close": 99.63215638,
+          "volume": 941457,
+          "benchmark": 200.50945201
+        },
+        {
+          "timestamp": "2024-01-24",
+          "basis": "synthetic-unadjusted",
+          "open": 101.03939523,
+          "high": 102.47707006,
+          "low": 99.73098572,
+          "close": 101.02489307,
+          "volume": 986574,
+          "benchmark": 200.35216744
+        },
+        {
+          "timestamp": "2024-01-25",
+          "basis": "synthetic-unadjusted",
+          "open": 102.37482021,
+          "high": 103.95228782,
+          "low": 101.2111359,
+          "close": 102.65930526,
+          "volume": 1031691,
+          "benchmark": 200.26930732
+        },
+        {
+          "timestamp": "2024-01-26",
+          "basis": "synthetic-unadjusted",
+          "open": 103.40132096,
+          "high": 105.07171782,
+          "low": 102.34213056,
+          "close": 103.8948396,
+          "volume": 1076808,
+          "benchmark": 200.267813
+        },
+        {
+          "timestamp": "2024-01-27",
+          "basis": "synthetic-unadjusted",
+          "open": 103.67698556,
+          "high": 105.33398891,
+          "low": 102.67753489,
+          "close": 104.22348816,
+          "volume": 1121925,
+          "benchmark": 200.35169731
+        },
+        {
+          "timestamp": "2024-01-28",
+          "basis": "synthetic-unadjusted",
+          "open": 103.14527533,
+          "high": 104.67789423,
+          "low": 102.14993348,
+          "close": 103.57195884,
+          "volume": 1167042,
+          "benchmark": 200.5219002
+        },
+        {
+          "timestamp": "2024-01-29",
+          "basis": "synthetic-unadjusted",
+          "open": 102.16399972,
+          "high": 103.499961,
+          "low": 101.11638768,
+          "close": 102.33594763,
+          "volume": 834159,
+          "benchmark": 200.77625488
+        },
+        {
+          "timestamp": "2024-01-30",
+          "basis": "synthetic-unadjusted",
+          "open": 101.26266071,
+          "high": 102.53682121,
+          "low": 99.97875898,
+          "close": 101.12550344,
+          "volume": 879276,
+          "benchmark": 201.10956581
+        },
+        {
+          "timestamp": "2024-01-31",
+          "basis": "synthetic-unadjusted",
+          "open": 100.78970095,
+          "high": 102.20602342,
+          "low": 99.11211713,
+          "close": 100.38680735,
+          "volume": 924393,
+          "benchmark": 201.51379567
+        },
+        {
+          "timestamp": "2024-02-01",
+          "basis": "synthetic-unadjusted",
+          "open": 100.68577963,
+          "high": 102.25039569,
+          "low": 98.73638943,
+          "close": 100.14454388,
+          "volume": 969510,
+          "benchmark": 201.9783547
+        },
+        {
+          "timestamp": "2024-02-02",
+          "basis": "synthetic-unadjusted",
+          "open": 100.53772864,
+          "high": 102.2297703,
+          "low": 98.50645092,
+          "close": 100.02928842,
+          "volume": 1014627,
+          "benchmark": 202.49048176
+        },
+        {
+          "timestamp": "2024-02-03",
+          "basis": "synthetic-unadjusted",
+          "open": 99.88283817,
+          "high": 101.65823728,
+          "low": 97.97010209,
+          "close": 99.56796129,
+          "volume": 1059744,
+          "benchmark": 203.03570369
+        },
+        {
+          "timestamp": "2024-02-04",
+          "basis": "synthetic-unadjusted",
+          "open": 98.74544188,
+          "high": 100.54495351,
+          "low": 97.10413133,
+          "close": 98.72369179,
+          "volume": 1104861,
+          "benchmark": 203.59835618
+        },
+        {
+          "timestamp": "2024-02-05",
+          "basis": "synthetic-unadjusted",
+          "open": 97.26785662,
+          "high": 99.30609975,
+          "low": 95.68386643,
+          "close": 97.54611066,
+          "volume": 1149978,
+          "benchmark": 204.16214758
+        },
+        {
+          "timestamp": "2024-02-06",
+          "basis": "synthetic-unadjusted",
+          "open": 96.11336138,
+          "high": 98.26766347,
+          "low": 94.61573681,
+          "close": 96.60363617,
+          "volume": 1195095,
+          "benchmark": 204.71074525
+        },
+        {
+          "timestamp": "2024-02-07",
+          "basis": "synthetic-unadjusted",
+          "open": 95.91655701,
+          "high": 97.9929265,
+          "low": 94.54036892,
+          "close": 96.46382861,
+          "volume": 862212,
+          "benchmark": 205.22836338
+        },
+        {
+          "timestamp": "2024-02-08",
+          "basis": "synthetic-unadjusted",
+          "open": 96.90858797,
+          "high": 98.7195774,
+          "low": 95.66679746,
+          "close": 97.33981017,
+          "volume": 907329,
+          "benchmark": 205.70033117
+        },
+        {
+          "timestamp": "2024-02-09",
+          "basis": "synthetic-unadjusted",
+          "open": 98.7723687,
+          "high": 100.19441363,
+          "low": 97.65346732,
+          "close": 98.95118988,
+          "volume": 952446,
+          "benchmark": 206.11362084
+        },
+        {
+          "timestamp": "2024-02-10",
+          "basis": "synthetic-unadjusted",
+          "open": 100.82009672,
+          "high": 101.96442444,
+          "low": 99.66007903,
+          "close": 100.68997397,
+          "volume": 997563,
+          "benchmark": 206.45731655
+        },
+        {
+          "timestamp": "2024-02-11",
+          "basis": "synthetic-unadjusted",
+          "open": 102.38306552,
+          "high": 103.48415049,
+          "low": 100.99416692,
+          "close": 101.9851434,
+          "volume": 1042680,
+          "benchmark": 206.72300721
+        },
+        {
+          "timestamp": "2024-02-12",
+          "basis": "synthetic-unadjusted",
+          "open": 103.17166515,
+          "high": 104.29303382,
+          "low": 101.62253406,
+          "close": 102.63176586,
+          "volume": 1087797,
+          "benchmark": 206.9050893
+        },
+        {
+          "timestamp": "2024-02-13",
+          "basis": "synthetic-unadjusted",
+          "open": 103.38582146,
+          "high": 104.58730724,
+          "low": 101.79332291,
+          "close": 102.87466011,
+          "volume": 1132914,
+          "benchmark": 207.00096845
+        },
+        {
+          "timestamp": "2024-02-14",
+          "basis": "synthetic-unadjusted",
+          "open": 103.5177329,
+          "high": 104.8445824,
+          "low": 102.00277316,
+          "close": 103.1969377,
+          "volume": 1178031,
+          "benchmark": 207.01115291
+        },
+        {
+          "timestamp": "2024-02-15",
+          "basis": "synthetic-unadjusted",
+          "open": 103.98489946,
+          "high": 105.4595345,
+          "low": 102.6287337,
+          "close": 103.95590523,
+          "volume": 1223148,
+          "benchmark": 206.93923519
+        },
+        {
+          "timestamp": "2024-02-16",
+          "basis": "synthetic-unadjusted",
+          "open": 104.83586874,
+          "high": 106.72577872,
+          "low": 103.37972695,
+          "close": 105.1078434,
+          "volume": 890265,
+          "benchmark": 206.79176278
+        },
+        {
+          "timestamp": "2024-02-17",
+          "basis": "synthetic-unadjusted",
+          "open": 105.71776737,
+          "high": 107.93537293,
+          "low": 104.16017349,
+          "close": 106.20471306,
+          "volume": 935382,
+          "benchmark": 206.57800251
+        },
+        {
+          "timestamp": "2024-02-18",
+          "basis": "synthetic-unadjusted",
+          "open": 106.12000896,
+          "high": 108.46023951,
+          "low": 104.50695237,
+          "close": 106.66795441,
+          "volume": 980499,
+          "benchmark": 206.309607
+        },
+        {
+          "timestamp": "2024-02-19",
+          "basis": "synthetic-unadjusted",
+          "open": 105.7273276,
+          "high": 107.95460451,
+          "low": 104.11489571,
+          "close": 106.16301352,
+          "volume": 1025616,
+          "benchmark": 206.0001953
+        },
+        {
+          "timestamp": "2024-02-20",
+          "basis": "synthetic-unadjusted",
+          "open": 104.64555806,
+          "high": 106.55992534,
+          "low": 103.08972453,
+          "close": 104.83122141,
+          "volume": 1070733,
+          "benchmark": 205.66486267
+        },
+        {
+          "timestamp": "2024-02-21",
+          "basis": "synthetic-unadjusted",
+          "open": 103.34994538,
+          "high": 104.96501903,
+          "low": 101.77331349,
+          "close": 103.22687977,
+          "volume": 1115850,
+          "benchmark": 205.31963731
+        },
+        {
+          "timestamp": "2024-02-22",
+          "basis": "synthetic-unadjusted",
+          "open": 102.3905815,
+          "high": 103.86197016,
+          "low": 100.67345024,
+          "close": 101.99770004,
+          "volume": 1160967,
+          "benchmark": 204.98090348
+        },
+        {
+          "timestamp": "2024-02-23",
+          "basis": "synthetic-unadjusted",
+          "open": 102.05096221,
+          "high": 103.37477169,
+          "low": 100.32106472,
+          "close": 101.51249326,
+          "volume": 1206084,
+          "benchmark": 204.66481179
+        },
+        {
+          "timestamp": "2024-02-24",
+          "basis": "synthetic-unadjusted",
+          "open": 102.18734018,
+          "high": 103.38654579,
+          "low": 100.59426151,
+          "close": 101.67354655,
+          "volume": 1251201,
+          "benchmark": 204.38669795
+        },
+        {
+          "timestamp": "2024-02-25",
+          "basis": "synthetic-unadjusted",
+          "open": 102.35737001,
+          "high": 103.47763351,
+          "low": 101.02247511,
+          "close": 102.03071226,
+          "volume": 918318,
+          "benchmark": 204.16053075
+        },
+        {
+          "timestamp": "2024-02-26",
+          "basis": "synthetic-unadjusted",
+          "open": 102.15443742,
+          "high": 103.25579344,
+          "low": 101.12698366,
+          "close": 102.11820408,
+          "volume": 963435,
+          "benchmark": 203.99840937
+        },
+        {
+          "timestamp": "2024-02-27",
+          "basis": "synthetic-unadjusted",
+          "open": 101.52524821,
+          "high": 102.93682183,
+          "low": 100.49391514,
+          "close": 101.7908962,
+          "volume": 1008552,
+          "benchmark": 203.91012788
+        },
+        {
+          "timestamp": "2024-02-28",
+          "basis": "synthetic-unadjusted",
+          "open": 100.85472898,
+          "high": 102.58411853,
+          "low": 99.73345714,
+          "close": 101.33826093,
+          "volume": 1053669,
+          "benchmark": 203.90282272
+        },
+        {
+          "timestamp": "2024-02-29",
+          "basis": "synthetic-unadjusted",
+          "open": 100.75146757,
+          "high": 102.68294908,
+          "low": 99.50680584,
+          "close": 101.29999161,
+          "volume": 1098786,
+          "benchmark": 203.9807159
+        },
+        {
+          "timestamp": "2024-03-01",
+          "basis": "synthetic-unadjusted",
+          "open": 101.66276052,
+          "high": 103.63509809,
+          "low": 100.28372321,
+          "close": 102.10283442,
+          "volume": 1143903,
+          "benchmark": 204.14496299
+        },
+        {
+          "timestamp": "2024-03-02",
+          "basis": "synthetic-unadjusted",
+          "open": 103.56347165,
+          "high": 105.42253716,
+          "low": 102.06353862,
+          "close": 103.7559449,
+          "volume": 1189020,
+          "benchmark": 204.39361154
+        },
+        {
+          "timestamp": "2024-03-03",
+          "basis": "synthetic-unadjusted",
+          "open": 105.92143879,
+          "high": 107.682925,
+          "low": 104.22011414,
+          "close": 105.80545173,
+          "volume": 1234137,
+          "benchmark": 204.72167139
+        },
+        {
+          "timestamp": "2024-03-04",
+          "basis": "synthetic-unadjusted",
+          "open": 107.96930897,
+          "high": 109.76897731,
+          "low": 105.96183498,
+          "close": 107.58153648,
+          "volume": 1279254,
+          "benchmark": 205.12129422
+        },
+        {
+          "timestamp": "2024-03-05",
+          "basis": "synthetic-unadjusted",
+          "open": 109.11889196,
+          "high": 110.89307884,
+          "low": 106.98517876,
+          "close": 108.58194695,
+          "volume": 946371,
+          "benchmark": 205.58205608
+        },
+        {
+          "timestamp": "2024-03-06",
+          "basis": "synthetic-unadjusted",
+          "open": 109.26386223,
+          "high": 110.95354342,
+          "low": 107.22681259,
+          "close": 108.74752566,
+          "volume": 991488,
+          "benchmark": 206.0913325
+        },
+        {
+          "timestamp": "2024-03-07",
+          "basis": "synthetic-unadjusted",
+          "open": 108.52792279,
+          "high": 110.08945991,
+          "low": 106.79007588,
+          "close": 108.19545928,
+          "volume": 1036605,
+          "benchmark": 206.63475292
+        },
+        {
+          "timestamp": "2024-03-08",
+          "basis": "synthetic-unadjusted",
+          "open": 107.7624154,
+          "high": 109.17550104,
+          "low": 106.44717218,
+          "close": 107.71894926,
+          "volume": 1081722,
+          "benchmark": 207.19671786
+        },
+        {
+          "timestamp": "2024-03-09",
+          "basis": "synthetic-unadjusted",
+          "open": 107.37965505,
+          "high": 108.91028531,
+          "low": 106.23543545,
+          "close": 107.63893019,
+          "volume": 1126839,
+          "benchmark": 207.76096043
+        },
+        {
+          "timestamp": "2024-03-10",
+          "basis": "synthetic-unadjusted",
+          "open": 107.36933253,
+          "high": 109.01151685,
+          "low": 106.32339736,
+          "close": 107.84936666,
+          "volume": 1171956,
+          "benchmark": 208.31113173
+        },
+        {
+          "timestamp": "2024-03-11",
+          "basis": "synthetic-unadjusted",
+          "open": 107.34730516,
+          "high": 109.00166608,
+          "low": 106.35248688,
+          "close": 107.89631243,
+          "volume": 1217073,
+          "benchmark": 208.83138933
+        },
+        {
+          "timestamp": "2024-03-12",
+          "basis": "synthetic-unadjusted",
+          "open": 106.85397475,
+          "high": 108.40966648,
+          "low": 105.85379903,
+          "close": 107.29836012,
+          "volume": 1262190,
+          "benchmark": 209.30696743
+        },
+        {
+          "timestamp": "2024-03-13",
+          "basis": "synthetic-unadjusted",
+          "open": 105.69845052,
+          "high": 107.07662472,
+          "low": 104.63741847,
+          "close": 105.89770021,
+          "volume": 1307307,
+          "benchmark": 209.72470831
+        },
+        {
+          "timestamp": "2024-03-14",
+          "basis": "synthetic-unadjusted",
+          "open": 104.1187771,
+          "high": 105.41467406,
+          "low": 102.84358148,
+          "close": 104.00988874,
+          "volume": 974424,
+          "benchmark": 210.07353591
+        },
+        {
+          "timestamp": "2024-03-15",
+          "basis": "synthetic-unadjusted",
+          "open": 102.65303851,
+          "high": 104.09396524,
+          "low": 100.97360834,
+          "close": 102.2704424,
+          "volume": 1019541,
+          "benchmark": 210.34485446
+        },
+        {
+          "timestamp": "2024-03-16",
+          "basis": "synthetic-unadjusted",
+          "open": 101.80840317,
+          "high": 103.39601163,
+          "low": 99.84422783,
+          "close": 101.27307544,
+          "volume": 1064658,
+          "benchmark": 210.53285786
+        },
+        {
+          "timestamp": "2024-03-17",
+          "basis": "synthetic-unadjusted",
+          "open": 101.74869637,
+          "high": 103.45793238,
+          "low": 99.69159419,
+          "close": 101.22990661,
+          "volume": 1109775,
+          "benchmark": 210.63473864
+        },
+        {
+          "timestamp": "2024-03-18",
+          "basis": "synthetic-unadjusted",
+          "open": 102.20838641,
+          "high": 103.99205127,
+          "low": 100.26487656,
+          "close": 101.87017493,
+          "volume": 1154892,
+          "benchmark": 210.65078903
+        },
+        {
+          "timestamp": "2024-03-19",
+          "basis": "synthetic-unadjusted",
+          "open": 102.69052232,
+          "high": 104.48786617,
+          "low": 101.02222147,
+          "close": 102.63983093,
+          "volume": 1200009,
+          "benchmark": 210.58439042
+        },
+        {
+          "timestamp": "2024-03-20",
+          "basis": "synthetic-unadjusted",
+          "open": 102.81711885,
+          "high": 104.81775853,
+          "low": 101.24411464,
+          "close": 103.06997607,
+          "volume": 1245126,
+          "benchmark": 210.44189166
+        },
+        {
+          "timestamp": "2024-03-21",
+          "basis": "synthetic-unadjusted",
+          "open": 102.5973417,
+          "high": 104.71779884,
+          "low": 101.11773786,
+          "close": 103.07379457,
+          "volume": 1290243,
+          "benchmark": 210.23238058
+        },
+        {
+          "timestamp": "2024-03-22",
+          "basis": "synthetic-unadjusted",
+          "open": 102.43026263,
+          "high": 104.48456169,
+          "low": 101.07584902,
+          "close": 102.97965768,
+          "volume": 1335360,
+          "benchmark": 209.96735685
+        },
+        {
+          "timestamp": "2024-03-23",
+          "basis": "synthetic-unadjusted",
+          "open": 102.83248073,
+          "high": 104.63690778,
+          "low": 101.61225402,
+          "close": 103.28110032,
+          "volume": 1002477,
+          "benchmark": 209.66031817
+        },
+        {
+          "timestamp": "2024-03-24",
+          "basis": "synthetic-unadjusted",
+          "open": 104.06373548,
+          "high": 105.49358737,
+          "low": 102.96226112,
+          "close": 104.26972697,
+          "volume": 1047594,
+          "benchmark": 209.32627439
+        },
+        {
+          "timestamp": "2024-03-25",
+          "basis": "synthetic-unadjusted",
+          "open": 105.89592192,
+          "high": 107.02900816,
+          "low": 104.77437357,
+          "close": 105.7941512,
+          "volume": 1092711,
+          "benchmark": 208.98120733
+        },
+        {
+          "timestamp": "2024-03-26",
+          "basis": "synthetic-unadjusted",
+          "open": 107.68397553,
+          "high": 108.78398763,
+          "low": 106.31661141,
+          "close": 107.30662231,
+          "volume": 1137828,
+          "benchmark": 208.64149554
+        },
+        {
+          "timestamp": "2024-03-27",
+          "basis": "synthetic-unadjusted",
+          "open": 108.7055771,
+          "high": 109.83623682,
+          "low": 107.15436597,
+          "close": 108.17195972,
+          "volume": 1182945,
+          "benchmark": 208.32332484
+        },
+        {
+          "timestamp": "2024-03-28",
+          "basis": "synthetic-unadjusted",
+          "open": 108.56356717,
+          "high": 109.78301632,
+          "low": 106.94491017,
+          "close": 108.04241441,
+          "volume": 1228062,
+          "benchmark": 208.04210575
+        },
+        {
+          "timestamp": "2024-03-29",
+          "basis": "synthetic-unadjusted",
+          "open": 107.40224321,
+          "high": 108.75245784,
+          "low": 105.84314939,
+          "close": 107.05834256,
+          "volume": 1273179,
+          "benchmark": 207.81191885
+        },
+        {
+          "timestamp": "2024-03-30",
+          "basis": "synthetic-unadjusted",
+          "open": 105.80453776,
+          "high": 107.30368564,
+          "low": 104.39739684,
+          "close": 105.74662993,
+          "volume": 1318296,
+          "benchmark": 207.64500797
+        },
+        {
+          "timestamp": "2024-03-31",
+          "basis": "synthetic-unadjusted",
+          "open": 104.4375038,
+          "high": 106.32303199,
+          "low": 102.96228424,
+          "close": 104.68389914,
+          "volume": 1363413,
+          "benchmark": 207.55133957
+        },
+        {
+          "timestamp": "2024-04-01",
+          "basis": "synthetic-unadjusted",
+          "open": 103.67015573,
+          "high": 105.88762719,
+          "low": 102.09994132,
+          "close": 104.14294451,
+          "volume": 1030530,
+          "benchmark": 207.53824399
+        },
+        {
+          "timestamp": "2024-04-02",
+          "basis": "synthetic-unadjusted",
+          "open": 103.40057391,
+          "high": 105.74684131,
+          "low": 101.78365184,
+          "close": 103.95026123,
+          "volume": 1075647,
+          "benchmark": 207.61015161
+        },
+        {
+          "timestamp": "2024-04-03",
+          "basis": "synthetic-unadjusted",
+          "open": 103.19120613,
+          "high": 105.4293581,
+          "low": 101.58436758,
+          "close": 103.64398194,
+          "volume": 1120764,
+          "benchmark": 207.76843346
+        },
+        {
+          "timestamp": "2024-04-04",
+          "basis": "synthetic-unadjusted",
+          "open": 102.61252414,
+          "high": 104.53833243,
+          "low": 101.07072441,
+          "close": 102.82522162,
+          "volume": 1165881,
+          "benchmark": 208.01135177
+        },
+        {
+          "timestamp": "2024-04-05",
+          "basis": "synthetic-unadjusted",
+          "open": 101.56414128,
+          "high": 103.15708255,
+          "low": 100.03585875,
+          "close": 101.46950589,
+          "volume": 1210998,
+          "benchmark": 208.33412264
+        },
+        {
+          "timestamp": "2024-04-06",
+          "basis": "synthetic-unadjusted",
+          "open": 100.3628592,
+          "high": 101.80960582,
+          "low": 98.68874251,
+          "close": 99.99081447,
+          "volume": 1256115,
+          "benchmark": 208.72908809
+        }
+      ],
+      "parameters": {}
+    },
+    "expected_ready_at": 13,
+    "expected_latest": {
+      "value": 0.6258523821746035
+    },
+    "prefix_cut": 48
+  },
+  "flat_boundary": {
+    "input": {
+      "bars": [
+        {
+          "timestamp": "2024-01-02",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 100.8,
+          "low": 99.28,
+          "close": 100.0,
+          "volume": 0,
+          "benchmark": 200.0
+        },
+        {
+          "timestamp": "2024-01-03",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 100.8,
+          "low": 99.28,
+          "close": 100.0,
+          "volume": 795117,
+          "benchmark": 200.56326135
+        },
+        {
+          "timestamp": "2024-01-04",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 100.8,
+          "low": 99.28,
+          "close": 100.0,
+          "volume": 840234,
+          "benchmark": 201.11020913
+        },
+        {
+          "timestamp": "2024-01-05",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 100.8,
+          "low": 99.28,
+          "close": 100.0,
+          "volume": 885351,
+          "benchmark": 201.62511692
+        },
+        {
+          "timestamp": "2024-01-06",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 100.8,
+          "low": 99.28,
+          "close": 100.0,
+          "volume": 930468,
+          "benchmark": 202.09341147
+        },
+        {
+          "timestamp": "2024-01-07",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 100.8,
+          "low": 99.28,
+          "close": 100.0,
+          "volume": 975585,
+          "benchmark": 202.50219721
+        },
+        {
+          "timestamp": "2024-01-08",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 100.8,
+          "low": 99.28,
+          "close": 100.0,
+          "volume": 1020702,
+          "benchmark": 202.84072039
+        },
+        {
+          "timestamp": "2024-01-09",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 100.8,
+          "low": 99.28,
+          "close": 100.0,
+          "volume": 1065819,
+          "benchmark": 203.10075611
+        },
+        {
+          "timestamp": "2024-01-10",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 100.8,
+          "low": 99.28,
+          "close": 100.0,
+          "volume": 1110936,
+          "benchmark": 203.27690435
+        },
+        {
+          "timestamp": "2024-01-11",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 100.8,
+          "low": 99.28,
+          "close": 100.0,
+          "volume": 778053,
+          "benchmark": 203.36678433
+        },
+        {
+          "timestamp": "2024-01-12",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 100.8,
+          "low": 99.28,
+          "close": 100.0,
+          "volume": 823170,
+          "benchmark": 203.37112021
+        },
+        {
+          "timestamp": "2024-01-13",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 100.8,
+          "low": 99.28,
+          "close": 100.0,
+          "volume": 0,
+          "benchmark": 203.293715
+        },
+        {
+          "timestamp": "2024-01-14",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 100.8,
+          "low": 99.28,
+          "close": 100.0,
+          "volume": 913404,
+          "benchmark": 203.1413137
+        },
+        {
+          "timestamp": "2024-01-15",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 100.8,
+          "low": 99.28,
+          "close": 100.0,
+          "volume": 958521,
+          "benchmark": 202.92336053
+        },
+        {
+          "timestamp": "2024-01-16",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 100.8,
+          "low": 99.28,
+          "close": 100.0,
+          "volume": 1003638,
+          "benchmark": 202.65165904
+        },
+        {
+          "timestamp": "2024-01-17",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 100.8,
+          "low": 99.28,
+          "close": 100.0,
+          "volume": 1048755,
+          "benchmark": 202.33994723
+        },
+        {
+          "timestamp": "2024-01-18",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 100.8,
+          "low": 99.28,
+          "close": 100.0,
+          "volume": 1093872,
+          "benchmark": 202.00340317
+        },
+        {
+          "timestamp": "2024-01-19",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 100.8,
+          "low": 99.28,
+          "close": 100.0,
+          "volume": 1138989,
+          "benchmark": 201.65809865
+        },
+        {
+          "timestamp": "2024-01-20",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 100.8,
+          "low": 99.28,
+          "close": 100.0,
+          "volume": 806106,
+          "benchmark": 201.32042079
+        },
+        {
+          "timestamp": "2024-01-21",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 100.8,
+          "low": 99.28,
+          "close": 100.0,
+          "volume": 851223,
+          "benchmark": 201.00648219
+        },
+        {
+          "timestamp": "2024-01-22",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 100.8,
+          "low": 99.28,
+          "close": 100.0,
+          "volume": 896340,
+          "benchmark": 200.73154106
+        },
+        {
+          "timestamp": "2024-01-23",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 100.8,
+          "low": 99.28,
+          "close": 100.0,
+          "volume": 941457,
+          "benchmark": 200.50945201
+        },
+        {
+          "timestamp": "2024-01-24",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 100.8,
+          "low": 99.28,
+          "close": 100.0,
+          "volume": 0,
+          "benchmark": 200.35216744
+        },
+        {
+          "timestamp": "2024-01-25",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 100.8,
+          "low": 99.28,
+          "close": 100.0,
+          "volume": 1031691,
+          "benchmark": 200.26930732
+        },
+        {
+          "timestamp": "2024-01-26",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 100.8,
+          "low": 99.28,
+          "close": 100.0,
+          "volume": 1076808,
+          "benchmark": 200.267813
+        },
+        {
+          "timestamp": "2024-01-27",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 100.8,
+          "low": 99.28,
+          "close": 100.0,
+          "volume": 1121925,
+          "benchmark": 200.35169731
+        },
+        {
+          "timestamp": "2024-01-28",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 100.8,
+          "low": 99.28,
+          "close": 100.0,
+          "volume": 1167042,
+          "benchmark": 200.5219002
+        },
+        {
+          "timestamp": "2024-01-29",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 100.8,
+          "low": 99.28,
+          "close": 100.0,
+          "volume": 834159,
+          "benchmark": 200.77625488
+        },
+        {
+          "timestamp": "2024-01-30",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 100.8,
+          "low": 99.28,
+          "close": 100.0,
+          "volume": 879276,
+          "benchmark": 201.10956581
+        },
+        {
+          "timestamp": "2024-01-31",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 100.8,
+          "low": 99.28,
+          "close": 100.0,
+          "volume": 924393,
+          "benchmark": 201.51379567
+        },
+        {
+          "timestamp": "2024-02-01",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 100.8,
+          "low": 99.28,
+          "close": 100.0,
+          "volume": 969510,
+          "benchmark": 201.9783547
+        },
+        {
+          "timestamp": "2024-02-02",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 100.8,
+          "low": 99.28,
+          "close": 100.0,
+          "volume": 1014627,
+          "benchmark": 202.49048176
+        },
+        {
+          "timestamp": "2024-02-03",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 100.8,
+          "low": 99.28,
+          "close": 100.0,
+          "volume": 1059744,
+          "benchmark": 203.03570369
+        },
+        {
+          "timestamp": "2024-02-04",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 100.8,
+          "low": 99.28,
+          "close": 100.0,
+          "volume": 0,
+          "benchmark": 203.59835618
+        },
+        {
+          "timestamp": "2024-02-05",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 100.8,
+          "low": 99.28,
+          "close": 100.0,
+          "volume": 1149978,
+          "benchmark": 204.16214758
+        },
+        {
+          "timestamp": "2024-02-06",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 100.8,
+          "low": 99.28,
+          "close": 100.0,
+          "volume": 1195095,
+          "benchmark": 204.71074525
+        },
+        {
+          "timestamp": "2024-02-07",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 100.8,
+          "low": 99.28,
+          "close": 100.0,
+          "volume": 862212,
+          "benchmark": 205.22836338
+        },
+        {
+          "timestamp": "2024-02-08",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 100.8,
+          "low": 99.28,
+          "close": 100.0,
+          "volume": 907329,
+          "benchmark": 205.70033117
+        },
+        {
+          "timestamp": "2024-02-09",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 100.8,
+          "low": 99.28,
+          "close": 100.0,
+          "volume": 952446,
+          "benchmark": 206.11362084
+        },
+        {
+          "timestamp": "2024-02-10",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 100.8,
+          "low": 99.28,
+          "close": 100.0,
+          "volume": 997563,
+          "benchmark": 206.45731655
+        },
+        {
+          "timestamp": "2024-02-11",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 100.8,
+          "low": 99.28,
+          "close": 100.0,
+          "volume": 1042680,
+          "benchmark": 206.72300721
+        },
+        {
+          "timestamp": "2024-02-12",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 100.8,
+          "low": 99.28,
+          "close": 100.0,
+          "volume": 1087797,
+          "benchmark": 206.9050893
+        },
+        {
+          "timestamp": "2024-02-13",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 100.8,
+          "low": 99.28,
+          "close": 100.0,
+          "volume": 1132914,
+          "benchmark": 207.00096845
+        },
+        {
+          "timestamp": "2024-02-14",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 100.8,
+          "low": 99.28,
+          "close": 100.0,
+          "volume": 1178031,
+          "benchmark": 207.01115291
+        },
+        {
+          "timestamp": "2024-02-15",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 100.8,
+          "low": 99.28,
+          "close": 100.0,
+          "volume": 0,
+          "benchmark": 206.93923519
+        },
+        {
+          "timestamp": "2024-02-16",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 100.8,
+          "low": 99.28,
+          "close": 100.0,
+          "volume": 890265,
+          "benchmark": 206.79176278
+        },
+        {
+          "timestamp": "2024-02-17",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 100.8,
+          "low": 99.28,
+          "close": 100.0,
+          "volume": 935382,
+          "benchmark": 206.57800251
+        },
+        {
+          "timestamp": "2024-02-18",
+          "basis": "synthetic-unadjusted",
+          "open": 100.0,
+          "high": 100.8,
+          "low": 99.28,
+          "close": 100.0,
+          "volume": 980499,
+          "benchmark": 206.309607
+        }
+      ],
+      "parameters": {}
+    },
+    "purpose": "Exercises flat prices, zero-volume rows, zero ranges where applicable, and explicit unavailable states."
+  }
+}

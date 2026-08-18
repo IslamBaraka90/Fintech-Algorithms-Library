@@ -1331,6 +1331,26 @@
       "import": "./dist/price-action-and-candlesticks/single-candle-patterns/shooting-star/index.js",
       "require": "./dist/price-action-and-candlesticks/single-candle-patterns/shooting-star/index.js"
     },
+    "./price-action-and-candlesticks/single-candle-patterns/long-legged-doji": {
+      "types": "./dist/price-action-and-candlesticks/single-candle-patterns/long-legged-doji/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/single-candle-patterns/long-legged-doji/index.js",
+      "require": "./dist/price-action-and-candlesticks/single-candle-patterns/long-legged-doji/index.js"
+    },
+    "./price-action-and-candlesticks/single-candle-patterns/four-price-doji": {
+      "types": "./dist/price-action-and-candlesticks/single-candle-patterns/four-price-doji/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/single-candle-patterns/four-price-doji/index.js",
+      "require": "./dist/price-action-and-candlesticks/single-candle-patterns/four-price-doji/index.js"
+    },
+    "./price-action-and-candlesticks/single-candle-patterns/high-wave-candle": {
+      "types": "./dist/price-action-and-candlesticks/single-candle-patterns/high-wave-candle/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/single-candle-patterns/high-wave-candle/index.js",
+      "require": "./dist/price-action-and-candlesticks/single-candle-patterns/high-wave-candle/index.js"
+    },
+    "./price-action-and-candlesticks/single-candle-patterns/belt-hold": {
+      "types": "./dist/price-action-and-candlesticks/single-candle-patterns/belt-hold/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/single-candle-patterns/belt-hold/index.js",
+      "require": "./dist/price-action-and-candlesticks/single-candle-patterns/belt-hold/index.js"
+    },
     "./price-action-and-candlesticks/two-candle-patterns/bullish-engulfing": {
       "types": "./dist/price-action-and-candlesticks/two-candle-patterns/bullish-engulfing/index.d.ts",
       "import": "./dist/price-action-and-candlesticks/two-candle-patterns/bullish-engulfing/index.js",
@@ -1371,6 +1391,26 @@
       "import": "./dist/price-action-and-candlesticks/two-candle-patterns/tweezer-bottom/index.js",
       "require": "./dist/price-action-and-candlesticks/two-candle-patterns/tweezer-bottom/index.js"
     },
+    "./price-action-and-candlesticks/two-candle-patterns/harami-cross": {
+      "types": "./dist/price-action-and-candlesticks/two-candle-patterns/harami-cross/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/two-candle-patterns/harami-cross/index.js",
+      "require": "./dist/price-action-and-candlesticks/two-candle-patterns/harami-cross/index.js"
+    },
+    "./price-action-and-candlesticks/two-candle-patterns/kicking-pattern": {
+      "types": "./dist/price-action-and-candlesticks/two-candle-patterns/kicking-pattern/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/two-candle-patterns/kicking-pattern/index.js",
+      "require": "./dist/price-action-and-candlesticks/two-candle-patterns/kicking-pattern/index.js"
+    },
+    "./price-action-and-candlesticks/two-candle-patterns/matching-low": {
+      "types": "./dist/price-action-and-candlesticks/two-candle-patterns/matching-low/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/two-candle-patterns/matching-low/index.js",
+      "require": "./dist/price-action-and-candlesticks/two-candle-patterns/matching-low/index.js"
+    },
+    "./price-action-and-candlesticks/two-candle-patterns/rising-falling-window": {
+      "types": "./dist/price-action-and-candlesticks/two-candle-patterns/rising-falling-window/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/two-candle-patterns/rising-falling-window/index.js",
+      "require": "./dist/price-action-and-candlesticks/two-candle-patterns/rising-falling-window/index.js"
+    },
     "./price-action-and-candlesticks/multi-candle-patterns/morning-star": {
       "types": "./dist/price-action-and-candlesticks/multi-candle-patterns/morning-star/index.d.ts",
       "import": "./dist/price-action-and-candlesticks/multi-candle-patterns/morning-star/index.js",
@@ -1405,6 +1445,36 @@
       "types": "./dist/price-action-and-candlesticks/multi-candle-patterns/abandoned-baby/index.d.ts",
       "import": "./dist/price-action-and-candlesticks/multi-candle-patterns/abandoned-baby/index.js",
       "require": "./dist/price-action-and-candlesticks/multi-candle-patterns/abandoned-baby/index.js"
+    },
+    "./price-action-and-candlesticks/multi-candle-patterns/morning-doji-star": {
+      "types": "./dist/price-action-and-candlesticks/multi-candle-patterns/morning-doji-star/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/multi-candle-patterns/morning-doji-star/index.js",
+      "require": "./dist/price-action-and-candlesticks/multi-candle-patterns/morning-doji-star/index.js"
+    },
+    "./price-action-and-candlesticks/multi-candle-patterns/evening-doji-star": {
+      "types": "./dist/price-action-and-candlesticks/multi-candle-patterns/evening-doji-star/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/multi-candle-patterns/evening-doji-star/index.js",
+      "require": "./dist/price-action-and-candlesticks/multi-candle-patterns/evening-doji-star/index.js"
+    },
+    "./price-action-and-candlesticks/multi-candle-patterns/three-line-strike": {
+      "types": "./dist/price-action-and-candlesticks/multi-candle-patterns/three-line-strike/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/multi-candle-patterns/three-line-strike/index.js",
+      "require": "./dist/price-action-and-candlesticks/multi-candle-patterns/three-line-strike/index.js"
+    },
+    "./price-action-and-candlesticks/multi-candle-patterns/rising-falling-three-methods": {
+      "types": "./dist/price-action-and-candlesticks/multi-candle-patterns/rising-falling-three-methods/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/multi-candle-patterns/rising-falling-three-methods/index.js",
+      "require": "./dist/price-action-and-candlesticks/multi-candle-patterns/rising-falling-three-methods/index.js"
+    },
+    "./price-action-and-candlesticks/multi-candle-patterns/upside-gap-two-crows": {
+      "types": "./dist/price-action-and-candlesticks/multi-candle-patterns/upside-gap-two-crows/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/multi-candle-patterns/upside-gap-two-crows/index.js",
+      "require": "./dist/price-action-and-candlesticks/multi-candle-patterns/upside-gap-two-crows/index.js"
+    },
+    "./price-action-and-candlesticks/multi-candle-patterns/mat-hold": {
+      "types": "./dist/price-action-and-candlesticks/multi-candle-patterns/mat-hold/index.d.ts",
+      "import": "./dist/price-action-and-candlesticks/multi-candle-patterns/mat-hold/index.js",
+      "require": "./dist/price-action-and-candlesticks/multi-candle-patterns/mat-hold/index.js"
     },
     "./price-action-and-candlesticks/candlestick-scanning-and-context/unified-candlestick-pattern-registry": {
       "types": "./dist/price-action-and-candlesticks/candlestick-scanning-and-context/unified-candlestick-pattern-registry/index.d.ts",
@@ -1496,6 +1566,81 @@
       "import": "./dist/technical-indicators/trend-smoothing/mama/index.js",
       "require": "./dist/technical-indicators/trend-smoothing/mama/index.js"
     },
+    "./technical-indicators/trend-smoothing/triangular-moving-average-trima": {
+      "types": "./dist/technical-indicators/trend-smoothing/triangular-moving-average-trima/index.d.ts",
+      "import": "./dist/technical-indicators/trend-smoothing/triangular-moving-average-trima/index.js",
+      "require": "./dist/technical-indicators/trend-smoothing/triangular-moving-average-trima/index.js"
+    },
+    "./technical-indicators/trend-smoothing/tillson-t3-moving-average": {
+      "types": "./dist/technical-indicators/trend-smoothing/tillson-t3-moving-average/index.d.ts",
+      "import": "./dist/technical-indicators/trend-smoothing/tillson-t3-moving-average/index.js",
+      "require": "./dist/technical-indicators/trend-smoothing/tillson-t3-moving-average/index.js"
+    },
+    "./technical-indicators/trend-smoothing/following-adaptive-moving-average-fama": {
+      "types": "./dist/technical-indicators/trend-smoothing/following-adaptive-moving-average-fama/index.d.ts",
+      "import": "./dist/technical-indicators/trend-smoothing/following-adaptive-moving-average-fama/index.js",
+      "require": "./dist/technical-indicators/trend-smoothing/following-adaptive-moving-average-fama/index.js"
+    },
+    "./technical-indicators/trend-smoothing/arnaud-legoux-moving-average-alma": {
+      "types": "./dist/technical-indicators/trend-smoothing/arnaud-legoux-moving-average-alma/index.d.ts",
+      "import": "./dist/technical-indicators/trend-smoothing/arnaud-legoux-moving-average-alma/index.js",
+      "require": "./dist/technical-indicators/trend-smoothing/arnaud-legoux-moving-average-alma/index.js"
+    },
+    "./technical-indicators/trend-smoothing/fractal-adaptive-moving-average-frama": {
+      "types": "./dist/technical-indicators/trend-smoothing/fractal-adaptive-moving-average-frama/index.d.ts",
+      "import": "./dist/technical-indicators/trend-smoothing/fractal-adaptive-moving-average-frama/index.js",
+      "require": "./dist/technical-indicators/trend-smoothing/fractal-adaptive-moving-average-frama/index.js"
+    },
+    "./technical-indicators/trend-smoothing/zero-lag-exponential-moving-average-zlema": {
+      "types": "./dist/technical-indicators/trend-smoothing/zero-lag-exponential-moving-average-zlema/index.d.ts",
+      "import": "./dist/technical-indicators/trend-smoothing/zero-lag-exponential-moving-average-zlema/index.js",
+      "require": "./dist/technical-indicators/trend-smoothing/zero-lag-exponential-moving-average-zlema/index.js"
+    },
+    "./technical-indicators/trend-smoothing/least-squares-moving-average-lsma": {
+      "types": "./dist/technical-indicators/trend-smoothing/least-squares-moving-average-lsma/index.d.ts",
+      "import": "./dist/technical-indicators/trend-smoothing/least-squares-moving-average-lsma/index.js",
+      "require": "./dist/technical-indicators/trend-smoothing/least-squares-moving-average-lsma/index.js"
+    },
+    "./technical-indicators/trend-smoothing/variable-index-dynamic-average-vidya": {
+      "types": "./dist/technical-indicators/trend-smoothing/variable-index-dynamic-average-vidya/index.d.ts",
+      "import": "./dist/technical-indicators/trend-smoothing/variable-index-dynamic-average-vidya/index.js",
+      "require": "./dist/technical-indicators/trend-smoothing/variable-index-dynamic-average-vidya/index.js"
+    },
+    "./technical-indicators/trend-smoothing/mcginley-dynamic": {
+      "types": "./dist/technical-indicators/trend-smoothing/mcginley-dynamic/index.d.ts",
+      "import": "./dist/technical-indicators/trend-smoothing/mcginley-dynamic/index.js",
+      "require": "./dist/technical-indicators/trend-smoothing/mcginley-dynamic/index.js"
+    },
+    "./technical-indicators/trend-smoothing/jurik-style-moving-average-design": {
+      "types": "./dist/technical-indicators/trend-smoothing/jurik-style-moving-average-design/index.d.ts",
+      "import": "./dist/technical-indicators/trend-smoothing/jurik-style-moving-average-design/index.js",
+      "require": "./dist/technical-indicators/trend-smoothing/jurik-style-moving-average-design/index.js"
+    },
+    "./technical-indicators/trend-smoothing/volume-weighted-moving-average-vwma": {
+      "types": "./dist/technical-indicators/trend-smoothing/volume-weighted-moving-average-vwma/index.d.ts",
+      "import": "./dist/technical-indicators/trend-smoothing/volume-weighted-moving-average-vwma/index.js",
+      "require": "./dist/technical-indicators/trend-smoothing/volume-weighted-moving-average-vwma/index.js"
+    },
+    "./technical-indicators/trend-smoothing/quadratic-weighted-moving-average": {
+      "types": "./dist/technical-indicators/trend-smoothing/quadratic-weighted-moving-average/index.d.ts",
+      "import": "./dist/technical-indicators/trend-smoothing/quadratic-weighted-moving-average/index.js",
+      "require": "./dist/technical-indicators/trend-smoothing/quadratic-weighted-moving-average/index.js"
+    },
+    "./technical-indicators/trend-smoothing/gaussian-moving-average": {
+      "types": "./dist/technical-indicators/trend-smoothing/gaussian-moving-average/index.d.ts",
+      "import": "./dist/technical-indicators/trend-smoothing/gaussian-moving-average/index.js",
+      "require": "./dist/technical-indicators/trend-smoothing/gaussian-moving-average/index.js"
+    },
+    "./technical-indicators/trend-smoothing/ehlers-super-smoother-filter": {
+      "types": "./dist/technical-indicators/trend-smoothing/ehlers-super-smoother-filter/index.d.ts",
+      "import": "./dist/technical-indicators/trend-smoothing/ehlers-super-smoother-filter/index.js",
+      "require": "./dist/technical-indicators/trend-smoothing/ehlers-super-smoother-filter/index.js"
+    },
+    "./technical-indicators/trend-smoothing/ehlers-instantaneous-trendline": {
+      "types": "./dist/technical-indicators/trend-smoothing/ehlers-instantaneous-trendline/index.d.ts",
+      "import": "./dist/technical-indicators/trend-smoothing/ehlers-instantaneous-trendline/index.js",
+      "require": "./dist/technical-indicators/trend-smoothing/ehlers-instantaneous-trendline/index.js"
+    },
     "./technical-indicators/trend-systems/macd": {
       "types": "./dist/technical-indicators/trend-systems/macd/index.d.ts",
       "import": "./dist/technical-indicators/trend-systems/macd/index.js",
@@ -1536,6 +1681,61 @@
       "import": "./dist/technical-indicators/trend-systems/supertrend/index.js",
       "require": "./dist/technical-indicators/trend-systems/supertrend/index.js"
     },
+    "./technical-indicators/trend-systems/average-directional-index-rating-adxr": {
+      "types": "./dist/technical-indicators/trend-systems/average-directional-index-rating-adxr/index.d.ts",
+      "import": "./dist/technical-indicators/trend-systems/average-directional-index-rating-adxr/index.js",
+      "require": "./dist/technical-indicators/trend-systems/average-directional-index-rating-adxr/index.js"
+    },
+    "./technical-indicators/trend-systems/vortex-indicator-vi-vi": {
+      "types": "./dist/technical-indicators/trend-systems/vortex-indicator-vi-vi/index.d.ts",
+      "import": "./dist/technical-indicators/trend-systems/vortex-indicator-vi-vi/index.js",
+      "require": "./dist/technical-indicators/trend-systems/vortex-indicator-vi-vi/index.js"
+    },
+    "./technical-indicators/trend-systems/choppiness-index": {
+      "types": "./dist/technical-indicators/trend-systems/choppiness-index/index.d.ts",
+      "import": "./dist/technical-indicators/trend-systems/choppiness-index/index.js",
+      "require": "./dist/technical-indicators/trend-systems/choppiness-index/index.js"
+    },
+    "./technical-indicators/trend-systems/trend-intensity-index": {
+      "types": "./dist/technical-indicators/trend-systems/trend-intensity-index/index.d.ts",
+      "import": "./dist/technical-indicators/trend-systems/trend-intensity-index/index.js",
+      "require": "./dist/technical-indicators/trend-systems/trend-intensity-index/index.js"
+    },
+    "./technical-indicators/trend-systems/qstick": {
+      "types": "./dist/technical-indicators/trend-systems/qstick/index.d.ts",
+      "import": "./dist/technical-indicators/trend-systems/qstick/index.js",
+      "require": "./dist/technical-indicators/trend-systems/qstick/index.js"
+    },
+    "./technical-indicators/trend-systems/mass-index": {
+      "types": "./dist/technical-indicators/trend-systems/mass-index/index.d.ts",
+      "import": "./dist/technical-indicators/trend-systems/mass-index/index.js",
+      "require": "./dist/technical-indicators/trend-systems/mass-index/index.js"
+    },
+    "./technical-indicators/trend-systems/vertical-horizontal-filter": {
+      "types": "./dist/technical-indicators/trend-systems/vertical-horizontal-filter/index.d.ts",
+      "import": "./dist/technical-indicators/trend-systems/vertical-horizontal-filter/index.js",
+      "require": "./dist/technical-indicators/trend-systems/vertical-horizontal-filter/index.js"
+    },
+    "./technical-indicators/trend-systems/random-walk-index-high-low": {
+      "types": "./dist/technical-indicators/trend-systems/random-walk-index-high-low/index.d.ts",
+      "import": "./dist/technical-indicators/trend-systems/random-walk-index-high-low/index.js",
+      "require": "./dist/technical-indicators/trend-systems/random-walk-index-high-low/index.js"
+    },
+    "./technical-indicators/trend-systems/trend-trigger-factor": {
+      "types": "./dist/technical-indicators/trend-systems/trend-trigger-factor/index.d.ts",
+      "import": "./dist/technical-indicators/trend-systems/trend-trigger-factor/index.js",
+      "require": "./dist/technical-indicators/trend-systems/trend-trigger-factor/index.js"
+    },
+    "./technical-indicators/trend-systems/directional-trend-index": {
+      "types": "./dist/technical-indicators/trend-systems/directional-trend-index/index.d.ts",
+      "import": "./dist/technical-indicators/trend-systems/directional-trend-index/index.js",
+      "require": "./dist/technical-indicators/trend-systems/directional-trend-index/index.js"
+    },
+    "./technical-indicators/trend-systems/trend-strength-index": {
+      "types": "./dist/technical-indicators/trend-systems/trend-strength-index/index.d.ts",
+      "import": "./dist/technical-indicators/trend-systems/trend-strength-index/index.js",
+      "require": "./dist/technical-indicators/trend-systems/trend-strength-index/index.js"
+    },
     "./technical-indicators/momentum/rsi": {
       "types": "./dist/technical-indicators/momentum/rsi/index.d.ts",
       "import": "./dist/technical-indicators/momentum/rsi/index.js",
@@ -1575,6 +1775,116 @@
       "types": "./dist/technical-indicators/momentum/connors-rsi/index.d.ts",
       "import": "./dist/technical-indicators/momentum/connors-rsi/index.js",
       "require": "./dist/technical-indicators/momentum/connors-rsi/index.js"
+    },
+    "./technical-indicators/momentum/absolute-price-oscillator": {
+      "types": "./dist/technical-indicators/momentum/absolute-price-oscillator/index.d.ts",
+      "import": "./dist/technical-indicators/momentum/absolute-price-oscillator/index.js",
+      "require": "./dist/technical-indicators/momentum/absolute-price-oscillator/index.js"
+    },
+    "./technical-indicators/momentum/rate-of-change-variants-roc-rocp-and-rocr": {
+      "types": "./dist/technical-indicators/momentum/rate-of-change-variants-roc-rocp-and-rocr/index.d.ts",
+      "import": "./dist/technical-indicators/momentum/rate-of-change-variants-roc-rocp-and-rocr/index.js",
+      "require": "./dist/technical-indicators/momentum/rate-of-change-variants-roc-rocp-and-rocr/index.js"
+    },
+    "./technical-indicators/momentum/price-momentum-mom": {
+      "types": "./dist/technical-indicators/momentum/price-momentum-mom/index.d.ts",
+      "import": "./dist/technical-indicators/momentum/price-momentum-mom/index.js",
+      "require": "./dist/technical-indicators/momentum/price-momentum-mom/index.js"
+    },
+    "./technical-indicators/momentum/chande-momentum-oscillator": {
+      "types": "./dist/technical-indicators/momentum/chande-momentum-oscillator/index.d.ts",
+      "import": "./dist/technical-indicators/momentum/chande-momentum-oscillator/index.js",
+      "require": "./dist/technical-indicators/momentum/chande-momentum-oscillator/index.js"
+    },
+    "./technical-indicators/momentum/awesome-oscillator": {
+      "types": "./dist/technical-indicators/momentum/awesome-oscillator/index.d.ts",
+      "import": "./dist/technical-indicators/momentum/awesome-oscillator/index.js",
+      "require": "./dist/technical-indicators/momentum/awesome-oscillator/index.js"
+    },
+    "./technical-indicators/momentum/accelerator-oscillator": {
+      "types": "./dist/technical-indicators/momentum/accelerator-oscillator/index.d.ts",
+      "import": "./dist/technical-indicators/momentum/accelerator-oscillator/index.js",
+      "require": "./dist/technical-indicators/momentum/accelerator-oscillator/index.js"
+    },
+    "./technical-indicators/momentum/trix": {
+      "types": "./dist/technical-indicators/momentum/trix/index.d.ts",
+      "import": "./dist/technical-indicators/momentum/trix/index.js",
+      "require": "./dist/technical-indicators/momentum/trix/index.js"
+    },
+    "./technical-indicators/momentum/stochastic-momentum-index": {
+      "types": "./dist/technical-indicators/momentum/stochastic-momentum-index/index.d.ts",
+      "import": "./dist/technical-indicators/momentum/stochastic-momentum-index/index.js",
+      "require": "./dist/technical-indicators/momentum/stochastic-momentum-index/index.js"
+    },
+    "./technical-indicators/momentum/relative-vigor-index": {
+      "types": "./dist/technical-indicators/momentum/relative-vigor-index/index.d.ts",
+      "import": "./dist/technical-indicators/momentum/relative-vigor-index/index.js",
+      "require": "./dist/technical-indicators/momentum/relative-vigor-index/index.js"
+    },
+    "./technical-indicators/momentum/relative-momentum-index": {
+      "types": "./dist/technical-indicators/momentum/relative-momentum-index/index.d.ts",
+      "import": "./dist/technical-indicators/momentum/relative-momentum-index/index.js",
+      "require": "./dist/technical-indicators/momentum/relative-momentum-index/index.js"
+    },
+    "./technical-indicators/momentum/fisher-transform": {
+      "types": "./dist/technical-indicators/momentum/fisher-transform/index.d.ts",
+      "import": "./dist/technical-indicators/momentum/fisher-transform/index.js",
+      "require": "./dist/technical-indicators/momentum/fisher-transform/index.js"
+    },
+    "./technical-indicators/momentum/inverse-fisher-transform": {
+      "types": "./dist/technical-indicators/momentum/inverse-fisher-transform/index.d.ts",
+      "import": "./dist/technical-indicators/momentum/inverse-fisher-transform/index.js",
+      "require": "./dist/technical-indicators/momentum/inverse-fisher-transform/index.js"
+    },
+    "./technical-indicators/momentum/schaff-trend-cycle": {
+      "types": "./dist/technical-indicators/momentum/schaff-trend-cycle/index.d.ts",
+      "import": "./dist/technical-indicators/momentum/schaff-trend-cycle/index.js",
+      "require": "./dist/technical-indicators/momentum/schaff-trend-cycle/index.js"
+    },
+    "./technical-indicators/momentum/quantitative-qualitative-estimation-qqe": {
+      "types": "./dist/technical-indicators/momentum/quantitative-qualitative-estimation-qqe/index.d.ts",
+      "import": "./dist/technical-indicators/momentum/quantitative-qualitative-estimation-qqe/index.js",
+      "require": "./dist/technical-indicators/momentum/quantitative-qualitative-estimation-qqe/index.js"
+    },
+    "./technical-indicators/momentum/wavetrend-oscillator": {
+      "types": "./dist/technical-indicators/momentum/wavetrend-oscillator/index.d.ts",
+      "import": "./dist/technical-indicators/momentum/wavetrend-oscillator/index.js",
+      "require": "./dist/technical-indicators/momentum/wavetrend-oscillator/index.js"
+    },
+    "./technical-indicators/momentum/know-sure-thing-kst": {
+      "types": "./dist/technical-indicators/momentum/know-sure-thing-kst/index.d.ts",
+      "import": "./dist/technical-indicators/momentum/know-sure-thing-kst/index.js",
+      "require": "./dist/technical-indicators/momentum/know-sure-thing-kst/index.js"
+    },
+    "./technical-indicators/momentum/chande-forecast-oscillator": {
+      "types": "./dist/technical-indicators/momentum/chande-forecast-oscillator/index.d.ts",
+      "import": "./dist/technical-indicators/momentum/chande-forecast-oscillator/index.js",
+      "require": "./dist/technical-indicators/momentum/chande-forecast-oscillator/index.js"
+    },
+    "./technical-indicators/momentum/detrended-price-oscillator": {
+      "types": "./dist/technical-indicators/momentum/detrended-price-oscillator/index.d.ts",
+      "import": "./dist/technical-indicators/momentum/detrended-price-oscillator/index.js",
+      "require": "./dist/technical-indicators/momentum/detrended-price-oscillator/index.js"
+    },
+    "./technical-indicators/momentum/balance-of-power": {
+      "types": "./dist/technical-indicators/momentum/balance-of-power/index.d.ts",
+      "import": "./dist/technical-indicators/momentum/balance-of-power/index.js",
+      "require": "./dist/technical-indicators/momentum/balance-of-power/index.js"
+    },
+    "./technical-indicators/momentum/psychological-line": {
+      "types": "./dist/technical-indicators/momentum/psychological-line/index.d.ts",
+      "import": "./dist/technical-indicators/momentum/psychological-line/index.js",
+      "require": "./dist/technical-indicators/momentum/psychological-line/index.js"
+    },
+    "./technical-indicators/momentum/pretty-good-oscillator": {
+      "types": "./dist/technical-indicators/momentum/pretty-good-oscillator/index.d.ts",
+      "import": "./dist/technical-indicators/momentum/pretty-good-oscillator/index.js",
+      "require": "./dist/technical-indicators/momentum/pretty-good-oscillator/index.js"
+    },
+    "./technical-indicators/momentum/price-momentum-oscillator": {
+      "types": "./dist/technical-indicators/momentum/price-momentum-oscillator/index.d.ts",
+      "import": "./dist/technical-indicators/momentum/price-momentum-oscillator/index.js",
+      "require": "./dist/technical-indicators/momentum/price-momentum-oscillator/index.js"
     },
     "./technical-indicators/volatility-and-channels/true-range": {
       "types": "./dist/technical-indicators/volatility-and-channels/true-range/index.d.ts",
@@ -1636,6 +1946,266 @@
       "import": "./dist/technical-indicators/volume-indicators/force-index/index.js",
       "require": "./dist/technical-indicators/volume-indicators/force-index/index.js"
     },
+    "./technical-indicators/volume-indicators/chaikin-a-d-oscillator": {
+      "types": "./dist/technical-indicators/volume-indicators/chaikin-a-d-oscillator/index.d.ts",
+      "import": "./dist/technical-indicators/volume-indicators/chaikin-a-d-oscillator/index.js",
+      "require": "./dist/technical-indicators/volume-indicators/chaikin-a-d-oscillator/index.js"
+    },
+    "./technical-indicators/volume-indicators/session-vwap-indicator": {
+      "types": "./dist/technical-indicators/volume-indicators/session-vwap-indicator/index.d.ts",
+      "import": "./dist/technical-indicators/volume-indicators/session-vwap-indicator/index.js",
+      "require": "./dist/technical-indicators/volume-indicators/session-vwap-indicator/index.js"
+    },
+    "./technical-indicators/volume-indicators/anchored-vwap": {
+      "types": "./dist/technical-indicators/volume-indicators/anchored-vwap/index.d.ts",
+      "import": "./dist/technical-indicators/volume-indicators/anchored-vwap/index.js",
+      "require": "./dist/technical-indicators/volume-indicators/anchored-vwap/index.js"
+    },
+    "./technical-indicators/volume-indicators/negative-volume-index": {
+      "types": "./dist/technical-indicators/volume-indicators/negative-volume-index/index.d.ts",
+      "import": "./dist/technical-indicators/volume-indicators/negative-volume-index/index.js",
+      "require": "./dist/technical-indicators/volume-indicators/negative-volume-index/index.js"
+    },
+    "./technical-indicators/volume-indicators/positive-volume-index": {
+      "types": "./dist/technical-indicators/volume-indicators/positive-volume-index/index.d.ts",
+      "import": "./dist/technical-indicators/volume-indicators/positive-volume-index/index.js",
+      "require": "./dist/technical-indicators/volume-indicators/positive-volume-index/index.js"
+    },
+    "./technical-indicators/volume-indicators/ease-of-movement": {
+      "types": "./dist/technical-indicators/volume-indicators/ease-of-movement/index.d.ts",
+      "import": "./dist/technical-indicators/volume-indicators/ease-of-movement/index.js",
+      "require": "./dist/technical-indicators/volume-indicators/ease-of-movement/index.js"
+    },
+    "./technical-indicators/volume-indicators/klinger-volume-oscillator": {
+      "types": "./dist/technical-indicators/volume-indicators/klinger-volume-oscillator/index.d.ts",
+      "import": "./dist/technical-indicators/volume-indicators/klinger-volume-oscillator/index.js",
+      "require": "./dist/technical-indicators/volume-indicators/klinger-volume-oscillator/index.js"
+    },
+    "./technical-indicators/volume-indicators/volume-oscillator": {
+      "types": "./dist/technical-indicators/volume-indicators/volume-oscillator/index.d.ts",
+      "import": "./dist/technical-indicators/volume-indicators/volume-oscillator/index.js",
+      "require": "./dist/technical-indicators/volume-indicators/volume-oscillator/index.js"
+    },
+    "./technical-indicators/volume-indicators/percentage-volume-oscillator": {
+      "types": "./dist/technical-indicators/volume-indicators/percentage-volume-oscillator/index.d.ts",
+      "import": "./dist/technical-indicators/volume-indicators/percentage-volume-oscillator/index.js",
+      "require": "./dist/technical-indicators/volume-indicators/percentage-volume-oscillator/index.js"
+    },
+    "./technical-indicators/volume-indicators/volume-rate-of-change": {
+      "types": "./dist/technical-indicators/volume-indicators/volume-rate-of-change/index.d.ts",
+      "import": "./dist/technical-indicators/volume-indicators/volume-rate-of-change/index.js",
+      "require": "./dist/technical-indicators/volume-indicators/volume-rate-of-change/index.js"
+    },
+    "./technical-indicators/volume-indicators/relative-volume": {
+      "types": "./dist/technical-indicators/volume-indicators/relative-volume/index.d.ts",
+      "import": "./dist/technical-indicators/volume-indicators/relative-volume/index.js",
+      "require": "./dist/technical-indicators/volume-indicators/relative-volume/index.js"
+    },
+    "./technical-indicators/volume-indicators/money-flow-multiplier-and-money-flow-volume": {
+      "types": "./dist/technical-indicators/volume-indicators/money-flow-multiplier-and-money-flow-volume/index.d.ts",
+      "import": "./dist/technical-indicators/volume-indicators/money-flow-multiplier-and-money-flow-volume/index.js",
+      "require": "./dist/technical-indicators/volume-indicators/money-flow-multiplier-and-money-flow-volume/index.js"
+    },
+    "./technical-indicators/volume-indicators/volume-weighted-macd": {
+      "types": "./dist/technical-indicators/volume-indicators/volume-weighted-macd/index.d.ts",
+      "import": "./dist/technical-indicators/volume-indicators/volume-weighted-macd/index.js",
+      "require": "./dist/technical-indicators/volume-indicators/volume-weighted-macd/index.js"
+    },
+    "./technical-indicators/volume-indicators/volume-zone-oscillator": {
+      "types": "./dist/technical-indicators/volume-indicators/volume-zone-oscillator/index.d.ts",
+      "import": "./dist/technical-indicators/volume-indicators/volume-zone-oscillator/index.js",
+      "require": "./dist/technical-indicators/volume-indicators/volume-zone-oscillator/index.js"
+    },
+    "./technical-indicators/volume-indicators/twiggs-money-flow": {
+      "types": "./dist/technical-indicators/volume-indicators/twiggs-money-flow/index.d.ts",
+      "import": "./dist/technical-indicators/volume-indicators/twiggs-money-flow/index.js",
+      "require": "./dist/technical-indicators/volume-indicators/twiggs-money-flow/index.js"
+    },
+    "./technical-indicators/range-and-volatility-indicators/normalized-atr-and-atr-percentage": {
+      "types": "./dist/technical-indicators/range-and-volatility-indicators/normalized-atr-and-atr-percentage/index.d.ts",
+      "import": "./dist/technical-indicators/range-and-volatility-indicators/normalized-atr-and-atr-percentage/index.js",
+      "require": "./dist/technical-indicators/range-and-volatility-indicators/normalized-atr-and-atr-percentage/index.js"
+    },
+    "./technical-indicators/range-and-volatility-indicators/chaikin-volatility": {
+      "types": "./dist/technical-indicators/range-and-volatility-indicators/chaikin-volatility/index.d.ts",
+      "import": "./dist/technical-indicators/range-and-volatility-indicators/chaikin-volatility/index.js",
+      "require": "./dist/technical-indicators/range-and-volatility-indicators/chaikin-volatility/index.js"
+    },
+    "./technical-indicators/range-and-volatility-indicators/ulcer-index": {
+      "types": "./dist/technical-indicators/range-and-volatility-indicators/ulcer-index/index.d.ts",
+      "import": "./dist/technical-indicators/range-and-volatility-indicators/ulcer-index/index.js",
+      "require": "./dist/technical-indicators/range-and-volatility-indicators/ulcer-index/index.js"
+    },
+    "./technical-indicators/range-and-volatility-indicators/relative-volatility-index": {
+      "types": "./dist/technical-indicators/range-and-volatility-indicators/relative-volatility-index/index.d.ts",
+      "import": "./dist/technical-indicators/range-and-volatility-indicators/relative-volatility-index/index.js",
+      "require": "./dist/technical-indicators/range-and-volatility-indicators/relative-volatility-index/index.js"
+    },
+    "./technical-indicators/range-and-volatility-indicators/volatility-ratio": {
+      "types": "./dist/technical-indicators/range-and-volatility-indicators/volatility-ratio/index.d.ts",
+      "import": "./dist/technical-indicators/range-and-volatility-indicators/volatility-ratio/index.js",
+      "require": "./dist/technical-indicators/range-and-volatility-indicators/volatility-ratio/index.js"
+    },
+    "./technical-indicators/range-and-volatility-indicators/volatility-quality-index": {
+      "types": "./dist/technical-indicators/range-and-volatility-indicators/volatility-quality-index/index.d.ts",
+      "import": "./dist/technical-indicators/range-and-volatility-indicators/volatility-quality-index/index.js",
+      "require": "./dist/technical-indicators/range-and-volatility-indicators/volatility-quality-index/index.js"
+    },
+    "./technical-indicators/range-and-volatility-indicators/average-daily-range": {
+      "types": "./dist/technical-indicators/range-and-volatility-indicators/average-daily-range/index.d.ts",
+      "import": "./dist/technical-indicators/range-and-volatility-indicators/average-daily-range/index.js",
+      "require": "./dist/technical-indicators/range-and-volatility-indicators/average-daily-range/index.js"
+    },
+    "./technical-indicators/range-and-volatility-indicators/gap-volatility": {
+      "types": "./dist/technical-indicators/range-and-volatility-indicators/gap-volatility/index.d.ts",
+      "import": "./dist/technical-indicators/range-and-volatility-indicators/gap-volatility/index.js",
+      "require": "./dist/technical-indicators/range-and-volatility-indicators/gap-volatility/index.js"
+    },
+    "./technical-indicators/range-and-volatility-indicators/range-efficiency-ratio": {
+      "types": "./dist/technical-indicators/range-and-volatility-indicators/range-efficiency-ratio/index.d.ts",
+      "import": "./dist/technical-indicators/range-and-volatility-indicators/range-efficiency-ratio/index.js",
+      "require": "./dist/technical-indicators/range-and-volatility-indicators/range-efficiency-ratio/index.js"
+    },
+    "./technical-indicators/range-and-volatility-indicators/high-low-range-percentage": {
+      "types": "./dist/technical-indicators/range-and-volatility-indicators/high-low-range-percentage/index.d.ts",
+      "import": "./dist/technical-indicators/range-and-volatility-indicators/high-low-range-percentage/index.js",
+      "require": "./dist/technical-indicators/range-and-volatility-indicators/high-low-range-percentage/index.js"
+    },
+    "./technical-indicators/range-and-volatility-indicators/normalized-price-range": {
+      "types": "./dist/technical-indicators/range-and-volatility-indicators/normalized-price-range/index.d.ts",
+      "import": "./dist/technical-indicators/range-and-volatility-indicators/normalized-price-range/index.js",
+      "require": "./dist/technical-indicators/range-and-volatility-indicators/normalized-price-range/index.js"
+    },
+    "./technical-indicators/range-and-volatility-indicators/volatility-stop": {
+      "types": "./dist/technical-indicators/range-and-volatility-indicators/volatility-stop/index.d.ts",
+      "import": "./dist/technical-indicators/range-and-volatility-indicators/volatility-stop/index.js",
+      "require": "./dist/technical-indicators/range-and-volatility-indicators/volatility-stop/index.js"
+    },
+    "./technical-indicators/bands-envelopes-and-squeezes/bollinger-percent-b": {
+      "types": "./dist/technical-indicators/bands-envelopes-and-squeezes/bollinger-percent-b/index.d.ts",
+      "import": "./dist/technical-indicators/bands-envelopes-and-squeezes/bollinger-percent-b/index.js",
+      "require": "./dist/technical-indicators/bands-envelopes-and-squeezes/bollinger-percent-b/index.js"
+    },
+    "./technical-indicators/bands-envelopes-and-squeezes/moving-average-envelope": {
+      "types": "./dist/technical-indicators/bands-envelopes-and-squeezes/moving-average-envelope/index.d.ts",
+      "import": "./dist/technical-indicators/bands-envelopes-and-squeezes/moving-average-envelope/index.js",
+      "require": "./dist/technical-indicators/bands-envelopes-and-squeezes/moving-average-envelope/index.js"
+    },
+    "./technical-indicators/bands-envelopes-and-squeezes/atr-bands": {
+      "types": "./dist/technical-indicators/bands-envelopes-and-squeezes/atr-bands/index.d.ts",
+      "import": "./dist/technical-indicators/bands-envelopes-and-squeezes/atr-bands/index.js",
+      "require": "./dist/technical-indicators/bands-envelopes-and-squeezes/atr-bands/index.js"
+    },
+    "./technical-indicators/bands-envelopes-and-squeezes/standard-deviation-channel": {
+      "types": "./dist/technical-indicators/bands-envelopes-and-squeezes/standard-deviation-channel/index.d.ts",
+      "import": "./dist/technical-indicators/bands-envelopes-and-squeezes/standard-deviation-channel/index.js",
+      "require": "./dist/technical-indicators/bands-envelopes-and-squeezes/standard-deviation-channel/index.js"
+    },
+    "./technical-indicators/bands-envelopes-and-squeezes/regression-channel": {
+      "types": "./dist/technical-indicators/bands-envelopes-and-squeezes/regression-channel/index.d.ts",
+      "import": "./dist/technical-indicators/bands-envelopes-and-squeezes/regression-channel/index.js",
+      "require": "./dist/technical-indicators/bands-envelopes-and-squeezes/regression-channel/index.js"
+    },
+    "./technical-indicators/bands-envelopes-and-squeezes/raff-regression-channel": {
+      "types": "./dist/technical-indicators/bands-envelopes-and-squeezes/raff-regression-channel/index.d.ts",
+      "import": "./dist/technical-indicators/bands-envelopes-and-squeezes/raff-regression-channel/index.js",
+      "require": "./dist/technical-indicators/bands-envelopes-and-squeezes/raff-regression-channel/index.js"
+    },
+    "./technical-indicators/bands-envelopes-and-squeezes/starc-bands": {
+      "types": "./dist/technical-indicators/bands-envelopes-and-squeezes/starc-bands/index.d.ts",
+      "import": "./dist/technical-indicators/bands-envelopes-and-squeezes/starc-bands/index.js",
+      "require": "./dist/technical-indicators/bands-envelopes-and-squeezes/starc-bands/index.js"
+    },
+    "./technical-indicators/bands-envelopes-and-squeezes/fractal-chaos-bands": {
+      "types": "./dist/technical-indicators/bands-envelopes-and-squeezes/fractal-chaos-bands/index.d.ts",
+      "import": "./dist/technical-indicators/bands-envelopes-and-squeezes/fractal-chaos-bands/index.js",
+      "require": "./dist/technical-indicators/bands-envelopes-and-squeezes/fractal-chaos-bands/index.js"
+    },
+    "./technical-indicators/bands-envelopes-and-squeezes/projection-bands": {
+      "types": "./dist/technical-indicators/bands-envelopes-and-squeezes/projection-bands/index.d.ts",
+      "import": "./dist/technical-indicators/bands-envelopes-and-squeezes/projection-bands/index.js",
+      "require": "./dist/technical-indicators/bands-envelopes-and-squeezes/projection-bands/index.js"
+    },
+    "./technical-indicators/bands-envelopes-and-squeezes/dynamic-zone-bands": {
+      "types": "./dist/technical-indicators/bands-envelopes-and-squeezes/dynamic-zone-bands/index.d.ts",
+      "import": "./dist/technical-indicators/bands-envelopes-and-squeezes/dynamic-zone-bands/index.js",
+      "require": "./dist/technical-indicators/bands-envelopes-and-squeezes/dynamic-zone-bands/index.js"
+    },
+    "./technical-indicators/bands-envelopes-and-squeezes/ttm-squeeze": {
+      "types": "./dist/technical-indicators/bands-envelopes-and-squeezes/ttm-squeeze/index.d.ts",
+      "import": "./dist/technical-indicators/bands-envelopes-and-squeezes/ttm-squeeze/index.js",
+      "require": "./dist/technical-indicators/bands-envelopes-and-squeezes/ttm-squeeze/index.js"
+    },
+    "./technical-indicators/bands-envelopes-and-squeezes/squeeze-momentum": {
+      "types": "./dist/technical-indicators/bands-envelopes-and-squeezes/squeeze-momentum/index.d.ts",
+      "import": "./dist/technical-indicators/bands-envelopes-and-squeezes/squeeze-momentum/index.js",
+      "require": "./dist/technical-indicators/bands-envelopes-and-squeezes/squeeze-momentum/index.js"
+    },
+    "./technical-indicators/bands-envelopes-and-squeezes/adaptive-price-zone": {
+      "types": "./dist/technical-indicators/bands-envelopes-and-squeezes/adaptive-price-zone/index.d.ts",
+      "import": "./dist/technical-indicators/bands-envelopes-and-squeezes/adaptive-price-zone/index.js",
+      "require": "./dist/technical-indicators/bands-envelopes-and-squeezes/adaptive-price-zone/index.js"
+    },
+    "./technical-indicators/price-transforms/typical-price": {
+      "types": "./dist/technical-indicators/price-transforms/typical-price/index.d.ts",
+      "import": "./dist/technical-indicators/price-transforms/typical-price/index.js",
+      "require": "./dist/technical-indicators/price-transforms/typical-price/index.js"
+    },
+    "./technical-indicators/price-transforms/median-price-transform": {
+      "types": "./dist/technical-indicators/price-transforms/median-price-transform/index.d.ts",
+      "import": "./dist/technical-indicators/price-transforms/median-price-transform/index.js",
+      "require": "./dist/technical-indicators/price-transforms/median-price-transform/index.js"
+    },
+    "./technical-indicators/price-transforms/weighted-close": {
+      "types": "./dist/technical-indicators/price-transforms/weighted-close/index.d.ts",
+      "import": "./dist/technical-indicators/price-transforms/weighted-close/index.js",
+      "require": "./dist/technical-indicators/price-transforms/weighted-close/index.js"
+    },
+    "./technical-indicators/price-transforms/average-price-transform": {
+      "types": "./dist/technical-indicators/price-transforms/average-price-transform/index.d.ts",
+      "import": "./dist/technical-indicators/price-transforms/average-price-transform/index.js",
+      "require": "./dist/technical-indicators/price-transforms/average-price-transform/index.js"
+    },
+    "./technical-indicators/price-transforms/heikin-ashi-transform": {
+      "types": "./dist/technical-indicators/price-transforms/heikin-ashi-transform/index.d.ts",
+      "import": "./dist/technical-indicators/price-transforms/heikin-ashi-transform/index.js",
+      "require": "./dist/technical-indicators/price-transforms/heikin-ashi-transform/index.js"
+    },
+    "./technical-indicators/price-transforms/log-price-transform": {
+      "types": "./dist/technical-indicators/price-transforms/log-price-transform/index.d.ts",
+      "import": "./dist/technical-indicators/price-transforms/log-price-transform/index.js",
+      "require": "./dist/technical-indicators/price-transforms/log-price-transform/index.js"
+    },
+    "./technical-indicators/price-transforms/price-relative": {
+      "types": "./dist/technical-indicators/price-transforms/price-relative/index.d.ts",
+      "import": "./dist/technical-indicators/price-transforms/price-relative/index.js",
+      "require": "./dist/technical-indicators/price-transforms/price-relative/index.js"
+    },
+    "./technical-indicators/price-transforms/normalized-price-transform": {
+      "types": "./dist/technical-indicators/price-transforms/normalized-price-transform/index.d.ts",
+      "import": "./dist/technical-indicators/price-transforms/normalized-price-transform/index.js",
+      "require": "./dist/technical-indicators/price-transforms/normalized-price-transform/index.js"
+    },
+    "./technical-indicators/rolling-statistical-indicators/rolling-percentile": {
+      "types": "./dist/technical-indicators/rolling-statistical-indicators/rolling-percentile/index.d.ts",
+      "import": "./dist/technical-indicators/rolling-statistical-indicators/rolling-percentile/index.js",
+      "require": "./dist/technical-indicators/rolling-statistical-indicators/rolling-percentile/index.js"
+    },
+    "./technical-indicators/rolling-statistical-indicators/rolling-quantile": {
+      "types": "./dist/technical-indicators/rolling-statistical-indicators/rolling-quantile/index.d.ts",
+      "import": "./dist/technical-indicators/rolling-statistical-indicators/rolling-quantile/index.js",
+      "require": "./dist/technical-indicators/rolling-statistical-indicators/rolling-quantile/index.js"
+    },
+    "./technical-indicators/rolling-statistical-indicators/rolling-beta": {
+      "types": "./dist/technical-indicators/rolling-statistical-indicators/rolling-beta/index.d.ts",
+      "import": "./dist/technical-indicators/rolling-statistical-indicators/rolling-beta/index.js",
+      "require": "./dist/technical-indicators/rolling-statistical-indicators/rolling-beta/index.js"
+    },
+    "./technical-indicators/rolling-statistical-indicators/rolling-alpha": {
+      "types": "./dist/technical-indicators/rolling-statistical-indicators/rolling-alpha/index.d.ts",
+      "import": "./dist/technical-indicators/rolling-statistical-indicators/rolling-alpha/index.js",
+      "require": "./dist/technical-indicators/rolling-statistical-indicators/rolling-alpha/index.js"
+    },
     "./geometric-chart-patterns/pivots-and-levels/causal-pivot-detection": {
       "types": "./dist/geometric-chart-patterns/pivots-and-levels/causal-pivot-detection/index.d.ts",
       "import": "./dist/geometric-chart-patterns/pivots-and-levels/causal-pivot-detection/index.js",
@@ -1655,6 +2225,51 @@
       "types": "./dist/geometric-chart-patterns/pivots-and-levels/robust-trendline-fitting/index.d.ts",
       "import": "./dist/geometric-chart-patterns/pivots-and-levels/robust-trendline-fitting/index.js",
       "require": "./dist/geometric-chart-patterns/pivots-and-levels/robust-trendline-fitting/index.js"
+    },
+    "./geometric-chart-patterns/pivots-and-levels/classic-and-floor-trader-pivot-points": {
+      "types": "./dist/geometric-chart-patterns/pivots-and-levels/classic-and-floor-trader-pivot-points/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/pivots-and-levels/classic-and-floor-trader-pivot-points/index.js",
+      "require": "./dist/geometric-chart-patterns/pivots-and-levels/classic-and-floor-trader-pivot-points/index.js"
+    },
+    "./geometric-chart-patterns/pivots-and-levels/fibonacci-pivot-points": {
+      "types": "./dist/geometric-chart-patterns/pivots-and-levels/fibonacci-pivot-points/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/pivots-and-levels/fibonacci-pivot-points/index.js",
+      "require": "./dist/geometric-chart-patterns/pivots-and-levels/fibonacci-pivot-points/index.js"
+    },
+    "./geometric-chart-patterns/pivots-and-levels/camarilla-pivot-points": {
+      "types": "./dist/geometric-chart-patterns/pivots-and-levels/camarilla-pivot-points/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/pivots-and-levels/camarilla-pivot-points/index.js",
+      "require": "./dist/geometric-chart-patterns/pivots-and-levels/camarilla-pivot-points/index.js"
+    },
+    "./geometric-chart-patterns/pivots-and-levels/woodie-pivot-points": {
+      "types": "./dist/geometric-chart-patterns/pivots-and-levels/woodie-pivot-points/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/pivots-and-levels/woodie-pivot-points/index.js",
+      "require": "./dist/geometric-chart-patterns/pivots-and-levels/woodie-pivot-points/index.js"
+    },
+    "./geometric-chart-patterns/pivots-and-levels/demark-pivot-points": {
+      "types": "./dist/geometric-chart-patterns/pivots-and-levels/demark-pivot-points/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/pivots-and-levels/demark-pivot-points/index.js",
+      "require": "./dist/geometric-chart-patterns/pivots-and-levels/demark-pivot-points/index.js"
+    },
+    "./geometric-chart-patterns/pivots-and-levels/rolling-support-and-resistance": {
+      "types": "./dist/geometric-chart-patterns/pivots-and-levels/rolling-support-and-resistance/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/pivots-and-levels/rolling-support-and-resistance/index.js",
+      "require": "./dist/geometric-chart-patterns/pivots-and-levels/rolling-support-and-resistance/index.js"
+    },
+    "./geometric-chart-patterns/pivots-and-levels/fractal-support-and-resistance": {
+      "types": "./dist/geometric-chart-patterns/pivots-and-levels/fractal-support-and-resistance/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/pivots-and-levels/fractal-support-and-resistance/index.js",
+      "require": "./dist/geometric-chart-patterns/pivots-and-levels/fractal-support-and-resistance/index.js"
+    },
+    "./geometric-chart-patterns/pivots-and-levels/atr-support-and-resistance": {
+      "types": "./dist/geometric-chart-patterns/pivots-and-levels/atr-support-and-resistance/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/pivots-and-levels/atr-support-and-resistance/index.js",
+      "require": "./dist/geometric-chart-patterns/pivots-and-levels/atr-support-and-resistance/index.js"
+    },
+    "./geometric-chart-patterns/pivots-and-levels/pivot-range-width": {
+      "types": "./dist/geometric-chart-patterns/pivots-and-levels/pivot-range-width/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/pivots-and-levels/pivot-range-width/index.js",
+      "require": "./dist/geometric-chart-patterns/pivots-and-levels/pivot-range-width/index.js"
     },
     "./geometric-chart-patterns/reversal-structures/double-top": {
       "types": "./dist/geometric-chart-patterns/reversal-structures/double-top/index.d.ts",
@@ -1821,6 +2436,96 @@
       "import": "./dist/geometric-chart-patterns/level-confluence-and-zone-scoring/market-wide-zone-proximity-scanner-ranking/index.js",
       "require": "./dist/geometric-chart-patterns/level-confluence-and-zone-scoring/market-wide-zone-proximity-scanner-ranking/index.js"
     },
+    "./geometric-chart-patterns/market-structure-breakouts-and-regimes/highest-high-and-lowest-low-primitives": {
+      "types": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/highest-high-and-lowest-low-primitives/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/highest-high-and-lowest-low-primitives/index.js",
+      "require": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/highest-high-and-lowest-low-primitives/index.js"
+    },
+    "./geometric-chart-patterns/market-structure-breakouts-and-regimes/single-asset-new-high-new-low-signal": {
+      "types": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/single-asset-new-high-new-low-signal/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/single-asset-new-high-new-low-signal/index.js",
+      "require": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/single-asset-new-high-new-low-signal/index.js"
+    },
+    "./geometric-chart-patterns/market-structure-breakouts-and-regimes/breakout-strength": {
+      "types": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/breakout-strength/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/breakout-strength/index.js",
+      "require": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/breakout-strength/index.js"
+    },
+    "./geometric-chart-patterns/market-structure-breakouts-and-regimes/donchian-breakout": {
+      "types": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/donchian-breakout/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/donchian-breakout/index.js",
+      "require": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/donchian-breakout/index.js"
+    },
+    "./geometric-chart-patterns/market-structure-breakouts-and-regimes/opening-range-breakout": {
+      "types": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/opening-range-breakout/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/opening-range-breakout/index.js",
+      "require": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/opening-range-breakout/index.js"
+    },
+    "./geometric-chart-patterns/market-structure-breakouts-and-regimes/price-compression-index": {
+      "types": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/price-compression-index/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/price-compression-index/index.js",
+      "require": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/price-compression-index/index.js"
+    },
+    "./geometric-chart-patterns/market-structure-breakouts-and-regimes/range-expansion-index": {
+      "types": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/range-expansion-index/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/range-expansion-index/index.js",
+      "require": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/range-expansion-index/index.js"
+    },
+    "./geometric-chart-patterns/market-structure-breakouts-and-regimes/fractal-dimension-index": {
+      "types": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/fractal-dimension-index/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/fractal-dimension-index/index.js",
+      "require": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/fractal-dimension-index/index.js"
+    },
+    "./geometric-chart-patterns/market-structure-breakouts-and-regimes/hurst-exponent": {
+      "types": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/hurst-exponent/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/hurst-exponent/index.js",
+      "require": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/hurst-exponent/index.js"
+    },
+    "./geometric-chart-patterns/market-structure-breakouts-and-regimes/efficiency-ratio": {
+      "types": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/efficiency-ratio/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/efficiency-ratio/index.js",
+      "require": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/efficiency-ratio/index.js"
+    },
+    "./geometric-chart-patterns/market-structure-breakouts-and-regimes/market-meanness-index": {
+      "types": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/market-meanness-index/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/market-meanness-index/index.js",
+      "require": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/market-meanness-index/index.js"
+    },
+    "./geometric-chart-patterns/market-structure-breakouts-and-regimes/trend-range-regime-classifier": {
+      "types": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/trend-range-regime-classifier/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/trend-range-regime-classifier/index.js",
+      "require": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/trend-range-regime-classifier/index.js"
+    },
+    "./geometric-chart-patterns/market-structure-breakouts-and-regimes/volatility-regime-classifier": {
+      "types": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/volatility-regime-classifier/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/volatility-regime-classifier/index.js",
+      "require": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/volatility-regime-classifier/index.js"
+    },
+    "./geometric-chart-patterns/market-structure-breakouts-and-regimes/directional-persistence": {
+      "types": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/directional-persistence/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/directional-persistence/index.js",
+      "require": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/directional-persistence/index.js"
+    },
+    "./geometric-chart-patterns/market-structure-breakouts-and-regimes/swing-structure-detector": {
+      "types": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/swing-structure-detector/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/swing-structure-detector/index.js",
+      "require": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/swing-structure-detector/index.js"
+    },
+    "./geometric-chart-patterns/market-structure-breakouts-and-regimes/higher-high-lower-low-structure": {
+      "types": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/higher-high-lower-low-structure/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/higher-high-lower-low-structure/index.js",
+      "require": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/higher-high-lower-low-structure/index.js"
+    },
+    "./geometric-chart-patterns/market-structure-breakouts-and-regimes/inside-outside-bar-structure": {
+      "types": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/inside-outside-bar-structure/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/inside-outside-bar-structure/index.js",
+      "require": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/inside-outside-bar-structure/index.js"
+    },
+    "./geometric-chart-patterns/market-structure-breakouts-and-regimes/market-entropy": {
+      "types": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/market-entropy/index.d.ts",
+      "import": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/market-entropy/index.js",
+      "require": "./dist/geometric-chart-patterns/market-structure-breakouts-and-regimes/market-entropy/index.js"
+    },
     "./statistical-time-series/diagnostics/acf": {
       "types": "./dist/statistical-time-series/diagnostics/acf/index.d.ts",
       "import": "./dist/statistical-time-series/diagnostics/acf/index.js",
@@ -1965,6 +2670,46 @@
       "types": "./dist/statistical-time-series/decomposition-and-cycles/wavelet-decomposition/index.d.ts",
       "import": "./dist/statistical-time-series/decomposition-and-cycles/wavelet-decomposition/index.js",
       "require": "./dist/statistical-time-series/decomposition-and-cycles/wavelet-decomposition/index.js"
+    },
+    "./statistical-time-series/hilbert-and-ehlers-cycle-analytics/hilbert-transform-dominant-cycle-period": {
+      "types": "./dist/statistical-time-series/hilbert-and-ehlers-cycle-analytics/hilbert-transform-dominant-cycle-period/index.d.ts",
+      "import": "./dist/statistical-time-series/hilbert-and-ehlers-cycle-analytics/hilbert-transform-dominant-cycle-period/index.js",
+      "require": "./dist/statistical-time-series/hilbert-and-ehlers-cycle-analytics/hilbert-transform-dominant-cycle-period/index.js"
+    },
+    "./statistical-time-series/hilbert-and-ehlers-cycle-analytics/hilbert-transform-dominant-cycle-phase": {
+      "types": "./dist/statistical-time-series/hilbert-and-ehlers-cycle-analytics/hilbert-transform-dominant-cycle-phase/index.d.ts",
+      "import": "./dist/statistical-time-series/hilbert-and-ehlers-cycle-analytics/hilbert-transform-dominant-cycle-phase/index.js",
+      "require": "./dist/statistical-time-series/hilbert-and-ehlers-cycle-analytics/hilbert-transform-dominant-cycle-phase/index.js"
+    },
+    "./statistical-time-series/hilbert-and-ehlers-cycle-analytics/hilbert-transform-phasor-components": {
+      "types": "./dist/statistical-time-series/hilbert-and-ehlers-cycle-analytics/hilbert-transform-phasor-components/index.d.ts",
+      "import": "./dist/statistical-time-series/hilbert-and-ehlers-cycle-analytics/hilbert-transform-phasor-components/index.js",
+      "require": "./dist/statistical-time-series/hilbert-and-ehlers-cycle-analytics/hilbert-transform-phasor-components/index.js"
+    },
+    "./statistical-time-series/hilbert-and-ehlers-cycle-analytics/hilbert-transform-sinewave": {
+      "types": "./dist/statistical-time-series/hilbert-and-ehlers-cycle-analytics/hilbert-transform-sinewave/index.d.ts",
+      "import": "./dist/statistical-time-series/hilbert-and-ehlers-cycle-analytics/hilbert-transform-sinewave/index.js",
+      "require": "./dist/statistical-time-series/hilbert-and-ehlers-cycle-analytics/hilbert-transform-sinewave/index.js"
+    },
+    "./statistical-time-series/hilbert-and-ehlers-cycle-analytics/hilbert-transform-trend-cycle-mode": {
+      "types": "./dist/statistical-time-series/hilbert-and-ehlers-cycle-analytics/hilbert-transform-trend-cycle-mode/index.d.ts",
+      "import": "./dist/statistical-time-series/hilbert-and-ehlers-cycle-analytics/hilbert-transform-trend-cycle-mode/index.js",
+      "require": "./dist/statistical-time-series/hilbert-and-ehlers-cycle-analytics/hilbert-transform-trend-cycle-mode/index.js"
+    },
+    "./statistical-time-series/hilbert-and-ehlers-cycle-analytics/ehlers-cyber-cycle": {
+      "types": "./dist/statistical-time-series/hilbert-and-ehlers-cycle-analytics/ehlers-cyber-cycle/index.d.ts",
+      "import": "./dist/statistical-time-series/hilbert-and-ehlers-cycle-analytics/ehlers-cyber-cycle/index.js",
+      "require": "./dist/statistical-time-series/hilbert-and-ehlers-cycle-analytics/ehlers-cyber-cycle/index.js"
+    },
+    "./statistical-time-series/hilbert-and-ehlers-cycle-analytics/ehlers-roofing-filter": {
+      "types": "./dist/statistical-time-series/hilbert-and-ehlers-cycle-analytics/ehlers-roofing-filter/index.d.ts",
+      "import": "./dist/statistical-time-series/hilbert-and-ehlers-cycle-analytics/ehlers-roofing-filter/index.js",
+      "require": "./dist/statistical-time-series/hilbert-and-ehlers-cycle-analytics/ehlers-roofing-filter/index.js"
+    },
+    "./statistical-time-series/hilbert-and-ehlers-cycle-analytics/ehlers-decycler": {
+      "types": "./dist/statistical-time-series/hilbert-and-ehlers-cycle-analytics/ehlers-decycler/index.d.ts",
+      "import": "./dist/statistical-time-series/hilbert-and-ehlers-cycle-analytics/ehlers-decycler/index.js",
+      "require": "./dist/statistical-time-series/hilbert-and-ehlers-cycle-analytics/ehlers-decycler/index.js"
     },
     "./market-microstructure/trade-classification/tick-test": {
       "types": "./dist/market-microstructure/trade-classification/tick-test/index.d.ts",
@@ -2661,10 +3406,25 @@
       "import": "./dist/earnings-and-per-share-analytics/earnings-and-share-foundations/stock-split-consolidation-eps-restatement/index.js",
       "require": "./dist/earnings-and-per-share-analytics/earnings-and-share-foundations/stock-split-consolidation-eps-restatement/index.js"
     },
+    "./earnings-and-per-share-analytics/earnings-and-share-foundations/bonus-issue-eps-restatement": {
+      "types": "./dist/earnings-and-per-share-analytics/earnings-and-share-foundations/bonus-issue-eps-restatement/index.d.ts",
+      "import": "./dist/earnings-and-per-share-analytics/earnings-and-share-foundations/bonus-issue-eps-restatement/index.js",
+      "require": "./dist/earnings-and-per-share-analytics/earnings-and-share-foundations/bonus-issue-eps-restatement/index.js"
+    },
+    "./earnings-and-per-share-analytics/earnings-and-share-foundations/rights-issue-bonus-factor-adjustment": {
+      "types": "./dist/earnings-and-per-share-analytics/earnings-and-share-foundations/rights-issue-bonus-factor-adjustment/index.d.ts",
+      "import": "./dist/earnings-and-per-share-analytics/earnings-and-share-foundations/rights-issue-bonus-factor-adjustment/index.js",
+      "require": "./dist/earnings-and-per-share-analytics/earnings-and-share-foundations/rights-issue-bonus-factor-adjustment/index.js"
+    },
     "./earnings-and-per-share-analytics/earnings-and-share-foundations/basic-eps": {
       "types": "./dist/earnings-and-per-share-analytics/earnings-and-share-foundations/basic-eps/index.d.ts",
       "import": "./dist/earnings-and-per-share-analytics/earnings-and-share-foundations/basic-eps/index.js",
       "require": "./dist/earnings-and-per-share-analytics/earnings-and-share-foundations/basic-eps/index.js"
+    },
+    "./earnings-and-per-share-analytics/basic-and-diluted-eps/if-converted-convertible-debt-dilution": {
+      "types": "./dist/earnings-and-per-share-analytics/basic-and-diluted-eps/if-converted-convertible-debt-dilution/index.d.ts",
+      "import": "./dist/earnings-and-per-share-analytics/basic-and-diluted-eps/if-converted-convertible-debt-dilution/index.js",
+      "require": "./dist/earnings-and-per-share-analytics/basic-and-diluted-eps/if-converted-convertible-debt-dilution/index.js"
     },
     "./earnings-and-per-share-analytics/basic-and-diluted-eps/if-converted-convertible-preference-dilution": {
       "types": "./dist/earnings-and-per-share-analytics/basic-and-diluted-eps/if-converted-convertible-preference-dilution/index.d.ts",

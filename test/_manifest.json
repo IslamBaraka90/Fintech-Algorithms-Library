@@ -1,6 +1,6 @@
 {
   "generatedFrom": "scripts/sync.mjs",
-  "topicCount": 523,
+  "topicCount": 675,
   "topics": [
     {
       "id": "D00-F01-A01",
@@ -4434,6 +4434,82 @@
       ]
     },
     {
+      "id": "D06-F02-A10",
+      "path": "price-action-and-candlesticks/single-candle-patterns/long-legged-doji",
+      "entry": "longLeggedDoji",
+      "archetype": "record-transform",
+      "fixture": "D06-F02-A10.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D06-F02-A11",
+      "path": "price-action-and-candlesticks/single-candle-patterns/four-price-doji",
+      "entry": "fourPriceDoji",
+      "archetype": "record-transform",
+      "fixture": "D06-F02-A11.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D06-F02-A12",
+      "path": "price-action-and-candlesticks/single-candle-patterns/high-wave-candle",
+      "entry": "highWaveCandle",
+      "archetype": "record-transform",
+      "fixture": "D06-F02-A12.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D06-F02-A13",
+      "path": "price-action-and-candlesticks/single-candle-patterns/belt-hold",
+      "entry": "beltHold",
+      "archetype": "record-transform",
+      "fixture": "D06-F02-A13.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
       "id": "D06-F03-A01",
       "path": "price-action-and-candlesticks/two-candle-patterns/bullish-engulfing",
       "entry": "bullishEngulfing",
@@ -4594,6 +4670,82 @@
       ]
     },
     {
+      "id": "D06-F03-A09",
+      "path": "price-action-and-candlesticks/two-candle-patterns/harami-cross",
+      "entry": "haramiCross",
+      "archetype": "record-transform",
+      "fixture": "D06-F03-A09.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D06-F03-A10",
+      "path": "price-action-and-candlesticks/two-candle-patterns/kicking-pattern",
+      "entry": "kickingPattern",
+      "archetype": "record-transform",
+      "fixture": "D06-F03-A10.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D06-F03-A11",
+      "path": "price-action-and-candlesticks/two-candle-patterns/matching-low",
+      "entry": "matchingLow",
+      "archetype": "record-transform",
+      "fixture": "D06-F03-A11.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D06-F03-A12",
+      "path": "price-action-and-candlesticks/two-candle-patterns/rising-falling-window",
+      "entry": "risingFallingWindow",
+      "archetype": "record-transform",
+      "fixture": "D06-F03-A12.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
       "id": "D06-F04-A01",
       "path": "price-action-and-candlesticks/multi-candle-patterns/morning-star",
       "entry": "morningStar",
@@ -4724,6 +4876,120 @@
         "prior_ranges",
         "tick_size",
         "penetration_fraction"
+      ]
+    },
+    {
+      "id": "D06-F04-A08",
+      "path": "price-action-and-candlesticks/multi-candle-patterns/morning-doji-star",
+      "entry": "morningDojiStar",
+      "archetype": "record-transform",
+      "fixture": "D06-F04-A08.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D06-F04-A09",
+      "path": "price-action-and-candlesticks/multi-candle-patterns/evening-doji-star",
+      "entry": "eveningDojiStar",
+      "archetype": "record-transform",
+      "fixture": "D06-F04-A09.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D06-F04-A10",
+      "path": "price-action-and-candlesticks/multi-candle-patterns/three-line-strike",
+      "entry": "threeLineStrike",
+      "archetype": "record-transform",
+      "fixture": "D06-F04-A10.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D06-F04-A11",
+      "path": "price-action-and-candlesticks/multi-candle-patterns/rising-falling-three-methods",
+      "entry": "risingFallingThreeMethods",
+      "archetype": "record-transform",
+      "fixture": "D06-F04-A11.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D06-F04-A12",
+      "path": "price-action-and-candlesticks/multi-candle-patterns/upside-gap-two-crows",
+      "entry": "upsideGapTwoCrows",
+      "archetype": "record-transform",
+      "fixture": "D06-F04-A12.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D06-F04-A13",
+      "path": "price-action-and-candlesticks/multi-candle-patterns/mat-hold",
+      "entry": "matHold",
+      "archetype": "record-transform",
+      "fixture": "D06-F04-A13.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
       ]
     },
     {
@@ -5068,6 +5334,291 @@
       ]
     },
     {
+      "id": "D07-F01-A10",
+      "path": "technical-indicators/trend-smoothing/triangular-moving-average-trima",
+      "entry": "triangularMovingAverageTrima",
+      "archetype": "series-transform",
+      "fixture": "D07-F01-A10.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F01-A11",
+      "path": "technical-indicators/trend-smoothing/tillson-t3-moving-average",
+      "entry": "tillsonT3MovingAverage",
+      "archetype": "series-transform",
+      "fixture": "D07-F01-A11.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F01-A12",
+      "path": "technical-indicators/trend-smoothing/following-adaptive-moving-average-fama",
+      "entry": "followingAdaptiveMovingAverageFama",
+      "archetype": "series-transform",
+      "fixture": "D07-F01-A12.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F01-A13",
+      "path": "technical-indicators/trend-smoothing/arnaud-legoux-moving-average-alma",
+      "entry": "arnaudLegouxMovingAverageAlma",
+      "archetype": "series-transform",
+      "fixture": "D07-F01-A13.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F01-A14",
+      "path": "technical-indicators/trend-smoothing/fractal-adaptive-moving-average-frama",
+      "entry": "fractalAdaptiveMovingAverageFrama",
+      "archetype": "series-transform",
+      "fixture": "D07-F01-A14.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F01-A15",
+      "path": "technical-indicators/trend-smoothing/zero-lag-exponential-moving-average-zlema",
+      "entry": "zeroLagExponentialMovingAverageZlema",
+      "archetype": "series-transform",
+      "fixture": "D07-F01-A15.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F01-A16",
+      "path": "technical-indicators/trend-smoothing/least-squares-moving-average-lsma",
+      "entry": "leastSquaresMovingAverageLsma",
+      "archetype": "series-transform",
+      "fixture": "D07-F01-A16.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F01-A17",
+      "path": "technical-indicators/trend-smoothing/variable-index-dynamic-average-vidya",
+      "entry": "variableIndexDynamicAverageVidya",
+      "archetype": "series-transform",
+      "fixture": "D07-F01-A17.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F01-A18",
+      "path": "technical-indicators/trend-smoothing/mcginley-dynamic",
+      "entry": "mcginleyDynamic",
+      "archetype": "series-transform",
+      "fixture": "D07-F01-A18.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F01-A19",
+      "path": "technical-indicators/trend-smoothing/jurik-style-moving-average-design",
+      "entry": "jurikStyleMovingAverageDesign",
+      "archetype": "series-transform",
+      "fixture": "D07-F01-A19.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F01-A20",
+      "path": "technical-indicators/trend-smoothing/volume-weighted-moving-average-vwma",
+      "entry": "volumeWeightedMovingAverageVwma",
+      "archetype": "series-transform",
+      "fixture": "D07-F01-A20.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F01-A21",
+      "path": "technical-indicators/trend-smoothing/quadratic-weighted-moving-average",
+      "entry": "quadraticWeightedMovingAverage",
+      "archetype": "series-transform",
+      "fixture": "D07-F01-A21.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F01-A22",
+      "path": "technical-indicators/trend-smoothing/gaussian-moving-average",
+      "entry": "gaussianMovingAverage",
+      "archetype": "series-transform",
+      "fixture": "D07-F01-A22.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F01-A23",
+      "path": "technical-indicators/trend-smoothing/ehlers-super-smoother-filter",
+      "entry": "ehlersSuperSmootherFilter",
+      "archetype": "series-transform",
+      "fixture": "D07-F01-A23.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F01-A24",
+      "path": "technical-indicators/trend-smoothing/ehlers-instantaneous-trendline",
+      "entry": "ehlersInstantaneousTrendline",
+      "archetype": "series-transform",
+      "fixture": "D07-F01-A24.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
       "id": "D07-F02-A01",
       "path": "technical-indicators/trend-systems/macd",
       "entry": "macd",
@@ -5254,6 +5805,215 @@
         "scenario_count",
         "observation_count_per_scenario",
         "scenarios"
+      ]
+    },
+    {
+      "id": "D07-F02-A09",
+      "path": "technical-indicators/trend-systems/average-directional-index-rating-adxr",
+      "entry": "averageDirectionalIndexRatingAdxr",
+      "archetype": "series-transform",
+      "fixture": "D07-F02-A09.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F02-A10",
+      "path": "technical-indicators/trend-systems/vortex-indicator-vi-vi",
+      "entry": "vortexIndicatorViVi",
+      "archetype": "series-transform",
+      "fixture": "D07-F02-A10.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F02-A11",
+      "path": "technical-indicators/trend-systems/choppiness-index",
+      "entry": "choppinessIndex",
+      "archetype": "series-transform",
+      "fixture": "D07-F02-A11.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F02-A12",
+      "path": "technical-indicators/trend-systems/trend-intensity-index",
+      "entry": "trendIntensityIndex",
+      "archetype": "series-transform",
+      "fixture": "D07-F02-A12.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F02-A13",
+      "path": "technical-indicators/trend-systems/qstick",
+      "entry": "qstick",
+      "archetype": "series-transform",
+      "fixture": "D07-F02-A13.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F02-A14",
+      "path": "technical-indicators/trend-systems/mass-index",
+      "entry": "massIndex",
+      "archetype": "series-transform",
+      "fixture": "D07-F02-A14.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F02-A15",
+      "path": "technical-indicators/trend-systems/vertical-horizontal-filter",
+      "entry": "verticalHorizontalFilter",
+      "archetype": "series-transform",
+      "fixture": "D07-F02-A15.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F02-A16",
+      "path": "technical-indicators/trend-systems/random-walk-index-high-low",
+      "entry": "randomWalkIndexHighLow",
+      "archetype": "series-transform",
+      "fixture": "D07-F02-A16.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F02-A17",
+      "path": "technical-indicators/trend-systems/trend-trigger-factor",
+      "entry": "trendTriggerFactor",
+      "archetype": "series-transform",
+      "fixture": "D07-F02-A17.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F02-A18",
+      "path": "technical-indicators/trend-systems/directional-trend-index",
+      "entry": "directionalTrendIndex",
+      "archetype": "series-transform",
+      "fixture": "D07-F02-A18.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F02-A19",
+      "path": "technical-indicators/trend-systems/trend-strength-index",
+      "entry": "trendStrengthIndex",
+      "archetype": "series-transform",
+      "fixture": "D07-F02-A19.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
       ]
     },
     {
@@ -5449,6 +6209,424 @@
         "bars",
         "checkpoints",
         "scenarios"
+      ]
+    },
+    {
+      "id": "D07-F03-A09",
+      "path": "technical-indicators/momentum/absolute-price-oscillator",
+      "entry": "absolutePriceOscillator",
+      "archetype": "series-transform",
+      "fixture": "D07-F03-A09.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F03-A10",
+      "path": "technical-indicators/momentum/rate-of-change-variants-roc-rocp-and-rocr",
+      "entry": "rateOfChangeVariantsRocRocpAndRocr",
+      "archetype": "series-transform",
+      "fixture": "D07-F03-A10.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F03-A11",
+      "path": "technical-indicators/momentum/price-momentum-mom",
+      "entry": "priceMomentumMom",
+      "archetype": "series-transform",
+      "fixture": "D07-F03-A11.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F03-A12",
+      "path": "technical-indicators/momentum/chande-momentum-oscillator",
+      "entry": "chandeMomentumOscillator",
+      "archetype": "series-transform",
+      "fixture": "D07-F03-A12.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F03-A13",
+      "path": "technical-indicators/momentum/awesome-oscillator",
+      "entry": "awesomeOscillator",
+      "archetype": "series-transform",
+      "fixture": "D07-F03-A13.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F03-A14",
+      "path": "technical-indicators/momentum/accelerator-oscillator",
+      "entry": "acceleratorOscillator",
+      "archetype": "series-transform",
+      "fixture": "D07-F03-A14.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F03-A15",
+      "path": "technical-indicators/momentum/trix",
+      "entry": "trix",
+      "archetype": "series-transform",
+      "fixture": "D07-F03-A15.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F03-A16",
+      "path": "technical-indicators/momentum/stochastic-momentum-index",
+      "entry": "stochasticMomentumIndex",
+      "archetype": "series-transform",
+      "fixture": "D07-F03-A16.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F03-A17",
+      "path": "technical-indicators/momentum/relative-vigor-index",
+      "entry": "relativeVigorIndex",
+      "archetype": "series-transform",
+      "fixture": "D07-F03-A17.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F03-A18",
+      "path": "technical-indicators/momentum/relative-momentum-index",
+      "entry": "relativeMomentumIndex",
+      "archetype": "series-transform",
+      "fixture": "D07-F03-A18.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F03-A19",
+      "path": "technical-indicators/momentum/fisher-transform",
+      "entry": "fisherTransform",
+      "archetype": "series-transform",
+      "fixture": "D07-F03-A19.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F03-A20",
+      "path": "technical-indicators/momentum/inverse-fisher-transform",
+      "entry": "inverseFisherTransform",
+      "archetype": "series-transform",
+      "fixture": "D07-F03-A20.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F03-A21",
+      "path": "technical-indicators/momentum/schaff-trend-cycle",
+      "entry": "schaffTrendCycle",
+      "archetype": "series-transform",
+      "fixture": "D07-F03-A21.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F03-A22",
+      "path": "technical-indicators/momentum/quantitative-qualitative-estimation-qqe",
+      "entry": "quantitativeQualitativeEstimationQqe",
+      "archetype": "series-transform",
+      "fixture": "D07-F03-A22.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F03-A23",
+      "path": "technical-indicators/momentum/wavetrend-oscillator",
+      "entry": "wavetrendOscillator",
+      "archetype": "series-transform",
+      "fixture": "D07-F03-A23.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F03-A24",
+      "path": "technical-indicators/momentum/know-sure-thing-kst",
+      "entry": "knowSureThingKst",
+      "archetype": "series-transform",
+      "fixture": "D07-F03-A24.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F03-A25",
+      "path": "technical-indicators/momentum/chande-forecast-oscillator",
+      "entry": "chandeForecastOscillator",
+      "archetype": "series-transform",
+      "fixture": "D07-F03-A25.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F03-A26",
+      "path": "technical-indicators/momentum/detrended-price-oscillator",
+      "entry": "detrendedPriceOscillator",
+      "archetype": "series-transform",
+      "fixture": "D07-F03-A26.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F03-A27",
+      "path": "technical-indicators/momentum/balance-of-power",
+      "entry": "balanceOfPower",
+      "archetype": "series-transform",
+      "fixture": "D07-F03-A27.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F03-A28",
+      "path": "technical-indicators/momentum/psychological-line",
+      "entry": "psychologicalLine",
+      "archetype": "series-transform",
+      "fixture": "D07-F03-A28.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F03-A29",
+      "path": "technical-indicators/momentum/pretty-good-oscillator",
+      "entry": "prettyGoodOscillator",
+      "archetype": "series-transform",
+      "fixture": "D07-F03-A29.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F03-A30",
+      "path": "technical-indicators/momentum/price-momentum-oscillator",
+      "entry": "priceMomentumOscillator",
+      "archetype": "series-transform",
+      "fixture": "D07-F03-A30.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
       ]
     },
     {
@@ -5738,6 +6916,994 @@
       ]
     },
     {
+      "id": "D07-F05-A07",
+      "path": "technical-indicators/volume-indicators/chaikin-a-d-oscillator",
+      "entry": "chaikinADOscillator",
+      "archetype": "series-transform",
+      "fixture": "D07-F05-A07.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F05-A08",
+      "path": "technical-indicators/volume-indicators/session-vwap-indicator",
+      "entry": "sessionVwapIndicator",
+      "archetype": "series-transform",
+      "fixture": "D07-F05-A08.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F05-A09",
+      "path": "technical-indicators/volume-indicators/anchored-vwap",
+      "entry": "anchoredVwap",
+      "archetype": "series-transform",
+      "fixture": "D07-F05-A09.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F05-A10",
+      "path": "technical-indicators/volume-indicators/negative-volume-index",
+      "entry": "negativeVolumeIndex",
+      "archetype": "series-transform",
+      "fixture": "D07-F05-A10.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F05-A11",
+      "path": "technical-indicators/volume-indicators/positive-volume-index",
+      "entry": "positiveVolumeIndex",
+      "archetype": "series-transform",
+      "fixture": "D07-F05-A11.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F05-A12",
+      "path": "technical-indicators/volume-indicators/ease-of-movement",
+      "entry": "easeOfMovement",
+      "archetype": "series-transform",
+      "fixture": "D07-F05-A12.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F05-A13",
+      "path": "technical-indicators/volume-indicators/klinger-volume-oscillator",
+      "entry": "klingerVolumeOscillator",
+      "archetype": "series-transform",
+      "fixture": "D07-F05-A13.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F05-A14",
+      "path": "technical-indicators/volume-indicators/volume-oscillator",
+      "entry": "volumeOscillator",
+      "archetype": "series-transform",
+      "fixture": "D07-F05-A14.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F05-A15",
+      "path": "technical-indicators/volume-indicators/percentage-volume-oscillator",
+      "entry": "percentageVolumeOscillator",
+      "archetype": "series-transform",
+      "fixture": "D07-F05-A15.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F05-A16",
+      "path": "technical-indicators/volume-indicators/volume-rate-of-change",
+      "entry": "volumeRateOfChange",
+      "archetype": "series-transform",
+      "fixture": "D07-F05-A16.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F05-A17",
+      "path": "technical-indicators/volume-indicators/relative-volume",
+      "entry": "relativeVolume",
+      "archetype": "series-transform",
+      "fixture": "D07-F05-A17.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F05-A18",
+      "path": "technical-indicators/volume-indicators/money-flow-multiplier-and-money-flow-volume",
+      "entry": "moneyFlowMultiplierAndMoneyFlowVolume",
+      "archetype": "series-transform",
+      "fixture": "D07-F05-A18.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F05-A19",
+      "path": "technical-indicators/volume-indicators/volume-weighted-macd",
+      "entry": "volumeWeightedMacd",
+      "archetype": "series-transform",
+      "fixture": "D07-F05-A19.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F05-A20",
+      "path": "technical-indicators/volume-indicators/volume-zone-oscillator",
+      "entry": "volumeZoneOscillator",
+      "archetype": "series-transform",
+      "fixture": "D07-F05-A20.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F05-A21",
+      "path": "technical-indicators/volume-indicators/twiggs-money-flow",
+      "entry": "twiggsMoneyFlow",
+      "archetype": "series-transform",
+      "fixture": "D07-F05-A21.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F06-A01",
+      "path": "technical-indicators/range-and-volatility-indicators/normalized-atr-and-atr-percentage",
+      "entry": "normalizedAtrAndAtrPercentage",
+      "archetype": "series-transform",
+      "fixture": "D07-F06-A01.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F06-A02",
+      "path": "technical-indicators/range-and-volatility-indicators/chaikin-volatility",
+      "entry": "chaikinVolatility",
+      "archetype": "series-transform",
+      "fixture": "D07-F06-A02.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F06-A03",
+      "path": "technical-indicators/range-and-volatility-indicators/ulcer-index",
+      "entry": "ulcerIndex",
+      "archetype": "series-transform",
+      "fixture": "D07-F06-A03.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F06-A04",
+      "path": "technical-indicators/range-and-volatility-indicators/relative-volatility-index",
+      "entry": "relativeVolatilityIndex",
+      "archetype": "series-transform",
+      "fixture": "D07-F06-A04.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F06-A05",
+      "path": "technical-indicators/range-and-volatility-indicators/volatility-ratio",
+      "entry": "volatilityRatio",
+      "archetype": "series-transform",
+      "fixture": "D07-F06-A05.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F06-A06",
+      "path": "technical-indicators/range-and-volatility-indicators/volatility-quality-index",
+      "entry": "volatilityQualityIndex",
+      "archetype": "series-transform",
+      "fixture": "D07-F06-A06.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F06-A07",
+      "path": "technical-indicators/range-and-volatility-indicators/average-daily-range",
+      "entry": "averageDailyRange",
+      "archetype": "series-transform",
+      "fixture": "D07-F06-A07.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F06-A08",
+      "path": "technical-indicators/range-and-volatility-indicators/gap-volatility",
+      "entry": "gapVolatility",
+      "archetype": "series-transform",
+      "fixture": "D07-F06-A08.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F06-A09",
+      "path": "technical-indicators/range-and-volatility-indicators/range-efficiency-ratio",
+      "entry": "rangeEfficiencyRatio",
+      "archetype": "series-transform",
+      "fixture": "D07-F06-A09.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F06-A10",
+      "path": "technical-indicators/range-and-volatility-indicators/high-low-range-percentage",
+      "entry": "highLowRangePercentage",
+      "archetype": "series-transform",
+      "fixture": "D07-F06-A10.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F06-A11",
+      "path": "technical-indicators/range-and-volatility-indicators/normalized-price-range",
+      "entry": "normalizedPriceRange",
+      "archetype": "series-transform",
+      "fixture": "D07-F06-A11.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F06-A12",
+      "path": "technical-indicators/range-and-volatility-indicators/volatility-stop",
+      "entry": "volatilityStop",
+      "archetype": "series-transform",
+      "fixture": "D07-F06-A12.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F07-A01",
+      "path": "technical-indicators/bands-envelopes-and-squeezes/bollinger-percent-b",
+      "entry": "bollingerPercentB",
+      "archetype": "series-transform",
+      "fixture": "D07-F07-A01.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F07-A02",
+      "path": "technical-indicators/bands-envelopes-and-squeezes/moving-average-envelope",
+      "entry": "movingAverageEnvelope",
+      "archetype": "series-transform",
+      "fixture": "D07-F07-A02.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F07-A03",
+      "path": "technical-indicators/bands-envelopes-and-squeezes/atr-bands",
+      "entry": "atrBands",
+      "archetype": "series-transform",
+      "fixture": "D07-F07-A03.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F07-A04",
+      "path": "technical-indicators/bands-envelopes-and-squeezes/standard-deviation-channel",
+      "entry": "standardDeviationChannel",
+      "archetype": "series-transform",
+      "fixture": "D07-F07-A04.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F07-A05",
+      "path": "technical-indicators/bands-envelopes-and-squeezes/regression-channel",
+      "entry": "regressionChannel",
+      "archetype": "series-transform",
+      "fixture": "D07-F07-A05.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F07-A06",
+      "path": "technical-indicators/bands-envelopes-and-squeezes/raff-regression-channel",
+      "entry": "raffRegressionChannel",
+      "archetype": "series-transform",
+      "fixture": "D07-F07-A06.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F07-A07",
+      "path": "technical-indicators/bands-envelopes-and-squeezes/starc-bands",
+      "entry": "starcBands",
+      "archetype": "series-transform",
+      "fixture": "D07-F07-A07.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F07-A08",
+      "path": "technical-indicators/bands-envelopes-and-squeezes/fractal-chaos-bands",
+      "entry": "fractalChaosBands",
+      "archetype": "series-transform",
+      "fixture": "D07-F07-A08.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F07-A09",
+      "path": "technical-indicators/bands-envelopes-and-squeezes/projection-bands",
+      "entry": "projectionBands",
+      "archetype": "series-transform",
+      "fixture": "D07-F07-A09.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F07-A10",
+      "path": "technical-indicators/bands-envelopes-and-squeezes/dynamic-zone-bands",
+      "entry": "dynamicZoneBands",
+      "archetype": "series-transform",
+      "fixture": "D07-F07-A10.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F07-A11",
+      "path": "technical-indicators/bands-envelopes-and-squeezes/ttm-squeeze",
+      "entry": "ttmSqueeze",
+      "archetype": "series-transform",
+      "fixture": "D07-F07-A11.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F07-A12",
+      "path": "technical-indicators/bands-envelopes-and-squeezes/squeeze-momentum",
+      "entry": "squeezeMomentum",
+      "archetype": "series-transform",
+      "fixture": "D07-F07-A12.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F07-A13",
+      "path": "technical-indicators/bands-envelopes-and-squeezes/adaptive-price-zone",
+      "entry": "adaptivePriceZone",
+      "archetype": "series-transform",
+      "fixture": "D07-F07-A13.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F08-A01",
+      "path": "technical-indicators/price-transforms/typical-price",
+      "entry": "typicalPrice",
+      "archetype": "series-transform",
+      "fixture": "D07-F08-A01.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F08-A02",
+      "path": "technical-indicators/price-transforms/median-price-transform",
+      "entry": "medianPriceTransform",
+      "archetype": "series-transform",
+      "fixture": "D07-F08-A02.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F08-A03",
+      "path": "technical-indicators/price-transforms/weighted-close",
+      "entry": "weightedClose",
+      "archetype": "series-transform",
+      "fixture": "D07-F08-A03.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F08-A04",
+      "path": "technical-indicators/price-transforms/average-price-transform",
+      "entry": "averagePriceTransform",
+      "archetype": "series-transform",
+      "fixture": "D07-F08-A04.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F08-A05",
+      "path": "technical-indicators/price-transforms/heikin-ashi-transform",
+      "entry": "heikinAshiTransform",
+      "archetype": "series-transform",
+      "fixture": "D07-F08-A05.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F08-A06",
+      "path": "technical-indicators/price-transforms/log-price-transform",
+      "entry": "logPriceTransform",
+      "archetype": "series-transform",
+      "fixture": "D07-F08-A06.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F08-A07",
+      "path": "technical-indicators/price-transforms/price-relative",
+      "entry": "priceRelative",
+      "archetype": "series-transform",
+      "fixture": "D07-F08-A07.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F08-A08",
+      "path": "technical-indicators/price-transforms/normalized-price-transform",
+      "entry": "normalizedPriceTransform",
+      "archetype": "series-transform",
+      "fixture": "D07-F08-A08.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F09-A01",
+      "path": "technical-indicators/rolling-statistical-indicators/rolling-percentile",
+      "entry": "rollingPercentile",
+      "archetype": "series-transform",
+      "fixture": "D07-F09-A01.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F09-A02",
+      "path": "technical-indicators/rolling-statistical-indicators/rolling-quantile",
+      "entry": "rollingQuantile",
+      "archetype": "series-transform",
+      "fixture": "D07-F09-A02.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F09-A03",
+      "path": "technical-indicators/rolling-statistical-indicators/rolling-beta",
+      "entry": "rollingBeta",
+      "archetype": "series-transform",
+      "fixture": "D07-F09-A03.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D07-F09-A04",
+      "path": "technical-indicators/rolling-statistical-indicators/rolling-alpha",
+      "entry": "rollingAlpha",
+      "archetype": "series-transform",
+      "fixture": "D07-F09-A04.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
       "id": "D08-F01-A01",
       "path": "geometric-chart-patterns/pivots-and-levels/causal-pivot-detection",
       "entry": "detectCausalPivots",
@@ -5843,6 +8009,177 @@
         "explanation",
         "historical_example_decision",
         "evidence_boundary"
+      ]
+    },
+    {
+      "id": "D08-F01-A05",
+      "path": "geometric-chart-patterns/pivots-and-levels/classic-and-floor-trader-pivot-points",
+      "entry": "classicAndFloorTraderPivotPoints",
+      "archetype": "record-transform",
+      "fixture": "D08-F01-A05.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D08-F01-A06",
+      "path": "geometric-chart-patterns/pivots-and-levels/fibonacci-pivot-points",
+      "entry": "fibonacciPivotPoints",
+      "archetype": "record-transform",
+      "fixture": "D08-F01-A06.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D08-F01-A07",
+      "path": "geometric-chart-patterns/pivots-and-levels/camarilla-pivot-points",
+      "entry": "camarillaPivotPoints",
+      "archetype": "record-transform",
+      "fixture": "D08-F01-A07.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D08-F01-A08",
+      "path": "geometric-chart-patterns/pivots-and-levels/woodie-pivot-points",
+      "entry": "woodiePivotPoints",
+      "archetype": "record-transform",
+      "fixture": "D08-F01-A08.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D08-F01-A09",
+      "path": "geometric-chart-patterns/pivots-and-levels/demark-pivot-points",
+      "entry": "demarkPivotPoints",
+      "archetype": "record-transform",
+      "fixture": "D08-F01-A09.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D08-F01-A10",
+      "path": "geometric-chart-patterns/pivots-and-levels/rolling-support-and-resistance",
+      "entry": "rollingSupportAndResistance",
+      "archetype": "record-transform",
+      "fixture": "D08-F01-A10.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D08-F01-A11",
+      "path": "geometric-chart-patterns/pivots-and-levels/fractal-support-and-resistance",
+      "entry": "fractalSupportAndResistance",
+      "archetype": "record-transform",
+      "fixture": "D08-F01-A11.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D08-F01-A12",
+      "path": "geometric-chart-patterns/pivots-and-levels/atr-support-and-resistance",
+      "entry": "atrSupportAndResistance",
+      "archetype": "record-transform",
+      "fixture": "D08-F01-A12.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D08-F01-A13",
+      "path": "geometric-chart-patterns/pivots-and-levels/pivot-range-width",
+      "entry": "pivotRangeWidth",
+      "archetype": "record-transform",
+      "fixture": "D08-F01-A13.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
       ]
     },
     {
@@ -6464,6 +8801,348 @@
       ]
     },
     {
+      "id": "D08-F07-A01",
+      "path": "geometric-chart-patterns/market-structure-breakouts-and-regimes/highest-high-and-lowest-low-primitives",
+      "entry": "highestHighAndLowestLowPrimitives",
+      "archetype": "record-transform",
+      "fixture": "D08-F07-A01.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D08-F07-A02",
+      "path": "geometric-chart-patterns/market-structure-breakouts-and-regimes/single-asset-new-high-new-low-signal",
+      "entry": "singleAssetNewHighNewLowSignal",
+      "archetype": "record-transform",
+      "fixture": "D08-F07-A02.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D08-F07-A03",
+      "path": "geometric-chart-patterns/market-structure-breakouts-and-regimes/breakout-strength",
+      "entry": "breakoutStrength",
+      "archetype": "record-transform",
+      "fixture": "D08-F07-A03.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D08-F07-A04",
+      "path": "geometric-chart-patterns/market-structure-breakouts-and-regimes/donchian-breakout",
+      "entry": "donchianBreakout",
+      "archetype": "record-transform",
+      "fixture": "D08-F07-A04.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D08-F07-A05",
+      "path": "geometric-chart-patterns/market-structure-breakouts-and-regimes/opening-range-breakout",
+      "entry": "openingRangeBreakout",
+      "archetype": "record-transform",
+      "fixture": "D08-F07-A05.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D08-F07-A06",
+      "path": "geometric-chart-patterns/market-structure-breakouts-and-regimes/price-compression-index",
+      "entry": "priceCompressionIndex",
+      "archetype": "record-transform",
+      "fixture": "D08-F07-A06.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D08-F07-A07",
+      "path": "geometric-chart-patterns/market-structure-breakouts-and-regimes/range-expansion-index",
+      "entry": "rangeExpansionIndex",
+      "archetype": "record-transform",
+      "fixture": "D08-F07-A07.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D08-F07-A08",
+      "path": "geometric-chart-patterns/market-structure-breakouts-and-regimes/fractal-dimension-index",
+      "entry": "fractalDimensionIndex",
+      "archetype": "record-transform",
+      "fixture": "D08-F07-A08.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D08-F07-A09",
+      "path": "geometric-chart-patterns/market-structure-breakouts-and-regimes/hurst-exponent",
+      "entry": "hurstExponent",
+      "archetype": "record-transform",
+      "fixture": "D08-F07-A09.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D08-F07-A10",
+      "path": "geometric-chart-patterns/market-structure-breakouts-and-regimes/efficiency-ratio",
+      "entry": "efficiencyRatio",
+      "archetype": "record-transform",
+      "fixture": "D08-F07-A10.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D08-F07-A11",
+      "path": "geometric-chart-patterns/market-structure-breakouts-and-regimes/market-meanness-index",
+      "entry": "marketMeannessIndex",
+      "archetype": "record-transform",
+      "fixture": "D08-F07-A11.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D08-F07-A12",
+      "path": "geometric-chart-patterns/market-structure-breakouts-and-regimes/trend-range-regime-classifier",
+      "entry": "trendRangeRegimeClassifier",
+      "archetype": "record-transform",
+      "fixture": "D08-F07-A12.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D08-F07-A13",
+      "path": "geometric-chart-patterns/market-structure-breakouts-and-regimes/volatility-regime-classifier",
+      "entry": "volatilityRegimeClassifier",
+      "archetype": "record-transform",
+      "fixture": "D08-F07-A13.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D08-F07-A14",
+      "path": "geometric-chart-patterns/market-structure-breakouts-and-regimes/directional-persistence",
+      "entry": "directionalPersistence",
+      "archetype": "record-transform",
+      "fixture": "D08-F07-A14.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D08-F07-A15",
+      "path": "geometric-chart-patterns/market-structure-breakouts-and-regimes/swing-structure-detector",
+      "entry": "swingStructureDetector",
+      "archetype": "record-transform",
+      "fixture": "D08-F07-A15.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D08-F07-A16",
+      "path": "geometric-chart-patterns/market-structure-breakouts-and-regimes/higher-high-lower-low-structure",
+      "entry": "higherHighLowerLowStructure",
+      "archetype": "record-transform",
+      "fixture": "D08-F07-A16.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D08-F07-A17",
+      "path": "geometric-chart-patterns/market-structure-breakouts-and-regimes/inside-outside-bar-structure",
+      "entry": "insideOutsideBarStructure",
+      "archetype": "record-transform",
+      "fixture": "D08-F07-A17.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D08-F07-A18",
+      "path": "geometric-chart-patterns/market-structure-breakouts-and-regimes/market-entropy",
+      "entry": "marketEntropy",
+      "archetype": "record-transform",
+      "fixture": "D08-F07-A18.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
       "id": "D09-F01-A01",
       "path": "statistical-time-series/diagnostics/acf",
       "entry": "acf",
@@ -7014,6 +9693,158 @@
         "levels"
       ],
       "fixtureKeys": []
+    },
+    {
+      "id": "D09-F06-A01",
+      "path": "statistical-time-series/hilbert-and-ehlers-cycle-analytics/hilbert-transform-dominant-cycle-period",
+      "entry": "hilbertTransformDominantCyclePeriod",
+      "archetype": "record-transform",
+      "fixture": "D09-F06-A01.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D09-F06-A02",
+      "path": "statistical-time-series/hilbert-and-ehlers-cycle-analytics/hilbert-transform-dominant-cycle-phase",
+      "entry": "hilbertTransformDominantCyclePhase",
+      "archetype": "record-transform",
+      "fixture": "D09-F06-A02.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D09-F06-A03",
+      "path": "statistical-time-series/hilbert-and-ehlers-cycle-analytics/hilbert-transform-phasor-components",
+      "entry": "hilbertTransformPhasorComponents",
+      "archetype": "record-transform",
+      "fixture": "D09-F06-A03.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D09-F06-A04",
+      "path": "statistical-time-series/hilbert-and-ehlers-cycle-analytics/hilbert-transform-sinewave",
+      "entry": "hilbertTransformSinewave",
+      "archetype": "record-transform",
+      "fixture": "D09-F06-A04.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D09-F06-A05",
+      "path": "statistical-time-series/hilbert-and-ehlers-cycle-analytics/hilbert-transform-trend-cycle-mode",
+      "entry": "hilbertTransformTrendCycleMode",
+      "archetype": "record-transform",
+      "fixture": "D09-F06-A05.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D09-F06-A06",
+      "path": "statistical-time-series/hilbert-and-ehlers-cycle-analytics/ehlers-cyber-cycle",
+      "entry": "ehlersCyberCycle",
+      "archetype": "record-transform",
+      "fixture": "D09-F06-A06.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D09-F06-A07",
+      "path": "statistical-time-series/hilbert-and-ehlers-cycle-analytics/ehlers-roofing-filter",
+      "entry": "ehlersRoofingFilter",
+      "archetype": "record-transform",
+      "fixture": "D09-F06-A07.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
+    },
+    {
+      "id": "D09-F06-A08",
+      "path": "statistical-time-series/hilbert-and-ehlers-cycle-analytics/ehlers-decycler",
+      "entry": "ehlersDecycler",
+      "archetype": "record-transform",
+      "fixture": "D09-F06-A08.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical",
+        "flat_boundary"
+      ]
     },
     {
       "id": "D11-F01-A01",
@@ -9624,6 +12455,46 @@
       "fixtureKeys": []
     },
     {
+      "id": "D46-F01-A06",
+      "path": "earnings-and-per-share-analytics/earnings-and-share-foundations/bonus-issue-eps-restatement",
+      "entry": "bonusIssueEpsRestatement",
+      "archetype": "record-transform",
+      "fixture": "D46-F01-A06.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical_input",
+        "expected",
+        "invalid_input"
+      ]
+    },
+    {
+      "id": "D46-F01-A07",
+      "path": "earnings-and-per-share-analytics/earnings-and-share-foundations/rights-issue-bonus-factor-adjustment",
+      "entry": "rightsIssueBonusFactorAdjustment",
+      "archetype": "record-transform",
+      "fixture": "D46-F01-A07.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical_input",
+        "expected",
+        "invalid_input"
+      ]
+    },
+    {
       "id": "D46-F01-A08",
       "path": "earnings-and-per-share-analytics/earnings-and-share-foundations/basic-eps",
       "entry": "calculateBasicEps",
@@ -9634,6 +12505,26 @@
         "input"
       ],
       "fixtureKeys": []
+    },
+    {
+      "id": "D46-F02-A01",
+      "path": "earnings-and-per-share-analytics/basic-and-diluted-eps/if-converted-convertible-debt-dilution",
+      "entry": "ifConvertedConvertibleDebtDilution",
+      "archetype": "record-transform",
+      "fixture": "D46-F02-A01.json",
+      "convention": "E",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": [
+        "schema_version",
+        "topic_id",
+        "title",
+        "provenance",
+        "canonical_input",
+        "expected",
+        "invalid_input"
+      ]
     },
     {
       "id": "D46-F02-A02",

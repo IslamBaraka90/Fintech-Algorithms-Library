@@ -14,6 +14,9 @@
  *   C  { bars, checkpoints } or scenarios[]     — call entry(<price series by
  *                                                 parameter name>), compare each
  *                                                 checkpoint at its index
+ *   E  implementation-fixtures.json             — native-port contract: exact
+ *                                                 EPS output, or indicator latest,
+ *                                                 warm-up, causality and boundaries
  *
  * Fixtures are never edited here. Tests run straight off `src/` via Node's
  * type-stripping — no build required.
@@ -33,7 +36,7 @@ interface ManifestTopic {
   entry: string;
   archetype: string;
   fixture: string | null;
-  convention: "A" | "B" | "C" | "D" | "none";
+  convention: "A" | "B" | "C" | "D" | "E" | "none";
   entryParams: string[];
   fixtureKeys: string[];
 }
@@ -309,6 +312,108 @@ describe("conformance: catalog worked examples", () => {
           }
         }
         throw firstFailure;
+      });
+    }
+  });
+
+  // --- Convention E --------------------------------------------------------
+
+  /**
+   * The frozen 152-topic native-port fixture. The generator copies this file
+   * byte-for-byte; this runner adapts to its two deliberately different jobs:
+   * ordinary time-series topics and exact 50-digit EPS topics.
+   */
+  describe("E · native-port implementation fixture", () => {
+    const nativePortExpected = (actual: unknown, expected: unknown, label: string): void => {
+      if (typeof expected === "number") {
+        assert.equal(typeof actual, "number", `${label}: expected number, got ${typeof actual}`);
+        const tolerance = 1e-10 * Math.max(1, Math.abs(expected));
+        assert.ok(Math.abs((actual as number) - expected) <= tolerance, `${label}: expected ${expected}, got ${actual}`);
+        return;
+      }
+      if (Array.isArray(expected)) {
+        assert.ok(Array.isArray(actual), `${label}: expected array`);
+        assert.equal(actual.length, expected.length, `${label}: array length`);
+        expected.forEach((value, index) => nativePortExpected(actual[index], value, `${label}[${index}]`));
+        return;
+      }
+      if (expected !== null && typeof expected === "object") {
+        assert.ok(actual !== null && typeof actual === "object", `${label}: expected object`);
+        for (const [key, value] of Object.entries(expected as Record<string, unknown>)) {
+          assert.ok(Object.hasOwn(actual as object, key), `${label}: missing ${key}`);
+          nativePortExpected((actual as Record<string, unknown>)[key], value, `${label}.${key}`);
+        }
+        return;
+      }
+      assert.deepStrictEqual(actual, expected, label);
+    };
+
+    const assertFiniteNumbers = (value: unknown, label: string): void => {
+      if (typeof value === "number") {
+        assert.ok(Number.isFinite(value), `${label}: non-finite number`);
+      } else if (Array.isArray(value)) {
+        value.forEach((item, index) => assertFiniteNumbers(item, `${label}[${index}]`));
+      } else if (value !== null && typeof value === "object") {
+        for (const [key, item] of Object.entries(value as Record<string, unknown>)) {
+          assertFiniteNumbers(item, `${label}.${key}`);
+        }
+      }
+    };
+
+    for (const topic of runnable.filter((t) => t.convention === "E")) {
+      test(`${topic.id} — ${topic.path}`, async () => {
+        const fixture = loadFixture(topic) as Record<string, unknown>;
+        const run = await loadEntry(topic);
+
+        // D46: strings pin Decimal(50) round-after-every-operation semantics.
+        if (Object.hasOwn(fixture, "canonical_input")) {
+          assert.deepStrictEqual(
+            run(structuredClone(fixture.canonical_input)),
+            fixture.expected,
+            `${topic.id}: exact EPS result`,
+          );
+          assert.throws(
+            () => run(structuredClone(fixture.invalid_input)),
+            /EPS calculation failed:/,
+            `${topic.id}: invalid EPS contract`,
+          );
+          return;
+        }
+
+        const canonical = fixture.canonical as {
+          input: Record<string, unknown> & { bars: Array<Record<string, unknown>> };
+          expected_ready_at: unknown;
+          expected_latest: Record<string, unknown>;
+          prefix_cut: number;
+        };
+        const flatBoundary = fixture.flat_boundary as { input: Record<string, unknown> };
+        assert.ok(canonical?.input && flatBoundary?.input, `${topic.id}: malformed Convention E fixture`);
+
+        const result = run(structuredClone(canonical.input)) as Record<string, unknown>;
+        assert.equal(result.topic_id, fixture.topic_id, `${topic.id}: topic_id`);
+        assert.equal(result.title, fixture.title, `${topic.id}: title`);
+        assert.equal(result.ready, true, `${topic.id}: canonical input is not ready`);
+        assert.deepStrictEqual(result.ready_at, canonical.expected_ready_at, `${topic.id}: ready_at`);
+        nativePortExpected(result.latest, canonical.expected_latest, `${topic.id}.latest`);
+
+        const prefixInput = structuredClone(canonical.input);
+        prefixInput.bars = prefixInput.bars.slice(0, canonical.prefix_cut);
+        const prefix = run(prefixInput) as { series: Record<string, unknown[]> };
+        const fullSeries = result.series as Record<string, unknown[]>;
+        for (const [key, values] of Object.entries(prefix.series)) {
+          assert.deepStrictEqual(values, fullSeries[key].slice(0, canonical.prefix_cut), `${topic.id}.${key}: causal prefix`);
+        }
+
+        const flat = run(structuredClone(flatBoundary.input));
+        assertFiniteNumbers(flat, `${topic.id}.flat_boundary`);
+
+        const invalid = structuredClone(canonical.input);
+        invalid.bars[2].timestamp = invalid.bars[1].timestamp;
+        assert.throws(
+          () => run(invalid),
+          /topic calculation failed: bars must be strictly ordered by timestamp/,
+          `${topic.id}: timestamp validation`,
+        );
       });
     }
   });

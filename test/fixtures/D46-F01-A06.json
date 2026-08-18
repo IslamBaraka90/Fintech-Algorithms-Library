@@ -1,0 +1,129 @@
+{
+  "schema_version": "1.0",
+  "topic_id": "D46-F01-A06",
+  "title": "Bonus-Issue EPS Restatement",
+  "provenance": {
+    "kind": "synthetic",
+    "warning": "Teaching fixture only; not issuer data."
+  },
+  "canonical_input": {
+    "events": [
+      {
+        "event_id": "SYN-BONUS-1",
+        "effective_date": "2025-03-15",
+        "bonus_shares": "1",
+        "existing_shares": "4",
+        "no_additional_consideration": true,
+        "event_is_effective": true
+      },
+      {
+        "event_id": "SYN-BONUS-2",
+        "effective_date": "2025-09-01",
+        "bonus_shares": "1",
+        "existing_shares": "10",
+        "no_additional_consideration": true,
+        "event_is_effective": true
+      }
+    ],
+    "periods": [
+      {
+        "period_id": "SYN-2024",
+        "period_start": "2024-01-01",
+        "period_end": "2024-12-31",
+        "basis_date": "2024-12-31",
+        "basis_is_uniform": true,
+        "earnings_available_to_ordinary_shareholders": "24000000",
+        "weighted_average_ordinary_shares": "10000000",
+        "is_final": true
+      },
+      {
+        "period_id": "SYN-2025-Q3",
+        "period_start": "2025-01-01",
+        "period_end": "2025-09-30",
+        "basis_date": "2025-03-15",
+        "basis_is_uniform": true,
+        "earnings_available_to_ordinary_shareholders": "-3300000",
+        "weighted_average_ordinary_shares": "12500000",
+        "is_final": false
+      }
+    ]
+  },
+  "expected": {
+    "topic_id": "D46-F01-A06",
+    "state": "calculated",
+    "periods": [
+      {
+        "period_id": "SYN-2024",
+        "applied_event_ids": [
+          "SYN-BONUS-1",
+          "SYN-BONUS-2"
+        ],
+        "factor_numerator": "11",
+        "factor_denominator": "8",
+        "earnings": "24000000",
+        "pre_restatement_shares": "10000000",
+        "restated_shares": "13750000",
+        "pre_restatement_basic_eps": "2.4",
+        "restated_basic_eps": "1.7454545454545454545454545454545454545454545454545",
+        "is_final": true
+      },
+      {
+        "period_id": "SYN-2025-Q3",
+        "applied_event_ids": [
+          "SYN-BONUS-2"
+        ],
+        "factor_numerator": "11",
+        "factor_denominator": "10",
+        "earnings": "-3300000",
+        "pre_restatement_shares": "12500000",
+        "restated_shares": "13750000",
+        "pre_restatement_basic_eps": "-0.264",
+        "restated_basic_eps": "-0.24",
+        "is_final": false
+      }
+    ],
+    "all_final": false
+  },
+  "invalid_input": {
+    "events": [
+      {
+        "event_id": "SYN-BONUS-1",
+        "effective_date": "2025-03-15",
+        "bonus_shares": "1",
+        "existing_shares": "0",
+        "no_additional_consideration": true,
+        "event_is_effective": true
+      },
+      {
+        "event_id": "SYN-BONUS-2",
+        "effective_date": "2025-09-01",
+        "bonus_shares": "1",
+        "existing_shares": "10",
+        "no_additional_consideration": true,
+        "event_is_effective": true
+      }
+    ],
+    "periods": [
+      {
+        "period_id": "SYN-2024",
+        "period_start": "2024-01-01",
+        "period_end": "2024-12-31",
+        "basis_date": "2024-12-31",
+        "basis_is_uniform": true,
+        "earnings_available_to_ordinary_shareholders": "24000000",
+        "weighted_average_ordinary_shares": "10000000",
+        "is_final": true
+      },
+      {
+        "period_id": "SYN-2025-Q3",
+        "period_start": "2025-01-01",
+        "period_end": "2025-09-30",
+        "basis_date": "2025-03-15",
+        "basis_is_uniform": true,
+        "earnings_available_to_ordinary_shareholders": "-3300000",
+        "weighted_average_ordinary_shares": "12500000",
+        "is_final": false
+      }
+    ]
+  }
+}
