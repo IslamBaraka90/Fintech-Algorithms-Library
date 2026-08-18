@@ -227,7 +227,7 @@ direct subpath import when the algorithm is known at build time.
 ```js
 import { topics, byArchetype, byFamily, runner } from "fintech-algorithms";
 
-topics.length;                       // 471
+topics.length;                       // 675
 byArchetype("series-transform").length;   // 37
 byFamily("D07-F01").map((t) => t.slug);
 // → ["sma","ema","wma","wilder-rma","dema","tema","hull-ma","kama","mama"]

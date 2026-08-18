@@ -59,7 +59,7 @@ node "${SKILL_DIR}/scripts/lookup.mjs" show bollinger-bands   # prints the execu
 
 ## 3. `row-classify` topics never throw
 
-All 17 report failure in the return value. One malformed record in ten thousand
+All 24 report failure in the return value. One malformed record in ten thousand
 should lose neither that record nor the other 9,999.
 
 ```js
@@ -188,7 +188,7 @@ are wrong rather than absent.
 
 ## 13. State the verification tier
 
-397 topics are `verified`: the arithmetic is replayed and asserted on every build
+601 topics are `verified`: the arithmetic is replayed and asserted on every build
 against values the catalog computed with a Python implementation written
 alongside the TypeScript — cross-language parity, not an independent third-party
 figure. 74 are `contract`: signature and shape are checked against the compiled
@@ -206,7 +206,7 @@ That sentence is useful and honest. Omitting it overstates what was checked.
 
 ## 14. When the topic does not exist, say so
 
-471 named topics, no catch-all. Do **not** invent a subpath, reshape another
+675 named topics, no catch-all. Do **not** invent a subpath, reshape another
 topic's payload because the names look similar, or silently substitute a nearby
 algorithm. Every subpath mirrors its docs URL exactly, so a plausible guess is
 wrong in a way that reads as right.

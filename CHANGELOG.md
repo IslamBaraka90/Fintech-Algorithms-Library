@@ -8,16 +8,23 @@ corrective changes in the patch — so `0.11.0 → 0.12.0` can break you and
 
 ## 0.13.0 — 2026-08-17
 
-Four domains arrive and the library goes from 324 topics to 523. Nothing is
-removed: every subpath published in `0.12.0` still resolves.
+The catalog and the package finally hold the same set. 675 topics across 17
+domains, with nothing skipped and nothing held back — the first release where
+every algorithm that exists is also one you can install. Nothing is removed:
+every subpath published in `0.12.0` still resolves.
 
 | | `0.12.0` | `0.13.0` |
 |---|--:|--:|
-| Topics | 324 | **523** |
+| Topics | 324 | **675** |
 | Domains | 13 | **17** |
-| Topics whose arithmetic is asserted on every build | 158 | **449** |
-| Topics with a validated `api` contract | 324 / 324 | **523 / 523** |
-| Topics with an executed worked example | 324 | **523** |
+| Topics whose arithmetic is asserted on every build | 158 | **601** |
+| Topics with a validated `api` contract | 324 / 324 | **675 / 675** |
+| Topics with an executed worked example | 324 | **675** |
+
+Technical Indicators is the headline for most people: it shipped 37 of its 137
+topics in `0.12.0` and now ships all 137. ALMA, T3, VIDYA, FRAMA, TRIX, Klinger,
+the Hilbert and Ehlers cycle tools and the rest are installable for the first
+time.
 
 ### One thing that can break you
 
@@ -52,6 +59,16 @@ better, the named function.
   default, Campbell-Hilscher-Szilagyi distress probability.
 - **Geometric chart patterns** gains its continuation structures and pattern
   matching families — triangles, flags, pennants, wedges, DTW and matrix profile.
+- **152 topics that could not ship now do.** They carried an adapter rather than
+  an implementation: a file that started a Python process, piped its input across
+  as JSON and returned the answer. Correct, and unusable in a package that
+  promises zero dependencies and has to run in a browser. The shared runtime
+  behind them is now native TypeScript, and parity was measured rather than
+  assumed — 298 full-series cases and three exact EPS cases compared against the
+  Python reference observation by observation, 42,435 values, worst relative
+  error 1.31e-15. This is what completes Technical Indicators, and it also brings
+  the Hilbert and Ehlers cycle analytics, the pivot and market-structure
+  families, and the last three EPS topics.
 
 ### Verification
 
@@ -63,10 +80,13 @@ transcription and generation errors — the failure mode that has actually
 occurred here — and it would not catch both implementations sharing a misreading
 of the source. The README and the agent skill now say so in those words.
 
-The jump comes from reading a fixture shape the generator did not recognise: 119
-topics already carried a separate input and expected-output pair on disk, and
-102 of them were shipping with nothing asserting their numbers. No expected value
-was authored to close that gap.
+Most of the jump comes from reading two fixture shapes the generator did not
+recognise. 102 topics already carried a separate input and expected-output pair
+on disk while nothing asserted their numbers, and the 152 ported topics carry a
+richer contract again: the warm-up index, every value in the final observation,
+and a causality property — that running over a prefix of the bars reproduces
+exactly the prefix of the full series, which is what catches an implementation
+that has quietly looked ahead. No expected value was authored to close either gap.
 
 ### Contributing
 
@@ -104,8 +124,9 @@ See [CONTRIBUTING.md](CONTRIBUTING.md).
 ### Internal
 
 - A purity gate refuses any implementation that reaches a `node:` builtin,
-  directly or through a shared module. 152 catalog topics currently delegate to a
-  Python reference process and are held back by it rather than shipped.
+  directly or through a shared module, and it now checks the whole import graph
+  rather than one level. It is what caught the 152 adapter-backed topics before
+  they could ship; they were ported rather than exempted, and the gate stays.
 - `gen-docs.mjs` counts registry entries independently of the regex that parses
   them. Three times a topic had failed to match on one malformed field and
   vanished from the payload with no symptom.

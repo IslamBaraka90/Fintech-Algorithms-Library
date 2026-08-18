@@ -1,73 +1,72 @@
-# State and what's left
+# State and what is left
 
 ## Where the package stands
 
 | | |
 |---|---|
-| Topics | **154** · 7 domains · 27 families |
-| Build | `tsc` clean, 0 errors |
-| Tests | **241 pass, 0 fail** |
-| Verified arithmetic | **79/154** against the catalog's own published numbers |
-| Version | `0.2.0` — never published; the npm name `fintech-algorithms` is available |
-| Git | local only, no remote configured |
+| Topics | **675** · 17 domains · 82 families |
+| Verified arithmetic | **601 / 675** replayed and asserted on every build |
+| `api:` contracts | **675 / 675** |
+| Worked examples | **675 / 675**, every one executed |
+| Build | `tsc` clean |
+| Tests | **1,288 pass, 0 fail** |
+| Published | `0.12.0` on npm; `main` is ahead — see [CHANGELOG.md](CHANGELOG.md) |
+| Held back | none |
 
-Nothing here blocks use. The package installs from a tarball and works — the
-market-breadth dashboard consumes it that way.
+**The catalog and the package now hold the same set.** Every domain either ships
+or is refused by a gate that prints its reason, and nothing is currently refused.
+That is a first, and it is the thing that makes the release worth cutting.
 
-## Recently fixed
+## Ready to release
 
-- **13 topics exposed the wrong `run()` alias.** The newest catalog families ship
-  one shared implementation per family, and entry detection fell through to the
-  first exported function, so every momentum topic pointed at `rsi()` and every
-  volume topic at `obv()`. Detection now derives the entry from the topic's own
-  catalog test, then from slug rules, and **fails the build** rather than guessing.
-- **Two new tests** tie each entry to its topic's identity and flag topics that
-  share an implementation and collapse onto one function. Both were confirmed to
-  fail when the original defect is re-injected.
-- **Shared family bodies are hoisted** into `src/_shared/` and re-exported, so
-  `momentum.ts` (×8) and `volume.ts` (×6) ship once each. The public `exports` map
-  is byte-identical before and after.
-- **Conformance rose 41 → 79** with runners for the catalog's other two fixture
-  conventions.
-- **README statistics are generated** by `scripts/update-readme.mjs`, so the counts
-  cannot drift again.
-
-## What's actually left
-
-1. **75 topics have no machine-checkable numbers in this package.** They load and
-   expose a callable entry, and they have passing tests in the catalog, but they
-   ship no expected values this harness can consume. Closing the gap means adding
-   `{ input, expected }` or bar/checkpoint fixtures to those catalog topics — a
-   catalog authoring task, not a package task.
-2. **3 catalog topics have no TypeScript implementation** and are therefore absent:
-   `D46-F01-A06`, `D46-F01-A07`, `D46-F02-A01`.
-3. **Publishing.** When ready: `npm run verify`, `npm pack --dry-run` to check the
-   file list, decide `0.2.0` vs `1.0.0`, then `npm publish --access public`.
-   Creating the GitHub repo and publishing are both public and irreversible.
-4. **`strict: false`** in `tsconfig.json`. Many catalog entry points are
-   deliberately `(data: unknown)`. Turning strict on is worth doing per-domain,
-   starting with D07 and D01-F01, which are already well-typed.
-
-## One catalog discrepancy worth a decision
-
-`D04-F04-A06` (breadth-divergence-detector): the fixture states
-`breadth_separation: -0.13` while the implementation returns `-130` — the
-`breadth_scale: 1000` factor. The catalog's own test asserts only `status` and
-`confirmation_date`, so it never noticed. The conformance suite skips that single
-field with a comment rather than picking a side. Decide which unit is canonical
-and fix whichever is wrong.
-
-## Working on this repo
-
-Everything under `src/` except `src/_shared/` is generated. Never hand-edit it —
-fix the catalog implementation in `algorithms/domains/**` and re-run:
+`0.13.0` is written and waiting for a tag. It takes the library from 324 topics
+to 675, completes Technical Indicators for the first time, and carries one
+behaviour change on a single published subpath — documented in the changelog.
 
 ```bash
-npm run sync      # regenerate src/ + README stats
-npm run build     # tsc -> dist/
-npm test          # conformance + module contract + structural
-node scripts/sync.mjs --check   # CI gate: is the package in step with the catalog?
+npm run verify
+npm version minor
+git push origin main --follow-tags
 ```
 
-⚠️ The `edufintech` monorepo's `.git/` directory is empty — the catalog is not
-under version control, so catalog edits have no undo.
+That is the only trigger. CI re-verifies, packs, smoke-tests the tarball from
+ESM and CommonJS, publishes with provenance, creates a GitHub Release from the
+changelog section, and asks the reference site to rebuild.
+
+## What is actually left
+
+**Verification, the honest gap.** 74 topics ship no expected values, so nothing
+asserts their arithmetic. They are mostly in `D01-F02`, `F03` and `F04`, where
+the only oracle is assertion code inside the catalog's own tests rather than data
+that can be copied. Closing this needs numbers authored against a published
+source, not more tooling. It is the highest-value catalog work remaining.
+
+**Say what `verified` means, everywhere it appears.** The expected values are
+computed in the catalog by a Python implementation written alongside the
+TypeScript. That is cross-language parity — it catches transcription and
+generation errors, and would not catch both implementations sharing a
+misreading. The README, the skill and this repository now word it that way;
+anything written elsewhere should match.
+
+**`D00` typing.** The foundations engine takes and returns `Record<string, any>`.
+Its 120 contracts describe the keys each topic really reads, which is honest, but
+a caller gets no help from the type. Narrowing it is not free: the engine
+validates at family scope before it branches, so a narrow per-topic interface
+would typecheck calls that then throw. Worth doing deliberately or not at all.
+
+**Two calling conventions.** Topics that predate the native port take plain
+arrays and return bare records; the 152 ported ones take `{ bars, parameters }`
+and return an envelope with `series`, `latest` and `ready_at`. Both are correct
+and both are fixed by their fixtures. It is a documented split rather than a bug,
+but it is the kind of thing that should be resolved in a major version rather
+than left to surprise people.
+
+**Package size.** 17 MB unpacked across roughly 5,400 files, because `src/` ships
+alongside `dist/`. That is what makes declaration maps resolve to real sources.
+Worth an explicit decision at some point rather than drift.
+
+## Where planning lives
+
+Engineering plans are deliberately outside this repository, at
+`edufintech/planning/fintech-algorithms/` — `ROADMAP.md`, `BACKLOG.md` and
+`DECISIONS.md`. This file is the public summary; those are the working documents.

@@ -1,6 +1,6 @@
 # The five input shapes
 
-Every one of the 471 topics belongs to exactly one archetype. The archetype is
+Every one of the 675 topics belongs to exactly one archetype. The archetype is
 printed on every index line and in `lookup.mjs` output. **Filter on it before
 fetching anything** — it decides how much adapter code the task needs.
 
