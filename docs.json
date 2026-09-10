@@ -2,7 +2,7 @@
   "schemaVersion": "2.0.0",
   "package": {
     "name": "fintech-algorithms",
-    "version": "0.13.0",
+    "version": "0.13.1",
     "homepage": "https://docs.thefintechbuilder.com",
     "license": "MIT",
     "type": "module",
