@@ -1,13 +1,13 @@
 ---
 name: fintech-algorithms
-description: Compute market-data, trading and quantitative analytics with the `fintech-algorithms` npm package — 675 zero-dependency TypeScript algorithms covering statistics and financial-mathematics foundations (mean, median, percentiles, standard deviation, correlation, regression, distributions, z-scores, log returns, volatility, drawdown, Sharpe, value at risk), technical indicators (RSI, MACD, moving averages, Bollinger Bands, ATR, OBV, Stochastic), candlestick and chart patterns, market breadth, bar construction from tick data, OHLC validation and cleaning, corporate actions, index and benchmark construction, market microstructure, matching engines, execution and TCA, statistical time series, credit risk and probability of default, classifier and score validation (ROC, AUC, Brier, calibration), on-chain metrics and EPS analytics. Use when asked to analyse a price series, compute a statistic or summary, compute or explain an indicator, detect a candlestick or chart pattern, build bars from ticks, validate or clean market data, score or validate a model, wire up a market-data provider, or when writing code that needs any of these calculations to be correct rather than approximated.
+description: Compute market-data, trading and quantitative analytics with the `fintech-algorithms` npm package — 697 zero-dependency TypeScript algorithms covering statistics and financial-mathematics foundations (mean, median, percentiles, standard deviation, correlation, regression, distributions, z-scores, log returns, volatility, drawdown, Sharpe, value at risk), technical indicators (RSI, MACD, moving averages, Bollinger Bands, ATR, OBV, Stochastic), candlestick and chart patterns, market breadth, bar construction from tick data, OHLC validation and cleaning, corporate actions, index and benchmark construction, market microstructure, matching engines, execution and TCA, statistical time series, credit risk and probability of default, classifier and score validation (ROC, AUC, Brier, calibration), on-chain metrics and EPS analytics, volatility and covariance estimation (GARCH, realized variance, Ledoit-Wolf shrinkage). Use when asked to analyse a price series, compute a statistic or summary, compute or explain an indicator, detect a candlestick or chart pattern, build bars from ticks, validate or clean market data, score or validate a model, wire up a market-data provider, or when writing code that needs any of these calculations to be correct rather than approximated.
 metadata:
-  version: 0.13.0
+  version: 0.13.1
 ---
 
 # fintech-algorithms
 
-675 pure functions for market, financial and statistical calculations. Plain arrays and
+697 pure functions for market, financial and statistical calculations. Plain arrays and
 objects in, plain values out. Zero runtime dependencies, Node >= 22, ESM.
 
 **Docs:** https://docs.thefintechbuilder.com ·
@@ -104,7 +104,7 @@ Check the installed version matches the docs with
 overbought" → RSI. "Smooth this" → which moving average, and why that one.
 
 **2. Narrow by archetype before fetching anything.** Five input shapes cover all
-675 topics, and the archetype is on every index line:
+697 topics, and the archetype is on every index line:
 
 | Archetype | Takes | Returns | Count |
 |---|---|---|---|
@@ -196,7 +196,7 @@ the correct answer, not an obstacle to route around.
 
 ## Coverage
 
-17 domains: Financial Mathematics, Statistics, and Data Foundations (120) ·
+18 domains: Financial Mathematics, Statistics, and Data Foundations (120) ·
 Market Data Engineering (31) · Corporate Actions and Security Master Data (20) ·
 Index and Benchmark Engineering (40) · Market Breadth and Internals (28) · Price
 Action and Candlesticks (52) · Technical Indicators (137) · Geometric Chart
@@ -204,7 +204,7 @@ Patterns (64) · Statistical Time Series (37) · Market Microstructure (29) ·
 Matching Engines and Venue Logic (21) · Execution and Transaction Cost Analysis
 (9) · Fundamental Analysis and Valuation (52) · Credit Risk and Default (7) ·
 Digital Assets and On-Chain Finance (10) · Model Validation and Backtesting (10)
-· Earnings and Per-Share Analytics (8).
+· Earnings and Per-Share Analytics (8) · Volatility and Covariance (22).
 
 Technical Indicators, Price Action and Geometric Chart Patterns are complete for
 the first time in 0.13.0 — every topic in the catalog is installable.

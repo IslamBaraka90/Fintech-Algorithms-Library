@@ -30,13 +30,13 @@ gone on the next run. Fix the catalog and re-sync.
 
 ### Current state
 
-- **675 topics** across 17 domains and 82 families
-- **601 verified** — arithmetic replayed and asserted on every build; 74 at
+- **697 topics** across 18 domains and 86 families
+- **623 verified** — arithmetic replayed and asserted on every build; 74 at
   `contract`, where the signature is checked but nothing asserts the numbers
-- **675 / 675** carry a validated `api:` contract
-- **675 / 675** carry an executed worked example
-- **1,288 tests pass**, `tsc` builds clean, zero runtime dependencies
-- Published: `0.12.0`. `main` is ahead of it — see [CHANGELOG.md](CHANGELOG.md).
+- **697 / 697** carry a validated `api:` contract
+- **697 / 697** carry an executed worked example
+- **1,332 tests pass**, `tsc` builds clean, zero runtime dependencies
+- Published: `0.13.0`. `main` is ahead of it — see [CHANGELOG.md](CHANGELOG.md).
 
 ---
 
@@ -132,7 +132,7 @@ To validate an unreleased change, install the tarball rather than using
 
 ```bash
 npm pack
-npm install /path/to/fintech-algorithms-0.13.0.tgz
+npm install /path/to/fintech-algorithms-0.13.1.tgz
 ```
 
 npm caches tarballs by path, so bump the version or use `--force` if a change

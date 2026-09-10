@@ -2711,6 +2711,116 @@
       "import": "./dist/statistical-time-series/hilbert-and-ehlers-cycle-analytics/ehlers-decycler/index.js",
       "require": "./dist/statistical-time-series/hilbert-and-ehlers-cycle-analytics/ehlers-decycler/index.js"
     },
+    "./volatility-and-covariance/historical-estimators/close-to-close-volatility": {
+      "types": "./dist/volatility-and-covariance/historical-estimators/close-to-close-volatility/index.d.ts",
+      "import": "./dist/volatility-and-covariance/historical-estimators/close-to-close-volatility/index.js",
+      "require": "./dist/volatility-and-covariance/historical-estimators/close-to-close-volatility/index.js"
+    },
+    "./volatility-and-covariance/historical-estimators/parkinson-volatility": {
+      "types": "./dist/volatility-and-covariance/historical-estimators/parkinson-volatility/index.d.ts",
+      "import": "./dist/volatility-and-covariance/historical-estimators/parkinson-volatility/index.js",
+      "require": "./dist/volatility-and-covariance/historical-estimators/parkinson-volatility/index.js"
+    },
+    "./volatility-and-covariance/historical-estimators/garman-klass-volatility": {
+      "types": "./dist/volatility-and-covariance/historical-estimators/garman-klass-volatility/index.d.ts",
+      "import": "./dist/volatility-and-covariance/historical-estimators/garman-klass-volatility/index.js",
+      "require": "./dist/volatility-and-covariance/historical-estimators/garman-klass-volatility/index.js"
+    },
+    "./volatility-and-covariance/historical-estimators/rogers-satchell-volatility": {
+      "types": "./dist/volatility-and-covariance/historical-estimators/rogers-satchell-volatility/index.d.ts",
+      "import": "./dist/volatility-and-covariance/historical-estimators/rogers-satchell-volatility/index.js",
+      "require": "./dist/volatility-and-covariance/historical-estimators/rogers-satchell-volatility/index.js"
+    },
+    "./volatility-and-covariance/historical-estimators/yang-zhang-volatility": {
+      "types": "./dist/volatility-and-covariance/historical-estimators/yang-zhang-volatility/index.d.ts",
+      "import": "./dist/volatility-and-covariance/historical-estimators/yang-zhang-volatility/index.js",
+      "require": "./dist/volatility-and-covariance/historical-estimators/yang-zhang-volatility/index.js"
+    },
+    "./volatility-and-covariance/realized-measures/realized-variance": {
+      "types": "./dist/volatility-and-covariance/realized-measures/realized-variance/index.d.ts",
+      "import": "./dist/volatility-and-covariance/realized-measures/realized-variance/index.js",
+      "require": "./dist/volatility-and-covariance/realized-measures/realized-variance/index.js"
+    },
+    "./volatility-and-covariance/realized-measures/realized-covariance": {
+      "types": "./dist/volatility-and-covariance/realized-measures/realized-covariance/index.d.ts",
+      "import": "./dist/volatility-and-covariance/realized-measures/realized-covariance/index.js",
+      "require": "./dist/volatility-and-covariance/realized-measures/realized-covariance/index.js"
+    },
+    "./volatility-and-covariance/realized-measures/bipower-variation": {
+      "types": "./dist/volatility-and-covariance/realized-measures/bipower-variation/index.d.ts",
+      "import": "./dist/volatility-and-covariance/realized-measures/bipower-variation/index.js",
+      "require": "./dist/volatility-and-covariance/realized-measures/bipower-variation/index.js"
+    },
+    "./volatility-and-covariance/realized-measures/jump-variation-detector": {
+      "types": "./dist/volatility-and-covariance/realized-measures/jump-variation-detector/index.d.ts",
+      "import": "./dist/volatility-and-covariance/realized-measures/jump-variation-detector/index.js",
+      "require": "./dist/volatility-and-covariance/realized-measures/jump-variation-detector/index.js"
+    },
+    "./volatility-and-covariance/realized-measures/realized-kernel": {
+      "types": "./dist/volatility-and-covariance/realized-measures/realized-kernel/index.d.ts",
+      "import": "./dist/volatility-and-covariance/realized-measures/realized-kernel/index.js",
+      "require": "./dist/volatility-and-covariance/realized-measures/realized-kernel/index.js"
+    },
+    "./volatility-and-covariance/conditional-volatility/arch": {
+      "types": "./dist/volatility-and-covariance/conditional-volatility/arch/index.d.ts",
+      "import": "./dist/volatility-and-covariance/conditional-volatility/arch/index.js",
+      "require": "./dist/volatility-and-covariance/conditional-volatility/arch/index.js"
+    },
+    "./volatility-and-covariance/conditional-volatility/garch": {
+      "types": "./dist/volatility-and-covariance/conditional-volatility/garch/index.d.ts",
+      "import": "./dist/volatility-and-covariance/conditional-volatility/garch/index.js",
+      "require": "./dist/volatility-and-covariance/conditional-volatility/garch/index.js"
+    },
+    "./volatility-and-covariance/conditional-volatility/egarch": {
+      "types": "./dist/volatility-and-covariance/conditional-volatility/egarch/index.d.ts",
+      "import": "./dist/volatility-and-covariance/conditional-volatility/egarch/index.js",
+      "require": "./dist/volatility-and-covariance/conditional-volatility/egarch/index.js"
+    },
+    "./volatility-and-covariance/conditional-volatility/gjr-garch": {
+      "types": "./dist/volatility-and-covariance/conditional-volatility/gjr-garch/index.d.ts",
+      "import": "./dist/volatility-and-covariance/conditional-volatility/gjr-garch/index.js",
+      "require": "./dist/volatility-and-covariance/conditional-volatility/gjr-garch/index.js"
+    },
+    "./volatility-and-covariance/conditional-volatility/figarch": {
+      "types": "./dist/volatility-and-covariance/conditional-volatility/figarch/index.d.ts",
+      "import": "./dist/volatility-and-covariance/conditional-volatility/figarch/index.js",
+      "require": "./dist/volatility-and-covariance/conditional-volatility/figarch/index.js"
+    },
+    "./volatility-and-covariance/conditional-volatility/har-rv": {
+      "types": "./dist/volatility-and-covariance/conditional-volatility/har-rv/index.d.ts",
+      "import": "./dist/volatility-and-covariance/conditional-volatility/har-rv/index.js",
+      "require": "./dist/volatility-and-covariance/conditional-volatility/har-rv/index.js"
+    },
+    "./volatility-and-covariance/covariance-estimation/sample-covariance": {
+      "types": "./dist/volatility-and-covariance/covariance-estimation/sample-covariance/index.d.ts",
+      "import": "./dist/volatility-and-covariance/covariance-estimation/sample-covariance/index.js",
+      "require": "./dist/volatility-and-covariance/covariance-estimation/sample-covariance/index.js"
+    },
+    "./volatility-and-covariance/covariance-estimation/ewma-covariance": {
+      "types": "./dist/volatility-and-covariance/covariance-estimation/ewma-covariance/index.d.ts",
+      "import": "./dist/volatility-and-covariance/covariance-estimation/ewma-covariance/index.js",
+      "require": "./dist/volatility-and-covariance/covariance-estimation/ewma-covariance/index.js"
+    },
+    "./volatility-and-covariance/covariance-estimation/ledoit-wolf-shrinkage": {
+      "types": "./dist/volatility-and-covariance/covariance-estimation/ledoit-wolf-shrinkage/index.d.ts",
+      "import": "./dist/volatility-and-covariance/covariance-estimation/ledoit-wolf-shrinkage/index.js",
+      "require": "./dist/volatility-and-covariance/covariance-estimation/ledoit-wolf-shrinkage/index.js"
+    },
+    "./volatility-and-covariance/covariance-estimation/oracle-approximating-shrinkage": {
+      "types": "./dist/volatility-and-covariance/covariance-estimation/oracle-approximating-shrinkage/index.d.ts",
+      "import": "./dist/volatility-and-covariance/covariance-estimation/oracle-approximating-shrinkage/index.js",
+      "require": "./dist/volatility-and-covariance/covariance-estimation/oracle-approximating-shrinkage/index.js"
+    },
+    "./volatility-and-covariance/covariance-estimation/factor-model-covariance": {
+      "types": "./dist/volatility-and-covariance/covariance-estimation/factor-model-covariance/index.d.ts",
+      "import": "./dist/volatility-and-covariance/covariance-estimation/factor-model-covariance/index.js",
+      "require": "./dist/volatility-and-covariance/covariance-estimation/factor-model-covariance/index.js"
+    },
+    "./volatility-and-covariance/covariance-estimation/graphical-lasso-covariance": {
+      "types": "./dist/volatility-and-covariance/covariance-estimation/graphical-lasso-covariance/index.d.ts",
+      "import": "./dist/volatility-and-covariance/covariance-estimation/graphical-lasso-covariance/index.js",
+      "require": "./dist/volatility-and-covariance/covariance-estimation/graphical-lasso-covariance/index.js"
+    },
     "./market-microstructure/trade-classification/tick-test": {
       "types": "./dist/market-microstructure/trade-classification/tick-test/index.d.ts",
       "import": "./dist/market-microstructure/trade-classification/tick-test/index.js",

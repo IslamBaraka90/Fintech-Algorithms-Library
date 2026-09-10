@@ -4,13 +4,13 @@
 
 | | |
 |---|---|
-| Topics | **675** · 17 domains · 82 families |
-| Verified arithmetic | **601 / 675** replayed and asserted on every build |
-| `api:` contracts | **675 / 675** |
-| Worked examples | **675 / 675**, every one executed |
+| Topics | **697** · 18 domains · 86 families |
+| Verified arithmetic | **623 / 697** replayed and asserted on every build |
+| `api:` contracts | **697 / 697** |
+| Worked examples | **697 / 697**, every one executed |
 | Build | `tsc` clean |
-| Tests | **1,288 pass, 0 fail** |
-| Published | `0.12.0` on npm; `main` is ahead — see [CHANGELOG.md](CHANGELOG.md) |
+| Tests | **1,332 pass, 0 fail** |
+| Published | `0.13.0` on npm; `main` is ahead — see [CHANGELOG.md](CHANGELOG.md) |
 | Held back | none |
 
 **The catalog and the package now hold the same set.** Every domain either ships
@@ -19,13 +19,14 @@ That is a first, and it is the thing that makes the release worth cutting.
 
 ## Ready to release
 
-`0.13.0` is written and waiting for a tag. It takes the library from 324 topics
-to 675, completes Technical Indicators for the first time, and carries one
-behaviour change on a single published subpath — documented in the changelog.
+`0.13.1` is written and waiting for a tag. It adds the Volatility and Covariance
+domain and restores the diagram source that 369 topics had been shipping without.
+Nothing is removed or renamed, so it is a patch by the rule at the top of the
+changelog.
 
 ```bash
 npm run verify
-npm version minor
+npm version patch
 git push origin main --follow-tags
 ```
 

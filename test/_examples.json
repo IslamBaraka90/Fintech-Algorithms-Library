@@ -308474,6 +308474,1735 @@
    }
   }
  },
+ "D10-F01-A01": {
+  "args": [
+   {
+    "bars": [
+     {
+      "timestamp": "2026-01-01T09:00:00Z",
+      "open": 99.50124791926824,
+      "close": 100,
+      "high": 101.00501670841679,
+      "low": 98.51119396030626
+     },
+     {
+      "timestamp": "2026-01-02T09:00:00Z",
+      "open": 100.5012520859401,
+      "close": 101.00501670841679,
+      "high": 102.02013400267558,
+      "low": 99.50124791926824
+     },
+     {
+      "timestamp": "2026-01-03T09:00:00Z",
+      "open": 98.51119396030626,
+      "close": 99.0049833749168,
+      "high": 100,
+      "low": 97.53099120283326
+     }
+    ],
+    "parameters": {
+     "window": 2,
+     "annualization_factor": 1
+    }
+   }
+  ],
+  "value": {
+   "topic_id": "D10-F01-A01",
+   "title": "Close-to-Close Volatility",
+   "parameters": {
+    "window": 2,
+    "annualization_factor": 1
+   },
+   "series": [
+    null,
+    null,
+    {
+     "timestamp": "2026-01-03T09:00:00Z",
+     "variance": 0.0004499999999999914,
+     "volatility": 0.021213203435596222,
+     "contributions": [
+      0.009999999999999893,
+      -0.019999999999999823
+     ],
+     "components": {},
+     "window_start": 1,
+     "window_end": 2
+    }
+   ],
+   "latest": {
+    "timestamp": "2026-01-03T09:00:00Z",
+    "variance": 0.0004499999999999914,
+    "volatility": 0.021213203435596222,
+    "contributions": [
+     0.009999999999999893,
+     -0.019999999999999823
+    ],
+    "components": {},
+    "window_start": 1,
+    "window_end": 2
+   },
+   "ready": true,
+   "ready_at": 2,
+   "diagnostics": {
+    "input_count": 3,
+    "annualization_factor": 1,
+    "causal": true
+   }
+  }
+ },
+ "D10-F01-A02": {
+  "args": [
+   {
+    "bars": [
+     {
+      "timestamp": "2026-01-01T09:00:00Z",
+      "open": 99.50124791926824,
+      "close": 100,
+      "high": 101.00501670841679,
+      "low": 98.51119396030626
+     },
+     {
+      "timestamp": "2026-01-02T09:00:00Z",
+      "open": 100.5012520859401,
+      "close": 101.00501670841679,
+      "high": 102.02013400267558,
+      "low": 99.50124791926824
+     },
+     {
+      "timestamp": "2026-01-03T09:00:00Z",
+      "open": 98.51119396030626,
+      "close": 99.0049833749168,
+      "high": 100,
+      "low": 97.53099120283326
+     }
+    ],
+    "parameters": {
+     "window": 2,
+     "annualization_factor": 1
+    }
+   }
+  ],
+  "value": {
+   "topic_id": "D10-F01-A02",
+   "title": "Parkinson Volatility",
+   "parameters": {
+    "window": 2,
+    "annualization_factor": 1
+   },
+   "series": [
+    null,
+    {
+     "timestamp": "2026-01-02T09:00:00Z",
+     "variance": 0.00022542110013889886,
+     "volatility": 0.015014030109830568,
+     "contributions": [
+      0.00022542110013890082,
+      0.00022542110013889694
+     ],
+     "components": {},
+     "window_start": 0,
+     "window_end": 1
+    },
+    {
+     "timestamp": "2026-01-03T09:00:00Z",
+     "variance": 0.00022542110013889886,
+     "volatility": 0.015014030109830568,
+     "contributions": [
+      0.00022542110013889694,
+      0.00022542110013890082
+     ],
+     "components": {},
+     "window_start": 1,
+     "window_end": 2
+    }
+   ],
+   "latest": {
+    "timestamp": "2026-01-03T09:00:00Z",
+    "variance": 0.00022542110013889886,
+    "volatility": 0.015014030109830568,
+    "contributions": [
+     0.00022542110013889694,
+     0.00022542110013890082
+    ],
+    "components": {},
+    "window_start": 1,
+    "window_end": 2
+   },
+   "ready": true,
+   "ready_at": 1,
+   "diagnostics": {
+    "input_count": 3,
+    "annualization_factor": 1,
+    "causal": true
+   }
+  }
+ },
+ "D10-F01-A03": {
+  "args": [
+   {
+    "bars": [
+     {
+      "timestamp": "2026-01-01T09:00:00Z",
+      "open": 99.50124791926824,
+      "close": 100,
+      "high": 101.00501670841679,
+      "low": 98.51119396030626
+     },
+     {
+      "timestamp": "2026-01-02T09:00:00Z",
+      "open": 100.5012520859401,
+      "close": 101.00501670841679,
+      "high": 102.02013400267558,
+      "low": 99.50124791926824
+     },
+     {
+      "timestamp": "2026-01-03T09:00:00Z",
+      "open": 98.51119396030626,
+      "close": 99.0049833749168,
+      "high": 100,
+      "low": 97.53099120283326
+     }
+    ],
+    "parameters": {
+     "window": 2,
+     "annualization_factor": 1
+    }
+   }
+  ],
+  "value": {
+   "topic_id": "D10-F01-A03",
+   "title": "Garman-Klass Volatility",
+   "parameters": {
+    "window": 2,
+    "annualization_factor": 1
+   },
+   "series": [
+    null,
+    {
+     "timestamp": "2026-01-02T09:00:00Z",
+     "variance": 0.00030284264097200084,
+     "volatility": 0.01740237457854533,
+     "contributions": [
+      0.0003028426409720035,
+      0.00030284264097199813
+     ],
+     "components": {},
+     "window_start": 0,
+     "window_end": 1
+    },
+    {
+     "timestamp": "2026-01-03T09:00:00Z",
+     "variance": 0.0003028426409720004,
+     "volatility": 0.01740237457854532,
+     "contributions": [
+      0.00030284264097199813,
+      0.0003028426409720027
+     ],
+     "components": {},
+     "window_start": 1,
+     "window_end": 2
+    }
+   ],
+   "latest": {
+    "timestamp": "2026-01-03T09:00:00Z",
+    "variance": 0.0003028426409720004,
+    "volatility": 0.01740237457854532,
+    "contributions": [
+     0.00030284264097199813,
+     0.0003028426409720027
+    ],
+    "components": {},
+    "window_start": 1,
+    "window_end": 2
+   },
+   "ready": true,
+   "ready_at": 1,
+   "diagnostics": {
+    "input_count": 3,
+    "annualization_factor": 1,
+    "causal": true
+   }
+  }
+ },
+ "D10-F01-A04": {
+  "args": [
+   {
+    "bars": [
+     {
+      "timestamp": "2026-01-01T09:00:00Z",
+      "open": 99.50124791926824,
+      "close": 100,
+      "high": 101.00501670841679,
+      "low": 98.51119396030626
+     },
+     {
+      "timestamp": "2026-01-02T09:00:00Z",
+      "open": 100.5012520859401,
+      "close": 101.00501670841679,
+      "high": 102.02013400267558,
+      "low": 99.50124791926824
+     },
+     {
+      "timestamp": "2026-01-03T09:00:00Z",
+      "open": 98.51119396030626,
+      "close": 99.0049833749168,
+      "high": 100,
+      "low": 97.53099120283326
+     }
+    ],
+    "parameters": {
+     "window": 2,
+     "annualization_factor": 1
+    }
+   }
+  ],
+  "value": {
+   "topic_id": "D10-F01-A04",
+   "title": "Rogers-Satchell Volatility",
+   "parameters": {
+    "window": 2,
+    "annualization_factor": 1
+   },
+   "series": [
+    null,
+    {
+     "timestamp": "2026-01-02T09:00:00Z",
+     "variance": 0.00029999999999999916,
+     "volatility": 0.01732050807568875,
+     "contributions": [
+      0.00029999999999999954,
+      0.00029999999999999884
+     ],
+     "components": {},
+     "window_start": 0,
+     "window_end": 1
+    },
+    {
+     "timestamp": "2026-01-03T09:00:00Z",
+     "variance": 0.0003000000000000008,
+     "volatility": 0.017320508075688797,
+     "contributions": [
+      0.00029999999999999884,
+      0.00030000000000000274
+     ],
+     "components": {},
+     "window_start": 1,
+     "window_end": 2
+    }
+   ],
+   "latest": {
+    "timestamp": "2026-01-03T09:00:00Z",
+    "variance": 0.0003000000000000008,
+    "volatility": 0.017320508075688797,
+    "contributions": [
+     0.00029999999999999884,
+     0.00030000000000000274
+    ],
+    "components": {},
+    "window_start": 1,
+    "window_end": 2
+   },
+   "ready": true,
+   "ready_at": 1,
+   "diagnostics": {
+    "input_count": 3,
+    "annualization_factor": 1,
+    "causal": true
+   }
+  }
+ },
+ "D10-F01-A05": {
+  "args": [
+   {
+    "bars": [
+     {
+      "timestamp": "2026-01-01T09:00:00Z",
+      "open": 99.50124791926824,
+      "close": 100,
+      "high": 101.00501670841679,
+      "low": 98.51119396030626
+     },
+     {
+      "timestamp": "2026-01-02T09:00:00Z",
+      "open": 100.5012520859401,
+      "close": 101.00501670841679,
+      "high": 102.02013400267558,
+      "low": 99.50124791926824
+     },
+     {
+      "timestamp": "2026-01-03T09:00:00Z",
+      "open": 98.51119396030626,
+      "close": 99.0049833749168,
+      "high": 100,
+      "low": 97.53099120283326
+     }
+    ],
+    "parameters": {
+     "window": 2,
+     "annualization_factor": 1
+    }
+   }
+  ],
+  "value": {
+   "topic_id": "D10-F01-A05",
+   "title": "Yang-Zhang Volatility",
+   "parameters": {
+    "window": 2,
+    "annualization_factor": 1
+   },
+   "series": [
+    null,
+    null,
+    {
+     "timestamp": "2026-01-03T09:00:00Z",
+     "variance": 0.0007264976958525304,
+     "volatility": 0.026953621201102652,
+     "contributions": [
+      [
+       0.004999999999999897,
+       0.004999999999999897,
+       0.00029999999999999884
+      ],
+      [
+       -0.024999999999999942,
+       0.005000000000000118,
+       0.00030000000000000274
+      ]
+     ],
+     "components": {
+      "overnight": 0.00044999999999999516,
+      "open_close": 1.9162261030955815e-33,
+      "range": 0.00027649769585253527,
+      "k": 0.0783410138248848
+     },
+     "window_start": 1,
+     "window_end": 2
+    }
+   ],
+   "latest": {
+    "timestamp": "2026-01-03T09:00:00Z",
+    "variance": 0.0007264976958525304,
+    "volatility": 0.026953621201102652,
+    "contributions": [
+     [
+      0.004999999999999897,
+      0.004999999999999897,
+      0.00029999999999999884
+     ],
+     [
+      -0.024999999999999942,
+      0.005000000000000118,
+      0.00030000000000000274
+     ]
+    ],
+    "components": {
+     "overnight": 0.00044999999999999516,
+     "open_close": 1.9162261030955815e-33,
+     "range": 0.00027649769585253527,
+     "k": 0.0783410138248848
+    },
+    "window_start": 1,
+    "window_end": 2
+   },
+   "ready": true,
+   "ready_at": 2,
+   "diagnostics": {
+    "input_count": 3,
+    "annualization_factor": 1,
+    "causal": true
+   }
+  }
+ },
+ "D10-F02-A01": {
+  "args": [
+   {
+    "returns": [
+     0.01,
+     -0.02,
+     0.03,
+     -0.01
+    ],
+    "parameters": {
+     "window": 4,
+     "annualization_factor": 1
+    }
+   }
+  ],
+  "value": {
+   "topic_id": "D10-F02-A01",
+   "title": "Realized Variance",
+   "parameters": {
+    "window": 4,
+    "annualization_factor": 1
+   },
+   "series": [
+    null,
+    null,
+    null,
+    {
+     "variance": 0.0015,
+     "volatility": 0.03872983346207417,
+     "contributions": [
+      0.0001,
+      0.0004,
+      0.0009,
+      0.0001
+     ],
+     "window_start": 0,
+     "window_end": 3
+    }
+   ],
+   "latest": {
+    "variance": 0.0015,
+    "volatility": 0.03872983346207417,
+    "contributions": [
+     0.0001,
+     0.0004,
+     0.0009,
+     0.0001
+    ],
+    "window_start": 0,
+    "window_end": 3
+   },
+   "ready": true,
+   "ready_at": 3,
+   "diagnostics": {
+    "causal": true,
+    "input_count": 4,
+    "annualization_factor": 1
+   }
+  }
+ },
+ "D10-F02-A02": {
+  "args": [
+   {
+    "returns_x": [
+     0.01,
+     -0.02,
+     0.03,
+     -0.01
+    ],
+    "returns_y": [
+     0.02,
+     0.01,
+     -0.01,
+     -0.02
+    ],
+    "timestamps_x": [
+     "2026-01-01T09:00:00Z",
+     "2026-01-01T09:05:00Z",
+     "2026-01-01T09:10:00Z",
+     "2026-01-01T09:15:00Z"
+    ],
+    "timestamps_y": [
+     "2026-01-01T09:00:00Z",
+     "2026-01-01T09:05:00Z",
+     "2026-01-01T09:10:00Z",
+     "2026-01-01T09:15:00Z"
+    ],
+    "parameters": {
+     "window": 4,
+     "annualization_factor": 1
+    }
+   }
+  ],
+  "value": {
+   "topic_id": "D10-F02-A02",
+   "title": "Realized Covariance",
+   "parameters": {
+    "window": 4,
+    "annualization_factor": 1
+   },
+   "series": [
+    null,
+    null,
+    null,
+    {
+     "covariance": -0.00009999999999999996,
+     "contributions": [
+      0.0002,
+      -0.0002,
+      -0.0003,
+      0.0002
+     ],
+     "window_start": 0,
+     "window_end": 3
+    }
+   ],
+   "latest": {
+    "covariance": -0.00009999999999999996,
+    "contributions": [
+     0.0002,
+     -0.0002,
+     -0.0003,
+     0.0002
+    ],
+    "window_start": 0,
+    "window_end": 3
+   },
+   "ready": true,
+   "ready_at": 3,
+   "diagnostics": {
+    "causal": true,
+    "input_count": 4,
+    "annualization_factor": 1
+   }
+  }
+ },
+ "D10-F02-A03": {
+  "args": [
+   {
+    "returns": [
+     0.01,
+     -0.02,
+     0.03,
+     -0.01
+    ],
+    "parameters": {
+     "window": 4,
+     "annualization_factor": 1
+    }
+   }
+  ],
+  "value": {
+   "topic_id": "D10-F02-A03",
+   "title": "Bipower Variation",
+   "parameters": {
+    "window": 4,
+    "annualization_factor": 1
+   },
+   "series": [
+    null,
+    null,
+    null,
+    {
+     "realized_variance": 0.0015,
+     "bipower_variation": 0.001727875959474386,
+     "signed_difference": -0.000227875959474386,
+     "jump_variation": 0,
+     "contributions": [
+      0.0003141592653589793,
+      0.0009424777960769378,
+      0.0004712388980384689
+     ],
+     "window_start": 0,
+     "window_end": 3
+    }
+   ],
+   "latest": {
+    "realized_variance": 0.0015,
+    "bipower_variation": 0.001727875959474386,
+    "signed_difference": -0.000227875959474386,
+    "jump_variation": 0,
+    "contributions": [
+     0.0003141592653589793,
+     0.0009424777960769378,
+     0.0004712388980384689
+    ],
+    "window_start": 0,
+    "window_end": 3
+   },
+   "ready": true,
+   "ready_at": 3,
+   "diagnostics": {
+    "causal": true,
+    "input_count": 4,
+    "annualization_factor": 1
+   }
+  }
+ },
+ "D10-F02-A04": {
+  "args": [
+   {
+    "returns": [
+     0.01,
+     -0.02,
+     0.03,
+     -0.01
+    ],
+    "parameters": {
+     "window": 4,
+     "annualization_factor": 1,
+     "alpha": 0.05
+    }
+   }
+  ],
+  "value": {
+   "topic_id": "D10-F02-A04",
+   "title": "Jump-Variation Detector",
+   "parameters": {
+    "window": 4,
+    "annualization_factor": 1,
+    "alpha": 0.05
+   },
+   "series": [
+    null,
+    null,
+    null,
+    {
+     "realized_variance": 0.0015,
+     "bipower_variation": 0.001727875959474386,
+     "tripower_quarticity": 0.000003041375049273447,
+     "standard_error": 0.0006804738070197237,
+     "statistic": -0.33487837022326555,
+     "critical_value": 1.644853625133699,
+     "jump_detected": false,
+     "decision_status": "asymptotic",
+     "signed_difference": -0.000227875959474386,
+     "window_start": 0,
+     "window_end": 3
+    }
+   ],
+   "latest": {
+    "realized_variance": 0.0015,
+    "bipower_variation": 0.001727875959474386,
+    "tripower_quarticity": 0.000003041375049273447,
+    "standard_error": 0.0006804738070197237,
+    "statistic": -0.33487837022326555,
+    "critical_value": 1.644853625133699,
+    "jump_detected": false,
+    "decision_status": "asymptotic",
+    "signed_difference": -0.000227875959474386,
+    "window_start": 0,
+    "window_end": 3
+   },
+   "ready": true,
+   "ready_at": 3,
+   "diagnostics": {
+    "causal": true,
+    "input_count": 4,
+    "annualization_factor": 1
+   }
+  }
+ },
+ "D10-F02-A05": {
+  "args": [
+   {
+    "returns": [
+     0.01,
+     -0.02,
+     0.03,
+     -0.01
+    ],
+    "parameters": {
+     "window": 4,
+     "annualization_factor": 1,
+     "bandwidth": 1
+    }
+   }
+  ],
+  "value": {
+   "topic_id": "D10-F02-A05",
+   "title": "Realized Kernel",
+   "parameters": {
+    "window": 4,
+    "annualization_factor": 1,
+    "bandwidth": 1
+   },
+   "series": [
+    null,
+    null,
+    null,
+    {
+     "realized_kernel": 0.0004000000000000002,
+     "volatility": 0.020000000000000004,
+     "bandwidth": 1,
+     "lags": [
+      {
+       "lag": 0,
+       "weight": 1,
+       "gamma": 0.0015,
+       "contribution": 0.0015
+      },
+      {
+       "lag": 1,
+       "weight": 0.5,
+       "gamma": -0.0010999999999999998,
+       "contribution": -0.0010999999999999998
+      }
+     ],
+     "window_start": 0,
+     "window_end": 3
+    }
+   ],
+   "latest": {
+    "realized_kernel": 0.0004000000000000002,
+    "volatility": 0.020000000000000004,
+    "bandwidth": 1,
+    "lags": [
+     {
+      "lag": 0,
+      "weight": 1,
+      "gamma": 0.0015,
+      "contribution": 0.0015
+     },
+     {
+      "lag": 1,
+      "weight": 0.5,
+      "gamma": -0.0010999999999999998,
+      "contribution": -0.0010999999999999998
+     }
+    ],
+    "window_start": 0,
+    "window_end": 3
+   },
+   "ready": true,
+   "ready_at": 3,
+   "diagnostics": {
+    "causal": true,
+    "input_count": 4,
+    "annualization_factor": 1
+   }
+  }
+ },
+ "D10-F03-A01": {
+  "args": [
+   {
+    "returns": [
+     -0.02,
+     0.01,
+     0
+    ],
+    "parameters": {
+     "omega": 0.000002,
+     "initial_variance": 0.0001,
+     "alphas": [
+      0.2,
+      0.1
+     ]
+    }
+   }
+  ],
+  "value": {
+   "topic_id": "D10-F03-A01",
+   "title": "ARCH",
+   "parameters": {
+    "omega": 0.000002,
+    "initial_variance": 0.0001,
+    "alphas": [
+     0.2,
+     0.1
+    ]
+   },
+   "series": [
+    null,
+    null,
+    {
+     "index": 2,
+     "variance": 0.000062,
+     "intercept": 0.000002,
+     "lag_contributions": [
+      0.00002,
+      0.00004
+     ]
+    }
+   ],
+   "latest": {
+    "index": 2,
+    "variance": 0.000062,
+    "intercept": 0.000002,
+    "lag_contributions": [
+     0.00002,
+     0.00004
+    ]
+   },
+   "ready": true,
+   "ready_at": 2,
+   "diagnostics": {
+    "causal": true,
+    "input_count": 3,
+    "fitted_parameters": false,
+    "model": "arch"
+   }
+  }
+ },
+ "D10-F03-A02": {
+  "args": [
+   {
+    "returns": [
+     -0.02,
+     0.01,
+     0
+    ],
+    "parameters": {
+     "omega": 0.000002,
+     "initial_variance": 0.0001,
+     "alpha": 0.1,
+     "beta": 0.8
+    }
+   }
+  ],
+  "value": {
+   "topic_id": "D10-F03-A02",
+   "title": "GARCH",
+   "parameters": {
+    "omega": 0.000002,
+    "initial_variance": 0.0001,
+    "alpha": 0.1,
+    "beta": 0.8
+   },
+   "series": [
+    {
+     "index": 0,
+     "variance": 0.0001,
+     "initialization": true
+    },
+    {
+     "index": 1,
+     "variance": 0.00012200000000000001,
+     "intercept": 0.000002,
+     "shock_contribution": 0.00004,
+     "threshold_contribution": 0,
+     "carry": 0.00008
+    },
+    {
+     "index": 2,
+     "variance": 0.00010960000000000001,
+     "intercept": 0.000002,
+     "shock_contribution": 0.00001,
+     "threshold_contribution": 0,
+     "carry": 0.00009760000000000001
+    }
+   ],
+   "latest": {
+    "index": 2,
+    "variance": 0.00010960000000000001,
+    "intercept": 0.000002,
+    "shock_contribution": 0.00001,
+    "threshold_contribution": 0,
+    "carry": 0.00009760000000000001
+   },
+   "ready": true,
+   "ready_at": 0,
+   "diagnostics": {
+    "causal": true,
+    "input_count": 3,
+    "fitted_parameters": false,
+    "model": "garch"
+   }
+  }
+ },
+ "D10-F03-A03": {
+  "args": [
+   {
+    "returns": [
+     -0.02,
+     0
+    ],
+    "parameters": {
+     "omega": -0.5,
+     "initial_variance": 0.0001,
+     "alpha": 0.1,
+     "beta": 0.9,
+     "gamma": -0.2
+    }
+   }
+  ],
+  "value": {
+   "topic_id": "D10-F03-A03",
+   "title": "EGARCH",
+   "parameters": {
+    "omega": -0.5,
+    "initial_variance": 0.0001,
+    "alpha": 0.1,
+    "beta": 0.9,
+    "gamma": -0.2
+   },
+   "series": [
+    {
+     "index": 0,
+     "variance": 0.0001,
+     "initialization": true
+    },
+    {
+     "index": 1,
+     "variance": 0.00025631720695395993,
+     "log_variance": -8.26909479085885,
+     "standardized_shock": -2,
+     "intercept": -0.5,
+     "carry": -8.289306334778564,
+     "magnitude_contribution": 0.12021154391971348,
+     "sign_contribution": 0.4
+    }
+   ],
+   "latest": {
+    "index": 1,
+    "variance": 0.00025631720695395993,
+    "log_variance": -8.26909479085885,
+    "standardized_shock": -2,
+    "intercept": -0.5,
+    "carry": -8.289306334778564,
+    "magnitude_contribution": 0.12021154391971348,
+    "sign_contribution": 0.4
+   },
+   "ready": true,
+   "ready_at": 0,
+   "diagnostics": {
+    "causal": true,
+    "input_count": 2,
+    "fitted_parameters": false,
+    "model": "egarch"
+   }
+  }
+ },
+ "D10-F03-A04": {
+  "args": [
+   {
+    "returns": [
+     -0.02,
+     0.01,
+     0
+    ],
+    "parameters": {
+     "omega": 0.000002,
+     "initial_variance": 0.0001,
+     "alpha": 0.1,
+     "beta": 0.8,
+     "gamma": 0.1
+    }
+   }
+  ],
+  "value": {
+   "topic_id": "D10-F03-A04",
+   "title": "GJR-GARCH",
+   "parameters": {
+    "omega": 0.000002,
+    "initial_variance": 0.0001,
+    "alpha": 0.1,
+    "beta": 0.8,
+    "gamma": 0.1
+   },
+   "series": [
+    {
+     "index": 0,
+     "variance": 0.0001,
+     "initialization": true
+    },
+    {
+     "index": 1,
+     "variance": 0.00016200000000000003,
+     "intercept": 0.000002,
+     "shock_contribution": 0.00004,
+     "threshold_contribution": 0.00004,
+     "carry": 0.00008
+    },
+    {
+     "index": 2,
+     "variance": 0.00014160000000000003,
+     "intercept": 0.000002,
+     "shock_contribution": 0.00001,
+     "threshold_contribution": 0,
+     "carry": 0.00012960000000000003
+    }
+   ],
+   "latest": {
+    "index": 2,
+    "variance": 0.00014160000000000003,
+    "intercept": 0.000002,
+    "shock_contribution": 0.00001,
+    "threshold_contribution": 0,
+    "carry": 0.00012960000000000003
+   },
+   "ready": true,
+   "ready_at": 0,
+   "diagnostics": {
+    "causal": true,
+    "input_count": 3,
+    "fitted_parameters": false,
+    "model": "gjr_garch"
+   }
+  }
+ },
+ "D10-F03-A05": {
+  "args": [
+   {
+    "returns": [
+     -0.02,
+     0.01,
+     0
+    ],
+    "parameters": {
+     "omega": 0.000002,
+     "initial_variance": 0.0001,
+     "d": 0.4,
+     "truncation": 2,
+     "backcast_variance": 0.0001
+    }
+   }
+  ],
+  "value": {
+   "topic_id": "D10-F03-A05",
+   "title": "FIGARCH",
+   "parameters": {
+    "omega": 0.000002,
+    "initial_variance": 0.0001,
+    "d": 0.4,
+    "truncation": 2,
+    "backcast_variance": 0.0001
+   },
+   "series": [
+    {
+     "index": 0,
+     "variance": 0.000102,
+     "intercept": 0.000002,
+     "weights": [
+      0.4,
+      0.12
+     ],
+     "lag_contributions": [],
+     "backcast_contribution": 0.0001,
+     "memory_mass": 0
+    },
+    {
+     "index": 1,
+     "variance": 0.000222,
+     "intercept": 0.000002,
+     "weights": [
+      0.4,
+      0.12
+     ],
+     "lag_contributions": [
+      0.00016
+     ],
+     "backcast_contribution": 0.00006,
+     "memory_mass": 0.4
+    },
+    {
+     "index": 2,
+     "variance": 0.000138,
+     "intercept": 0.000002,
+     "weights": [
+      0.4,
+      0.12
+     ],
+     "lag_contributions": [
+      0.00004,
+      0.000048
+     ],
+     "backcast_contribution": 0.000048,
+     "memory_mass": 0.52
+    }
+   ],
+   "latest": {
+    "index": 2,
+    "variance": 0.000138,
+    "intercept": 0.000002,
+    "weights": [
+     0.4,
+     0.12
+    ],
+    "lag_contributions": [
+     0.00004,
+     0.000048
+    ],
+    "backcast_contribution": 0.000048,
+    "memory_mass": 0.52
+   },
+   "ready": true,
+   "ready_at": 0,
+   "diagnostics": {
+    "causal": true,
+    "input_count": 3,
+    "fitted_parameters": false,
+    "model": "figarch"
+   }
+  }
+ },
+ "D10-F03-A06": {
+  "args": [
+   {
+    "realized_variance": [
+     0.0001,
+     0.0001,
+     0.0001,
+     0.0001,
+     0.0001,
+     0.0001,
+     0.0001,
+     0.0001,
+     0.0001,
+     0.0001,
+     0.0001,
+     0.0001,
+     0.0001,
+     0.0001,
+     0.0001,
+     0.0001,
+     0.0001,
+     0.0001,
+     0.0001,
+     0.0001,
+     0.0001,
+     0.0004
+    ],
+    "parameters": {
+     "beta0": 0,
+     "beta_daily": 0.5,
+     "beta_weekly": 0.3,
+     "beta_monthly": 0.2
+    }
+   }
+  ],
+  "value": {
+   "topic_id": "D10-F03-A06",
+   "title": "HAR-RV",
+   "parameters": {
+    "beta0": 0,
+    "beta_daily": 0.5,
+    "beta_weekly": 0.3,
+    "beta_monthly": 0.2
+   },
+   "series": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    {
+     "index": 21,
+     "forecast_index": 22,
+     "forecast_raw": 0.00027072727272727274,
+     "forecast": 0.00027072727272727274,
+     "valid": true,
+     "daily": 0.0004,
+     "weekly": 0.00016,
+     "monthly": 0.00011363636363636366,
+     "contributions": [
+      0,
+      0.0002,
+      0.000048,
+      0.000022727272727272733
+     ],
+     "baseline": 0.0004
+    }
+   ],
+   "latest": {
+    "index": 21,
+    "forecast_index": 22,
+    "forecast_raw": 0.00027072727272727274,
+    "forecast": 0.00027072727272727274,
+    "valid": true,
+    "daily": 0.0004,
+    "weekly": 0.00016,
+    "monthly": 0.00011363636363636366,
+    "contributions": [
+     0,
+     0.0002,
+     0.000048,
+     0.000022727272727272733
+    ],
+    "baseline": 0.0004
+   },
+   "ready": true,
+   "ready_at": 21,
+   "diagnostics": {
+    "causal": true,
+    "input_count": 22,
+    "fitted_parameters": false
+   }
+  }
+ },
+ "D10-F04-A01": {
+  "args": [
+   {
+    "returns": [
+     [
+      1,
+      1.3660254037844386
+     ],
+     [
+      1,
+      -0.3660254037844386
+     ],
+     [
+      -1,
+      0.3660254037844386
+     ],
+     [
+      -1,
+      -1.3660254037844386
+     ]
+    ],
+    "parameters": {}
+   }
+  ],
+  "value": {
+   "topic_id": "D10-F04-A01",
+   "title": "Sample Covariance",
+   "parameters": {},
+   "matrix": [
+    [
+     1.3333333333333333,
+     0.6666666666666666
+    ],
+    [
+     0.6666666666666666,
+     1.3333333333333333
+    ]
+   ],
+   "latest": [
+    [
+     1.3333333333333333,
+     0.6666666666666666
+    ],
+    [
+     0.6666666666666666,
+     1.3333333333333333
+    ]
+   ],
+   "ready": true,
+   "ready_at": 0,
+   "diagnostics": {
+    "observations": 4,
+    "assets": 2,
+    "means": [
+     0,
+     0
+    ],
+    "causal": true,
+    "ml_covariance": [
+     [
+      1,
+      0.5
+     ],
+     [
+      0.5,
+      1
+     ]
+    ],
+    "denominator": 3
+   }
+  }
+ },
+ "D10-F04-A02": {
+  "args": [
+   {
+    "returns": [
+     [
+      0.01,
+      0.02
+     ],
+     [
+      -0.02,
+      0.01
+     ]
+    ],
+    "parameters": {
+     "decay": 0.5
+    }
+   }
+  ],
+  "value": {
+   "topic_id": "D10-F04-A02",
+   "title": "EWMA Covariance",
+   "parameters": {
+    "decay": 0.5
+   },
+   "matrix": [
+    [
+     0.00022500000000000002,
+     -0.00005
+    ],
+    [
+     -0.00005,
+     0.00015000000000000001
+    ]
+   ],
+   "latest": [
+    [
+     0.00022500000000000002,
+     -0.00005
+    ],
+    [
+     -0.00005,
+     0.00015000000000000001
+    ]
+   ],
+   "ready": true,
+   "ready_at": 0,
+   "diagnostics": {
+    "observations": 2,
+    "assets": 2,
+    "means": [
+     -0.005,
+     0.015
+    ],
+    "causal": true,
+    "ml_covariance": [
+     [
+      0.000225,
+      0.000075
+     ],
+     [
+      0.000075,
+      0.000025
+     ]
+    ],
+    "states": [
+     [
+      [
+       0.00005,
+       0.0001
+      ],
+      [
+       0.0001,
+       0.0002
+      ]
+     ],
+     [
+      [
+       0.00022500000000000002,
+       -0.00005
+      ],
+      [
+       -0.00005,
+       0.00015000000000000001
+      ]
+     ]
+    ],
+    "mean_convention": "supplied zero-mean residuals",
+    "weight_mass": 0.75,
+    "seed_weight": 0.25
+   }
+  }
+ },
+ "D10-F04-A03": {
+  "args": [
+   {
+    "returns": [
+     [
+      1,
+      1.3660254037844386
+     ],
+     [
+      1,
+      -0.3660254037844386
+     ],
+     [
+      -1,
+      0.3660254037844386
+     ],
+     [
+      -1,
+      -1.3660254037844386
+     ]
+    ],
+    "parameters": {}
+   }
+  ],
+  "value": {
+   "topic_id": "D10-F04-A03",
+   "title": "Ledoit-Wolf Shrinkage",
+   "parameters": {},
+   "matrix": [
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     1
+    ]
+   ],
+   "latest": [
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     1
+    ]
+   ],
+   "ready": true,
+   "ready_at": 0,
+   "diagnostics": {
+    "observations": 4,
+    "assets": 2,
+    "means": [
+     0,
+     0
+    ],
+    "causal": true,
+    "ml_covariance": [
+     [
+      1,
+      0.5
+     ],
+     [
+      0.5,
+      1
+     ]
+    ],
+    "noise_estimate": 0.5625,
+    "target_distance": 0.5,
+    "shrinkage": 1,
+    "target": 1
+   }
+  }
+ },
+ "D10-F04-A04": {
+  "args": [
+   {
+    "returns": [
+     [
+      1,
+      1.3660254037844386
+     ],
+     [
+      1,
+      -0.3660254037844386
+     ],
+     [
+      -1,
+      0.3660254037844386
+     ],
+     [
+      -1,
+      -1.3660254037844386
+     ]
+    ],
+    "parameters": {}
+   }
+  ],
+  "value": {
+   "topic_id": "D10-F04-A04",
+   "title": "Oracle Approximating Shrinkage",
+   "parameters": {},
+   "matrix": [
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     1
+    ]
+   ],
+   "latest": [
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     1
+    ]
+   ],
+   "ready": true,
+   "ready_at": 0,
+   "diagnostics": {
+    "observations": 4,
+    "assets": 2,
+    "means": [
+     0,
+     0
+    ],
+    "causal": true,
+    "ml_covariance": [
+     [
+      1,
+      0.5
+     ],
+     [
+      0.5,
+      1
+     ]
+    ],
+    "numerator": 4,
+    "denominator": 2,
+    "variant": "original finite-p OAS",
+    "shrinkage": 1,
+    "target": 1
+   }
+  }
+ },
+ "D10-F04-A05": {
+  "args": [
+   {
+    "loadings": [
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "factor_covariance": [
+     [
+      0.04
+     ]
+    ],
+    "specific_variances": [
+     0.01,
+     0.02
+    ],
+    "parameters": {}
+   }
+  ],
+  "value": {
+   "topic_id": "D10-F04-A05",
+   "title": "Factor-Model Covariance",
+   "parameters": {},
+   "matrix": [
+    [
+     0.05,
+     0.08
+    ],
+    [
+     0.08,
+     0.18
+    ]
+   ],
+   "latest": [
+    [
+     0.05,
+     0.08
+    ],
+    [
+     0.08,
+     0.18
+    ]
+   ],
+   "ready": true,
+   "ready_at": 0,
+   "diagnostics": {
+    "common": [
+     [
+      0.04,
+      0.08
+     ],
+     [
+      0.08,
+      0.16
+     ]
+    ],
+    "specific_variances": [
+     0.01,
+     0.02
+    ],
+    "assets": 2,
+    "factors": 1,
+    "causal": true
+   }
+  }
+ },
+ "D10-F04-A06": {
+  "args": [
+   {
+    "returns": [
+     [
+      1,
+      1.3660254037844386
+     ],
+     [
+      1,
+      -0.3660254037844386
+     ],
+     [
+      -1,
+      0.3660254037844386
+     ],
+     [
+      -1,
+      -1.3660254037844386
+     ]
+    ],
+    "parameters": {
+     "alpha": 0.1
+    }
+   }
+  ],
+  "value": {
+   "topic_id": "D10-F04-A06",
+   "title": "Graphical-Lasso Covariance",
+   "parameters": {
+    "alpha": 0.1
+   },
+   "matrix": [
+    [
+     1,
+     0.4
+    ],
+    [
+     0.4,
+     1
+    ]
+   ],
+   "latest": [
+    [
+     1,
+     0.4
+    ],
+    [
+     0.4,
+     1
+    ]
+   ],
+   "ready": true,
+   "ready_at": 0,
+   "diagnostics": {
+    "observations": 4,
+    "assets": 2,
+    "means": [
+     0,
+     0
+    ],
+    "causal": true,
+    "ml_covariance": [
+     [
+      1,
+      0.5
+     ],
+     [
+      0.5,
+      1
+     ]
+    ],
+    "graphical_lasso": {
+     "iterations": 1,
+     "converged": true,
+     "alpha": 0.1,
+     "precision": [
+      [
+       1.1904761904761905,
+       -0.4761904761904762
+      ],
+      [
+       -0.4761904761904762,
+       1.1904761904761905
+      ]
+     ],
+     "kkt_residual": 5.551115123125783e-17,
+     "dual_gap": -9.71445146547012e-17,
+     "history": [
+      {
+       "iteration": 1,
+       "kkt_residual": 5.551115123125783e-17,
+       "dual_gap": -9.71445146547012e-17,
+       "objective": 1.8256466128552222
+      }
+     ]
+    }
+   }
+  }
+ },
  "D11-F01-A01": {
   "args": [
    {

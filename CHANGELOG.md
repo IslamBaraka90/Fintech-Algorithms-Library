@@ -6,6 +6,48 @@ The package is pre-1.0. Breaking changes go in the minor version, additive and
 corrective changes in the patch — so `0.11.0 → 0.12.0` can break you and
 `0.12.0 → 0.12.1` cannot.
 
+## 0.13.1 — 2026-09-10
+
+Volatility and Covariance, and the diagrams that had been quietly going missing.
+Nothing is removed or renamed: every subpath published in `0.13.0` resolves
+unchanged, and no entry point changed its name or signature.
+
+| | `0.13.0` | `0.13.1` |
+|---|--:|--:|
+| Topics | 675 | **697** |
+| Domains | 17 | **18** |
+| Topics whose arithmetic is asserted on every build | 601 | **623** |
+| Topics with a validated `api` contract | 675 / 675 | **697 / 697** |
+| Topics carrying their diagram source | 301 | **692** |
+
+### New
+
+- **Volatility and Covariance** — 22 topics. Historical estimators
+  (close-to-close through Yang-Zhang), realized measures (realized variance and
+  covariance, bipower variation, the jump-variation detector, the realized
+  kernel), conditional volatility (ARCH, GARCH, EGARCH, GJR-GARCH, FIGARCH,
+  HAR-RV) and covariance estimation (sample and EWMA, Ledoit-Wolf and oracle
+  approximating shrinkage, factor-model and graphical-lasso). Each ships its own
+  module, and all 22 have their numbers asserted here rather than taken on trust.
+
+### Fixed
+
+- **369 topics were publishing no diagram source.** Their Mermaid is written on
+  Windows and therefore CRLF, and the fence that lifts it out matched a bare
+  newline — so the extraction quietly returned nothing and the page rendered
+  without the diagram it was written to have. Catalog Markdown is now read with
+  its line endings normalised.
+
+### Internal
+
+- The metadata reader learned two forms of YAML it had been refusing: a block
+  sequence sitting at its parent key's own indent, and a plain scalar wrapped
+  across lines. Both are valid, both are what the newer generators emit, and
+  between them they were dropping everything below the first wrapped summary.
+- A sixth fixture convention: a named case list, where each case pins a whole
+  reference output, a subset of fields, or the error code a bad input must
+  raise. It is the first shape that asserts the refusals as well as the numbers.
+
 ## 0.13.0 — 2026-08-17
 
 The catalog and the package finally hold the same set. 675 topics across 17

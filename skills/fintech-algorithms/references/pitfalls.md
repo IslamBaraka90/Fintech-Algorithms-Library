@@ -206,7 +206,7 @@ That sentence is useful and honest. Omitting it overstates what was checked.
 
 ## 14. When the topic does not exist, say so
 
-675 named topics, no catch-all. Do **not** invent a subpath, reshape another
+697 named topics, no catch-all. Do **not** invent a subpath, reshape another
 topic's payload because the names look similar, or silently substitute a nearby
 algorithm. Every subpath mirrors its docs URL exactly, so a plausible guess is
 wrong in a way that reads as right.

@@ -1,0 +1,529 @@
+{
+  "provenance": "synthetic; numeric anchors independently derived",
+  "cases": [
+    {
+      "id": "D10-F04-A05",
+      "title": "Factor-Model Covariance",
+      "name": "independent-small-anchor",
+      "input": {
+        "loadings": [
+          [
+            1
+          ],
+          [
+            2
+          ]
+        ],
+        "factor_covariance": [
+          [
+            0.04
+          ]
+        ],
+        "specific_variances": [
+          0.01,
+          0.02
+        ],
+        "parameters": {}
+      },
+      "expected": {
+        "matrix": [
+          [
+            0.05,
+            0.08
+          ],
+          [
+            0.08,
+            0.18
+          ]
+        ]
+      },
+      "reference_output": {
+        "topic_id": "D10-F04-A05",
+        "title": "Factor-Model Covariance",
+        "parameters": {},
+        "matrix": [
+          [
+            0.05,
+            0.08
+          ],
+          [
+            0.08,
+            0.18
+          ]
+        ],
+        "latest": [
+          [
+            0.05,
+            0.08
+          ],
+          [
+            0.08,
+            0.18
+          ]
+        ],
+        "ready": true,
+        "ready_at": 0,
+        "diagnostics": {
+          "common": [
+            [
+              0.04,
+              0.08
+            ],
+            [
+              0.08,
+              0.16
+            ]
+          ],
+          "specific_variances": [
+            0.01,
+            0.02
+          ],
+          "assets": 2,
+          "factors": 1,
+          "causal": true
+        }
+      }
+    },
+    {
+      "id": "D10-F04-A05",
+      "title": "Factor-Model Covariance",
+      "name": "64-observation-synthetic",
+      "input": {
+        "loadings": [
+          [
+            1,
+            0.2
+          ],
+          [
+            0.7,
+            -0.4
+          ],
+          [
+            -0.3,
+            1.1
+          ],
+          [
+            0.5,
+            0.8
+          ]
+        ],
+        "factor_covariance": [
+          [
+            0.0001,
+            2e-05
+          ],
+          [
+            2e-05,
+            0.0002
+          ]
+        ],
+        "specific_variances": [
+          3e-05,
+          4e-05,
+          2e-05,
+          5e-05
+        ],
+        "parameters": {}
+      },
+      "reference_output": {
+        "topic_id": "D10-F04-A05",
+        "title": "Factor-Model Covariance",
+        "parameters": {},
+        "matrix": [
+          [
+            0.00014600000000000003,
+            4.879999999999999e-05,
+            3.4800000000000006e-05,
+            0.0001
+          ],
+          [
+            4.879999999999999e-05,
+            0.00010979999999999999,
+            -9.120000000000001e-05,
+            -2.1800000000000015e-05
+          ],
+          [
+            3.480000000000002e-05,
+            -9.120000000000002e-05,
+            0.0002578000000000001,
+            0.00016720000000000005
+          ],
+          [
+            0.0001,
+            -2.1800000000000015e-05,
+            0.00016720000000000003,
+            0.00021900000000000004
+          ]
+        ],
+        "latest": [
+          [
+            0.00014600000000000003,
+            4.879999999999999e-05,
+            3.4800000000000006e-05,
+            0.0001
+          ],
+          [
+            4.879999999999999e-05,
+            0.00010979999999999999,
+            -9.120000000000001e-05,
+            -2.1800000000000015e-05
+          ],
+          [
+            3.480000000000002e-05,
+            -9.120000000000002e-05,
+            0.0002578000000000001,
+            0.00016720000000000005
+          ],
+          [
+            0.0001,
+            -2.1800000000000015e-05,
+            0.00016720000000000003,
+            0.00021900000000000004
+          ]
+        ],
+        "ready": true,
+        "ready_at": 0,
+        "diagnostics": {
+          "common": [
+            [
+              0.00011600000000000001,
+              4.879999999999999e-05,
+              3.4800000000000006e-05,
+              0.0001
+            ],
+            [
+              4.879999999999999e-05,
+              6.979999999999999e-05,
+              -9.120000000000001e-05,
+              -2.1800000000000015e-05
+            ],
+            [
+              3.480000000000002e-05,
+              -9.120000000000002e-05,
+              0.00023780000000000006,
+              0.00016720000000000005
+            ],
+            [
+              0.0001,
+              -2.1800000000000015e-05,
+              0.00016720000000000003,
+              0.00016900000000000004
+            ]
+          ],
+          "specific_variances": [
+            3e-05,
+            4e-05,
+            2e-05,
+            5e-05
+          ],
+          "assets": 4,
+          "factors": 2,
+          "causal": true
+        }
+      }
+    },
+    {
+      "id": "D10-F04-A05",
+      "title": "Factor-Model Covariance",
+      "name": "invalid-parameters-object",
+      "input": {
+        "loadings": [
+          [
+            1,
+            0.2
+          ],
+          [
+            0.7,
+            -0.4
+          ],
+          [
+            -0.3,
+            1.1
+          ],
+          [
+            0.5,
+            0.8
+          ]
+        ],
+        "factor_covariance": [
+          [
+            0.0001,
+            2e-05
+          ],
+          [
+            2e-05,
+            0.0002
+          ]
+        ],
+        "specific_variances": [
+          3e-05,
+          4e-05,
+          2e-05,
+          5e-05
+        ],
+        "parameters": null
+      },
+      "error": "SHAPE"
+    },
+    {
+      "id": "D10-F04-A05",
+      "title": "Factor-Model Covariance",
+      "name": "missing-input",
+      "input": {},
+      "error": "SHAPE"
+    },
+    {
+      "id": "D10-F04-A05",
+      "title": "Factor-Model Covariance",
+      "name": "reject-boolean",
+      "input": {
+        "loadings": [
+          [
+            1,
+            0.2
+          ],
+          [
+            0.7,
+            -0.4
+          ],
+          [
+            -0.3,
+            1.1
+          ],
+          [
+            0.5,
+            0.8
+          ]
+        ],
+        "factor_covariance": [
+          [
+            0.0001,
+            2e-05
+          ],
+          [
+            2e-05,
+            0.0002
+          ]
+        ],
+        "specific_variances": [
+          true,
+          4e-05,
+          2e-05,
+          5e-05
+        ],
+        "parameters": {}
+      },
+      "error": "NUMBER"
+    },
+    {
+      "id": "D10-F04-A05",
+      "title": "Factor-Model Covariance",
+      "name": "reject-string",
+      "input": {
+        "loadings": [
+          [
+            1,
+            0.2
+          ],
+          [
+            0.7,
+            -0.4
+          ],
+          [
+            -0.3,
+            1.1
+          ],
+          [
+            0.5,
+            0.8
+          ]
+        ],
+        "factor_covariance": [
+          [
+            0.0001,
+            2e-05
+          ],
+          [
+            2e-05,
+            0.0002
+          ]
+        ],
+        "specific_variances": [
+          "0.1",
+          4e-05,
+          2e-05,
+          5e-05
+        ],
+        "parameters": {}
+      },
+      "error": "NUMBER"
+    },
+    {
+      "id": "D10-F04-A05",
+      "title": "Factor-Model Covariance",
+      "name": "reject-null",
+      "input": {
+        "loadings": [
+          [
+            1,
+            0.2
+          ],
+          [
+            0.7,
+            -0.4
+          ],
+          [
+            -0.3,
+            1.1
+          ],
+          [
+            0.5,
+            0.8
+          ]
+        ],
+        "factor_covariance": [
+          [
+            0.0001,
+            2e-05
+          ],
+          [
+            2e-05,
+            0.0002
+          ]
+        ],
+        "specific_variances": [
+          null,
+          4e-05,
+          2e-05,
+          5e-05
+        ],
+        "parameters": {}
+      },
+      "error": "NUMBER"
+    },
+    {
+      "id": "D10-F04-A05",
+      "title": "Factor-Model Covariance",
+      "name": "negative-specific-risk",
+      "input": {
+        "loadings": [
+          [
+            1,
+            0.2
+          ],
+          [
+            0.7,
+            -0.4
+          ],
+          [
+            -0.3,
+            1.1
+          ],
+          [
+            0.5,
+            0.8
+          ]
+        ],
+        "factor_covariance": [
+          [
+            0.0001,
+            2e-05
+          ],
+          [
+            2e-05,
+            0.0002
+          ]
+        ],
+        "specific_variances": [
+          -1,
+          4e-05,
+          2e-05,
+          5e-05
+        ],
+        "parameters": {}
+      },
+      "error": "RANGE"
+    },
+    {
+      "id": "D10-F04-A05",
+      "title": "Factor-Model Covariance",
+      "name": "indefinite-factor-risk",
+      "input": {
+        "loadings": [
+          [
+            1,
+            0.2
+          ],
+          [
+            0.7,
+            -0.4
+          ],
+          [
+            -0.3,
+            1.1
+          ],
+          [
+            0.5,
+            0.8
+          ]
+        ],
+        "factor_covariance": [
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            1
+          ]
+        ],
+        "specific_variances": [
+          3e-05,
+          4e-05,
+          2e-05,
+          5e-05
+        ],
+        "parameters": {}
+      },
+      "error": "PSD"
+    },
+    {
+      "id": "D10-F04-A05",
+      "title": "Factor-Model Covariance",
+      "name": "factor-shape",
+      "input": {
+        "loadings": [
+          [
+            1,
+            0.2
+          ],
+          [
+            0.7,
+            -0.4
+          ],
+          [
+            -0.3,
+            1.1
+          ],
+          [
+            0.5,
+            0.8
+          ]
+        ],
+        "factor_covariance": [
+          [
+            1
+          ]
+        ],
+        "specific_variances": [
+          3e-05,
+          4e-05,
+          2e-05,
+          5e-05
+        ],
+        "parameters": {}
+      },
+      "error": "SHAPE"
+    }
+  ]
+}

@@ -158,7 +158,7 @@ and `require(esm)` is unflagged from 22.12 onward.
 ## Verified against published worked examples
 
 <!-- coverage:start -->
-**481 of 555 topics** have their arithmetic replayed and asserted on every build
+**503 of 577 topics** have their arithmetic replayed and asserted on every build
 (145 via `{ input, expected }`, 143 via a separate input and expected-output
 pair, 11 via row fixtures, 30 via bar/checkpoint fixtures).
 
@@ -204,7 +204,7 @@ Every topic is an instance of one of five archetypes:
 <!-- shapes:start -->
 | Archetype | Signature | Count | Example |
 |---|---|--:|---|
-| `record-transform` | `(input) → output` | 381 | backward-split-adjustment |
+| `record-transform` | `(input) → output` | 403 | backward-split-adjustment |
 | `series-transform` | `(values, ...params) → (number\|null)[]` | 137 | ema, rsi, macd |
 | `row-classify` | `(rows, config?) → verdict[]` | 24 | ohlc-consistency-validator |
 | `tape-aggregate` | `(trades, config) → bar[]` | 7 | time-bars, volume-bars |
@@ -247,7 +247,7 @@ than something to browse, so it is documented and exported but deliberately not
 listed here. `topics.length` counts everything.
 
 <!-- stats:start -->
-**555 topics** · 16 domains · 70 families
+**577 topics** · 17 domains · 74 families
 
 | Domain | Topics | Families | Name |
 |---|--:|--:|---|
@@ -259,6 +259,7 @@ listed here. `topics.length` counts everything.
 | D07 | 137 | 9 | Technical Indicators |
 | D08 | 64 | 7 | Geometric Chart Patterns |
 | D09 | 37 | 6 | Statistical Time Series |
+| D10 | 22 | 4 | Volatility and Covariance |
 | D11 | 29 | 5 | Market Microstructure |
 | D12 | 21 | 4 | Matching Engines and Venue Logic |
 | D13 | 9 | 2 | Execution and Transaction Cost Analysis |
@@ -393,6 +394,17 @@ tier, diagrams and source.
 **Decomposition and Cycles** — [STL Decomposition](https://docs.thefintechbuilder.com/statistical-time-series/decomposition-and-cycles/stl-decomposition/) · [Hodrick-Prescott Filter](https://docs.thefintechbuilder.com/statistical-time-series/decomposition-and-cycles/hodrick-prescott-filter/) · [Baxter-King Filter](https://docs.thefintechbuilder.com/statistical-time-series/decomposition-and-cycles/baxter-king-filter/) · [Christiano-Fitzgerald Filter](https://docs.thefintechbuilder.com/statistical-time-series/decomposition-and-cycles/christiano-fitzgerald-filter/) · [Fast Fourier Transform Periodogram](https://docs.thefintechbuilder.com/statistical-time-series/decomposition-and-cycles/fast-fourier-transform-periodogram/) · [Wavelet Decomposition](https://docs.thefintechbuilder.com/statistical-time-series/decomposition-and-cycles/wavelet-decomposition/)
 
 **Hilbert and Ehlers Cycle Analytics** — [Hilbert Transform Dominant Cycle Period](https://docs.thefintechbuilder.com/statistical-time-series/hilbert-and-ehlers-cycle-analytics/hilbert-transform-dominant-cycle-period/) · [Hilbert Transform Dominant Cycle Phase](https://docs.thefintechbuilder.com/statistical-time-series/hilbert-and-ehlers-cycle-analytics/hilbert-transform-dominant-cycle-phase/) · [Hilbert Transform Phasor Components](https://docs.thefintechbuilder.com/statistical-time-series/hilbert-and-ehlers-cycle-analytics/hilbert-transform-phasor-components/) · [Hilbert Transform SineWave](https://docs.thefintechbuilder.com/statistical-time-series/hilbert-and-ehlers-cycle-analytics/hilbert-transform-sinewave/) · [Hilbert Transform Trend/Cycle Mode](https://docs.thefintechbuilder.com/statistical-time-series/hilbert-and-ehlers-cycle-analytics/hilbert-transform-trend-cycle-mode/) · [Ehlers Cyber Cycle](https://docs.thefintechbuilder.com/statistical-time-series/hilbert-and-ehlers-cycle-analytics/ehlers-cyber-cycle/) · [Ehlers Roofing Filter](https://docs.thefintechbuilder.com/statistical-time-series/hilbert-and-ehlers-cycle-analytics/ehlers-roofing-filter/) · [Ehlers Decycler](https://docs.thefintechbuilder.com/statistical-time-series/hilbert-and-ehlers-cycle-analytics/ehlers-decycler/)
+
+
+### D10 — Volatility and Covariance · 22 topics
+
+**Historical Estimators** — [Close-to-Close Volatility](https://docs.thefintechbuilder.com/volatility-and-covariance/historical-estimators/close-to-close-volatility/) · [Parkinson Volatility](https://docs.thefintechbuilder.com/volatility-and-covariance/historical-estimators/parkinson-volatility/) · [Garman-Klass Volatility](https://docs.thefintechbuilder.com/volatility-and-covariance/historical-estimators/garman-klass-volatility/) · [Rogers-Satchell Volatility](https://docs.thefintechbuilder.com/volatility-and-covariance/historical-estimators/rogers-satchell-volatility/) · [Yang-Zhang Volatility](https://docs.thefintechbuilder.com/volatility-and-covariance/historical-estimators/yang-zhang-volatility/)
+
+**Realized Measures** — [Realized Variance](https://docs.thefintechbuilder.com/volatility-and-covariance/realized-measures/realized-variance/) · [Realized Covariance](https://docs.thefintechbuilder.com/volatility-and-covariance/realized-measures/realized-covariance/) · [Bipower Variation](https://docs.thefintechbuilder.com/volatility-and-covariance/realized-measures/bipower-variation/) · [Jump-Variation Detector](https://docs.thefintechbuilder.com/volatility-and-covariance/realized-measures/jump-variation-detector/) · [Realized Kernel](https://docs.thefintechbuilder.com/volatility-and-covariance/realized-measures/realized-kernel/)
+
+**Conditional Volatility** — [ARCH](https://docs.thefintechbuilder.com/volatility-and-covariance/conditional-volatility/arch/) · [GARCH](https://docs.thefintechbuilder.com/volatility-and-covariance/conditional-volatility/garch/) · [EGARCH](https://docs.thefintechbuilder.com/volatility-and-covariance/conditional-volatility/egarch/) · [GJR-GARCH](https://docs.thefintechbuilder.com/volatility-and-covariance/conditional-volatility/gjr-garch/) · [FIGARCH](https://docs.thefintechbuilder.com/volatility-and-covariance/conditional-volatility/figarch/) · [HAR-RV](https://docs.thefintechbuilder.com/volatility-and-covariance/conditional-volatility/har-rv/)
+
+**Covariance Estimation** — [Sample Covariance](https://docs.thefintechbuilder.com/volatility-and-covariance/covariance-estimation/sample-covariance/) · [EWMA Covariance](https://docs.thefintechbuilder.com/volatility-and-covariance/covariance-estimation/ewma-covariance/) · [Ledoit-Wolf Shrinkage](https://docs.thefintechbuilder.com/volatility-and-covariance/covariance-estimation/ledoit-wolf-shrinkage/) · [Oracle Approximating Shrinkage](https://docs.thefintechbuilder.com/volatility-and-covariance/covariance-estimation/oracle-approximating-shrinkage/) · [Factor-Model Covariance](https://docs.thefintechbuilder.com/volatility-and-covariance/covariance-estimation/factor-model-covariance/) · [Graphical-Lasso Covariance](https://docs.thefintechbuilder.com/volatility-and-covariance/covariance-estimation/graphical-lasso-covariance/)
 
 
 ### D11 — Market Microstructure · 29 topics
