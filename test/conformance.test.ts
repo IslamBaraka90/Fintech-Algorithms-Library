@@ -36,7 +36,7 @@ interface ManifestTopic {
   entry: string;
   archetype: string;
   fixture: string | null;
-  convention: "A" | "B" | "C" | "D" | "E" | "none";
+  convention: "A" | "B" | "C" | "D" | "E" | "F" | "none";
   entryParams: string[];
   fixtureKeys: string[];
 }
@@ -636,6 +636,90 @@ describe("conformance: catalog worked examples", () => {
           }
         }
         assert.ok(comparisons > 0, `${topic.id}: fixture produced no comparable checkpoint fields`);
+      });
+    }
+  });
+
+  // --- Convention F --------------------------------------------------------
+
+  /**
+   * A named case list, the richest thing the catalog ships. Each case pins one
+   * scenario: a whole `reference_output`, a subset of named fields addressed by
+   * dotted path, or the error code a rejected input must raise. The refusals
+   * matter as much as the numbers — half of these cases exist to prove a topic
+   * turns bad input away rather than returning a plausible figure.
+   *
+   * Comparison mirrors the catalog's own runner, tolerance included, so a green
+   * run here means the same thing a green run there does.
+   */
+  describe("F · { cases: [{ input, reference_output | expected | error }] }", () => {
+    const at = (value: unknown, path: string): unknown =>
+      path.split(".").reduce<unknown>((acc, key) => (acc as Record<string, unknown>)?.[key], value);
+
+    const sameValue = (actual: unknown, want: unknown, label: string): void => {
+      if (typeof want === "number") {
+        assert.ok(
+          typeof actual === "number" && Number.isFinite(actual) && Math.abs(actual - want) <= 2e-11 + 2e-8 * Math.abs(want),
+          `${label}: ${String(actual)} != ${want}`,
+        );
+      } else if (Array.isArray(want)) {
+        assert.ok(Array.isArray(actual), `${label}: expected an array`);
+        assert.equal((actual as unknown[]).length, want.length, `${label}: length`);
+        want.forEach((item, i) => sameValue((actual as unknown[])[i], item, `${label}[${i}]`));
+      } else if (want !== null && typeof want === "object") {
+        assert.ok(actual !== null && typeof actual === "object", `${label}: expected an object`);
+        assert.deepEqual(
+          Object.keys(actual as object).sort(),
+          Object.keys(want as object).sort(),
+          `${label}: keys`,
+        );
+        for (const key of Object.keys(want as Record<string, unknown>)) {
+          sameValue((actual as Record<string, unknown>)[key], (want as Record<string, unknown>)[key], `${label}.${key}`);
+        }
+      } else {
+        assert.equal(actual, want, label);
+      }
+    };
+
+    for (const topic of runnable.filter((t) => t.convention === "F")) {
+      test(`${topic.id} — ${topic.path}`, async () => {
+        const fixture = loadFixture(topic) as {
+          cases: Array<{
+            name?: string;
+            input: unknown;
+            error?: string;
+            expected?: Record<string, unknown>;
+            reference_output?: unknown;
+          }>;
+        };
+        const run = await loadEntry(topic);
+        assert.ok(fixture.cases.length > 0, `${topic.id}: no cases in the fixture`);
+
+        let comparisons = 0;
+        for (const testCase of fixture.cases) {
+          const label = `${topic.id}/${testCase.name ?? "case"}`;
+
+          if (testCase.error) {
+            assert.throws(
+              () => run(structuredClone(testCase.input)),
+              (thrown: unknown) => String((thrown as Error).message).split(":")[0] === testCase.error,
+              `${label}: expected error code ${testCase.error}`,
+            );
+            comparisons++;
+            continue;
+          }
+
+          const actual = run(structuredClone(testCase.input));
+          for (const [path, want] of Object.entries(testCase.expected ?? {})) {
+            sameValue(at(actual, path), want, `${label}: ${path}`);
+            comparisons++;
+          }
+          if (Object.hasOwn(testCase, "reference_output")) {
+            sameValue(actual, testCase.reference_output, label);
+            comparisons++;
+          }
+        }
+        assert.ok(comparisons > 0, `${topic.id}: fixture produced no comparable cases`);
       });
     }
   });

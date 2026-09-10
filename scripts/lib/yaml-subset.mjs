@@ -9,9 +9,11 @@
  *
  * Supported, because the catalog uses exactly this much:
  *
- *   key: scalar            quoted or bare, with `true`/`false`/`null`/numbers coerced
+ *   key: scalar            quoted or bare, with `true`/`false`/`null`/numbers coerced,
+ *                          wrapping onto deeper-indented continuation lines
  *   key:                   nested map by indentation
- *   key:                   sequence of scalars or of maps, `- ` prefixed
+ *   key:                   sequence of scalars or of maps, `- ` prefixed,
+ *                          indented under the key or flush with it
  *   key: >                 folded block scalar (newlines become spaces)
  *   key: |                 literal block scalar (newlines preserved)
  *   # comment              whole-line and trailing, outside quotes
@@ -116,9 +118,25 @@ export function parseYaml(source) {
       if (value === ">" || value === "|") {
         map[key] = blockScalar(value, indent);
       } else if (value === "") {
-        map[key] = i < lines.length && lines[i].indent > indent ? parseBlock(lines[i].indent) : null;
+        // A block sequence may sit at its parent key's own indent — `tracks:`
+        // followed by a flush-left `- item` is valid YAML, and the catalog's
+        // generators disagree with each other about whether to indent it.
+        const next = lines[i];
+        if (!next) map[key] = null;
+        else if (next.indent > indent) map[key] = parseBlock(next.indent);
+        else if (next.indent === indent && next.text.startsWith("- ")) map[key] = parseBlock(indent);
+        else map[key] = null;
       } else {
-        map[key] = scalar(value);
+        // A plain scalar may wrap onto following, deeper-indented lines — the
+        // catalog's metadata is emitted by a dumper that hard-wraps long
+        // summaries. A key that already carries a value cannot also open a
+        // nested block, so anything deeper below it is a continuation.
+        let text = value;
+        while (i < lines.length && lines[i].indent > indent) {
+          text += " " + lines[i].text;
+          i++;
+        }
+        map[key] = scalar(text);
       }
     }
     return map;

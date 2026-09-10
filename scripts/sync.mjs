@@ -832,6 +832,9 @@ for (const found of discoverTopics()) {
   //   C  datasets/<slug>-fixtures.json   { bars, checkpoints: [{ index, ...}] }
   //   E  datasets/implementation-fixtures.json — the frozen native-port
   //      contract ({ canonical, flat_boundary } or { canonical_input, expected })
+  //   F  datasets/implementation-fixtures.json — { provenance, cases: [...] },
+  //      a named case list where each case is an input plus either a
+  //      reference_output, an expected subset, or an expected error code
   const readJson = (path) => {
     if (!existsSync(path)) return null;
     const raw = readFileSync(path, "utf8");
@@ -896,6 +899,27 @@ for (const found of discoverTopics()) {
         fixture = { file: `${meta.id}.json`, convention: "E", keys: Object.keys(parsed) };
         // Copy the authored fixture byte-for-byte. Convention E exists so the
         // release test can consume this shape without rewriting its numbers.
+        emit(`test/fixtures/${meta.id}.json`, data.raw);
+        break;
+      }
+      // Convention F — a named case list. Richer than anything above: one entry
+      // per scenario, each pinning either a whole reference output, a subset of
+      // named fields, or the error code a bad input must raise. Checked after E
+      // so a topic that already classifies keeps the convention it had.
+      const caseList =
+        Array.isArray(parsed.cases) &&
+        parsed.cases.length > 0 &&
+        parsed.cases.every(
+          (item) =>
+            item &&
+            typeof item === "object" &&
+            Object.hasOwn(item, "input") &&
+            (Object.hasOwn(item, "reference_output") ||
+              Object.hasOwn(item, "expected") ||
+              Object.hasOwn(item, "error")),
+        );
+      if (caseList) {
+        fixture = { file: `${meta.id}.json`, convention: "F", keys: Object.keys(parsed) };
         emit(`test/fixtures/${meta.id}.json`, data.raw);
         break;
       }
@@ -1406,7 +1430,7 @@ console.log(`  files written: ${outputs.size}`);
 if (overridden) {
   console.log(`  overridden   : ${overridden} topic(s) ship an implementation from optimised/`);
 }
-console.log(`  fixtures     : ${withFixture}/${topics.length} runnable  (A ${byConvention.A ?? 0} · B ${byConvention.B ?? 0} · C ${byConvention.C ?? 0} · D ${byConvention.D ?? 0} · E ${byConvention.E ?? 0} · none ${byConvention.none ?? 0})`);
+console.log(`  fixtures     : ${withFixture}/${topics.length} runnable  (A ${byConvention.A ?? 0} · B ${byConvention.B ?? 0} · C ${byConvention.C ?? 0} · D ${byConvention.D ?? 0} · E ${byConvention.E ?? 0} · F ${byConvention.F ?? 0} · none ${byConvention.none ?? 0})`);
 console.log(`\n  by shape:`);
 for (const [shape, count] of Object.entries(byArchetype).sort((a, b) => b[1] - a[1])) {
   console.log(`    ${shape.padEnd(20)} ${count}`);

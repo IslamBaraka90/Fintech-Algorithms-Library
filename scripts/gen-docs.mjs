@@ -203,6 +203,18 @@ function staticDiagrams(dir, id) {
     }));
 }
 
+/**
+ * Read a catalog text file with its line endings normalised.
+ *
+ * The catalog is authored on Windows and its Markdown is CRLF, so a pattern
+ * written against a bare newline finds nothing. Getting that wrong is silent:
+ * a fence that fails to match simply yields no diagram, and the page ships
+ * without one rather than complaining.
+ */
+function readText(file) {
+  return readFileSync(file, "utf8").replace(/\r\n/g, "\n");
+}
+
 /** Mermaid is inlined as source: the `.md` files are not served by the site. */
 function mermaidDiagrams(dir) {
   const src = join(dir, "visuals", "mermaid");
@@ -211,7 +223,7 @@ function mermaidDiagrams(dir) {
     .filter((f) => f.endsWith(".md"))
     .sort()
     .flatMap((file) => {
-      const text = readFileSync(join(src, file), "utf8");
+      const text = readText(join(src, file));
       const fence = /```mermaid\n([\s\S]*?)```/.exec(text);
       if (!fence) return [];
       const caption = /^#\s+(.+)$/m.exec(text)?.[1]?.trim() ?? null;
@@ -226,7 +238,7 @@ function mermaidDiagrams(dir) {
 function references(dir) {
   const file = join(dir, "REFERENCES.md");
   if (!existsSync(file)) return [];
-  const text = readFileSync(file, "utf8");
+  const text = readText(file);
   const out = [];
   for (const block of text.split(/^## /m).slice(1)) {
     const heading = block.split("\n", 1)[0].trim();
