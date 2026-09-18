@@ -5,7 +5,11 @@
 
 export function runFilter(observations, config) {
   if (!Array.isArray(observations) || !observations.length || observations.some(v => !Number.isFinite(v))) throw new Error("observations must be finite and non-empty");
-  const c=config; if(c.q<0||c.r<=0||c.initial_variance<0)throw new Error("invalid variance");
+  const required=["a","b","c","q","r","initial_mean","initial_variance"];
+  if(config===null||typeof config!=="object"||required.some(name=>!(name in config)))throw new Error("configuration is incomplete");
+  const c: Record<string, number> = {}; for(const name of required){const raw=config[name]; c[name]=(raw===null||raw===undefined||raw==="")?Number.NaN:Number(raw);}
+  if(required.some(name=>!Number.isFinite(c[name])))throw new Error("configuration must be finite");
+  if(c.q<0||c.r<=0||c.initial_variance<0)throw new Error("invalid variance");
   let mean=c.initial_mean, variance=c.initial_variance; const trace=[];
   observations.forEach((observation,index)=>{
     const transition_jacobian=c.a+c.b*Math.cos(mean);

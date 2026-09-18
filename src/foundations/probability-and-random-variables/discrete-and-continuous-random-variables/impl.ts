@@ -4,7 +4,25 @@
 
 import { runTopic as runD00Topic, type D00Input, type D00Output } from "../../../_shared/d00Engine.ts";
 
-/** Run the canonical D00-F06-A06 calculation. */
+/**
+ * Run the canonical D00-F06-A06 calculation.
+ *
+ * The calculation checks a discrete random variable: a finite support with a
+ * probability mass function that sums to one. It does not evaluate a
+ * continuous density, so `randomVariableKind` is confirmed rather than echoed
+ * back unchecked, and it defaults to `discrete` when the caller omits it. The
+ * family-wide `pA`, `pB` and `pAB` are validated by the shared F06 branch and
+ * unused here, so the facade fills them when they are absent.
+ */
 export function discreteAndContinuousRandomVariables(input: D00Input): D00Output {
-  return runD00Topic("D00-F06-A06", input);
+  if (input === null || typeof input !== "object" || Array.isArray(input)) return runD00Topic("D00-F06-A06", input);
+  const payload: D00Input = { ...input };
+  for (const key of ["pA", "pB", "pAB"]) {
+    if (payload[key] === undefined || payload[key] === null) payload[key] = 0;
+  }
+  if (payload.randomVariableKind === undefined || payload.randomVariableKind === null) payload.randomVariableKind = "discrete";
+  if (payload.randomVariableKind !== "discrete") {
+    throw new RangeError("randomVariableKind must be \"discrete\": this calculation validates a probability mass function and does not evaluate a continuous density");
+  }
+  return runD00Topic("D00-F06-A06", payload);
 }

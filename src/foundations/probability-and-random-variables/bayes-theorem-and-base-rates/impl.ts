@@ -4,7 +4,20 @@
 
 import { runTopic as runD00Topic, type D00Input, type D00Output } from "../../../_shared/d00Engine.ts";
 
-/** Run the canonical D00-F06-A05 calculation. */
+/**
+ * Run the canonical D00-F06-A05 calculation.
+ *
+ * The shared F06 branch validates the family-wide `pA`, `pB` and `pAB` fields
+ * before any topic runs, and Bayes' theorem uses none of them. The facade
+ * supplies neutral values when the caller omits them, so a Bayes payload is
+ * `prior`, `sensitivity` and `falsePositiveRate` and nothing else. Values the
+ * caller does supply are passed through and still validated.
+ */
 export function bayesTheoremAndBaseRates(input: D00Input): D00Output {
-  return runD00Topic("D00-F06-A05", input);
+  if (input === null || typeof input !== "object" || Array.isArray(input)) return runD00Topic("D00-F06-A05", input);
+  const payload: D00Input = { ...input };
+  for (const key of ["pA", "pB", "pAB"]) {
+    if (payload[key] === undefined || payload[key] === null) payload[key] = 0;
+  }
+  return runD00Topic("D00-F06-A05", payload);
 }

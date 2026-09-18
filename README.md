@@ -158,7 +158,7 @@ and `require(esm)` is unflagged from 22.12 onward.
 ## Verified against published worked examples
 
 <!-- coverage:start -->
-**503 of 577 topics** have their arithmetic replayed and asserted on every build
+**503 of 592 topics** have their arithmetic replayed and asserted on every build
 (145 via `{ input, expected }`, 143 via a separate input and expected-output
 pair, 11 via row fixtures, 30 via bar/checkpoint fixtures).
 
@@ -169,7 +169,7 @@ independent third-party figure. It catches transcription and generation errors,
 which is the failure mode that has actually occurred here. It would not catch
 both implementations sharing a misreading of the source material.
 
-The remaining 74 load and expose a callable entry point, but ship no machine-readable
+The remaining 89 load and expose a callable entry point, but ship no machine-readable
 expected values, so nothing asserts their numbers. That gap is stated per topic
 rather than averaged away.
 <!-- coverage:end -->
@@ -204,7 +204,7 @@ Every topic is an instance of one of five archetypes:
 <!-- shapes:start -->
 | Archetype | Signature | Count | Example |
 |---|---|--:|---|
-| `record-transform` | `(input) → output` | 403 | backward-split-adjustment |
+| `record-transform` | `(input) → output` | 418 | backward-split-adjustment |
 | `series-transform` | `(values, ...params) → (number\|null)[]` | 137 | ema, rsi, macd |
 | `row-classify` | `(rows, config?) → verdict[]` | 24 | ohlc-consistency-validator |
 | `tape-aggregate` | `(trades, config) → bar[]` | 7 | time-bars, volume-bars |
@@ -247,7 +247,7 @@ than something to browse, so it is documented and exported but deliberately not
 listed here. `topics.length` counts everything.
 
 <!-- stats:start -->
-**577 topics** · 17 domains · 74 families
+**592 topics** · 18 domains · 77 families
 
 | Domain | Topics | Families | Name |
 |---|--:|--:|---|
@@ -263,6 +263,7 @@ listed here. `topics.length` counts everything.
 | D11 | 29 | 5 | Market Microstructure |
 | D12 | 21 | 4 | Matching Engines and Venue Logic |
 | D13 | 9 | 2 | Execution and Transaction Cost Analysis |
+| D14 | 15 | 3 | Portfolio Construction |
 | D18 | 52 | 6 | Fundamental Analysis and Valuation |
 | D21 | 7 | 1 | Credit Risk and Default |
 | D25 | 10 | 2 | Digital Assets and On-Chain Finance |
@@ -436,6 +437,15 @@ tier, diagrams and source.
 **Schedule-Based Execution** — [TWAP Execution](https://docs.thefintechbuilder.com/execution-and-transaction-cost-analysis/schedule-based-execution/twap-execution/) · [Historical VWAP Execution](https://docs.thefintechbuilder.com/execution-and-transaction-cost-analysis/schedule-based-execution/historical-vwap-execution/) · [Adaptive VWAP Execution](https://docs.thefintechbuilder.com/execution-and-transaction-cost-analysis/schedule-based-execution/adaptive-vwap-execution/) · [Percentage-of-Volume Execution](https://docs.thefintechbuilder.com/execution-and-transaction-cost-analysis/schedule-based-execution/percentage-of-volume-execution/)
 
 **Cost/Risk Optimization** — [Almgren-Chriss Optimal Execution](https://docs.thefintechbuilder.com/execution-and-transaction-cost-analysis/cost-risk-optimization/almgren-chriss-optimal-execution/) · [Implementation-Shortfall Execution](https://docs.thefintechbuilder.com/execution-and-transaction-cost-analysis/cost-risk-optimization/implementation-shortfall-execution/) · [Arrival-Price Execution](https://docs.thefintechbuilder.com/execution-and-transaction-cost-analysis/cost-risk-optimization/arrival-price-execution/) · [Liquidity-Seeking Execution](https://docs.thefintechbuilder.com/execution-and-transaction-cost-analysis/cost-risk-optimization/liquidity-seeking-execution/) · [Opportunistic Dark-Pool Execution](https://docs.thefintechbuilder.com/execution-and-transaction-cost-analysis/cost-risk-optimization/opportunistic-dark-pool-execution/)
+
+
+### D14 — Portfolio Construction · 15 topics
+
+**Mean-Risk Optimization** — [Markowitz Mean-Variance](https://docs.thefintechbuilder.com/portfolio-construction/mean-risk-optimization/markowitz-mean-variance/) · [Global Minimum Variance](https://docs.thefintechbuilder.com/portfolio-construction/mean-risk-optimization/global-minimum-variance/) · [Maximum Sharpe Ratio](https://docs.thefintechbuilder.com/portfolio-construction/mean-risk-optimization/maximum-sharpe-ratio/) · [Mean-CVaR Optimization](https://docs.thefintechbuilder.com/portfolio-construction/mean-risk-optimization/mean-cvar-optimization/) · [Mean-Absolute-Deviation Optimization](https://docs.thefintechbuilder.com/portfolio-construction/mean-risk-optimization/mean-absolute-deviation-optimization/)
+
+**Risk Allocation** — [Inverse-Volatility Weighting](https://docs.thefintechbuilder.com/portfolio-construction/risk-allocation/inverse-volatility-weighting/) · [Equal Risk Contribution](https://docs.thefintechbuilder.com/portfolio-construction/risk-allocation/equal-risk-contribution/) · [Risk Budgeting](https://docs.thefintechbuilder.com/portfolio-construction/risk-allocation/risk-budgeting/) · [Hierarchical Risk Parity](https://docs.thefintechbuilder.com/portfolio-construction/risk-allocation/hierarchical-risk-parity/) · [Hierarchical Equal Risk Contribution](https://docs.thefintechbuilder.com/portfolio-construction/risk-allocation/hierarchical-equal-risk-contribution/)
+
+**Bayesian and Robust Allocation** — [Black-Litterman](https://docs.thefintechbuilder.com/portfolio-construction/bayesian-and-robust-allocation/black-litterman/) · [Resampled Efficient Frontier](https://docs.thefintechbuilder.com/portfolio-construction/bayesian-and-robust-allocation/resampled-efficient-frontier/) · [Robust Mean-Variance](https://docs.thefintechbuilder.com/portfolio-construction/bayesian-and-robust-allocation/robust-mean-variance/) · [Distributionally Robust Portfolio](https://docs.thefintechbuilder.com/portfolio-construction/bayesian-and-robust-allocation/distributionally-robust-portfolio/) · [Kelly Allocation](https://docs.thefintechbuilder.com/portfolio-construction/bayesian-and-robust-allocation/kelly-allocation/)
 
 
 ### D18 — Fundamental Analysis and Valuation · 52 topics

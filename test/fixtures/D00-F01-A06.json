@@ -3,10 +3,8 @@
   "source": "synthetic author-derived verification case",
   "input": {
     "values": [
-      1,
       2,
       3,
-      4,
       5
     ],
     "startingCash": 1000,
@@ -38,7 +36,21 @@
     "tolerance": 0.01
   },
   "expected": {
-    "sum": 15.0,
-    "product": 120.0
+    "sum": 10.0,
+    "product": 30.0,
+    "indexedTerms": [
+      {
+        "index": 1,
+        "value": 2
+      },
+      {
+        "index": 2,
+        "value": 3
+      },
+      {
+        "index": 3,
+        "value": 5
+      }
+    ]
   }
 }

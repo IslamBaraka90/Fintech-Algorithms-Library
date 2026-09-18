@@ -3,11 +3,38 @@
 // Re-run `npm run sync` after changing the catalog implementation.
 
 
+const REGIMES=2;
+const PROBABILITY_TOLERANCE=1e-12;
+
 const logSumExp=values=>{const m=Math.max(...values);return m+Math.log(values.reduce((s,v)=>s+Math.exp(v-m),0));};
+
+function finiteVector(values: any, label: string){
+  if(!Array.isArray(values)||values.length!==REGIMES)throw new Error(`${label} must hold ${REGIMES} values, one per regime`);
+  const numbers=values.map(value=>(value===null||value===undefined||value==="")?Number.NaN:Number(value));
+  if(numbers.some(value=>!Number.isFinite(value)))throw new Error(`${label} must be finite`);
+  return numbers;
+}
+
+function probabilityVector(values: any, label: string){
+  const numbers=finiteVector(values,label);
+  if(numbers.some(value=>value<0||value>1))throw new Error(`${label} must hold probabilities in [0, 1]`);
+  if(Math.abs(numbers.reduce((a,b)=>a+b,0)-1)>PROBABILITY_TOLERANCE)throw new Error(`${label} must sum to 1`);
+  return numbers;
+}
+
 export function runFilter(observations, config) {
   if(!Array.isArray(observations)||!observations.length||observations.some(v=>!Number.isFinite(v)))throw new Error("observations must be finite and non-empty");
-  const {transition,intercepts,phis,stds}=config;let posterior=[...config.initial],previous=null;const trace=[];
-  if(transition.length!==2||transition.some(row=>row.length!==2||Math.abs(row.reduce((a,b)=>a+b,0)-1)>1e-12)||stds.some(v=>v<=0))throw new Error("invalid two-regime configuration");
+  const required=["transition","intercepts","phis","stds","initial"];
+  if(config===null||typeof config!=="object"||required.some(name=>!(name in config)))throw new Error("configuration is incomplete");
+  if(!Array.isArray(config.transition)||config.transition.length!==REGIMES)throw new Error("transition must be row-stochastic 2 by 2");
+  const transition=config.transition.map((row,index)=>probabilityVector(row,`transition row ${index}`));
+  const intercepts=finiteVector(config.intercepts,"intercepts");
+  const phis=finiteVector(config.phis,"phis");
+  const stds=finiteVector(config.stds,"stds");
+  let posterior=probabilityVector(config.initial,"initial");
+  if(stds.some(value=>value<=0))throw new Error("standard deviations must be positive");
+  if(phis.some(value=>value===1))throw new Error("phi must not equal 1; the first-row start c/(1-phi) is undefined");
+  let previous=null;const trace=[];
   observations.forEach((observation,index)=>{
     const predicted=[0,1].map(j=>posterior.reduce((s,p,i)=>s+p*transition[i][j],0));
     const forecasts=previous===null?[0,1].map(j=>intercepts[j]/(1-phis[j])):[0,1].map(j=>intercepts[j]+phis[j]*previous);

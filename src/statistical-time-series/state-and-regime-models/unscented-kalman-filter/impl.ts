@@ -3,23 +3,38 @@
 // Re-run `npm run sync` after changing the catalog implementation.
 
 
+// Covariances below this magnitude are floating-point noise around zero. Anything
+// more negative is a genuine loss of positive semi-definiteness and is refused
+// rather than clipped.
+const COVARIANCE_TOLERANCE=1e-12;
+
+function positiveSemidefinite(value: number, label: string){
+  if(value<-COVARIANCE_TOLERANCE)throw new Error(`${label} is negative (${value}); the sigma-point weights do not keep the covariance positive semi-definite`);
+  return Math.max(value,0);
+}
+
 export function runFilter(observations, config) {
   if (!Array.isArray(observations) || !observations.length || observations.some(v => !Number.isFinite(v))) throw new Error("observations must be finite and non-empty");
-  const c=config,n=1,lambda=c.alpha**2*(n+c.kappa)-n,scale=n+lambda;
+  const required=["a","b","c","q","r","alpha","beta","kappa","initial_mean","initial_variance"];
+  if(config===null||typeof config!=="object"||required.some(name=>!(name in config)))throw new Error("configuration is incomplete");
+  const c: Record<string, number> = {}; for(const name of required){const raw=config[name]; c[name]=(raw===null||raw===undefined||raw==="")?Number.NaN:Number(raw);}
+  if(required.some(name=>!Number.isFinite(c[name])))throw new Error("configuration must be finite");
+  const n=1,lambda=c.alpha**2*(n+c.kappa)-n,scale=n+lambda;
   if(c.q<0||c.r<=0||c.initial_variance<0||c.alpha<=0||scale<=0)throw new Error("invalid UKF configuration");
   const wm=[lambda/scale,1/(2*scale),1/(2*scale)],wc=[wm[0]+1-c.alpha**2+c.beta,wm[1],wm[2]];
   const f=x=>c.a*x+c.b*Math.sin(x),h=x=>x+c.c*x*x;
   let mean=c.initial_mean,variance=c.initial_variance;const trace=[];
   observations.forEach((observation,index)=>{
-    const spread=Math.sqrt(Math.max(scale*variance,0)),sigma=[mean,mean-spread,mean+spread],propagated=sigma.map(f);
+    const spread=Math.sqrt(scale*variance),sigma=[mean,mean-spread,mean+spread],propagated=sigma.map(f);
     const predicted_mean=wm.reduce((s,w,i)=>s+w*propagated[i],0);
-    const predicted_variance=c.q+wc.reduce((s,w,i)=>s+w*(propagated[i]-predicted_mean)**2,0);
-    const updateSpread=Math.sqrt(Math.max(scale*predicted_variance,0)),stateSigma=[predicted_mean,predicted_mean-updateSpread,predicted_mean+updateSpread],measurementSigma=stateSigma.map(h);
+    const predicted_variance=positiveSemidefinite(c.q+wc.reduce((s,w,i)=>s+w*(propagated[i]-predicted_mean)**2,0),"predicted covariance");
+    const updateSpread=Math.sqrt(scale*predicted_variance),stateSigma=[predicted_mean,predicted_mean-updateSpread,predicted_mean+updateSpread],measurementSigma=stateSigma.map(h);
     const predicted_measurement=wm.reduce((s,w,i)=>s+w*measurementSigma[i],0);
     const innovation_variance=c.r+wc.reduce((s,w,i)=>s+w*(measurementSigma[i]-predicted_measurement)**2,0);
+    if(!(innovation_variance>0))throw new Error(`innovation covariance is not positive (${innovation_variance}); the sigma-point weights do not keep the covariance positive semi-definite`);
     const cross=wc.reduce((s,w,i)=>s+w*(stateSigma[i]-predicted_mean)*(measurementSigma[i]-predicted_measurement),0);
     const kalman_gain=cross/innovation_variance,innovation=observation-predicted_measurement;
-    mean=predicted_mean+kalman_gain*innovation;variance=Math.max(predicted_variance-kalman_gain**2*innovation_variance,0);
+    mean=predicted_mean+kalman_gain*innovation;variance=positiveSemidefinite(predicted_variance-kalman_gain**2*innovation_variance,"posterior covariance");
     trace.push({index,sigma_left:sigma[1],sigma_center:sigma[0],sigma_right:sigma[2],predicted_mean,predicted_variance,predicted_measurement,innovation,innovation_variance,kalman_gain,filtered_mean:mean,filtered_variance:variance});
   });return trace;
 }

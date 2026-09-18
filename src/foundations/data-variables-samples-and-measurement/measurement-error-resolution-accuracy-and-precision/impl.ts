@@ -4,7 +4,19 @@
 
 import { runTopic as runD00Topic, type D00Input, type D00Output } from "../../../_shared/d00Engine.ts";
 
-/** Run the canonical D00-F03-A08 calculation. */
+/**
+ * Run the canonical D00-F03-A08 calculation.
+ *
+ * `resolution` is the smallest gap between distinct measurements, so it does
+ * not exist when every measurement is the same number. The guard keeps that
+ * state an error in both languages instead of a placeholder value.
+ */
 export function measurementErrorResolutionAccuracyAndPrecision(input: D00Input): D00Output {
+  const measurements = input?.measurements;
+  const allNumeric = Array.isArray(measurements) && measurements.length > 0
+    && measurements.every((value: unknown) => typeof value === "number" && Number.isFinite(value));
+  if (allNumeric && new Set(measurements as number[]).size < 2) {
+    throw new RangeError("measurements must contain at least two distinct values before a resolution gap exists");
+  }
   return runD00Topic("D00-F03-A08", input);
 }

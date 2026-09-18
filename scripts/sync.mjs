@@ -187,7 +187,19 @@ function implementationFile(topicDir) {
     .filter((name) => name.endsWith(".ts") && name !== "example.ts")
     .sort();
   if (candidates.length === 0) return null;
-  return join(tsDir, candidates[0]);
+  if (candidates.length === 1) return join(tsDir, candidates[0]);
+
+  // With more than one file, alphabetical order is an accident rather than a
+  // decision: D14-F02-A01 ships covariance-diagnostic.ts beside
+  // inverse-volatility.ts, and taking the first published the companion
+  // diagnostic as the topic's algorithm. Prefer the file the topic slug is
+  // built from, and fall back to alphabetical only when none of them is.
+  const slug = kebab(basename(topicDir).replace(TOPIC_DIR_RE, ""));
+  const named = candidates
+    .map((name) => ({ name, stem: kebab(basename(name, ".ts")) }))
+    .filter(({ stem }) => stem === slug || slug.startsWith(`${stem}-`) || stem.startsWith(`${slug}-`))
+    .sort((a, b) => b.stem.length - a.stem.length);
+  return join(tsDir, named[0]?.name ?? candidates[0]);
 }
 
 // ---------------------------------------------------------------------------
@@ -331,7 +343,13 @@ const REVIEWED_SHARED_SURFACES = new Set([
   "D21-F01-A01,D21-F01-A02,D21-F01-A03,D21-F01-A04,D21-F01-A05,D21-F01-A06,D21-F01-A07",
   "D25-F01-A01,D25-F01-A02,D25-F01-A03,D25-F01-A04,D25-F01-A05",
   "D25-F02-A01,D25-F02-A02,D25-F02-A03,D25-F02-A04,D25-F02-A05",
-  "D40-F05-A01,D40-F05-A02,D40-F05-A03,D40-F05-A04,D40-F05-A05,D40-F05-A06,D40-F05-A07,D40-F05-A08,D40-F05-A09,D40-F05-A10",
+  // This family was reviewed as all ten topics sharing one body. A04 and A10
+  // have since been repaired in ways the others do not carry — A04 restores the
+  // declared epsilon its fixtures had rounded away, A10 enforces the
+  // point-in-time horizon contract — so each now ships its own body and the
+  // shared surface is the remaining eight. Same compatibility contract, two
+  // fewer members.
+  "D40-F05-A01,D40-F05-A02,D40-F05-A03,D40-F05-A05,D40-F05-A06,D40-F05-A07,D40-F05-A08,D40-F05-A09",
 ]);
 
 const ENTRY_OVERRIDES = {
@@ -348,6 +366,15 @@ const ENTRY_OVERRIDES = {
   // apart, and no rule should invent a preposition — without this the topic
   // resolved to the family's `calculate(topicId, …)` dispatcher.
   "D18-F01-A05": "netDebtToEbitda",
+  // meanCvar optimises the portfolio; weightedVarCvar is the tail statistic it
+  // calls. The topic's own test exercises both, so the test signal cannot
+  // choose, and the module's slug-matching `meanCvarOptimization` is an alias
+  // rather than a declaration, so the slug rules never see it.
+  "D14-F01-A04": "meanCvar",
+  // inverseVolatilityWeights is the rule the topic teaches;
+  // covarianceRiskDiagnostic is the companion its article uses to show what the
+  // rule ignores. The test exercises both, so it cannot choose between them.
+  "D14-F02-A01": "inverseVolatilityWeights",
   // The trade-classification family shares one body exporting tickTest, quoteTest
   // and leeReady side by side. `leeReady` is this topic's algorithm; the stem
   // matcher cannot reach it because the slug carries two extra words
@@ -703,6 +730,11 @@ for (const found of discoverTopics()) {
   const domainSlug = kebab(meta.domain_slug ?? meta.domain ?? found.domainDir);
   const familySlug = kebab(meta.family_slug ?? meta.family ?? found.familyDir);
   const topicSlug = meta.slug ?? found.topicDir.replace(TOPIC_DIR_RE, "");
+
+  // That shortening is ours alone. The website builds its route from `domain:`,
+  // so reusing the short slug in the article link sent all 120 foundations
+  // topics to a 404. The link follows the site's convention instead.
+  const siteDomainSlug = kebab(meta.domain ?? found.domainDir);
   const modulePath = `${domainSlug}/${familySlug}/${topicSlug}`;
 
   let source = readFileSync(implFile, "utf8");
@@ -740,7 +772,7 @@ for (const found of discoverTopics()) {
 
   const archetype = archetypeFor(meta, entry);
   const articleUrl =
-    meta.article_url ?? `https://thefintechbuilder.com/${domainSlug}/${familySlug}/${topicSlug}/`;
+    meta.article_url ?? `https://thefintechbuilder.com/${siteDomainSlug}/${familySlug}/${topicSlug}/`;
   const repoUrl = meta.repo && typeof meta.repo === "object" ? (meta.repo.url ?? null) : null;
 
   // Deferred: several topics in a family can share one implementation body, and

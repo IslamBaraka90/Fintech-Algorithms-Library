@@ -28,6 +28,9 @@
   },
   "expected": {
     "trainCount": 4,
-    "testCount": 2
+    "testCount": 2,
+    "leakage": false,
+    "trainEnd": "2025-01-04T00:00:00Z",
+    "testStart": "2025-01-05T00:00:00Z"
   }
 }

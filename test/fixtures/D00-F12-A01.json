@@ -72,6 +72,8 @@
   },
   "expected": {
     "isFinite": true,
-    "ulp": 1.3877787807814457e-17
+    "ulp": 1.3877787807814457e-17,
+    "nextUp": 0.10000000000000002,
+    "overflowGuard": true
   }
 }

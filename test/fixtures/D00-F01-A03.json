@@ -14,9 +14,9 @@
     "outflows": 120,
     "slope": 2,
     "intercept": 1,
-    "part": 25,
-    "whole": 200,
-    "elapsed": 5,
+    "part": 350,
+    "whole": 500,
+    "elapsed": 25,
     "old": 4.5,
     "new": 4.75,
     "base": 16,
@@ -38,7 +38,8 @@
     "tolerance": 0.01
   },
   "expected": {
-    "ratio": 0.125,
-    "percentage": 12.5
+    "ratio": 0.7,
+    "percentage": 70.0,
+    "ratePerPeriod": 14.0
   }
 }

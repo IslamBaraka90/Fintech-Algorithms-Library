@@ -4,7 +4,20 @@
 
 import { runTopic as runD00Topic, type D00Input, type D00Output } from "../../../_shared/d00Engine.ts";
 
-/** Run the canonical D00-F07-A04 calculation. */
+/**
+ * Run the canonical D00-F07-A04 calculation.
+ *
+ * The shared F07 branch reads `x`, `p`, `n`, `k` and `lambda` before
+ * dispatching, and validates `p`, none of which this draw uses. The facade
+ * fills them when the caller omits them, so a sampling payload is `seed` and
+ * `sampleCount`. Values the caller does supply are passed through and still
+ * validated.
+ */
 export function uniformDistributionAndRandomSampling(input: D00Input): D00Output {
-  return runD00Topic("D00-F07-A04", input);
+  if (input === null || typeof input !== "object" || Array.isArray(input)) return runD00Topic("D00-F07-A04", input);
+  const payload: D00Input = { ...input };
+  for (const key of ["x", "p", "n", "k", "lambda"]) {
+    if (payload[key] === undefined || payload[key] === null) payload[key] = 0;
+  }
+  return runD00Topic("D00-F07-A04", payload);
 }

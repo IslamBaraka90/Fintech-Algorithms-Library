@@ -74,6 +74,8 @@
   },
   "expected": {
     "bias": 0.0,
-    "mae": 0.04999999999999982
+    "mae": 0.05,
+    "resolution": 0.1,
+    "precisionStd": 0.0707106781186545
   }
 }

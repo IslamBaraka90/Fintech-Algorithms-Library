@@ -465,9 +465,42 @@ function f11(index: number, data: D00Input): D00Output {
   return { portfolioVariance: boundedVariance, portfolioVolatility: Math.sqrt(boundedVariance), covarianceContribution: boundedVariance - standalone, weightsSum: total(weights) };
 }
 
+/**
+ * The next double above x, and the spacing between adjacent doubles at x.
+ *
+ * Adjacent doubles are one integer apart when their bits are read as an
+ * integer, which is what makes this exact. Arithmetic on the value cannot
+ * reproduce it: x + |x| * EPSILON lands a whole step away near a power of two,
+ * and does not move at all at zero or in the subnormals. These mirror Python's
+ * math.nextafter(x, inf) and math.ulp(x) so both references agree bit for bit.
+ */
+const doubleBits = new Float64Array(1);
+const doubleAsInteger = new BigUint64Array(doubleBits.buffer);
+
+function nextDoubleUp(x: number): number {
+  if (Number.isNaN(x) || x === Infinity) return x;
+  if (x === 0) return Number.MIN_VALUE;
+  doubleBits[0] = x;
+  doubleAsInteger[0] += x > 0 ? 1n : -1n;
+  return doubleBits[0];
+}
+
+function unitInLastPlace(x: number): number {
+  if (Number.isNaN(x)) return x;
+  if (!Number.isFinite(x)) return Infinity;
+  const magnitude = Math.abs(x);
+  if (magnitude === 0) return Number.MIN_VALUE;
+  const above = nextDoubleUp(magnitude);
+  if (Number.isFinite(above)) return above - magnitude;
+  // magnitude is the largest finite double, so measure the gap below it.
+  doubleBits[0] = magnitude;
+  doubleAsInteger[0] -= 1n;
+  return magnitude - doubleBits[0];
+}
+
 function f12(index: number, data: D00Input): D00Output {
   const values = nums(data);
-  if (index === 1) { const floatingValue = Number(data.floatingValue), nextUp = floatingValue + Math.abs(floatingValue) * Number.EPSILON; return { isFinite: Number.isFinite(floatingValue), ulp: nextUp - floatingValue, nextUp, overflowGuard: Math.abs(floatingValue) <= Math.sqrt(Number(data.maxSafeMagnitude)) }; }
+  if (index === 1) { const floatingValue = Number(data.floatingValue); return { isFinite: Number.isFinite(floatingValue), ulp: unitInLastPlace(floatingValue), nextUp: nextDoubleUp(floatingValue), overflowGuard: Math.abs(floatingValue) <= Math.sqrt(Number(data.maxSafeMagnitude)) }; }
   if (index === 2) {
     const naiveSum = total(values);
     let running = 0, correction = 0;

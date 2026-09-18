@@ -1,6 +1,6 @@
 {
   "generatedFrom": "scripts/sync.mjs",
-  "topicCount": 697,
+  "topicCount": 712,
   "topics": [
     {
       "id": "D00-F01-A01",
@@ -11306,6 +11306,228 @@
         "fallback_window",
         "dark_opportunities"
       ]
+    },
+    {
+      "id": "D14-F01-A01",
+      "path": "portfolio-construction/mean-risk-optimization/markowitz-mean-variance",
+      "entry": "markowitzMeanVariance",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "assetIdsInput",
+        "muInput",
+        "covarianceInput",
+        "targetReturnInput",
+        "options"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D14-F01-A02",
+      "path": "portfolio-construction/mean-risk-optimization/global-minimum-variance",
+      "entry": "globalMinimumVariance",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "assetIdsInput",
+        "covarianceInput",
+        "options"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D14-F01-A03",
+      "path": "portfolio-construction/mean-risk-optimization/maximum-sharpe-ratio",
+      "entry": "maximumSharpe",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "assetIdsInput",
+        "muInput",
+        "covarianceInput",
+        "riskFreeReturnInput",
+        "options"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D14-F01-A04",
+      "path": "portfolio-construction/mean-risk-optimization/mean-cvar-optimization",
+      "entry": "meanCvar",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "assetIdsInput",
+        "returnsInput",
+        "probabilitiesInput",
+        "betaInput",
+        "gammaInput",
+        "options"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D14-F01-A05",
+      "path": "portfolio-construction/mean-risk-optimization/mean-absolute-deviation-optimization",
+      "entry": "meanMad",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "assetIdsInput",
+        "returnsInput",
+        "probabilitiesInput",
+        "targetReturnInput",
+        "options"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D14-F02-A01",
+      "path": "portfolio-construction/risk-allocation/inverse-volatility-weighting",
+      "entry": "inverseVolatilityWeights",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "assetIds",
+        "standaloneVolatilities"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D14-F02-A02",
+      "path": "portfolio-construction/risk-allocation/equal-risk-contribution",
+      "entry": "equalRiskContributionWeights",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "assetIds",
+        "covariance"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D14-F02-A03",
+      "path": "portfolio-construction/risk-allocation/risk-budgeting",
+      "entry": "riskBudgetingWeights",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "assetIds",
+        "covariance",
+        "riskBudgets"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D14-F02-A04",
+      "path": "portfolio-construction/risk-allocation/hierarchical-risk-parity",
+      "entry": "hierarchicalRiskParityWeights",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "assetIds",
+        "covariance"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D14-F02-A05",
+      "path": "portfolio-construction/risk-allocation/hierarchical-equal-risk-contribution",
+      "entry": "hierarchicalEqualRiskContributionWeights",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "assetIds",
+        "covariance",
+        "clusterCount"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D14-F03-A01",
+      "path": "portfolio-construction/bayesian-and-robust-allocation/black-litterman",
+      "entry": "blackLittermanAllocate",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "input"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D14-F03-A02",
+      "path": "portfolio-construction/bayesian-and-robust-allocation/resampled-efficient-frontier",
+      "entry": "resampledEfficientFrontier",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "returns",
+        "resampleIndices",
+        "ranks"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D14-F03-A03",
+      "path": "portfolio-construction/bayesian-and-robust-allocation/robust-mean-variance",
+      "entry": "robustMeanVariance",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "mean",
+        "covariance",
+        "uncertaintyShape",
+        "kappa",
+        "riskPenalty",
+        "maxIterations",
+        "tolerance"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D14-F03-A04",
+      "path": "portfolio-construction/bayesian-and-robust-allocation/distributionally-robust-portfolio",
+      "entry": "distributionallyRobustPortfolio",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "mean",
+        "covariance",
+        "lossThreshold",
+        "returnFloor",
+        "tolerance",
+        "maxIterations"
+      ],
+      "fixtureKeys": []
+    },
+    {
+      "id": "D14-F03-A05",
+      "path": "portfolio-construction/bayesian-and-robust-allocation/kelly-allocation",
+      "entry": "kellyAllocation",
+      "archetype": "record-transform",
+      "fixture": null,
+      "convention": "none",
+      "entryParams": [
+        "returns",
+        "probabilities",
+        "maxIterations",
+        "tolerance"
+      ],
+      "fixtureKeys": []
     },
     {
       "id": "D18-F01-A01",

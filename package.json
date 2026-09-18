@@ -3116,6 +3116,81 @@
       "import": "./dist/execution-and-transaction-cost-analysis/cost-risk-optimization/opportunistic-dark-pool-execution/index.js",
       "require": "./dist/execution-and-transaction-cost-analysis/cost-risk-optimization/opportunistic-dark-pool-execution/index.js"
     },
+    "./portfolio-construction/mean-risk-optimization/markowitz-mean-variance": {
+      "types": "./dist/portfolio-construction/mean-risk-optimization/markowitz-mean-variance/index.d.ts",
+      "import": "./dist/portfolio-construction/mean-risk-optimization/markowitz-mean-variance/index.js",
+      "require": "./dist/portfolio-construction/mean-risk-optimization/markowitz-mean-variance/index.js"
+    },
+    "./portfolio-construction/mean-risk-optimization/global-minimum-variance": {
+      "types": "./dist/portfolio-construction/mean-risk-optimization/global-minimum-variance/index.d.ts",
+      "import": "./dist/portfolio-construction/mean-risk-optimization/global-minimum-variance/index.js",
+      "require": "./dist/portfolio-construction/mean-risk-optimization/global-minimum-variance/index.js"
+    },
+    "./portfolio-construction/mean-risk-optimization/maximum-sharpe-ratio": {
+      "types": "./dist/portfolio-construction/mean-risk-optimization/maximum-sharpe-ratio/index.d.ts",
+      "import": "./dist/portfolio-construction/mean-risk-optimization/maximum-sharpe-ratio/index.js",
+      "require": "./dist/portfolio-construction/mean-risk-optimization/maximum-sharpe-ratio/index.js"
+    },
+    "./portfolio-construction/mean-risk-optimization/mean-cvar-optimization": {
+      "types": "./dist/portfolio-construction/mean-risk-optimization/mean-cvar-optimization/index.d.ts",
+      "import": "./dist/portfolio-construction/mean-risk-optimization/mean-cvar-optimization/index.js",
+      "require": "./dist/portfolio-construction/mean-risk-optimization/mean-cvar-optimization/index.js"
+    },
+    "./portfolio-construction/mean-risk-optimization/mean-absolute-deviation-optimization": {
+      "types": "./dist/portfolio-construction/mean-risk-optimization/mean-absolute-deviation-optimization/index.d.ts",
+      "import": "./dist/portfolio-construction/mean-risk-optimization/mean-absolute-deviation-optimization/index.js",
+      "require": "./dist/portfolio-construction/mean-risk-optimization/mean-absolute-deviation-optimization/index.js"
+    },
+    "./portfolio-construction/risk-allocation/inverse-volatility-weighting": {
+      "types": "./dist/portfolio-construction/risk-allocation/inverse-volatility-weighting/index.d.ts",
+      "import": "./dist/portfolio-construction/risk-allocation/inverse-volatility-weighting/index.js",
+      "require": "./dist/portfolio-construction/risk-allocation/inverse-volatility-weighting/index.js"
+    },
+    "./portfolio-construction/risk-allocation/equal-risk-contribution": {
+      "types": "./dist/portfolio-construction/risk-allocation/equal-risk-contribution/index.d.ts",
+      "import": "./dist/portfolio-construction/risk-allocation/equal-risk-contribution/index.js",
+      "require": "./dist/portfolio-construction/risk-allocation/equal-risk-contribution/index.js"
+    },
+    "./portfolio-construction/risk-allocation/risk-budgeting": {
+      "types": "./dist/portfolio-construction/risk-allocation/risk-budgeting/index.d.ts",
+      "import": "./dist/portfolio-construction/risk-allocation/risk-budgeting/index.js",
+      "require": "./dist/portfolio-construction/risk-allocation/risk-budgeting/index.js"
+    },
+    "./portfolio-construction/risk-allocation/hierarchical-risk-parity": {
+      "types": "./dist/portfolio-construction/risk-allocation/hierarchical-risk-parity/index.d.ts",
+      "import": "./dist/portfolio-construction/risk-allocation/hierarchical-risk-parity/index.js",
+      "require": "./dist/portfolio-construction/risk-allocation/hierarchical-risk-parity/index.js"
+    },
+    "./portfolio-construction/risk-allocation/hierarchical-equal-risk-contribution": {
+      "types": "./dist/portfolio-construction/risk-allocation/hierarchical-equal-risk-contribution/index.d.ts",
+      "import": "./dist/portfolio-construction/risk-allocation/hierarchical-equal-risk-contribution/index.js",
+      "require": "./dist/portfolio-construction/risk-allocation/hierarchical-equal-risk-contribution/index.js"
+    },
+    "./portfolio-construction/bayesian-and-robust-allocation/black-litterman": {
+      "types": "./dist/portfolio-construction/bayesian-and-robust-allocation/black-litterman/index.d.ts",
+      "import": "./dist/portfolio-construction/bayesian-and-robust-allocation/black-litterman/index.js",
+      "require": "./dist/portfolio-construction/bayesian-and-robust-allocation/black-litterman/index.js"
+    },
+    "./portfolio-construction/bayesian-and-robust-allocation/resampled-efficient-frontier": {
+      "types": "./dist/portfolio-construction/bayesian-and-robust-allocation/resampled-efficient-frontier/index.d.ts",
+      "import": "./dist/portfolio-construction/bayesian-and-robust-allocation/resampled-efficient-frontier/index.js",
+      "require": "./dist/portfolio-construction/bayesian-and-robust-allocation/resampled-efficient-frontier/index.js"
+    },
+    "./portfolio-construction/bayesian-and-robust-allocation/robust-mean-variance": {
+      "types": "./dist/portfolio-construction/bayesian-and-robust-allocation/robust-mean-variance/index.d.ts",
+      "import": "./dist/portfolio-construction/bayesian-and-robust-allocation/robust-mean-variance/index.js",
+      "require": "./dist/portfolio-construction/bayesian-and-robust-allocation/robust-mean-variance/index.js"
+    },
+    "./portfolio-construction/bayesian-and-robust-allocation/distributionally-robust-portfolio": {
+      "types": "./dist/portfolio-construction/bayesian-and-robust-allocation/distributionally-robust-portfolio/index.d.ts",
+      "import": "./dist/portfolio-construction/bayesian-and-robust-allocation/distributionally-robust-portfolio/index.js",
+      "require": "./dist/portfolio-construction/bayesian-and-robust-allocation/distributionally-robust-portfolio/index.js"
+    },
+    "./portfolio-construction/bayesian-and-robust-allocation/kelly-allocation": {
+      "types": "./dist/portfolio-construction/bayesian-and-robust-allocation/kelly-allocation/index.d.ts",
+      "import": "./dist/portfolio-construction/bayesian-and-robust-allocation/kelly-allocation/index.js",
+      "require": "./dist/portfolio-construction/bayesian-and-robust-allocation/kelly-allocation/index.js"
+    },
     "./fundamental-analysis-and-valuation/statement-ratios/dupont-decomposition": {
       "types": "./dist/fundamental-analysis-and-valuation/statement-ratios/dupont-decomposition/index.d.ts",
       "import": "./dist/fundamental-analysis-and-valuation/statement-ratios/dupont-decomposition/index.js",

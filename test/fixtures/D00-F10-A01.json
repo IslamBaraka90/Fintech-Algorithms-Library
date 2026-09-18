@@ -28,6 +28,8 @@
   },
   "expected": {
     "ordered": true,
-    "regular": true
+    "regular": true,
+    "observations": 6,
+    "frequencySeconds": 86400
   }
 }

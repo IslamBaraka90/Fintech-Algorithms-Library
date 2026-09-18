@@ -72,6 +72,8 @@
   },
   "expected": {
     "count": 5,
-    "mean": 3.0
+    "mean": 3.0,
+    "m2": 10.0,
+    "sampleVariance": 2.5
   }
 }

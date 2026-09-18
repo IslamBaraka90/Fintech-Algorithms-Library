@@ -71,11 +71,25 @@ describe("registry", () => {
     assert.deepStrictEqual(proseOnlyWarmups, [], "warm-up rules present only in prose");
   });
 
-  test("subpath mirrors the article URL", () => {
+  /**
+   * The article URL has to be the site's route, not ours.
+   *
+   * This used to assert that the URL ends with the import subpath, which reads
+   * as the same thing and is not: `domain_slug:` shortens the subpath to keep
+   * Windows paths inside MAX_PATH, and the site knows nothing about that. The
+   * assertion passed while all 120 foundations links pointed at a route the
+   * site has never served. So the domain segment is checked against the
+   * kebab-cased display domain, which is what the site builds its route from,
+   * and only the family and topic segments are required to match the subpath.
+   */
+  test("the article URL is the site's route for the topic", () => {
+    const kebab = (text: string) =>
+      text.toLowerCase().replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
     for (const t of topics) {
+      const [, family, topic] = t.path.split("/");
       assert.ok(
-        t.articleUrl.endsWith(`/${t.path}/`),
-        `${t.id}: subpath \`${t.path}\` does not match article URL \`${t.articleUrl}\``,
+        t.articleUrl.endsWith(`/${kebab(t.domain)}/${family}/${topic}/`),
+        `${t.id}: article URL \`${t.articleUrl}\` is not the site route for domain \`${t.domain}\``,
       );
     }
   });
