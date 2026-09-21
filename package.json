@@ -3191,6 +3191,31 @@
       "import": "./dist/portfolio-construction/bayesian-and-robust-allocation/kelly-allocation/index.js",
       "require": "./dist/portfolio-construction/bayesian-and-robust-allocation/kelly-allocation/index.js"
     },
+    "./portfolio-construction/practical-constraints/turnover-constrained-optimization": {
+      "types": "./dist/portfolio-construction/practical-constraints/turnover-constrained-optimization/index.d.ts",
+      "import": "./dist/portfolio-construction/practical-constraints/turnover-constrained-optimization/index.js",
+      "require": "./dist/portfolio-construction/practical-constraints/turnover-constrained-optimization/index.js"
+    },
+    "./portfolio-construction/practical-constraints/transaction-cost-aware-optimization": {
+      "types": "./dist/portfolio-construction/practical-constraints/transaction-cost-aware-optimization/index.d.ts",
+      "import": "./dist/portfolio-construction/practical-constraints/transaction-cost-aware-optimization/index.js",
+      "require": "./dist/portfolio-construction/practical-constraints/transaction-cost-aware-optimization/index.js"
+    },
+    "./portfolio-construction/practical-constraints/cardinality-constrained-portfolio": {
+      "types": "./dist/portfolio-construction/practical-constraints/cardinality-constrained-portfolio/index.d.ts",
+      "import": "./dist/portfolio-construction/practical-constraints/cardinality-constrained-portfolio/index.js",
+      "require": "./dist/portfolio-construction/practical-constraints/cardinality-constrained-portfolio/index.js"
+    },
+    "./portfolio-construction/practical-constraints/long-short-gross-net-constraints": {
+      "types": "./dist/portfolio-construction/practical-constraints/long-short-gross-net-constraints/index.d.ts",
+      "import": "./dist/portfolio-construction/practical-constraints/long-short-gross-net-constraints/index.js",
+      "require": "./dist/portfolio-construction/practical-constraints/long-short-gross-net-constraints/index.js"
+    },
+    "./portfolio-construction/practical-constraints/tax-aware-portfolio-optimization": {
+      "types": "./dist/portfolio-construction/practical-constraints/tax-aware-portfolio-optimization/index.d.ts",
+      "import": "./dist/portfolio-construction/practical-constraints/tax-aware-portfolio-optimization/index.js",
+      "require": "./dist/portfolio-construction/practical-constraints/tax-aware-portfolio-optimization/index.js"
+    },
     "./fundamental-analysis-and-valuation/statement-ratios/dupont-decomposition": {
       "types": "./dist/fundamental-analysis-and-valuation/statement-ratios/dupont-decomposition/index.d.ts",
       "import": "./dist/fundamental-analysis-and-valuation/statement-ratios/dupont-decomposition/index.js",

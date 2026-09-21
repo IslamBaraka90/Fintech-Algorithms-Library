@@ -375,6 +375,18 @@ const ENTRY_OVERRIDES = {
   // covarianceRiskDiagnostic is the companion its article uses to show what the
   // rule ignores. The test exercises both, so it cannot choose between them.
   "D14-F02-A01": "inverseVolatilityWeights",
+  // auditTradeParts checks a proposed trade's parts; the optimizer is the topic.
+  "D14-F04-A02": "optimizeTransactionCostAware",
+  // This module exposes the whole exposure vocabulary — measures, the constraint
+  // check, the minimal split and the auxiliary-split audit — so no slug rule can
+  // pick between them. The optimizer is the topic, matching its siblings; the
+  // rest reach callers through the same subpath.
+  "D14-F04-A04": "optimizeGrossNetConstrained",
+  // Left alone this resolved to applySplitToLot, a corporate-action sanity
+  // helper, because no export carries the slug's words. The topic's two
+  // decisions are scoreFixedSale and optimizeTaxAwareTrade; the whole-portfolio
+  // optimizer is the one the title names, and matches the siblings.
+  "D14-F04-A05": "optimizeTaxAwareTrade",
   // The trade-classification family shares one body exporting tickTest, quoteTest
   // and leeReady side by side. `leeReady` is this topic's algorithm; the stem
   // matcher cannot reach it because the slug carries two extra words

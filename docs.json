@@ -40,12 +40,12 @@
     }
   },
   "counts": {
-    "topics": 712,
+    "topics": 717,
     "domains": 19,
-    "families": 89,
+    "families": 90,
     "verified": 623,
     "withExample": 697,
-    "withDiagram": 712,
+    "withDiagram": 717,
     "withApiContract": 697
   },
   "archetypes": [
@@ -221,7 +221,7 @@
     },
     {
       "name": "record-transform",
-      "topicCount": 538,
+      "topicCount": 543,
       "firstArgument": "a domain-specific record or array",
       "returns": "a domain-specific result",
       "type": null,
@@ -712,7 +712,7 @@
       "id": "D14",
       "name": "Portfolio Construction",
       "slug": "portfolio-construction",
-      "topicCount": 15,
+      "topicCount": 20,
       "families": [
         {
           "id": "D14-F01",
@@ -727,6 +727,11 @@
         {
           "id": "D14-F03",
           "name": "Bayesian and Robust Allocation",
+          "topicCount": 5
+        },
+        {
+          "id": "D14-F04",
+          "name": "Practical Constraints",
           "topicCount": 5
         }
       ]
@@ -136656,6 +136661,459 @@
         "article": "https://thefintechbuilder.com/portfolio-construction/bayesian-and-robust-allocation/kelly-allocation/",
         "repo": null,
         "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/portfolio-construction/bayesian-and-robust-allocation/kelly-allocation/impl.ts",
+        "npm": "https://www.npmjs.com/package/fintech-algorithms"
+      },
+      "catalogLanguages": [
+        "python",
+        "typescript"
+      ]
+    },
+    {
+      "id": "D14-F04-A01",
+      "name": "Turnover-Constrained Optimization",
+      "headline": null,
+      "slug": "turnover-constrained-optimization",
+      "path": "portfolio-construction/practical-constraints/turnover-constrained-optimization",
+      "taxonomy": {
+        "domainId": "D14",
+        "domain": "Portfolio Construction",
+        "familyId": "D14-F04",
+        "family": "Practical Constraints",
+        "difficulty": 4
+      },
+      "import": {
+        "subpath": "fintech-algorithms/portfolio-construction/practical-constraints/turnover-constrained-optimization",
+        "entry": "solveTurnoverConstrainedMarkowitz",
+        "params": [
+          "mu",
+          "covariance",
+          "lambdaRisk",
+          "w0",
+          "tau",
+          "options"
+        ],
+        "exports": [
+          "solveTurnoverConstrainedMarkowitz"
+        ],
+        "archetype": "record-transform",
+        "signature": "solveTurnoverConstrainedMarkowitz(mu, covariance, lambdaRisk, w0, tau, options)"
+      },
+      "api": null,
+      "example": null,
+      "verification": {
+        "tier": "contract",
+        "via": null
+      },
+      "assets": {
+        "diagrams": [
+          {
+            "file": "turnover-auxiliary.svg",
+            "url": "https://thefintechbuilder.com/content/d14-f04-a01/static/turnover-auxiliary.svg"
+          },
+          {
+            "file": "turnover-input-repair.svg",
+            "url": "https://thefintechbuilder.com/content/d14-f04-a01/static/turnover-input-repair.svg"
+          },
+          {
+            "file": "turnover-simplex.svg",
+            "url": "https://thefintechbuilder.com/content/d14-f04-a01/static/turnover-simplex.svg"
+          }
+        ],
+        "mermaid": []
+      },
+      "references": [
+        {
+          "key": "MOSEK Portfolio Optimization Cookbook",
+          "title": "transaction chapter",
+          "author": null,
+          "url": null
+        },
+        {
+          "key": "MOSEK Portfolio Optimization Cookbook",
+          "title": "multi-period chapter",
+          "author": null,
+          "url": null
+        },
+        {
+          "key": "Boyd et al.",
+          "title": "Multi-period trading with transaction costs",
+          "author": null,
+          "url": null
+        },
+        {
+          "key": "MathWorks",
+          "title": "Portfolio Analysis with Turnover Constraints",
+          "author": null,
+          "url": null
+        },
+        {
+          "key": "MathWorks",
+          "title": "`Portfolio.setTurnover` method",
+          "author": null,
+          "url": null
+        },
+        {
+          "key": "Portfolio Optimization Book",
+          "title": "portfolio constraints chapter",
+          "author": null,
+          "url": null
+        },
+        {
+          "key": "Google discovery ledger",
+          "title": "Google discovery ledger",
+          "author": null,
+          "url": null
+        },
+        {
+          "key": "Evidence classification",
+          "title": "Evidence classification",
+          "author": null,
+          "url": null
+        },
+        {
+          "key": "Limitations",
+          "title": "Limitations",
+          "author": null,
+          "url": null
+        }
+      ],
+      "links": {
+        "article": "https://thefintechbuilder.com/portfolio-construction/practical-constraints/turnover-constrained-optimization/",
+        "repo": null,
+        "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/portfolio-construction/practical-constraints/turnover-constrained-optimization/impl.ts",
+        "npm": "https://www.npmjs.com/package/fintech-algorithms"
+      },
+      "catalogLanguages": [
+        "python",
+        "typescript"
+      ]
+    },
+    {
+      "id": "D14-F04-A02",
+      "name": "Transaction-Cost-Aware Optimization",
+      "headline": null,
+      "slug": "transaction-cost-aware-optimization",
+      "path": "portfolio-construction/practical-constraints/transaction-cost-aware-optimization",
+      "taxonomy": {
+        "domainId": "D14",
+        "domain": "Portfolio Construction",
+        "familyId": "D14-F04",
+        "family": "Practical Constraints",
+        "difficulty": 4
+      },
+      "import": {
+        "subpath": "fintech-algorithms/portfolio-construction/practical-constraints/transaction-cost-aware-optimization",
+        "entry": "optimizeTransactionCostAware",
+        "params": [
+          "mu",
+          "covariance",
+          "lambdaRisk",
+          "x0",
+          "buyCost",
+          "sellCost",
+          "options"
+        ],
+        "exports": [
+          "optimizeTransactionCostAware",
+          "auditTradeParts"
+        ],
+        "archetype": "record-transform",
+        "signature": "optimizeTransactionCostAware(mu, covariance, lambdaRisk, x0, buyCost, sellCost, options)"
+      },
+      "api": null,
+      "example": null,
+      "verification": {
+        "tier": "contract",
+        "via": null
+      },
+      "assets": {
+        "diagrams": [
+          {
+            "file": "cost-comparison.svg",
+            "url": "https://thefintechbuilder.com/content/d14-f04-a02/static/cost-comparison.svg"
+          },
+          {
+            "file": "epigraph-audit.svg",
+            "url": "https://thefintechbuilder.com/content/d14-f04-a02/static/epigraph-audit.svg"
+          },
+          {
+            "file": "transaction-ledger.svg",
+            "url": "https://thefintechbuilder.com/content/d14-f04-a02/static/transaction-ledger.svg"
+          }
+        ],
+        "mermaid": []
+      },
+      "references": [
+        {
+          "key": "MOSEK Portfolio Optimization Cookbook, Chapter 6",
+          "title": "MOSEK Portfolio Optimization Cookbook, Chapter 6",
+          "author": "MOSEK ApS.",
+          "url": null
+        },
+        {
+          "key": "Boyd et al., Multi-Period Trading via Convex Optimization",
+          "title": "Boyd et al., Multi-Period Trading via Convex Optimization",
+          "author": "Stephen Boyd and collaborators.",
+          "url": null
+        },
+        {
+          "key": "Google discovery status",
+          "title": "Google discovery status",
+          "author": null,
+          "url": null
+        }
+      ],
+      "links": {
+        "article": "https://thefintechbuilder.com/portfolio-construction/practical-constraints/transaction-cost-aware-optimization/",
+        "repo": null,
+        "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/portfolio-construction/practical-constraints/transaction-cost-aware-optimization/impl.ts",
+        "npm": "https://www.npmjs.com/package/fintech-algorithms"
+      },
+      "catalogLanguages": [
+        "python",
+        "typescript"
+      ]
+    },
+    {
+      "id": "D14-F04-A03",
+      "name": "Cardinality-Constrained Portfolio",
+      "headline": null,
+      "slug": "cardinality-constrained-portfolio",
+      "path": "portfolio-construction/practical-constraints/cardinality-constrained-portfolio",
+      "taxonomy": {
+        "domainId": "D14",
+        "domain": "Portfolio Construction",
+        "familyId": "D14-F04",
+        "family": "Practical Constraints",
+        "difficulty": 4
+      },
+      "import": {
+        "subpath": "fintech-algorithms/portfolio-construction/practical-constraints/cardinality-constrained-portfolio",
+        "entry": "optimizeCardinalityConstrained",
+        "params": [
+          "mu",
+          "covariance",
+          "lambdaRisk",
+          "current",
+          "K",
+          "options"
+        ],
+        "exports": [
+          "optimizeCardinalityConstrained"
+        ],
+        "archetype": "record-transform",
+        "signature": "optimizeCardinalityConstrained(mu, covariance, lambdaRisk, current, K, options)"
+      },
+      "api": null,
+      "example": null,
+      "verification": {
+        "tier": "contract",
+        "via": null
+      },
+      "assets": {
+        "diagrams": [
+          {
+            "file": "final-vs-trade-support.svg",
+            "url": "https://thefintechbuilder.com/content/d14-f04-a03/static/final-vs-trade-support.svg"
+          },
+          {
+            "file": "support-enumeration.svg",
+            "url": "https://thefintechbuilder.com/content/d14-f04-a03/static/support-enumeration.svg"
+          }
+        ],
+        "mermaid": []
+      },
+      "references": [
+        {
+          "key": "MOSEK Portfolio Optimization Cookbook, §6.4 and §6.5",
+          "title": "MOSEK Portfolio Optimization Cookbook, §6.4 and §6.5",
+          "author": "MOSEK ApS.",
+          "url": null
+        },
+        {
+          "key": "Moehle, Kochenderfer, Boyd, and Ang, “Tax-aware portfolio optimization”",
+          "title": "Moehle, Kochenderfer, Boyd, and Ang, “Tax-aware portfolio optimization”",
+          "author": "Nicholas Moehle, Mykel J. Kochenderfer, Stephen Boyd, and Andrew Ang.",
+          "url": null
+        },
+        {
+          "key": "Google discovery status",
+          "title": "Google discovery status",
+          "author": null,
+          "url": null
+        }
+      ],
+      "links": {
+        "article": "https://thefintechbuilder.com/portfolio-construction/practical-constraints/cardinality-constrained-portfolio/",
+        "repo": null,
+        "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/portfolio-construction/practical-constraints/cardinality-constrained-portfolio/impl.ts",
+        "npm": "https://www.npmjs.com/package/fintech-algorithms"
+      },
+      "catalogLanguages": [
+        "python",
+        "typescript"
+      ]
+    },
+    {
+      "id": "D14-F04-A04",
+      "name": "Long/Short Gross-Net Constraints",
+      "headline": null,
+      "slug": "long-short-gross-net-constraints",
+      "path": "portfolio-construction/practical-constraints/long-short-gross-net-constraints",
+      "taxonomy": {
+        "domainId": "D14",
+        "domain": "Portfolio Construction",
+        "familyId": "D14-F04",
+        "family": "Practical Constraints",
+        "difficulty": 4
+      },
+      "import": {
+        "subpath": "fintech-algorithms/portfolio-construction/practical-constraints/long-short-gross-net-constraints",
+        "entry": "optimizeGrossNetConstrained",
+        "params": [
+          "mu",
+          "covariance",
+          "lambdaRisk",
+          "netMin",
+          "netMax",
+          "grossMax",
+          "options"
+        ],
+        "exports": [
+          "signedExposures",
+          "exposureMeasures",
+          "portfolioVariance",
+          "checkExposureConstraints",
+          "minimalSplit",
+          "auditAuxiliarySplit",
+          "optimizeGrossNetConstrained",
+          "canonicalExample"
+        ],
+        "archetype": "record-transform",
+        "signature": "optimizeGrossNetConstrained(mu, covariance, lambdaRisk, netMin, netMax, grossMax, options)"
+      },
+      "api": null,
+      "example": null,
+      "verification": {
+        "tier": "contract",
+        "via": null
+      },
+      "assets": {
+        "diagrams": [
+          {
+            "file": "article-hero.svg",
+            "url": "https://thefintechbuilder.com/content/d14-f04-a04/static/article-hero.svg"
+          }
+        ],
+        "mermaid": []
+      },
+      "references": [
+        {
+          "key": "MOSEK-INPUTDATA",
+          "title": "Input data preparation",
+          "author": null,
+          "url": null
+        },
+        {
+          "key": "MOSEK-TRANSACTION",
+          "title": "Transaction costs",
+          "author": null,
+          "url": null
+        }
+      ],
+      "links": {
+        "article": "https://thefintechbuilder.com/portfolio-construction/practical-constraints/long-short-gross-net-constraints/",
+        "repo": null,
+        "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/portfolio-construction/practical-constraints/long-short-gross-net-constraints/impl.ts",
+        "npm": "https://www.npmjs.com/package/fintech-algorithms"
+      },
+      "catalogLanguages": [
+        "python",
+        "typescript"
+      ]
+    },
+    {
+      "id": "D14-F04-A05",
+      "name": "Tax-Aware Portfolio Optimization",
+      "headline": null,
+      "slug": "tax-aware-portfolio-optimization",
+      "path": "portfolio-construction/practical-constraints/tax-aware-portfolio-optimization",
+      "taxonomy": {
+        "domainId": "D14",
+        "domain": "Portfolio Construction",
+        "familyId": "D14-F04",
+        "family": "Practical Constraints",
+        "difficulty": 4
+      },
+      "import": {
+        "subpath": "fintech-algorithms/portfolio-construction/practical-constraints/tax-aware-portfolio-optimization",
+        "entry": "optimizeTaxAwareTrade",
+        "params": [
+          "holdingsInit",
+          "benchmark",
+          "expectedReturn",
+          "riskMatrix",
+          "prices",
+          "lots",
+          "tradeDate",
+          "options"
+        ],
+        "exports": [
+          "reviewPolicyState",
+          "applySplitToLot",
+          "scoreFixedSale",
+          "settleTradeCash",
+          "optimizeTaxAwareTrade",
+          "canonicalExample"
+        ],
+        "archetype": "record-transform",
+        "signature": "optimizeTaxAwareTrade(holdingsInit, benchmark, expectedReturn, riskMatrix, prices, lots, tradeDate, options)"
+      },
+      "api": null,
+      "example": null,
+      "verification": {
+        "tier": "contract",
+        "via": null
+      },
+      "assets": {
+        "diagrams": [
+          {
+            "file": "article-hero.svg",
+            "url": "https://thefintechbuilder.com/content/d14-f04-a05/static/article-hero.svg"
+          }
+        ],
+        "mermaid": []
+      },
+      "references": [
+        {
+          "key": "MOEHLE2021",
+          "title": "Tax-Aware Portfolio Construction via Convex Optimization",
+          "author": null,
+          "url": null
+        },
+        {
+          "key": "IRS-P550-2025",
+          "title": "Investment Income and Expenses",
+          "author": null,
+          "url": null
+        },
+        {
+          "key": "HMRC-HS284-2026",
+          "title": "Shares and Capital Gains Tax",
+          "author": null,
+          "url": null
+        },
+        {
+          "key": "CRA-SUPERFICIAL",
+          "title": "Capital losses",
+          "author": null,
+          "url": null
+        }
+      ],
+      "links": {
+        "article": "https://thefintechbuilder.com/portfolio-construction/practical-constraints/tax-aware-portfolio-optimization/",
+        "repo": null,
+        "source": "https://github.com/IslamBaraka90/Fintech-Algorithms-Library/blob/main/src/portfolio-construction/practical-constraints/tax-aware-portfolio-optimization/impl.ts",
         "npm": "https://www.npmjs.com/package/fintech-algorithms"
       },
       "catalogLanguages": [
