@@ -6,6 +6,46 @@ The package is pre-1.0. Breaking changes go in the minor version, additive and
 corrective changes in the patch — so `0.11.0 → 0.12.0` can break you and
 `0.12.0 → 0.12.1` cannot.
 
+## 0.13.2 — 2026-09-22
+
+Portfolio Construction. Nothing is removed or renamed: every subpath published
+in `0.13.1` resolves unchanged, and no entry point changed its name, signature
+or behaviour.
+
+| | `0.13.1` | `0.13.2` |
+|---|--:|--:|
+| Topics | 697 | **717** |
+| Domains | 18 | **19** |
+| Topics with a validated `api` contract | 697 / 697 | **717 / 717** |
+| Topics with an executed worked example | 697 | **717** |
+| Topics whose arithmetic is asserted on every build | 623 | 623 |
+
+### New
+
+- **Portfolio Construction** — 20 topics, the first domain here that turns a
+  covariance matrix into a set of weights. Mean-risk optimization (Markowitz
+  against a return target, global minimum variance, maximum Sharpe, mean-CVaR,
+  mean-MAD), risk allocation (inverse volatility, equal risk contribution, risk
+  budgeting, hierarchical risk parity and its equal-risk-contribution variant),
+  Bayesian and robust allocation (Black-Litterman, resampled frontier, robust
+  and distributionally robust mean-variance, Kelly), and the practical
+  constraints that decide whether any of it survives contact with a real book —
+  turnover, transaction costs, cardinality, gross/net exposure, and tax-aware
+  lot selection.
+
+  Each takes its inputs positionally and by name rather than through a topic id,
+  and each validates before it solves: an asymmetric covariance matrix, an
+  infeasible return floor or a budget that does not sum to one is refused rather
+  than quietly worked around.
+
+### Known gap
+
+These 20 ship at `contract` tier — their signature is checked on every build,
+but nothing here replays their arithmetic. The expected numbers exist; they sit
+in each topic's `tests/` directory in a shape the conformance harness does not
+yet read, so this is a wiring gap and not an absence of evidence. It brings the
+unasserted count to 94 of 717.
+
 ## 0.13.1 — 2026-09-10
 
 Volatility and Covariance, and the diagrams that had been quietly going missing.

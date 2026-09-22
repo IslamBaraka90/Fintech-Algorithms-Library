@@ -115,9 +115,9 @@
     "outflows": 120,
     "slope": 2,
     "intercept": 1,
-    "part": 25,
-    "whole": 200,
-    "elapsed": 5,
+    "part": 350,
+    "whole": 500,
+    "elapsed": 25,
     "old": 4.5,
     "new": 4.75,
     "base": 16,
@@ -140,9 +140,9 @@
    }
   ],
   "value": {
-   "ratio": 0.125,
-   "percentage": 12.5,
-   "ratePerPeriod": 5
+   "ratio": 0.7,
+   "percentage": 70,
+   "ratePerPeriod": 14
   }
  },
  "D00-F01-A04": {
@@ -239,10 +239,8 @@
   "args": [
    {
     "values": [
-     1,
      2,
      3,
-     4,
      5
     ],
     "startingCash": 1000,
@@ -275,27 +273,19 @@
    }
   ],
   "value": {
-   "sum": 15,
-   "product": 120,
+   "sum": 10,
+   "product": 30,
    "indexedTerms": [
     {
      "index": 1,
-     "value": 1
-    },
-    {
-     "index": 2,
      "value": 2
     },
     {
-     "index": 3,
+     "index": 2,
      "value": 3
     },
     {
-     "index": 4,
-     "value": 4
-    },
-    {
-     "index": 5,
+     "index": 3,
      "value": 5
     }
    ]
@@ -2390,55 +2380,9 @@
  "D00-F06-A05": {
   "args": [
    {
-    "pA": 0.6,
-    "pB": 0.5,
-    "pAB": 0.3,
-    "outcomes": [
-     "up",
-     "flat",
-     "down"
-    ],
-    "event": [
-     "up",
-     "flat"
-    ],
     "prior": 0.01,
     "sensitivity": 0.9,
-    "falsePositiveRate": 0.05,
-    "randomValues": [
-     0,
-     1,
-     2
-    ],
-    "probabilities": [
-     0.2,
-     0.5,
-     0.3
-    ],
-    "randomVariableKind": "discrete",
-    "joint": [
-     {
-      "x": 0,
-      "y": 0,
-      "p": 0.3
-     },
-     {
-      "x": 0,
-      "y": 1,
-      "p": 0.2
-     },
-     {
-      "x": 1,
-      "y": 0,
-      "p": 0.1
-     },
-     {
-      "x": 1,
-      "y": 1,
-      "p": 0.4
-     }
-    ],
-    "conditionY": 1
+    "falsePositiveRate": 0.05
    }
   ],
   "value": {
@@ -2449,21 +2393,6 @@
  "D00-F06-A06": {
   "args": [
    {
-    "pA": 0.6,
-    "pB": 0.5,
-    "pAB": 0.3,
-    "outcomes": [
-     "up",
-     "flat",
-     "down"
-    ],
-    "event": [
-     "up",
-     "flat"
-    ],
-    "prior": 0.01,
-    "sensitivity": 0.9,
-    "falsePositiveRate": 0.05,
     "randomValues": [
      0,
      1,
@@ -2474,30 +2403,7 @@
      0.5,
      0.3
     ],
-    "randomVariableKind": "discrete",
-    "joint": [
-     {
-      "x": 0,
-      "y": 0,
-      "p": 0.3
-     },
-     {
-      "x": 0,
-      "y": 1,
-      "p": 0.2
-     },
-     {
-      "x": 1,
-      "y": 0,
-      "p": 0.1
-     },
-     {
-      "x": 1,
-      "y": 1,
-      "p": 0.4
-     }
-    ],
-    "conditionY": 1
+    "randomVariableKind": "discrete"
    }
   ],
   "value": {
@@ -2891,37 +2797,8 @@
  "D00-F07-A04": {
   "args": [
    {
-    "values": [
-     0.2,
-     0.5,
-     0.7,
-     1,
-     1.4
-    ],
-    "x": 1,
-    "p": 0.3,
-    "n": 5,
-    "k": 2,
-    "lambda": 2,
     "seed": 42,
-    "sampleCount": 8,
-    "mu": 0,
-    "sigma": 1,
-    "df": 5,
-    "shape": 2,
-    "scale": 1.5,
-    "components": [
-     {
-      "weight": 0.7,
-      "mean": 0,
-      "sd": 1
-     },
-     {
-      "weight": 0.3,
-      "mean": 3,
-      "sd": 0.8
-     }
-    ]
+    "sampleCount": 8
    }
   ],
   "value": {
@@ -2943,37 +2820,9 @@
  "D00-F07-A05": {
   "args": [
    {
-    "values": [
-     0.2,
-     0.5,
-     0.7,
-     1,
-     1.4
-    ],
     "x": 1,
-    "p": 0.3,
-    "n": 5,
-    "k": 2,
-    "lambda": 2,
-    "seed": 42,
-    "sampleCount": 8,
     "mu": 0,
-    "sigma": 1,
-    "df": 5,
-    "shape": 2,
-    "scale": 1.5,
-    "components": [
-     {
-      "weight": 0.7,
-      "mean": 0,
-      "sd": 1
-     },
-     {
-      "weight": 0.3,
-      "mean": 3,
-      "sd": 0.8
-     }
-    ]
+    "sigma": 1
    }
   ],
   "value": {
@@ -3739,40 +3588,48 @@
      3,
      4,
      5,
-     6
+     6,
+     7,
+     8
     ],
     "y": [
-     2,
-     3,
-     5,
-     4,
-     6,
-     7
+     12,
+     11,
+     11,
+     10,
+     20,
+     19,
+     19,
+     18
     ],
     "groups": [
      "A",
      "A",
      "A",
+     "A",
+     "B",
      "B",
      "B",
      "B"
     ],
-    "predictX": 7,
+    "predictX": 9,
     "otherPredictor": [
      2,
      4,
      5,
      8,
      9,
-     13
+     13,
+     15,
+     18
     ]
    }
   ],
   "value": {
-   "rawCorrelation": 0.9428571428571428,
+   "rawCorrelation": 0.7789621985578676,
    "withinGroupCorrelations": {
-    "A": 0.9819805060619659,
-    "B": 0.9819805060619659
+    "A": -0.9486832980505138,
+    "B": -0.9486832980505138
    },
    "causalClaimSupported": false
   }
@@ -4992,8 +4849,8 @@
   ],
   "value": {
    "isFinite": true,
-   "ulp": 2.7755575615628914e-17,
-   "nextUp": 0.10000000000000003,
+   "ulp": 1.3877787807814457e-17,
+   "nextUp": 0.10000000000000002,
    "overflowGuard": true
   }
  },
@@ -328501,6 +328358,1705 @@
     }
    ],
    "state": "lit-fallback-required"
+  }
+ },
+ "D14-F01-A01": {
+  "args": [
+   [
+    "A",
+    "B"
+   ],
+   [
+    0.06,
+    0.14
+   ],
+   [
+    [
+     0.04,
+     0.01
+    ],
+    [
+     0.01,
+     0.09
+    ]
+   ],
+   0.1,
+   {
+    "maxIterations": 10000
+   }
+  ],
+  "value": {
+   "assetIds": [
+    "A",
+    "B"
+   ],
+   "mu": [
+    0.06,
+    0.14
+   ],
+   "targetReturn": 0.1,
+   "weights": [
+    0.4999999999999999,
+    0.5000000000000001
+   ],
+   "expectedReturn": 0.1,
+   "variance": 0.037500000000000006,
+   "volatility": 0.19364916731037085,
+   "budgetResidual": 0,
+   "targetResidual": 0,
+   "lowerBoundResidual": 0,
+   "fwGapS": 0,
+   "fwGap": 0,
+   "matrixScale": 0.09,
+   "status": "optimal",
+   "solutionClass": "unique",
+   "variant": "markowitz-target-return-min-variance-long-only",
+   "method": "active-set-kkt-face-enumeration",
+   "iterations": 2,
+   "maxIterations": 10000,
+   "diagnostics": {
+    "matrixScale": 0.09,
+    "symmetryResidualS": 0,
+    "minEigenvalueS": 0.4230463996036387,
+    "maxEigenvalueS": 1.0213980448408058,
+    "eigenResidualS": 0,
+    "tolPsd": 1e-10,
+    "tolGapRelative": 1e-10,
+    "returnScale": 0.14,
+    "tolReturnScaled": 1e-12,
+    "tolGap": 1.1111111111111112e-10,
+    "normalizedObjective": 0.41666666666666674,
+    "varianceRaw": 0.037500000000000006,
+    "targetBinding": true,
+    "targetMultiplierScaled": 0.9722222222222223,
+    "optimalityCertificate": "simplex-target-return-frank-wolfe-convex-certificate"
+   },
+   "warnings": []
+  }
+ },
+ "D14-F01-A02": {
+  "args": [
+   [
+    "A",
+    "B"
+   ],
+   [
+    [
+     0.04,
+     0.01
+    ],
+    [
+     0.01,
+     0.09
+    ]
+   ],
+   {
+    "maxIterations": 10000
+   }
+  ],
+  "value": {
+   "assetIds": [
+    "A",
+    "B"
+   ],
+   "mu": null,
+   "matrixScale": 0.09,
+   "variant": "gmv-long-only-fully-invested",
+   "method": "projected-gradient-simplex-line-search",
+   "maxIterations": 10000,
+   "weights": [
+    0.7272727272727273,
+    0.27272727272727276
+   ],
+   "variance": 0.03181818181818182,
+   "volatility": 0.17837651700316895,
+   "expectedReturn": null,
+   "budgetResidual": 0,
+   "lowerBoundResidual": 0,
+   "fwGapS": 0,
+   "fwGap": 0,
+   "status": "optimal",
+   "solutionClass": "unique",
+   "iterations": 21,
+   "warnings": [],
+   "diagnostics": {
+    "matrixScale": 0.09,
+    "symmetryResidualS": 0,
+    "minEigenvalueS": 0.4230463996036387,
+    "maxEigenvalueS": 1.0213980448408058,
+    "eigenResidualS": 0,
+    "tolSymmetry": 1e-12,
+    "tolPsd": 1e-10,
+    "tolEigenResidual": 1e-12,
+    "tolFeasibility": 1e-12,
+    "tolVariance": 1e-12,
+    "tolCurvature": 1e-24,
+    "tolActive": 1e-12,
+    "tolLinearSolve": 1e-14,
+    "tolStagnationDirection": 1e-8,
+    "tolGapRelative": 1e-10,
+    "normalizedObjective": 0.3535353535353536,
+    "tolGap": 1.1111111111111112e-10,
+    "fwGapSRaw": 0,
+    "varianceRaw": 0.03181818181818182,
+    "projection": "euclidean-simplex-sort-threshold",
+    "polishedActiveSet": true,
+    "activeSetPolishIterations": 1,
+    "optimalityCertificate": "simplex-frank-wolfe-convex-certificate"
+   }
+  }
+ },
+ "D14-F01-A03": {
+  "args": [
+   [
+    "A",
+    "B"
+   ],
+   [
+    0.08,
+    0.11
+   ],
+   [
+    [
+     0.01,
+     0
+    ],
+    [
+     0,
+     0.0225
+    ]
+   ],
+   0.02
+  ],
+  "value": {
+   "status": "optimal",
+   "variant": "maximum-sharpe-long-only-pd",
+   "method": "exhaustive-support-enumeration",
+   "branch": "positive_excess_support",
+   "assetIds": [
+    "A",
+    "B"
+   ],
+   "mu": [
+    0.08,
+    0.11
+   ],
+   "riskFreeReturn": 0.02,
+   "weights": [
+    0.6,
+    0.4
+   ],
+   "expectedReturn": 0.092,
+   "excessReturn": 0.072,
+   "variance": 0.0072000000000000015,
+   "volatility": 0.08485281374238571,
+   "sharpe": 0.8485281374238569,
+   "budgetResidual": 0,
+   "lowerBoundResidual": 0,
+   "iterations": 3,
+   "maxIterations": 10000,
+   "solutionClass": "unique",
+   "diagnostics": {
+    "covarianceScale": 0.0225,
+    "normalizedVariance": 0.32000000000000006,
+    "objectiveGap": 0,
+    "symmetryResidualS": 0,
+    "minimumEigenvalueS": 0.4444444444444445,
+    "eigenResidualS": 0,
+    "tolPsd": 1e-10,
+    "tolPd": 1e-10,
+    "certificate": "exhaustive-support-enumeration",
+    "support": [
+     "A",
+     "B"
+    ],
+    "supportsChecked": 3,
+    "supportsRequired": 3,
+    "supportsCertified": 3
+   },
+   "warnings": []
+  }
+ },
+ "D14-F01-A04": {
+  "args": [
+   [
+    "A",
+    "B"
+   ],
+   [
+    [
+     0.24,
+     0.08
+    ],
+    [
+     0.2,
+     0.06
+    ],
+    [
+     0.16,
+     0.04
+    ],
+    [
+     -0.2,
+     -0.02
+    ]
+   ],
+   [
+    0.25,
+    0.25,
+    0.25,
+    0.25
+   ],
+   0.75,
+   0.5
+  ],
+  "value": {
+   "status": "optimal",
+   "variant": "mean-cvar-long-only",
+   "method": "lp-vertex-enumeration",
+   "branch": "positive_gamma_lp",
+   "assetIds": [
+    "A",
+    "B"
+   ],
+   "weights": [
+    0,
+    1
+   ],
+   "expectedReturn": 0.039999999999999994,
+   "cvar": 0.019999999999999993,
+   "thresholdZ": -0.04,
+   "tailSlacks": [
+    0,
+    0,
+    0,
+    0.06
+   ],
+   "scenarioLosses": [
+    -0.08,
+    -0.06,
+    -0.04,
+    0.02
+   ],
+   "objective": 0.03,
+   "budgetResidual": 0,
+   "lowerBoundResidual": 0,
+   "probabilityResidual": 0,
+   "iterations": 924,
+   "maxIterations": 10000,
+   "solutionClass": "unique",
+   "diagnostics": {
+    "beta": 0.75,
+    "gamma": 0.5,
+    "meanReturns": [
+     0.09999999999999999,
+     0.039999999999999994
+    ],
+    "tailMass": 0.25,
+    "lpObjective": 0.029999999999999985,
+    "objectiveGap": 1.3322676295501878e-17,
+    "objectiveScale": 0.039999999999999994,
+    "directObjective": 0.03,
+    "primalResidual": 5.551115123125783e-17,
+    "certificate": "lp-vertex-enumeration",
+    "verticesChecked": 924,
+    "verticesRequired": 924,
+    "thresholdFromLp": -0.040000000000000015,
+    "quantileFromLosses": -0.04,
+    "distinctOptimalWeights": 1,
+    "returnScale": 0.24
+   },
+   "warnings": []
+  }
+ },
+ "D14-F01-A05": {
+  "args": [
+   [
+    "DISPERSED",
+    "STABLE"
+   ],
+   [
+    [
+     0.2,
+     0.03
+    ],
+    [
+     0.1,
+     0.03
+    ],
+    [
+     0.05,
+     0.03
+    ],
+    [
+     -0.03,
+     0.03
+    ]
+   ],
+   [
+    0.25,
+    0.25,
+    0.25,
+    0.25
+   ],
+   0.055
+  ],
+  "value": {
+   "status": "optimal",
+   "variant": "mean-mad-return-floor-long-only",
+   "method": "lp-vertex-enumeration",
+   "assetIds": [
+    "DISPERSED",
+    "STABLE"
+   ],
+   "weights": [
+    0.49999999999999983,
+    0.5000000000000002
+   ],
+   "meanReturns": [
+    0.08000000000000002,
+    0.03
+   ],
+   "expectedReturn": 0.05499999999999999,
+   "mad": 0.03499999999999999,
+   "targetReturn": 0.05499999999999999,
+   "budgetResidual": 0,
+   "lowerBoundResidual": 0,
+   "targetResidual": 0,
+   "probabilityResidual": 0,
+   "iterations": 3003,
+   "solutionClass": "unique",
+   "diagnostics": {
+    "deviations": [
+     0.05999999999999998,
+     0.009999999999999995,
+     -0.014999999999999998,
+     -0.054999999999999986
+    ],
+    "lpObjective": 0.03499999999999999,
+    "objectiveGap": 0,
+    "verticesRequired": 3003,
+    "certificate": "lp-vertex-enumeration",
+    "returnScale": 0.2
+   },
+   "warnings": [
+    "Reference vertex enumeration is intended for small teaching panels, not large production universes."
+   ]
+  }
+ },
+ "D14-F02-A01": {
+  "args": [
+   [
+    "A",
+    "B",
+    "C"
+   ],
+   [
+    0.1,
+    0.2,
+    0.15
+   ]
+  ],
+  "value": {
+   "assetIds": [
+    "A",
+    "B",
+    "C"
+   ],
+   "weights": [
+    0.46153846153846145,
+    0.23076923076923073,
+    0.3076923076923077
+   ],
+   "normalizedInverseVolatilityScores": [
+    1,
+    0.5,
+    0.6666666666666667
+   ],
+   "sumWeights": 0.9999999999999999,
+   "method": "inverse-volatility",
+   "status": "ok"
+  }
+ },
+ "D14-F02-A02": {
+  "args": [
+   [
+    "A",
+    "B",
+    "C"
+   ],
+   [
+    [
+     0.01,
+     0.016,
+     0.0015
+    ],
+    [
+     0.016,
+     0.04,
+     -0.006
+    ],
+    [
+     0.0015,
+     -0.006,
+     0.0225
+    ]
+   ]
+  ],
+  "value": {
+   "assetIds": [
+    "A",
+    "B",
+    "C"
+   ],
+   "weights": [
+    0.3778302517370716,
+    0.23412526094592215,
+    0.3880444873170063
+   ],
+   "componentRiskContributions": [
+    0.031952220115817255,
+    0.03195222012249683,
+    0.031952220117888716
+   ],
+   "componentRiskShares": [
+    0.3333333333029024,
+    0.33333333337258536,
+    0.3333333333245123
+   ],
+   "portfolioVariance": 0.00918849933464442,
+   "portfolioVolatility": 0.0958566603562028,
+   "sumWeights": 1,
+   "riskShareResidual": 3.925204605792487e-11,
+   "iterations": 20,
+   "method": "equal-risk-contribution",
+   "solver": "cyclical-coordinate-descent-volatility-eq7",
+   "covarianceScale": 0.04,
+   "status": "ok"
+  }
+ },
+ "D14-F02-A03": {
+  "args": [
+   [
+    "A",
+    "B",
+    "C"
+   ],
+   [
+    [
+     0.01,
+     0.016,
+     0.0015
+    ],
+    [
+     0.016,
+     0.04,
+     -0.006
+    ],
+    [
+     0.0015,
+     -0.006,
+     0.0225
+    ]
+   ],
+   [
+    0.5,
+    0.3,
+    0.2
+   ]
+  ],
+  "value": {
+   "assetIds": [
+    "A",
+    "B",
+    "C"
+   ],
+   "riskBudgets": [
+    0.5,
+    0.3,
+    0.2
+   ],
+   "weights": [
+    0.518650848634501,
+    0.19040488031965186,
+    0.29094427104584725
+   ],
+   "componentRiskContributions": [
+    0.04741515164850507,
+    0.028449090994357995,
+    0.018966060654301783
+   ],
+   "componentRiskShares": [
+    0.4999999999991843,
+    0.3000000000549249,
+    0.19999999994589085
+   ],
+   "portfolioVariance": 0.008992786423432273,
+   "portfolioVolatility": 0.09483030329716484,
+   "sumWeights": 1,
+   "riskShareResidual": 5.492484245195328e-11,
+   "riskShareRelativeResidual": 2.7054608553456205e-10,
+   "iterations": 17,
+   "method": "risk-budgeting",
+   "solver": "cyclical-coordinate-descent-volatility-eq7",
+   "covarianceScale": 0.04,
+   "status": "ok"
+  }
+ },
+ "D14-F02-A04": {
+  "args": [
+   [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   [
+    [
+     0.04,
+     0.036,
+     0.004,
+     0.002
+    ],
+    [
+     0.036,
+     0.04,
+     0.003,
+     0.001
+    ],
+    [
+     0.004,
+     0.003,
+     0.01,
+     0.008
+    ],
+    [
+     0.002,
+     0.001,
+     0.008,
+     0.0225
+    ]
+   ]
+  ],
+  "value": {
+   "assetIds": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "weights": [
+    0.10688050930460334,
+    0.10688050930460334,
+    0.5443192948090109,
+    0.2419196865817826
+   ],
+   "componentRiskContributions": [
+    0.012087521651000223,
+    0.01120624850215681,
+    0.046390190600378356,
+    0.025670836878125575
+   ],
+   "componentRiskShares": [
+    0.12676364431805753,
+    0.11752160122498084,
+    0.4865008552540336,
+    0.26921389920292804
+   ],
+   "portfolioVariance": 0.009092537431375017,
+   "portfolioVolatility": 0.09535479763166098,
+   "sumWeights": 1.0000000000000002,
+   "quasiDiagonalOrder": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "correlationMatrix": [
+    [
+     1,
+     0.8999999999999999,
+     0.2,
+     0.06666666666666667
+    ],
+    [
+     0.8999999999999999,
+     1,
+     0.15,
+     0.03333333333333333
+    ],
+    [
+     0.2,
+     0.15,
+     1,
+     0.5333333333333333
+    ],
+    [
+     0.06666666666666667,
+     0.03333333333333333,
+     0.5333333333333333,
+     1
+    ]
+   ],
+   "distanceMatrix": [
+    [
+     0,
+     0.3170569112290949,
+     1.0116748865867387,
+     1.0853926811234083
+    ],
+    [
+     0.3170569112290949,
+     0,
+     1.030619181950856,
+     1.0983382141884035
+    ],
+    [
+     1.0116748865867387,
+     1.030619181950856,
+     0,
+     0.6863742401099239
+    ],
+    [
+     1.0853926811234083,
+     1.0983382141884035,
+     0.6863742401099239,
+     0
+    ]
+   ],
+   "merges": [
+    {
+     "left": [
+      0
+     ],
+     "right": [
+      1
+     ],
+     "distance": 0.3170569112290949
+    },
+    {
+     "left": [
+      2
+     ],
+     "right": [
+      3
+     ],
+     "distance": 0.6863742401099239
+    },
+    {
+     "left": [
+      0,
+      1
+     ],
+     "right": [
+      2,
+      3
+     ],
+     "distance": 1.0116748865867387
+    }
+   ],
+   "method": "hierarchical-risk-parity",
+   "linkage": "single",
+   "distance": "euclidean-distance-between-sqrt((1-correlation)/2)-profiles",
+   "intraClusterAllocation": "inverse-variance",
+   "splitRule": "quasi-diagonal-order-midpoint-recursive-bisection",
+   "covarianceScale": 0.04,
+   "status": "ok"
+  }
+ },
+ "D14-F02-A05": {
+  "args": [
+   [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   [
+    [
+     0.04,
+     0.036,
+     0.004,
+     0.002
+    ],
+    [
+     0.036,
+     0.04,
+     0.003,
+     0.001
+    ],
+    [
+     0.004,
+     0.003,
+     0.01,
+     0.008
+    ],
+    [
+     0.002,
+     0.001,
+     0.008,
+     0.0225
+    ]
+   ],
+   2
+  ],
+  "value": {
+   "assetIds": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ],
+   "weights": [
+    0.10688050930460334,
+    0.10688050930460334,
+    0.5443192948090108,
+    0.24191968658178256
+   ],
+   "componentRiskContributions": [
+    0.012087521651000226,
+    0.01120624850215681,
+    0.04639019060037835,
+    0.025670836878125575
+   ],
+   "componentRiskShares": [
+    0.12676364431805753,
+    0.11752160122498086,
+    0.4865008552540335,
+    0.26921389920292804
+   ],
+   "portfolioVariance": 0.009092537431375015,
+   "portfolioVolatility": 0.09535479763166096,
+   "sumWeights": 1,
+   "quasiDiagonalOrder": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "correlationMatrix": [
+    [
+     1,
+     0.8999999999999999,
+     0.2,
+     0.06666666666666667
+    ],
+    [
+     0.8999999999999999,
+     1,
+     0.15,
+     0.03333333333333333
+    ],
+    [
+     0.2,
+     0.15,
+     1,
+     0.5333333333333333
+    ],
+    [
+     0.06666666666666667,
+     0.03333333333333333,
+     0.5333333333333333,
+     1
+    ]
+   ],
+   "distanceMatrix": [
+    [
+     0,
+     0.3170569112290949,
+     1.0116748865867387,
+     1.0853926811234083
+    ],
+    [
+     0.3170569112290949,
+     0,
+     1.030619181950856,
+     1.0983382141884035
+    ],
+    [
+     1.0116748865867387,
+     1.030619181950856,
+     0,
+     0.6863742401099239
+    ],
+    [
+     1.0853926811234083,
+     1.0983382141884035,
+     0.6863742401099239,
+     0
+    ]
+   ],
+   "merges": [
+    {
+     "left": [
+      0
+     ],
+     "right": [
+      1
+     ],
+     "distance": 0.3170569112290949
+    },
+    {
+     "left": [
+      2
+     ],
+     "right": [
+      3
+     ],
+     "distance": 0.6863742401099239
+    },
+    {
+     "left": [
+      0,
+      1
+     ],
+     "right": [
+      2,
+      3
+     ],
+     "distance": 1.0116748865867387
+    }
+   ],
+   "clusters": [
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     3
+    ]
+   ],
+   "clusterWeights": [
+    0.21376101860920668,
+    0.7862389813907934
+   ],
+   "withinClusterWeights": [
+    [
+     0.5,
+     0.5
+    ],
+    [
+     0.6923076923076923,
+     0.30769230769230765
+    ]
+   ],
+   "clusterRiskProxies": [
+    0.038,
+    0.010331360946745563
+   ],
+   "clusterRiskProxyShares": [
+    0.5,
+    0.5000000000000001
+   ],
+   "branchSplits": [
+    {
+     "nodeAssets": [
+      0,
+      1,
+      2,
+      3
+     ],
+     "leftClusters": [
+      0
+     ],
+     "rightClusters": [
+      1
+     ],
+     "leftRisk": 0.038,
+     "rightRisk": 0.010331360946745563,
+     "leftAllocation": 0.21376101860920668,
+     "rightAllocation": 0.7862389813907934,
+     "balanceResidual": 6.833892253827002e-17
+    }
+   ],
+   "maxBranchBalanceResidual": 6.833892253827002e-17,
+   "method": "hierarchical-equal-risk-contribution",
+   "linkage": "single",
+   "distance": "euclidean-distance-between-sqrt((1-correlation)/2)-profiles",
+   "clusterCount": 2,
+   "clusterRiskAllocation": "dendrogram-recursive-inverse-variance-risk",
+   "withinClusterAllocation": "inverse-variance",
+   "treeVariant": "fixed-count-single-linkage",
+   "covarianceScale": 0.04,
+   "status": "ok"
+  }
+ },
+ "D14-F03-A01": {
+  "args": [
+   {
+    "marketWeights": [
+     0.5,
+     0.5
+    ],
+    "covariance": [
+     [
+      0.04,
+      0
+     ],
+     [
+      0,
+      0.01
+     ]
+    ],
+    "riskAversion": 2,
+    "tau": 0.5,
+    "viewMatrix": [
+     [
+      1,
+      -1
+     ]
+    ],
+    "viewReturns": [
+     0.04
+    ],
+    "viewErrorCovariance": [
+     [
+      0.0025
+     ]
+    ],
+    "riskPenalty": 1
+   }
+  ],
+  "value": {
+   "priorReturns": [
+    0.04,
+    0.01
+   ],
+   "posteriorReturns": [
+    0.04727272727272727,
+    0.008181818181818182
+   ],
+   "weights": [
+    0.5909090909090909,
+    0.4090909090909091
+   ],
+   "priorView": [
+    0.03
+   ],
+   "posteriorView": [
+    0.03909090909090909
+   ],
+   "viewSurprise": [
+    0.010000000000000002
+   ],
+   "variance": 0.015640495867768597,
+   "objective": 0.015640495867768597,
+   "status": "optimal"
+  }
+ },
+ "D14-F03-A02": {
+  "args": [
+   [
+    [
+     0.2,
+     0.1
+    ],
+    [
+     0,
+     0.1
+    ],
+    [
+     0.1,
+     0.2
+    ],
+    [
+     0.1,
+     0
+    ]
+   ],
+   [
+    [
+     0,
+     1,
+     2,
+     3
+    ]
+   ],
+   [
+    0,
+    0.5,
+    1
+   ]
+  ],
+  "value": {
+   "ranks": [
+    0,
+    0.5,
+    1
+   ],
+   "averagedWeights": [
+    [
+     0.5,
+     0.5
+    ],
+    [
+     0.5,
+     0.5
+    ],
+    [
+     0.5,
+     0.5
+    ]
+   ],
+   "replicates": [
+    {
+     "indices": [
+      0,
+      1,
+      2,
+      3
+     ],
+     "mean": [
+      0.1,
+      0.1
+     ],
+     "covariance": [
+      [
+       0.005000000000000001,
+       0
+      ],
+      [
+       0,
+       0.005000000000000001
+      ]
+     ],
+     "gmvReturn": 0.1,
+     "maxReturn": 0.1,
+     "weightsByRank": [
+      [
+       0.5,
+       0.5
+      ],
+      [
+       0.5,
+       0.5
+      ],
+      [
+       0.5,
+       0.5
+      ]
+     ]
+    }
+   ],
+   "status": "optimal"
+  }
+ },
+ "D14-F03-A03": {
+  "args": [
+   [
+    0.09,
+    0.05
+   ],
+   [
+    [
+     0.04,
+     0
+    ],
+    [
+     0,
+     0.01
+    ]
+   ],
+   [
+    [
+     0.02
+    ],
+    [
+     -0.02
+    ]
+   ],
+   1
+  ],
+  "value": {
+   "weights": [
+    0.5,
+    0.5
+   ],
+   "nominalReturn": 0.07,
+   "uncertaintyPenalty": 0,
+   "robustReturn": 0.07,
+   "variance": 0.0125,
+   "objective": 0.05750000000000001,
+   "worstCaseMean": [
+    0.09,
+    0.05
+   ],
+   "iterations": 1,
+   "projectedGradientNorm": 0,
+   "status": "optimal"
+  }
+ },
+ "D14-F03-A04": {
+  "args": [
+   [
+    0.06,
+    0.03
+   ],
+   [
+    [
+     0.04,
+     0
+    ],
+    [
+     0,
+     0.01
+    ]
+   ],
+   0.02,
+   0.04
+  ],
+  "value": {
+   "weights": [
+    0.3333333333333334,
+    0.6666666666666665
+   ],
+   "expectedReturn": 0.039999999999999994,
+   "variance": 0.00888888888888889,
+   "riskScore": 1.5713484026367726,
+   "lossThreshold": 0.02,
+   "returnFloor": 0.04,
+   "outerIterations": 45,
+   "status": "optimal",
+   "searchBracket": [
+    0.04,
+    0.04000000000788109
+   ],
+   "returnResidual": 6.938893903907228e-18,
+   "interpretation": "riskScore ranks worst-case loss probability only under the cited radial-class theorem; it is not itself an unconditional probability"
+  }
+ },
+ "D14-F03-A05": {
+  "args": [
+   [
+    [
+     0.1,
+     -0.05
+    ],
+    [
+     -0.05,
+     0.1
+    ],
+    [
+     0.02,
+     0.02
+    ]
+   ],
+   [
+    0.3333333333333333,
+    0.3333333333333333,
+    0.3333333333333333
+   ]
+  ],
+  "value": {
+   "weights": [
+    0.5,
+    0.5
+   ],
+   "expectedLogGrowth": 0.023062617492307515,
+   "wealthFactors": [
+    1.025,
+    1.025,
+    1.02
+   ],
+   "minimumWealthFactor": 1.02,
+   "arithmeticExpectedReturn": 0.02333333333333333,
+   "iterations": 1,
+   "projectedGradientNorm": 0,
+   "status": "optimal"
+  }
+ },
+ "D14-F04-A01": {
+  "args": [
+   [
+    0.1,
+    0.04
+   ],
+   [
+    [
+     0.04,
+     0
+    ],
+    [
+     0,
+     0.01
+    ]
+   ],
+   1,
+   [
+    0.6,
+    0.4
+   ],
+   0.1
+  ],
+  "value": {
+   "status": "optimal",
+   "weights": [
+    0.7,
+    0.3
+   ],
+   "objective": 0.06149999999999999,
+   "directTurnover": 0.1,
+   "inputCurrentSum": 1,
+   "simplexResidual": 0,
+   "minWeight": 0.3,
+   "iterations": 2,
+   "frankWolfeGap": 1.8873791418627663e-18,
+   "certificate": {
+    "kind": "projected-gradient-kkt-plus-frank-wolfe-gap",
+    "stationarityResidual": 1.1102230246251566e-17,
+    "frankWolfeGap": 1.8873791418627663e-18,
+    "objectiveGapUpperBound": 1.8873791418627663e-18,
+    "normalizedStationarityResidual": 1.1102230246251565e-16,
+    "normalizedFrankWolfeGap": 1.8873791418627663e-17,
+    "normalizedObjectiveGapUpperBound": 1.8873791418627663e-17,
+    "objectiveScale": 0.1,
+    "stationarityTolerance": 1e-8,
+    "toleranceUnits": "normalized by objectiveScale; original-unit gap is retained above",
+    "lipschitzUpperBound": 0.08,
+    "stepDenominator": 0.1,
+    "stepSize": 10,
+    "turnoverRadius": 0.2,
+    "globalOptimality": "For PSD covariance, the Frank-Wolfe linearization gap upper-bounds the concave-QP objective gap; status optimal requires both that gap and the projected-KKT residual within tolerance. max-iterations is not a certificate."
+   }
+  }
+ },
+ "D14-F04-A02": {
+  "args": [
+   [
+    0.08,
+    0.04,
+    0
+   ],
+   [
+    [
+     0.04,
+     0,
+     0
+    ],
+    [
+     0,
+     0.01,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ]
+   ],
+   0.0005,
+   [
+    600,
+    400,
+    100
+   ],
+   [
+    0.001,
+    0.002,
+    0
+   ],
+   [
+    0.001,
+    0.002,
+    0
+   ],
+   {
+    "cashIndex": 2
+   }
+  ],
+  "value": {
+   "status": "optimal",
+   "weights": [
+    957.3853839647959,
+    141.74071207539012,
+    0
+   ],
+   "trade": [
+    357.3853839647959,
+    -258.2592879246099,
+    -100
+   ],
+   "buy": [
+    357.3853839647959,
+    0,
+    0
+   ],
+   "sell": [
+    0,
+    258.2592879246099,
+    100
+   ],
+   "directCost": 0.8739039598140157,
+   "auxiliaryCost": 0.8739039598140157,
+   "budgetResidual": 0,
+   "objective": 62.95436762449867,
+   "iterations": 523,
+   "cashIndex": 2,
+   "costHorizon": "per-rebalance",
+   "currentWealth": 1100,
+   "cashBalance": 0,
+   "certificate": {
+    "kind": "composite-piecewise-frank-wolfe-gap",
+    "frankWolfeGap": 0,
+    "normalizedFrankWolfeGap": 0,
+    "objectiveScale": 88,
+    "globalOptimality": "global concave optimum certified by piecewise-region linear oracle"
+   }
+  }
+ },
+ "D14-F04-A03": {
+  "args": [
+   [
+    0.12,
+    0.1,
+    0.09,
+    0.08
+   ],
+   [
+    [
+     0.3,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0.02,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0.01,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     0.01
+    ]
+   ],
+   1,
+   [
+    0.25,
+    0.25,
+    0.25,
+    0.25
+   ],
+   2,
+   {
+    "lower": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "upper": [
+     1,
+     1,
+     1,
+     1
+    ]
+   }
+  ],
+  "value": {
+   "status": "optimal",
+   "weights": [
+    0,
+    0.5000000000000003,
+    0.49999999999999967,
+    0
+   ],
+   "selected": [
+    0,
+    1,
+    1,
+    0
+   ],
+   "trade": [
+    -0.25,
+    0.25000000000000033,
+    0.24999999999999967,
+    -0.25
+   ],
+   "objective": 0.0875,
+   "bestBound": 0.0875,
+   "relativeGap": 0,
+   "enumeratedSupports": 10,
+   "totalSupports": 10,
+   "realizedSupport": 2,
+   "tradeSupport": 4,
+   "certificate": {
+    "kind": "exhaustive-support-enumeration",
+    "complete": true,
+    "continuousKkt": true,
+    "globalOptimality": "all supports and continuous KKT active sets were checked"
+   }
+  }
+ },
+ "D14-F04-A04": {
+  "args": [
+   [
+    0.2,
+    0.04
+   ],
+   [
+    [
+     0.04,
+     0
+    ],
+    [
+     0,
+     0.01
+    ]
+   ],
+   1,
+   1,
+   1,
+   1.6,
+   {}
+  ],
+  "value": {
+   "status": "optimal",
+   "weights": [
+    1.3,
+    -0.30000000000000004
+   ],
+   "objective": 0.1795,
+   "exposures": {
+    "long": 1.3,
+    "short": 0.30000000000000004,
+    "net": 1,
+    "gross": 1.6,
+    "identityResidual": 0
+   },
+   "constraints": {
+    "exposures": {
+     "long": 1.3,
+     "short": 0.30000000000000004,
+     "net": 1,
+     "gross": 1.6,
+     "identityResidual": 0
+    },
+    "netLower": {
+     "bound": 1,
+     "residual": 0,
+     "satisfied": true
+    },
+    "netUpper": {
+     "bound": 1,
+     "residual": 0,
+     "satisfied": true
+    },
+    "grossCap": {
+     "bound": 1.6,
+     "residual": 0,
+     "satisfied": true
+    },
+    "minimumFeasibleGross": 1,
+    "boundsCompatible": true,
+    "feasible": true
+   },
+   "minimalSplit": {
+    "longPart": [
+     1.3,
+     0
+    ],
+    "shortPart": [
+     0,
+     0.30000000000000004
+    ],
+    "sum": 1.6
+   },
+   "enumeratedStates": 54,
+   "totalStates": 54,
+   "certificate": {
+    "kind": "exhaustive-orthant-active-set",
+    "complete": true,
+    "continuousKkt": true,
+    "kktResidual": 1.8070036208091741e-16,
+    "grossFromSignedWeights": true,
+    "globalOptimality": "every orthant and every active set of its concave subproblem was checked"
+   }
+  }
+ },
+ "D14-F04-A05": {
+  "args": [
+   [
+    500,
+    500
+   ],
+   [
+    600,
+    400
+   ],
+   [
+    0.04,
+    0
+   ],
+   [
+    [
+     0.0001,
+     0
+    ],
+    [
+     0,
+     0.0001
+    ]
+   ],
+   [
+    1,
+    1
+   ],
+   [
+    [
+     {
+      "lotId": "A",
+      "shares": 500,
+      "saleScoreRate": 0.05,
+      "acquiredOn": "2025-01-02"
+     }
+    ],
+    [
+     {
+      "lotId": "B",
+      "shares": 500,
+      "saleScoreRate": 0.01,
+      "acquiredOn": "2025-01-02"
+     }
+    ]
+   ],
+   "2026-01-02",
+   {
+    "gammaRisk": 1,
+    "gammaTax": 1,
+    "gammaTc": 0
+   }
+  ],
+  "value": {
+   "status": "optimal",
+   "tradeDate": "2026-01-02",
+   "trade": [
+    175,
+    -175
+   ],
+   "tradeTotal": 0,
+   "holdings": [
+    675,
+    325
+   ],
+   "direction": "buy-first-sell-second",
+   "utility": 4.125,
+   "terms": {
+    "expectedReturn": 7,
+    "riskPenalty": 1.125,
+    "executionCostPenalty": 0,
+    "taxScorePenalty": 1.75
+   },
+   "executionCost": 0,
+   "taxScore": 1.75,
+   "saleCapacities": [
+    500,
+    500
+   ],
+   "lotSales": {
+    "asset": 1,
+    "price": 1,
+    "saleDollars": 175,
+    "totalCapacity": 500,
+    "fillSequence": [
+     "B"
+    ],
+    "totalScore": 1.75,
+    "lots": [
+     {
+      "lotId": "B",
+      "acquiredOn": "2025-01-02",
+      "sharesAvailable": 500,
+      "basisPerShare": null,
+      "illustrativeRate": null,
+      "perDollarScore": 0.01,
+      "capacity": 500,
+      "saleDollars": 175,
+      "sharesSold": 175,
+      "remainingCapacity": 325,
+      "lotScore": 1.75
+     }
+    ]
+   },
+   "branches": [
+    {
+     "branch": "buy-first-sell-second",
+     "interval": [
+      0,
+      500
+     ],
+     "quadraticCoefficient": -0.0002,
+     "linearCoefficient": 0.07,
+     "constant": -2,
+     "stationaryX": 175,
+     "stationaryInInterval": true,
+     "x": 175,
+     "binding": "stationary",
+     "utility": 4.125000000000001
+    },
+    {
+     "branch": "sell-first-buy-second",
+     "interval": [
+      -500,
+      0
+     ],
+     "quadraticCoefficient": -0.0002,
+     "linearCoefficient": 0.13,
+     "constant": -2,
+     "stationaryX": 325,
+     "stationaryInInterval": false,
+     "x": 0,
+     "binding": "upper-bound",
+     "utility": -2
+    }
+   ],
+   "cash": {
+    "settlement": "objective-only-forecast",
+    "settlementDate": null,
+    "cashInit": 0,
+    "tradeTotal": 0,
+    "executionCost": 0,
+    "taxCash": 0,
+    "cashPost": 0,
+    "holdingsTotalPost": 1000,
+    "portfolioValuePost": 1000,
+    "taxChargedTo": "objective-score-only",
+    "note": "taxCash is subtracted once, inside cashPost; portfolioValuePost adds that net balance and never subtracts the same amount again from terminal wealth"
+   },
+   "policy": {
+    "jurisdiction": null,
+    "policyVersion": null,
+    "policyEffectiveDate": null,
+    "identificationEvidence": null,
+    "replacementPurchaseKnown": null,
+    "missing": [
+     "jurisdiction",
+     "policyVersion",
+     "policyEffectiveDate",
+     "identificationEvidence",
+     "replacementPurchaseKnown"
+    ],
+    "evidenceComplete": false,
+    "lossReplacementWindow": "future_window_unverified",
+    "conclusion": "conditional-model-result-only"
+   },
+   "certificate": {
+    "kind": "direction-fixed-branch-enumeration",
+    "scope": "2 assets, 1 declared lot each, cash-neutral sum(u)=0 so u=[x,-x]",
+    "branchesChecked": 2,
+    "complete": true,
+    "globalOptimality": "each sign branch fixes the buy/sell direction, is concave in the single free variable x, and was maximized in closed form over its closed interval; the better branch is the exact global optimum of this restricted toy problem",
+    "taxModel": "declared illustrative lot score; no jurisdiction rule is applied"
+   }
   }
  },
  "D18-F01-A01": {

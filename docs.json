@@ -44,9 +44,9 @@
     "domains": 19,
     "families": 90,
     "verified": 623,
-    "withExample": 697,
+    "withExample": 717,
     "withDiagram": 717,
-    "withApiContract": 697
+    "withApiContract": 717
   },
   "archetypes": [
     {
@@ -135389,8 +135389,136 @@
         "archetype": "record-transform",
         "signature": "markowitzMeanVariance(assetIdsInput, muInput, covarianceInput, targetReturnInput, options)"
       },
-      "api": null,
-      "example": null,
+      "api": {
+        "summary": "Solves for the lowest-variance asset weights that still meet a declared return target, from expected returns and a covariance matrix.",
+        "params": [
+          {
+            "name": "assetIdsInput",
+            "type": "ordered string array",
+            "required": true,
+            "description": "One stable identifier per column/row",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "muInput",
+            "type": "finite number array",
+            "required": true,
+            "description": "Expected return for one declared horizon",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "covarianceInput",
+            "type": "finite number matrix",
+            "required": true,
+            "description": "Variance/covariance for that same horizon and return unit",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "targetReturnInput",
+            "type": "finite number",
+            "required": true,
+            "description": "Same expected-return unit/horizon as `mu`",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "options",
+            "type": "MarkowitzOptions",
+            "required": false,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": "{}"
+          }
+        ],
+        "returns": null,
+        "warmup": null,
+        "errors": [],
+        "complexity": null
+      },
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "markowitzMeanVariance([\"A\",\"B\"], [0.06,0.14], [[0.04,0.01],[0.01,0.09]], 0.1, {\"maxIterations\":10000})",
+        "args": [
+          {
+            "value": [
+              "A",
+              "B"
+            ],
+            "elided": null
+          },
+          {
+            "value": [
+              0.06,
+              0.14
+            ],
+            "elided": null
+          },
+          {
+            "value": [
+              [
+                0.04,
+                0.01
+              ],
+              [
+                0.01,
+                0.09
+              ]
+            ],
+            "elided": null
+          },
+          {
+            "value": 0.1,
+            "elided": null
+          },
+          {
+            "value": {
+              "maxIterations": 10000
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "assetIds": [
+            "A",
+            "B"
+          ],
+          "mu": [
+            0.06,
+            0.14
+          ],
+          "targetReturn": 0.1,
+          "weights": [
+            0.4999999999999999,
+            0.5000000000000001
+          ],
+          "expectedReturn": 0.1,
+          "variance": 0.037500000000000006,
+          "volatility": 0.19364916731037085,
+          "budgetResidual": 0,
+          "targetResidual": 0,
+          "lowerBoundResidual": 0,
+          "fwGapS": 0,
+          "fwGap": 0,
+          "matrixScale": 0.09,
+          "status": "optimal"
+        },
+        "outputElided": {
+          "kind": "object",
+          "shown": 14,
+          "total": 21
+        },
+        "outputShape": "object with 21 fields: assetIds, mu, targetReturn, weights, expectedReturn, variance, volatility, budgetResidual, …"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -135478,8 +135606,104 @@
         "archetype": "record-transform",
         "signature": "globalMinimumVariance(assetIdsInput, covarianceInput, options)"
       },
-      "api": null,
-      "example": null,
+      "api": {
+        "summary": "Computes the lowest-variance weights obtainable from a covariance matrix alone, with no expected-return input, and shows why clipping a short weight is not optimization.",
+        "params": [
+          {
+            "name": "assetIdsInput",
+            "type": "unknown",
+            "required": true,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "covarianceInput",
+            "type": "unknown",
+            "required": true,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "options",
+            "type": "GMVOptions",
+            "required": false,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": "{}"
+          }
+        ],
+        "returns": null,
+        "warmup": null,
+        "errors": [],
+        "complexity": null
+      },
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "globalMinimumVariance([\"A\",\"B\"], [[0.04,0.01],[0.01,0.09]], {\"maxIterations\":10000})",
+        "args": [
+          {
+            "value": [
+              "A",
+              "B"
+            ],
+            "elided": null
+          },
+          {
+            "value": [
+              [
+                0.04,
+                0.01
+              ],
+              [
+                0.01,
+                0.09
+              ]
+            ],
+            "elided": null
+          },
+          {
+            "value": {
+              "maxIterations": 10000
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "assetIds": [
+            "A",
+            "B"
+          ],
+          "mu": null,
+          "matrixScale": 0.09,
+          "variant": "gmv-long-only-fully-invested",
+          "method": "projected-gradient-simplex-line-search",
+          "maxIterations": 10000,
+          "weights": [
+            0.7272727272727273,
+            0.27272727272727276
+          ],
+          "variance": 0.03181818181818182,
+          "volatility": 0.17837651700316895,
+          "expectedReturn": null,
+          "budgetResidual": 0,
+          "lowerBoundResidual": 0,
+          "fwGapS": 0,
+          "fwGap": 0
+        },
+        "outputElided": {
+          "kind": "object",
+          "shown": 14,
+          "total": 19
+        },
+        "outputShape": "object with 19 fields: assetIds, mu, matrixScale, variant, method, maxIterations, weights, variance, …"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -135587,8 +135811,130 @@
         "archetype": "record-transform",
         "signature": "maximumSharpe(assetIdsInput, muInput, covarianceInput, riskFreeReturnInput, options)"
       },
-      "api": null,
-      "example": null,
+      "api": {
+        "summary": "Finds the weights that maximize the Sharpe ratio for a declared risk-free return, with the benchmark, horizon and volatility denominator stated rather than implied.",
+        "params": [
+          {
+            "name": "assetIdsInput",
+            "type": "unique non-empty string array",
+            "required": true,
+            "description": "identifier/order",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "muInput",
+            "type": "finite number array",
+            "required": true,
+            "description": "simple return for one horizon",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "covarianceInput",
+            "type": "finite `N x N` number matrix",
+            "required": true,
+            "description": "squared return",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "riskFreeReturnInput",
+            "type": "finite number",
+            "required": true,
+            "description": "simple return for the same horizon",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "options",
+            "type": "{ maxIterations?: unknown; }",
+            "required": false,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": "{}"
+          }
+        ],
+        "returns": null,
+        "warmup": null,
+        "errors": [],
+        "complexity": null
+      },
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "maximumSharpe([\"A\",\"B\"], [0.08,0.11], [[0.01,0],[0,0.0225]], 0.02)",
+        "args": [
+          {
+            "value": [
+              "A",
+              "B"
+            ],
+            "elided": null
+          },
+          {
+            "value": [
+              0.08,
+              0.11
+            ],
+            "elided": null
+          },
+          {
+            "value": [
+              [
+                0.01,
+                0
+              ],
+              [
+                0,
+                0.0225
+              ]
+            ],
+            "elided": null
+          },
+          {
+            "value": 0.02,
+            "elided": null
+          }
+        ],
+        "output": {
+          "status": "optimal",
+          "variant": "maximum-sharpe-long-only-pd",
+          "method": "exhaustive-support-enumeration",
+          "branch": "positive_excess_support",
+          "assetIds": [
+            "A",
+            "B"
+          ],
+          "mu": [
+            0.08,
+            0.11
+          ],
+          "riskFreeReturn": 0.02,
+          "weights": [
+            0.6,
+            0.4
+          ],
+          "expectedReturn": 0.092,
+          "excessReturn": 0.072,
+          "variance": 0.0072000000000000015,
+          "volatility": 0.08485281374238571,
+          "sharpe": 0.8485281374238569,
+          "budgetResidual": 0
+        },
+        "outputElided": {
+          "kind": "object",
+          "shown": 14,
+          "total": 20
+        },
+        "outputShape": "object with 20 fields: status, variant, method, branch, assetIds, mu, riskFreeReturn, weights, …"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -135680,8 +136026,160 @@
         "archetype": "record-transform",
         "signature": "meanCvar(assetIdsInput, returnsInput, probabilitiesInput, betaInput, gammaInput, options)"
       },
-      "api": null,
-      "example": null,
+      "api": {
+        "summary": "Optimizes a portfolio against conditional value at risk over a discrete scenario set, including the partial tail mass a discrete distribution creates at the confidence level.",
+        "params": [
+          {
+            "name": "assetIdsInput",
+            "type": "unique non-empty strings",
+            "required": true,
+            "description": "stable asset order",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "returnsInput",
+            "type": "finite `T×N` numbers",
+            "required": true,
+            "description": "simple return, one horizon/base currency",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "probabilitiesInput",
+            "type": "finite length-`T` numbers",
+            "required": true,
+            "description": "probability mass",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "betaInput",
+            "type": "finite number",
+            "required": true,
+            "description": "confidence",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "gammaInput",
+            "type": "finite number",
+            "required": true,
+            "description": "return/CVaR units",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "options",
+            "type": "{ maxIterations?: unknown; }",
+            "required": false,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": "{}"
+          }
+        ],
+        "returns": null,
+        "warmup": null,
+        "errors": [],
+        "complexity": null
+      },
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "meanCvar([\"A\",\"B\"], [[0.24,0.08],[0.2,0.06],[0.16,0.04]], [0.25,0.25,0.25,0.25], 0.75, 0.5)",
+        "args": [
+          {
+            "value": [
+              "A",
+              "B"
+            ],
+            "elided": null
+          },
+          {
+            "value": [
+              [
+                0.24,
+                0.08
+              ],
+              [
+                0.2,
+                0.06
+              ],
+              [
+                0.16,
+                0.04
+              ]
+            ],
+            "elided": {
+              "kind": "array",
+              "shown": 3,
+              "total": 4
+            }
+          },
+          {
+            "value": [
+              0.25,
+              0.25,
+              0.25,
+              0.25
+            ],
+            "elided": null
+          },
+          {
+            "value": 0.75,
+            "elided": null
+          },
+          {
+            "value": 0.5,
+            "elided": null
+          }
+        ],
+        "output": {
+          "status": "optimal",
+          "variant": "mean-cvar-long-only",
+          "method": "lp-vertex-enumeration",
+          "branch": "positive_gamma_lp",
+          "assetIds": [
+            "A",
+            "B"
+          ],
+          "weights": [
+            0,
+            1
+          ],
+          "expectedReturn": 0.039999999999999994,
+          "cvar": 0.019999999999999993,
+          "thresholdZ": -0.04,
+          "tailSlacks": [
+            0,
+            0,
+            0,
+            0.06
+          ],
+          "scenarioLosses": [
+            -0.08,
+            -0.06,
+            -0.04,
+            0.02
+          ],
+          "objective": 0.03,
+          "budgetResidual": 0,
+          "lowerBoundResidual": 0
+        },
+        "outputElided": {
+          "kind": "object",
+          "shown": 14,
+          "total": 20
+        },
+        "outputShape": "object with 20 fields: status, variant, method, branch, assetIds, weights, expectedReturn, cvar, …"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -135773,8 +136271,140 @@
         "archetype": "record-transform",
         "signature": "meanMad(assetIdsInput, returnsInput, probabilitiesInput, targetReturnInput, options)"
       },
-      "api": null,
-      "example": null,
+      "api": {
+        "summary": "Minimizes mean absolute deviation subject to a return target by solving the linear program the absolute value reduces to, over a discrete scenario set.",
+        "params": [
+          {
+            "name": "assetIdsInput",
+            "type": "unique string array",
+            "required": true,
+            "description": "stable input order",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "returnsInput",
+            "type": "finite `T×N` matrix",
+            "required": true,
+            "description": "simple returns, one horizon and base currency",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "probabilitiesInput",
+            "type": "finite length-`T` array",
+            "required": true,
+            "description": "scenario mass",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "targetReturnInput",
+            "type": "finite number",
+            "required": true,
+            "description": "same horizon/unit as returns",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "options",
+            "type": "{ maxIterations?: unknown; }",
+            "required": false,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": "{}"
+          }
+        ],
+        "returns": null,
+        "warmup": null,
+        "errors": [],
+        "complexity": null
+      },
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "meanMad([\"DISPERSED\",\"STABLE\"], [[0.2,0.03],[0.1,0.03],[0.05,0.03]], [0.25,0.25,0.25,0.25], 0.055)",
+        "args": [
+          {
+            "value": [
+              "DISPERSED",
+              "STABLE"
+            ],
+            "elided": null
+          },
+          {
+            "value": [
+              [
+                0.2,
+                0.03
+              ],
+              [
+                0.1,
+                0.03
+              ],
+              [
+                0.05,
+                0.03
+              ]
+            ],
+            "elided": {
+              "kind": "array",
+              "shown": 3,
+              "total": 4
+            }
+          },
+          {
+            "value": [
+              0.25,
+              0.25,
+              0.25,
+              0.25
+            ],
+            "elided": null
+          },
+          {
+            "value": 0.055,
+            "elided": null
+          }
+        ],
+        "output": {
+          "status": "optimal",
+          "variant": "mean-mad-return-floor-long-only",
+          "method": "lp-vertex-enumeration",
+          "assetIds": [
+            "DISPERSED",
+            "STABLE"
+          ],
+          "weights": [
+            0.49999999999999983,
+            0.5000000000000002
+          ],
+          "meanReturns": [
+            0.08000000000000002,
+            0.03
+          ],
+          "expectedReturn": 0.05499999999999999,
+          "mad": 0.03499999999999999,
+          "targetReturn": 0.05499999999999999,
+          "budgetResidual": 0,
+          "lowerBoundResidual": 0,
+          "targetResidual": 0,
+          "probabilityResidual": 0,
+          "iterations": 3003
+        },
+        "outputElided": {
+          "kind": "object",
+          "shown": 14,
+          "total": 17
+        },
+        "outputShape": "object with 17 fields: status, variant, method, assetIds, weights, meanReturns, expectedReturn, mad, …"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -135863,8 +136493,79 @@
         "archetype": "record-transform",
         "signature": "inverseVolatilityWeights(assetIds, standaloneVolatilities)"
       },
-      "api": null,
-      "example": null,
+      "api": {
+        "summary": "Assigns capital in inverse proportion to each asset standalone volatility and normalizes the scores, with a covariance diagnostic showing what the rule leaves out.",
+        "params": [
+          {
+            "name": "assetIds",
+            "type": "ordered `string[N]`",
+            "required": true,
+            "description": "`N >= 1`, non-empty, unique; order is preserved",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "standaloneVolatilities",
+            "type": "ordered finite numeric `N`-vector",
+            "required": true,
+            "description": "strictly positive; same declared horizon/unit",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": null,
+        "warmup": null,
+        "errors": [],
+        "complexity": null
+      },
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "inverseVolatilityWeights([\"A\",\"B\",\"C\"], [0.1,0.2,0.15])",
+        "args": [
+          {
+            "value": [
+              "A",
+              "B",
+              "C"
+            ],
+            "elided": null
+          },
+          {
+            "value": [
+              0.1,
+              0.2,
+              0.15
+            ],
+            "elided": null
+          }
+        ],
+        "output": {
+          "assetIds": [
+            "A",
+            "B",
+            "C"
+          ],
+          "weights": [
+            0.46153846153846145,
+            0.23076923076923073,
+            0.3076923076923077
+          ],
+          "normalizedInverseVolatilityScores": [
+            1,
+            0.5,
+            0.6666666666666667
+          ],
+          "sumWeights": 0.9999999999999999,
+          "method": "inverse-volatility",
+          "status": "ok"
+        },
+        "outputElided": null,
+        "outputShape": "object with 6 fields: assetIds, weights, normalizedInverseVolatilityScores, sumWeights, method, status"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -135959,8 +136660,102 @@
         "archetype": "record-transform",
         "signature": "equalRiskContributionWeights(assetIds, covariance)"
       },
-      "api": null,
-      "example": null,
+      "api": {
+        "summary": "Solves for the weights that give every asset the same contribution to portfolio volatility, which equal capital weights do not.",
+        "params": [
+          {
+            "name": "assetIds",
+            "type": "readonly unknown[]",
+            "required": true,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "covariance",
+            "type": "readonly unknown[]",
+            "required": true,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": null,
+        "warmup": null,
+        "errors": [],
+        "complexity": null
+      },
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "equalRiskContributionWeights([\"A\",\"B\",\"C\"], [[0.01,0.016,0.0015],[0.016,0.04,-0.006],[0.0015,-0.006,0.0225]])",
+        "args": [
+          {
+            "value": [
+              "A",
+              "B",
+              "C"
+            ],
+            "elided": null
+          },
+          {
+            "value": [
+              [
+                0.01,
+                0.016,
+                0.0015
+              ],
+              [
+                0.016,
+                0.04,
+                -0.006
+              ],
+              [
+                0.0015,
+                -0.006,
+                0.0225
+              ]
+            ],
+            "elided": null
+          }
+        ],
+        "output": {
+          "assetIds": [
+            "A",
+            "B",
+            "C"
+          ],
+          "weights": [
+            0.3778302517370716,
+            0.23412526094592215,
+            0.3880444873170063
+          ],
+          "componentRiskContributions": [
+            0.031952220115817255,
+            0.03195222012249683,
+            0.031952220117888716
+          ],
+          "componentRiskShares": [
+            0.3333333333029024,
+            0.33333333337258536,
+            0.3333333333245123
+          ],
+          "portfolioVariance": 0.00918849933464442,
+          "portfolioVolatility": 0.0958566603562028,
+          "sumWeights": 1,
+          "riskShareResidual": 3.925204605792487e-11,
+          "iterations": 20,
+          "method": "equal-risk-contribution",
+          "solver": "cyclical-coordinate-descent-volatility-eq7",
+          "covarianceScale": 0.04,
+          "status": "ok"
+        },
+        "outputElided": null,
+        "outputShape": "object with 13 fields: assetIds, weights, componentRiskContributions, componentRiskShares, portfolioVariance, portfolioVolatility, sumWeights, riskShareResidual, …"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -136056,8 +136851,128 @@
         "archetype": "record-transform",
         "signature": "riskBudgetingWeights(assetIds, covariance, riskBudgets)"
       },
-      "api": null,
-      "example": null,
+      "api": {
+        "summary": "Solves for weights whose risk contributions match a declared budget per asset, generalizing equal risk contribution to unequal targets.",
+        "params": [
+          {
+            "name": "assetIds",
+            "type": "readonly unknown[]",
+            "required": true,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "covariance",
+            "type": "readonly unknown[]",
+            "required": true,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "riskBudgets",
+            "type": "readonly unknown[]",
+            "required": true,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": null,
+        "warmup": null,
+        "errors": [],
+        "complexity": null
+      },
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "riskBudgetingWeights([\"A\",\"B\",\"C\"], [[0.01,0.016,0.0015],[0.016,0.04,-0.006],[0.0015,-0.006,0.0225]], [0.5,0.3,0.2])",
+        "args": [
+          {
+            "value": [
+              "A",
+              "B",
+              "C"
+            ],
+            "elided": null
+          },
+          {
+            "value": [
+              [
+                0.01,
+                0.016,
+                0.0015
+              ],
+              [
+                0.016,
+                0.04,
+                -0.006
+              ],
+              [
+                0.0015,
+                -0.006,
+                0.0225
+              ]
+            ],
+            "elided": null
+          },
+          {
+            "value": [
+              0.5,
+              0.3,
+              0.2
+            ],
+            "elided": null
+          }
+        ],
+        "output": {
+          "assetIds": [
+            "A",
+            "B",
+            "C"
+          ],
+          "riskBudgets": [
+            0.5,
+            0.3,
+            0.2
+          ],
+          "weights": [
+            0.518650848634501,
+            0.19040488031965186,
+            0.29094427104584725
+          ],
+          "componentRiskContributions": [
+            0.04741515164850507,
+            0.028449090994357995,
+            0.018966060654301783
+          ],
+          "componentRiskShares": [
+            0.4999999999991843,
+            0.3000000000549249,
+            0.19999999994589085
+          ],
+          "portfolioVariance": 0.008992786423432273,
+          "portfolioVolatility": 0.09483030329716484,
+          "sumWeights": 1,
+          "riskShareResidual": 5.492484245195328e-11,
+          "riskShareRelativeResidual": 2.7054608553456205e-10,
+          "iterations": 17,
+          "method": "risk-budgeting",
+          "solver": "cyclical-coordinate-descent-volatility-eq7",
+          "covarianceScale": 0.04
+        },
+        "outputElided": {
+          "kind": "object",
+          "shown": 14,
+          "total": 15
+        },
+        "outputShape": "object with 15 fields: assetIds, riskBudgets, weights, componentRiskContributions, componentRiskShares, portfolioVariance, portfolioVolatility, sumWeights, …"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -136122,8 +137037,192 @@
         "archetype": "record-transform",
         "signature": "hierarchicalRiskParityWeights(assetIds, covariance)"
       },
-      "api": null,
-      "example": null,
+      "api": {
+        "summary": "Allocates capital by clustering assets on a correlation-derived profile distance, then splitting capital down the tree by branch variance, without inverting the covariance matrix.",
+        "params": [
+          {
+            "name": "assetIds",
+            "type": "readonly unknown[]",
+            "required": true,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "covariance",
+            "type": "readonly unknown[]",
+            "required": true,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": null,
+        "warmup": null,
+        "errors": [],
+        "complexity": null
+      },
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "hierarchicalRiskParityWeights([\"A\",\"B\",\"C\",\"D\"], [[0.04,0.036,0.004,0.002],[0.036,0.04,0.003,0.001],[0.004,0.003,0.01,0.008]])",
+        "args": [
+          {
+            "value": [
+              "A",
+              "B",
+              "C",
+              "D"
+            ],
+            "elided": null
+          },
+          {
+            "value": [
+              [
+                0.04,
+                0.036,
+                0.004,
+                0.002
+              ],
+              [
+                0.036,
+                0.04,
+                0.003,
+                0.001
+              ],
+              [
+                0.004,
+                0.003,
+                0.01,
+                0.008
+              ]
+            ],
+            "elided": {
+              "kind": "array",
+              "shown": 3,
+              "total": 4
+            }
+          }
+        ],
+        "output": {
+          "assetIds": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "weights": [
+            0.10688050930460334,
+            0.10688050930460334,
+            0.5443192948090109,
+            0.2419196865817826
+          ],
+          "componentRiskContributions": [
+            0.012087521651000223,
+            0.01120624850215681,
+            0.046390190600378356,
+            0.025670836878125575
+          ],
+          "componentRiskShares": [
+            0.12676364431805753,
+            0.11752160122498084,
+            0.4865008552540336,
+            0.26921389920292804
+          ],
+          "portfolioVariance": 0.009092537431375017,
+          "portfolioVolatility": 0.09535479763166098,
+          "sumWeights": 1.0000000000000002,
+          "quasiDiagonalOrder": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "correlationMatrix": [
+            [
+              1,
+              0.8999999999999999,
+              0.2,
+              0.06666666666666667
+            ],
+            [
+              0.8999999999999999,
+              1,
+              0.15,
+              0.03333333333333333
+            ],
+            [
+              0.2,
+              0.15,
+              1,
+              0.5333333333333333
+            ]
+          ],
+          "distanceMatrix": [
+            [
+              0,
+              0.3170569112290949,
+              1.0116748865867387,
+              1.0853926811234083
+            ],
+            [
+              0.3170569112290949,
+              0,
+              1.030619181950856,
+              1.0983382141884035
+            ],
+            [
+              1.0116748865867387,
+              1.030619181950856,
+              0,
+              0.6863742401099239
+            ]
+          ],
+          "merges": [
+            {
+              "left": [
+                0
+              ],
+              "right": [
+                1
+              ],
+              "distance": 0.3170569112290949
+            },
+            {
+              "left": [
+                2
+              ],
+              "right": [
+                3
+              ],
+              "distance": 0.6863742401099239
+            },
+            {
+              "left": [
+                0,
+                1
+              ],
+              "right": [
+                2,
+                3
+              ],
+              "distance": 1.0116748865867387
+            }
+          ],
+          "method": "hierarchical-risk-parity",
+          "linkage": "single",
+          "distance": "euclidean-distance-between-sqrt((1-correlation)/2)-profiles"
+        },
+        "outputElided": {
+          "kind": "object",
+          "shown": 14,
+          "total": 18
+        },
+        "outputShape": "object with 18 fields: assetIds, weights, componentRiskContributions, componentRiskShares, portfolioVariance, portfolioVolatility, sumWeights, quasiDiagonalOrder, …"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -136182,8 +137281,226 @@
         "archetype": "record-transform",
         "signature": "hierarchicalEqualRiskContributionWeights(assetIds, covariance, clusterCount)"
       },
-      "api": null,
-      "example": null,
+      "api": {
+        "summary": "Combines hierarchical clustering with equal risk contribution, and makes the cluster-count stopping decision explicit instead of leaving it implicit.",
+        "params": [
+          {
+            "name": "assetIds",
+            "type": "ordered string array",
+            "required": true,
+            "description": "identifier",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "covariance",
+            "type": "`N x N` numeric matrix",
+            "required": true,
+            "description": "return squared for one horizon",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "clusterCount",
+            "type": "integer",
+            "required": true,
+            "description": "count",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": null,
+        "warmup": null,
+        "errors": [],
+        "complexity": null
+      },
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "hierarchicalEqualRiskContributionWeights([\"A\",\"B\",\"C\",\"D\"], [[0.04,0.036,0.004,0.002],[0.036,0.04,0.003,0.001],[0.004,0.003,0.01,0.008]], 2)",
+        "args": [
+          {
+            "value": [
+              "A",
+              "B",
+              "C",
+              "D"
+            ],
+            "elided": null
+          },
+          {
+            "value": [
+              [
+                0.04,
+                0.036,
+                0.004,
+                0.002
+              ],
+              [
+                0.036,
+                0.04,
+                0.003,
+                0.001
+              ],
+              [
+                0.004,
+                0.003,
+                0.01,
+                0.008
+              ]
+            ],
+            "elided": {
+              "kind": "array",
+              "shown": 3,
+              "total": 4
+            }
+          },
+          {
+            "value": 2,
+            "elided": null
+          }
+        ],
+        "output": {
+          "assetIds": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "weights": [
+            0.10688050930460334,
+            0.10688050930460334,
+            0.5443192948090108,
+            0.24191968658178256
+          ],
+          "componentRiskContributions": [
+            0.012087521651000226,
+            0.01120624850215681,
+            0.04639019060037835,
+            0.025670836878125575
+          ],
+          "componentRiskShares": [
+            0.12676364431805753,
+            0.11752160122498086,
+            0.4865008552540335,
+            0.26921389920292804
+          ],
+          "portfolioVariance": 0.009092537431375015,
+          "portfolioVolatility": 0.09535479763166096,
+          "sumWeights": 1,
+          "quasiDiagonalOrder": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "correlationMatrix": [
+            [
+              1,
+              0.8999999999999999,
+              0.2,
+              0.06666666666666667
+            ],
+            [
+              0.8999999999999999,
+              1,
+              0.15,
+              0.03333333333333333
+            ],
+            [
+              0.2,
+              0.15,
+              1,
+              0.5333333333333333
+            ]
+          ],
+          "distanceMatrix": [
+            [
+              0,
+              0.3170569112290949,
+              1.0116748865867387,
+              1.0853926811234083
+            ],
+            [
+              0.3170569112290949,
+              0,
+              1.030619181950856,
+              1.0983382141884035
+            ],
+            [
+              1.0116748865867387,
+              1.030619181950856,
+              0,
+              0.6863742401099239
+            ]
+          ],
+          "merges": [
+            {
+              "left": [
+                0
+              ],
+              "right": [
+                1
+              ],
+              "distance": 0.3170569112290949
+            },
+            {
+              "left": [
+                2
+              ],
+              "right": [
+                3
+              ],
+              "distance": 0.6863742401099239
+            },
+            {
+              "left": [
+                0,
+                1
+              ],
+              "right": [
+                2,
+                3
+              ],
+              "distance": 1.0116748865867387
+            }
+          ],
+          "clusters": [
+            [
+              0,
+              1
+            ],
+            [
+              2,
+              3
+            ]
+          ],
+          "clusterWeights": [
+            0.21376101860920668,
+            0.7862389813907934
+          ],
+          "withinClusterWeights": [
+            [
+              0.5,
+              0.5
+            ],
+            [
+              0.6923076923076923,
+              0.30769230769230765
+            ]
+          ]
+        },
+        "outputElided": {
+          "kind": "object",
+          "shown": 14,
+          "total": 27
+        },
+        "outputShape": "object with 27 fields: assetIds, weights, componentRiskContributions, componentRiskShares, portfolioVariance, portfolioVolatility, sumWeights, quasiDiagonalOrder, …"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -136283,8 +137600,96 @@
         "archetype": "record-transform",
         "signature": "blackLittermanAllocate(input)"
       },
-      "api": null,
-      "example": null,
+      "api": {
+        "summary": "Combines market-implied equilibrium returns with stated views and their confidence, producing the posterior expected returns an optimizer then uses.",
+        "params": [
+          {
+            "name": "input",
+            "type": "BlackLittermanInput",
+            "required": true,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": null,
+        "warmup": null,
+        "errors": [],
+        "complexity": null
+      },
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "blackLittermanAllocate({\"marketWeights\":[0.5,0.5],\"covariance\":[[0.04,0],[0,0.01]],\"riskAversion\":2,\"tau\":0.5,\"viewMatrix\":[[1,-1]],\"viewReturns\":[0.04],\"viewErrorCovariance\":[[0.0025]],\"riskPenalty\":1})",
+        "args": [
+          {
+            "value": {
+              "marketWeights": [
+                0.5,
+                0.5
+              ],
+              "covariance": [
+                [
+                  0.04,
+                  0
+                ],
+                [
+                  0,
+                  0.01
+                ]
+              ],
+              "riskAversion": 2,
+              "tau": 0.5,
+              "viewMatrix": [
+                [
+                  1,
+                  -1
+                ]
+              ],
+              "viewReturns": [
+                0.04
+              ],
+              "viewErrorCovariance": [
+                [
+                  0.0025
+                ]
+              ],
+              "riskPenalty": 1
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "priorReturns": [
+            0.04,
+            0.01
+          ],
+          "posteriorReturns": [
+            0.04727272727272727,
+            0.008181818181818182
+          ],
+          "weights": [
+            0.5909090909090909,
+            0.4090909090909091
+          ],
+          "priorView": [
+            0.03
+          ],
+          "posteriorView": [
+            0.03909090909090909
+          ],
+          "viewSurprise": [
+            0.010000000000000002
+          ],
+          "variance": 0.015640495867768597,
+          "objective": 0.015640495867768597,
+          "status": "optimal"
+        },
+        "outputElided": null,
+        "outputShape": "object with 9 fields: priorReturns, posteriorReturns, weights, priorView, posteriorView, viewSurprise, variance, objective, …"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -136357,8 +137762,154 @@
         "archetype": "record-transform",
         "signature": "resampledEfficientFrontier(returns, resampleIndices, ranks)"
       },
-      "api": null,
-      "example": null,
+      "api": {
+        "summary": "Averages optimizer weights across seeded bootstrap resamples at matching return rank, so the reported allocation reflects estimation noise rather than one sample.",
+        "params": [
+          {
+            "name": "returns",
+            "type": "`T x n` matrix",
+            "required": true,
+            "description": "decimal simple return/period",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "resampleIndices",
+            "type": "number[][]",
+            "required": true,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "ranks",
+            "type": "vector",
+            "required": true,
+            "description": "`[0,1]`",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": null,
+        "warmup": null,
+        "errors": [],
+        "complexity": null
+      },
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "resampledEfficientFrontier([[0.2,0.1],[0,0.1],[0.1,0.2]], [[0,1,2,3]], [0,0.5,1])",
+        "args": [
+          {
+            "value": [
+              [
+                0.2,
+                0.1
+              ],
+              [
+                0,
+                0.1
+              ],
+              [
+                0.1,
+                0.2
+              ]
+            ],
+            "elided": {
+              "kind": "array",
+              "shown": 3,
+              "total": 4
+            }
+          },
+          {
+            "value": [
+              [
+                0,
+                1,
+                2,
+                3
+              ]
+            ],
+            "elided": null
+          },
+          {
+            "value": [
+              0,
+              0.5,
+              1
+            ],
+            "elided": null
+          }
+        ],
+        "output": {
+          "ranks": [
+            0,
+            0.5,
+            1
+          ],
+          "averagedWeights": [
+            [
+              0.5,
+              0.5
+            ],
+            [
+              0.5,
+              0.5
+            ],
+            [
+              0.5,
+              0.5
+            ]
+          ],
+          "replicates": [
+            {
+              "indices": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "mean": [
+                0.1,
+                0.1
+              ],
+              "covariance": [
+                [
+                  0.005000000000000001,
+                  0
+                ],
+                [
+                  0,
+                  0.005000000000000001
+                ]
+              ],
+              "gmvReturn": 0.1,
+              "maxReturn": 0.1,
+              "weightsByRank": [
+                [
+                  0.5,
+                  0.5
+                ],
+                [
+                  0.5,
+                  0.5
+                ],
+                [
+                  0.5,
+                  0.5
+                ]
+              ]
+            }
+          ],
+          "status": "optimal"
+        },
+        "outputElided": null,
+        "outputShape": "object with 4 fields: ranks, averagedWeights, replicates, status"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -136440,8 +137991,141 @@
         "archetype": "record-transform",
         "signature": "robustMeanVariance(mean, covariance, uncertaintyShape, kappa, riskPenalty, maxIterations, tolerance)"
       },
-      "api": null,
-      "example": null,
+      "api": {
+        "summary": "Optimizes against an explicit ellipsoidal uncertainty set around the mean, so the robustness claim names the uncertainty it is built to survive.",
+        "params": [
+          {
+            "name": "mean",
+            "type": "length `n` vector",
+            "required": true,
+            "description": "decimal return/period",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "covariance",
+            "type": "`n x n`",
+            "required": true,
+            "description": "return²/period",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "uncertaintyShape",
+            "type": "Matrix",
+            "required": true,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "kappa",
+            "type": "scalar",
+            "required": true,
+            "description": "dimensionless radius",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "riskPenalty",
+            "type": "unknown",
+            "required": true,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "maxIterations",
+            "type": "unknown",
+            "required": true,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "tolerance",
+            "type": "unknown",
+            "required": true,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": null,
+        "warmup": null,
+        "errors": [],
+        "complexity": null
+      },
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "robustMeanVariance([0.09,0.05], [[0.04,0],[0,0.01]], [[0.02],[-0.02]], 1)",
+        "args": [
+          {
+            "value": [
+              0.09,
+              0.05
+            ],
+            "elided": null
+          },
+          {
+            "value": [
+              [
+                0.04,
+                0
+              ],
+              [
+                0,
+                0.01
+              ]
+            ],
+            "elided": null
+          },
+          {
+            "value": [
+              [
+                0.02
+              ],
+              [
+                -0.02
+              ]
+            ],
+            "elided": null
+          },
+          {
+            "value": 1,
+            "elided": null
+          }
+        ],
+        "output": {
+          "weights": [
+            0.5,
+            0.5
+          ],
+          "nominalReturn": 0.07,
+          "uncertaintyPenalty": 0,
+          "robustReturn": 0.07,
+          "variance": 0.0125,
+          "objective": 0.05750000000000001,
+          "worstCaseMean": [
+            0.09,
+            0.05
+          ],
+          "iterations": 1,
+          "projectedGradientNorm": 0,
+          "status": "optimal"
+        },
+        "outputElided": null,
+        "outputShape": "object with 10 fields: weights, nominalReturn, uncertaintyPenalty, robustReturn, variance, objective, worstCaseMean, iterations, …"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -136528,8 +138212,126 @@
         "archetype": "record-transform",
         "signature": "distributionallyRobustPortfolio(mean, covariance, lossThreshold, returnFloor, tolerance, maxIterations)"
       },
-      "api": null,
-      "example": null,
+      "api": {
+        "summary": "Minimizes the worst-case probability of a loss across every distribution sharing a given mean and covariance, subject to a return floor.",
+        "params": [
+          {
+            "name": "mean",
+            "type": "length `n` vector",
+            "required": true,
+            "description": "decimal return/period",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "covariance",
+            "type": "`n x n` matrix",
+            "required": true,
+            "description": "return²/period",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "lossThreshold",
+            "type": "number",
+            "required": true,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "returnFloor",
+            "type": "number",
+            "required": true,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "tolerance",
+            "type": "unknown",
+            "required": true,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "maxIterations",
+            "type": "unknown",
+            "required": true,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": null,
+        "warmup": null,
+        "errors": [],
+        "complexity": null
+      },
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "distributionallyRobustPortfolio([0.06,0.03], [[0.04,0],[0,0.01]], 0.02, 0.04)",
+        "args": [
+          {
+            "value": [
+              0.06,
+              0.03
+            ],
+            "elided": null
+          },
+          {
+            "value": [
+              [
+                0.04,
+                0
+              ],
+              [
+                0,
+                0.01
+              ]
+            ],
+            "elided": null
+          },
+          {
+            "value": 0.02,
+            "elided": null
+          },
+          {
+            "value": 0.04,
+            "elided": null
+          }
+        ],
+        "output": {
+          "weights": [
+            0.3333333333333334,
+            0.6666666666666665
+          ],
+          "expectedReturn": 0.039999999999999994,
+          "variance": 0.00888888888888889,
+          "riskScore": 1.5713484026367726,
+          "lossThreshold": 0.02,
+          "returnFloor": 0.04,
+          "outerIterations": 45,
+          "status": "optimal",
+          "searchBracket": [
+            0.04,
+            0.04000000000788109
+          ],
+          "returnResidual": 6.938893903907228e-18,
+          "interpretation": "riskScore ranks worst-case loss probability only under the cited radial-class theorem; it is not itself an unconditional…"
+        },
+        "outputElided": null,
+        "outputShape": "object with 11 fields: weights, expectedReturn, variance, riskScore, lossThreshold, returnFloor, outerIterations, status, …"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -136616,8 +138418,103 @@
         "archetype": "record-transform",
         "signature": "kellyAllocation(returns, probabilities, maxIterations, tolerance)"
       },
-      "api": null,
-      "example": null,
+      "api": {
+        "summary": "Maximizes expected logarithmic growth over a discrete scenario set, separating the long-run growth criterion from the single-coin-toss intuition.",
+        "params": [
+          {
+            "name": "returns",
+            "type": "`S x n` matrix",
+            "required": true,
+            "description": "decimal simple return/scenario",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "probabilities",
+            "type": "length `S` vector",
+            "required": false,
+            "description": "probability",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "maxIterations",
+            "type": "unknown",
+            "required": true,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "tolerance",
+            "type": "unknown",
+            "required": true,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          }
+        ],
+        "returns": null,
+        "warmup": null,
+        "errors": [],
+        "complexity": null
+      },
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "kellyAllocation([[0.1,-0.05],[-0.05,0.1],[0.02,0.02]], [0.3333333333333333,0.3333333333333333,0.3333333333333333])",
+        "args": [
+          {
+            "value": [
+              [
+                0.1,
+                -0.05
+              ],
+              [
+                -0.05,
+                0.1
+              ],
+              [
+                0.02,
+                0.02
+              ]
+            ],
+            "elided": null
+          },
+          {
+            "value": [
+              0.3333333333333333,
+              0.3333333333333333,
+              0.3333333333333333
+            ],
+            "elided": null
+          }
+        ],
+        "output": {
+          "weights": [
+            0.5,
+            0.5
+          ],
+          "expectedLogGrowth": 0.023062617492307515,
+          "wealthFactors": [
+            1.025,
+            1.025,
+            1.02
+          ],
+          "minimumWealthFactor": 1.02,
+          "arithmeticExpectedReturn": 0.02333333333333333,
+          "iterations": 1,
+          "projectedGradientNorm": 0,
+          "status": "optimal"
+        },
+        "outputElided": null,
+        "outputShape": "object with 8 fields: weights, expectedLogGrowth, wealthFactors, minimumWealthFactor, arithmeticExpectedReturn, iterations, projectedGradientNorm, status"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -136698,8 +138595,144 @@
         "archetype": "record-transform",
         "signature": "solveTurnoverConstrainedMarkowitz(mu, covariance, lambdaRisk, w0, tau, options)"
       },
-      "api": null,
-      "example": null,
+      "api": {
+        "summary": null,
+        "params": [
+          {
+            "name": "mu",
+            "type": "finite real vector, length `N`",
+            "required": true,
+            "description": "decimal simple return for the declared period; asset order is canonical",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "covariance",
+            "type": "finite `N×N` matrix",
+            "required": true,
+            "description": "squared-return units; symmetric PSD within scale-aware tolerance",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "lambdaRisk",
+            "type": "finite real scalar",
+            "required": true,
+            "description": "nonnegative objective coefficient",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "w0",
+            "type": "finite real vector, length `N`",
+            "required": true,
+            "description": "nonnegative current normalized holdings; sum must already be one within `1e-12`; no silent normalization",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "tau",
+            "type": "finite real scalar",
+            "required": true,
+            "description": "nonnegative one-way turnover cap in normalized portfolio units",
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "options",
+            "type": "TurnoverSolverOptions",
+            "required": false,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": "{}"
+          }
+        ],
+        "returns": null,
+        "warmup": null,
+        "errors": [],
+        "complexity": null
+      },
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "solveTurnoverConstrainedMarkowitz([0.1,0.04], [[0.04,0],[0,0.01]], 1, [0.6,0.4], 0.1)",
+        "args": [
+          {
+            "value": [
+              0.1,
+              0.04
+            ],
+            "elided": null
+          },
+          {
+            "value": [
+              [
+                0.04,
+                0
+              ],
+              [
+                0,
+                0.01
+              ]
+            ],
+            "elided": null
+          },
+          {
+            "value": 1,
+            "elided": null
+          },
+          {
+            "value": [
+              0.6,
+              0.4
+            ],
+            "elided": null
+          },
+          {
+            "value": 0.1,
+            "elided": null
+          }
+        ],
+        "output": {
+          "status": "optimal",
+          "weights": [
+            0.7,
+            0.3
+          ],
+          "objective": 0.06149999999999999,
+          "directTurnover": 0.1,
+          "inputCurrentSum": 1,
+          "simplexResidual": 0,
+          "minWeight": 0.3,
+          "iterations": 2,
+          "frankWolfeGap": 1.8873791418627663e-18,
+          "certificate": {
+            "kind": "projected-gradient-kkt-plus-frank-wolfe-gap",
+            "stationarityResidual": 1.1102230246251566e-17,
+            "frankWolfeGap": 1.8873791418627663e-18,
+            "objectiveGapUpperBound": 1.8873791418627663e-18,
+            "normalizedStationarityResidual": 1.1102230246251565e-16,
+            "normalizedFrankWolfeGap": 1.8873791418627663e-17,
+            "normalizedObjectiveGapUpperBound": 1.8873791418627663e-17,
+            "objectiveScale": 0.1,
+            "stationarityTolerance": 1e-8,
+            "toleranceUnits": "normalized by objectiveScale; original-unit gap is retained above",
+            "lipschitzUpperBound": 0.08,
+            "stepDenominator": 0.1,
+            "stepSize": 10,
+            "turnoverRadius": 0.2
+          }
+        },
+        "outputElided": null,
+        "outputShape": "object with 10 fields: status, weights, objective, directTurnover, inputCurrentSum, simplexResidual, minWeight, iterations, …"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -136820,8 +138853,186 @@
         "archetype": "record-transform",
         "signature": "optimizeTransactionCostAware(mu, covariance, lambdaRisk, x0, buyCost, sellCost, options)"
       },
-      "api": null,
-      "example": null,
+      "api": {
+        "summary": null,
+        "params": [
+          {
+            "name": "mu",
+            "type": "unknown",
+            "required": true,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "covariance",
+            "type": "unknown",
+            "required": true,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "lambdaRisk",
+            "type": "unknown",
+            "required": true,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "x0",
+            "type": "unknown",
+            "required": true,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "buyCost",
+            "type": "unknown",
+            "required": true,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "sellCost",
+            "type": "unknown",
+            "required": true,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "options",
+            "type": "{ cashIndex?: number; costHorizon?: string; maxIterations?: number }",
+            "required": false,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": "{}"
+          }
+        ],
+        "returns": null,
+        "warmup": null,
+        "errors": [],
+        "complexity": null
+      },
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "optimizeTransactionCostAware([0.08,0.04,0], [[0.04,0,0],[0,0.01,0],[0,0,0]], 0.0005, [600,400,100], [0.001,0.002,0], [0.001,0.002,0], {\"cashIndex\":2})",
+        "args": [
+          {
+            "value": [
+              0.08,
+              0.04,
+              0
+            ],
+            "elided": null
+          },
+          {
+            "value": [
+              [
+                0.04,
+                0,
+                0
+              ],
+              [
+                0,
+                0.01,
+                0
+              ],
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "elided": null
+          },
+          {
+            "value": 0.0005,
+            "elided": null
+          },
+          {
+            "value": [
+              600,
+              400,
+              100
+            ],
+            "elided": null
+          },
+          {
+            "value": [
+              0.001,
+              0.002,
+              0
+            ],
+            "elided": null
+          },
+          {
+            "value": [
+              0.001,
+              0.002,
+              0
+            ],
+            "elided": null
+          },
+          {
+            "value": {
+              "cashIndex": 2
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "status": "optimal",
+          "weights": [
+            957.3853839647959,
+            141.74071207539012,
+            0
+          ],
+          "trade": [
+            357.3853839647959,
+            -258.2592879246099,
+            -100
+          ],
+          "buy": [
+            357.3853839647959,
+            0,
+            0
+          ],
+          "sell": [
+            0,
+            258.2592879246099,
+            100
+          ],
+          "directCost": 0.8739039598140157,
+          "auxiliaryCost": 0.8739039598140157,
+          "budgetResidual": 0,
+          "objective": 62.95436762449867,
+          "iterations": 523,
+          "cashIndex": 2,
+          "costHorizon": "per-rebalance",
+          "currentWealth": 1100,
+          "cashBalance": 0
+        },
+        "outputElided": {
+          "kind": "object",
+          "shown": 14,
+          "total": 15
+        },
+        "outputShape": "object with 15 fields: status, weights, trade, buy, sell, directCost, auxiliaryCost, budgetResidual, …"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -136904,8 +139115,183 @@
         "archetype": "record-transform",
         "signature": "optimizeCardinalityConstrained(mu, covariance, lambdaRisk, current, K, options)"
       },
-      "api": null,
-      "example": null,
+      "api": {
+        "summary": null,
+        "params": [
+          {
+            "name": "mu",
+            "type": "unknown",
+            "required": true,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "covariance",
+            "type": "unknown",
+            "required": true,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "lambdaRisk",
+            "type": "unknown",
+            "required": true,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "current",
+            "type": "unknown",
+            "required": true,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "K",
+            "type": "unknown",
+            "required": true,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "options",
+            "type": "{ lower?: unknown; upper?: unknown; maxSupports?: unknown }",
+            "required": false,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": "{}"
+          }
+        ],
+        "returns": null,
+        "warmup": null,
+        "errors": [],
+        "complexity": null
+      },
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "optimizeCardinalityConstrained([0.12,0.1,0.09,0.08], [[0.3,0,0,0],[0,0.02,0,0],[0,0,0.01,0]], 1, [0.25,0.25,0.25,0.25], 2, {\"lower\":[0,0,0,0],\"upper\":[1,1,1,1]})",
+        "args": [
+          {
+            "value": [
+              0.12,
+              0.1,
+              0.09,
+              0.08
+            ],
+            "elided": null
+          },
+          {
+            "value": [
+              [
+                0.3,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0.02,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0.01,
+                0
+              ]
+            ],
+            "elided": {
+              "kind": "array",
+              "shown": 3,
+              "total": 4
+            }
+          },
+          {
+            "value": 1,
+            "elided": null
+          },
+          {
+            "value": [
+              0.25,
+              0.25,
+              0.25,
+              0.25
+            ],
+            "elided": null
+          },
+          {
+            "value": 2,
+            "elided": null
+          },
+          {
+            "value": {
+              "lower": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "upper": [
+                1,
+                1,
+                1,
+                1
+              ]
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "status": "optimal",
+          "weights": [
+            0,
+            0.5000000000000003,
+            0.49999999999999967,
+            0
+          ],
+          "selected": [
+            0,
+            1,
+            1,
+            0
+          ],
+          "trade": [
+            -0.25,
+            0.25000000000000033,
+            0.24999999999999967,
+            -0.25
+          ],
+          "objective": 0.0875,
+          "bestBound": 0.0875,
+          "relativeGap": 0,
+          "enumeratedSupports": 10,
+          "totalSupports": 10,
+          "realizedSupport": 2,
+          "tradeSupport": 4,
+          "certificate": {
+            "kind": "exhaustive-support-enumeration",
+            "complete": true,
+            "continuousKkt": true,
+            "globalOptimality": "all supports and continuous KKT active sets were checked"
+          }
+        },
+        "outputElided": null,
+        "outputShape": "object with 12 fields: status, weights, selected, trade, objective, bestBound, relativeGap, enumeratedSupports, …"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -136992,8 +139378,191 @@
         "archetype": "record-transform",
         "signature": "optimizeGrossNetConstrained(mu, covariance, lambdaRisk, netMin, netMax, grossMax, options)"
       },
-      "api": null,
-      "example": null,
+      "api": {
+        "summary": "Computes long, short, net, and gross exposure from signed weights, checks a net interval and gross cap, and solves the mean-variance problem under both.",
+        "params": [
+          {
+            "name": "mu",
+            "type": "unknown",
+            "required": true,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "covariance",
+            "type": "unknown",
+            "required": true,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "lambdaRisk",
+            "type": "unknown",
+            "required": true,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "netMin",
+            "type": "unknown",
+            "required": true,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "netMax",
+            "type": "unknown",
+            "required": true,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "grossMax",
+            "type": "unknown",
+            "required": true,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "options",
+            "type": "GrossNetOptions",
+            "required": false,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": "{}"
+          }
+        ],
+        "returns": null,
+        "warmup": null,
+        "errors": [],
+        "complexity": null
+      },
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "optimizeGrossNetConstrained([0.2,0.04], [[0.04,0],[0,0.01]], 1, 1, 1, 1.6, {})",
+        "args": [
+          {
+            "value": [
+              0.2,
+              0.04
+            ],
+            "elided": null
+          },
+          {
+            "value": [
+              [
+                0.04,
+                0
+              ],
+              [
+                0,
+                0.01
+              ]
+            ],
+            "elided": null
+          },
+          {
+            "value": 1,
+            "elided": null
+          },
+          {
+            "value": 1,
+            "elided": null
+          },
+          {
+            "value": 1,
+            "elided": null
+          },
+          {
+            "value": 1.6,
+            "elided": null
+          },
+          {
+            "value": {},
+            "elided": null
+          }
+        ],
+        "output": {
+          "status": "optimal",
+          "weights": [
+            1.3,
+            -0.30000000000000004
+          ],
+          "objective": 0.1795,
+          "exposures": {
+            "long": 1.3,
+            "short": 0.30000000000000004,
+            "net": 1,
+            "gross": 1.6,
+            "identityResidual": 0
+          },
+          "constraints": {
+            "exposures": {
+              "long": 1.3,
+              "short": 0.30000000000000004,
+              "net": 1,
+              "gross": 1.6,
+              "identityResidual": 0
+            },
+            "netLower": {
+              "bound": 1,
+              "residual": 0,
+              "satisfied": true
+            },
+            "netUpper": {
+              "bound": 1,
+              "residual": 0,
+              "satisfied": true
+            },
+            "grossCap": {
+              "bound": 1.6,
+              "residual": 0,
+              "satisfied": true
+            },
+            "minimumFeasibleGross": 1,
+            "boundsCompatible": true,
+            "feasible": true
+          },
+          "minimalSplit": {
+            "longPart": [
+              1.3,
+              0
+            ],
+            "shortPart": [
+              0,
+              0.30000000000000004
+            ],
+            "sum": 1.6
+          },
+          "enumeratedStates": 54,
+          "totalStates": 54,
+          "certificate": {
+            "kind": "exhaustive-orthant-active-set",
+            "complete": true,
+            "continuousKkt": true,
+            "kktResidual": 1.8070036208091741e-16,
+            "grossFromSignedWeights": true,
+            "globalOptimality": "every orthant and every active set of its concave subproblem was checked"
+          }
+        },
+        "outputElided": null,
+        "outputShape": "object with 9 fields: status, weights, objective, exposures, constraints, minimalSplit, enumeratedStates, totalStates, …"
+      },
       "verification": {
         "tier": "contract",
         "via": null
@@ -137069,8 +139638,272 @@
         "archetype": "record-transform",
         "signature": "optimizeTaxAwareTrade(holdingsInit, benchmark, expectedReturn, riskMatrix, prices, lots, tradeDate, options)"
       },
-      "api": null,
-      "example": null,
+      "api": {
+        "summary": "Scores which lots a fixed-size sale draws on, and separately solves the exact trade balancing return, tracking risk, cost and a declared illustrative lot score.",
+        "params": [
+          {
+            "name": "holdingsInit",
+            "type": "unknown",
+            "required": true,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "benchmark",
+            "type": "unknown",
+            "required": true,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "expectedReturn",
+            "type": "unknown",
+            "required": true,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "riskMatrix",
+            "type": "unknown",
+            "required": true,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "prices",
+            "type": "unknown",
+            "required": true,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "lots",
+            "type": "unknown",
+            "required": true,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "tradeDate",
+            "type": "unknown",
+            "required": true,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": null
+          },
+          {
+            "name": "options",
+            "type": "{ gammaRisk?: unknown; gammaTax?: unknown; gammaTc?: unknown; costRates?: unknown; cashInit?: unknown; taxCash?: unknown; settlement?: SettlementMode; settlementDate?: unknown; policy?: unknown; }",
+            "required": false,
+            "description": null,
+            "constraints": null,
+            "nulls": null,
+            "default": "{}"
+          }
+        ],
+        "returns": null,
+        "warmup": null,
+        "errors": [],
+        "complexity": null
+      },
+      "example": {
+        "origin": "executed",
+        "verified": false,
+        "source": "executed against the catalog's own test input",
+        "call": "optimizeTaxAwareTrade([500,500], [600,400], [0.04,0], [[0.0001,0],[0,0.0001]], [1,1], [[{\"lotId\":\"A\",\"shares\":500,\"saleScoreRate\":0.05,\"acquiredOn\":\"2025-01-02\"}],[{\"lotId\":\"B\",\"shares\":500,\"saleScoreRate\":0.01,\"acquiredOn\":\"2025-01-02\"}]], \"2026-01-02\", {\"gammaRisk\":1,\"gammaTax\":1,\"gammaTc\":0})",
+        "args": [
+          {
+            "value": [
+              500,
+              500
+            ],
+            "elided": null
+          },
+          {
+            "value": [
+              600,
+              400
+            ],
+            "elided": null
+          },
+          {
+            "value": [
+              0.04,
+              0
+            ],
+            "elided": null
+          },
+          {
+            "value": [
+              [
+                0.0001,
+                0
+              ],
+              [
+                0,
+                0.0001
+              ]
+            ],
+            "elided": null
+          },
+          {
+            "value": [
+              1,
+              1
+            ],
+            "elided": null
+          },
+          {
+            "value": [
+              [
+                {
+                  "lotId": "A",
+                  "shares": 500,
+                  "saleScoreRate": 0.05,
+                  "acquiredOn": "2025-01-02"
+                }
+              ],
+              [
+                {
+                  "lotId": "B",
+                  "shares": 500,
+                  "saleScoreRate": 0.01,
+                  "acquiredOn": "2025-01-02"
+                }
+              ]
+            ],
+            "elided": null
+          },
+          {
+            "value": "2026-01-02",
+            "elided": null
+          },
+          {
+            "value": {
+              "gammaRisk": 1,
+              "gammaTax": 1,
+              "gammaTc": 0
+            },
+            "elided": null
+          }
+        ],
+        "output": {
+          "status": "optimal",
+          "tradeDate": "2026-01-02",
+          "trade": [
+            175,
+            -175
+          ],
+          "tradeTotal": 0,
+          "holdings": [
+            675,
+            325
+          ],
+          "direction": "buy-first-sell-second",
+          "utility": 4.125,
+          "terms": {
+            "expectedReturn": 7,
+            "riskPenalty": 1.125,
+            "executionCostPenalty": 0,
+            "taxScorePenalty": 1.75
+          },
+          "executionCost": 0,
+          "taxScore": 1.75,
+          "saleCapacities": [
+            500,
+            500
+          ],
+          "lotSales": {
+            "asset": 1,
+            "price": 1,
+            "saleDollars": 175,
+            "totalCapacity": 500,
+            "fillSequence": [
+              "B"
+            ],
+            "totalScore": 1.75,
+            "lots": [
+              {
+                "lotId": "B",
+                "acquiredOn": "2025-01-02",
+                "sharesAvailable": 500,
+                "basisPerShare": null,
+                "illustrativeRate": null,
+                "perDollarScore": 0.01,
+                "capacity": 500,
+                "saleDollars": 175,
+                "sharesSold": 175,
+                "remainingCapacity": 325,
+                "lotScore": 1.75
+              }
+            ]
+          },
+          "branches": [
+            {
+              "branch": "buy-first-sell-second",
+              "interval": [
+                0,
+                500
+              ],
+              "quadraticCoefficient": -0.0002,
+              "linearCoefficient": 0.07,
+              "constant": -2,
+              "stationaryX": 175,
+              "stationaryInInterval": true,
+              "x": 175,
+              "binding": "stationary",
+              "utility": 4.125000000000001
+            },
+            {
+              "branch": "sell-first-buy-second",
+              "interval": [
+                -500,
+                0
+              ],
+              "quadraticCoefficient": -0.0002,
+              "linearCoefficient": 0.13,
+              "constant": -2,
+              "stationaryX": 325,
+              "stationaryInInterval": false,
+              "x": 0,
+              "binding": "upper-bound",
+              "utility": -2
+            }
+          ],
+          "cash": {
+            "settlement": "objective-only-forecast",
+            "settlementDate": null,
+            "cashInit": 0,
+            "tradeTotal": 0,
+            "executionCost": 0,
+            "taxCash": 0,
+            "cashPost": 0,
+            "holdingsTotalPost": 1000,
+            "portfolioValuePost": 1000,
+            "taxChargedTo": "objective-score-only",
+            "note": "taxCash is subtracted once, inside cashPost; portfolioValuePost adds that net balance and never subtracts the same amoun…"
+          }
+        },
+        "outputElided": {
+          "kind": "object",
+          "shown": 14,
+          "total": 16
+        },
+        "outputShape": "object with 16 fields: status, tradeDate, trade, tradeTotal, holdings, direction, utility, terms, …"
+      },
       "verification": {
         "tier": "contract",
         "via": null

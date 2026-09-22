@@ -4,13 +4,13 @@
 
 | | |
 |---|---|
-| Topics | **697** · 18 domains · 86 families |
-| Verified arithmetic | **623 / 697** replayed and asserted on every build |
-| `api:` contracts | **697 / 697** |
-| Worked examples | **697 / 697**, every one executed |
+| Topics | **717** · 19 domains · 90 families |
+| Verified arithmetic | **623 / 717** replayed and asserted on every build |
+| `api:` contracts | **717 / 717** |
+| Worked examples | **717 / 717**, every one executed |
 | Build | `tsc` clean |
-| Tests | **1,332 pass, 0 fail** |
-| Published | `0.13.0` on npm; `main` is ahead — see [CHANGELOG.md](CHANGELOG.md) |
+| Tests | **1,352 pass, 0 fail** |
+| Published | `0.13.1` on npm; `main` is ahead — see [CHANGELOG.md](CHANGELOG.md) |
 | Held back | none |
 
 **The catalog and the package now hold the same set.** Every domain either ships
@@ -19,10 +19,9 @@ That is a first, and it is the thing that makes the release worth cutting.
 
 ## Ready to release
 
-`0.13.1` is written and waiting for a tag. It adds the Volatility and Covariance
-domain and restores the diagram source that 369 topics had been shipping without.
-Nothing is removed or renamed, so it is a patch by the rule at the top of the
-changelog.
+`0.13.2` is written and waiting for a tag. It adds the Portfolio Construction
+domain. Nothing is removed or renamed, so it is a patch by the rule at the top
+of the changelog.
 
 ```bash
 npm run verify
@@ -36,11 +35,15 @@ changelog section, and asks the reference site to rebuild.
 
 ## What is actually left
 
-**Verification, the honest gap.** 74 topics ship no expected values, so nothing
-asserts their arithmetic. They are mostly in `D01-F02`, `F03` and `F04`, where
-the only oracle is assertion code inside the catalog's own tests rather than data
-that can be copied. Closing this needs numbers authored against a published
-source, not more tooling. It is the highest-value catalog work remaining.
+**Verification, the honest gap.** 94 topics ship no expected values, so nothing
+asserts their arithmetic. They split into two different problems. In `D01-F02`,
+`F03` and `F04` the only oracle is assertion code inside the catalog's own tests
+rather than data that can be copied, so closing those needs numbers authored
+against a published source. D14 is the opposite case and the cheaper one: all 20
+topics have expected numbers already, sitting in each topic's `tests/fixtures/`
+in two or three shapes the conformance harness does not read. Teaching it those
+shapes, or moving them to `datasets/` in one the generator already knows, buys
+20 topics without authoring a single figure.
 
 **Say what `verified` means, everywhere it appears.** The expected values are
 computed in the catalog by a Python implementation written alongside the
